@@ -22,7 +22,7 @@ if(!isset($_SESSION['partida'])){
         <div class='container'>
             <br>
             <div class="right-align">
-                <a href='logout.php'>Trocar Plano</a> | <a href='mailto:joao.pedro.hsd@gmail.com'>Enviar Feedback</a>
+                <a href='logout.php'>Trocar Plano</a> | <a href='mailto:joao.pedro.hsd@gmail.com'>Enviar Feedback</a> | <a target='_blank' href='https://github.com/jpedroh/mach'>Ver o código no GitHub</a>
             </div>
             <div class='center-align'>
                 <h1 class='blue-text text-darken-3' style='font-size:800%;font-weight:100'>mach<sup class='green-text text-darken-3' style='font-size:50%;'>beta</sup></h1>
@@ -87,6 +87,11 @@ if(!isset($_SESSION['partida'])){
             </div>
 
         </div>
+        <footer class='page-footer blue darken-3'>
+            <div class='footer-copyright'>
+                <div class='container'> © <?= date('Y') ?> Copyright - Desenvolvido por João Pedro Henrique <a class='grey-text text-lighten-4 right' target='_blank' href='https://github.com/jpedroh/parsec'>Ver o código no GitHub</a></div>
+            </div>
+        </footer>
         <!--Import jQuery before materialize.js-->
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
