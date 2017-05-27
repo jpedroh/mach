@@ -21,6 +21,8 @@ class RPL{
             $etapa = substr($c, 40, 4) . substr($c, strpos($c, "EQPT")-9, 4);
             $callsign = substr($c, 25, 7);
             $this->lista[$etapa][$callsign]['voo'] = $callsign;
+            $this->lista[$etapa][$callsign]['partida'] = substr($c, 40, 4);
+            $this->lista[$etapa][$callsign]['destino'] = substr($c, strpos($c, "EQPT")-9, 4);
             $this->lista[$etapa][$callsign]['rota'] = substr($c, '59', strpos($c, "EQPT")-68);
             $this->lista[$etapa][$callsign]['fl'] = 'F' . substr($c, '55', 3);
             $this->lista[$etapa][$callsign]['velocidade'] = substr($c, 49, 5);
@@ -84,7 +86,25 @@ class RPL{
         fclose($txt);
         }
     
-
-    
+    public function api(){
+        $rpl = file('rpl.txt');
+        $a = 0;
+        foreach($rpl as $c){
+            $this->api[$a]['id'] = $a;
+            $this->api[$a]['voo'] = substr($c, 25, 7);
+            $this->api[$a]['cia'] = substr($c, 25, 3);
+            $this->api[$a]['partida'] = substr($c, 40, 4);
+            $this->api[$a]['destino'] = substr($c, strpos($c, "EQPT")-9, 4);
+            $this->api[$a]['rota'] = substr($c, '59', strpos($c, "EQPT")-68);
+            $this->api[$a]['fl'] = 'F' . substr($c, '55', 3);
+            $this->api[$a]['velocidade'] = substr($c, 49, 5);
+            $this->api[$a]['eobt'] = substr($c, 44, 4);
+            $this->api[$a]['eet'] = substr($c, strpos($c, "EQPT")-5, 4);
+            $this->api[$a]['aeronave'] = substr($c, 33, 6);
+            $this->api[$a]['rmk'] = substr($c, strpos($c, "PBN"));
+            $this->api[$a]['eqpt'] = substr($c, strpos($c, "EQPT")+5, strpos($c, "PBN")-strpos($c, "EQPT")-6);
+            $a++;
+        }      
+        return json_encode($this->api);
+    }
 }
-
