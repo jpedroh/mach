@@ -6,8 +6,8 @@ session_start();
 include_once 'classes/rpl.php';
 
 //Puxa o voo
-$etap = $_GET['e'];
-$call = $_GET['voo'];
+$etap = $_POST['etapa'];
+$call = $_POST['voo'];
 
 //Instancia o RPL
 $RPL = new RPL();

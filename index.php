@@ -76,12 +76,15 @@ if(!isset($_SESSION['partida'])){
                             </div>
                           </div>
                         <div class="card-action right-align">
-                            <a class='blue-text darken-3' href='fpl.php?voo=<?= $voo['voo'] . '&e=' . $_SESSION['partida'].$_SESSION['chegada'] ?>'>Gerar plano da IVAO</a>
+                            <form id ='<?= $voo['voo'] ?>' action='fpl.php' method='post'>
+                                <input type="hidden" name="voo" value="<?= $voo['voo'] ?>"/>
+                                <input type="hidden" name="etapa" value="<?= $_SESSION['partida'].$_SESSION['chegada'] ?>"/>
+                                <a href="#fpl" style='cursor: pointer;' class='blue-text darken-3' onclick="document.getElementById('<?= $voo['voo'] ?>').submit();">Gerar plano da IVAO</a>
+                            </form>
                         </div>
                       </div>
                     </div>
                 </div>
-
                 <? } ?>
                 
             </div>
