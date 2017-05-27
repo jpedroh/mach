@@ -6,13 +6,11 @@ session_start();
 <html>
 <head>
     <meta charset="UTF-8">
-    <!--Import Google Icon Font-->
-    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Import materialize.css-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PARSEC - Sistema Gerenciador de Solo</title>
+    <title>MACH - Planejamento de voo online</title>
 </head>
 <body class='grey lighten-5'>
     <div class='container center-align'>
@@ -38,7 +36,7 @@ session_start();
                         <label for="chegada">Destino</label>
                     </div>
                     <div class="input-field col s2">
-                        <button class="blue darken-3 btn waves-effect waves-light" type="submit">Iniciar<i class="material-icons right">send</i></button>
+                        <button class="blue darken-3 btn waves-effect waves-light" type="submit">Iniciar <i class="fa fa-paper-plane" aria-hidden="true"></i></button>
                     </div>
                 </div>
         <p class='center-align'>Desenvolvido por <a target='_blank' href='https://jpedroh.github.io/'>João Pedro Henrique</a></p>
@@ -46,5 +44,6 @@ session_start();
         <!--Import jQuery before materialize.js-->
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+        <script src="https://use.fontawesome.com/b19f6a7abc.js"></script>
 </body>
 </html>

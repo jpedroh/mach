@@ -9,13 +9,11 @@ if(!isset($_SESSION['partida'])){
     <html>
     <head>
         <meta charset="UTF-8"> 
-        <!--Import Google Icon Font-->
-        <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <!--Import materialize.css-->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
         <!--Let browser know website is optimized for mobile-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>MACH - Plano de voo online</title>
+        <title>MACH - Planejamento de voo online</title>
     </head>
 
     <body class='grey lighten-5'>
@@ -76,28 +74,32 @@ if(!isset($_SESSION['partida'])){
                             </div>
                           </div>
                         <div class="card-action right-align">
-                            <form id ='<?= $voo['voo'] ?>' action='fpl.php' method='post'>
+                            <form id ='ivao_<?= $voo['voo'] ?>' action='fpl.php' method='post'>
                                 <input type="hidden" name="voo" value="<?= $voo['voo'] ?>"/>
                                 <input type="hidden" name="etapa" value="<?= $_SESSION['partida'].$_SESSION['chegada'] ?>"/>
-                                <a href="#fpl" style='cursor: pointer;' class='blue-text darken-3' onclick="document.getElementById('<?= $voo['voo'] ?>').submit();">Gerar plano da IVAO</a>
+                                <a href="#fpl" style='cursor: pointer;' class='blue-text darken-3' onclick="document.getElementById('ivao_<?= $voo['voo'] ?>').submit();">Gerar plano da IVAO</a>
+                            </form>
+                            <form id ='brief_<?= $voo['voo'] ?>' action='briefing.php' method='post'>
+                                <input type="hidden" name="voo" value="<?= $voo['voo'] ?>"/>
+                                <input type="hidden" name="partida" value="<?= $_SESSION['partida']?>"/>
+                                <a href="#brief" style='cursor: pointer;' class='blue-text darken-3' onclick="document.getElementById('brief_<?= $voo['voo'] ?>').submit();">Gerar briefing</a>
                             </form>
                         </div>
                       </div>
                     </div>
                 </div>
                 <? } ?>
-                
             </div>
-
         </div>
         <footer class='page-footer blue darken-3'>
             <div class='footer-copyright'>
-                <div class='container'> © <?= date('Y') ?> Copyright - Desenvolvido por João Pedro Henrique <a class='grey-text text-lighten-4 right' target='_blank' href='https://github.com/jpedroh/parsec'>Ver o código no GitHub</a></div>
+                <div class='container'> <i class="fa fa-copyright" aria-hidden="true"></i> <?= date('Y') ?> Copyright - Desenvolvido por <a class='white-text' target='_blank' href='https://jpedroh.github.io/'>João Pedro Henrique</a> <a class='grey-text text-lighten-4 right' target='_blank' href='https://github.com/jpedroh/parsec'><i class="fa fa-github" aria-hidden="true"></i></a></div>
             </div>
         </footer>
         <!--Import jQuery before materialize.js-->
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+        <script src="https://use.fontawesome.com/b19f6a7abc.js"></script>
     </body>
 
     </html>
