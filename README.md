@@ -8,3 +8,6 @@ An open-source flight planning tool for flight simulation
 - v0.2 (BETA)
   - API system inserted;
   - System migration to API.
+
+- v0.2.1 (BETA)
+  - Change from cards to Datatables.
