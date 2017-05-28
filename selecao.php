@@ -18,32 +18,51 @@ session_start();
         <h5>Seja bem vindo ao mach, a maneira mais fácil de se criar um plano de voo.</h5>
         <h5>Para começar, digite os ICAOs de partida e da chegada.</h5>
         <h5 class='red-text text-darken-4'>
-            <?
-            if(isset($_SESSION['erro']) && $_SESSION['erro'] == 1){
-               echo "ERRO! Não foi encontrada nenhuma rota entre os dois aeródromos no sistema.";
-            }
-            ?>
-        </h5> 
+        <?
+        if(isset($_SESSION['erro']) && $_SESSION['erro'] == 1){
+            echo "ERRO! Não foi encontrada nenhuma rota entre os dois aeródromos no sistema que satisfaça as condições.";
+        }
+        ?>
+        </h5>
         <div class="row">
             <form action='valida.php' method="post" class="col s12">
                 <div class="row">
-                    <div class="input-field col s5">
+                    <div class="input-field col s3">
                         <input id='partida' name='partida' type="text">
                         <label for="partida">Partida</label>
                     </div>
-                    <div class="input-field col s5">
+                    <div class="input-field col s3">
                         <input id='chegada' name='chegada' type="text">
                         <label for="chegada">Destino</label>
                     </div>
-                    <div class="input-field col s2">
+                    <div class="input-field col s3">
+                        <select name='cia'>
+                            <option disabled selected>Escolha alguma companhia (opcional)</option>
+                            <option value="AZU">AZU</option>
+                            <option value="GLO">GLO</option>
+                            <option value="LAP">LAP</option>
+                            <option value="ONE">ONE</option>
+                            <option value="PAM">PAM</option>
+                            <option value="PTB">PTB</option>
+                            <option value="TAM">TAM</option>
+                            <option value="TTL">TTL</option>
+                        </select>
+                        <label>Companhia</label>
+                    </div>
+                    <div class="input-field col s3">
                         <button class="blue darken-3 btn waves-effect waves-light" type="submit">Iniciar <i class="fa fa-paper-plane" aria-hidden="true"></i></button>
                     </div>
                 </div>
-        <p class='center-align'>Desenvolvido por <a target='_blank' href='https://jpedroh.github.io/'>João Pedro Henrique</a></p>
+            <p class='center-align'>Desenvolvido por <a target='_blank' href='https://jpedroh.github.io/'>João Pedro Henrique</a></p>
         </div>
         <!--Import jQuery before materialize.js-->
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
         <script src="https://use.fontawesome.com/b19f6a7abc.js"></script>
+        <script>
+            $(document).ready(function() {
+                $('select').material_select();
+            });
+        </script>
 </body>
 </html>

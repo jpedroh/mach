@@ -6,11 +6,12 @@ session_start();
 include_once 'classes/rpl.php';
 
 //Define os dados
-$_SESSION['partida'] = strtoupper($_POST['partida']);
-$_SESSION['chegada'] = strtoupper($_POST['chegada']);
+$_SESSION['partida'] = isset($_POST['partida']) ? strtoupper($_POST['partida']) : $_SESSION['partida'];
+$_SESSION['chegada'] = isset($_POST['chegada']) ? strtoupper($_POST['chegada']) : $_SESSION['chegada'];
+$_SESSION['cia'] = isset($_POST['cia']) ? strtoupper($_POST['cia']) : null;
 
 //Instancia o objeto
-$RPL = new RPL($_SESSION['partida'],$_SESSION['chegada']);
+$RPL = new RPL($_SESSION['partida'], $_SESSION['chegada'], $_SESSION['cia']);
 
 //Verifica se a chave existe
 if ($RPL->rotas != null) {

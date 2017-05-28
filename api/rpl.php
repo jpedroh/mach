@@ -95,9 +95,10 @@ class RPL{
                 $this->rota = substr($aeronave, '59', strpos($aeronave, "EQPT")-68);
                 $this->chegada = substr($aeronave, strpos($aeronave, "EQPT")-9, 4);
                 $this->eet = substr($aeronave, strpos($aeronave, "EQPT")-5, 4);
-                $this->rmk = substr($aeronave, strpos($aeronave, "PBN"), -1);
-                $this->eqpt = substr($aeronave, strpos($aeronave, "EQPT")+5, strpos($aeronave, "PBN")-strpos($aeronave, "EQPT")-6);
-                $banco->query("INSERT INTO rpl VALUES ('$this->id', '$this->callsign', '$this->cia', '$this->voo', '$this->aeronave', '$this->esteira', '$this->partida', '$this->std', '$this->velocidade', '$this->fl', '$this->rota', '$this->chegada', '$this->eet', '$this->rmk', '$this->eqpt')");
+                $this->rmk = substr($aeronave, strpos($aeronave, "EQPT"), -1);
+                $this->eqpt = substr($this->rmk, 5, strpos($this->rmk, " ")-4);
+                $query = "INSERT INTO rpl VALUES ('$this->id', '$this->callsign', '$this->cia', '$this->voo', '$this->aeronave', '$this->esteira', '$this->partida', '$this->std', '$this->velocidade', '$this->fl', '$this->rota', '$this->chegada', '$this->eet', '$this->rmk', '$this->eqpt')";
+                $banco->query($query);
                 $id++;
                 
             }

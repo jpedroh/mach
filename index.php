@@ -7,7 +7,7 @@ if(!isset($_SESSION['partida'])){
 }
 //Inclui a classe e instancia
 include_once 'classes/rpl.php';
-$rota = new RPL($_SESSION['partida'],$_SESSION['chegada']);
+$rota = new RPL($_SESSION['partida'], $_SESSION['chegada'], $_SESSION['cia']);
 ?>
     <html>
     <head>
@@ -42,6 +42,7 @@ $rota = new RPL($_SESSION['partida'],$_SESSION['chegada']);
                         <tr>
                             <th>VOO</th>
                             <th>ROTA</th>
+                            <th>FL</th>
                             <th>STD</th>
                             <th>AERONAVE</th>
                             <th>EET</th>
@@ -55,10 +56,12 @@ $rota = new RPL($_SESSION['partida'],$_SESSION['chegada']);
                             echo '<tr>';
                             echo '<td>' . $voo['callsign'] . '</td>';
                             echo '<td>' . $voo['rota'] . '</td>';
+                            echo '<td>' . $voo['fl'] . '</td>';
                             echo '<td>' . $voo['std'] . 'Z</td>';
                             echo '<td>' . $voo['aeronave'] . '</td>';
                             echo '<td>' . $voo['eet'] . '</td>';
                             echo '<td><a class="blue-text text-darken-3" href="fpl.php?id=' . $voo['id'] . '">Gerar plano da IVAO</a></td>';
+                            //echo '<td><a class="blue-text text-darken-3" href="monta_briefing.php?id=' . $voo['id'] . '">Gerar briefing do voo</a></td>';
                             echo '</tr>';
                         }
                         ?>
