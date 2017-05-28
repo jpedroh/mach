@@ -1,7 +1,18 @@
 <?
-class RPL{    
+class RPL{
+    //Atributos
+    public $servidor;
+    public $username;
+    public $password;
+    public $dataname;
+    
     //Métodos
     public function __construct(){
+        //Variáveis servidor
+        $this->servidor = "localhost";
+        $this->username = "root";
+        $this->password = "";
+        $this->dataname = "mach";
         //Log
         $log = 'cgna.log';
         //Verifica se a última atualização ainda é valida. O sistema atualiza uma vez diariamente.
@@ -15,7 +26,7 @@ class RPL{
         file_put_contents($log, time());
         }
         //Escreve o json
-        $this->escrever();
+        $this->salvar();
     }
     
     public function baixar($fir){
@@ -49,7 +60,9 @@ class RPL{
         return $zip->getFromName(@$this->getArquivo($fir));
     }
     
-    public function escrever(){
+    public function salvar(){
+        //Conecta ao DB
+        $banco = mysqli_connect($this->servidor, $this->username, $this->password, $this->dataname);
         //Decodifica
         $SBAZ = $this->parse('SBAZ');
         $SBBS = $this->parse('SBBS');
@@ -61,28 +74,33 @@ class RPL{
         $id = 0;
         foreach($lista as $aeronave){
             if(strpos($aeronave, 'EQPT')){
-                $voos[$id]['id'] = $id;
-                $voos[$id]['callsign'] = substr($aeronave, 25, 7);
-                $voos[$id]['cia'] = substr($aeronave, 25, 3);
-                $voos[$id]['voo'] = substr($aeronave, 28, 4);
-                $voos[$id]['aeronave'] = substr($aeronave, 33, 4);
-                $voos[$id]['esteira'] = substr($aeronave, 38, 1);
-                $voos[$id]['partida'] = substr($aeronave, 40, 4);
-                $voos[$id]['std'] = substr($aeronave, 44, 4);
-                $voos[$id]['velocidade'] = substr($aeronave, 49, 5);
-                $voos[$id]['fl'] = substr($aeronave, '55', 3);
-                $voos[$id]['rota'] = substr($aeronave, '59', strpos($aeronave, "EQPT")-68);
-                $voos[$id]['chegada'] = substr($aeronave, strpos($aeronave, "EQPT")-9, 4);
-                $voos[$id]['eet'] = substr($aeronave, strpos($aeronave, "EQPT")-5, 4);
-                $voos[$id]['rmk'] = substr($aeronave, strpos($aeronave, "PBN"), -1);
-                $voos[$id]['eqpt'] = substr($aeronave, strpos($aeronave, "EQPT")+5, strpos($aeronave, "PBN")-strpos($aeronave, "EQPT")-6);
+                $this->id = $id;
+                $this->callsign = substr($aeronave, 25, 7);
+                $this->cia = substr($aeronave, 25, 3);
+                $this->voo = substr($aeronave, 28, 4);
+                $this->aeronave = substr($aeronave, 33, 4);
+                $this->esteira = substr($aeronave, 38, 1);
+                $this->partida = substr($aeronave, 40, 4);
+                $this->std = substr($aeronave, 44, 4);
+                $this->velocidade = substr($aeronave, 49, 5);
+                $this->fl = substr($aeronave, '55', 3);
+                $this->rota = substr($aeronave, '59', strpos($aeronave, "EQPT")-68);
+                $this->chegada = substr($aeronave, strpos($aeronave, "EQPT")-9, 4);
+                $this->eet = substr($aeronave, strpos($aeronave, "EQPT")-5, 4);
+                $this->rmk = substr($aeronave, strpos($aeronave, "PBN"), -1);
+                $this->eqpt = substr($aeronave, strpos($aeronave, "EQPT")+5, strpos($aeronave, "PBN")-strpos($aeronave, "EQPT")-6);
+                $banco->query("INSERT INTO rpl VALUES ('$this->id', '$this->callsign', '$this->cia', '$this->voo', '$this->aeronave', '$this->esteira', '$this->partida', '$this->std', '$this->velocidade', '$this->fl', '$this->rota', '$this->chegada', '$this->eet', '$this->rmk', '$this->eqpt')");
                 $id++;
+                $banco->query("OPTIMIZE TABLE rpl");
             }
         }
-        //Retorna o JSON
-        echo json_encode($voos);
-        }    
+        
+    }    
 }
 
 //Instancia a classe
-new RPL();
+$RPL = new RPL();
+
+echo '<pre>';
+print_r($RPL);
+echo '</pre>';
