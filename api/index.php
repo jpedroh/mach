@@ -11,7 +11,7 @@
 <body class='grey lighten-5'>
     <div class='container'><br>
         <div class="right-align">
-            <a href='logout.php'>Voltar ao mach</a> | <a href='mailto:joao.pedro.hsd@gmail.com'>Contato</a> | <a target='_blank' href='https://github.com/jpedroh/mach'>Ver o código no GitHub</a>
+            <a href='http://parsec.pe.hu/mach/'>Voltar ao mach</a> | <a href='mailto:joao.pedro.hsd@gmail.com'>Contato</a> | <a target='_blank' href='https://github.com/jpedroh/mach'>Ver o código no GitHub</a>
         </div>
         <header class='header center-align'>
             <a href='index.php'><h1 class='blue-text text-darken-3' style='font-size:800%;font-weight:100'>mach<sup class='green-text text-darken-3' style='font-size:50%;'><i class="fa fa-code" aria-hidden="true"></i></sup></h1></a>
@@ -46,7 +46,7 @@
     <footer class='page-footer blue darken-3'>
         <div class='footer-copyright'>
             <div class='container'> <i class="fa fa-copyright" aria-hidden="true"></i>
-                <?= date('Y') ?> Copyright - Desenvolvido por <a class='white-text' target='_blank' href='https://jpedroh.github.io/'>João Pedro Henrique</a> <a class='grey-text text-lighten-4 right' target='_blank' href='https://github.com/jpedroh/parsec'><i class="fa fa-github" aria-hidden="true"></i></a></div>
+                <?= date('Y') ?> Copyright - Desenvolvido por <a class='white-text' target='_blank' href='https://jpedroh.github.io/'>João Pedro Henrique</a> <a class='grey-text text-lighten-4 right' target='_blank' href='https://github.com/jpedroh/mach'><i class="fa fa-github" aria-hidden="true"></i></a></div>
         </div>
     </footer>
     <!--Import jQuery before materialize.js-->

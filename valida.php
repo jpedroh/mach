@@ -5,15 +5,15 @@ session_start();
 //Include
 include_once 'classes/rpl.php';
 
-//Instancia o objeto
-$RPL = new RPL();
-
 //Define os dados
 $_SESSION['partida'] = strtoupper($_POST['partida']);
 $_SESSION['chegada'] = strtoupper($_POST['chegada']);
 
+//Instancia o objeto
+$RPL = new RPL($_SESSION['partida'],$_SESSION['chegada']);
+
 //Verifica se a chave existe
-if (array_key_exists($_SESSION['partida'] . $_SESSION['chegada'], $RPL->lista)) {
+if ($RPL->rotas != null) {
     //Chave existe, redirecionando para a ferramenta
     $_SESSION['erro'] = 0;
     header('location:index.php');

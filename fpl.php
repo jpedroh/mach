@@ -2,30 +2,27 @@
 //Inicia a sessão
 session_start();
 
-//Includes
-include_once 'classes/rpl.php';
-
 //Puxa o voo
-$etap = $_POST['etapa'];
-$call = $_POST['voo'];
+$id = $_GET['id'];
 
-//Instancia o RPL
-$RPL = new RPL();
-$dados = $RPL->lista[$etap][$call];
+//Puxa a JSON do voo
+$dados = json_decode(file_get_contents('http://parsec.pe.hu/mach/api/rpl.php?id='.$id),true);
 
 //Dados
-$acft = explode('/', $dados['aeronave']);
-$eqpt = $dados['eqpt'];
+$call = $dados[0]['callsign'];
+$acft = $dados[0]['aeronave'];
+$wake = $dados[0]['esteira'];
+$eqpt = $dados[0]['eqpt'];
 $part = $_SESSION['partida'];
 $cheg = $_SESSION['chegada'];
-$velo = $dados['velocidade'];
-$alti = $dados['fl'];
-$rota = $dados['rota'];
-$veet = $dados['eet'];
-$rmks = $dados['rmk'];
+$velo = $dados[0]['velocidade'];
+$alti = $dados[0]['fl'];
+$rota = $dados[0]['rota'];
+$veet = $dados[0]['eet'];
+$rmks = $dados[0]['rmk'];
 
 //Escreve o plano de voo
-$IVAOFPL = "[FLIGHTPLAN]\nID=$call\nFLIGHTTYPE=S\nNUMBER=1\nACTYPE=$acft[0]\nWAKECAT=$acft[1]\nEQUIPMENT=$eqpt\nDEPICAO=$part\nSPEEDTYPE=$velo[0]\nSPEED=$velo[1]$velo[2]$velo[3]$velo[4]\nLEVELTYPE=$alti[0]\nLEVEL=$alti[1]$alti[2]$alti[3]\nROUTE=$rota\nDESTICAO=$cheg\nEET=$veet\nOTHER=$rmks";
+$IVAOFPL = "[FLIGHTPLAN]\nID=$call\nFLIGHTTYPE=S\nNUMBER=1\nACTYPE=$acft\nWAKECAT=$wake\nEQUIPMENT=$eqpt\nDEPICAO=$part\nSPEEDTYPE=N\nSPEED=$velo[1]$velo[2]$velo[3]$velo[4]\nLEVELTYPE=F\nLEVEL=$alti\nROUTE=$rota\nDESTICAO=$cheg\nEET=$veet\nOTHER=$rmks";
 
 //Salva o arquivo
 $file_name =  $call . '.fpl'; 

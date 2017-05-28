@@ -8,7 +8,7 @@ class RPL{
     
     //Métodos
     public function __construct(){
-        //Variáveis servidor
+        //Variáveis localhost
         $this->servidor = "localhost";
         $this->username = "root";
         $this->password = "";
@@ -22,11 +22,12 @@ class RPL{
         $this->baixar('SBBS');
         $this->baixar('SBCW');
         $this->baixar('SBRE');
+        //Salva no database
+        //$this->salvar();
         //Atualiza o log com a última atualização
         file_put_contents($log, time());
         }
-        //Escreve o json
-        $this->salvar();
+        echo $this->retorna();
     }
     
     public function baixar($fir){
@@ -38,6 +39,13 @@ class RPL{
         if ($httpcdd != '404'){
             //Baixa o arquivo RPL atualizado
             file_put_contents('rpl/' . $fir .'.zip', file_get_contents('http://portal.cgna.gov.br/files/abas/' . date('Y-m-d') . '/painel_rpl/bdr/RPL' . $fir .'.zip'));
+            $banco = mysqli_connect($this->servidor, $this->username, $this->password, $this->dataname);
+            //Reseta a tabela
+            $banco->query("TRUNCATE TABLE rpl");
+            //Salva os valores
+            $this->salvar();
+            //Otimiza a tabela
+            $banco->query("OPTIMIZE TABLE rpl");
         }
     }
     
@@ -91,16 +99,49 @@ class RPL{
                 $this->eqpt = substr($aeronave, strpos($aeronave, "EQPT")+5, strpos($aeronave, "PBN")-strpos($aeronave, "EQPT")-6);
                 $banco->query("INSERT INTO rpl VALUES ('$this->id', '$this->callsign', '$this->cia', '$this->voo', '$this->aeronave', '$this->esteira', '$this->partida', '$this->std', '$this->velocidade', '$this->fl', '$this->rota', '$this->chegada', '$this->eet', '$this->rmk', '$this->eqpt')");
                 $id++;
-                $banco->query("OPTIMIZE TABLE rpl");
+                
             }
+        }        
+    }
+    
+    public function retorna(){
+        //Conecta
+        $banco = mysqli_connect($this->servidor, $this->username, $this->password, $this->dataname);
+        //Faz as Restrições
+        $where = '';
+        $a = '';
+        if (isset($_GET['cia'])){
+            $where = "cia='".addslashes($_GET['cia'])."'";
+            $a = ' and ';
         }
-        
-    }    
+        if (isset($_GET['dep'])){
+            $where = $where . $a . "partida='".addslashes($_GET['dep'])."'";
+            $a = ' and ';
+        }
+        if (isset($_GET['arr'])){
+            $where = $where . $a . "chegada='".addslashes($_GET['arr'])."'";
+            $a = ' and ';
+        }
+        if (isset($_GET['id'])){
+            $where = $where . $a . "id='".addslashes($_GET['id'])."'";
+            $a = ' and ';
+        }
+        //Monta a query
+        if($where != ''){
+            $query = "SELECT * FROM rpl WHERE " . $where;
+        }else{
+            $query = "SELECT * FROM rpl";
+        }        
+        //Faz a busca
+        $busca = $banco->query($query);
+        //Salva o resultado numa array
+        foreach($busca as $resultado){
+            $json[] = $resultado;
+        }
+        //Retorna a JSON
+        return json_encode($json);
+    }
 }
 
 //Instancia a classe
 $RPL = new RPL();
-
-echo '<pre>';
-print_r($RPL);
-echo '</pre>';
