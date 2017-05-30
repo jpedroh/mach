@@ -2,6 +2,10 @@
 An open-source flight planning tool for flight simulation
 
 ## changelog
+- v0.3 (BETA)
+  - Inserted flight briefing funcionality.
+  - Minor changes.
+ 
 - v0.2.2 (BETA)
   - Bugfix: IVAO fpl generation on EQPT and OTHER fields.
   - Added company filtering on selection.
