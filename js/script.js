@@ -9,5 +9,10 @@ $(document).ready(function () {
         }
 
     });
+    
     $('.dataTables_filter input').width($('#voos').width());
+    
+    $(document).ready(function () {
+        $('ul.tabs').tabs();
+    });
 });

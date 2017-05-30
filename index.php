@@ -60,8 +60,7 @@ $rota = new RPL($_SESSION['partida'], $_SESSION['chegada'], $_SESSION['cia']);
                             echo '<td>' . $voo['std'] . 'Z</td>';
                             echo '<td>' . $voo['aeronave'] . '</td>';
                             echo '<td>' . $voo['eet'] . '</td>';
-                            echo '<td><a class="blue-text text-darken-3" href="fpl.php?id=' . $voo['id'] . '">Gerar plano da IVAO</a></td>';
-                            //echo '<td><a class="blue-text text-darken-3" href="monta_briefing.php?id=' . $voo['id'] . '">Gerar briefing do voo</a></td>';
+                            echo '<td><a class="blue-text text-darken-3" href="monta_briefing.php?id=' . $voo['id'] . '">Ver Briefing</a> | <a class="blue-text text-darken-3" href="fpl.php?id=' . $voo['id'] . '">IVAO FPL</a></td>';
                             echo '</tr>';
                         }
                         ?>
