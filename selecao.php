@@ -12,11 +12,11 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MACH - Planejamento de voo online</title>
 </head>
-<body class='grey lighten-5'>
+<body style='background: url();'>
     <div class='container center-align'>
-        <h1 class='blue-text text-darken-3' style='font-size:800%;font-weight:100'>mach<sup class='green-text text-darken-3' style='font-size:50%;'>beta</sup></h1>
+        <h1 class='blue-text text-darken-4' style='font-size:800%;font-weight:100'>mach<sup class='green-text text-darken-4' style='font-size:50%;'>beta</sup></h1>
         <h5>Seja bem vindo ao mach, a maneira mais fácil de se criar um plano de voo.</h5>
-        <h5>Para começar, digite os ICAOs de partida e da chegada.</h5>
+        <h5>Para começar, digite os ICAOs de partida e chegada.</h5>
         <h5 class='red-text text-darken-4'>
         <?
         if(isset($_SESSION['erro']) && $_SESSION['erro'] == 1){
@@ -50,7 +50,7 @@ session_start();
                         <label>Companhia</label>
                     </div>
                     <div class="input-field col s3">
-                        <button class="blue darken-3 btn waves-effect waves-light" type="submit">Iniciar <i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+                        <button class="blue darken-4 btn waves-effect waves-light" type="submit">Iniciar <i class="fa fa-paper-plane" aria-hidden="true"></i></button>
                     </div>
                 </div>
             <p class='center-align'>Desenvolvido por <a target='_blank' href='https://jpedroh.github.io/'>João Pedro Henrique</a></p>
