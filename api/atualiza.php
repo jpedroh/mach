@@ -5,6 +5,7 @@ class RPLatualiza{
     public $username;
     public $password;
     public $dataname;
+    public $banco;
     
     //Métodos
     public function __construct(){
@@ -27,13 +28,13 @@ class RPLatualiza{
             $logfile = fopen("cgna.log", "a");
             fwrite($logfile, "\n" . $log);
             //Atualiza o DB
-            $banco = mysqli_connect('localhost','root','','mach');
             //Reseta a tabela
-            $banco->query("TRUNCATE TABLE rpl");
+            $this->banco = mysqli_connect("localhost","root","","mach");
+            $this->banco->query("TRUNCATE TABLE rpl");
             //Salva os valores
             $this->salvar();
             //Otimiza a tabela
-            $banco->query("OPTIMIZE TABLE rpl");
+            $this->banco->query("OPTIMIZE TABLE rpl");
         }
     }
     
@@ -57,8 +58,6 @@ class RPLatualiza{
     }
     
     public function salvar(){
-        //Conecta ao DB
-        $banco = mysqli_connect('localhost','root','','mach');
         //Decodifica
         $SBAZ = $this->parse('SBAZ');
         $SBBS = $this->parse('SBBS');
@@ -86,7 +85,7 @@ class RPLatualiza{
                 $this->rmk = substr($aeronave, strpos($aeronave, "EQPT"), -1);
                 $this->eqpt = substr($this->rmk, 5, strpos($this->rmk, " ")-4);
                 $query = "INSERT INTO rpl VALUES ('$this->id', '$this->callsign', '$this->cia', '$this->voo', '$this->aeronave', '$this->esteira', '$this->partida', '$this->std', '$this->velocidade', '$this->fl', '$this->rota', '$this->chegada', '$this->eet', '$this->rmk', '$this->eqpt')";
-                $banco->query($query);
+                $this->banco->query($query);
                 $id++;
                 
             }

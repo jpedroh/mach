@@ -2,6 +2,10 @@
 An open-source flight planning tool for flight simulation
 
 ## changelog
+- v0.3.1 (BETA)
+  - Inserted cron job handling on API.
+  - Minor improvements
+
 - v0.3 (BETA)
   - Inserted flight briefing funcionality.
   - Minor changes.
