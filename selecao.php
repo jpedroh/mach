@@ -12,7 +12,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MACH - Planejamento de voo online</title>
 </head>
-<body style='background: url();'>
+<body class='grey lighten-5'>
     <div class='container center-align'>
         <h1 class='blue-text text-darken-4' style='font-size:800%;font-weight:100'>mach<sup class='green-text text-darken-4' style='font-size:50%;'>beta</sup></h1>
         <h5>Seja bem vindo ao mach, a maneira mais fácil de se criar um plano de voo.</h5>

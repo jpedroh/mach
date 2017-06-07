@@ -9,16 +9,12 @@ class RPL{
     //Métodos
     public function __construct(){
         //Variáveis localhost
-        $this->servidor = "localhost";
-        $this->username = "root";
-        $this->password = "";
-        $this->dataname = "mach";
         echo $this->retorna();
     }
     
     public function retorna(){
         //Conecta
-        $banco = mysqli_connect($this->servidor, $this->username, $this->password, $this->dataname);
+        $banco = mysqli_connect("localhost","root","","mach");
         //Faz as Restrições
         $where = '';
         $a = '';
