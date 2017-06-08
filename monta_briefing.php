@@ -6,7 +6,7 @@ session_start();
 $_SESSION['id'] = isset($_GET['id']) ? $_GET['id'] : $_SESSION['id'];
 
 //Busca os dados do voo na API
-$dados = json_decode(file_get_contents('http://parsec.pe.hu/mach/api/rpl.php?id='.$_SESSION['id']),true);
+$dados = json_decode(file_get_contents('http://jpedroh.com/mach/api/rpl.php?id='.$_SESSION['id']),true);
 
 //Monta as variáveis globais para o briefing
 $_SESSION['voo'] = $dados[0]['callsign'];

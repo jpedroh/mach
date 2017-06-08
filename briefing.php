@@ -43,6 +43,10 @@ include_once 'classes/cartas.php';
 }
 </style>
 <body class='grey lighten-5'>
+    <?
+    //Analytics
+    include_once('analytics.php');
+    ?>
     <header>
         <nav class='blue darken-3'>
             <div class='container nav-wrapper'>

@@ -23,6 +23,10 @@ $rota = new RPL($_SESSION['partida'], $_SESSION['chegada'], $_SESSION['cia']);
         <title>MACH - Planejamento de voo online</title>
     </head>
     <body class='grey lighten-5'>
+            <?
+    //Analytics
+    include_once('analytics.php');
+    ?>
             <header>
                 <div class='container'>
                 <div class="right-align">

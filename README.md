@@ -2,6 +2,11 @@
 An open-source flight planning tool for flight simulation
 
 ## changelog
+- v0.4 (BETA)
+  - Landing page redesign.
+  - Inserted Google Analytics tracking.
+  - Minor bugs correction.
+
 - v0.3.2 (BETA)
   - Server migration changes.
   - Minor bugs corrected.

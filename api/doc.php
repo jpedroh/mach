@@ -11,6 +11,10 @@
 </head>
 
 <body class='grey lighten-5'>
+    <?
+    //Analytics
+    include_once('../analytics.php');
+    ?>
     <div class='container'><br>
         <div class="right-align">
             <a href='http://parsec.pe.hu/mach/'>Voltar ao mach</a> | <a href='mailto:joao.pedro.hsd@gmail.com'>Contato</a> | <a target='_blank' href='https://github.com/jpedroh/mach'>Ver o código no GitHub</a>

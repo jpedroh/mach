@@ -1,68 +1,81 @@
-<!DOCTYPE html>
 <?
 //Declara a sessão
 session_start();
 ?>
-<html>
+<!DOCTYPE html>
+<html lang='pt-br'>
 <head>
-    <meta charset="UTF-8">
-    <!--Import materialize.css-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
     <!--Let browser know website is optimized for mobile-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <meta charset='utf-8'>
+    <!--Import Google Icon Font-->
+    <link href='http://fonts.googleapis.com/icon?family=Material+Icons' rel='stylesheet'>
+    <!--Import materialize.css-->
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css'>
+    <!--Import selecao.css-->
+    <link type='text/css' rel='stylesheet' href='css/selecao.css' media='screen,projection' />
     <title>MACH - Planejamento de voo online</title>
 </head>
-<body class='grey lighten-5'>
-    <div class='container center-align'>
-        <h1 class='blue-text text-darken-4' style='font-size:800%;font-weight:100'>mach<sup class='green-text text-darken-4' style='font-size:50%;'>beta</sup></h1>
-        <h5>Seja bem vindo ao mach, a maneira mais fácil de se criar um plano de voo.</h5>
-        <h5>Para começar, digite os ICAOs de partida e chegada.</h5>
-        <h5 class='red-text text-darken-4'>
-        <?
+<body background='https://www.metabunk.org/attachments/enrt_jepp-jpg.7959/'>
+    <div id='site'>
+        <!--Google Analytics-->
+        <? include_once('analytics.php'); ?>
+
+            <!--Cabeçalho-->
+            <nav class='transparent z-depth-0'>
+                <div class='nav-wrapper container'>
+                    <a href='/' class='brand-logo white-text'>
+                        <h2 style='margin-top:6px;font-weight:100'>mach<sup style='font-size:50%'>beta</sup></h2>
+                    </a>
+                    <ul class='right hide-on-med-and-down'>
+                        <li><a href='api/index.php'>API</a></li>
+                        <li><a href='mailto:joao.pedro.hsd@gmail.com'>Enviar Feedback</a></li>
+                        <li><a target='_blank' href='https://github.com/jpedroh/mach'>Ver o código no GitHub</a></li>
+                    </ul>
+                </div>
+            </nav>
+
+            <!--Greetings-->
+            <div class='container white-text center' id='mensagem'>
+                <h2 style='font-weight:300'>Seja bem vindo ao mach.</h2>
+                <h4 style='font-weight:300'>A maneira mais fácil de se criar um plano de voo.</h4>
+                <h4 id='largura' style='font-weight:300'>Para começar, digite os ICAOs de partida e chegada.</h4>
+            </div>
+
+            <!--Formulario-->
+            <form id='formulario' action='valida.php' method='post'>
+                <div class='row'>
+                    <input id='partida' name='partida' type='text' placeholder='PARTIDA' required>
+                </div>
+                <div class='row'>
+                    <input id='chegada' name='chegada' type='text' placeholder='CHEGADA' required>
+                </div>
+                <div class='row'>
+                    <button id='iniciar' class='waves-effect waves-light btn-large white blue-text text-darken-2' type='submit'>Começar</button>
+                </div>
+            </form>
+
+            <!--Footer-->
+            <footer class='white-text center'>
+                <div id='links'><a class='grey-text text-lighten-2' href='mailto:joao.pedro.hsd@gmail.com'>Enviar Feedback</a> | <a class='grey-text text-lighten-2' href='api/index.php'>API</a></div>
+                <h6>Desenvolvido por <a class='grey-text text-lighten-2' href='http://jpedroh.com/' target='_blank'>João Pedro Henrique</a></h6>
+            </footer>
+    </div>
+    <!--Import jQuery before materialize.js-->
+    <script type='text/javascript' src='https://code.jquery.com/jquery-2.1.1.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js'></script>
+    <!--Retorna o toast com erro-->
+    <? 
         if(isset($_SESSION['erro']) && $_SESSION['erro'] == 1){
-            echo "ERRO! Não foi encontrada nenhuma rota entre os dois aeródromos no sistema que satisfaça as condições.";
+            echo '
+                    <script>
+                        $(document).ready(function(){
+                           Materialize.toast("Ops, nenhum plano de voo encontrado.", 5000, "red");
+                        });
+                    </script>  
+                ';
+            $_SESSION['erro'] = 0;
         }
         ?>
-        </h5>
-        <div class="row">
-            <form action='valida.php' method="post" class="col s12">
-                <div class="row">
-                    <div class="input-field col s3">
-                        <input id='partida' name='partida' type="text">
-                        <label for="partida">Partida</label>
-                    </div>
-                    <div class="input-field col s3">
-                        <input id='chegada' name='chegada' type="text">
-                        <label for="chegada">Destino</label>
-                    </div>
-                    <div class="input-field col s3">
-                        <select name='cia'>
-                            <option disabled selected>Escolha alguma companhia (opcional)</option>
-                            <option value="AZU">AZU</option>
-                            <option value="GLO">GLO</option>
-                            <option value="LAP">LAP</option>
-                            <option value="ONE">ONE</option>
-                            <option value="PAM">PAM</option>
-                            <option value="PTB">PTB</option>
-                            <option value="TAM">TAM</option>
-                            <option value="TTL">TTL</option>
-                        </select>
-                        <label>Companhia</label>
-                    </div>
-                    <div class="input-field col s3">
-                        <button class="blue darken-4 btn waves-effect waves-light" type="submit">Iniciar <i class="fa fa-paper-plane" aria-hidden="true"></i></button>
-                    </div>
-                </div>
-            <p class='center-align'>Desenvolvido por <a target='_blank' href='https://jpedroh.github.io/'>João Pedro Henrique</a></p>
-        </div>
-        <!--Import jQuery before materialize.js-->
-        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
-        <script src="https://use.fontawesome.com/b19f6a7abc.js"></script>
-        <script>
-            $(document).ready(function() {
-                $('select').material_select();
-            });
-        </script>
 </body>
 </html>
