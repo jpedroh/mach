@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?
 session_start();
-if($_SESSION['erro'] = 2){
+if($_SESSION['erro'] == 2){
     header('location:selecao.php');
 }
 

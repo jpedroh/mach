@@ -75,7 +75,7 @@ session_start();
                     </script>  
                 ';
             $_SESSION['erro'] = 2;
-        }
-        ?>
+        }    
+    ?>
 </body>
 </html>
