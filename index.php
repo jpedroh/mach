@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <?
 session_start();
+if($_SESSION['erro'] = 2){
+    header('location:selecao.php');
+}
+
 if(!isset($_SESSION['partida'])){
     $_SESSION['erro'] = 0;
     header('location:selecao.php');

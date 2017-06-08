@@ -74,7 +74,7 @@ session_start();
                         });
                     </script>  
                 ';
-            $_SESSION['erro'] = 0;
+            $_SESSION['erro'] = 2;
         }
         ?>
 </body>
