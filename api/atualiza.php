@@ -57,7 +57,7 @@ class RPLatualiza{
         return $zip->getFromName(@$this->getArquivo($fir));
     }
     
-    public function salvar(){
+public function salvar(){
         //Decodifica
         $SBAZ = $this->parse('SBAZ');
         $SBBS = $this->parse('SBBS');

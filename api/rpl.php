@@ -12,7 +12,7 @@ class RPL{
         echo $this->retorna();
     }
     
-    public function retorna(){
+public function retorna(){
         //Conecta
         $banco = mysqli_connect("localhost","root","","mach");
         //Faz as Restrições

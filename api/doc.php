@@ -32,7 +32,7 @@
                 </tr>
             <?
             //Decodifica o json para uma array associativa
-            $decodifica = json_decode(file_get_contents('http://parsec.pe.hu/mach/api/rpl.php?dep=SBBV&arr=SBBR'), true);        
+            $decodifica = json_decode(file_get_contents('http://jpedroh.com/mach/api/rpl.php?dep=SBBV&arr=SBBR'), true);        
             //Escreve os dados em uma tabela
             foreach($decodifica as $voo){
                 echo '<tr>
@@ -70,7 +70,7 @@
 
             <h4>Utilizando o REST</h4>
             <p class='flow-text'>Nossa api tem suporte à condições REST. No momento, é possível filtrar os resultados por Companhia, Aeródromo de partida e Aeródromo de chegada. Basta adicionar os seguintes comandos após a url da api, e.g.:</p>
-            <h5>http://parsec.pe.hu/mach/api/rpl.php<b>?cia=GLO&dep=SBGR&arr=SBGL</b></h5>
+            <h5>http://jpedroh.com/mach/api/rpl.php<b>?cia=GLO&dep=SBGR&arr=SBGL</b></h5>
             <li class='flow-text'><b>cia</b> filtra por companhia</li>
             <li class='flow-text'><b>dep</b> filtra por aeroporto de partida</li>
             <li class='flow-text'><b>arr</b> filtra por aeroporto de destino</li>
