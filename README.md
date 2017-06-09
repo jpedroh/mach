@@ -1,7 +1,11 @@
 # mach
-An open-source flight planning tool for flight simulation
+An open-source flight planning tool for flight simulation.
 
 ## changelog
+- v0.4.1 (BETA)
+  - Inserted Pre-Briefing.
+  - Minor bug corrections.
+  
 - v0.4 (BETA)
   - Landing page redesign.
   - Inserted Google Analytics tracking.

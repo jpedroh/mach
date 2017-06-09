@@ -20,9 +20,11 @@ $alti = $dados[0]['fl'];
 $rota = $dados[0]['rota'];
 $veet = $dados[0]['eet'];
 $rmks = $dados[0]['rmk'];
+$pob = isset($_SESSION['pob']) ? $_SESSION['pob'] : null;
+$altn = isset($_SESSION['altn']) ? $_SESSION['altn'] : null;
 
 //Escreve o plano de voo
-$IVAOFPL = "[FLIGHTPLAN]\nID=$call\nFLIGHTTYPE=S\nNUMBER=1\nACTYPE=$acft\nWAKECAT=$wake\nEQUIPMENT=$eqpt\nDEPICAO=$part\nSPEEDTYPE=N\nSPEED=$velo[1]$velo[2]$velo[3]$velo[4]\nLEVELTYPE=F\nLEVEL=$alti\nROUTE=$rota\nDESTICAO=$cheg\nEET=$veet\nOTHER=$rmks";
+$IVAOFPL = "[FLIGHTPLAN]\nID=$call\nFLIGHTTYPE=S\nNUMBER=1\nACTYPE=$acft\nWAKECAT=$wake\nEQUIPMENT=$eqpt\nDEPICAO=$part\nSPEEDTYPE=N\nSPEED=$velo[1]$velo[2]$velo[3]$velo[4]\nLEVELTYPE=F\nLEVEL=$alti\nROUTE=$rota\nDESTICAO=$cheg\nEET=$veet\nOTHER=$rmks\nPOB=$pob\nALTICAO=$altn";
 
 //Salva o arquivo
 $file_name =  $call . '.fpl';

@@ -18,6 +18,8 @@ $_SESSION['altitude'] = $dados[0]['fl'];
 $_SESSION['rota'] = $dados[0]['rota'];
 $_SESSION['eet'] = $dados[0]['eet'];
 $_SESSION['rmks'] = $dados[0]['rmk'];
+$_SESSION['pob'] = $_POST['pob'];
+$_SESSION['altn'] = strtoupper($_POST['altn']);
 
 //Redireciona para o briefing
 header('location:briefing.php');

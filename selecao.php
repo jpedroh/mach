@@ -16,8 +16,7 @@ session_start();
     <link type='text/css' rel='stylesheet' href='css/selecao.css' media='screen,projection' />
     <title>MACH - Planejamento de voo online</title>
 </head>
-<body background='https://www.metabunk.org/attachments/enrt_jepp-jpg.7959/'>
-    <div id='site'>
+<body>
         <!--Google Analytics-->
         <? include_once('analytics.php'); ?>
 
@@ -60,7 +59,6 @@ session_start();
                 <div id='links'><a class='grey-text text-lighten-2' href='mailto:joao.pedro.hsd@gmail.com'>Enviar Feedback</a> | <a class='grey-text text-lighten-2' href='api/index.php'>API</a></div>
                 <h6>Desenvolvido por <a class='grey-text text-lighten-2' href='http://jpedroh.com/' target='_blank'>João Pedro Henrique</a></h6>
             </footer>
-    </div>
     <!--Import jQuery before materialize.js-->
     <script type='text/javascript' src='https://code.jquery.com/jquery-2.1.1.min.js'></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js'></script>

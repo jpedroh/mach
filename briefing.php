@@ -3,11 +3,9 @@
 //Declara a sessão
 session_start();
 
-//Verifica se a sessão existe
-if(!isset($_SESSION['partida'])){
-    $_SESSION['erro'] = 0;
-    header('location:selecao.php');
-}
+//Validadores
+$_SESSION['erro'] == 2 ? header('location:selecao.php') : false;
+isset($_SESSION['partida']) ? false : header('location:selecao.php');
 
 //Includes
 include_once 'classes/cartas.php';
@@ -20,28 +18,11 @@ include_once 'classes/cartas.php';
     <!--Import dataTables.css-->
     <link rel='stylesheet' type='text/css' href='//cdn.datatables.net/1.10.15/css/jquery.dataTables.css'>
     <!--Import style.css-->
-    <link rel='stylesheet' href='css/index.css'>
+    <link rel='stylesheet' href='css/briefing.css'>
     <!--Let browser know website is optimized for mobile-->
     <meta name='viewport' content='width=device-width, initial-scale=1.0' />
     <title>MACH - Planejamento de voo online</title>
 </head>
-<style>
-.tabs .tab a {
-    color: #1565c0;
-}
-.tabs .tab a:hover,
-.tabs .tab a.active {
-    background-color: transparent;
-    color: #1565c0;
-}
-.tabs .tab.disabled a,
-.tabs .tab.disabled a:hover {
-    color: rgba(102, 147, 153, 0.7);
-}
-.tabs .indicator {
-    background-color: #1565c0;
-}
-</style>
 <body class='grey lighten-5'>
     <?
     //Analytics
@@ -72,10 +53,12 @@ include_once 'classes/cartas.php';
                     <tr><td><b>Voo</b> <?= $_SESSION['voo'] ?></td></tr>
                     <tr><td><b>Partida</b> <?= $_SESSION['partida'] ?></td></tr>
                     <tr><td><b>Chegada</b> <?= $_SESSION['chegada'] ?></td></tr>
+                    <tr><td><b>Alternativa</b> <?= $_SESSION['altn'] ?></td></tr>
                     <tr><td><b>Aeronave</b> <?= $_SESSION['aeronave'] . '/' . $_SESSION['esteira'] ?></td></tr>
                     <tr><td><b>Velocidade</b> <?= $_SESSION['velocidade'] ?></td></tr>
                     <tr><td><b>FL</b> <?= $_SESSION['altitude'] ?></td></tr>
                     <tr><td><b>Rota</b> <?= $_SESSION['rota'] ?></td></tr>
+                    <tr><td><b>POB</b> <?= $_SESSION['pob'] ?></td></tr>
                 </tbody>
             </table><br>
 
