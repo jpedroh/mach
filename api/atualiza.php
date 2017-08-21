@@ -27,6 +27,7 @@ class RPLatualiza{
             $log = $fir . ' baixado em ' . date('r');
             $logfile = fopen("cgna.log", "a");
             fwrite($logfile, "\n" . $log);
+            echo $log;
             //Atualiza o DB
             //Reseta a tabela
             $this->banco = mysqli_connect("localhost","root","","mach");
@@ -35,6 +36,8 @@ class RPLatualiza{
             $this->salvar();
             //Otimiza a tabela
             $this->banco->query("OPTIMIZE TABLE rpl");
+        }else{
+            echo 'Sem atualizações para ' .  $fir . ' hoje';
         }
     }
     

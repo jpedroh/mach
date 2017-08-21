@@ -9,6 +9,28 @@ isset($_SESSION['partida']) ? false : header('location:selecao.php');
 
 //Includes
 include_once 'classes/cartas.php';
+
+function minHrs($mins){
+      $min = $mins; 
+    // Arredonda a hora
+    $h = floor($min / 60); 
+    $m = ($min - ($h * 60)) / 100; 
+    $horas = $h + $m; 
+    // Matemática da quinta série
+    // Detalhe: Aqui também pode se usar o abs()
+    if ($mins < 0)
+      $horas *= -1; 
+    // Separa a hora dos minutos
+    $sep = explode('.', $horas); 
+    $h = $sep[0]; 
+    if (empty($sep[1]))
+      $sep[1] = 00; 
+    $m = $sep[1]; 
+    // Aqui um pequeno artifício pra colocar um zero no final
+    if (strlen($m) < 2)
+      $m = $m . 0; 
+    return sprintf('%02d%02d', $h, $m); 
+  } 
 ?>
 <html>
 <head>
@@ -59,6 +81,15 @@ include_once 'classes/cartas.php';
                     <tr><td><b>FL</b> <?= $_SESSION['altitude'] ?></td></tr>
                     <tr><td><b>Rota</b> <?= $_SESSION['rota'] ?></td></tr>
                     <tr><td><b>POB</b> <?= $_SESSION['pob'] ?></td></tr>
+                    <tr><td><b>Autonomia sugerida</b> <?
+    if($_SESSION['autonomia'] !== false){
+    echo minHrs($_SESSION['autonomia']) . 'h ou ' . $_SESSION['autonomia'] . ' minutos' ;
+        }
+                else{
+                    echo " Não posso sugerir uma autonomia.";
+                }
+                        
+                        ?></td></tr>
                 </tbody>
             </table><br>
 
@@ -69,6 +100,7 @@ include_once 'classes/cartas.php';
                 <tbody>
                     <tr><td><b>METAR em <?=$_SESSION['partida'] ?></b> <?= file_get_contents('http://www.redemet.aer.mil.br/api/consulta_automatica/index.php?local=' . $_SESSION['partida'] . '&msg=metar&data_hora=nao') ?></td></tr>
                     <tr><td><b>METAR em <?=$_SESSION['chegada'] ?></b> <?= file_get_contents('http://www.redemet.aer.mil.br/api/consulta_automatica/index.php?local=' . $_SESSION['chegada'] . '&msg=metar&data_hora=nao') ?></td></tr>
+                    <tr><td><b>METAR em <?=$_SESSION['altn'] ?></b> <?= file_get_contents('http://www.redemet.aer.mil.br/api/consulta_automatica/index.php?local=' . $_SESSION['altn'] . '&msg=metar&data_hora=nao') ?></td></tr>
                 </tbody>
             </table><br>
 
@@ -81,6 +113,7 @@ include_once 'classes/cartas.php';
                     <ul class='tabs tabs-fixed-width'>
                         <li class='tab col s3'><a class='blue-text text-darken-3' href='#partida'><?=$_SESSION['partida'] ?></a></li>
                         <li class='tab col s3'><a class='blue-text text-darken-3' href='#chegada'><?=$_SESSION['chegada'] ?></a></li>
+                        <li class='tab col s3'><a class='blue-text text-darken-3' href='#alternado'><?=$_SESSION['altn'] ?></a></li>
                     </ul>
                 </div>
                 <!--Abas-->
@@ -115,6 +148,24 @@ include_once 'classes/cartas.php';
                         <tbody>
                             <?
                             $chegada = new Cartas($_SESSION['chegada']);
+                            $chegada->montaLinhas();
+                            ?>
+                        </tbody>
+                    </table>
+                </div>
+                <div id='alternado' class='col s12'>
+                    <table id='alternado_tbl' class='display'>
+                        <thead>
+                            <tr>
+                                <th>TIPO</th>
+                                <th>CARTA</th>
+                                <th>DATA</th>
+                                <th>DOWNLOAD</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?
+                            $chegada = new Cartas($_SESSION['altn']);
                             $chegada->montaLinhas();
                             ?>
                         </tbody>

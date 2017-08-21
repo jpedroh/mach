@@ -21,5 +21,24 @@ $_SESSION['rmks'] = $dados[0]['rmk'];
 $_SESSION['pob'] = $_POST['pob'];
 $_SESSION['altn'] = strtoupper($_POST['altn']);
 
+//Puxa os dados para a alternativa
+$altn = json_decode(file_get_contents('http://jpedroh.com/mach/api/rpl.php?dep=' . $_SESSION['chegada'] . '&arr=' . $_SESSION['altn']),true);
+
+//Monta autonomia
+$eet = $dados[0]['eet'];
+$eetaltn = $altn[0]['eet'];
+
+//Calcula a autonomia
+$a = horasMinutos($eet);
+$b = horasMinutos($eetaltn);
+
+$altn ? $_SESSION['autonomia'] = $a + ceil(0.1*$a) + 30 + $b : $_SESSION['autonomia'] = false;
+
+echo $_SESSION['autonomia'];
+
+//Converte horas em minutos
+function horasMinutos($a){
+    return (($a[0] . $a[1])*60) + ($a[2] . $a[3]);
+}
 //Redireciona para o briefing
 header('location:briefing.php');

@@ -2,6 +2,9 @@
 An open-source flight planning tool for flight simulation.
 
 ## changelog
+- v0.5.0 (BETA)
+  - Inserted Endurance calculation.
+  
 - v0.4.1 (BETA)
   - Inserted Pre-Briefing.
   - Minor bug corrections.

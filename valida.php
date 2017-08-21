@@ -14,7 +14,7 @@ $_SESSION['cia'] = isset($_POST['cia']) ? strtoupper($_POST['cia']) : null;
 $RPL = new RPL($_SESSION['partida'], $_SESSION['chegada'], $_SESSION['cia']);
 
 //Verifica se a chave existe
-if ($RPL->rotas != null) {
+if ($RPL->rotas) {
     //Chave existe, redirecionando para a ferramenta
     $_SESSION['erro'] = 0;
     header('location:index.php');
