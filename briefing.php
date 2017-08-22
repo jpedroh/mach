@@ -172,11 +172,13 @@ function minHrs($mins){
                     </table>
                 </div>
             </div>
-
+            
             <!--Outros-->
             <h5>Outros</h5>
             <div class='divider'></div><br>
             <a href='fpl.php?id=<?=$_SESSION['id'] ?>' class="blue darken-3 waves-effect waves-light btn-large">Gerar plano de voo da IVAO</a>
+            <a target='_blank' href='https://skyvector.com/?fpl=<?=$_SESSION['velocidade'] . 'F' . $_SESSION['altitude'] . ' ' . $_SESSION['partida'] . ' ' . trim($_SESSION['rota']) . ' ' . $_SESSION['chegada'] ?>' class="blue darken-3 waves-effect waves-light btn-large">Ver essa rota no SkyVector</a>
+            
 
             <!--Aviso-->
             <p>O sistema de meteorologia e de cartas aéreas são derivados do DECEA e podem estar indisponíveis por razões que fogem de nosso controle.</p>

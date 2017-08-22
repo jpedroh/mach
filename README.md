@@ -2,6 +2,10 @@
 An open-source flight planning tool for flight simulation.
 
 ## changelog
+- v0.5.1 (BETA)
+  - Inserted SkyVector link.
+  - Adjusts on API update.
+  
 - v0.5.0 (BETA)
   - Inserted Endurance calculation.
   

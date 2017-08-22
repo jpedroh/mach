@@ -82,7 +82,7 @@ public function salvar(){
                 $this->std = substr($aeronave, 44, 4);
                 $this->velocidade = substr($aeronave, 49, 5);
                 $this->fl = substr($aeronave, '55', 3);
-                $this->rota = substr($aeronave, '59', strpos($aeronave, "EQPT")-68);
+                $this->rota = trim(substr($aeronave, '59', strpos($aeronave, "EQPT")-68));
                 $this->chegada = substr($aeronave, strpos($aeronave, "EQPT")-9, 4);
                 $this->eet = substr($aeronave, strpos($aeronave, "EQPT")-5, 4);
                 $this->rmk = substr($aeronave, strpos($aeronave, "EQPT"), -1);
