@@ -16,7 +16,7 @@ class RPL{
     
 public function retorna(){
         //Conecta
-        $banco = mysqli_connect("server206.web-hosting.com","jpedqbyz","Qe!_Mhz5FwHeC","jpedqbyz_mach");
+        $banco = mysqli_connect("localhost","root","","mach");
         //Faz as Restrições
         $where = '';
         $a = '';

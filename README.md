@@ -2,6 +2,11 @@
 An open-source flight planning tool for flight simulation.
 
 ## changelog
+- v1.0
+  - Release the KRAKEN!
+  - Conversion to JavaScript, reducing PHP necessity.
+  - Preparations for offline version.
+  
 - v0.5.1 (BETA)
   - Inserted SkyVector link.
   - Adjusts on API update.
