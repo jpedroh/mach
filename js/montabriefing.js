@@ -9,6 +9,7 @@ $.ajax({
 })
 
 //Determina as variáveis
+localStorage.setItem('briefing', true)
 localStorage.setItem('id', getParametro('id'))
 localStorage.setItem('voo', rota['callsign'])
 localStorage.setItem('aeronave', rota['aeronave'])

@@ -1,4 +1,6 @@
 <?
+date_default_timezone_set('UTC');
+
 class RPLatualiza{
     //Atributos
     public $servidor;
@@ -23,7 +25,7 @@ class RPLatualiza{
         $httpcdd = curl_getinfo($urlcgna, CURLINFO_HTTP_CODE);
         if ($httpcdd != '404'){
             //Baixa o arquivo RPL atualizado
-            file_put_contents('rpl/' . $fir .'.zip', file_get_contents('http://portal.cgna.gov.br/files/abas/' . date('Y-m-d') . '/painel_rpl/bdr/RPL' . $fir .'.zip'));
+            file_put_contents('public_html/mach/api/rpl/' . $fir .'.zip', file_get_contents('http://portal.cgna.gov.br/files/abas/' . date('Y-m-d') . '/painel_rpl/bdr/RPL' . $fir .'.zip'));
             $log = $fir . ' baixado em ' . date('r');
             $logfile = fopen("cgna.log", "a");
             fwrite($logfile, "\n" . $log);
@@ -43,7 +45,7 @@ class RPLatualiza{
     
     public function getArquivo($fir){
         $zip = new ZipArchive();
-        if ($zip->open('rpl/' . $fir . '.zip') == TRUE) {
+        if ($zip->open('public_html/mach/api/rpl/' . $fir . '.zip') == TRUE) {
             for ($i = 0; $i < $zip->numFiles; $i++) {
                 $arquivos[] = $zip->getNameIndex($i);
             }
@@ -55,7 +57,7 @@ class RPLatualiza{
     
     public function parse($fir){
         $zip = new ZipArchive();
-        $arquivo = 'rpl/' . $fir . '.zip';
+        $arquivo = 'public_html/mach/api/rpl/' . $fir . '.zip';
         $zip->open($arquivo);
         return $zip->getFromName(@$this->getArquivo($fir));
     }

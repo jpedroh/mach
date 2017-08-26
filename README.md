@@ -2,6 +2,10 @@
 An open-source flight planning tool for flight simulation.
 
 ## changelog
+- v1.0.1
+  - Minor bug corrections.
+  - Fixed cron jobs.
+
 - v1.0
   - Release the KRAKEN!
   - Conversion to JavaScript, reducing PHP necessity.

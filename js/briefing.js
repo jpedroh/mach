@@ -10,7 +10,8 @@ var rota = localStorage.getItem('rota')
 var POB = localStorage.getItem('pob')
 var autonomia = localStorage.getItem('autonomia')
 
-console.log(autonomia)
+if (localStorage.getItem('briefing') !== "true")
+    window.location.href = "index.html";
 
 //Saudação
 document.getElementById('saudacao').innerHTML = 'Voo ' + voo + ' de ' + partida + ' para ' + chegada
