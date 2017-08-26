@@ -1,5 +1,5 @@
 # mach
-An open-source flight planning tool for flight simulation.
+An open-source flight planning tool for flight simulation, heavily based on JS and HTML.
 
 ## changelog
 - v1.0
