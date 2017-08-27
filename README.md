@@ -2,6 +2,9 @@
 An open-source flight planning tool for flight simulation, heavily based on JS and HTML.
 
 ## changelog
+- v1.2
+  - Reformulação da função briefing, permitindo interatividade com o usuário
+  
 - v1.1.1
   - Início de experiências com AngularJS
   

@@ -46,7 +46,7 @@ $.ajax({
     dataType: 'json',
     success: function (json) {
         if (json === null) {
-            localStorage.setItem('autonomia', false);
+            localStorage.setItem('autonomia', "0000");
         } else {
             //Monta a autonomia
             var eet = localStorage.getItem('eet')
@@ -57,10 +57,29 @@ $.ajax({
             bc = horasMinutos(eetaltn);
 
             //Seta a autonomia
-            localStorage.setItem('autonomia', ab + Math.ceil(0.1 * ab) + 30 + bc)
+            fob = (ab + Math.ceil(0.1 * ab) + 30 + bc)
+
+            //Formata o FOB
+            if (fob !== "false") {
+                var hrs = Math.trunc(fob / 60) < 10 ? "0" + Math.trunc(fob / 60) : Math.trunc(fob / 60)
+                var min = fob % 60
+                if (min < 60 && min > 9) {
+                    var min = min
+                } else if (min > 0 && min < 9) {
+                    var min = "0" + min
+                } else {
+                    var min = "00"
+                }
+            } else {
+                var min = "00"
+                var hrs = "00"
+            }
+            localStorage.setItem('autonomia',hrs + min)
         }
     }
 })
+
+
 
 //Converte horas em minutos
 function horasMinutos(a) {

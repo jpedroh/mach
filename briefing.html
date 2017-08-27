@@ -9,20 +9,19 @@
 
     <!-- CSS -->
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css' integrity='sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M' crossorigin='anonymous'>
-    <link rel='stylesheet' href='css/inicio.css'>
-    <link rel='stylesheet' href='css/footer.css'>
+    <link rel='stylesheet' href='css/padrao.css'>
     <link rel='stylesheet' type='text/css' href='//cdn.datatables.net/1.10.15/css/dataTables.bootstrap4.min.css'>
 
 </head>
 
-<body>
+<body ng-app='briefing'>
     <!-- Navbar -->
     <nav class='navbar navbar-expand-lg navbar-light bg-light'>
         <div class='container'>
             <span class='navbar-brand'>mach</span>
             <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarNav' aria-controls='navbarNav' aria-expanded='false' aria-label='Toggle navigation'>
             <span class='navbar-toggler-icon'></span>
-          </button>
+        </button>
             <div class='collapse navbar-collapse' id='navbarNav'>
                 <ul class='navbar-nav'>
                     <li class='nav-item'>
@@ -39,34 +38,124 @@
     <!-- Aplicação -->
     <div class='container app'>
         <!--Saudação-->
-        <h2 id='saudacao'></h2>
+        <h2 ng-controller='planoResumido_Ctrl' id='saudacao'> Voo {{callsign}} de {{partida}} para {{chegada}}</h2>
         <hr>
-        
-        <!--Plano de voo-->
-        <h4>Plano de voo simplificado</h4>
-        <hr>
-        <div id='linha1' class='row'>
-        </div>
-        <div id='linha2' class='row'>
-        </div>
-        <div id='linha3' class='row'>
-        </div>
-        <div id='linha4' class='row'>
-        </div>
-        <div id='linha5' class='row'>
-        </div>
-        <div id='linha6' class='row'>
-        </div>
-        
 
+        <!--Plano de voo-->
+        <div ng-controller='planoResumido_Ctrl'>
+            <h4>Plano de voo simplificado</h4>
+            <hr>
+            <!--Linha 1-->
+            <div class='row linha_briefing'>
+                <div class="col">
+                    <h6>Partida</h6>
+                    <input type="text" readonly class="form-control-plaintext" value="{{partida}}">
+                </div>
+                <div class="col">
+                    <h6>Chegada</h6>
+                    <input type="text" readonly class="form-control-plaintext" value="{{chegada}}">
+                </div>
+                <div class="col">
+                    <h6>Alternado</h6>
+                    <form onsubmit="atualiza('altn', alternado.value)" action='javascript:void(0)'>
+                        <input type="text" id="alternado" class="form-control" value="{{alternado}}">
+                    </form>
+                </div>
+            </div>
+            <!--Linha 2-->
+            <div class='row linha_briefing'>
+                <div class="col-8">
+                    <h6>Aeronave</h6>
+                    <div class="input-group" style="max-width:40%">
+                        <input onkeypress="return aeronaveUPDT(event)" type="text" id="aeronave" class="form-control" value="{{aeronave}}">
+                        <div class="input-group-addon">/</div>
+                        <select onchange="atualiza('esteira', this.value)" class="form-control">
+                        <option selected>{{esteira}}</option>
+                        <option value="L">L</option>
+                        <option value="M">M</option>
+                        <option value="H">H</option>
+                    </select>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <h6>EQPT</h6>
+                    <form onsubmit="atualiza('eqpt', eqpt.value)" action='javascript:void(0)'>
+                        <input type="text" id="eqpt" class="form-control" value="{{eqpt}}">
+                    </form>
+                </div>
+            </div>
+            <!--Linha 3-->
+            <div class='row linha_briefing'>
+                <div class="col">
+                    <h6>FL</h6>
+                    <form onsubmit="atualiza('altitude', fl.value)" action='javascript:void(0)'>
+                        <input type="number" id="fl" step="10" class="form-control" value="{{fl}}">
+                    </form>
+                </div>
+                <div class="col">
+                    <h6>Velocidade</h6>
+                    <form onsubmit="atualiza('velocidade', velocidade.value)" action='javascript:void(0)'>
+                        <input type="text" id="velocidade" class="form-control" value="{{velocidade}}">
+                    </form>
+                </div>
+                <div class="col">
+                    <h6>EET</h6>
+                    <form onsubmit="atualiza('eet', eet.value)" action='javascript:void(0)'>
+                        <input type="text" id="eet" class="form-control" value="{{eet}}">
+                    </form>
+                </div>
+            </div>
+            <!--Linha 4-->
+            <div class='row linha_briefing'>
+                <div class="col">
+                    <h6>Rota</h6>
+                    <form onsubmit="atualiza('rota', rota.value)" action='javascript:void(0)'>
+                        <textarea id="rota" class="form-control">{{rota}}</textarea>
+                        <button type="submit" class="float-right btn btn-outline-primary">Atualizar rota</button>
+                    </form>
+                </div>
+            </div>
+            <!--Linha 5-->
+            <div class='row linha_briefing'>
+                <div class="col">
+                    <h6>FOB</h6>
+                    <form onsubmit="atualiza('autonomia', fob.value)" action='javascript:void(0)'>
+                        <input type="text" id="fob" class="form-control" value="{{fob}}">
+                    </form>
+                </div>
+                <div class="col"></div>
+                <div class="col">
+                    <h6>POB</h6>
+                    <form onsubmit="atualiza('pob', pob.value)" action='javascript:void(0)'>
+                        <div class="input-group">
+                            <input type="number" id="pob" class="form-control" value="{{pob}}">
+                            <div onclick="atualiza('pob', Math.floor(Math.random() * 250) + 2)" class="btn btn-outline-primary">Aleatório</div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!--Linha 6-->
+            <div class='row linha_briefing'>
+                <div class="col">
+                    <h6>RMKS</h6>
+                    <form onsubmit="atualiza('rmks', rmks.value)" action='javascript:void(0)'>
+                        <textarea id="rmks" class="form-control">{{rmks}}</textarea>
+                        <button type="submit" class="float-right btn btn-outline-primary">Atualizar rmks</button>
+                    </form>
+                </div>
+            </div>
+        </div>
 
         <!--Meteorologia-->
-        <h4>Meteorologia</h4>
-        <hr>
-        <table class="table table-striped">
-            <tbody id='metar'>
-            </tbody>
-        </table>
+        <div ng-controller='meteorologia_Ctrl'>
+            <h4>Meteorologia</h4>
+            <hr>
+            <table class="table table-striped">
+                <tr ng-repeat='metar in metars track by $index'>
+                    <td><b>METAR em {{metar.substr(6, 4)}} </b>{{metar.substr(6)}}</td>
+                </tr>
+            </table>
+        </div>
 
         <h4>Cartas Aéreas</h4>
         <hr>
@@ -124,19 +213,27 @@
                     </tbody>
                 </table>
             </div>
-        </div><br>
+        </div>
+        <br>
 
         <h4>Outros</h4>
         <hr>
-        <span class='row' id='outros'></span>
+        <div class='row' ng-controller='planoResumido_Ctrl'>
+            <div class='col'>
+                <a href='fpl_briefing.php?call={{callsign}}&acft={{aeronave}}&wake={{wake}}&eqpt={{eqpt}}&part={{partida}}&cheg={{chegada}}&velo={{velocidade}}&alti={{fl}}&rota={{rota}}&veet={{eet}}&rmks={{rmks}}&pob={{pob}}&fob={{fob}}&altn={{alternado}}' class='btn-block btn btn-lg btn-outline-primary'>Gerar plano de voo da IVAO</a>
+            </div>
+            <div class='col'><a target='_blank' href='https://skyvector.com/?fpl={{velocidade}}F{{fl}} {{partida}} {{rota}} {{chegada}}' class='btn-block btn btn-lg btn-outline-primary'>Ver essa rota no SkyVector</a></div>
+        </div>
         <p>O sistema de meteorologia e de cartas aéreas são derivados do DECEA e podem estar indisponíveis por razões que fogem de nosso controle.</p>
 
-    </div><br>
+    </div>
+    <br>
 
     <!--Footer-->
-    <footer class='footer text-right'>
+    <footer class='text-right'>
         <div class='container'>
-            <span class='text-muted'><p>Desenvolvido por <a href='http://jpedroh.com/' target='_blank'>João Pedro Henrique</a></p></span>
+            <span class='text-muted'><p>Desenvolvido por <a href='http://jpedroh.com/'
+                                                        target='_blank'>João Pedro Henrique</a></p></span>
         </div>
     </footer>
 
@@ -146,12 +243,11 @@
     <script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js' integrity='sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1' crossorigin='anonymous'></script>
     <script src='https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js'></script>
     <script src='https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js'></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js'></script>
     <script src='js/analytics.js'></script>
     <script>
-        window.onload = function() {
-            $.getScript('js/briefing.js?v=' + Math.ceil(Math.random() * 100))
-        }
-
+        //Puxa o index.js
+        $.getScript('js/briefing.js?v=' + Math.ceil(Math.random() * 100))
     </script>
 </body>
 

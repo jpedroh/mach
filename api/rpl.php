@@ -13,7 +13,7 @@ class RPL{
         //Variáveis localhost
         echo $this->retorna();
     }
-    
+
 public function retorna(){
         //Conecta
         $banco = mysqli_connect("localhost","root","","mach");
@@ -41,7 +41,7 @@ public function retorna(){
             $query = "SELECT * FROM rpl WHERE " . $where;
         }else{
             $query = "SELECT * FROM rpl";
-        }        
+        }
         //Faz a busca
         $busca = $banco->query($query);
         //Salva o resultado numa array

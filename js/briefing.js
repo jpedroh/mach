@@ -8,63 +8,50 @@ var velocidade = localStorage.getItem('velocidade')
 var fl = localStorage.getItem('altitude')
 var rota = localStorage.getItem('rota')
 var POB = localStorage.getItem('pob')
-var autonomia = localStorage.getItem('autonomia')
-var eqpt =  localStorage.getItem('eqpt')
-var eet =  localStorage.getItem('eet')
+var eqpt = localStorage.getItem('eqpt')
+var eet = localStorage.getItem('eet')
 var esteira = localStorage.getItem('esteira')
 var rmks = localStorage.getItem('rmks')
 var eobt = localStorage.getItem('eobt')
+var fob = localStorage.getItem('autonomia')
+var id = localStorage.getItem('id')
 
+//Verifica se o briefing existe
 if (localStorage.getItem('briefing') !== "true")
     window.location.href = "index.html";
 
-//Saudação
-document.getElementById('saudacao').innerHTML = 'Voo ' + voo + ' de ' + partida + ' para ' + chegada
-
-/*Seção Resumo*/
-//Formata a autonomia
-if (autonomia !== "false") {
-    var hrs = Math.trunc(autonomia / 60) < 10 ? "0" + Math.trunc(autonomia / 60) : Math.trunc(autonomia / 60)
-    var min = autonomia % 60
-    if (min < 60 && min > 9) {
-        var min = min
-    } else if (min > 0 && min < 9) {
-        var min = "0" + min
-    } else {
-        var min = "00"
-    }
-} else {
-    var min = "00"
-    var hrs = "00"
-}
-
-//Define a view
-autview = autonomia !== "false" ? hrs + ':' + min + 'h ou ' + autonomia + ' minutos' : 'O sistema não pode calcular uma autonomia'
-
-//Monta o plano simplificado
-$('#linha1').append('<div class="col"><p><b>Partida</b> ' + partida + '</p></a></div><div class="col"><p><b>Chegada</b> ' + chegada + '</p></div><div class="col"><p><b>Alternado</b> ' + alternado + '</p></div>')
-$('#linha2').append('<div class="col-8"><p><b>Aeronave</b> ' + aeronave + "/" + esteira + '</p></div><div class="col-4"><p><b>EQPT</b> ' + eqpt + '</p></div>')
-$('#linha3').append('<div class="col"><p><b>FL</b> ' + fl + '</p></div><div class="col"><p><b>Velocidade</b> ' + velocidade + '</p></div><div class="col"><p><b>EET</b> ' + eet + '</p></div>')
-$('#linha4').append('<div class="col"><p><b>Rota</b> ' + rota + '</p></div>')
-$('#linha5').append('<div class="col-8"><p><b>FOB</b> ' + autview + '</p></div><div class="col-4"><p><b>POB</b> ' + POB + '</p></div>')
-$('#linha6').append('<div class="col"><p><b>RMKS</b> ' + rmks + '</p></div>')
-
-/*Seção Meteorologia*/
-//Puxa os METARs e salva numa array
-$.ajax({
-    url: 'http://www.redemet.aer.mil.br/api/consulta_automatica/index.php?local=' + partida + ',' + chegada + ',' + alternado + '&msg=metar&data_hora=nao',
-    async: false,
-    success: function (retorno) {
-        metars = retorno.substr(0, retorno.length - 1).split("\n")
-    }
+//Angular
+/*FPL resumido*/
+var app = angular.module('briefing', [])
+app.controller('planoResumido_Ctrl', function ($scope) {
+    $scope.partida = partida
+    $scope.callsign = voo
+    $scope.chegada = chegada
+    $scope.alternado = alternado
+    $scope.aeronave = aeronave
+    $scope.esteira = esteira
+    $scope.eqpt = eqpt.trim()
+    $scope.fl = fl
+    $scope.velocidade = velocidade
+    $scope.eet = eet
+    $scope.rota = rota
+    $scope.fob = fob
+    $scope.pob = POB
+    $scope.rmks = rmks
+    $scope.id = id
+    $scope.fob_fpl = fob
 })
 
-//Monta a tabela METAR
-$.each(metars, function (chave, metar) {
-    $('#metar').append('<tr><td><b>METAR em ' + metar.substr(6, 4) + '</b> ' + metar.substr(6) + '</td></tr>')
+/*Meteorologia*/
+app.controller('meteorologia_Ctrl', function ($scope, $http) {
+    $http.get('http://www.redemet.aer.mil.br/api/consulta_automatica/index.php?local=' + partida + ',' + chegada + ',' + alternado + '&msg=metar&data_hora=nao').then(function (response) {
+        //Recebe os METARs
+        $scope.metars = response.data.substr(0, response.data.length - 1).split("\n")
+    })
 })
 
-/*Seção Cartas Aéreas*/
+/*Cartas Aéreas*/
+
 //Função que puxa as cartas para determinado Aeroporto
 function cartas(apt, tabela) {
     $.ajax({
@@ -107,13 +94,64 @@ cartas(partida, '#partida')
 cartas(chegada, '#chegada')
 cartas(alternado, '#alternado')
 
-//Função que atualiza os campos
-function atualiza(campo, valor){
-    console.log("teste", campo, valor)
-    localStorage.setItem("'" + campo + "'", valor)
+function atualiza(tipo, valor) {
+    localStorage.setItem(tipo, valor)
+    if (tipo == "altn") {
+        autonomiaUPDT(valor)
+    }
     location.reload()
 }
 
-/*Seção Outros*/
-$('#outros').append("<div class='col'><a href='fpl.php?id=" + localStorage.getItem('id') + "&aut=" + hrs + min + "&pob=" + POB + "&altn=" + alternado + "' class='btn-block btn btn-lg btn-outline-primary'>Gerar plano de voo da IVAO</a></div>")
-$('#outros').append("<div class='col'><a target='_blank' href='https://skyvector.com/?fpl=" + velocidade + "F" + fl + " " + partida + " " + rota + " " + chegada + "' class='btn-block btn btn-lg btn-outline-primary'>Ver essa rota no SkyVector</a></div>")
+function autonomiaUPDT(novo) {
+    $.ajax({
+        url: 'http://jpedroh.com/mach/api/rpl.php?dep=' + localStorage.getItem('chegada') + '&arr=' + novo,
+        async: false,
+        dataType: 'json',
+        success: function (json) {
+            if (json === null) {
+                localStorage.setItem('autonomia', "0000");
+            } else {
+                //Monta a autonomia
+                var eet = localStorage.getItem('eet')
+                var eetaltn = json[0]['eet']
+
+                //Calcula a autonomia
+                ab = horasMinutos(eet);
+                bc = horasMinutos(eetaltn);
+
+                //Seta a autonomia
+                fob = (ab + Math.ceil(0.1 * ab) + 30 + bc)
+
+                //Formata o FOB
+                if (fob !== "false") {
+                    var hrs = Math.trunc(fob / 60) < 10 ? "0" + Math.trunc(fob / 60) : Math.trunc(fob / 60)
+                    var min = fob % 60
+                    if (min < 60 && min > 9) {
+                        var min = min
+                    } else if (min > 0 && min < 9) {
+                        var min = "0" + min
+                    } else {
+                        var min = "00"
+                    }
+                } else {
+                    var min = "00"
+                    var hrs = "00"
+                }
+                localStorage.setItem('autonomia', hrs + min)
+            }
+        }
+    })
+
+
+//Converte horas em minutos
+    function horasMinutos(a) {
+        return parseInt((a[0] + a[1]) * 60) + parseInt((a[2] + a[3]))
+    }
+}
+
+function aeronaveUPDT(e) {
+    if (e.keyCode == 13) {
+        var campo = document.getElementById("aeronave");
+        atualiza('aeronave', campo.value)
+    }
+}

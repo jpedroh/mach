@@ -28,9 +28,9 @@ localStorage.setItem('eet', rota['eet'])
 localStorage.setItem('eobt', rota['eobt'])
 localStorage.setItem('rmks', rota['rmk'])
 localStorage.setItem('eqpt', rota['eqpt'])
-localStorage.setItem('pob', 'TBA')
+localStorage.setItem('pob', '0')
 localStorage.setItem('altn', 'TBA')
-localStorage.setItem('autonomia', false)
+localStorage.setItem('autonomia', "0000")
 
 //Redireciona
 window.location.href = '../briefing.html'
