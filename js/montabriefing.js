@@ -38,6 +38,8 @@ function getParametro(sParam) {
 }
 
 //Faz a requisição AJAX para calcular a autonomia
+console.log(localStorage.getItem('altn'))
+
 $.ajax({
     url: 'http://jpedroh.com/mach/api/rpl.php?dep=' + localStorage.getItem('chegada') + '&arr=' + localStorage.getItem('altn'),
     async: false,

@@ -15,8 +15,6 @@ var esteira = localStorage.getItem('esteira')
 var rmks = localStorage.getItem('rmks')
 var eobt = localStorage.getItem('eobt')
 
-console.log(eobt)
-
 if (localStorage.getItem('briefing') !== "true")
     window.location.href = "index.html";
 
@@ -108,6 +106,13 @@ document.getElementById('alterna_tab').innerText = localStorage.getItem('altn')
 cartas(partida, '#partida')
 cartas(chegada, '#chegada')
 cartas(alternado, '#alternado')
+
+//Função que atualiza os campos
+function atualiza(campo, valor){
+    console.log("teste", campo, valor)
+    localStorage.setItem("'" + campo + "'", valor)
+    location.reload()
+}
 
 /*Seção Outros*/
 $('#outros').append("<div class='col'><a href='fpl.php?id=" + localStorage.getItem('id') + "&aut=" + hrs + min + "&pob=" + POB + "&altn=" + alternado + "' class='btn-block btn btn-lg btn-outline-primary'>Gerar plano de voo da IVAO</a></div>")
