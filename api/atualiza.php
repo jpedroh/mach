@@ -81,6 +81,7 @@ public function salvar(){
                 $this->aeronave = substr($aeronave, 33, 4);
                 $this->esteira = substr($aeronave, 38, 1);
                 $this->partida = substr($aeronave, 40, 4);
+                $this->eobt = substr($aeronave, 44, 4);
                 $this->std = substr($aeronave, 44, 4);
                 $this->velocidade = substr($aeronave, 49, 5);
                 $this->fl = substr($aeronave, '55', 3);
@@ -89,7 +90,7 @@ public function salvar(){
                 $this->eet = substr($aeronave, strpos($aeronave, "EQPT")-5, 4);
                 $this->rmk = substr($aeronave, strpos($aeronave, "EQPT"), -1);
                 $this->eqpt = substr($this->rmk, 5, strpos($this->rmk, " ")-4);
-                $query = "INSERT INTO rpl VALUES ('$this->id', '$this->callsign', '$this->cia', '$this->voo', '$this->aeronave', '$this->esteira', '$this->partida', '$this->std', '$this->velocidade', '$this->fl', '$this->rota', '$this->chegada', '$this->eet', '$this->rmk', '$this->eqpt')";
+                $query = "INSERT INTO rpl VALUES ('$this->id', '$this->callsign', '$this->cia', '$this->voo', '$this->aeronave', '$this->esteira', '$this->partida', '$this->std', '$this->velocidade', '$this->fl', '$this->rota', '$this->chegada', '$this->eet', '$this->rmk', '$this->eqpt', '$this->eobt')";
                 $this->banco->query($query);
                 $id++;
                 
