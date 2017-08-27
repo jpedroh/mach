@@ -2,6 +2,9 @@
 An open-source flight planning tool for flight simulation, heavily based on JS and HTML.
 
 ## changelog
+- v1.1.1
+  - Início de experiências com AngularJS
+  
 - v1.1
   - Inserida função "Estou com sorte!"
   
