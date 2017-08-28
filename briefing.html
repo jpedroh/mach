@@ -152,7 +152,7 @@
             <hr>
             <table class="table table-striped">
                 <tr ng-repeat='metar in metars track by $index'>
-                    <td><b>METAR em {{metar.substr(6, 4)}} </b>{{metar.substr(6)}}</td>
+                    <td><b>{{metar.split(" ")[0]}} para {{metar.split(" ")[1]}} </b>{{metar}}</td>
                 </tr>
             </table>
         </div>

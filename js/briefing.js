@@ -2,7 +2,7 @@
 var voo = localStorage.getItem('voo')
 var partida = localStorage.getItem('partida')
 var chegada = localStorage.getItem('chegada')
-var alternado = localStorage.getItem('altn')
+var alternado = localStorage.getItem('altn').toUpperCase()
 var aeronave = localStorage.getItem('aeronave')
 var velocidade = localStorage.getItem('velocidade')
 var fl = localStorage.getItem('altitude')
@@ -44,7 +44,7 @@ app.controller('planoResumido_Ctrl', function ($scope) {
 
 /*Meteorologia*/
 app.controller('meteorologia_Ctrl', function ($scope, $http) {
-    $http.get('http://www.redemet.aer.mil.br/api/consulta_automatica/index.php?local=' + partida + ',' + chegada + ',' + alternado + '&msg=metar&data_hora=nao').then(function (response) {
+    $http.get('http://www.redemet.aer.mil.br/api/consulta_automatica/index.php?local=' + partida + ',' + chegada + ',' + alternado + '&msg=metar,taf&data_hora=nao').then(function (response) {
         //Recebe os METARs
         $scope.metars = response.data.substr(0, response.data.length - 1).split("\n")
     })
