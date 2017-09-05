@@ -2,6 +2,13 @@
 An open-source flight planning tool for flight simulation, heavily based on JS and HTML.
 
 ## changelog
+- v1.4
+  - Inseridas sugestões de alternados no pré-briefing.
+  - Documentação atualizada.
+
+- v1.3
+  - Alterações nos dados salvos pelo DB.
+
 - v1.2.1
   - Pequenas alterações.
   

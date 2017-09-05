@@ -115,10 +115,17 @@
                         <h5 class='modal-title' id='label'>Pré-briefing - Voo {{ modal.callsign }}</h5> <button type='button' class='close' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button> </div>
                     <div class='modal-body'>
                         <p class='lead'>Antes de começarmos,você precisa preencher umas coisinhas.</p>
-                        <div class='form-group'> <label class='form-control-label' for='alternado'>Escolha um alternado</label> <input type='hidden' name='id' value='{{ modal.id }}'><input name='alternado' id='alternado' type='text' required class='form-control' placeholder='Alternado'> </div>
+                        <div class='form-group'> <label class='form-control-label' for='alternado'>Escolha um alternado</label>
+                            <select class="form-control" name='alternado' id='alternado' required class='form-control'>
+                                <option  value="TBA">Outro</option>
+                                <option ng-repeat='sugestao in alternado | orderBy : "eet" | unique: "chegada"' value="{{sugestao.chegada}}">{{sugestao.chegada}}</option>
+                            </select>
+                            <input type='hidden' name='id' value='{{ modal.id }}'></div>
                         <div class='form-group'> <label class='form-control-label' for='pob'>Insira um POB</label> <input name='pob' id='pob' type='number' required class='form-control' placeholder='POB'> </div>
                     </div>
-                    <div class='modal-footer'> <button type='button' class='btn btn-secondary' data-dismiss='modal'>Voltar a seleção</button> <button class='btn btn-primary' type='submit'>Ir para o briefing</button> </div>
+                    <div class='modal-footer'> <button type='button' class='btn btn-secondary' data-dismiss='modal'>Voltar a seleção</button>
+                        <button class='btn btn-primary' type='submit'>Ir para o briefing</button>
+                    </div>
                 </div>
             </div>
         </form>
@@ -131,7 +138,9 @@
     <script src='https://use.fontawesome.com/b19f6a7abc.js'></script>
     <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js'></script>
     <script src='js/analytics.js'></script>
-    <script src='js/index.js'></script>
+    <script src='js/index.js?v=1.4'></script>
+    <script src="https://unpkg.com/ng-table@2.0.2/bundles/ng-table.min.js"></script>
+
 </body>
 
 </html>
