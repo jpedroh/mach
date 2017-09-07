@@ -2,6 +2,9 @@
 An open-source flight planning tool for flight simulation, heavily based on JS and HTML.
 
 ## changelog
+- v1.5
+  - Inserida seção NOTAMs.
+
 - v1.4.1
   - Inserido POB aleatório e alternado automático na função "Estou com sorte".
 

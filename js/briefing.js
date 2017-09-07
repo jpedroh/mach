@@ -58,6 +58,10 @@ function cartas(apt, tabela) {
         url: 'http://www.aisweb.aer.mil.br/api/?apiKey=1934217367&apiPass=e9062beb-43f1-11e7-a4c1-00505680c1b4&area=cartas&IcaoCode=' + apt,
         async: false,
         dataType: 'xml',
+        timeout: 3000,
+        error: function(){
+            $(secao + '_notam').append('<li>Erro. Tente atualizar a página.</li>')
+        },  
         success: function (retorno) {
             $(retorno).find('item').each(function () {
                 //Salva os valores
@@ -88,11 +92,57 @@ function cartas(apt, tabela) {
 document.getElementById('partida_tab').innerText = localStorage.getItem('partida')
 document.getElementById('chegada_tab').innerText = localStorage.getItem('chegada')
 document.getElementById('alterna_tab').innerText = localStorage.getItem('altn')
+document.getElementById('partidanotam_tab').innerText = localStorage.getItem('partida')
+document.getElementById('chegadanotam_tab').innerText = localStorage.getItem('chegada')
+document.getElementById('alternanotam_tab').innerText = localStorage.getItem('altn')
 
 //Declara a função que cria as cartas na view
 cartas(partida, '#partida')
 cartas(chegada, '#chegada')
 cartas(alternado, '#alternado')
+
+/* Notams */
+//Função que puxa as cartas para determinado Aeroporto
+function notams(apt, secao) {
+    $.ajax({
+        url: 'http://www.aisweb.aer.mil.br/api/?apiKey=1934217367&apiPass=e9062beb-43f1-11e7-a4c1-00505680c1b4&area=notam&IcaoCode=' + apt,
+        async: false,
+        dataType: 'xml',
+        timeout: 3000,
+        error: function(){
+            $(secao + '_notam').append('<p>Erro. Tente atualizar a página.</p>')
+        },        
+        success: function (notam) {
+            $(notam).find('item').each(function () {
+                //Salva os valores
+                var identificacao = $(this).find('n').text();
+                var inicio = $(this).find('b').text();
+                var termino = $(this).find('c').text();
+                var mensagem = $(this).find('e').text();
+                //Imprime a secao
+                $(secao + '_notam').append('<h6>' + identificacao + '<span class="text-muted font-weight-normal"> de ' + dataNotam(inicio) + ' à ' + dataNotam(termino) + ' </span></h6><p>' + mensagem + '</p><hr>')
+
+                
+
+            });
+        }
+    })
+}
+
+//Puxa os notams
+notams(partida, '#partida')
+notams(chegada, '#chegada')
+notams(alternado, '#alternado')
+
+//Formata a data do notam
+function dataNotam(a){
+    if(a == "PERM")
+        return a
+    else{
+        return a[0] + a[1] + '/' + a[2] + a[3] + '/' + a[4] + a[5] + ' ' + a[6] + a[7] + ':' + a[8] + a[9]
+    }
+}
+
 
 function atualiza(tipo, valor) {
     localStorage.setItem(tipo, valor)
