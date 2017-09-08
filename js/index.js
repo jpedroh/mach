@@ -19,10 +19,7 @@ app.controller('tab_rotas_Ctrl', function ($scope, $http) {
     $http.get('http://jpedroh.com/mach/api/rpl.php?dep=' + chegada).then(function (response) {
         //Recebe os dados das rotas
         $scope.alternado = response.data
-
     })
-
-
 })
 
 //Remove duplicados nas sugestões
@@ -30,7 +27,6 @@ app.filter('unique', function () {
     return function (collection, keyname) {
         var output = [],
             keys = [];
-
         angular.forEach(collection, function (item) {
             var key = item[keyname];
             if (keys.indexOf(key) === -1) {
@@ -38,18 +34,6 @@ app.filter('unique', function () {
                 output.push(item);
             }
         });
-
         return output;
     };
 });
-
-/*//Inicializa a tabela
-$('#resultados').DataTable({
-    paging: false,
-    language: {
-        search: "_INPUT_",
-        searchPlaceholder: "Filtrar resultados",
-        "info": "Mostrando _TOTAL_ de _MAX_ resultados",
-        "infoFiltered": "(filtro aplicado)"
-    }
-});*/

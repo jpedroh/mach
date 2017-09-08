@@ -8,8 +8,10 @@
     <title>MACH - Planejamento de voo online</title>
 
     <!-- CSS -->
-    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css' integrity='sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M' crossorigin='anonymous'>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css' integrity='sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M'
+        crossorigin='anonymous'>
     <link rel='stylesheet' href='css/padrao.css'>
+    <link rel='stylesheet' href='css/snackbar.css'>
     <link rel='stylesheet' type='text/css' href='//cdn.datatables.net/1.10.15/css/dataTables.bootstrap4.min.css'>
 
 </head>
@@ -19,7 +21,8 @@
     <nav class='navbar navbar-expand-lg navbar-light bg-light'>
         <div class='container'>
             <span class='navbar-brand'>mach</span>
-            <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarNav' aria-controls='navbarNav' aria-expanded='false' aria-label='Toggle navigation'>
+            <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarNav' aria-controls='navbarNav' aria-expanded='false'
+                aria-label='Toggle navigation'>
             <span class='navbar-toggler-icon'></span>
         </button>
             <div class='collapse navbar-collapse' id='navbarNav'>
@@ -35,6 +38,9 @@
         </div>
     </nav>
 
+    <!--Mostra update-->
+    <div id="snackbar"></div>
+
     <!-- Aplicação -->
     <div class='container app'>
         <!--Saudação-->
@@ -42,7 +48,7 @@
         <hr>
 
         <!--Plano de voo-->
-        <div ng-controller='planoResumido_Ctrl'>
+        <div id='teste' ng-controller='planoResumido_Ctrl'>
             <h4>Plano de voo simplificado</h4>
             <hr>
             <!--Linha 1-->
@@ -57,8 +63,8 @@
                 </div>
                 <div class="col">
                     <h6>Alternado</h6>
-                    <form onsubmit="atualiza('altn', alternado.value)" action='javascript:void(0)'>
-                        <input type="text" id="alternado" class="form-control" value="{{alternado}}">
+                    <form onsubmit="atualiza('altn', altn.value)" action='javascript:void(0)'>
+                        <input type="text" id="altn" class="form-control" value="{{alternado}}">
                     </form>
                 </div>
             </div>
@@ -88,8 +94,8 @@
             <div class='row linha_briefing'>
                 <div class="col">
                     <h6>FL</h6>
-                    <form onsubmit="atualiza('altitude', fl.value)" action='javascript:void(0)'>
-                        <input type="number" id="fl" step="10" class="form-control" value="{{fl}}">
+                    <form onsubmit="atualiza('altitude', altitude.value)" action='javascript:void(0)'>
+                        <input type="number" id="altitude" step="10" class="form-control" value="{{fl}}">
                     </form>
                 </div>
                 <div class="col">
@@ -119,8 +125,8 @@
             <div class='row linha_briefing'>
                 <div class="col">
                     <h6>FOB</h6>
-                    <form onsubmit="atualiza('autonomia', fob.value)" action='javascript:void(0)'>
-                        <input type="text" id="fob" class="form-control" value="{{fob}}">
+                    <form onsubmit="atualiza('autonomia', autonomia.value)" action='javascript:void(0)'>
+                        <input type="text" id="autonomia" class="form-control" value="{{fob}}">
                     </form>
                 </div>
                 <div class="col"></div>
@@ -147,13 +153,12 @@
         </div>
 
         <!--Meteorologia-->
-        <div ng-controller='meteorologia_Ctrl'>
+        <div>
             <h4>Meteorologia</h4>
             <hr>
             <table class="table table-striped">
-                <tr ng-repeat='metar in metars track by $index'>
-                    <td><b>{{metar.split(" ")[0]}} para {{metar.split(" ")[1]}} </b>{{metar}}</td>
-                </tr>
+                <tbody id='meteorologia'>
+                </tbody>
             </table>
         </div>
 
@@ -215,7 +220,7 @@
                 </table>
             </div>
         </div><br>
-        
+
         <!--Notams-->
         <h4>NOTAMs</h4>
         <hr>
@@ -247,11 +252,13 @@
         <hr>
         <div class='row' ng-controller='planoResumido_Ctrl'>
             <div class='col'>
-                <a href='fpl_briefing.php?call={{callsign}}&acft={{aeronave}}&wake={{wake}}&eqpt={{eqpt}}&part={{partida}}&cheg={{chegada}}&velo={{velocidade}}&alti={{fl}}&rota={{rota}}&veet={{eet}}&rmks={{rmks}}&pob={{pob}}&fob={{fob}}&altn={{alternado}}' class='btn-block btn btn-lg btn-outline-primary'>Gerar plano de voo da IVAO</a>
+                <a onclick="ivaofpl()" href='#' class='btn-block btn btn-lg btn-outline-primary'>Gerar plano de voo da IVAO</a>
             </div>
-            <div class='col'><a target='_blank' href='https://skyvector.com/?fpl={{velocidade}}F{{fl}} {{partida}} {{rota}} {{chegada}}' class='btn-block btn btn-lg btn-outline-primary'>Ver essa rota no SkyVector</a></div>
+            <div class='col'>
+                <a onclick="skyvector()" href='#' class='btn-block btn btn-lg btn-outline-primary'>Ver essa rota no SkyVector</a></div>
         </div>
-        <p>O sistema de meteorologia e de cartas aéreas são derivados do DECEA e podem estar indisponíveis por razões que fogem de nosso controle.</p>
+        <p>O sistema de meteorologia e de cartas aéreas são derivados do DECEA e podem estar indisponíveis por razões que fogem
+            de nosso controle.</p>
 
     </div>
     <br>
@@ -266,12 +273,13 @@
     <!-- JS -->
     <script src='https://code.jquery.com/jquery-3.2.1.min.js'></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js'></script>
-    <script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js' integrity='sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1' crossorigin='anonymous'></script>
+    <script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js' integrity='sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1'
+        crossorigin='anonymous'></script>
     <script src='https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js'></script>
     <script src='https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js'></script>
     <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js'></script>
     <script src='js/analytics.js'></script>
-    <script src='js/briefing.js?v=1.5'></script>
+    <script src='js/briefing.js?v=1.6'></script>
 
 </body>
 

@@ -18,7 +18,7 @@ var id = localStorage.getItem('id')
 
 //Verifica se o briefing existe
 if (localStorage.getItem('briefing') !== "true")
-    window.location.href = "index.html";
+    window.location.href = "index.html"
 
 //Angular
 /*FPL resumido*/
@@ -42,16 +42,27 @@ app.controller('planoResumido_Ctrl', function ($scope) {
     $scope.fob_fpl = fob
 })
 
-/*Meteorologia*/
-app.controller('meteorologia_Ctrl', function ($scope, $http) {
-    $http.get('http://www.redemet.aer.mil.br/api/consulta_automatica/index.php?local=' + partida + ',' + chegada + ',' + alternado + '&msg=metar,taf&data_hora=nao').then(function (response) {
-        //Recebe os METARs
-        $scope.metars = response.data.substr(0, response.data.length - 1).split("\n")
+/*Seção Meteorologia*/
+//Puxa os METARs e salva numa array
+function meteorologia() {
+    $.ajax({
+        url: 'http://www.redemet.aer.mil.br/api/consulta_automatica/index.php?local=' + partida + ',' + chegada + ',' + localStorage.getItem('altn').toUpperCase() + '&msg=metar,taf&data_hora=nao',
+        async: false,
+        success: function (retorno) {
+            metars = retorno.substr(0, retorno.length - 1).split("\n")
+        }
     })
-})
+
+    //Monta a tabela METAR
+    $.each(metars, function (chave, metar) {
+        $('#meteorologia').append('<tr><td><b>' + metar.split(" ")[0] + ' para ' + metar.split(" ")[1] + '</b> ' + metar + '</td></tr>')
+    })
+}
+
+//Roda o METAR
+meteorologia()
 
 /*Cartas Aéreas*/
-
 //Função que puxa as cartas para determinado Aeroporto
 function cartas(apt, tabela) {
     $.ajax({
@@ -59,31 +70,22 @@ function cartas(apt, tabela) {
         async: false,
         dataType: 'xml',
         timeout: 3000,
-        error: function(){
+        error: function () {
             $(secao + '_notam').append('<li>Erro. Tente atualizar a página.</li>')
-        },  
+        },
         success: function (retorno) {
             $(retorno).find('item').each(function () {
                 //Salva os valores
-                var tipo = $(this).find('tipo').text();
-                var nome = $(this).find('nome').text();
-                var emenda = $(this).find('dt').text();
-                var link = $(this).find('link').text();
+                var tipo = $(this).find('tipo').text()
+                var nome = $(this).find('nome').text()
+                var emenda = $(this).find('dt').text()
+                var link = $(this).find('link').text()
                 //Imprime a tabela
                 $(tabela + '_tbody').append('<tr><td>' + tipo + '</td><td>' + nome + '</td><td>' + emenda + "</td><td><a href='" + link + "'>Download</a></td></tr>")
 
-            });
-            //Inicializa a tabela
-            $(tabela + '_tabela').DataTable({
-                paging: false,
-                language: {
-                    search: '_INPUT_',
-                    searchPlaceholder: 'Filtrar resultados',
-                    'info': 'Mostrando _TOTAL_ de _MAX_ resultados',
-                    'infoEmpty': 'Nao foram encontrados resultados',
-                    'infoFiltered': '(filtro aplicado)'
-                }
-            });
+            })
+
+
         }
     })
 }
@@ -109,22 +111,19 @@ function notams(apt, secao) {
         async: false,
         dataType: 'xml',
         timeout: 3000,
-        error: function(){
+        error: function () {
             $(secao + '_notam').append('<p>Erro. Tente atualizar a página.</p>')
-        },        
+        },
         success: function (notam) {
             $(notam).find('item').each(function () {
                 //Salva os valores
-                var identificacao = $(this).find('n').text();
-                var inicio = $(this).find('b').text();
-                var termino = $(this).find('c').text();
-                var mensagem = $(this).find('e').text();
+                var identificacao = $(this).find('n').text()
+                var inicio = $(this).find('b').text()
+                var termino = $(this).find('c').text()
+                var mensagem = $(this).find('e').text()
                 //Imprime a secao
                 $(secao + '_notam').append('<h6>' + identificacao + '<span class="text-muted font-weight-normal"> de ' + dataNotam(inicio) + ' à ' + dataNotam(termino) + ' </span></h6><p>' + mensagem + '</p><hr>')
-
-                
-
-            });
+            })
         }
     })
 }
@@ -135,21 +134,43 @@ notams(chegada, '#chegada')
 notams(alternado, '#alternado')
 
 //Formata a data do notam
-function dataNotam(a){
-    if(a == "PERM")
+function dataNotam(a) {
+    if (a == "PERM")
         return a
-    else{
+    else {
         return a[0] + a[1] + '/' + a[2] + a[3] + '/' + a[4] + a[5] + ' ' + a[6] + a[7] + ':' + a[8] + a[9]
     }
 }
 
-
 function atualiza(tipo, valor) {
-    localStorage.setItem(tipo, valor)
+    if (tipo == "pob")
+        localStorage.setItem(tipo, valor)
+    else
+        localStorage.setItem(tipo, valor.toUpperCase())
+
+    if(tipo != "esteira")
+    document.getElementById(tipo).value = localStorage.getItem(tipo)
     if (tipo == "altn") {
         autonomiaUPDT(valor)
+        document.getElementById("autonomia").value = localStorage.getItem('autonomia')
+        document.getElementById('alternado_notam').innerHTML = ""
+        document.getElementById('alternado_tbody').innerHTML = ""
+        document.getElementById('meteorologia').innerHTML = ""
+        document.getElementById('alternanotam_tab').innerText = localStorage.getItem('altn')
+        document.getElementById('alterna_tab').innerText = localStorage.getItem('altn')
+        meteorologia()
+        notams(valor, '#alternado')
+        cartas(valor, '#alternado')
     }
-    location.reload()
+
+    //Mostra o snackbar
+    var x = document.getElementById("snackbar")
+    x.innerText = "Campo " + tipo + " atualizado"
+    x.className = "show"
+    setTimeout(function () {
+        x.className = x.className.replace("show", "")
+    }, 3000)
+    localStorage.setItem("erro", 0)
 }
 
 function autonomiaUPDT(novo) {
@@ -159,15 +180,15 @@ function autonomiaUPDT(novo) {
         dataType: 'json',
         success: function (json) {
             if (json === null) {
-                localStorage.setItem('autonomia', "0000");
+                localStorage.setItem('autonomia', "0000")
             } else {
                 //Monta a autonomia
                 var eet = localStorage.getItem('eet')
                 var eetaltn = json[0]['eet']
 
                 //Calcula a autonomia
-                ab = horasMinutos(eet);
-                bc = horasMinutos(eetaltn);
+                ab = horasMinutos(eet)
+                bc = horasMinutos(eetaltn)
 
                 //Seta a autonomia
                 fob = (ab + Math.ceil(0.1 * ab) + 30 + bc)
@@ -193,7 +214,7 @@ function autonomiaUPDT(novo) {
     })
 
 
-//Converte horas em minutos
+    //Converte horas em minutos
     function horasMinutos(a) {
         return parseInt((a[0] + a[1]) * 60) + parseInt((a[2] + a[3]))
     }
@@ -201,7 +222,51 @@ function autonomiaUPDT(novo) {
 
 function aeronaveUPDT(e) {
     if (e.keyCode == 13) {
-        var campo = document.getElementById("aeronave");
+        var campo = document.getElementById("aeronave")
         atualiza('aeronave', campo.value)
     }
 }
+
+function skyvector() {
+    window.open('https://skyvector.com/?fpl=' + localStorage.getItem('velocidade') + 'F' + localStorage.getItem('altitude') + ' ' + ' ' + localStorage.getItem('partida') + ' ' + localStorage.getItem('rota') + ' ' + localStorage.getItem('chegada'), '_blank')
+}
+
+function ivaofpl() {
+    window.open('fpl_briefing.php?call=' + localStorage.getItem('voo') + '&acft=' + localStorage.getItem('aeronave') + '&wake=' + localStorage.getItem('esteira') + '&eqpt=' + localStorage.getItem('eqpt') + '&part=' + localStorage.getItem('partida') + '&cheg=' + localStorage.getItem('chegada') + '&velo=' + localStorage.getItem('velocidade') + '&alti=' + localStorage.getItem('altitude') + '&rota=' + localStorage.getItem('rota') + '&veet=' + localStorage.getItem('eet') + '&rmks=' + localStorage.getItem('rmks') + '&pob=' + localStorage.getItem('pob') + '&fob=' + localStorage.getItem('autonomia') + '&altn=' + localStorage.getItem('altn'), '_blank')
+}
+
+//Inicializa as tabelas
+$('#partida_tabela').DataTable({
+    paging: false,
+    language: {
+        search: '_INPUT_',
+        searchPlaceholder: 'Filtrar resultados',
+        'info': 'Mostrando _TOTAL_ de _MAX_ resultados',
+        'infoEmpty': 'Nao foram encontrados resultados',
+        'infoFiltered': '(filtro aplicado)'
+    }
+})
+
+//Inicializa as tabelas
+$('#chegada_tabela').DataTable({
+    paging: false,
+    language: {
+        search: '_INPUT_',
+        searchPlaceholder: 'Filtrar resultados',
+        'info': 'Mostrando _TOTAL_ de _MAX_ resultados',
+        'infoEmpty': 'Nao foram encontrados resultados',
+        'infoFiltered': '(filtro aplicado)'
+    }
+})
+
+//Inicializa as tabelas
+$('#alternado_tabela').DataTable({
+    paging: false,
+    language: {
+        search: '_INPUT_',
+        searchPlaceholder: 'Filtrar resultados',
+        'info': 'Mostrando _TOTAL_ de _MAX_ resultados',
+        'infoEmpty': 'Nao foram encontrados resultados',
+        'infoFiltered': '(filtro aplicado)'
+    }
+})
