@@ -2,6 +2,10 @@
 An open-source flight planning tool for flight simulation, heavily based on JS and HTML.
 
 ## changelog
+- v2.0
+  - Migração de plataforma para o Vue.js.
+  - Grandes mudanças para melhorar a performance.
+
 - v1.6
   - Alterações na seção briefing, retirando a necessidade de reload da página a cada update.
 
