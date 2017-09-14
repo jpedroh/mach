@@ -1,5 +1,5 @@
 <template>
-<footer class="footer text-right container">
+<footer class="footer text-right container-fluid">
     <span class="text-muted"><p>Desenvolvido por <a href='http://jpedroh.com/' target='_blank'>João Pedro Henrique</a></p></span>
 </footer>
 </template>

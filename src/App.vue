@@ -19,6 +19,10 @@ export default {
 
 <style>
 
+.container-fluid{
+  width: 90%
+}
+
 .conteudo {
     margin-top: 20px;
     margin-bottom: 20px

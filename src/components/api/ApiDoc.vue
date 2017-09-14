@@ -1,7 +1,7 @@
 <template>
 <div>
 <CcNav></CcNav>
-<div class='container conteudo'>
+<div class='container-fluid conteudo'>
 <!--Saudação-->
         <div class='text-center'>
             <h2 class='text-center'>Seja bem vindo à Documentação.</h2>

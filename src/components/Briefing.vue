@@ -2,9 +2,9 @@
 <div>
     <CcNav></CcNav>
     <!-- App -->
-    <div class='container conteudo'>
+    <div class='container-fluid conteudo'>
         <!--Saudação-->
-        <h2 ng-controller='planoResumido_Ctrl' id='saudacao'> Voo {{callsign}} de {{partida}} para {{chegada}}</h2>
+        <h2> Voo {{callsign}} de {{partida}} para {{chegada}}</h2>
         <hr>
 
         <!--Snackbar-->
@@ -212,7 +212,7 @@
         <hr>
         <div class='row' ng-controller='planoResumido_Ctrl'>
             <div class='col'>
-                <a v-bind:href="'fpl_briefing.php?call=' + this.callsign + '&acft=' + this.aeronave + '&wake=' + this.esteira + '&eqpt=' + this.eqpt.trim() + '&part=' + this.partida + '&cheg=' + this.chegada  + '&velo=' + this.velocidade + '&alti=' + this.altitude + '&rota=' + this.rota + '&veet=' + this.eet + '&rmks=' + this.rmks + '&pob=' + this.pob + '&fob=' + this.autonomia + '&altn=' + this.altn" target='_blank' class='btn-block btn btn-lg btn-outline-primary'>Gerar plano de voo da IVAO</a>
+                <a v-bind:href="'fpl_briefing.php?call=' + this.callsign + '&acft=' + this.aeronave + '&wake=' + this.esteira + '&eqpt=' + this.eqpt.trim() + '&part=' + this.partida + '&cheg=' + this.chegada  + '&velo=' + this.velocidade + '&alti=' + this.altitude + '&rota=' + this.rota + '&veet=' + this.eet + '&rmks=' + this.rmks + '&pob=' + this.pob + '&fob=' + this.autonomia + '&altn=' + this.alternado" target='_blank' class='btn-block btn btn-lg btn-outline-primary'>Gerar plano de voo da IVAO</a>
             </div>
             <div class='col'>
                 <a v-bind:href="'https://skyvector.com/?fpl=' + velocidade +'F' + altitude + ' ' + partida + ' ' + rota + ' ' + chegada" target='_blank' class='btn-block btn btn-lg btn-outline-primary'>Ver essa rota no SkyVector</a>
@@ -284,6 +284,9 @@
       CcNav
     },
     mounted () {
+      if (localStorage.getItem('briefing') !== 'true') {
+        window.location.href = '#'
+      }
       this.puxaCartas(localStorage.getItem('partida'), 'partida')
       this.puxaCartas(localStorage.getItem('chegada'), 'chegada')
       this.puxaCartas(localStorage.getItem('alternado'), 'alternado')
@@ -398,7 +401,6 @@
                   break
               }
             })
-            console.log(self.notamalternado)
           }
         })
       },
