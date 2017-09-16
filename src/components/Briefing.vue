@@ -1,228 +1,247 @@
 <template>
-<div>
-    <CcNav></CcNav>
-    <!-- App -->
-    <div class='container-fluid conteudo'>
-        <!--Saudação-->
-        <h2> Voo {{callsign}} de {{partida}} para {{chegada}}</h2>
-        <hr>
+    <div>
+        <CcNav></CcNav>
+        <!-- App -->
+        <div class='container-fluid conteudo'>
+            <!--Saudação-->
+            <h2> Voo {{callsign}} de {{partida}} para {{chegada}}</h2>
+            <hr>
 
-        <!--Snackbar-->
-        <div id="snackbar"></div>
+            <!--Snackbar-->
+            <div id="snackbar"></div>
 
-        <!--Plano de voo-->
-        <h4>Plano de voo simplificado</h4>
-        <hr>
-        <!--Linha 1-->
-        <div class='row linha_briefing'>
-            <div class="col">
-                <h6>Partida</h6>
-                <input type="text" readonly class="form-control-plaintext" v-bind:value="partida">
-            </div>
-            <div class="col">
-                <h6>Chegada</h6>
-                <input type="text" readonly class="form-control-plaintext" v-bind:value="chegada">
-            </div>
-            <div class="col">
-                <h6>Alternado</h6>
-                <input type="text" id="alternado" class="form-control" v-model="alternado" v-on:keyup.enter="atualiza('alternado')" v-bind:value="alternado">
-            </div>
-        </div>
-        <!--Linha 2-->
-        <div class='row linha_briefing'>
-            <div class="col-8">
-                <h6>Aeronave</h6>
-                <div class="input-group" style="max-width:40%">
-                    <input type="text" id="aeronave" class="form-control" v-on:keyup.enter="atualiza('aeronave')" v-bind:value="aeronave">
-                    <div class="input-group-addon">/</div>
-                    <select v-on:change="atualiza('esteira')" id='esteira' class="form-control">
-                        <option selected>{{esteira}}</option>
-                        <option value="L">L</option>
-                        <option value="M">M</option>
-                        <option value="H">H</option>
-                    </select>
+            <!--Plano de voo-->
+            <h4>Plano de voo simplificado</h4>
+            <hr>
+            <!--Linha 1-->
+            <div class='row linha_briefing'>
+                <div class="col">
+                    <h6>Partida</h6>
+                    <input type="text" readonly class="form-control-plaintext" v-bind:value="partida">
+                </div>
+                <div class="col">
+                    <h6>Chegada</h6>
+                    <input type="text" readonly class="form-control-plaintext" v-bind:value="chegada">
+                </div>
+                <div class="col">
+                    <h6>Alternado</h6>
+                    <input type="text" id="alternado" class="form-control" v-model="alternado" v-on:keyup.enter="atualiza('alternado')" v-bind:value="alternado">
                 </div>
             </div>
-            <div class="col-4">
-                <h6>EQPT</h6>
-                <input type="text" id="eqpt" class="form-control" v-on:keyup.enter="atualiza('eqpt')" v-bind:value="eqpt">
-            </div>
-        </div>
-
-        <!--Linha 3-->
-        <div class='row linha_briefing'>
-            <div class="col">
-                <h6>FL</h6>
-                <form @submit.prevent>
-                    <input type="number" id="altitude" class="form-control" v-on:keyup.enter="atualiza('altitude')" v-bind:value="altitude">
-                </form>
-            </div>
-            <div class="col">
-                <h6>Velocidade</h6>
-                <form @submit.prevent>
-                    <input type="text" id="velocidade" class="form-control" v-on:keyup.enter="atualiza('velocidade')" v-bind:value="velocidade">
-                </form>
-            </div>
-            <div class="col">
-                <h6>EET</h6>
-                <form @submit.prevent>
-                    <input type="text" id="eet" class="form-control" v-on:keyup.enter="atualiza('eet')" v-bind:value="eet">
-                </form>
-            </div>
-        </div>
-
-        <!--Linha 4-->
-        <div class='row linha_briefing'>
-            <div class="col">
-                <h6>Rota</h6>
-                <form @submit.prevent>
-                    <textarea type="text" id="rota" class="form-control" v-on:keyup.enter="atualiza('rota')" v-bind:value="rota"></textarea>
-                </form>
-            </div>
-        </div>
-
-        <!--Linha 5-->
-        <div class='row linha_briefing'>
-            <div class="col">
-                <h6>FOB</h6>
-                <form @submit.prevent>
-                    <input type="text" id="autonomia" class="form-control" v-on:keyup.enter="atualiza('autonomia')" v-bind:value="autonomia">
-                </form>
-            </div>
-            <div class="col"></div>
-            <div class="col">
-                <h6>POB</h6>
-                <form @submit.prevent>
-                    <div class="input-group">
-                        <input type="number" id="pob" class="form-control" v-on:keyup.enter="atualiza('pob')" v-bind:value="pob">
-                        <div v-on:click="atualiza('pob_random')" class="btn btn-outline-primary">Aleatório</div>
+            <!--Linha 2-->
+            <div class='row linha_briefing'>
+                <div class="col-8">
+                    <h6>Aeronave</h6>
+                    <div class="input-group" style="max-width:40%">
+                        <input type="text" id="aeronave" class="form-control" v-on:keyup.enter="atualiza('aeronave')" v-bind:value="aeronave">
+                        <div class="input-group-addon">/</div>
+                        <select v-on:change="atualiza('esteira')" id='esteira' class="form-control">
+                            <option selected>{{esteira}}</option>
+                            <option value="L">L</option>
+                            <option value="M">M</option>
+                            <option value="H">H</option>
+                        </select>
                     </div>
-                </form>
-            </div>
-        </div>
-
-        <!--Linha 6-->
-        <div class='row linha_briefing'>
-            <div class="col">
-                <h6>RMKS</h6>
-                <form @submit.prevent>
-                    <textarea type="text" id="rmks" class="form-control" v-on:keyup.enter="atualiza('rmks')" v-bind:value="rmks"></textarea>
-                </form>
-            </div>
-        </div>
-
-        <!--Meteorologia-->
-        <h4>Meteorologia</h4>
-        <hr>
-        <table class="table table-striped">
-            <tbody>
-                <tr v-for="resposta in meteorologia">
-                    <td><b>{{resposta.split(" ")[0]}} para {{resposta.split(" ")[1]}}</b> {{resposta}}</td>
-                </tr>
-            </tbody>
-        </table>
-
-<div class='inner'></div>
-
-<!--Cartas Aéreas-->
-        <h4>Cartas Aéreas</h4>
-        <hr>
-        <ul class="nav nav-pills nav-justified nav-tabs" id="cartas_nav" role="tablist">
-            <li class="nav-item">
-                <a id='partida_tab' class="nav-link active" data-toggle="tab" href="#partida" role="tab">{{partida}}</a>
-            </li>
-            <li class="nav-item">
-                <a id='chegada_tab' class="nav-link" data-toggle="tab" href="#chegada" role="tab">{{chegada}}</a>
-            </li>
-            <li class="nav-item">
-                <a id='alterna_tab' class="nav-link" data-toggle="tab" href="#alterna" role="tab">{{alternado}}</a>
-            </li>
-        </ul>
-        <div class="tab-content">
-            <div class="tab-pane fade show active" id="partida" role="tabpanel"><br>
-            <vue-good-table :globalSearchPlaceholder="'Filtrar resultados'" :columns="colunas_cartas" :rows="cartaspartida" :defaultSortBy="{field: 'tipo', type: 'asc'}" :globalSearch="true" :paginate="false" styleClass="table table-striped">
-            <template slot="table-row" scope="props">
-                <td>{{ props.row.tipo }}</td>
-                <td>{{ props.row.nome }}</td>
-                <td>{{ props.row.dt }}</td>
-                <td><a v-bind:href="props.row.link">Download</a></td>
-            </template>
-            </vue-good-table>
-            </div>
-            <div class="tab-pane fade" id="chegada" role="tabpanel"><br>
-               <vue-good-table :globalSearchPlaceholder="'Filtrar resultados'" :columns="colunas_cartas" :rows="cartaschegada" :defaultSortBy="{field: 'tipo', type: 'asc'}" :globalSearch="true" :paginate="false" styleClass="table table-striped">
-            <template slot="table-row" scope="props">
-                <td>{{ props.row.tipo }}</td>
-                <td>{{ props.row.nome }}</td>
-                <td>{{ props.row.dt }}</td>
-                <td><a v-bind:href="props.row.link">Download</a></td>
-            </template>
-            </vue-good-table>
-            </div>
-            <div class="tab-pane fade" id="alterna" role="tabpanel"><br>
-                <vue-good-table :globalSearchPlaceholder="'Filtrar resultados'" :columns="colunas_cartas" :rows="cartasalternado" :defaultSortBy="{field: 'tipo', type: 'asc'}" :globalSearch="true" :paginate="false" styleClass="table table-striped">
-            <template slot="table-row" scope="props">
-                <td>{{ props.row.tipo }}</td>
-                <td>{{ props.row.nome }}</td>
-                <td>{{ props.row.dt }}</td>
-                <td><a v-bind:href="props.row.link">Download</a></td>
-            </template>
-            </vue-good-table>
-            </div>
-        </div><br>
-
-        <!--Notams-->
-        <h4>NOTAMs</h4>
-        <hr>
-        <ul class="nav nav-pills nav-justified nav-tabs" id="notams_nav" role="tablist">
-            <li class="nav-item">
-                <a id='partidanotam_tab' class="nav-link active" data-toggle="tab" href="#partidanotam" role="tab">{{partida}}</a>
-            </li>
-            <li class="nav-item">
-                <a id='chegadanotam_tab' class="nav-link" data-toggle="tab" href="#chegadanotam" role="tab">{{chegada}}</a>
-            </li>
-            <li class="nav-item">
-                <a id='alternanotam_tab' class="nav-link" data-toggle="tab" href="#alternanotam" role="tab">{{alternado}}</a>
-            </li>
-        </ul>
-        <div class="tab-content">
-            <div class="tab-pane fade show active" id="partidanotam" role="tabpanel"><br>
-                <div v-for="notam in notampartida">
-                    <h6>{{ notam.ident }} <span class="text-muted font-weight-normal"> de {{notam.inicio}} à {{notam.termino}}</span></h6>
-                    <p>{{notam.mensagem}}</p><hr>
+                </div>
+                <div class="col-4">
+                    <h6>EQPT</h6>
+                    <input type="text" id="eqpt" class="form-control" v-on:keyup.enter="atualiza('eqpt')" v-bind:value="eqpt">
                 </div>
             </div>
-            <div class="tab-pane fade" id="chegadanotam" role="tabpanel"><br>
-                <div v-for="notam in notamchegada">
-                    <h6>{{ notam.ident }} <span class="text-muted font-weight-normal"> de {{notam.inicio}} à {{notam.termino}}</span></h6>
-                    <p>{{notam.mensagem}}</p><hr>
-                </div>
-            </div>
-            <div class="tab-pane fade" id="alternanotam" role="tabpanel"><br>
-                <div v-for="notam in notamalternado">
-                    <h6>{{ notam.ident }} <span class="text-muted font-weight-normal"> de {{notam.inicio}} à {{notam.termino}}</span></h6>
-                    <p>{{notam.mensagem}}</p><hr>
-                </div>
-            </div>
-        </div>
-        <br>
 
-        <!-- Outros -->
-        <h4>Outros</h4>
-        <hr>
-        <div class='row' ng-controller='planoResumido_Ctrl'>
-            <div class='col'>
-                <a v-bind:href="'fpl_briefing.php?call=' + this.callsign + '&acft=' + this.aeronave + '&wake=' + this.esteira + '&eqpt=' + this.eqpt.trim() + '&part=' + this.partida + '&cheg=' + this.chegada  + '&velo=' + this.velocidade + '&alti=' + this.altitude + '&rota=' + this.rota + '&veet=' + this.eet + '&rmks=' + this.rmks + '&pob=' + this.pob + '&fob=' + this.autonomia + '&altn=' + this.alternado" target='_blank' class='btn-block btn btn-lg btn-outline-primary'>Gerar plano de voo da IVAO</a>
+            <!--Linha 3-->
+            <div class='row linha_briefing'>
+                <div class="col">
+                    <h6>FL</h6>
+                    <form @submit.prevent>
+                        <input type="number" id="altitude" class="form-control" v-on:keyup.enter="atualiza('altitude')" v-bind:value="altitude">
+                    </form>
+                </div>
+                <div class="col">
+                    <h6>Velocidade</h6>
+                    <form @submit.prevent>
+                        <input type="text" id="velocidade" class="form-control" v-on:keyup.enter="atualiza('velocidade')" v-bind:value="velocidade">
+                    </form>
+                </div>
+                <div class="col">
+                    <h6>EET</h6>
+                    <form @submit.prevent>
+                        <input type="text" id="eet" class="form-control" v-on:keyup.enter="atualiza('eet')" v-bind:value="eet">
+                    </form>
+                </div>
             </div>
-            <div class='col'>
-                <a v-bind:href="'https://skyvector.com/?fpl=' + velocidade +'F' + altitude + ' ' + partida + ' ' + rota + ' ' + chegada" target='_blank' class='btn-block btn btn-lg btn-outline-primary'>Ver essa rota no SkyVector</a>
+
+            <!--Linha 4-->
+            <div class='row linha_briefing'>
+                <div class="col">
+                    <h6>Rota</h6>
+                    <form @submit.prevent>
+                        <textarea type="text" id="rota" class="form-control" v-on:keyup.enter="atualiza('rota')" v-bind:value="rota"></textarea>
+                    </form>
+                </div>
             </div>
+
+            <!--Linha 5-->
+            <div class='row linha_briefing'>
+                <div class="col">
+                    <h6>FOB</h6>
+                    <form @submit.prevent>
+                        <input type="text" id="autonomia" class="form-control" v-on:keyup.enter="atualiza('autonomia')" v-bind:value="autonomia">
+                    </form>
+                </div>
+                <div class="col"></div>
+                <div class="col">
+                    <h6>POB</h6>
+                    <form @submit.prevent>
+                        <div class="input-group">
+                            <input type="number" id="pob" class="form-control" v-on:keyup.enter="atualiza('pob')" v-bind:value="pob">
+                            <div v-on:click="atualiza('pob_random')" class="btn btn-outline-primary">Aleatório</div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!--Linha 6-->
+            <div class='row linha_briefing'>
+                <div class="col">
+                    <h6>RMKS</h6>
+                    <form @submit.prevent>
+                        <textarea type="text" id="rmks" class="form-control" v-on:keyup.enter="atualiza('rmks')" v-bind:value="rmks"></textarea>
+                    </form>
+                </div>
+            </div>
+
+            <!--Meteorologia-->
+            <h4>Meteorologia</h4>
+            <hr>
+            <table class="table table-striped">
+                <tbody>
+                    <tr v-for="resposta in meteorologia">
+                        <td><b>{{resposta.split(" ")[0]}} para {{resposta.split(" ")[1]}}</b> {{resposta}}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!--Cartas Aéreas-->
+            <h4>Cartas Aéreas</h4>
+            <hr>
+            <ul class="nav nav-pills nav-justified nav-tabs" id="cartas_nav" role="tablist">
+                <li class="nav-item">
+                    <a id='partida_tab' class="nav-link active" data-toggle="tab" href="#partida" role="tab">{{partida}}</a>
+                </li>
+                <li class="nav-item">
+                    <a id='chegada_tab' class="nav-link" data-toggle="tab" href="#chegada" role="tab">{{chegada}}</a>
+                </li>
+                <li class="nav-item">
+                    <a id='alterna_tab' class="nav-link" data-toggle="tab" href="#alterna" role="tab">{{alternado}}</a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane fade show active" id="partida" role="tabpanel">
+                    <br>
+                    <vue-good-table :globalSearchPlaceholder="'Filtrar resultados'" :columns="colunas_cartas" :rows="cartaspartida" :defaultSortBy="{field: 'tipo', type: 'asc'}" :globalSearch="true" :paginate="false" styleClass="table table-striped">
+                        <template slot="table-row" scope="props">
+                            <td>{{ props.row.tipo }}</td>
+                            <td>{{ props.row.nome }}</td>
+                            <td>{{ props.row.dt }}</td>
+                            <td><a v-bind:href="props.row.link">Download</a>
+                            </td>
+                        </template>
+                    </vue-good-table>
+                </div>
+                <div class="tab-pane fade" id="chegada" role="tabpanel">
+                    <br>
+                    <vue-good-table :globalSearchPlaceholder="'Filtrar resultados'" :columns="colunas_cartas" :rows="cartaschegada" :defaultSortBy="{field: 'tipo', type: 'asc'}" :globalSearch="true" :paginate="false" styleClass="table table-striped">
+                        <template slot="table-row" scope="props">
+                            <td>{{ props.row.tipo }}</td>
+                            <td>{{ props.row.nome }}</td>
+                            <td>{{ props.row.dt }}</td>
+                            <td><a v-bind:href="props.row.link">Download</a>
+                            </td>
+                        </template>
+                    </vue-good-table>
+                </div>
+                <div class="tab-pane fade" id="alterna" role="tabpanel">
+                    <br>
+                    <vue-good-table :globalSearchPlaceholder="'Filtrar resultados'" :columns="colunas_cartas" :rows="cartasalternado" :defaultSortBy="{field: 'tipo', type: 'asc'}" :globalSearch="true" :paginate="false" styleClass="table table-striped">
+                        <template slot="table-row" scope="props">
+                            <td>{{ props.row.tipo }}</td>
+                            <td>{{ props.row.nome }}</td>
+                            <td>{{ props.row.dt }}</td>
+                            <td><a v-bind:href="props.row.link">Download</a>
+                            </td>
+                        </template>
+                    </vue-good-table>
+                </div>
+            </div>
+            <br>
+
+            <!--Notams-->
+            <h4>NOTAMs</h4>
+            <hr>
+            <ul class="nav nav-pills nav-justified nav-tabs" id="notams_nav" role="tablist">
+                <li class="nav-item">
+                    <a id='partidanotam_tab' class="nav-link active" data-toggle="tab" href="#partidanotam" role="tab">{{partida}}</a>
+                </li>
+                <li class="nav-item">
+                    <a id='chegadanotam_tab' class="nav-link" data-toggle="tab" href="#chegadanotam" role="tab">{{chegada}}</a>
+                </li>
+                <li class="nav-item">
+                    <a id='alternanotam_tab' class="nav-link" data-toggle="tab" href="#alternanotam" role="tab">{{alternado}}</a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane fade show active" id="partidanotam" role="tabpanel">
+                    <br>
+                    <div v-for="notam in notampartida">
+                        <h6>{{ notam.ident }} <span class="text-muted font-weight-normal"> de {{notam.inicio}} à {{notam.termino}}</span></h6>
+                        <h6>{{ notam.periodo }}</h6>
+                        <p>{{notam.mensagem}}</p>
+                        <p>{{notam.f}}</p>
+                        <p>{{notam.g}}</p>
+                        <hr>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="chegadanotam" role="tabpanel">
+                    <br>
+                    <div v-for="notam in notamchegada">
+                        <h6>{{ notam.ident }} <span class="text-muted font-weight-normal"> de {{notam.inicio}} à {{notam.termino}}</span></h6>
+                        <h6>{{ notam.periodo }}</h6>
+                        <p>{{notam.mensagem}}</p>
+                        <p>{{notam.f}}</p>
+                        <p>{{notam.g}}</p>
+                        <hr>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="alternanotam" role="tabpanel">
+                    <br>
+                    <div v-for="notam in notamalternado">
+                        <h6>{{ notam.ident }} <span class="text-muted font-weight-normal"> de {{notam.inicio}} à {{notam.termino}}</span></h6>
+                        <h6>{{ notam.periodo }}</h6>
+                        <p>{{notam.mensagem}}</p>
+                        <p>{{notam.f}}</p>
+                        <p>{{notam.g}}</p>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+            <br>
+
+            <!-- Outros -->
+            <h4>Outros</h4>
+            <hr>
+            <div class='row' ng-controller='planoResumido_Ctrl'>
+                <div class='col'>
+                    <a v-bind:href="'fpl_briefing.php?call=' + this.callsign + '&acft=' + this.aeronave + '&wake=' + this.esteira + '&eqpt=' + this.eqpt.trim() + '&part=' + this.partida + '&cheg=' + this.chegada  + '&velo=' + this.velocidade + '&alti=' + this.altitude + '&rota=' + this.rota + '&veet=' + this.eet + '&rmks=' + this.rmks + '&pob=' + this.pob + '&fob=' + this.autonomia + '&altn=' + this.alternado" target='_blank' class='btn-block btn btn-lg btn-outline-primary'>Gerar plano de voo da IVAO</a>
+                </div>
+                <div class='col'>
+                    <a v-bind:href="'https://skyvector.com/?fpl=' + velocidade +'F' + altitude + ' ' + partida + ' ' + rota + ' ' + chegada" target='_blank' class='btn-block btn btn-lg btn-outline-primary'>Ver essa rota no SkyVector</a>
+                </div>
+            </div>
+            <p>O sistema de meteorologia e de cartas aéreas são derivados do DECEA e podem estar indisponíveis por razões que fogem de nosso controle.</p>
         </div>
-        <p>O sistema de meteorologia e de cartas aéreas são derivados do DECEA e podem estar indisponíveis por razões que fogem de nosso controle.</p>
+
     </div>
-
-</div>
-</div>
 </template>
 
 <script>
@@ -387,17 +406,20 @@
             $(retorno).find('item').each(function () {
               objeto['ident'] = $(this).find('n').text()
               objeto['inicio'] = dataNotam($(this).find('b').text())
-              objeto['termino'] = $(this).find('c').text()
+              objeto['periodo'] = $(this).find('d').text()
+              objeto['e'] = $(this).find('e').text()
+              objeto['f'] = $(this).find('f').text()
+              objeto['termino'] = dataNotam($(this).find('c').text())
               objeto['mensagem'] = $(this).find('e').text()
               switch (local) {
                 case 'partida':
-                  self.notampartida.push({ident: objeto['ident'], inicio: objeto['inicio'], termino: objeto['termino'], mensagem: objeto['mensagem']})
+                  self.notampartida.push({ident: objeto['ident'], periodo: objeto['periodo'], e: objeto['e'], f: objeto['f'], inicio: objeto['inicio'], termino: objeto['termino'], mensagem: objeto['mensagem']})
                   break
                 case 'chegada':
-                  self.notamchegada.push({ident: objeto['ident'], inicio: objeto['inicio'], termino: objeto['termino'], mensagem: objeto['mensagem']})
+                  self.notamchegada.push({ident: objeto['ident'], periodo: objeto['periodo'], e: objeto['e'], f: objeto['f'], inicio: objeto['inicio'], termino: objeto['termino'], mensagem: objeto['mensagem']})
                   break
                 case 'alternado':
-                  self.notamalternado.push({ident: objeto['ident'], inicio: objeto['inicio'], termino: objeto['termino'], mensagem: objeto['mensagem']})
+                  self.notamalternado.push({ident: objeto['ident'], periodo: objeto['periodo'], e: objeto['e'], f: objeto['f'], inicio: objeto['inicio'], termino: objeto['termino'], mensagem: objeto['mensagem']})
                   break
               }
             })
