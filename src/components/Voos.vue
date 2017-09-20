@@ -21,7 +21,7 @@
                 <td>{{ props.row.std }}Z</td>
                 <td>{{ props.row.aeronave }}</td>
                 <td>{{ props.row.eet }}</td>
-                <td id='acao'><a data-toggle='modal' v-bind:href="'#modal'+props.row.callsign+''">Ver Briefing</a> | <a class='blue-text text-darken-4' v-bind:href="'fpl.php?id='+props.row.id+''">IVAO FPL</a>
+                <td id='acao'><a data-toggle='modal' v-bind:href="'#modal'+props.row.callsign+''">Ver Briefing</a> | <a class='blue-text text-darken-4' href="javascript:void(0)" v-on:click="fpl(props.row.id)">IVAO FPL</a>
                 </td>
             </template>
         </vue-good-table>
@@ -65,6 +65,7 @@
   import CcNav from './blocos/navVoos.vue'
   import uniq from 'lodash/uniq'
   import _ from 'lodash'
+  import FileSaver from 'file-saver'
 
   export default {
     data () {
@@ -156,6 +157,13 @@
         if (localStorage.getItem('selecao') === null) {
           window.location.href = '#/selecao'
         }
+      },
+      fpl: function (id) {
+        this.$http.get('http://jpedroh.com/mach/api/rpl.php?id=' + id).then((response) => {
+          let dados = response.body[0]
+          let blob = new Blob(['[FLIGHTPLAN]\r\nID=' + dados.callsign + '\r\nRULES=I\r\nFLIGHTTYPE=S\r\nNUMBER=1\r\nACTYPE=' + dados.aeronave + '\r\nWAKECAT=' + dados.esteira + '\r\nEQUIPMENT=' + dados.eqpt + '\r\nDEPICAO=' + dados.partida + '\r\nSPEEDTYPE=N\r\nSPEED=' + dados.velocidade.match(/\d+/)[0] + '\r\nLEVELTYPE=F\r\nLEVEL=' + dados.fl + '\r\nROUTE=' + dados.rota + '\r\nDESTICAO=' + dados.chegada + '\r\nEET=' + dados.eet + '\r\nOTHER=' + dados.rmk], {type: 'text/plain;charset=utf-8'})
+          FileSaver.saveAs(blob, dados.callsign + '.fpl')
+        })
       },
       inicializar: function () {
         switch (localStorage.getItem('selecao')) {

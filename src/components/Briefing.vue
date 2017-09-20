@@ -232,7 +232,7 @@
             <hr>
             <div class='row' ng-controller='planoResumido_Ctrl'>
                 <div class='col'>
-                    <a v-bind:href="'fpl_briefing.php?call=' + this.callsign + '&acft=' + this.aeronave + '&wake=' + this.esteira + '&eqpt=' + this.eqpt.trim() + '&part=' + this.partida + '&cheg=' + this.chegada  + '&velo=' + this.velocidade + '&alti=' + this.altitude + '&rota=' + this.rota + '&veet=' + this.eet + '&rmks=' + this.rmks + '&pob=' + this.pob + '&fob=' + this.autonomia + '&altn=' + this.alternado" target='_blank' class='btn-block btn btn-lg btn-outline-primary'>Gerar plano de voo da IVAO</a>
+                    <a href="javascript:void(0)" v-on:click="fpl()" class='btn-block btn btn-lg btn-outline-primary'>Gerar plano de voo da IVAO</a>
                 </div>
                 <div class='col'>
                     <a v-bind:href="'https://skyvector.com/?fpl=' + velocidade +'F' + altitude + ' ' + partida + ' ' + rota + ' ' + chegada" target='_blank' class='btn-block btn btn-lg btn-outline-primary'>Ver essa rota no SkyVector</a>
@@ -247,6 +247,7 @@
 <script>
   import CcNav from './blocos/navBriefing.vue'
   import $ from 'jQuery'
+  import FileSaver from 'file-saver'
 
   export default {
     data () {
@@ -430,6 +431,10 @@
         this.$http.get('http://www.redemet.aer.mil.br/api/consulta_automatica/index.php?local=' + localStorage.getItem('partida') + ',' + localStorage.getItem('chegada') + ',' + localStorage.getItem('alternado') + '&msg=metar,taf&data_hora=nao').then((response) => {
           this.meteorologia = response.body.substr(0, response.body.length - 1).split('\n')
         })
+      },
+      fpl: function () {
+        let blob = new Blob(['[FLIGHTPLAN]\r\nID=' + this.callsign + '\r\nRULES=I\r\nFLIGHTTYPE=S\r\nNUMBER=1\r\nACTYPE=' + this.aeronave + '\r\nWAKECAT=' + this.esteira + '\r\nEQUIPMENT=' + this.eqpt + '\r\nDEPICAO=' + this.partida + '\r\nSPEEDTYPE=N\r\nSPEED=' + this.velocidade.match(/\d+/)[0] + '\r\nLEVELTYPE=F\r\nLEVEL=' + this.altitude + '\r\nROUTE=' + this.rota + '\r\nDESTICAO=' + this.chegada + '\r\nEET=' + this.eet + '\r\nALTICAO=' + this.alternado + '\r\nOTHER=' + this.rmks + '\r\nPOB=' + this.pob + '\r\nENDURANCE=' + this.autonomia], {type: 'text/plain;charset=utf-8'})
+        FileSaver.saveAs(blob, this.callsign + '.fpl')
       },
       calculaAutonomia: function () {
         this.$http.get('http://jpedroh.com/mach/api/rpl.php?dep=' + localStorage.getItem('chegada') + '&arr=' + localStorage.getItem('alternado')).then((response) => {
