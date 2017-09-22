@@ -7,10 +7,12 @@ import BootstrapVue from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import VueGoodTable from 'vue-good-table'
+import VueFire from 'vuefire'
 
 Vue.use(VueGoodTable)
 Vue.config.productionTip = false
 Vue.use(BootstrapVue)
+Vue.use(VueFire)
 
 /* eslint-disable no-new */
 new Vue({

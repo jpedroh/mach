@@ -14,7 +14,7 @@
                <option value="chegada">Por chegada</option>
             </select>
             <br>
-            <div v-if="pesquisa === 'rota'">
+          <div v-if="pesquisa === 'rota'">
                <input id='partida' type='text' v-model="partida" v-on:keyup.enter="comecar" required class='form-control form-control-lg' placeholder='Partida (Ex.: SBGR)'><br>
                <input id='chegada' type='text' v-model="chegada" v-on:keyup.enter="comecar" required class='form-control form-control-lg' placeholder='Chegada (Ex.: SBGR)'><br>
             </div>

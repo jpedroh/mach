@@ -5,20 +5,20 @@
     <!-- App -->
     <div class='container-fluid conteudo'>
         <!-- Saudação -->
-        <h2 v-if="tipo === 'rota'">Encontrei {{ tamanho }} sugestões para a rota {{ partida }} <i class='fa fa-long-arrow-right' aria-hidden='true'></i> {{ chegada }}</h2>
-        <h2 v-else-if="tipo === 'partida'">Encontrei {{ tamanho }} rotas que partem de {{ partida }}</h2>
-        <h2 v-else-if="tipo === 'chegada'">Encontrei {{ tamanho }} rotas que chegam em {{ chegada }}</h2>
+        <h2 v-if="tipo === 'rota'">Encontrei {{ rotas.length }} sugestões para a rota {{ partida }} <i class='fa fa-long-arrow-right' aria-hidden='true'></i> {{ chegada }}</h2>
+        <h2 v-else-if="tipo === 'partida'">Encontrei {{ rotas.length }} rotas que partem de {{ partida }}</h2>
+        <h2 v-else-if="tipo === 'chegada'">Encontrei {{ rotas.length }} rotas que chegam em {{ chegada }}</h2>
         
         <!-- Tabelas -->
         <input type="text" class="form-control" v-model="pesquisa" placeholder="Filtrar resultados"/>
-        <vue-good-table :externalSearchQuery="pesquisa" :columns="colunas" :rows="voos" :defaultSortBy="{field: 'callsign', type: 'asc'}" :globalSearch="true" :paginate="false" styleClass="table table-striped">
+        <vue-good-table :externalSearchQuery="pesquisa" :columns="colunas" :rows="rotas" :defaultSortBy="{field: 'callsign', type: 'asc'}" :globalSearch="true" :paginate="false" styleClass="table table-striped">
              <template slot="table-row" scope="props">
                 <td>{{ props.row.callsign }}</td>
                 <td v-if="tipo === 'chegada'">{{ props.row.partida }}</td>
                 <td v-if="tipo === 'partida'">{{ props.row.chegada }}</td>
                 <td>{{ props.row.rota }}</td>
                 <td v-if="tipo === 'rota'">{{ props.row.fl }}</td>
-                <td>{{ props.row.std }}Z</td>
+                <td>{{ props.row.eobt }}Z</td>
                 <td>{{ props.row.aeronave }}</td>
                 <td>{{ props.row.eet }}</td>
                 <td id='acao'><a data-toggle='modal' v-bind:href="'#modal'+props.row.callsign+''">Ver Briefing</a> | <a class='blue-text text-darken-4' href="javascript:void(0)" v-on:click="fpl(props.row.id)">IVAO FPL</a>
@@ -28,12 +28,12 @@
     </div>
 
     <!--Modais Pré-Briefing-->
-    <div v-for="voo in voos" class='modal fade' :id="'modal'+ voo.callsign +''" tabindex='-1' role='dialog' aria-labelledby='label' aria-hidden='true'>
+    <div v-for="rota in rotas" class='modal fade' :id="'modal'+ rota.callsign +''" tabindex='-1' role='dialog' aria-labelledby='label' aria-hidden='true'>
         <form @submit.prevent class='form-signin'>
             <div class='modal-dialog' role='document'>
                 <div class='modal-content'>
                     <div class='modal-header'>
-                        <h5 class='modal-title' id='label'>Pré-briefing - Voo {{ voo.callsign }}</h5>
+                        <h5 class='modal-title' id='label'>Pré-briefing - Voo {{ rota.callsign }}</h5>
                         <button type='button' class='close' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span>
                         </button>
                     </div>
@@ -52,7 +52,7 @@
                     </div>
                     <div class='modal-footer'>
                         <button type='button' class='btn btn-secondary' data-dismiss='modal'>Voltar a seleção</button>
-                        <button class='btn btn-primary' v-on:click="montaBriefing(voo.id)" data-dismiss='modal'>Ir para o briefing</button>
+                        <button class='btn btn-primary' v-on:click="montaBriefing(rota['.key'])" data-dismiss='modal'>Ir para o briefing</button>
                     </div>
                 </div>
             </div>
@@ -62,24 +62,25 @@
 </template>
 
 <script>
+  // Imports
   import CcNav from './blocos/navVoos.vue'
   import uniq from 'lodash/uniq'
   import _ from 'lodash'
-  import FileSaver from 'file-saver'
-
+  // import FileSaver from 'file-saver'
+  
+  // Vue
   export default {
+    // Dados
     data () {
       return {
         pesquisa: '',
         partida: localStorage.getItem('partida'),
         chegada: localStorage.getItem('chegada'),
-        voos: [],
-        tamanho: 0,
         tipo: localStorage.getItem('selecao'),
         alternados: [],
         alternado: 'TBA',
         pob: 1,
-        i: 0,
+        rotas: [],
         colunas: [
           {
             label: 'VOO',
@@ -115,8 +116,8 @@
             sortable: true
           },
           {
-            label: 'STD',
-            field: 'std',
+            label: 'EOBT',
+            field: 'eobt',
             filterable: true,
             sortable: true
           },
@@ -145,27 +146,30 @@
     },
     mounted () {
       this.inicializar()
-      this.verifica()
-    },
-    computed: {
-      orderedUsers: function () {
-        return _.orderBy(this.alternados, 'eet', 'asc')
-      }
     },
     methods: {
-      verifica: function () {
-        if (localStorage.getItem('selecao') === null) {
-          window.location.href = '#/selecao'
-        }
-      },
-      fpl: function (id) {
-        this.$http.get('http://jpedroh.com/mach/api/rpl.php?id=' + id).then((response) => {
-          let dados = response.body[0]
-          let blob = new Blob(['[FLIGHTPLAN]\r\nID=' + dados.callsign + '\r\nRULES=I\r\nFLIGHTTYPE=S\r\nNUMBER=1\r\nACTYPE=' + dados.aeronave + '\r\nWAKECAT=' + dados.esteira + '\r\nEQUIPMENT=' + dados.eqpt + '\r\nDEPICAO=' + dados.partida + '\r\nSPEEDTYPE=N\r\nSPEED=' + dados.velocidade.match(/\d+/)[0] + '\r\nLEVELTYPE=F\r\nLEVEL=' + dados.fl + '\r\nROUTE=' + dados.rota + '\r\nDESTICAO=' + dados.chegada + '\r\nEET=' + dados.eet + '\r\nOTHER=' + dados.rmk], {type: 'text/plain;charset=utf-8'})
-          FileSaver.saveAs(blob, dados.callsign + '.fpl')
+      inicializar () {
+        let count = 0
+        Object.keys(this.examSelected.composition).forEach(subject => {
+          this.$http.get('https://mach-app.firebaseio.com/rotas.json?orderBy="trecho"&equalTo="' + this.partida + this.chegada + '"').then(response => {
+            count++
+            this.resData.push(response.body)
+            if (count === Object.keys(this.examSelected.composition).length) {
+              this.parseQuestions()
+              this.onExam = true
+              this.startExam = true
+              this.showInstructions = false
+              this.startTime()
+            }
+          })
         })
       },
-      inicializar: function () {
+      fpl (id) {
+        this.$http.get('https://mach-app.firebaseio.com/rotas/' + id + '.json').then((resposta) => {
+          console.log(resposta.body)
+        })
+      },
+      inicializarr: function () {
         switch (localStorage.getItem('selecao')) {
           case 'rota':
             this.puxa(1)

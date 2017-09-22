@@ -7,8 +7,8 @@
             <h2> Voo {{callsign}} de {{partida}} para {{chegada}}</h2>
             <hr>
 
-            <!--Snackbar-->
-            <div id="snackbar"></div>
+            <!-- Snackbar -->
+            <Snackbar id='snackbar'></Snackbar>
 
             <!--Plano de voo-->
             <h4>Plano de voo simplificado</h4>
@@ -30,9 +30,16 @@
             </div>
             <!--Linha 2-->
             <div class='row linha_briefing'>
-                <div class="col-8">
+                <div class="col-4">
+                    <h6>EOBT</h6>
+                    <div class="input-group">
+                        <input type="text" id="eobt" class="form-control" v-on:keyup.enter="atualiza('eobt')" v-bind:value="eobt">
+                        <div class="input-group-addon">Z</div>
+                    </div>
+                </div>
+                <div class="col-4">
                     <h6>Aeronave</h6>
-                    <div class="input-group" style="max-width:40%">
+                    <div class="input-group">
                         <input type="text" id="aeronave" class="form-control" v-on:keyup.enter="atualiza('aeronave')" v-bind:value="aeronave">
                         <div class="input-group-addon">/</div>
                         <select v-on:change="atualiza('esteira')" id='esteira' class="form-control">
@@ -116,8 +123,11 @@
             <hr>
             <table class="table table-striped">
                 <tbody>
-                    <tr v-for="resposta in meteorologia">
-                        <td><b>{{resposta.split(" ")[0]}} para {{resposta.split(" ")[1]}}</b> {{resposta}}</td>
+                    <tr v-for="resposta in metars">
+                        <td><b>METAR para {{resposta.split(' ')[0]}} </b> METAR {{resposta}} </td>
+                    </tr>
+                    <tr v-for="resposta in tafs">
+                        <td><b>TAF para {{resposta.split(' ')[1]}} </b> {{resposta}} </td>
                     </tr>
                 </tbody>
             </table>
@@ -248,10 +258,12 @@
   import CcNav from './blocos/navBriefing.vue'
   import $ from 'jQuery'
   import FileSaver from 'file-saver'
+  import Snackbar from './blocos/snackbar'
 
   export default {
     data () {
       return {
+        regra: 'I',
         chegada: localStorage.getItem('chegada'),
         partida: localStorage.getItem('partida'),
         callsign: localStorage.getItem('callsign'),
@@ -259,13 +271,13 @@
         aeronave: localStorage.getItem('aeronave'),
         esteira: localStorage.getItem('esteira'),
         eqpt: localStorage.getItem('eqpt'),
+        eobt: localStorage.getItem('eobt'),
         altitude: localStorage.getItem('altitude'),
         velocidade: localStorage.getItem('velocidade'),
         eet: localStorage.getItem('eet'),
         rota: localStorage.getItem('rota'),
         pob: localStorage.getItem('pob'),
         rmks: localStorage.getItem('rmks'),
-        meteorologia: this.met(),
         autonomia: this.calculaAutonomia(),
         cartaspartida: [],
         cartaschegada: [],
@@ -273,7 +285,9 @@
         notampartida: [],
         notamchegada: [],
         notamalternado: [],
-        teste: [],
+        meteorologia: [],
+        metars: [],
+        tafs: [],
         colunas_cartas: [
           {
             label: 'TIPO',
@@ -301,9 +315,11 @@
       }
     },
     components: {
-      CcNav
+      CcNav,
+      Snackbar
     },
     mounted () {
+      this.verificaRegra()
       if (localStorage.getItem('briefing') !== 'true') {
         window.location.href = '#'
       }
@@ -313,6 +329,9 @@
       this.puxaNotams(localStorage.getItem('partida'), 'partida')
       this.puxaNotams(localStorage.getItem('chegada'), 'chegada')
       this.puxaNotams(localStorage.getItem('alternado'), 'alternado')
+      this.puxaMet(localStorage.getItem('partida'), 'partida')
+      this.puxaMet(localStorage.getItem('chegada'), 'chegada')
+      this.puxaMet(localStorage.getItem('alternado'), 'alternado')
     },
     methods: {
       gera: function () {
@@ -322,6 +341,16 @@
           this.callsign = response.body[0].callsign
         })
       },
+      snackbar: function (mensagem, cor) {
+        this.mensagem = mensagem
+        let x = document.getElementById('snackbar')
+        x.innerText = this.mensagem
+        x.style.backgroundColor = cor
+        x.className = 'show'
+        setTimeout(function () {
+          x.className = x.className.replace('show', '')
+        }, 3000)
+      },
       atualiza: function (tipo) {
         if (tipo !== 'pob_random') {
           let campo = document.getElementById(tipo)
@@ -330,10 +359,11 @@
           switch (tipo) {
             case 'alternado':
               this.alternado = localStorage.getItem(tipo)
-              this.met()
+              this.puxaMet(localStorage.getItem('alternado'), 'alternado')
               this.calculaAutonomia()
               this.cartasalternado = []
               this.notamalternado = []
+              this.metars = []
               this.puxaCartas(localStorage.getItem('alternado'), 'alternado')
               this.puxaNotams(localStorage.getItem('alternado'), 'alternado')
               break
@@ -358,18 +388,10 @@
           this.pob = Math.floor(Math.random() * 250) + 2
         }
       },
-      snackbar: function (mensagem) {
-        let x = document.getElementById('snackbar')
-        x.innerText = mensagem
-        x.className = 'show'
-        setTimeout(function () {
-          x.className = x.className.replace('show', '')
-        }, 3000)
-      },
       puxaCartas: function (aeroporto, local) {
         let self = this
         $.ajax({
-          url: 'http://www.aisweb.aer.mil.br/api/?apiKey=1934217367&apiPass=e9062beb-43f1-11e7-a4c1-00505680c1b4&area=cartas&IcaoCode=' + aeroporto,
+          url: 'https://www.aisweb.aer.mil.br/api/?apiKey=1934217367&apiPass=e9062beb-43f1-11e7-a4c1-00505680c1b4&area=cartas&IcaoCode=' + aeroporto,
           async: false,
           dataType: 'xml',
           timeout: 3000,
@@ -398,7 +420,7 @@
       puxaNotams: function (aeroporto, local) {
         let self = this
         $.ajax({
-          url: 'http://www.aisweb.aer.mil.br/api/?apiKey=1934217367&apiPass=e9062beb-43f1-11e7-a4c1-00505680c1b4&area=notam&IcaoCode=' + aeroporto,
+          url: 'https://www.aisweb.aer.mil.br/api/?apiKey=1934217367&apiPass=e9062beb-43f1-11e7-a4c1-00505680c1b4&area=notam&IcaoCode=' + aeroporto,
           async: false,
           dataType: 'xml',
           timeout: 3000,
@@ -427,13 +449,28 @@
           }
         })
       },
+      puxaMet: function (aeroporto, local) {
+        this.$http.get('https://avwx.rest/api/metar/' + aeroporto).then((response) => {
+          this.metars.push(response.body['Raw-Report'])
+        })
+        this.$http.get('https://avwx.rest/api/taf/' + aeroporto).then((response) => {
+          this.tafs.push(response.body['Raw-Report'])
+        })
+      },
       met: function () {
         this.$http.get('http://www.redemet.aer.mil.br/api/consulta_automatica/index.php?local=' + localStorage.getItem('partida') + ',' + localStorage.getItem('chegada') + ',' + localStorage.getItem('alternado') + '&msg=metar,taf&data_hora=nao').then((response) => {
           this.meteorologia = response.body.substr(0, response.body.length - 1).split('\n')
         })
       },
+      verificaRegra: function () {
+        if (localStorage.getItem('rota').indexOf(' IFR ') !== -1) {
+          this.regra = 'Y'
+        } else if (localStorage.getItem('rota').indexOf(' VFR ') !== -1) {
+          this.regra = 'Z'
+        }
+      },
       fpl: function () {
-        let blob = new Blob(['[FLIGHTPLAN]\r\nID=' + this.callsign + '\r\nRULES=I\r\nFLIGHTTYPE=S\r\nNUMBER=1\r\nACTYPE=' + this.aeronave + '\r\nWAKECAT=' + this.esteira + '\r\nEQUIPMENT=' + this.eqpt + '\r\nDEPICAO=' + this.partida + '\r\nSPEEDTYPE=N\r\nSPEED=' + this.velocidade.match(/\d+/)[0] + '\r\nLEVELTYPE=F\r\nLEVEL=' + this.altitude + '\r\nROUTE=' + this.rota + '\r\nDESTICAO=' + this.chegada + '\r\nEET=' + this.eet + '\r\nALTICAO=' + this.alternado + '\r\nOTHER=' + this.rmks + '\r\nPOB=' + this.pob + '\r\nENDURANCE=' + this.autonomia], {type: 'text/plain;charset=utf-8'})
+        let blob = new Blob(['[FLIGHTPLAN]\r\nID=' + this.callsign + '\r\nDEPTIME=' + this.eobt + '\r\nRULES=' + this.regra + '\r\nFLIGHTTYPE=S\r\nNUMBER=1\r\nACTYPE=' + this.aeronave + '\r\nWAKECAT=' + this.esteira + '\r\nEQUIPMENT=' + this.eqpt + '\r\nDEPICAO=' + this.partida + '\r\nSPEEDTYPE=N\r\nSPEED=' + this.velocidade.match(/\d+/)[0] + '\r\nLEVELTYPE=F\r\nLEVEL=' + this.altitude + '\r\nROUTE=' + this.rota + '\r\nDESTICAO=' + this.chegada + '\r\nEET=' + this.eet + '\r\nALTICAO=' + this.alternado + '\r\nOTHER=' + this.rmks + '\r\nPOB=' + this.pob + '\r\nENDURANCE=' + this.autonomia], {type: 'text/plain;charset=utf-8'})
         FileSaver.saveAs(blob, this.callsign + '.fpl')
       },
       calculaAutonomia: function () {
@@ -487,79 +524,8 @@ function dataNotam (a) {
 
 <style>
 
-.linha_briefing{
+.linha_briefing {
     margin-bottom:20px;
-}
-
-#rota, #rmks{
-    margin-bottom: 5px;
-}
-
-#snackbar {
-    visibility: hidden;
-    min-width: 250px;
-    margin-left: -125px;
-    background-color: #28a745;
-    color: #fff;
-    text-align: center;
-    border-radius: 2px;
-    padding: 16px;
-    position: fixed;
-    z-index: 1;
-    left: 50%;
-    bottom: 30px;
-}
-
-#snackbar.show {
-    visibility: visible;
-    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
-    animation: fadein 0.5s, fadeout 0.5s 2.5s;
-}
-
-/* Animations to fade the snackbar in and out */
-
-@-webkit-keyframes fadein {
-    from {
-        bottom: 0;
-        opacity: 0;
-    }
-    to {
-        bottom: 30px;
-        opacity: 1;
-    }
-}
-
-@keyframes fadein {
-    from {
-        bottom: 0;
-        opacity: 0;
-    }
-    to {
-        bottom: 30px;
-        opacity: 1;
-    }
-}
-
-@-webkit-keyframes fadeout {
-    from {
-        bottom: 30px;
-        opacity: 1;
-    }
-    to {
-        bottom: 0;
-        opacity: 0;
-    }
-}
-
-@keyframes fadeout {
-    from {
-        bottom: 30px;
-        opacity: 1;
-    }
-    to {
-        bottom: 0;
-        opacity: 0;
-    }
 }
 
 </style>

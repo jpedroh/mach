@@ -9,11 +9,6 @@ export default {
     return {
       mensagem: null
     }
-  },
-  methods: {
-    snackbar: function () {
-      console.log('teste')
-    }
   }
 }
 </script>
