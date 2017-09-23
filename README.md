@@ -2,6 +2,10 @@
 An open-source flight planning tool for flight simulation developed in VueJS and a touch of PHP.
 
 ## changelog
+- v2.4
+  - Integração com firebase. PHP abolido de vez na aplicação.
+  - Permitido async nas requisições ajax.
+
 - v2.3
   - Agora os FPL da IVAO são gerados diretos no client-side. Abandonando cada vez mais a dependência do PHP.
 

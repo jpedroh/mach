@@ -50,7 +50,7 @@ export default {
     }
   },
   methods: {
-    comecar: function () {
+    comecar () {
       switch (this.pesquisa) {
         case 'rota':
           if (this.partida != null && this.chegada != null) {
@@ -82,7 +82,7 @@ export default {
           break
       }
     },
-    snackbar: function (mensagem, cor) {
+    snackbar (mensagem, cor) {
       this.mensagem = mensagem
       let x = document.getElementById('snackbar')
       x.innerText = this.mensagem
@@ -92,7 +92,7 @@ export default {
         x.className = x.className.replace('show', '')
       }, 3000)
     },
-    sorte: function () {
+    sorte () {
       this.snackbar('Função em manutenção', '#d9534f')
     }
   },

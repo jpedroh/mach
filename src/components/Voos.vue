@@ -48,11 +48,11 @@
                         </div>
                         <div class='form-group'>
                             <label class='form-control-label' for='pob'>Insira um POB</label>
-                            <input v-model="pob" type='number' required class='form-control'> </div>
+                            <input v-model="pob" type='number' placeholder="POB" required class='form-control'> </div>
                     </div>
                     <div class='modal-footer'>
                         <button type='button' class='btn btn-secondary' data-dismiss='modal'>Voltar a seleção</button>
-                        <button class='btn btn-primary' v-on:click="montaBriefing(rota['.key'])" data-dismiss='modal'>Ir para o briefing</button>
+                        <button class='btn btn-primary' v-on:click="montaBriefing(rota)" data-dismiss='modal'>Ir para o briefing</button>
                     </div>
                 </div>
             </div>
@@ -66,7 +66,7 @@
   import CcNav from './blocos/navVoos.vue'
   import uniq from 'lodash/uniq'
   import _ from 'lodash'
-  // import FileSaver from 'file-saver'
+  import FileSaver from 'file-saver'
   
   // Vue
   export default {
@@ -79,7 +79,7 @@
         tipo: localStorage.getItem('selecao'),
         alternados: [],
         alternado: 'TBA',
-        pob: 1,
+        pob: null,
         rotas: [],
         colunas: [
           {
@@ -145,99 +145,81 @@
       CcNav
     },
     mounted () {
+      if (localStorage.getItem('selecao') === null || !localStorage.getItem('selecao')) {
+        window.location.href = '#/selecao'
+      }
       this.inicializar()
+      this.pegaAlternados()
     },
     methods: {
       inicializar () {
-        let count = 0
-        Object.keys(this.examSelected.composition).forEach(subject => {
-          this.$http.get('https://mach-app.firebaseio.com/rotas.json?orderBy="trecho"&equalTo="' + this.partida + this.chegada + '"').then(response => {
-            count++
-            this.resData.push(response.body)
-            if (count === Object.keys(this.examSelected.composition).length) {
-              this.parseQuestions()
-              this.onExam = true
-              this.startExam = true
-              this.showInstructions = false
-              this.startTime()
-            }
-          })
-        })
-      },
-      fpl (id) {
-        this.$http.get('https://mach-app.firebaseio.com/rotas/' + id + '.json').then((resposta) => {
-          console.log(resposta.body)
-        })
-      },
-      inicializarr: function () {
+        // Declaração de Variáveis
+        let self = this // variável auxiliar
+        let query = null // query no rest
+        // Define o tipo da query
         switch (localStorage.getItem('selecao')) {
           case 'rota':
-            this.puxa(1)
+            query = 'https://mach-app.firebaseio.com/rotas.json?orderBy="trecho"&equalTo="' + this.partida + this.chegada + '"'
             break
           case 'partida':
-            this.puxa(2)
-            localStorage.removeItem('chegada')
+            query = 'https://mach-app.firebaseio.com/rotas.json?orderBy="partida"&equalTo="' + this.partida + '"'
             break
           case 'chegada':
-            this.puxa(3)
-            localStorage.removeItem('partida')
+            query = 'https://mach-app.firebaseio.com/rotas.json?orderBy="chegada"&equalTo="' + this.chegada + '"'
             break
         }
-      },
-      puxa: function (a) {
-        let query = null
-        switch (a) {
-          case 1:
-            query = 'http://jpedroh.com/mach/api/rpl.php?dep=' + localStorage.getItem('partida') + '&arr=' + localStorage.getItem('chegada')
-            break
-          case 2:
-            query = 'http://jpedroh.com/mach/api/rpl.php?dep=' + localStorage.getItem('partida')
-            break
-          case 3:
-            query = 'http://jpedroh.com/mach/api/rpl.php?arr=' + localStorage.getItem('chegada')
-            break
-        }
-        this.$http.get(query).then((response) => {
-          if (response.body === 'null') {
+        // Query
+        this.$http.get(query).then(resposta => {
+          // Converte a resposta da query em um array
+          Object.keys(resposta.body).forEach(function (key) {
+            self.rotas.push(resposta.body[key])
+          })
+          // Verifica se existe consulta prévia ou se a rota existe no DB
+          if (!self.rotas.length) {
             window.location.href = '#/selecao'
             localStorage.setItem('erro', 'rota nula')
           }
-          this.voos = response.body
-          this.tamanho = response.body.length
-          this.pegaAlternados()
-        })
-        this.partida = localStorage.getItem('partida')
-        this.chegada = localStorage.getItem('chegada')
-      },
-      pegaAlternados: function () {
-        this.$http.get('http://jpedroh.com/mach/api/rpl.php?dep=' + localStorage.getItem('chegada')).then((response) => {
-          this.alternados = uniq(_.orderBy(response.body, 'eet', 'asc').map(p => p.chegada))
         })
       },
-      montaBriefing: function (id) {
-        localStorage.setItem('id', id)
+      fpl (id) {
+        // Query
+        this.$http.get('https://mach-app.firebaseio.com/rotas/' + id + '.json').then((resposta) => {
+          let dados = resposta.body
+          // Gera o arquivo e salva
+          let blob = new Blob(['[FLIGHTPLAN]\r\nID=' + dados.callsign + '\r\nRULES=' + dados.regra + '\r\nFLIGHTTYPE=S\r\nNUMBER=1\r\nACTYPE=' + dados.aeronave + '\r\nWAKECAT=' + dados.esteira + '\r\nEQUIPMENT=' + dados.eqpt + '\r\nDEPICAO=' + dados.partida + '\r\nSPEEDTYPE=N\r\nSPEED=' + dados.velocidade.match(/\d+/)[0] + '\r\nLEVELTYPE=F\r\nLEVEL=' + dados.fl + '\r\nROUTE=' + dados.rota + '\r\nDESTICAO=' + dados.chegada + '\r\nEET=' + dados.eet + '\r\nOTHER=' + dados.rmk], {type: 'text/plain;charset=utf-8'})
+          FileSaver.saveAs(blob, dados.callsign + '.fpl')
+        })
+      },
+      pegaAlternados () {
+        // let self = this // variável auxiliar
+        this.$http.get('https://mach-app.firebaseio.com/rotas.json?orderBy="partida"&equalTo="' + this.chegada + '"').then((resposta) => {
+          this.alternados = uniq(_.orderBy(resposta.body, 'eet', 'asc').map(p => p.chegada))
+        })
+      },
+      montaBriefing (voo) {
+        localStorage.setItem('id', voo['id'])
         localStorage.setItem('alternado', this.alternado)
         localStorage.setItem('pob', this.pob)
         localStorage.setItem('briefing', true)
-        this.$http.get('http://jpedroh.com/mach/api/rpl.php?id=' + localStorage.getItem('id')).then((response) => {
-          localStorage.setItem('partida', response.body[0].partida)
-          localStorage.setItem('chegada', response.body[0].chegada)
-          localStorage.setItem('callsign', response.body[0].callsign)
-          localStorage.setItem('aeronave', response.body[0].aeronave)
-          localStorage.setItem('esteira', response.body[0].esteira)
-          localStorage.setItem('eqpt', response.body[0].eqpt)
-          localStorage.setItem('velocidade', response.body[0].velocidade)
-          localStorage.setItem('altitude', response.body[0].fl)
-          localStorage.setItem('rota', response.body[0].rota)
-          localStorage.setItem('eet', response.body[0].eet)
-          localStorage.setItem('eobt', response.body[0].std)
-          localStorage.setItem('rmks', response.body[0].rmk)
-          localStorage.setItem('eqpt', response.body[0].eqpt)
-          localStorage.setItem('briefing', 'true')
-          window.location.href = '#/briefing'
-        })
+        localStorage.setItem('partida', voo['partida'])
+        localStorage.setItem('chegada', voo['chegada'])
+        localStorage.setItem('callsign', voo['callsign'])
+        localStorage.setItem('aeronave', voo['aeronave'])
+        localStorage.setItem('esteira', voo['esteira'])
+        localStorage.setItem('eqpt', voo['eqpt'])
+        localStorage.setItem('velocidade', voo['velocidade'])
+        localStorage.setItem('altitude', voo['fl'])
+        localStorage.setItem('rota', voo['rota'])
+        localStorage.setItem('eet', voo['eet'])
+        localStorage.setItem('eobt', voo['eobt'])
+        localStorage.setItem('rmks', voo['rmk'])
+        localStorage.setItem('eqpt', voo['eqpt'])
+        localStorage.setItem('regra', voo['regra'])
+        localStorage.setItem('briefing', 'true')
+        // Redireciona
+        window.location.href = '#/briefing'
       },
-      defineCol: function (a) {
+      defineCol (a) {
         switch (localStorage.getItem('selecao')) {
           case 'rota':
             if (a === 'fl') {

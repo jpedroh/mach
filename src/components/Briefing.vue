@@ -83,7 +83,7 @@
                 <div class="col">
                     <h6>Rota</h6>
                     <form @submit.prevent>
-                        <textarea type="text" id="rota" class="form-control" v-on:keyup.enter="atualiza('rota')" v-bind:value="rota"></textarea>
+                        <textarea type="text" @keydown.enter.prevent.stop="atualiza('rota')" id="rota" class="form-control" v-bind:value="rota"></textarea>
                     </form>
                 </div>
             </div>
@@ -113,7 +113,7 @@
                 <div class="col">
                     <h6>RMKS</h6>
                     <form @submit.prevent>
-                        <textarea type="text" id="rmks" class="form-control" v-on:keyup.enter="atualiza('rmks')" v-bind:value="rmks"></textarea>
+                        <textarea type="text" id="rmks" class="form-control" @keydown.enter.prevent.stop="atualiza('rmks')" v-bind:value="rmks"></textarea>
                     </form>
                 </div>
             </div>
@@ -123,11 +123,8 @@
             <hr>
             <table class="table table-striped">
                 <tbody>
-                    <tr v-for="resposta in metars">
-                        <td><b>METAR para {{resposta.split(' ')[0]}} </b> METAR {{resposta}} </td>
-                    </tr>
-                    <tr v-for="resposta in tafs">
-                        <td><b>TAF para {{resposta.split(' ')[1]}} </b> {{resposta}} </td>
+                    <tr v-for="resposta in meteorologia">
+                        <td><b>{{resposta.split(" ")[0]}} para {{resposta.split(" ")[1]}}</b> {{resposta}}</td>
                     </tr>
                 </tbody>
             </table>
@@ -263,7 +260,7 @@
   export default {
     data () {
       return {
-        regra: 'I',
+        regra: localStorage.getItem('regra'),
         chegada: localStorage.getItem('chegada'),
         partida: localStorage.getItem('partida'),
         callsign: localStorage.getItem('callsign'),
@@ -285,9 +282,7 @@
         notampartida: [],
         notamchegada: [],
         notamalternado: [],
-        meteorologia: [],
-        metars: [],
-        tafs: [],
+        meteorologia: this.met(),
         colunas_cartas: [
           {
             label: 'TIPO',
@@ -319,29 +314,20 @@
       Snackbar
     },
     mounted () {
-      this.verificaRegra()
       if (localStorage.getItem('briefing') !== 'true') {
         window.location.href = '#'
       }
+      // Puxa as cartas
       this.puxaCartas(localStorage.getItem('partida'), 'partida')
       this.puxaCartas(localStorage.getItem('chegada'), 'chegada')
       this.puxaCartas(localStorage.getItem('alternado'), 'alternado')
+      // Puxa os notams
       this.puxaNotams(localStorage.getItem('partida'), 'partida')
       this.puxaNotams(localStorage.getItem('chegada'), 'chegada')
       this.puxaNotams(localStorage.getItem('alternado'), 'alternado')
-      this.puxaMet(localStorage.getItem('partida'), 'partida')
-      this.puxaMet(localStorage.getItem('chegada'), 'chegada')
-      this.puxaMet(localStorage.getItem('alternado'), 'alternado')
     },
     methods: {
-      gera: function () {
-        this.$http.get('http://jpedroh.com/mach/api/rpl.php?id=' + localStorage.getItem('id')).then((response) => {
-          this.partida = localStorage.getItem('partida')
-          this.chegada = localStorage.getItem('chegada')
-          this.callsign = response.body[0].callsign
-        })
-      },
-      snackbar: function (mensagem, cor) {
+      snackbar (mensagem, cor) {
         this.mensagem = mensagem
         let x = document.getElementById('snackbar')
         x.innerText = this.mensagem
@@ -351,7 +337,7 @@
           x.className = x.className.replace('show', '')
         }, 3000)
       },
-      atualiza: function (tipo) {
+      atualiza (tipo) {
         if (tipo !== 'pob_random') {
           let campo = document.getElementById(tipo)
           localStorage.setItem(tipo, campo.value.toUpperCase())
@@ -359,11 +345,10 @@
           switch (tipo) {
             case 'alternado':
               this.alternado = localStorage.getItem(tipo)
-              this.puxaMet(localStorage.getItem('alternado'), 'alternado')
+              this.met()
               this.calculaAutonomia()
               this.cartasalternado = []
               this.notamalternado = []
-              this.metars = []
               this.puxaCartas(localStorage.getItem('alternado'), 'alternado')
               this.puxaNotams(localStorage.getItem('alternado'), 'alternado')
               break
@@ -383,16 +368,22 @@
             case 'eqpt':
               this.eqpt = localStorage.getItem(tipo)
               break
+            case 'rota':
+              this.rota = localStorage.getItem(tipo)
+              break
+            case 'rmks':
+              this.rmks = localStorage.getItem(tipo)
+              break
           }
         } else {
           this.pob = Math.floor(Math.random() * 250) + 2
         }
       },
-      puxaCartas: function (aeroporto, local) {
+      puxaCartas (aeroporto, local) {
         let self = this
         $.ajax({
           url: 'https://www.aisweb.aer.mil.br/api/?apiKey=1934217367&apiPass=e9062beb-43f1-11e7-a4c1-00505680c1b4&area=cartas&IcaoCode=' + aeroporto,
-          async: false,
+          async: true,
           dataType: 'xml',
           timeout: 3000,
           success: function (retorno) {
@@ -417,22 +408,22 @@
           }
         })
       },
-      puxaNotams: function (aeroporto, local) {
+      puxaNotams (aeroporto, local) {
         let self = this
         $.ajax({
           url: 'https://www.aisweb.aer.mil.br/api/?apiKey=1934217367&apiPass=e9062beb-43f1-11e7-a4c1-00505680c1b4&area=notam&IcaoCode=' + aeroporto,
-          async: false,
+          async: true,
           dataType: 'xml',
           timeout: 3000,
           success: function (retorno) {
             let objeto = {}
             $(retorno).find('item').each(function () {
               objeto['ident'] = $(this).find('n').text()
-              objeto['inicio'] = dataNotam($(this).find('b').text())
+              objeto['inicio'] = self.dataNotam($(this).find('b').text())
               objeto['periodo'] = $(this).find('d').text()
               objeto['e'] = $(this).find('e').text()
               objeto['f'] = $(this).find('f').text()
-              objeto['termino'] = dataNotam($(this).find('c').text())
+              objeto['termino'] = self.dataNotam($(this).find('c').text())
               objeto['mensagem'] = $(this).find('e').text()
               switch (local) {
                 case 'partida':
@@ -449,42 +440,35 @@
           }
         })
       },
-      puxaMet: function (aeroporto, local) {
-        this.$http.get('https://avwx.rest/api/metar/' + aeroporto).then((response) => {
-          this.metars.push(response.body['Raw-Report'])
-        })
-        this.$http.get('https://avwx.rest/api/taf/' + aeroporto).then((response) => {
-          this.tafs.push(response.body['Raw-Report'])
-        })
-      },
-      met: function () {
-        this.$http.get('http://www.redemet.aer.mil.br/api/consulta_automatica/index.php?local=' + localStorage.getItem('partida') + ',' + localStorage.getItem('chegada') + ',' + localStorage.getItem('alternado') + '&msg=metar,taf&data_hora=nao').then((response) => {
+      met () {
+        this.$http.get('https://www.redemet.aer.mil.br/api/consulta_automatica/index.php?local=' + localStorage.getItem('partida') + ',' + localStorage.getItem('chegada') + ',' + localStorage.getItem('alternado') + '&msg=metar,taf&data_hora=nao').then((response) => {
           this.meteorologia = response.body.substr(0, response.body.length - 1).split('\n')
         })
       },
-      verificaRegra: function () {
-        if (localStorage.getItem('rota').indexOf(' IFR ') !== -1) {
-          this.regra = 'Y'
-        } else if (localStorage.getItem('rota').indexOf(' VFR ') !== -1) {
-          this.regra = 'Z'
-        }
-      },
-      fpl: function () {
+      fpl () {
         let blob = new Blob(['[FLIGHTPLAN]\r\nID=' + this.callsign + '\r\nDEPTIME=' + this.eobt + '\r\nRULES=' + this.regra + '\r\nFLIGHTTYPE=S\r\nNUMBER=1\r\nACTYPE=' + this.aeronave + '\r\nWAKECAT=' + this.esteira + '\r\nEQUIPMENT=' + this.eqpt + '\r\nDEPICAO=' + this.partida + '\r\nSPEEDTYPE=N\r\nSPEED=' + this.velocidade.match(/\d+/)[0] + '\r\nLEVELTYPE=F\r\nLEVEL=' + this.altitude + '\r\nROUTE=' + this.rota + '\r\nDESTICAO=' + this.chegada + '\r\nEET=' + this.eet + '\r\nALTICAO=' + this.alternado + '\r\nOTHER=' + this.rmks + '\r\nPOB=' + this.pob + '\r\nENDURANCE=' + this.autonomia], {type: 'text/plain;charset=utf-8'})
         FileSaver.saveAs(blob, this.callsign + '.fpl')
       },
-      calculaAutonomia: function () {
-        this.$http.get('http://jpedroh.com/mach/api/rpl.php?dep=' + localStorage.getItem('chegada') + '&arr=' + localStorage.getItem('alternado')).then((response) => {
-          if (response.body === 'null') {
+      calculaAutonomia () {
+        // Query
+        this.$http.get('https://mach-app.firebaseio.com/rotas.json?orderBy="trecho"&equalTo="' + localStorage.getItem('chegada') + localStorage.getItem('alternado') + '"&limitToFirst=1').then((resposta) => {
+          let eetalternado = null
+          // Converte a resposta da query em um array
+          if (resposta.body !== null) {
+            Object.keys(resposta.body).forEach(function (key) {
+              eetalternado = resposta.body[key]['eet']
+            })
+          }
+          // Verifica
+          if (eetalternado === null) {
             this.autonomia = '0000'
             localStorage.setItem('autonomia', '0000')
           } else {
             // Monta a autonomia
             var eet = localStorage.getItem('eet')
-            var eetaltn = response.body[0]['eet']
             // Calcula a autonomia
             let ab = this.horasMinutos(eet)
-            let bc = this.horasMinutos(eetaltn)
+            let bc = this.horasMinutos(eetalternado)
             // Seta a autonomia
             let autonomia = (ab + Math.ceil(0.1 * ab) + 30 + bc)
             // Formata o FOB
@@ -506,19 +490,18 @@
           }
         })
       },
-      horasMinutos: function (a) {
+      horasMinutos (a) {
         return parseInt((a[0] + a[1]) * 60) + parseInt((a[2] + a[3]))
+      },
+      dataNotam (a) {
+        if (a === 'PERM') {
+          return a
+        } else {
+          return a[4] + a[5] + '/' + a[2] + a[3] + '/' + a[0] + a[1] + ' ' + a[6] + a[7] + ':' + a[8] + a[9]
+        }
       }
     }
   }
-
-function dataNotam (a) {
-    if (a === 'PERM') {
-      return a
-    } else {
-      return a[4] + a[5] + '/' + a[2] + a[3] + '/' + a[0] + a[1] + ' ' + a[6] + a[7] + ':' + a[8] + a[9]
-    }
-}
 
 </script>
 
