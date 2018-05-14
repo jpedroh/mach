@@ -2,7 +2,7 @@
   <div>
     <h4>Airports Briefings</h4>
     <hr>
-    <b-progress max="100" class="mb-3" v-if="loading">
+    <b-progress :max="100" class="mb-3" v-if="loading">
       <b-progress-bar :value="progress" label="Aguarde, carregando" />
     </b-progress>
 <b-card no-body>
@@ -24,10 +24,10 @@
           <!-- Airport Meteorology -->
           <b-tab title="Meteorologia">
             <h6>METAR</h6>
-            <p v-bind:key="key*20" v-for="(metar, key) in meteorology.departure.metar">{{ metar }}</p>
+            <p v-bind:key="key + '-metar-dep'" v-for="(metar, key) in meteorology.departure.metar">{{ metar }}</p>
             <hr>
             <h6>TAF</h6>
-            <p v-bind:key="key" v-for="(taf, key) in meteorology.departure.taf">{{ taf }}</p>
+            <p v-bind:key="key + '-taf-dep'" v-for="(taf, key) in meteorology.departure.taf">{{ taf }}</p>
             <p class='text-right'>Esta aba é atualizada a cada 10 minutos. <b-link @click='weather' href="#">Atualizar agora</b-link></p>
           </b-tab>
 
@@ -51,7 +51,7 @@
 
           <!-- Notams -->
           <b-tab title="Notams">
-            <div v-bind:key="key*10" v-for="(notam, key) in departure.notams">
+            <div v-bind:key="key+100" v-for="(notam, key) in departure.notams">
               <h6>{{ notam.indent }}
                 <span class='text-muted font-weight-normal'>{{ notam.inicio }} à {{ notam.termino }}</span>
               </h6>
@@ -83,10 +83,10 @@
           <!-- Airport Meteorology -->
           <b-tab title="Meteorologia">
             <h6>METAR</h6>
-            <p v-bind:key="key*20" v-for="(metar, key) in meteorology.arrival.metar">{{ metar }}</p>
+            <p v-bind:key="key + '-metar-arr'" v-for="(metar, key) in meteorology.arrival.metar">{{ metar }}</p>
             <hr>
             <h6>TAF</h6>
-            <p v-bind:key="key" v-for="(taf, key) in meteorology.arrival.taf">{{ taf }}</p>
+            <p v-bind:key="key + '-taf-arr'" v-for="(taf, key) in meteorology.arrival.taf">{{ taf }}</p>
             <p class='text-right'>Esta aba é atualizada a cada 10 minutos. <b-link @click='weather' href="#">Atualizar agora</b-link></p>
           </b-tab>
 
@@ -110,7 +110,7 @@
 
           <!-- Notams -->
           <b-tab title="Notams">
-            <div v-bind:key="key*10" v-for="(notam, key) in arrival.notams">
+            <div v-bind:key="key+300" v-for="(notam, key) in arrival.notams">
               <h6>{{ notam.indent }}
                 <span class='text-muted font-weight-normal'>{{ notam.inicio }} à {{ notam.termino }}</span>
               </h6>
@@ -142,10 +142,10 @@
           <!-- Airport Meteorology -->
           <b-tab title="Meteorologia">
             <h6>METAR</h6>
-            <p v-bind:key="key*20" v-for="(metar, key) in meteorology.alternate.metar">{{ metar }}</p>
+            <p v-bind:key="key + '-metar-alt'" v-for="(metar, key) in meteorology.alternate.metar">{{ metar }}</p>
             <hr>
             <h6>TAF</h6>
-            <p v-bind:key="key" v-for="(taf, key) in meteorology.alternate.taf">{{ taf }}</p>
+            <p v-bind:key="key + '-taf-alt'" v-for="(taf, key) in meteorology.alternate.taf">{{ taf }}</p>
             <p class='text-right'>Esta aba é atualizada a cada 10 minutos. <b-link @click='weather' href="#">Atualizar agora</b-link></p>
           </b-tab>
 
@@ -169,7 +169,7 @@
 
           <!-- Notams -->
           <b-tab title="Notams">
-            <div v-bind:key="key*10" v-for="(notam, key) in alternate.notams">
+            <div v-bind:key="key+600" v-for="(notam, key) in alternate.notams">
               <h6>{{ notam.indent }}
                 <span class='text-muted font-weight-normal'>{{ notam.inicio }} à {{ notam.termino }}</span>
               </h6>
@@ -205,13 +205,13 @@
 
 <script>
 
-import { getAirport, getMeteorology } from '../../data/axios/briefing/airports'
+import { getAirport, getMeteorology } from '../../data/axios/briefing'
 
 export default {
   props: ['data'],
   data () {
     return {
-      progress: false,
+      progress: 0,
       loading: true,
       departure: { data: { icao: null, iata: null, city: null, elevation: null, lat: null, lng: null, name: null, runways: [], tz: null } },
       arrival: { data: { icao: null, iata: null, city: null, elevation: null, lat: null, lng: null, name: null, runways: [], tz: null } },
@@ -268,30 +268,44 @@ export default {
   },
   methods: {
     async startAirport () {
-      this.loading = true
-      this.departure = await getAirport(this.data.departure)
-      this.progress = 30
-      this.arrival = await getAirport(this.data.arrival)
-      this.progress = 60
-      this.alternate = await getAirport(this.data.alternate)
-      this.progress = 90
-      this.weather()
-      this.loading = false
+      try {
+        this.loading = true
+        this.departure = await getAirport(this.data.departure)
+        this.progress = 30
+        this.arrival = await getAirport(this.data.arrival)
+        this.progress = 60
+        this.alternate = await getAirport(this.data.alternate)
+        this.progress = 90
+        this.weather()
+        this.loading = false
+      } catch (e) {
+        this.$emit('error')
+        this.loading = false
+      }
     },
     async weather () {
-      this.meteorology.departure = await getMeteorology(this.data.departure)
-      this.meteorology.arrival = await getMeteorology(this.data.arrival)
-      this.meteorology.alternate = await getMeteorology(this.data.alternate)
-      setTimeout(this.weather, 600000)
+      try {
+        this.meteorology.departure = await getMeteorology(this.data.departure)
+        this.meteorology.arrival = await getMeteorology(this.data.arrival)
+        this.meteorology.alternate = await getMeteorology(this.data.alternate)
+        setTimeout(this.weather, 600000)
+      } catch (e) {
+        this.$emit('error')
+      }
     },
     async changeAlternate () {
-      this.loading = true
-      this.progress = 0
-      this.alternate = await getAirport(this.data.alternate)
-      this.progress = 75
-      this.meteorology.alternate = await getMeteorology(this.data.alternate)
-      this.progress = 90
-      this.loading = false
+      try {
+        this.loading = true
+        this.progress = 0
+        this.alternate = await getAirport(this.data.alternate)
+        this.progress = 75
+        this.meteorology.alternate = await getMeteorology(this.data.alternate)
+        this.progress = 90
+        this.loading = false
+      } catch (e) {
+        this.$emit('error')
+        this.loading = false
+      }
     },
     openModal (item) {
       this.modal = { title: `[${item.tipo}] - ${item.nome}`, link: item.link }

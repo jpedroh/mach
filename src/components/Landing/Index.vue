@@ -10,7 +10,7 @@
           <br>Para começar, preencha pelo menos um dos campos abaixo.</h4>
       </div>
       <!-- Form -->
-      <CcForm @noFlights="$refs.sb.snackbar('Ops, nenhuma rota encontrada', '#d9534f')" @error="$refs.sb.snackbar('Ops, um erro ocorreu', '#d9534f')"></CcForm>
+      <CcForm @noFlights="$refs.sb.snackbar('Ops, nenhuma rota encontrada', '#d9534f')"></CcForm>
       <!-- Snackbar -->
       <CcSnackbar ref='sb'></CcSnackbar>
     </div>

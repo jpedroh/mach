@@ -118,7 +118,7 @@
 
 <script>
 
-import { getEET } from '../../data/firebase/functions/getEET'
+import { getEET } from '../../data/axios/briefing'
 
 export default {
   props: ['data'],
@@ -140,6 +140,9 @@ export default {
       }
     },
     async getFOB () {
+      if (this.data.fob) {
+        return
+      }
       // EETs
       const altEET = await getEET(this.data.arrival, this.data.alternate)
       const rteEET = this.data.eet
@@ -161,6 +164,7 @@ export default {
         min = '00'
       }
       this.data.fob = hrs + min
+      return localStorage.setItem('flight', JSON.stringify(this.data))
     },
     hoursToMinutes (a) {
       return parseInt((a[0] + a[1]) * 60) + parseInt((a[2] + a[3]))

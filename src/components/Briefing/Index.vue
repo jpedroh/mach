@@ -3,7 +3,7 @@
     <CcNav/><br>
     <h2>Voo {{ data.callsign }} de {{ data.departure }} para {{ data.arrival }}</h2><hr><br>
     <CcData @chgAltn='changeAlternate()' @chgField="$refs.sb.snackbar('Campo alterado com sucesso')" :data='data'/>
-    <CcAirports ref='aptBriefing' :data='data'/><br>
+    <CcAirports @error="$refs.sb.snackbar('Erro na sessão Airport Briefings', '#d9534f')" ref='aptBriefing' :data='data'/><br>
     <CcExtras :data='data'/>
     <!-- Snackbar -->
     <CcSnackbar ref='sb'></CcSnackbar>

@@ -5,12 +5,13 @@ import BootstrapVue from 'bootstrap-vue'
 import App from './App'
 import router from './router'
 import VueAnalytics from 'vue-analytics'
+import { analyticsKey } from './config'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 Vue.use(BootstrapVue)
 Vue.use(VueAnalytics, {
-  id: 'UA-100697696-1',
+  id: analyticsKey,
   router
 })
 Vue.config.productionTip = false

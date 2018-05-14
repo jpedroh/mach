@@ -5,7 +5,7 @@
     <b-collapse is-nav id='nav_collapse'>
       <b-navbar-nav right>
         <b-nav-item class='link' href='mailto:joao.pedro.hsd@gmail.com'>Enviar Feedback</b-nav-item>
-        <b-nav-item class='link' target='_blank' href='https://github.com/jpedroh/mach'>Desenvolvedores</b-nav-item>
+        <b-nav-item class='link' v-on:click="$router.push('/developers')" href='javascript:void(0)'>API</b-nav-item>
       </b-navbar-nav>
     </b-collapse>
   </b-navbar>

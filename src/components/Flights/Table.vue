@@ -61,13 +61,12 @@
     <!-- Pré modal -->
     <b-modal v-model='modalBriefing' id="modalBriefing" :title="`Pre briefing - Voo ${flight.callsign}`">
       <p class=lead>Para começarmos:</p>
+
       <!-- Alternado -->
       <b-form-group id="alternate" label="Escolha um alternado" label-for="pob">
-        <b-form-select id='alternado-select' v-model="flight.alternate">
-          <option disabled selected :value='null'>Alternado</option>
-          <option v-for="(alternate, key) in alternates" v-bind:key='key' v-bind:value="alternates">{{ alternate }}</option>
-        </b-form-select>
+        <b-form-select id='alternado-select' :options="this.alternates" v-model="flight.alternate"/>
       </b-form-group>
+
       <!-- POB -->
       <b-form-group id="pob" label="Insira um POB" label-for="pob">
         <b-form-input @keyup.enter.native='startBriefing' type='number' id="pob" v-model="flight.pob"></b-form-input>
@@ -88,13 +87,12 @@
 
 <script>
 
-import { getAlternates } from '../../data/firebase/functions/getAlternates'
+import { getAlternates } from '../../data/axios/flights'
 import FileSaver from 'file-saver'
 
 export default {
   data () {
     return {
-      alternate: null,
       flights: JSON.parse(localStorage.getItem('flights')),
       flight: { },
       alternates: [],
@@ -150,10 +148,13 @@ export default {
       this.modalBriefing = false
     },
     async getAlternate () {
-      this.alternates = await getAlternates(this.flight.arrival)
+      try {
+        this.alternates = await getAlternates(this.flight.arrival)
+      } catch (e) {
+        this.$emit('noAlternate')
+      }
     },
     startBriefing () {
-      this.flight.alternate = document.getElementById('alternado-select').options[document.getElementById('alternado-select').selectedIndex].text
       localStorage.setItem('flight', JSON.stringify(this.flight))
       this.$router.push('/briefing')
     }

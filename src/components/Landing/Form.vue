@@ -8,6 +8,22 @@
     <b-form-group>
       <b-form-input @keyup.enter.native='getFlights' style='padding:15px' size='lg' v-model='query.arrival' type='text' placeholder='Chegada (Ex.: SBGL)'></b-form-input>
     </b-form-group>
+    <!-- Company -->
+    <b-form-group>
+      <b-form-select size='lg' style='padding:15px;height:60px' v-model="query.company" class="mb-3">
+        <option :value="null">Companhia (Ex.: GOL)</option>
+        <option value="AZU">AZUL</option>
+        <option value="GLO">GOL</option>
+        <option value="LAP">LINHAS AÉREAS PARAGUAIAS</option>
+        <option value="MAP">MAP</option>
+        <option value="MWM">MODERN LOGISTICS</option>
+        <option value="ONE">AVIANCA</option>
+        <option value="PTB">PASSAREDO</option>
+        <option value="SID">SIDERAL</option>
+        <option value="TAM">LATAM</option>
+        <option value="TTL">TOTAL</option>
+      </b-form-select>
+    </b-form-group>
     <!-- Start button -->
     <b-row>
       <b-col>
@@ -19,29 +35,33 @@
 
 <script>
 
-import { getFlightsDepArr, getFlightsDep, getFlightsArr } from '../../data/firebase/functions/getFlights'
+import axios from 'axios'
 
 export default {
   data () {
     return {
-      query: { departure: null, arrival: null }
+      query: { departure: null, arrival: null, company: null }
     }
   },
   methods: {
-    async getFlights () {
-      let flights = []
-      if (this.query.departure && this.query.arrival) {
-        flights = await getFlightsDepArr(this.query).catch(() => this.$emit('error'))
-      } else if (this.query.departure && !this.query.arrival) {
-        flights = await getFlightsDep(this.query).catch(() => this.$emit('error'))
-      } else if (this.query.arrival && !this.query.departure) {
-        flights = await getFlightsArr(this.query).catch(() => this.$emit('error'))
-      }
-      if (flights.length === 0) {
-        return this.$emit('noFlights')
-      }
-      localStorage.setItem('flights', JSON.stringify(flights))
-      return this.$router.push('/')
+    getFlights () {
+      const query = this.query
+      Object.keys(query).forEach((key) => {
+        if (query[key] !== null) {
+          query[key] = query[key].toUpperCase()
+        }
+        query[key] == null && delete query[key]
+      })
+      axios.get(`https://us-central1-mach-app.cloudfunctions.net/api/flights`, {
+        params: query
+      }).then(data => {
+        localStorage.setItem('flights', JSON.stringify(data.data))
+        this.$router.push('/')
+      })
+      .catch(err => {
+        this.$emit('noFlights', err)
+        this.query = { departure: null, arrival: null, company: null }
+      })
     }
   }
 }
