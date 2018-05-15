@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 export function getAirport (apt) {
-  return axios.get(`https://us-central1-mach-app.cloudfunctions.net/getAirport?apt=${apt}`)
+  return axios.get(`https://us-central1-mach-app.cloudfunctions.net/api/airports/${apt}`)
     .then(data => data.data)
 }
 
