@@ -7,6 +7,9 @@
         <b-button block outlined variant=outline-primary size=lg @click="fplIvao">Gerar plano de voo da IVAO</b-button>
       </b-col>
       <b-col>
+        <b-button target="_blank" :href="`https://cert.vatsim.net/fp/file.php?2=${data.callsign}&3=${data.aircraft}&4=${data.speed}&5=${data.departure}&6=${data.eobt}&7=${data.fl}&8=${data.route}&9=${data.arrival}&10a=${data.eet.substr(0,2)}&10b=${data.eet.substr(2,2)}&11=${data.rmk}&12a=${data.fob.substr(0,2)}&12b=${data.fob.substr(2,2)}&13=${data.alternate}`" block outlined variant=outline-primary size=lg>Gerar plano de voo da VATSIM</b-button>
+      </b-col>
+      <b-col>
         <b-button block outlined variant=outline-primary size=lg :href="'https://skyvector.com/?fpl=' + data.speed +'F' + data.fl + ' ' + data.departure + ' ' + data.route + ' ' + data.arrival"
           target='_blank'>Ver essa rota no SkyVector</b-button>
       </b-col>
