@@ -5,7 +5,8 @@ import BootstrapVue from 'bootstrap-vue'
 import App from './App'
 import router from './router'
 import VueAnalytics from 'vue-analytics'
-import { analyticsKey } from './config'
+import * as VueGoogleMaps from 'vue2-google-maps'
+import { analyticsKey, mapsKey } from './config'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
@@ -13,6 +14,11 @@ Vue.use(BootstrapVue)
 Vue.use(VueAnalytics, {
   id: analyticsKey,
   router
+})
+Vue.use(VueGoogleMaps, {
+  load: {
+    key: mapsKey
+  }
 })
 Vue.config.productionTip = false
 

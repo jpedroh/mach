@@ -79,7 +79,7 @@
       <!-- Rota -->
       <b-col>
         <b-form-group id="rota" label="Rota" style='font-weight:500' label-for="rota">
-          <b-form-textarea v-model.trim="data.route" :rows="3" @keyup.enter.native='change()'></b-form-textarea>
+          <b-form-textarea v-model.trim="data.route" :rows="3" @keyup.enter.native='change("route")'></b-form-textarea>
         </b-form-group>
       </b-col>
     </b-row>
@@ -129,6 +129,8 @@ export default {
     change (field) {
       localStorage.setItem('flight', JSON.stringify(this.data))
       switch (field) {
+        case 'route':
+          return this.$emit('chgRoute')
         case 'alt':
           this.$emit('chgAltn')
           return this.getFOB()

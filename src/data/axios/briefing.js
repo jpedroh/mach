@@ -1,8 +1,31 @@
 import axios from 'axios'
 
+export function getRoute ({departure, arrival, route}) {
+  if (localStorage.sita) {
+    return JSON.parse(localStorage.sita)
+  }
+  return axios.get(`http://localhost:5000/mach-app/us-central1/api/sita`, {
+    params: {
+      departure: departure,
+      arrival: arrival,
+      route: route
+    }
+  })
+  .then(data => {
+    localStorage.sita = JSON.stringify(data.data)
+    return data.data
+  })
+}
+
 export function getAirport (apt) {
+  if (localStorage[apt]) {
+    return JSON.parse(localStorage[apt])
+  }
   return axios.get(`https://us-central1-mach-app.cloudfunctions.net/api/airports/${apt}`)
-    .then(data => data.data)
+    .then(data => {
+      localStorage[apt] = JSON.stringify(data.data)
+      return data.data
+    })
 }
 
 export async function getMeteorology (apt) {

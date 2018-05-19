@@ -2,8 +2,9 @@
   <b-container fluid>
     <CcNav/><br>
     <h2>Voo {{ data.callsign }} de {{ data.departure }} para {{ data.arrival }}</h2><hr><br>
-    <CcData @chgAltn='changeAlternate()' @chgField="$refs.sb.snackbar('Campo alterado com sucesso')" :data='data'/>
+    <CcData @chgRoute='$refs.map.startSita()' @chgAltn='changeAlternate()' @chgField="$refs.sb.snackbar('Campo alterado com sucesso')" :data='data'/>
     <CcAirports @error="$refs.sb.snackbar('Erro na sessão Airport Briefings', '#d9534f')" ref='aptBriefing' :data='data'/><br>
+    <!-- <CcMap @error="$refs.sb.snackbar('Erro na sessão Mapa de Voo', '#d9534f')" ref='map' :data='data'/> -->
     <CcExtras :data='data'/>
     <!-- Snackbar -->
     <CcSnackbar ref='sb'></CcSnackbar>
@@ -16,6 +17,7 @@
 import CcNav from './Nav'
 import CcData from './Data'
 import CcExtras from './Extras'
+// import CcMap from './Map'
 import CcAirports from './Airports'
 import CcFooter from '../Common/Footer'
 import CcSnackbar from '../Common/Snackbar'
@@ -31,6 +33,7 @@ export default {
     CcAirports,
     CcExtras,
     CcNav,
+    // CcMap,
     CcSnackbar,
     CcFooter
   },
