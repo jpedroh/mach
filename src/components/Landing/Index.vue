@@ -36,7 +36,7 @@ export default {
 <style scoped>
 
 .landing {
-  background: #3c3d97 url('../../assets/background.jpg') repeat;
+  background: #3c3d97 url('/../../assets/background.jpg') repeat;
   height: 100vh;
   display:block;
   color: #fff
