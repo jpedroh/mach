@@ -34,6 +34,12 @@
               <b>EQPT</b> {{ row.item.eqpt }}
             </b-col>
           </b-row>
+          <!-- Periodicidade -->
+          <b-row class="mb-2">
+            <b-col>
+              <b>PERIODICIDADE</b> {{ printDays(row.item.days) }}
+            </b-col>
+          </b-row>
           <!-- Rota -->
           <b-row class="mb-2">
             <b-col>
@@ -153,6 +159,12 @@ export default {
       } catch (e) {
         this.$emit('noAlternate')
       }
+    },
+    printDays (days) {
+      if (days === '1234567') {
+        return 'DIÁRIO'
+      }
+      return days.replace(/1/, 'DOM').replace(/2/, 'SEG').replace(/3/, 'TER').replace(/4/, 'QUA').replace(/5/, 'QUI').replace(/6/, 'SEX').replace(/7/, 'SAB').replace(/0/g, '').match(/.{1,3}/g).join('-')
     },
     startBriefing () {
       localStorage.setItem('flight', JSON.stringify(this.flight))

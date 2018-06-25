@@ -15,3 +15,8 @@ Changelog do projeto, atualizado a partir da versão 3.0
 - Correções de alguns bugs
 - Inserido geração de plano de voo para a Vatsim.
 - Corrigido bug no config do build do webpack.
+
+## [3.3.0] - 2018-06-25
+- Agora o sistema mostra apenas voos em vigor, ou seja, apenas aqueles dentro do intervalo beginDate e endDate da API.
+- Inserida a periodicidade de cada voo na sessão *Mais detalhes*.
+- Inseridos alguns cosméticos, como o carregando na tela inicial.

@@ -1,12 +1,12 @@
 <template>
-  <b-form>
+  <b-form @submit="getFlights()">
     <!-- Departure -->
     <b-form-group>
-      <b-form-input @keyup.enter.native='getFlights' style='padding:15px' size='lg' v-model='query.departure' type='text' placeholder='Partida (Ex.: SBGR)'></b-form-input>
+      <b-form-input style='padding:15px' size='lg' v-model='query.departure' type='text' placeholder='Partida (Ex.: SBGR)'></b-form-input>
     </b-form-group>
     <!-- Arrival -->
     <b-form-group>
-      <b-form-input @keyup.enter.native='getFlights' style='padding:15px' size='lg' v-model='query.arrival' type='text' placeholder='Chegada (Ex.: SBGL)'></b-form-input>
+      <b-form-input style='padding:15px' size='lg' v-model='query.arrival' type='text' placeholder='Chegada (Ex.: SBGL)'></b-form-input>
     </b-form-group>
     <!-- Company -->
     <b-form-group>
@@ -27,7 +27,10 @@
     <!-- Start button -->
     <b-row>
       <b-col>
-        <b-button size='lg' block @click='getFlights' variant='primary'>Começar</b-button>
+        <b-button type='submit' size='lg' block variant='primary'>
+          <span v-if="!loading">Começar</span>
+          <Spinner v-if="loading"/>
+        </b-button>
       </b-col>
     </b-row>
   </b-form>
@@ -36,30 +39,47 @@
 <script>
 
 import axios from 'axios'
+import moment from 'moment'
+import Spinner from 'vue-simple-spinner'
 
 export default {
+  components: {
+    Spinner
+  },
   data () {
     return {
-      query: { departure: null, arrival: null, company: null }
+      query: { departure: null, arrival: null, company: null },
+      loading: false
     }
   },
   methods: {
     getFlights () {
-      const query = this.query
-      Object.keys(query).forEach((key) => {
-        if (query[key] !== null) {
-          query[key] = query[key].toUpperCase()
+      const query = {}
+      this.loading = true
+      Object.keys(this.query).forEach((key) => {
+        if (this.query[key] !== null) {
+          query[key] = this.query[key].toUpperCase()
         }
-        query[key] == null && delete query[key]
       })
       axios.get(`https://us-central1-mach-app.cloudfunctions.net/api/flights`, {
         params: query
-      }).then(data => {
-        localStorage.setItem('flights', JSON.stringify(data.data))
+      })
+      .then(({data}) => {
+        const flights = data.filter(value => {
+          const today = moment()
+          const beginDate = moment(value.beginDate)
+          if (value.endDate == null) {
+            return beginDate.isBefore(today)
+          }
+          const endDate = moment(value.endDate)
+          return beginDate.isBefore(today) && endDate.isAfter(today)
+        })
+        localStorage.setItem('flights', JSON.stringify(flights))
         this.$router.push('/')
       })
       .catch(err => {
         this.$emit('noFlights', err)
+        this.loading = false
         this.query = { departure: null, arrival: null, company: null }
       })
     }
