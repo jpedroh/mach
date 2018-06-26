@@ -29,8 +29,8 @@
     <li class='lead'><b>rules: </b>Regras de voo (ICAO)</li>
     <li class='lead'><b>fl: </b>Nível de voo</li>
     <li class='lead'><b>eobt: </b>Horário estimado de calçoes-fora (EOBT)</li>
-    <li class='lead'><b>beginDate: </b>Início do voo no RPL</li>
-    <li class='lead'><b>endDate: </b>Data de término do voo no RPL (null em caso de UFN)
+    <li class='lead'><b>beginDate: </b>Início do voo no RPL em ISO8601</li>
+    <li class='lead'><b>endDate: </b>Data de término do voo no RPL em ISO8601 (null em caso de UFN)
     <li class='lead'><b>route: </b>Rota planejada para o voo</li>
     <li class='lead'><b>rmk: </b>Campo RMK (ICAO)</li>
   </ul><br>

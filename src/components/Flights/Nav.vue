@@ -6,7 +6,7 @@
       <b-navbar-nav right>
         <b-nav-item class='link' @click="logout" href='javascript:void(0)'>Nova Pesquisa</b-nav-item>
         <b-nav-item class='link' @click="$router.push('/briefing')">Briefing</b-nav-item>
-        <b-nav-item class='link' href='mailto:joao.pedro.hsd@gmail.com'>Enviar Feedback</b-nav-item>
+        <b-nav-item class='link' href='mailto:joao.pedro.hsd@gmail.com'>Enviar Feedback/Reportar Bug</b-nav-item>
         <b-nav-item class='link' target='_blank' href='https://github.com/jpedroh/mach'>Ver o código no GitHub</b-nav-item>
       </b-navbar-nav>
     </b-collapse>

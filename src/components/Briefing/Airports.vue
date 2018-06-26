@@ -2,33 +2,30 @@
   <div>
     <h4>Airports Briefings</h4>
     <hr>
-    <b-progress :max="100" class="mb-3" v-if="loading">
-      <b-progress-bar :value="progress" label="Aguarde, carregando" />
-    </b-progress>
 <b-card no-body>
   <b-tabs pills card>
     <!-- Departure tab -->
-    <b-tab :title="this.data.departure" active>
+    <b-tab :title="airports.departure.data.icao" active>
       <b-card no-body>
         <b-tabs pills card vertical>
           <!-- Airport Data -->
           <b-tab title="Dados" active>
-            <h5>{{ departure.data.icao }} - {{ departure.data.iata }} - {{ departure.data.name }}</h5>
-            <p class='lead'>{{ departure.data.city }} - {{ departure.data.city }}</p>
+            <h5>{{ airports.departure.data.icao }} - {{ airports.departure.data.iata }} - {{ airports.departure.data.name }}</h5>
+            <p class='lead'>{{ airports.departure.data.city }} - {{ airports.departure.data.city }}</p>
             <br>
             <h6>Pistas</h6>
-            <b-table striped hover :fields="runwayFields" :items="departure.data.runways">
+            <b-table striped hover :fields="runwayFields" :items="airports.departure.data.runways">
             </b-table>
           </b-tab>
 
           <!-- Airport Meteorology -->
           <b-tab title="Meteorologia">
             <h6>METAR</h6>
-            <p v-bind:key="key + '-metar-dep'" v-for="(metar, key) in meteorology.departure.metar">{{ metar }}</p>
+            <p v-bind:key="key + '-metar-dep'" v-for="(metar, key) in weathers.departure.metar">{{ metar }}</p>
             <hr>
             <h6>TAF</h6>
-            <p v-bind:key="key + '-taf-dep'" v-for="(taf, key) in meteorology.departure.taf">{{ taf }}</p>
-            <p class='text-right'>Esta aba é atualizada a cada 10 minutos. <b-link @click='weather' href="#">Atualizar agora</b-link></p>
+            <p v-bind:key="key + '-taf-dep'" v-for="(taf, key) in weathers.departure.taf">{{ taf }}</p>
+            <p class='text-right'>Esta aba é atualizada a cada 10 minutos. <b-link @click='refreshWeatherNow' href="#">Atualizar agora</b-link></p>
           </b-tab>
 
           <!-- Cartas -->
@@ -39,7 +36,7 @@
               </b-col>
             </b-row>
             <br>
-            <b-table :filter="filter.departure" striped hover :fields="chartsFields" :items="departure.charts">
+            <b-table :filter="filter.departure" striped hover :fields="chartsFields" :items="airports.departure.charts">
               <template slot="link" slot-scope="data">
                 <a v-on:click="openModal(data.item)" href='javascript:void(0)'>
                   <i class="fa fa-search" aria-hidden="true"></i> Visualizar</a> |
@@ -51,7 +48,7 @@
 
           <!-- Notams -->
           <b-tab title="Notams">
-            <div v-bind:key="key+100" v-for="(notam, key) in departure.notams">
+            <div v-bind:key="key+100" v-for="(notam, key) in airports.departure.notams">
               <h6>{{ notam.indent }}
                 <span class='text-muted font-weight-normal'>{{ notam.inicio }} à {{ notam.termino }}</span>
               </h6>
@@ -67,27 +64,27 @@
     </b-tab>
 
     <!-- Arrival tab -->
-    <b-tab :title="this.data.arrival" active>
+    <b-tab :title="airports.arrival.data.icao" active>
       <b-card no-body>
         <b-tabs pills card vertical>
           <!-- Airport Data -->
           <b-tab title="Dados" active>
-            <h5>{{ arrival.data.icao }} - {{ arrival.data.iata }} - {{ arrival.data.name }}</h5>
-            <p class='lead'>{{ arrival.data.city }} - {{ arrival.data.city }}</p>
+            <h5>{{ airports.arrival.data.icao }} - {{ airports.arrival.data.iata }} - {{ airports.arrival.data.name }}</h5>
+            <p class='lead'>{{ airports.arrival.data.city }} - {{ airports.arrival.data.city }}</p>
             <br>
             <h6>Pistas</h6>
-            <b-table striped hover :fields="runwayFields" :items="arrival.data.runways">
+            <b-table striped hover :fields="runwayFields" :items="airports.arrival.data.runways">
             </b-table>
           </b-tab>
 
           <!-- Airport Meteorology -->
           <b-tab title="Meteorologia">
             <h6>METAR</h6>
-            <p v-bind:key="key + '-metar-arr'" v-for="(metar, key) in meteorology.arrival.metar">{{ metar }}</p>
+            <p v-bind:key="key + '-metar-arr'" v-for="(metar, key) in weathers.arrival.metar">{{ metar }}</p>
             <hr>
             <h6>TAF</h6>
-            <p v-bind:key="key + '-taf-arr'" v-for="(taf, key) in meteorology.arrival.taf">{{ taf }}</p>
-            <p class='text-right'>Esta aba é atualizada a cada 10 minutos. <b-link @click='weather' href="#">Atualizar agora</b-link></p>
+            <p v-bind:key="key + '-taf-arr'" v-for="(taf, key) in weathers.arrival.taf">{{ taf }}</p>
+            <p class='text-right'>Esta aba é atualizada a cada 10 minutos. <b-link @click='refreshWeatherNow' href="#">Atualizar agora</b-link></p>
           </b-tab>
 
           <!-- Cartas -->
@@ -98,7 +95,7 @@
               </b-col>
             </b-row>
             <br>
-            <b-table :filter="filter.arrival" striped hover :fields="chartsFields" :items="arrival.charts">
+            <b-table :filter="filter.arrival" striped hover :fields="chartsFields" :items="airports.arrival.charts">
               <template slot="link" slot-scope="data">
                 <a v-on:click="openModal(data.item)" href='javascript:void(0)'>
                   <i class="fa fa-search" aria-hidden="true"></i> Visualizar</a> |
@@ -110,7 +107,7 @@
 
           <!-- Notams -->
           <b-tab title="Notams">
-            <div v-bind:key="key+300" v-for="(notam, key) in arrival.notams">
+            <div v-bind:key="key+300" v-for="(notam, key) in airports.arrival.notams">
               <h6>{{ notam.indent }}
                 <span class='text-muted font-weight-normal'>{{ notam.inicio }} à {{ notam.termino }}</span>
               </h6>
@@ -126,27 +123,27 @@
     </b-tab>
 
     <!-- Alternate tab -->
-    <b-tab :title="this.data.alternate" active>
+    <b-tab :title="airports.alternate.data.icao" active>
       <b-card no-body>
         <b-tabs pills card vertical>
           <!-- Airport Data -->
           <b-tab title="Dados" active>
-            <h5>{{ alternate.data.icao }} - {{ alternate.data.iata }} - {{ alternate.data.name }}</h5>
-            <p class='lead'>{{ alternate.data.city }} - {{ alternate.data.city }}</p>
+            <h5>{{ airports.alternate.data.icao }} - {{ airports.alternate.data.iata }} - {{ airports.alternate.data.name }}</h5>
+            <p class='lead'>{{ airports.alternate.data.city }} - {{ airports.alternate.data.city }}</p>
             <br>
             <h6>Pistas</h6>
-            <b-table striped hover :fields="runwayFields" :items="alternate.data.runways">
+            <b-table striped hover :fields="runwayFields" :items="airports.alternate.data.runways">
             </b-table>
           </b-tab>
 
           <!-- Airport Meteorology -->
           <b-tab title="Meteorologia">
             <h6>METAR</h6>
-            <p v-bind:key="key + '-metar-alt'" v-for="(metar, key) in meteorology.alternate.metar">{{ metar }}</p>
+            <p v-bind:key="key + '-metar-alt'" v-for="(metar, key) in weathers.alternate.metar">{{ metar }}</p>
             <hr>
             <h6>TAF</h6>
-            <p v-bind:key="key + '-taf-alt'" v-for="(taf, key) in meteorology.alternate.taf">{{ taf }}</p>
-            <p class='text-right'>Esta aba é atualizada a cada 10 minutos. <b-link @click='weather' href="#">Atualizar agora</b-link></p>
+            <p v-bind:key="key + '-taf-alt'" v-for="(taf, key) in weathers.alternate.taf">{{ taf }}</p>
+            <p class='text-right'>Esta aba é atualizada a cada 10 minutos. <b-link @click='refreshWeatherNow' href="#">Atualizar agora</b-link></p>
           </b-tab>
 
           <!-- Cartas -->
@@ -157,7 +154,7 @@
               </b-col>
             </b-row>
             <br>
-            <b-table :filter="filter.alternate" striped hover :fields="chartsFields" :items="alternate.charts">
+            <b-table :filter="filter.alternate" striped hover :fields="chartsFields" :items="airports.alternate.charts">
               <template slot="link" slot-scope="data">
                 <a v-on:click="openModal(data.item)" href='javascript:void(0)'>
                   <i class="fa fa-search" aria-hidden="true"></i> Visualizar</a> |
@@ -169,7 +166,7 @@
 
           <!-- Notams -->
           <b-tab title="Notams">
-            <div v-bind:key="key+600" v-for="(notam, key) in alternate.notams">
+            <div v-bind:key="key+600" v-for="(notam, key) in airports.alternate.notams">
               <h6>{{ notam.indent }}
                 <span class='text-muted font-weight-normal'>{{ notam.inicio }} à {{ notam.termino }}</span>
               </h6>
@@ -183,6 +180,7 @@
         </b-tabs>
       </b-card>
     </b-tab>
+
 
   </b-tabs>
 </b-card>
@@ -199,26 +197,28 @@
         </b-col>
       </b-row>
     </b-modal>
-
+    <notifications group="error" position="bottom"/>
   </div>
 </template>
 
 <script>
 
-import { getAirport, getMeteorology } from '../../data/axios/briefing'
-
 export default {
-  props: ['data'],
+  mounted () {
+    this.refreshWeather()
+  },
+  computed: {
+    airports () {
+      return this.$store.getters.airports
+    },
+    weathers () {
+      return this.$store.getters.weathers
+    }
+  },
   data () {
     return {
-      progress: 0,
-      loading: true,
-      departure: { data: { icao: null, iata: null, city: null, elevation: null, lat: null, lng: null, name: null, runways: [], tz: null } },
-      arrival: { data: { icao: null, iata: null, city: null, elevation: null, lat: null, lng: null, name: null, runways: [], tz: null } },
-      alternate: { data: { icao: null, iata: null, city: null, elevation: null, lat: null, lng: null, name: null, runways: [], tz: null } },
       filter: {},
-      modal: {},
-      meteorology: { departure: {metar: null, taf: null}, arrival: {metar: null, taf: null}, alternate: {metar: null, taf: null} },
+      modal: { link: null, title: null },
       chartsFields: [
         {
           key: 'tipo',
@@ -267,45 +267,36 @@ export default {
     }
   },
   methods: {
-    async startAirport () {
-      try {
-        this.loading = true
-        this.departure = await getAirport(this.data.departure)
-        this.progress = 30
-        this.arrival = await getAirport(this.data.arrival)
-        this.progress = 60
-        this.alternate = await getAirport(this.data.alternate)
-        this.progress = 90
-        this.weather()
-        this.loading = false
-      } catch (e) {
-        this.$emit('error')
-        this.loading = false
-      }
+    refreshWeather () {
+      this.$store.dispatch('refreshWheater', this.airports)
+        .then(() => {
+          this.$notify({
+            group: 'error',
+            type: 'success',
+            title: 'Tudo pronto',
+            text: 'Meteorologia dos aeroportos atualizadas.',
+            classes: 'vue-notification notification'
+          })
+        })
+      setTimeout(this.refreshWeather, 600000)
     },
-    async weather () {
-      try {
-        this.meteorology.departure = await getMeteorology(this.data.departure)
-        this.meteorology.arrival = await getMeteorology(this.data.arrival)
-        this.meteorology.alternate = await getMeteorology(this.data.alternate)
-        setTimeout(this.weather, 600000)
-      } catch (e) {
-        this.$emit('error')
-      }
-    },
-    async changeAlternate () {
-      try {
-        this.loading = true
-        this.progress = 0
-        this.alternate = await getAirport(this.data.alternate)
-        this.progress = 75
-        this.meteorology.alternate = await getMeteorology(this.data.alternate)
-        this.progress = 90
-        this.loading = false
-      } catch (e) {
-        this.$emit('error')
-        this.loading = false
-      }
+    refreshWeatherNow () {
+      this.$notify({
+        group: 'error',
+        type: 'info',
+        title: 'Aguarde',
+        text: 'Atualizando a meteorologia dos aeroportos agora.',
+        classes: 'vue-notification notification'
+      })
+      this.$store.dispatch('refreshWheater', this.airports)
+        .then(() => {
+          this.$notify({
+            group: 'error',
+            type: 'success',
+            title: 'Tudo pronto',
+            classes: 'vue-notification notification'
+          })
+        })
     },
     openModal (item) {
       this.modal = { title: `[${item.tipo}] - ${item.nome}`, link: item.link }
@@ -315,9 +306,6 @@ export default {
       this.modal = { title: null, link: null }
       this.$refs.chartsModal.hide()
     }
-  },
-  mounted () {
-    this.startAirport()
   }
 }
 </script>

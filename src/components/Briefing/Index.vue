@@ -1,14 +1,11 @@
 <template>
   <b-container fluid>
     <CcNav/><br>
-    <h2>Voo {{ data.callsign }} de {{ data.departure }} para {{ data.arrival }}</h2><hr><br>
-    <!-- @chgRoute='$refs.map.startSita()'  -->
-    <CcData @chgAltn='changeAlternate()' @chgField="$refs.sb.snackbar('Campo alterado com sucesso')" :data='data'/>
-    <CcAirports @error="$refs.sb.snackbar('Erro na sessão Airport Briefings', '#d9534f')" ref='aptBriefing' :data='data'/><br>
-    <CcMap @error="$refs.sb.snackbar('Erro na sessão Mapa de Voo', '#d9534f')" ref='map' :data='data'/>
-    <CcExtras :data='data'/>
-    <!-- Snackbar -->
-    <CcSnackbar ref='sb'></CcSnackbar>
+    <h2>Voo {{ flight.callsign }} de {{ flight.departure }} para {{ flight.arrival }}</h2><hr><br>
+    <CcData/>
+    <CcAirports/><br>
+    <CcMap/>
+    <CcExtras/>
     <CcFooter/>
   </b-container>
 </template>
@@ -21,12 +18,11 @@ import CcExtras from './Extras'
 import CcMap from './Map'
 import CcAirports from './Airports'
 import CcFooter from '../Common/Footer'
-import CcSnackbar from '../Common/Snackbar'
 
 export default {
-  data () {
-    return {
-      data: JSON.parse(localStorage.getItem('flight'))
+  computed: {
+    flight () {
+      return this.$store.getters.flight
     }
   },
   components: {
@@ -35,19 +31,11 @@ export default {
     CcExtras,
     CcNav,
     CcMap,
-    CcSnackbar,
     CcFooter
   },
   mounted () {
-    if (localStorage.getItem('flight') === null || !localStorage.getItem('flight')) {
+    if (this.$store.getters.flightsTable.length === 0) {
       this.$router.push('/landing')
-    }
-  },
-  methods: {
-    changeAlternate () {
-      this.$refs.aptBriefing.changeAlternate()
-      this.$refs.aptBriefing.weather()
-      this.$refs.sb.snackbar('Campo alterado. Recalculando a autonomia.')
     }
   }
 }

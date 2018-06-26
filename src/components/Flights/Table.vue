@@ -37,7 +37,7 @@
           <!-- Periodicidade -->
           <b-row class="mb-2">
             <b-col>
-              <b>PERIODICIDADE</b> {{ printDays(row.item.days) }}
+              <b>PERIODICIDADE</b> {{ row.item.days }}
             </b-col>
           </b-row>
           <!-- Rota -->
@@ -57,7 +57,11 @@
             <b-col>
               <b-button size="sm" variant='danger' @click="row.toggleDetails">Fechar</b-button>
               <b-button size="sm" variant='primary' @click="fplIvao(row.item)">Plano de voo IVAO</b-button>
-              <b-button size="sm" variant='success' @click.stop="openModal(row.item)">Briefing da rota</b-button>
+              <b-button size="sm" variant='primary' target="_blank" :href="`https://cert.vatsim.net/fp/file.php?2=${row.item.callsign}&3=${row.item.aircraft}&4=${row.item.speed}&5=${row.item.departure}&6=${row.item.eobt}&7=${row.item.fl}&8=${row.item.route}&9=${row.item.arrival}&10a=${row.item.eet.substr(0,2)}&10b=${row.item.eet.substr(2,2)}&11=${row.item.rmk}`" >Plano de voo VATSIM</b-button>
+              <b-button size="sm" variant='success' @click.stop="openModal(row.item)">
+                <span v-if="!loading">Briefing da rota</span>
+                <Spinner :size="20" v-if="loading"/>
+              </b-button>
             </b-col>
           </b-row>
         </b-card>
@@ -70,38 +74,66 @@
 
       <!-- Alternado -->
       <b-form-group id="alternate" label="Escolha um alternado" label-for="pob">
-        <b-form-select id='alternado-select' :options="this.alternates" v-model="flight.alternate"/>
+        <b-form-select id='alternado-select' :options="this.alternates" v-model="alternate"/>
       </b-form-group>
 
       <!-- POB -->
-      <b-form-group id="pob" label="Insira um POB" label-for="pob">
-        <b-form-input @keyup.enter.native='startBriefing' type='number' id="pob" v-model="flight.pob"></b-form-input>
+      <b-form-group id="pob" label="Insira o POB" label-for="pob">
+        <b-form-input @keyup.enter.native='startBriefing' type='number' id="pob" placeholder="Insira o POB" v-model="pob"></b-form-input>
       </b-form-group>
       <div slot="modal-footer">
-        <b-btn size="sm" variant="secondary" @click="closeModal">
+        <b-btn size="sm" variant="secondary" @click="(modalBriefing = false)">
           Voltar
         </b-btn>
         <b-btn size="sm" variant="primary" @click="startBriefing">
-          Ir para o briefing
+          <span v-if="!loadingBriefing">Ir para o briefing</span>
+          <Spinner :size="20" v-if="loadingBriefing"/>
         </b-btn>
       </div>
     </b-modal>
 
+    <notifications group="error" position="bottom"/>
   </div>
 </template>
 
-
 <script>
 
-import { getAlternates } from '../../data/axios/flights'
 import FileSaver from 'file-saver'
+import Spinner from 'vue-simple-spinner'
 
 export default {
+  components: {
+    Spinner
+  },
+  computed: {
+    flights () {
+      return this.$store.getters.flightsTable
+    },
+    flight () {
+      return this.$store.getters.flight
+    },
+    alternate: {
+      get () {
+        return this.$store.getters.alternate
+      },
+      set (value) {
+        this.$store.commit('setAlternate', value)
+      }
+    },
+    pob: {
+      get () {
+        return this.$store.getters.pob
+      },
+      set (value) {
+        this.$store.commit('setPob', value)
+      }
+    }
+  },
   data () {
     return {
-      flights: JSON.parse(localStorage.getItem('flights')),
-      flight: { },
       alternates: [],
+      loading: false,
+      loadingBriefing: false,
       modalBriefing: false,
       columns: [
         {
@@ -145,30 +177,41 @@ export default {
       let blob = new Blob(['[FLIGHTPLAN]\r\nID=' + data.callsign + '\r\nRULES=' + data.rules + '\r\nFLIGHTTYPE=S\r\nNUMBER=1\r\nACTYPE=' + data.aircraft + '\r\nWAKECAT=' + data.wakeTurbulence + '\r\nEQUIPMENT=' + data.eqpt + '\r\nDEPICAO=' + data.departure + '\r\nSPEEDTYPE=N\r\nSPEED=' + data.speed.match(/\d+/)[0] + '\r\nLEVELTYPE=F\r\nLEVEL=' + data.fl + '\r\nROUTE=' + data.route + '\r\nDESTICAO=' + data.arrival + '\r\nEET=' + data.eet + '\r\nOTHER=' + data.rmk], {type: 'text/plain;charset=utf-8'})
       FileSaver.saveAs(blob, data.callsign + '.fpl')
     },
-    openModal (item) {
-      this.flight = item
-      this.getAlternate()
-      this.modalBriefing = true
-    },
-    closeModal () {
-      this.modalBriefing = false
-    },
-    async getAlternate () {
+    async openModal (item) {
       try {
-        this.alternates = await getAlternates(this.flight.arrival)
-      } catch (e) {
-        this.$emit('noAlternate')
+        this.loading = true
+        await this.$store.dispatch('flightModal', item)
+        this.alternates = [{ value: null, text: 'Escolha um alternado' }].concat(this.flight.alternates[1])
+        this.modalBriefing = true
+        this.loading = false
+      } catch (error) {
+        console.error(error)
+        this.$notify({
+          group: 'error',
+          type: 'error',
+          title: 'Ops!',
+          text: 'Um erro ocorreu.',
+          classes: 'vue-notification notification'
+        })
       }
-    },
-    printDays (days) {
-      if (days === '1234567') {
-        return 'DIÁRIO'
-      }
-      return days.replace(/1/, 'DOM').replace(/2/, 'SEG').replace(/3/, 'TER').replace(/4/, 'QUA').replace(/5/, 'QUI').replace(/6/, 'SEX').replace(/7/, 'SAB').replace(/0/g, '').match(/.{1,3}/g).join('-')
     },
     startBriefing () {
-      localStorage.setItem('flight', JSON.stringify(this.flight))
-      this.$router.push('/briefing')
+      this.loadingBriefing = true
+      this.$notify({
+        group: 'error',
+        type: 'info',
+        title: 'Aguarde um pouco',
+        text: 'Preparando o briefing do voo para você.',
+        classes: 'vue-notification notification'
+      })
+      this.$store.dispatch('calculateFob')
+        .then(fob => this.$store.dispatch('startAirports', this.flight))
+        .then(airports => this.$router.push('/briefing'))
+        .catch(error => {
+          this.loadingBriefing = false
+          console.error(error)
+          return this.$router.push('/briefing')
+        })
     }
   }
 }

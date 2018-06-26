@@ -11,3 +11,9 @@ export default {
 }
 
 </script>
+
+<style>
+.notification {
+  font-size:100% !important
+}
+</style>

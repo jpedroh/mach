@@ -2,7 +2,7 @@
   <b-container fluid class='landing'>
     <div class='vertical-center'>
       <!-- Nav -->
-      <CcNav class='nav'></CcNav>
+      <CcNav class='nav'/>
       <!-- Greetings -->
       <div>
         <h1 class='display-4'>Seja bem vindo ao mach</h1>
@@ -10,9 +10,7 @@
           <br>Para começar, preencha pelo menos um dos campos abaixo.</h4>
       </div>
       <!-- Form -->
-      <CcForm @noFlights="$refs.sb.snackbar('Ops, nenhuma rota encontrada', '#d9534f')"></CcForm>
-      <!-- Snackbar -->
-      <CcSnackbar ref='sb'></CcSnackbar>
+      <CcForm/>
     </div>
   </b-container>
 </template>
@@ -21,13 +19,11 @@
 
 import CcNav from './Nav'
 import CcForm from './Form'
-import CcSnackbar from '../Common/Snackbar'
 
 export default {
   components: {
     CcForm,
-    CcNav,
-    CcSnackbar
+    CcNav
   }
 }
 

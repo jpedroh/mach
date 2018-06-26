@@ -16,8 +16,6 @@
     </b-row>
 
     <GmapMap :center="mapCenter" :zoom="4" map-type-id="terrain" style="width: 100%; height: 550px">
-      <!-- Route -->
-      <GmapPolyline :path="sita"/>
       <!-- Flown Route -->
       <GmapPolyline :options='{visible:connected}' :path="flownRoute"/>
       <!-- Info window -->
@@ -42,11 +40,6 @@
       </GmapInfoWindow>
       <!-- Route Markers -->
       <GmapMarker :visible='connected' :rotation='90' @click='openTelemetry()' :position="airplane"/>
-      <!-- Route Markers -->
-      <GmapMarker :key=index v-for="(fix, index) in sita.slice(1, sita.length-2)" :position="fix" @click='openWindow(fix)'></GmapMarker>
-      <!-- Airports Markers -->
-      <GmapMarker :position="sita[0]" @click='openWindow(sita[0])'/>
-      <GmapMarker :position="sita[sita.length-1]" @click='openWindow(sita[sita.length-1])'/>
     </GmapMap><br>
     <b-alert show><b-badge variant="info">AVISO</b-badge> O Watt é um projeto experimental. Experimente a ferramenta e mande seu feedback. Para mais informações, acesse o repositório no <a href='https://github.com/jpedroh/watt' target="_blank">GitHub</a>.</b-alert>
   </div>
@@ -54,13 +47,10 @@
 
 
 <script>
-import { getRoute } from '../../data/axios/briefing'
 
 export default {
-  props: ['data'],
   data () {
     return {
-      sita: [],
       mapCenter: { lat: -15.7942287, lng: -47.8821658 },
       infoWindow: { lat: 0, lng: 0, fix: null },
       infoWindowOpened: false,
@@ -84,21 +74,9 @@ export default {
       this.telemetryWindowOpened = false
     }
   },
-  mounted () {
-    // this.startSita()
-  },
   methods: {
     centerAircraft () {
       this.mapCenter = this.airplane
-    },
-    async startSita () {
-      try {
-        this.sita = await getRoute(this.data)
-        this.mapCenter = { lat: (this.sita[0].lat + this.sita[this.sita.length - 1].lat) / 2, lng: (this.sita[0].lng + this.sita[this.sita.length - 1].lng) / 2 }
-      } catch (error) {
-        console.error(error)
-        this.$emit('error')
-      }
     },
     openTelemetry () {
       this.telemetryWindowOpened = true

@@ -22,7 +22,7 @@ export default {
     CcSnackbar
   },
   mounted () {
-    if (localStorage.getItem('flights') === null || !localStorage.getItem('flights')) {
+    if (this.$store.getters.flightsTable.length === 0) {
       this.$router.push('/landing')
     }
   }
