@@ -34,10 +34,16 @@
               <b>EQPT</b> {{ row.item.eqpt }}
             </b-col>
           </b-row>
-          <!-- Periodicidade -->
+          <!-- Inicio/Fim -->
           <b-row class="mb-2">
             <b-col>
               <b>PERIODICIDADE</b> {{ row.item.days }}
+            </b-col>
+            <b-col>
+              <b>INICIO DO VOO</b> {{ row.item.beginDate }}
+            </b-col>
+            <b-col>
+              <b>FINAL DO VOO</b> {{ row.item.endDate }}
             </b-col>
           </b-row>
           <!-- Rota -->

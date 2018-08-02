@@ -10,16 +10,9 @@ const mutations = {
     state.flights = data
       .map(value => {
         value.days = printDays(value.days)
+        value.beginDate = formatDate(value.beginDate)
+        value.endDate = value.endDate == null ? 'UFN' : formatDate(value.endDate)
         return value
-      })
-      .filter(value => {
-        const today = moment()
-        const beginDate = moment(value.beginDate)
-        if (value.endDate === null) {
-          return beginDate.isBefore(today)
-        }
-        const endDate = moment(value.endDate)
-        return beginDate.isBefore(today) && endDate.isAfter(today)
       })
   }
 }
@@ -55,4 +48,8 @@ function printDays (days) {
     return 'DIÁRIO'
   }
   return days.replace(/1/, 'DOM').replace(/2/, 'SEG').replace(/3/, 'TER').replace(/4/, 'QUA').replace(/5/, 'QUI').replace(/6/, 'SEX').replace(/7/, 'SAB').replace(/0/g, '').match(/.{3}/g).join('-')
+}
+
+function formatDate (date) {
+  return moment(date).format('DD/MM/YYYY')
 }

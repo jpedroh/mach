@@ -30,3 +30,6 @@ Changelog do projeto, atualizado a partir da versão 3.0
 - Vários improvements em UX. Notificações adicionadas em várias partes da aplicação.
 - Inserida integração com o VueX.
 - Alguns bugs corrigidos.
+
+## [3.5.0] - 2018-08-02
+- Removido apenas voos em vigor. Mostra todos os voos registrados, e mostra ao usuário a data de vigoração do voo.
