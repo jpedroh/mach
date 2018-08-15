@@ -62,6 +62,7 @@
           <b-row class='float-right mb-2'>
             <b-col>
               <b-button size="sm" variant='danger' @click="row.toggleDetails">Fechar</b-button>
+              <b-button size="sm" variant='primary' target="_blank" :href="`https://skyvector.com/?fpl=${row.item.speed}F${row.item.fl} ${row.item.departure} ${row.item.route} ${row.item.arrival}`">Ver no SkyVector</b-button>
               <b-button size="sm" variant='primary' @click="fplIvao(row.item)">Plano de voo IVAO</b-button>
               <b-button size="sm" variant='primary' target="_blank" :href="`https://cert.vatsim.net/fp/file.php?2=${row.item.callsign}&3=${row.item.aircraft}&4=${row.item.speed}&5=${row.item.departure}&6=${row.item.eobt}&7=${row.item.fl}&8=${row.item.route}&9=${row.item.arrival}&10a=${row.item.eet.substr(0,2)}&10b=${row.item.eet.substr(2,2)}&11=${row.item.rmk}`" >Plano de voo VATSIM</b-button>
               <b-button size="sm" variant='success' @click.stop="openModal(row.item)">

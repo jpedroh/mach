@@ -21,11 +21,6 @@ Changelog do projeto, atualizado a partir da versão 3.0
 - Inserida a periodicidade de cada voo na sessão *Mais detalhes*.
 - Inseridos alguns cosméticos, como o carregando na tela inicial.
 
-## [3.3.0] - 2018-06-25
-- Agora o sistema mostra apenas voos em vigor, ou seja, apenas aqueles dentro do intervalo beginDate e endDate da API.
-- Inserida a periodicidade de cada voo na sessão *Mais detalhes*.
-- Inseridos alguns cosméticos, como o carregando na tela inicial.
-
 ## [3.4.0] - 2018-06-26
 - Vários improvements em UX. Notificações adicionadas em várias partes da aplicação.
 - Inserida integração com o VueX.
@@ -33,3 +28,6 @@ Changelog do projeto, atualizado a partir da versão 3.0
 
 ## [3.5.0] - 2018-08-02
 - Removido apenas voos em vigor. Mostra todos os voos registrados, e mostra ao usuário a data de vigoração do voo.
+
+## [3.5.1] - 2018-08-15
+- Inserido link para ver voo no SkyVector direto da página principal.
