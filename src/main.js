@@ -10,8 +10,13 @@ import * as VueGoogleMaps from 'vue2-google-maps'
 import { analyticsKey, mapsKey } from './config'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
+library.add(faExternalLinkAlt)
 // Configs
+Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.use(VueSocketio, 'http://localhost:5050')
 Vue.use(Notifications)
 Vue.use(BootstrapVue)

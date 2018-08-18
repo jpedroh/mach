@@ -31,3 +31,6 @@ Changelog do projeto, atualizado a partir da versão 3.0
 
 ## [3.5.1] - 2018-08-15
 - Inserido link para ver voo no SkyVector direto da página principal.
+
+## [3.5.2] - 2018-08-17
+- Inserido link para abrir cartas em nova aba.

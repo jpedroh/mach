@@ -39,9 +39,13 @@
             <b-table :filter="filter.departure" striped hover :fields="chartsFields" :items="airports.departure.charts">
               <template slot="link" slot-scope="data">
                 <a v-on:click="openModal(data.item)" href='javascript:void(0)'>
-                  <i class="fa fa-search" aria-hidden="true"></i> Visualizar</a> |
-                <a v-bind:href="data.item.link">
-                  <i class="fa fa-download" aria-hidden="true"></i> Download</a>
+                  <i class="fa fa-search" aria-hidden="true"></i> Visualizar</a>
+                  <a target='_blank' v-bind:href="`https://docs.google.com/viewer?url=${data.item.link}`">
+                    <font-awesome-icon icon="external-link-alt" />
+                  </a>|
+                  <a v-bind:href="data.item.link">
+                    <i class="fa fa-download" aria-hidden="true"></i> Download
+                  </a>
               </template>
             </b-table>
           </b-tab>
@@ -98,9 +102,13 @@
             <b-table :filter="filter.arrival" striped hover :fields="chartsFields" :items="airports.arrival.charts">
               <template slot="link" slot-scope="data">
                 <a v-on:click="openModal(data.item)" href='javascript:void(0)'>
-                  <i class="fa fa-search" aria-hidden="true"></i> Visualizar</a> |
-                <a v-bind:href="data.item.link">
-                  <i class="fa fa-download" aria-hidden="true"></i> Download</a>
+                  <i class="fa fa-search" aria-hidden="true"></i> Visualizar</a>
+                  <a target='_blank' v-bind:href="`https://docs.google.com/viewer?url=${data.item.link}`">
+                    <font-awesome-icon icon="external-link-alt" />
+                  </a>|
+                  <a v-bind:href="data.item.link">
+                    <i class="fa fa-download" aria-hidden="true"></i> Download
+                  </a>
               </template>
             </b-table>
           </b-tab>
@@ -157,9 +165,13 @@
             <b-table :filter="filter.alternate" striped hover :fields="chartsFields" :items="airports.alternate.charts">
               <template slot="link" slot-scope="data">
                 <a v-on:click="openModal(data.item)" href='javascript:void(0)'>
-                  <i class="fa fa-search" aria-hidden="true"></i> Visualizar</a> |
-                <a v-bind:href="data.item.link">
-                  <i class="fa fa-download" aria-hidden="true"></i> Download</a>
+                  <i class="fa fa-search" aria-hidden="true"></i> Visualizar</a>
+                  <a target='_blank' v-bind:href="`https://docs.google.com/viewer?url=${data.item.link}`">
+                    <font-awesome-icon icon="external-link-alt" />
+                  </a>|
+                  <a v-bind:href="data.item.link">
+                    <i class="fa fa-download" aria-hidden="true"></i> Download
+                  </a>
               </template>
             </b-table>
           </b-tab>
