@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class='d-none d-lg-block'>
     <h4>Tracking em tempo real <b-badge variant="info">BETA</b-badge></h4>
     <hr>
     <p class='lead'>O Mach agora permite que você acompanhe seu voo em tempo real! Baixe a ferramenta de acompanhamento <a target='_blank' href='https://drive.google.com/open?id=1EAcU6rqzRXJR0wIryZ8U0sJEz5m4-aN-'>clicando aqui</a>, execute o arquivo e o sistema fará a conexão automaticamente. Não se preocupe, todo o processo é feito localmente e em nenhum momento seus dados estarão sendo enviados aos servidores do Mach.</p>

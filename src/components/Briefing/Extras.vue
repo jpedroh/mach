@@ -3,10 +3,10 @@
     <h4>Outros</h4>
     <hr>
     <b-row>
-      <b-col>
+      <b-col class='d-none d-lg-block'>
         <b-button block outlined variant=outline-primary size=lg @click="downloadIvaoFpl()">Gerar plano de voo da IVAO</b-button>
       </b-col>
-      <b-col>
+      <b-col class='d-none d-lg-block'>
         <b-button target="_blank" :href="`https://cert.vatsim.net/fp/file.php?2=${flight.callsign}&3=${flight.aircraft}&4=${flight.speed}&5=${flight.departure}&6=${flight.eobt}&7=${flight.fl}&8=${flight.route}&9=${flight.arrival}&10a=${flight.eet.substr(0,2)}&10b=${flight.eet.substr(2,2)}&11=${flight.rmk}&12a=${flight.fob.substr(0,2)}&12b=${flight.fob.substr(2,2)}&13=${flight.alternate}`" block outlined variant=outline-primary size=lg>Gerar plano de voo da VATSIM</b-button>
       </b-col>
       <b-col>

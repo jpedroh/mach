@@ -34,3 +34,6 @@ Changelog do projeto, atualizado a partir da versão 3.0
 
 ## [3.5.2] - 2018-08-17
 - Inserido link para abrir cartas em nova aba.
+
+## [3.6.0] - 2018-09-05
+- Área de Airport Briefings reformulada.

@@ -254,14 +254,14 @@ export default {
       })
       this.$store.commit('calculateFob')
       this.$store.dispatch('newAlternate', this.alternate)
-      .then((success) => {
-        this.$notify({
-          group: 'error',
-          type: 'success',
-          title: 'Tudo pronto!',
-          classes: 'vue-notification notification'
+        .then((success) => {
+          this.$notify({
+            group: 'error',
+            type: 'success',
+            title: 'Tudo pronto!',
+            classes: 'vue-notification notification'
+          })
         })
-      })
         .catch(error => {
           console.error(error)
           this.$notify({
