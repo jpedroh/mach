@@ -1,6 +1,7 @@
 import axios from 'axios'
 import moment from 'moment'
-import { getEET } from '../../axios/flight'
+import { fetchEET } from '../../axios/fetch-EET'
+import { environment } from '../../common/environment'
 
 const state = {
   flight: {
@@ -44,7 +45,7 @@ const mutations = {
     try {
       if (state.utils.altEET.alternate !== state.flight.alternate) {
         state.utils.altEET.alternate = state.flight.alternate
-        state.utils.altEET.time = await getEET(state.flight.arrival, state.flight.alternate)
+        state.utils.altEET.time = await fetchEET(state.flight.arrival, state.flight.alternate)
       }
       const altEET = moment(state.utils.altEET.time, 'HHmm')
       const altMinutes = (altEET.hour() * 60) + altEET.minute()
@@ -140,12 +141,12 @@ const actions = {
     if (context.state.flight.alternates[0] === data.arrival) {
       return
     }
-    return axios.get(`https://us-central1-mach-app.cloudfunctions.net/api/flights?departure=${data.arrival}`)
+    return axios.get(`${environment.api.BASE_URL}/flights?departure=${data.arrival}`)
       .then(({data}) => context.commit('setAlternates', [...new Set(data.sort(orderArray).map(element => element.arrival))].slice(0, 8)))
   },
   calculateFob: (context) => {
     if (context.state.utils.altEET.alternate !== context.state.flight.alternate) {
-      return getEET(context.state.flight.arrival, context.state.flight.alternate)
+      return fetchEET(context.state.flight.arrival, context.state.flight.alternate)
         .then(data => {
           context.commit('updateAlternateData', data)
           const altEET = moment(context.state.utils.altEET.time, 'HHmm')

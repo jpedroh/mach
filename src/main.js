@@ -1,18 +1,18 @@
-import Vue from 'vue'
-import BootstrapVue from 'bootstrap-vue'
-import App from './App'
-import store from './store'
-import router from './router'
-import VueAnalytics from 'vue-analytics'
-import VueSocketio from 'vue-socket.io'
-import Notifications from 'vue-notification'
-import * as VueGoogleMaps from 'vue2-google-maps'
-import { analyticsKey, mapsKey } from './config'
-import 'bootstrap/dist/css/bootstrap.min.css'
-import 'bootstrap-vue/dist/bootstrap-vue.css'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faExternalLinkAlt, faCalendarAlt, faDownload, faClock } from '@fortawesome/free-solid-svg-icons'
+import { faCalendarAlt, faClock, faDownload, faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import BootstrapVue from 'bootstrap-vue'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import Vue from 'vue'
+import VueAnalytics from 'vue-analytics'
+import Notifications from 'vue-notification'
+import VueSocketio from 'vue-socket.io'
+import * as VueGoogleMaps from 'vue2-google-maps'
+import App from './App'
+import { environment } from './common/environment'
+import router from './router'
+import store from './store'
 
 library.add(faExternalLinkAlt, faCalendarAlt, faDownload, faClock)
 // Configs
@@ -21,12 +21,12 @@ Vue.use(VueSocketio, 'http://localhost:5050')
 Vue.use(Notifications)
 Vue.use(BootstrapVue)
 Vue.use(VueAnalytics, {
-  id: analyticsKey,
+  id: environment.google.ANALYTICS_KEY,
   router
 })
 Vue.use(VueGoogleMaps, {
   load: {
-    key: mapsKey
+    key: environment.google.MAPS_KEY
   }
 })
 Vue.config.productionTip = false

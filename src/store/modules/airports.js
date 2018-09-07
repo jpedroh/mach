@@ -1,13 +1,17 @@
-import { fetchAirport } from '../../utils/fetch-airport'
-import { fetchMeteorology } from '../../utils/fetch-meteorology'
+import { fetchAirport } from '../../axios/fetch-airport'
+import { fetchMeteorology } from '../../axios/fetch-meteorology'
 
 const state = {
-  airports: []
+  airports: [],
+  briefing: false
 }
 
 const mutations = {
   setAirports: (state, payload) => {
     state.airports = payload
+  },
+  createBriefing: state => {
+    state.briefing = true
   },
   setAirportMeteorology: (state, payload) => {
     state.airports[0].meteorology = payload[0]
@@ -21,11 +25,13 @@ const mutations = {
 }
 
 const getters = {
-  airports: state => state.airports
+  airports: state => state.airports,
+  hasBriefing: state => state.briefing
 }
 
 const actions = {
   startAirports: (context, flight) => {
+    context.commit('createBriefing')
     return Promise.all([fetchAirport(flight.departure), fetchAirport(flight.arrival), fetchAirport(flight.alternate)])
       .then(payload => context.commit('setAirports', payload))
   },

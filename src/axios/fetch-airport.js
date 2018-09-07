@@ -1,7 +1,7 @@
 import Ais from 'aisweb-brasil'
-import { aisKey } from '../config'
+import { environment } from '../common/environment'
 
-const AisHandler = new Ais(aisKey)
+const AisHandler = new Ais(environment.aisweb.AISWEB_AUTH)
 
 export async function fetchAirport (airport) {
   const object = new Airport(airport)
@@ -31,10 +31,10 @@ export async function fetchAirport (airport) {
 
 export class Airport {
   icao
-  charts
-  notams
+  charts = []
+  notams = []
   rotaer
-  aip
+  aip = []
   meteorology
 
   constructor (icao) {

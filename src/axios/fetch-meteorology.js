@@ -1,7 +1,7 @@
 import Ais from 'aisweb-brasil'
-import { aisKey } from '../config'
+import { environment } from '../common/environment'
 
-const AisHandler = new Ais(aisKey)
+const AisHandler = new Ais(environment.aisweb.AISWEB_AUTH)
 
 export function fetchMeteorology (airport) {
   return AisHandler.getMeteorology(airport).then(data => data[0][0])

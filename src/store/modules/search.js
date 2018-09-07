@@ -1,5 +1,5 @@
-import axios from 'axios'
 import moment from 'moment'
+import { fetchFlights } from '../../axios/fetch-flights'
 
 const state = {
   flights: []
@@ -23,16 +23,8 @@ const getters = {
 
 const actions = {
   fetchFlights: (context, form) => {
-    const query = {}
-    Object.keys(form).forEach((key) => {
-      if (form[key] !== null) {
-        query[key] = form[key].toUpperCase()
-      }
-    })
-    return axios.get(`https://us-central1-mach-app.cloudfunctions.net/api/flights`, {
-      params: query
-    })
-    .then(({data}) => context.commit('fetchFlights', data))
+    return fetchFlights(form)
+      .then(({data}) => context.commit('fetchFlights', data))
   }
 }
 

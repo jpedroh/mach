@@ -36,6 +36,8 @@ export default {
   mounted () {
     if (this.$store.getters.flightsTable.length === 0) {
       this.$router.push('/landing')
+    } else if (!this.$store.getters.hasBriefing) {
+      this.$router.push('/')
     }
   }
 }

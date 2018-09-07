@@ -167,7 +167,6 @@ export default {
   },
   computed: {
     airports () {
-      console.log(this.$store.getters.airports)
       return this.$store.getters.airports
     }
   },
