@@ -40,3 +40,6 @@ Changelog do projeto, atualizado a partir da versão 3.0
 
 ## [3.6.1] - 2018-09-07
 - Refatoração da aplicação
+
+## [3.6.2] - 2018-12-03
+- Corrigida formatação das datas nos NOTAMs.
