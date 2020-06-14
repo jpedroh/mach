@@ -1,0 +1,20 @@
+name: Test
+on: [push, pull_request]
+jobs:
+  test:
+    needs: lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+
+      - name: Install dependencies
+        run: yarn
+
+      - name: Lerna bootstrap
+        run: ./node_modules/.bin/lerna bootstrap
+
+      - name: Test
+        run: yarn test
