@@ -1,4 +1,5 @@
 import rplFileDownloader from "./rpl-file-downloader"
+import rplFileLinesExtractor from "./rpl-file-lines-extractor"
 import updateChecker from "./update-checker"
 import Logger from "./utils/logger"
 
@@ -26,12 +27,14 @@ const main = async (args: string[]) => {
         Logger.info(`COMPLETED RPL FILES DOWNLOAD`)
 
         Logger.info(`STARTING LINES EXTRACTION FROM RPL FILES`)
-        for (const fir of firs) {
-            Logger.info(`EXTRACTING LINES FROM RPL FILE FOR ${fir}`)
-        }
+        const filesLines = new Set(files.reduce((carry, file) => {
+            const lines = rplFileLinesExtractor(file);
+            return carry.concat(lines)
+        }, [] as string[]))
         Logger.info(`COMPLETED LINES EXTRACTION FROM RPL FILES`)
 
         Logger.info(`STARTING DECODING OF RPL FILES DATA`)
+
         Logger.info(`COMPLETED DECODING OF RPL FILES DATA`)
 
         Logger.info(`STARTING SAVING DECODED DATA TO DATABASE`)
