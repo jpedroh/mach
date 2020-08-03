@@ -1,3 +1,4 @@
+import rplFileDownloader from "./rpl-file-downloader"
 import updateChecker from "./update-checker"
 import Logger from "./utils/logger"
 
@@ -16,9 +17,12 @@ const main = async (args: string[]) => {
         Logger.info(`STARTING RPL UPDATE FOR ${date}`)
 
         Logger.info(`STARTING RPL FILES DOWNLOAD`)
-        for (const fir of firs) {
-            Logger.info(`DOWNLOADING RPL FILE FOR ${fir}`)
-        }
+        const files = await Promise.all(firs.map(async fir => {
+            Logger.info(`STARTING DOWNLOAD OF RPL FILE FOR ${fir}`)
+            const file = await rplFileDownloader(fir, date)
+            Logger.info(`COMPLETED DOWNLOAD OF RPL FILE FOR ${fir}`)
+            return file;
+        }))
         Logger.info(`COMPLETED RPL FILES DOWNLOAD`)
 
         Logger.info(`STARTING LINES EXTRACTION FROM RPL FILES`)
