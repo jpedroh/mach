@@ -3,7 +3,17 @@ import rplFileLinesExtractor from "./rpl-file-lines-extractor"
 import updateChecker from "./update-checker"
 import Logger from "./utils/logger"
 
-const main = async (args: string[]) => {
+type MainDependencies = {
+    updateChecker: (date: string) => Promise<boolean>
+    rplFileDownloader: (fir: string, date: string) => Promise<Buffer>
+    rplFileLinesExtractor: (file: Buffer) => string[]
+}
+
+const main = async (args: string[], {
+    updateChecker,
+    rplFileDownloader,
+    rplFileLinesExtractor
+}: MainDependencies) => {
     try {
         const firs = args[2].split(',')
         const date = args[3]
@@ -47,4 +57,8 @@ const main = async (args: string[]) => {
     }
 }
 
-main(process.argv);
+main(process.argv, {
+    updateChecker,
+    rplFileDownloader,
+    rplFileLinesExtractor
+});
