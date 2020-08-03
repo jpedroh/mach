@@ -5,8 +5,6 @@ const main = async (args: string[]) => {
     const date = args[3]
 
     Logger.info(`CHECKING IF EXISTS UPDATES FOR ${date}`)
-    Logger.info(`NO UPDATES FOUND FOR ${date}.`)
-
     Logger.info(`STARTING RPL UPDATE FOR ${date}`)
 
     Logger.info(`STARTING RPL FILES DOWNLOAD`)
@@ -30,4 +28,10 @@ const main = async (args: string[]) => {
     Logger.info(`COMPLETED RPL UPDATE FOR ${date}`)
 }
 
-main(process.argv);
+try {
+    main(process.argv);
+    process.exit(0)
+} catch (error) {
+    Logger.error(error.message)
+    process.exit(1)
+}
