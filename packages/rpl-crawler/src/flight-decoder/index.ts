@@ -1,3 +1,3 @@
-import makeFlightDecoder() from './flight-decoder'
+import makeFlightDecoder from './flight-decoder'
 
 export default makeFlightDecoder();
