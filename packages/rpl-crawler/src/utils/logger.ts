@@ -4,16 +4,17 @@ class Logger {
     }
 
     public static info(message: string): void {
-        console.log(Logger.formatMessage(LoggingLevel.INFO, message));
+        console.info(Logger.formatMessage(LoggingLevel.INFO, message));
     }
 
     public static error(message: string): void {
-        console.log(Logger.formatMessage(LoggingLevel.INFO, message));
+        console.error(Logger.formatMessage(LoggingLevel.ERROR, message));
     }
 }
 
 enum LoggingLevel {
-    INFO = 'INFO'
+    INFO = 'INFO',
+    ERROR = 'ERROR'
 }
 
 export default Logger;
