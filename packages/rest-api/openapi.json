@@ -1,0 +1,198 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Mach",
+    "description": "An API to retrieve a timetable from Brazilian RPL - CGNA",
+    "contact": {
+      "email": "joao.pedro.hsd@gmail.com"
+    },
+    "version": "4.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Flight"
+    }
+  ],
+  "paths": {
+    "/flights": {
+      "get": {
+        "tags": [
+          "Flight"
+        ],
+        "summary": "Retorna uma lista com todos os transponders disponíveis",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "offset",
+            "schema": {
+              "type": "number",
+              "default": 0
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "type": "number",
+              "default": 15,
+              "maximum": 30,
+              "minimum": 0
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Lista de transponders",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaginatedFlights"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Token fornecido é inválido",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/flights/{id}": {
+      "get": {
+        "tags": [
+          "Flight"
+        ],
+        "summary": "Get a flight by ID.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A flight object",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Flight"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Flight not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Flight": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "callsign": {
+            "type": "string"
+          },
+          "company": {
+            "type": "string"
+          },
+          "flightNumber": {
+            "type": "number"
+          },
+          "aircraft": {
+            "$ref": "#/components/schemas/Aircraft"
+          },
+          "flightRules": {
+            "type": "string",
+            "enum": [
+              "IFR",
+              "VFR",
+              "Y",
+              "Z"
+            ]
+          }
+        }
+      },
+      "Aircraft": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Flight"
+            }
+          },
+          "count": {
+            "type": "number"
+          },
+          "wakeTurbulence": {
+            "type": "string",
+            "enum": [
+              "LIGHT",
+              "MEDIUM",
+              "HEAVY",
+              "SUPER"
+            ]
+          }
+        }
+      },
+      "PaginatedFlights": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Flight"
+            }
+          },
+          "count": {
+            "type": "number"
+          }
+        }
+      },
+      "ErrorResponse": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "number"
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+}
