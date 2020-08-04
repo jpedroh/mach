@@ -1,4 +1,4 @@
-import Flight from "../types/flight"
+import Flight from "@mach/common"
 import {FlightModel} from "@mach/database"
 
 const makeFindById = ({model}: { model: typeof FlightModel }) => {

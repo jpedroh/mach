@@ -1,5 +1,5 @@
 import makeFlightDecoder from '../../src/flight-decoder/flight-decoder';
-import { FlightRules, WakeTurbulence, Weekdays } from '../../src/types/enum';
+import { FlightRules, WakeTurbulence, Weekdays } from "@mach/common";
 
 describe('flight-decoder', () => {
     const flightDecoder = makeFlightDecoder()

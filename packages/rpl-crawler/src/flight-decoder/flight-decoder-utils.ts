@@ -1,4 +1,4 @@
-import { FlightRules, Weekdays } from "../types/enum"
+import { FlightRules, Weekdays } from "@mach/common"
 
 export const resolveFlightRules = (route: string): FlightRules => {
     if (route.includes(' IFR ')) {

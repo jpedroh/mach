@@ -1,5 +1,5 @@
-import { WakeTurbulence } from "../types/enum";
-import Flight from "../types/flight";
+import { WakeTurbulence } from "@mach/common"
+import Flight from "@mach/common"
 import { resolveEstimatedEnrouteMinutes, resolveFlightDate, resolveFlightRules, resolveWeekDays } from "./flight-decoder-utils";
 
 const makeFlightDecoder = () => {

@@ -1,4 +1,4 @@
-import Flight from "../types/flight"
+import Flight from "@mach/common"
 import Connection, {FlightModel} from '@mach/database'
 
 type SaveFlightsDependecies = { connection: typeof Connection, model: typeof FlightModel }
