@@ -1,5 +1,4 @@
 import Flight from "../types/flight"
-// import FlightModel from "./database-mapping"
 import Connection, {FlightModel} from '@mach/database'
 
 type SaveFlightsDependecies = { connection: typeof Connection, model: typeof FlightModel }
