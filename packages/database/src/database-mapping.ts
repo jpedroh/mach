@@ -5,6 +5,11 @@ export interface FlightModel extends Model, FlightType { }
 
 const Flight = (sequelize: Sequelize) => {
   return sequelize.define<FlightModel>('flight', {
+    id: {
+      primaryKey: true,
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
+    },
     callsign: {
       type: DataTypes.STRING,
       allowNull: false
