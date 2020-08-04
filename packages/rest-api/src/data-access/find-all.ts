@@ -4,6 +4,9 @@ import {FlightModel} from "@mach-flight-planning/database"
 export type FindFlightsQuery = {
   limit: number;
   offset: number;
+  departureIcao?: string;
+  arrivalIcao?: string;
+  company?: string;
 }
 
 export type FindFlightsOutput = {
@@ -13,7 +16,15 @@ export type FindFlightsOutput = {
 
 const makeFindAll = ({model}: { model: typeof FlightModel }) => {
   return async (query: FindFlightsQuery): Promise<FindFlightsOutput> => {
-    const {rows: items, count} = await model.findAndCountAll(query);
+    const {limit, offset} = query;
+    const {departureIcao, arrivalIcao, company} = query;
+
+    const {rows: items, count} = await model.findAndCountAll({
+      limit, offset,
+      where: JSON.parse(JSON.stringify({
+        departureIcao, arrivalIcao, company
+      }))
+    });
 
     return {count, items};
   }

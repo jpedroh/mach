@@ -12,6 +12,7 @@ const makeExpressCallback = <T>(action: ActionInterface<T>) => {
       if (error instanceof NotFoundException) {
         return res.status(404).json({status: 404, message: 'Not found'})
       }
+      console.error(error)
       return res.status(500).json({status: 500, message: 'Internal server error'})
     }
   }

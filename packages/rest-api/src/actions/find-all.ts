@@ -6,7 +6,7 @@ const makeFindAll = ({findAll}: FlightUseCase) => {
     const limit = parseInt(query.limit as string) || 15
     const offset = parseInt(query.offset as string) || 0
 
-    return findAll({limit, offset});
+    return findAll({...query, limit, offset});
   }
 }
 
