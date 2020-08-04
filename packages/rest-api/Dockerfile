@@ -8,7 +8,7 @@ COPY dist/ dist/
 COPY package.json .
 COPY yarn.lock .
 COPY openapi.json .
-RUN npm install --only=production
+RUN yarn install --only=production
 
 EXPOSE $PORT
 
