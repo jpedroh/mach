@@ -1,15 +1,4 @@
 import makeSaveFlights from "./save-flights";
-import { Sequelize } from "sequelize";
+import connection, {FlightModel as model} from '@mach/database'
 
-export default (databaseUrl: string) => makeSaveFlights({
-    connection: new Sequelize(databaseUrl, {
-        dialect: 'postgres',
-        protocol: 'postgres',
-        dialectOptions: {
-            ssl: {
-                require: true,
-                rejectUnauthorized: false
-            }
-        }
-    })
-})
+export default makeSaveFlights({connection, model})

@@ -1,6 +1,5 @@
 import Flight from "../types/flight"
-import {FlightModel} from "./database-mapping"
-import {ModelCtor} from "sequelize";
+import {FlightModel} from "@mach/database"
 
 export type FindFlightsQuery = {
   limit: number;
@@ -12,7 +11,7 @@ export type FindFlightsOutput = {
   items: Flight[];
 }
 
-const makeFindAll = ({model}: { model: ModelCtor<FlightModel> }) => {
+const makeFindAll = ({model}: { model: typeof FlightModel }) => {
   return async (query: FindFlightsQuery): Promise<FindFlightsOutput> => {
     const {rows: items, count} = await model.findAndCountAll(query);
 

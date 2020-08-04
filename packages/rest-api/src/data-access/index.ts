@@ -1,5 +1,5 @@
 import makeFindAll, {FindFlightsOutput, FindFlightsQuery} from "./find-all";
-import {FlightModel as model} from "./connection";
+import {FlightModel as model} from "@mach/database";
 import makeFindById from "./find-by-id";
 import Flight from "../types/flight";
 

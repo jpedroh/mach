@@ -1,10 +1,9 @@
 import Flight from "../types/flight"
-import {FlightModel} from "./database-mapping"
-import {ModelCtor} from "sequelize";
+import {FlightModel} from "@mach/database"
 
-const makeFindById = ({model}: { model: ModelCtor<FlightModel> }) => {
+const makeFindById = ({model}: { model: typeof FlightModel }) => {
   return async (id: number): Promise<Flight | null> => {
-    return model.findOne({ where: { id }});
+    return model.findOne({where: {id}});
   }
 }
 

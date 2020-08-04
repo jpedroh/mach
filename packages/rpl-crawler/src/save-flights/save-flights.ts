@@ -1,19 +1,18 @@
-import { Sequelize } from 'sequelize'
 import Flight from "../types/flight"
-import FlightModel from "./database-mapping"
+// import FlightModel from "./database-mapping"
+import Connection, {FlightModel} from '@mach/database'
 
-const makeSaveFlights = ({ connection }: { connection: Sequelize }) => {
-    return async (flights: Flight[]): Promise<void> => {
-        const flightModel = FlightModel(connection);
-        await flightModel.sync();
+type SaveFlightsDependecies = { connection: typeof Connection, model: typeof FlightModel }
 
-        await connection.transaction(async (transaction) => {
-            await flightModel.destroy({ truncate: true, transaction })
-            await FlightModel(connection).bulkCreate(flights, { transaction })
-        })
+const makeSaveFlights = ({connection, model}: SaveFlightsDependecies) => {
+  return async (flights: Flight[]): Promise<void> => {
+    await connection.transaction(async (transaction) => {
+      await model.destroy({truncate: true, transaction})
+      await model.bulkCreate(flights, {transaction})
+    })
 
-        await connection.close()
-    }
+    await connection.close()
+  }
 }
 
 export default makeSaveFlights

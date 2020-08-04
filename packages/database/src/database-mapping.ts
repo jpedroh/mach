@@ -1,5 +1,5 @@
 import { DataTypes, Model, Sequelize } from "sequelize";
-import FlightType from '../types/flight'
+import FlightType from './types/flight'
 
 export interface FlightModel extends Model, FlightType { }
 
