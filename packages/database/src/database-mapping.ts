@@ -1,5 +1,5 @@
 import { DataTypes, Model, Sequelize } from "sequelize";
-import FlightType from '@mach/common'
+import FlightType from '@mach-flight-planning/common'
 
 export interface FlightModel extends Model, FlightType { }
 
