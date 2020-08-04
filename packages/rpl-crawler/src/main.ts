@@ -74,5 +74,5 @@ main(process.argv, {
     rplFileDownloader,
     rplFileLinesExtractor,
     flightDecoder,
-    saveFlights
+    saveFlights: saveFlights(process.argv[4])
 });
