@@ -6,6 +6,8 @@ import Flight from "./types/flight"
 import updateChecker from "./update-checker"
 import Logger from "./utils/logger"
 
+require('dotenv').config();
+
 type MainDependencies = {
     updateChecker: (date: string) => Promise<boolean>
     rplFileDownloader: (fir: string, date: string) => Promise<Buffer>
