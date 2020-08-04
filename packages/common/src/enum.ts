@@ -1,18 +1,24 @@
 export enum Weekdays {
-    MONDAY = 1, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY
+  MONDAY = 'MONDAY',
+  TUESDAY = "TUESDAY",
+  WEDNESDAY = "WEDNESDAY",
+  THURSDAY = "THURSDAY",
+  FRIDAY = "FRIDAY",
+  SATURDAY = "SATURDAY",
+  SUNDAY = "SUNDAY"
 }
 
 export enum FlightRules {
-    IFR = 'IFR', Y = 'Y', Z = 'Z'
+  IFR = 'IFR', Y = 'Y', Z = 'Z'
 }
 
 export enum WakeTurbulence {
-    LIGHT = 'L',
-    MEDIUM = 'M',
-    HEAVY = 'H',
-    SUPER = 'S'
+  LIGHT = 'L',
+  MEDIUM = 'M',
+  HEAVY = 'H',
+  SUPER = 'S'
 }
 
 export default {
-    Weekdays, FlightRules, WakeTurbulence
+  Weekdays, FlightRules, WakeTurbulence
 }

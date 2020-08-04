@@ -18,7 +18,17 @@ export const resolveFlightDate = (date: string): Date => {
 }
 
 export const resolveWeekDays = (weekdays: string): Weekdays[] => {
-    return weekdays.split('').map(weekday => parseInt(weekday)).filter(day => day !== 0)
+    const weekdaysMap = {
+        '1': Weekdays.MONDAY,
+        '2': Weekdays.TUESDAY,
+        '3': Weekdays.WEDNESDAY,
+        '4': Weekdays.THURSDAY,
+        '5': Weekdays.FRIDAY,
+        '6': Weekdays.SATURDAY,
+        '7': Weekdays.SUNDAY,
+    }
+
+    return weekdays.split('').map(weekday => weekdaysMap[weekday]).filter(day => day !== undefined)
 }
 
 export const resolveEstimatedEnrouteMinutes = (eet: string): number => {
