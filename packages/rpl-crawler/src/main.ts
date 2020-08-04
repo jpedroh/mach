@@ -1,6 +1,7 @@
 import flightDecoder from './flight-decoder'
 import rplFileDownloader from "./rpl-file-downloader"
 import rplFileLinesExtractor from "./rpl-file-lines-extractor"
+import saveFlights from './save-flights'
 import Flight from "./types/flight"
 import updateChecker from "./update-checker"
 import Logger from "./utils/logger"
@@ -9,14 +10,16 @@ type MainDependencies = {
     updateChecker: (date: string) => Promise<boolean>
     rplFileDownloader: (fir: string, date: string) => Promise<Buffer>
     rplFileLinesExtractor: (file: Buffer) => string[],
-    flightDecoder: (line: string) => Flight
+    flightDecoder: (line: string) => Flight,
+    saveFlights: (flights: Flight[]) => Promise<void>
 }
 
 const main = async (args: string[], {
     updateChecker,
     rplFileDownloader,
     rplFileLinesExtractor,
-    flightDecoder
+    flightDecoder,
+    saveFlights
 }: MainDependencies) => {
     try {
         const firs = args[2].split(',')
@@ -52,9 +55,12 @@ const main = async (args: string[], {
         Logger.info(`COMPLETED DECODING OF RPL FILES DATA`)
 
         Logger.info(`STARTING SAVING DECODED DATA TO DATABASE`)
+        await saveFlights(flights)
         Logger.info(`COMPLETED SAVING DECODED DATA TO DATABASE`)
 
         Logger.info(`COMPLETED RPL UPDATE FOR ${date}`)
+
+        Logger.info(`${flights.length} FLIGHTS INSERTED`)
     } catch (error) {
         Logger.error(error.message)
         process.exit(1)
@@ -65,5 +71,6 @@ main(process.argv, {
     updateChecker,
     rplFileDownloader,
     rplFileLinesExtractor,
-    flightDecoder
+    flightDecoder,
+    saveFlights
 });
