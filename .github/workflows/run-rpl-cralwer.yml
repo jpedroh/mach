@@ -1,9 +1,9 @@
 ## TODO: Switch to Docker containers
 
 name: Run RPL Crawler
-on: [push]
-#  schedule:
-#    - cron: '0 0 * * *'
+on:
+  schedule:
+    - cron: '0 0 * * *'
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -21,4 +21,4 @@ jobs:
       - name: Run Update
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-        run: docker run -v "$(pwd):/usr/src/" -w "/usr/src/" -e DATABASE_URL=$(heroku config:get DATABASE_URL --app=mach-api) node:alpine node packages/rpl-crawler/dist/main SBAZ,SBBS,SBCW,SBRE 2020-08-03
+        run: docker run -v "$(pwd):/usr/src/" -w "/usr/src/" -e DATABASE_URL=$(heroku config:get DATABASE_URL --app=mach-api) node:alpine node packages/rpl-crawler/dist/main SBAZ,SBBS,SBCW,SBRE $(date +"%Y-%m-%d")
