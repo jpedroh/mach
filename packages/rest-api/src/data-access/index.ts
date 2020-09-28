@@ -1,7 +1,7 @@
-import makeFindAll, {FindFlightsOutput, FindFlightsQuery} from "./find-all";
-import {FlightModel as model} from "@mach/database";
-import makeFindById from "./find-by-id";
-import Flight from "@mach/common"
+import makeFindAll, { FindFlightsOutput, FindFlightsQuery } from './find-all'
+import { FlightModel as model } from '@mach/database'
+import makeFindById from './find-by-id'
+import Flight from '@mach/common'
 
 export type FlightRepository = {
   findAll(query: FindFlightsQuery): Promise<FindFlightsOutput>
@@ -9,6 +9,6 @@ export type FlightRepository = {
 }
 
 export default {
-  findAll: makeFindAll({model}),
-  findById: makeFindById({model})
+  findAll: makeFindAll({ model }),
+  findById: makeFindById({ model })
 } as FlightRepository

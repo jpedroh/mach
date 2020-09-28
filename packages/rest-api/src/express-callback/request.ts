@@ -3,4 +3,4 @@ type Request = {
   query: any
 }
 
-export default Request;
+export default Request

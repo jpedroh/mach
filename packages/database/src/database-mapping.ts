@@ -1,86 +1,86 @@
-import { DataTypes, Model, Sequelize } from "sequelize";
-import FlightType from "@mach/common";
+import { DataTypes, Model, Sequelize } from 'sequelize'
+import FlightType from '@mach/common'
 
 export interface FlightModel extends Model, FlightType {}
 
 const Flight = (sequelize: Sequelize) => {
   return sequelize.define<FlightModel>(
-    "flight",
+    'flight',
     {
       id: {
         primaryKey: true,
         type: DataTypes.UUID,
-        defaultValue: DataTypes.UUIDV4,
+        defaultValue: DataTypes.UUIDV4
       },
       callsign: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: false
       },
       beginDate: {
         type: DataTypes.DATE,
-        allowNull: false,
+        allowNull: false
       },
       endDate: {
-        type: DataTypes.DATE,
+        type: DataTypes.DATE
       },
       company: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: false
       },
       flightNumber: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: false
       },
       aircraft: {
         type: DataTypes.JSON,
-        allowNull: false,
+        allowNull: false
       },
       departureIcao: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: false
       },
       estimatedOffBlockTime: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: false
       },
       cruisingSpeed: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: false
       },
       weekdays: {
         type: DataTypes.JSON,
-        allowNull: false,
+        allowNull: false
       },
       cruisingLevel: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: false
       },
       route: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: false
       },
       arrivalIcao: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: false
       },
       estimatedEnrouteMinutes: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: false
       },
       flightRules: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: false
       },
       remarks: {
         type: DataTypes.STRING,
-        allowNull: false,
-      },
+        allowNull: false
+      }
     },
     {
-      tableName: "flights",
-      timestamps: true,
+      tableName: 'flights',
+      timestamps: true
     }
-  );
-};
+  )
+}
 
-export default Flight;
+export default Flight

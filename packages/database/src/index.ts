@@ -1,4 +1,4 @@
-import {Sequelize} from "sequelize";
+import { Sequelize } from 'sequelize'
 import FlightModelInitializer from './database-mapping'
 
 export const connection = new Sequelize(process.env.DATABASE_URL, {
@@ -10,8 +10,8 @@ export const connection = new Sequelize(process.env.DATABASE_URL, {
       rejectUnauthorized: false
     }
   }
-});
+})
 
-export const FlightModel = FlightModelInitializer(connection);
+export const FlightModel = FlightModelInitializer(connection)
 
-export default connection;
+export default connection

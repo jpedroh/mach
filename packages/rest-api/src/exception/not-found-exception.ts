@@ -1,10 +1,10 @@
 class NotFoundException extends Error {
-  message = "Not found";
+  message = 'Not found'
 
   public constructor() {
-    super();
+    super()
     Object.setPrototypeOf(this, NotFoundException.prototype)
   }
 }
 
-export default NotFoundException;
+export default NotFoundException

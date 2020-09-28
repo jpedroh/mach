@@ -1,15 +1,15 @@
-import NotFoundException from "../exception/not-found-exception";
-import {FlightRepository} from "../data-access";
+import NotFoundException from '../exception/not-found-exception'
+import { FlightRepository } from '../data-access'
 
-const makeFindById = ({findById}: FlightRepository) => {
+const makeFindById = ({ findById }: FlightRepository) => {
   return async (id: number) => {
-    const flight = await findById(id);
+    const flight = await findById(id)
     if (!flight) {
-      throw new NotFoundException();
+      throw new NotFoundException()
     }
 
-    return flight;
+    return flight
   }
 }
 
-export default makeFindById;
+export default makeFindById
