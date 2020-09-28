@@ -10,8 +10,6 @@ jobs:
           persist-credentials: false
       - name: Install
         run: yarn
-      - name: Lerna bootstrap
-        run: yarn lerna bootstrap
       - name: Build packages
         run: yarn build
       - name: Test
