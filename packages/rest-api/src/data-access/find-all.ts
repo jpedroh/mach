@@ -1,5 +1,5 @@
-import Flight from "@mach-flight-planning/common"
-import {FlightModel} from "@mach-flight-planning/database"
+import Flight from "@mach/common"
+import {FlightModel} from "@mach/database"
 
 export type FindFlightsQuery = {
   limit: number;

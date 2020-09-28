@@ -1,5 +1,5 @@
-import { WakeTurbulence } from "@mach-flight-planning/common"
-import Flight from "@mach-flight-planning/common"
+import { WakeTurbulence } from "@mach/common"
+import Flight from "@mach/common"
 import { resolveEstimatedEnrouteMinutes, resolveFlightDate, resolveFlightRules, resolveWeekDays } from "./flight-decoder-utils";
 
 const makeFlightDecoder = () => {

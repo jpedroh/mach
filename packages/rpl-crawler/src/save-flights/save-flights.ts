@@ -1,5 +1,5 @@
-import Flight from "@mach-flight-planning/common"
-import Connection, {FlightModel} from '@mach-flight-planning/database'
+import Flight from "@mach/common"
+import Connection, {FlightModel} from '@mach/database'
 
 type SaveFlightsDependecies = { connection: typeof Connection, model: typeof FlightModel }
 

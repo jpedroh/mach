@@ -1,6 +1,6 @@
 import makeFindById from "./find-by-id";
 import FlightRepository from "../data-access";
-import Flight from "@mach-flight-planning/common";
+import Flight from "@mach/common";
 import makeFindAll from "./find-all";
 import {FindFlightsOutput, FindFlightsQuery} from "../data-access/find-all";
 
