@@ -12,7 +12,6 @@ jobs:
         with:
           persist-credentials: false
       - name: Build API Docker image
-        working-directory: ./packages/rest-api
         run: docker build -t registry.heroku.com/mach-api/web -f ./packages/rest-api/Dockerfile .
       - name: Login to Heroku Container registry
         env:
