@@ -11,6 +11,10 @@ jobs:
       - name: Install
         run: yarn
       - name: Build packages
-        run: yarn build
+        run: |
+          yarn workspace @mach/common run build
+          yarn workspace @mach/database run build
+          yarn workspace @mach/rest-api run build
+          yarn workspace @mach/rpl-crawler run build
       - name: Test
         run: yarn test
