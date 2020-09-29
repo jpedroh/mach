@@ -39,6 +39,8 @@ jobs:
           yarn workspace @mach/common build
           yarn workspace @mach/front build
           yarn workspace @mach/front next export
+      - name: Create .nojekyll file
+        run: touch packages/front/out/.nojekyll
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
