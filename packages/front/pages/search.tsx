@@ -6,6 +6,7 @@ import FlightModal from '../components/flight-modal'
 import ResultsLead from '../components/results-lead'
 import SearchTable from '../components/search-table'
 import BaseLayout from '../layouts/base-layout'
+import makeBlankFlight from '../utils/make-blank-flight'
 
 const buildParameters = query => {
   const parameters: GetFlightsQuery = {
@@ -30,7 +31,7 @@ const Search: NextPage = () => {
   const [loading, setLoading] = React.useState(true)
   const [show, setShow] = React.useState(false)
   const [apiResponse, setApiResponse] = React.useState({ count: 0, items: [] })
-  const [flight, setFlight] = React.useState<any>({})
+  const [flight, setFlight] = React.useState(makeBlankFlight())
 
   const handleClose = () => setShow(false)
   const handleShow = flight => {

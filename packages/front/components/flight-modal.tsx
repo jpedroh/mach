@@ -2,6 +2,7 @@ import Flight from '@mach/common'
 import React from 'react'
 import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
+import formatEet from '../utils/format-eet'
 import IcaoFpl from './icao-fpl'
 import IvaoButton from './ivao-button'
 import SkyVectorButton from './sky-vector-button'
@@ -28,7 +29,45 @@ const FlightModal: React.FC<FlightModalProps> = ({
       </Modal.Header>
 
       <Modal.Body>
-        <h6>ICAO FPL</h6>
+        <h5 className="mb-3">GENERAL INFORMATION</h5>
+        <div className="row">
+          <div className="col-6">
+            <p>
+              <b>EOBT </b> {flight.estimatedOffBlockTime}Z
+            </p>
+          </div>
+          <div className="col-6">
+            <p>
+              <b>FLIGHT TIME </b> {formatEet(flight.estimatedEnrouteMinutes)}
+            </p>
+          </div>
+          <div className="col-4">
+            <p>
+              <b>AIRCRAFT </b> {flight.aircraft.icaoCode}
+            </p>
+          </div>
+          <div className="col-4">
+            <p>
+              <b>CRUISING SPEED </b> {flight.cruisingSpeed}
+            </p>
+          </div>
+          <div className="col-4">
+            <p>
+              <b>FL </b> {flight.cruisingLevel}
+            </p>
+          </div>
+          <div className="col-12">
+            <p>
+              <b>ROUTE </b> {flight.route}
+            </p>
+          </div>
+          <div className="col-12">
+            <p>
+              <b>REMARKS </b> {flight.remarks}
+            </p>
+          </div>
+        </div>
+        <h5 className="my-3">ICAO FPL</h5>
         <IcaoFpl flight={flight} />
       </Modal.Body>
       <Modal.Footer>
