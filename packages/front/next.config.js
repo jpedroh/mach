@@ -1,6 +1,6 @@
 const isProd = process.env.NODE_ENV === 'production'
 
 module.exports = {
-    basePath: '/mach',
-    assetPrefix: '/mach/',
+  basePath: isProd ? '/mach' : '',
+  basePath: isProd ? '/mach/' : ''
 }
