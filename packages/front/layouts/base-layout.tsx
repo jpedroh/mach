@@ -7,7 +7,7 @@ const BaseLayout: React.FC = ({ children }) => {
       <header>
         <h1>Mach</h1>
       </header>
-      <main className="flex-grow-1">{children}</main>
+      <main className="flex-grow-1 container">{children}</main>
       <footer className="py-2 border-top">
         <FooterNav />
       </footer>
