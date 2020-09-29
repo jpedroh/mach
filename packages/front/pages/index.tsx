@@ -1,64 +1,77 @@
-import Head from 'next/head'
+import { useRouter } from 'next/router'
+import React from 'react'
+import Alert from 'react-bootstrap/Alert'
+import Button from 'react-bootstrap/Button'
+import Form from 'react-bootstrap/Form'
+import { GetFlightsQuery } from '../actions/get-flights'
+import BaseLayout from '../layouts/base-layout'
 
-export default function Home() {
+const Home: React.FC = () => {
+  const router = useRouter()
+  const [parameters, setParameters] = React.useState<Partial<GetFlightsQuery>>({
+    departureIcao: '',
+    arrivalIcao: ''
+  })
+  const [error, setError] = React.useState('')
+
+  const handleSubmit = evt => {
+    evt.preventDefault()
+    if (!parameters.departureIcao && !parameters.arrivalIcao) {
+      setError('Fill at least one of the fields')
+      return
+    }
+
+    router.replace({
+      pathname: 'search',
+      query: parameters
+    })
+  }
+
+  const handleChange = event => {
+    const updated = {}
+    updated[event.target.name] = event.target.value.toUpperCase()
+    setParameters({ ...parameters, ...updated })
+  }
+
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+    <BaseLayout>
+      <p className={'lead text-center'}>
+        To begin, fill at least one of the following fields.
+      </p>
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
+      <div style={{ width: '50%' }} className="mx-auto">
+        <Form onSubmit={handleSubmit}>
+          <Form.Group controlId="departureInput">
+            <Form.Label>Departure ICAO</Form.Label>
+            <Form.Control
+              type="text"
+              onChange={handleChange}
+              name="departureIcao"
+              placeholder="SBSP"
+            />
+          </Form.Group>
+          <Form.Group controlId="arrivalInput">
+            <Form.Label>Arrival ICAO</Form.Label>
+            <Form.Control
+              type="text"
+              onChange={handleChange}
+              name="arrivalIcao"
+              placeholder="SBRF"
+            />
+          </Form.Group>
+          <Button variant="primary" block type="submit">
+            Start search
+          </Button>
+        </Form>
 
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
-    </div>
+        {error && (
+          <Alert className="mt-2" variant={'danger'}>
+            {error}
+          </Alert>
+        )}
+      </div>
+    </BaseLayout>
   )
 }
+
+export default Home
