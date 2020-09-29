@@ -8,7 +8,7 @@ import SearchTable from '../components/search-table'
 import BaseLayout from '../layouts/base-layout'
 
 const buildParameters = query => {
-  const parameters: Partial<GetFlightsQuery> = {
+  const parameters: GetFlightsQuery = {
     offset: 0,
     limit: 10
   }
