@@ -25,3 +25,23 @@ jobs:
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
         run: heroku container:release web -a mach-api
+  build-and-deploy-front:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+      - name: Yarn install
+        run: yarn
+      - name: Run build
+        run: |
+          yarn workspace @mach/common build
+          yarn workspace @mach/front build
+          yarn workspace @mach/front export
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@releases/v3
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages-test
+          FOLDER: packages/front/out
