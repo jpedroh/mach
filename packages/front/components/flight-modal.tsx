@@ -1,8 +1,9 @@
+import Flight from '@mach/common'
 import React from 'react'
 import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
-import Flight from '@mach/common'
 import IcaoFpl from './icao-fpl'
+import IvaoButton from './ivao-button'
 import SkyVectorButton from './sky-vector-button'
 import VatsimButton from './vatsim-button'
 
@@ -36,6 +37,7 @@ const FlightModal: React.FC<FlightModalProps> = ({
         </Button>
         <SkyVectorButton flight={flight} />
         <VatsimButton flight={flight} />
+        <IvaoButton flight={flight} />
       </Modal.Footer>
     </Modal>
   )
