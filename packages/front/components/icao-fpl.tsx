@@ -1,5 +1,6 @@
 import React from 'react'
 import Flight, { FlightRules } from '@mach/common'
+import getIcaoFpl from '../actions/get-icao-fpl'
 
 type IcaoFplProps = {
   flight: Flight
@@ -21,29 +22,8 @@ const formatEet = (eet: number) => {
 
 const IcaoFpl: React.FC<IcaoFplProps> = ({ flight }) => {
   return (
-    <pre
-      className="bg-light pt-3 px-2 border rounded"
-      style={{ lineHeight: '6px' }}
-    >
-      <p>
-        (FPL-{flight.callsign}-{flightRules(flight.flightRules)}S
-      </p>
-      <p>
-        -1/{flight.aircraft.icaoCode}/{flight.aircraft.wakeTurbulence}-
-        {flight.aircraft.equipment}/L1B1
-      </p>
-      <p>
-        -{flight.arrivalIcao}
-        {flight.estimatedOffBlockTime}
-      </p>
-      <p>
-        -{flight.cruisingSpeed}F{flight.cruisingLevel} {flight.route}
-      </p>
-      <p>
-        -{flight.arrivalIcao}
-        {formatEet(flight.estimatedEnrouteMinutes)}
-      </p>
-      <p>-{flight.remarks})</p>
+    <pre className="bg-light pt-2 px-2 border rounded">
+      <p>{getIcaoFpl(flight)}</p>
     </pre>
   )
 }
