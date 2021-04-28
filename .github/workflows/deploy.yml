@@ -48,10 +48,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-        with:
-          persist-credentials: false
       - name: Yarn install
         run: yarn
+      - name: Set app version variable
+        run: export NEXT_PUBLIC_APP_VERSION=$(git tag  | grep -E '^v[0-9]' | sort -V | tail -1)
       - name: Run build
         run: |
           yarn workspace @mach/common build
