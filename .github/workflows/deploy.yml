@@ -4,6 +4,17 @@ on:
     branches:
       - master
 jobs:
+  tag:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Yarn install
+        run: yarn
+      - name: Run tag
+        run: yarn lerna version --conventional-commits --create-release github --yes
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   build-and-deploy-api:
     runs-on: ubuntu-latest
     steps:
