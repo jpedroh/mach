@@ -29,7 +29,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Build API Docker image
-        run: docker build -t --build-arg APP_VERSION_ARG=$(git tag  | grep -E '^v[0-9]' | sort -V | tail -1) -f ./packages/rest-api/Dockerfile .
+        run: docker build -t registry.heroku.com/mach-api/web --build-arg APP_VERSION_ARG=$(git tag  | grep -E '^v[0-9]' | sort -V | tail -1) -f ./packages/rest-api/Dockerfile .
       - name: Login to Heroku Container registry
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
