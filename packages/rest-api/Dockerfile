@@ -1,5 +1,8 @@
 FROM node:lts-alpine AS base
 
+ARG APP_VERSION_ARG=v0.0.0
+ENV APP_VERSION=$APP_VERSION_ARG
+
 WORKDIR /usr/src/app
 
 COPY package.json .
