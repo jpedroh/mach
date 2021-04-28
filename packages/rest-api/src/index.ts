@@ -16,7 +16,12 @@ app.use(function (req, res, next) {
 
 app.get(
   '/',
-  makeExpressCallback(() => require('../openapi.json'))
+  makeExpressCallback(async () => {
+    const version = process.env.APP_VERSION
+    const apiSpec = await require('../openapi.json')
+
+    return { ...apiSpec, ...{ info: { version } } }
+  })
 )
 app.get('/flights/', makeExpressCallback(actions.findAll))
 app.get('/flights/:id', makeExpressCallback(actions.findById))

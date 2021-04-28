@@ -9,7 +9,7 @@ const FooterNav: React.FC = () => {
       </Nav.Item>
       <Nav.Item>
         <Nav.Link href="https://www.github.com/jpedroh/mach" target="_blank">
-          Mach v4.1.0
+          Mach {process.env.NEXT_PUBLIC_APP_VERSION}
         </Nav.Link>
       </Nav.Item>
       <Nav.Item>
