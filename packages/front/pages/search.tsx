@@ -1,36 +1,16 @@
 import { NextPage } from 'next'
-import { useRouter } from 'next/router'
-import React from 'react'
-import getFlights, { GetFlightsQuery } from '../actions/get-flights'
+import React, { useContext } from 'react'
+import { GetFlightsQuery } from '../actions/get-flights'
 import FlightModal from '../components/flight-modal'
 import ResultsLead from '../components/results-lead'
 import SearchTable from '../components/search-table'
+import { FlightsContext } from '../contexts/FlightsContext'
 import BaseLayout from '../layouts/base-layout'
 import makeBlankFlight from '../utils/make-blank-flight'
 
-const buildParameters = query => {
-  const parameters: GetFlightsQuery = {
-    offset: 0,
-    limit: 10
-  }
-
-  if (query.departureIcao) {
-    parameters.departureIcao = query.departureIcao as string
-  }
-  if (query.arrivalIcao) {
-    parameters.arrivalIcao = query.arrivalIcao as string
-  }
-
-  return parameters
-}
-
 const Search: NextPage = () => {
-  const { query } = useRouter()
-
-  const [parameters, setParameters] = React.useState(buildParameters(query))
-  const [loading, setLoading] = React.useState(true)
+  const { state, loadFlights } = useContext(FlightsContext)
   const [show, setShow] = React.useState(false)
-  const [apiResponse, setApiResponse] = React.useState({ count: 0, items: [] })
   const [flight, setFlight] = React.useState(makeBlankFlight())
 
   const handleClose = () => setShow(false)
@@ -39,30 +19,14 @@ const Search: NextPage = () => {
     setShow(true)
   }
 
-  const loadFlights = async () => {
-    try {
-      setLoading(true)
-      setApiResponse(await getFlights(parameters))
-    } catch (error) {
-      setApiResponse({ count: 0, items: [] })
-      console.error(error)
-    } finally {
-      setLoading(false)
-    }
-  }
-
-  React.useEffect(() => {
-    loadFlights()
-  }, [parameters])
-
   return (
     <BaseLayout>
-      <ResultsLead loading={loading} count={apiResponse.count} />
+      <ResultsLead loading={state.loading} count={state.data.count} />
       <SearchTable
-        loading={loading}
-        data={apiResponse.items}
-        count={apiResponse.count}
-        onOffsetChange={offset => setParameters({ ...parameters, offset })}
+        loading={state.loading}
+        data={state.data.items}
+        count={state.data.count}
+        onOffsetChange={offset => loadFlights({ ...state.data.query, offset })}
         onDetailsShow={handleShow}
       />
       <FlightModal show={show} handleClose={handleClose} flight={flight} />
