@@ -1,36 +1,36 @@
 import { useRouter } from 'next/router'
-import React from 'react'
+import React, { useContext } from 'react'
 import Alert from 'react-bootstrap/Alert'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import { GetFlightsQuery } from '../actions/get-flights'
+import { FlightsContext } from '../contexts/FlightsContext'
 import BaseLayout from '../layouts/base-layout'
+import sanitizeParameters from '../utils/sanitize-parameters'
 
 const Home: React.FC = () => {
   const router = useRouter()
-  const [parameters, setParameters] = React.useState<Partial<GetFlightsQuery>>({
+  const { state, loadFlights } = useContext(FlightsContext)
+  const [parameters, setParameters] = React.useState<GetFlightsQuery>({
     departureIcao: '',
-    arrivalIcao: ''
+    arrivalIcao: '',
+    limit: 10,
+    offset: 0
   })
-  const [error, setError] = React.useState('')
 
-  const handleSubmit = evt => {
+  const handleSubmit = async evt => {
     evt.preventDefault()
-    if (!parameters.departureIcao && !parameters.arrivalIcao) {
-      setError('Fill at least one of the fields')
-      return
-    }
-
-    router.replace({
-      pathname: 'search',
-      query: parameters
-    })
+    await loadFlights(parameters)
+    router.replace({ pathname: 'search' })
   }
 
   const handleChange = event => {
-    const updated = {}
-    updated[event.target.name] = event.target.value.toUpperCase()
-    setParameters({ ...parameters, ...updated })
+    setParameters(
+      sanitizeParameters({
+        ...parameters,
+        [event.target.name]: event.target.value.toUpperCase()
+      })
+    )
   }
 
   return (
@@ -59,14 +59,19 @@ const Home: React.FC = () => {
               placeholder="SBRF"
             />
           </Form.Group>
-          <Button variant="primary" block type="submit">
-            Start search
+          <Button
+            variant="primary"
+            block
+            type="submit"
+            disabled={state.loading}
+          >
+            {state.loading ? 'Loading' : 'Start search'}
           </Button>
         </Form>
 
-        {error && (
+        {state.error && (
           <Alert className="mt-2" variant={'danger'}>
-            {error}
+            {state.error.message}
           </Alert>
         )}
       </div>
