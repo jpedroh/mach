@@ -6,6 +6,7 @@ const GeneralLayout: FC = ({ children }) => {
   return (
     <div className={styles.container}>
       <Header />
+      {children}
     </div>
   )
 }
