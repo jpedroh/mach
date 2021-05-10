@@ -20,7 +20,10 @@ const SearchFlightsForm: FC<Props> = ({ onSubmit, loading, error }) => {
   )
 
   const onChange: ChangeEventHandler<HTMLInputElement> = evt => {
-    setForm(form => ({ ...form, [evt.target.name]: evt.target.value }))
+    setForm(form => ({
+      ...form,
+      [evt.target.name]: evt.target.value.toUpperCase()
+    }))
   }
 
   const handleSubmit: FormEventHandler = evt => {
