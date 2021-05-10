@@ -1,4 +1,5 @@
 import { FC, useState } from 'react'
+import Lead from '../components/Lead'
 import SearchFlightsForm, {
   SearchFlightsFormHandler
 } from '../components/SearchFlightsForm'
@@ -25,10 +26,7 @@ const Home: FC = () => {
 
   return (
     <GeneralLayout>
-      <p className={'font-light text-xl'}>
-        To begin, fill at least one of the following fields.
-      </p>
-
+      <Lead>To begin, fill at least one of the following fields.</Lead>
       <SearchFlightsForm onSubmit={onSubmit} loading={loading} error={error} />
     </GeneralLayout>
   )
