@@ -1,10 +1,13 @@
 import { FC } from 'react'
-import { BrowserRouter, Switch } from 'react-router-dom'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import Home from './views/Home'
 
 const App: FC = () => {
   return (
     <BrowserRouter>
-      <Switch></Switch>
+      <Switch>
+        <Route exact path={'/'} component={Home} />
+      </Switch>
     </BrowserRouter>
   )
 }
