@@ -1,9 +1,8 @@
 import { FC, useEffect, useState } from 'react'
-import InfiniteScroll from 'react-infinite-scroll-component'
 import { Link } from 'react-router-dom'
+import FlightsTable from '../components/FlightsTable'
 import Lead from '../components/Lead'
 import GeneralLayout from '../layouts/GeneralLayout'
-import styles from './index.module.css'
 
 const getLeadMessage = (count: number) => {
   return count === 1
@@ -38,37 +37,11 @@ const Search: FC = () => {
         search.
       </Lead>
 
-      <InfiniteScroll
-        dataLength={items.length}
-        next={() => setOffset(offset => offset + LIMIT)}
+      <FlightsTable
+        items={items}
+        next={() => setOffset(v => v + LIMIT)}
         hasMore={items.length < count}
-        loader={<h4>Loading...</h4>}
-      >
-        <table className={styles.table}>
-          <thead>
-            <tr>
-              <th>Callsign</th>
-              <th>Departure</th>
-              <th>Arrival</th>
-              <th>EOBT</th>
-              <th>Aircraft</th>
-              <th>Details</th>
-            </tr>
-          </thead>
-          <tbody>
-            {items.map((flight, key) => (
-              <tr key={key}>
-                <td>{flight.callsign}</td>
-                <td>{flight.departureIcao}</td>
-                <td>{flight.arrivalIcao}</td>
-                <td>{flight.estimatedOffBlockTime}</td>
-                <td>{flight.aircraft.icaoCode}</td>
-                <td></td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </InfiniteScroll>
+      />
     </GeneralLayout>
   )
 }
