@@ -25,6 +25,9 @@ jobs:
   build-and-deploy-api:
     needs: tag
     runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: https://mach-api.herokuapp.com
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -46,6 +49,9 @@ jobs:
   build-and-deploy-front:
     needs: tag
     runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: https://jpedroh.github.io/mach
     steps:
       - name: Checkout
         uses: actions/checkout@v2
