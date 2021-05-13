@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### 4.1.11 (2021-05-13)
+
+
+### Bug Fixes
+
+* alter URL schema ([0d88754](https://github.com/jpedroh/mach/commit/0d88754af0d5e3714d8a539f3fab52152a98c3d0))
+
+
+
 ### 4.1.10 (2021-05-13)
 
 
