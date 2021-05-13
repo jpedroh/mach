@@ -1,14 +1,32 @@
-import { ButtonHTMLAttributes, FC } from 'react'
+import { AnchorHTMLAttributes, ButtonHTMLAttributes, FC } from 'react'
 import styles from './index.module.css'
 
-type Props = ButtonHTMLAttributes<HTMLButtonElement>
+type Props = ButtonHTMLAttributes<HTMLButtonElement> &
+  AnchorHTMLAttributes<HTMLAnchorElement> & {
+    variant?: 'primary' | 'danger'
+  }
 
-const FormInput: FC<Props> = ({ children, ...props }) => {
+const Button: FC<Props> = ({ children, variant = 'primary', ...props }) => {
+  const variantClassName = {
+    primary: styles.primary,
+    danger: styles.danger
+  }[variant]
+
+  const className = [styles.button, variantClassName].join(' ')
+
+  if (props.href) {
+    return (
+      <a className={className} {...props}>
+        {children}
+      </a>
+    )
+  }
+
   return (
-    <button className={styles.button} {...props}>
+    <button className={className} {...props}>
       {children}
     </button>
   )
 }
 
-export default FormInput
+export default Button
