@@ -1,12 +1,18 @@
 {
-  "version": "4.1.7",
-  "packages": ["packages/*"],
-  "npmClientArgs": ["--no-lockfile"],
+  "version": "4.1.8",
+  "packages": [
+    "packages/*"
+  ],
+  "npmClientArgs": [
+    "--no-lockfile"
+  ],
   "npmClient": "yarn",
   "useWorkspaces": true,
   "command": {
     "version": {
-      "ignoreChanges": ["*.md"],
+      "ignoreChanges": [
+        "*.md"
+      ],
       "npmClient": "yarn",
       "message": "chore(release): publish %s",
       "conventionalCommits": true,
