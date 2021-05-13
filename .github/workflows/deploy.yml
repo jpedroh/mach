@@ -67,8 +67,6 @@ jobs:
         run: |
           yarn workspace @mach/common build
           yarn workspace @mach/front build
-      - name: Create .nojekyll file
-        run: touch packages/front/build/.nojekyll
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
