@@ -4,20 +4,19 @@ import Button from '../Button'
 import FormInput from '../FormInput'
 import styles from './index.module.css'
 
-export type SearchFlightsFormHandler = (
-  params: Partial<{ departureIcao: string; arrivalIcao: string }>
-) => void
+type SearchFlightsFormFields = { departureIcao: string; arrivalIcao: string }
 
 type Props = {
-  onSubmit: SearchFlightsFormHandler
+  onSubmit: (params: Partial<SearchFlightsFormFields>) => void
   loading: boolean
   error: string
 }
 
 const SearchFlightsForm: FC<Props> = ({ onSubmit, loading, error }) => {
-  const [form, setForm] = useState(
-    {} as Partial<{ departureIcao: string; arrivalIcao: string }>
-  )
+  const [form, setForm] = useState<SearchFlightsFormFields>({
+    arrivalIcao: '',
+    departureIcao: ''
+  })
 
   const onChange: ChangeEventHandler<HTMLInputElement> = evt => {
     setForm(form => ({
@@ -28,7 +27,10 @@ const SearchFlightsForm: FC<Props> = ({ onSubmit, loading, error }) => {
 
   const handleSubmit: FormEventHandler = evt => {
     evt.preventDefault()
-    onSubmit(form)
+    onSubmit({
+      ...(form.departureIcao && { departureIcao: form.departureIcao }),
+      ...(form.arrivalIcao && { arrivalIcao: form.arrivalIcao })
+    })
   }
 
   return (

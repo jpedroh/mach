@@ -1,33 +1,28 @@
-import { FC, useState } from 'react'
+import { FC, useContext, useEffect } from 'react'
+import { useHistory } from 'react-router-dom'
 import Lead from '../components/Lead'
-import SearchFlightsForm, {
-  SearchFlightsFormHandler
-} from '../components/SearchFlightsForm'
+import SearchFlightsForm from '../components/SearchFlightsForm'
+import { FlightsContext } from '../contexts/FlightsContext'
 import GeneralLayout from '../layouts/GeneralLayout'
 
 const Home: FC = () => {
-  const [error, setError] = useState('')
-  const [loading, setLoading] = useState(false)
+  const { state, loadFlights } = useContext(FlightsContext)
+  const history = useHistory()
 
-  const onSubmit: SearchFlightsFormHandler = params => {
-    try {
-      setError('')
-      setLoading(true)
-
-      if (!params.departureIcao && !params.arrivalIcao) {
-        throw new Error('You must fill at least one field.')
-      }
-    } catch (error) {
-      setError(error.message)
-    } finally {
-      setLoading(false)
+  useEffect(() => {
+    if (state.data.count > 0) {
+      history.push('/search')
     }
-  }
+  }, [state.data.count])
 
   return (
     <GeneralLayout>
       <Lead>To begin, fill at least one of the following fields.</Lead>
-      <SearchFlightsForm onSubmit={onSubmit} loading={loading} error={error} />
+      <SearchFlightsForm
+        onSubmit={params => loadFlights({ offset: 0, limit: 30, ...params })}
+        loading={state.loading}
+        error={state.error ? state.error.message : ''}
+      />
     </GeneralLayout>
   )
 }

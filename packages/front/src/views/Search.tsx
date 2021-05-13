@@ -1,7 +1,8 @@
-import { FC, useEffect, useState } from 'react'
+import { FC, useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import FlightsTable from '../components/FlightsTable'
 import Lead from '../components/Lead'
+import { FlightsContext } from '../contexts/FlightsContext'
 import GeneralLayout from '../layouts/GeneralLayout'
 
 const getLeadMessage = (count: number) => {
@@ -11,36 +12,30 @@ const getLeadMessage = (count: number) => {
 }
 
 const Search: FC = () => {
-  const LIMIT = 15
-  const [items, setItems] = useState<any[]>([])
-  const [count, setCount] = useState(0)
+  const { state, loadFlights, reset } = useContext(FlightsContext)
   const [offset, setOffset] = useState(0)
 
   useEffect(() => {
-    fetch(
-      'http://mach-api.herokuapp.com/flights?offset=' +
-        offset +
-        '&limit=' +
-        LIMIT
-    )
-      .then(response => response.json())
-      .then(data => {
-        setItems(items => [...items, ...data.items])
-        setCount(data.count)
-      })
+    if (offset === 0) {
+      return
+    }
+    loadFlights({ ...state.query, offset })
   }, [offset])
 
   return (
     <GeneralLayout>
       <Lead>
-        {getLeadMessage(count)} <Link to="/">Click here</Link> to make a new
-        search.
+        {getLeadMessage(state.data.count)}{' '}
+        <Link onClick={() => reset()} to="/">
+          Click here
+        </Link>{' '}
+        to make a new search.
       </Lead>
 
       <FlightsTable
-        items={items}
-        next={() => setOffset(v => v + LIMIT)}
-        hasMore={items.length < count}
+        items={state.data.items}
+        next={() => setOffset(v => v + state.query.limit)}
+        count={state.data.count}
       />
     </GeneralLayout>
   )

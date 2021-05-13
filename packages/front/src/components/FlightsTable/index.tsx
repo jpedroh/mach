@@ -5,10 +5,10 @@ import styles from './index.module.css'
 type Props = {
   items: any[]
   next: () => void
-  hasMore: boolean
+  count: number
 }
 
-const FlightsTable: FC<Props> = ({ items, next, hasMore }) => {
+const FlightsTable: FC<Props> = ({ items, next, count }) => {
   return (
     <div>
       <table className={styles.table}>
@@ -27,7 +27,7 @@ const FlightsTable: FC<Props> = ({ items, next, hasMore }) => {
       <InfiniteScroll
         dataLength={items.length}
         next={next}
-        hasMore={hasMore}
+        hasMore={items.length < count}
         loader={<span className={styles.loading}>Loading...</span>}
         height={'50vh'}
       >
