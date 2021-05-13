@@ -26,7 +26,7 @@ jobs:
     needs: tag
     runs-on: ubuntu-latest
     environment:
-      name: production
+      name: api_production
       url: https://mach-api.herokuapp.com
     steps:
       - name: Checkout
@@ -50,7 +50,7 @@ jobs:
     needs: tag
     runs-on: ubuntu-latest
     environment:
-      name: production
+      name: front_production
       url: https://jpedroh.github.io/mach
     steps:
       - name: Checkout
