@@ -25,6 +25,9 @@ jobs:
   build-and-deploy-api:
     needs: tag
     runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: https://mach-api.herokuapp.com
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -46,6 +49,9 @@ jobs:
   build-and-deploy-front:
     needs: tag
     runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: https://jpedroh.github.io/mach
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -53,17 +59,16 @@ jobs:
         run: yarn
       - name: Set app version variable
         run: |
-          export NEXT_PUBLIC_APP_VERSION=$(cat lerna.json | grep -oP '(?<=\"version": ")[a-zA-Z0-9\.-]*(?=\")')
+          export REACT_APP_APP_VERSION=$(cat lerna.json | grep -oP '(?<=\"version": ")[a-zA-Z0-9\.-]*(?=\")')
       - name: Run build
         run: |
           yarn workspace @mach/common build
           yarn workspace @mach/front build
-          yarn workspace @mach/front next export
       - name: Create .nojekyll file
-        run: touch packages/front/out/.nojekyll
+        run: touch packages/front/build/.nojekyll
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: gh-pages
-          FOLDER: packages/front/out
+          FOLDER: packages/front/build
