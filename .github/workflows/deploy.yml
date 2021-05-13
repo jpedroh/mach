@@ -60,6 +60,9 @@ jobs:
       - name: Set app version variable
         run: |
           export REACT_APP_APP_VERSION=$(cat lerna.json | grep -oP '(?<=\"version": ")[a-zA-Z0-9\.-]*(?=\")')
+      - name: Skip preflight check
+        run: |
+          echo "SKIP_PREFLIGHT_CHECK=true" > packages/front/.env
       - name: Run build
         run: |
           yarn workspace @mach/common build
