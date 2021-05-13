@@ -24,6 +24,7 @@ const Search: FC = () => {
       return
     }
     loadFlights({ ...state.query, offset })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [offset])
 
   return (

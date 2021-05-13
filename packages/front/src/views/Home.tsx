@@ -13,6 +13,7 @@ const Home: FC = () => {
     if (state.data.count > 0) {
       history.push('/search')
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state.data.count])
 
   return (
