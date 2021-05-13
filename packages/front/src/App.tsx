@@ -7,7 +7,7 @@ import Search from './views/Search'
 const App: FC = () => {
   return (
     <FlightsProvider>
-      <BrowserRouter>
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
         <Switch>
           <Route exact path={'/'} component={Home} />
           <Route exact path={'/search'} component={Search} />
