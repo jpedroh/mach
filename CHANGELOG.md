@@ -3,7 +3,7 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-### [4.1.10](https://github.com/jpedroh/mach/compare/v4.1.9...v4.1.10) (2021-05-13)
+### 4.1.10 (2021-05-13)
 
 
 ### Bug Fixes

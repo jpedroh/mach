@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### 4.1.10 (2021-05-13)
+
+
+### Bug Fixes
+
+* disable eslint for dependencies array ([08a8cf2](https://github.com/jpedroh/mach/commit/08a8cf270dcff669fceead550494ef2f8b2c4f6f))
+
+
+
 ### 4.1.9 (2021-05-13)
 
 **Note:** Version bump only for package @mach/rpl-crawler
