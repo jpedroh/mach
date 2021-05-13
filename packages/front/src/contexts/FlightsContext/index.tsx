@@ -21,7 +21,7 @@ const FlightsProvider: FC = ({ children }) => {
       }
       dispatch({ type: 'LOAD_FLIGHTS_INIT', payload: query })
       const payload = await http<{ items: Flight[]; count: number }>({
-        url: 'http://mach-api.herokuapp.com/flights',
+        url: '//mach-api.herokuapp.com/flights',
         query
       })
       if (payload.count === 0) {
