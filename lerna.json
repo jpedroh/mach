@@ -1,20 +1,19 @@
 {
   "version": "4.1.7",
-  "packages": [
-    "packages/*"
-  ],
-  "npmClientArgs": [
-    "--no-lockfile"
-  ],
+  "packages": ["packages/*"],
+  "npmClientArgs": ["--no-lockfile"],
   "npmClient": "yarn",
   "useWorkspaces": true,
   "command": {
     "version": {
-      "ignoreChanges": [
-        "*.md"
-      ],
+      "ignoreChanges": ["*.md"],
       "npmClient": "yarn",
-      "message": "chore(release): publish %s"
+      "message": "chore(release): publish %s",
+      "conventionalCommits": true,
+      "changelogPreset": {
+        "name": "conventionalcommits",
+        "issueUrlFormat": "{{host}}/{{owner}}/{{repository}}/issues/{{id}}"
+      }
     }
   }
 }
