@@ -1,3 +1,10 @@
+# [5.1.0](https://github.com/jpedroh/mach/compare/v5.0.3...v5.1.0) (2021-05-14)
+
+
+### Features
+
+* **front:** add SimBrief button ([#57](https://github.com/jpedroh/mach/issues/57)) ([9516d38](https://github.com/jpedroh/mach/commit/9516d38212ea76e38f6c4607987e20516d168197))
+
 ## [5.0.3](https://github.com/jpedroh/mach/compare/v5.0.2...v5.0.3) (2021-05-14)
 
 
