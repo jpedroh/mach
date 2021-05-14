@@ -1,21 +1,19 @@
 module.exports = {
   plugins: [
     '@semantic-release/commit-analyzer',
-    '@semantic-release/release-notes-generator',
+    ['semantic-release-lerna', { generateNotes: true, publish: false }],
     '@semantic-release/changelog',
     '@semantic-release/github',
     [
-      '@semantic-release/exec',
-      {
-        publishCmd:
-          'yarn lerna version ${nextRelease.version} --no-git-tag-version --no-changelog --yes'
-      }
-    ],
-    [
       '@semantic-release/git',
       {
-        message:
-          'chore(release): ${nextRelease.version} [skip release]\n\n${nextRelease.notes}'
+        message: 'chore(release): ${nextRelease.version} [skip release]',
+        assets: [
+          'CHANGELOG.md',
+          'lerna.json',
+          'package.json',
+          'packages/*/package.json'
+        ]
       }
     ]
   ],
