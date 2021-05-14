@@ -60,4 +60,5 @@ jobs:
         with:
           tags: ghcr.io/jpedroh/mach-front:${{ github.sha }}
           file: ./packages/front/Dockerfile
+          build-args: APP_VERSION_ARG=${{ github.sha }}
           push: true
