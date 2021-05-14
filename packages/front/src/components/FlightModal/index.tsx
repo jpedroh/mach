@@ -4,6 +4,7 @@ import { formatEet } from '../../utils/formatEet'
 import Button from '../Button'
 import IcaoFpl from '../IcaoFpl'
 import IvaoButton from '../IvaoButton'
+import SimBriefButton from '../SimBriefButton'
 import SkyVectorButton from '../SkyVectorButton'
 import VatsimButton from '../VatsimButton'
 import styles from './index.module.css'
@@ -66,6 +67,7 @@ const FlightModal: FC<Props> = ({ show, onClose, flight }) => {
           <div className={styles.footer}>
             <IvaoButton flight={flight} />
             <VatsimButton flight={flight} />
+            <SimBriefButton flight={flight} />
             <SkyVectorButton flight={flight} />
             <Button variant="danger" onClick={onClose}>
               Close
