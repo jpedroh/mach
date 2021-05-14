@@ -7,7 +7,7 @@ type Props = {
   flight: Flight
 }
 
-const getIcaoFpl = (flight: Flight): string => {
+const getIcaoFpl = (flight: Flight) => {
   return [
     `(FPL-${flight.callsign}-${formatFlightRules(flight.flightRules)}S`,
     `-1/${flight.aircraft.icaoCode}/${flight.aircraft.wakeTurbulence}-${flight.aircraft.equipment}/L1B1`,
@@ -15,14 +15,16 @@ const getIcaoFpl = (flight: Flight): string => {
     `-${flight.cruisingSpeed}F${flight.cruisingLevel} ${flight.route}`,
     `-${flight.arrivalIcao}${formatEet(flight.estimatedEnrouteMinutes)}`,
     `-${flight.remarks})`
-  ].join('\n')
+  ]
 }
 
 const IcaoFpl: React.FC<Props> = ({ flight }) => {
   return (
-    <pre className={styles.container}>
-      <p>{getIcaoFpl(flight)}</p>
-    </pre>
+    <div className={styles.container}>
+      {getIcaoFpl(flight).map((line, key) => (
+        <p key={key}>{line}</p>
+      ))}
+    </div>
   )
 }
 
