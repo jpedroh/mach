@@ -1,3 +1,10 @@
+## [5.1.2](https://github.com/jpedroh/mach/compare/v5.1.1...v5.1.2) (2021-05-14)
+
+
+### Bug Fixes
+
+* **front:** reduce text on buttons to avoid overflow ([c75e539](https://github.com/jpedroh/mach/commit/c75e5391e958c85790a0341bcb54fd95dc7f1aa8))
+
 ## [5.1.1](https://github.com/jpedroh/mach/compare/v5.1.0...v5.1.1) (2021-05-14)
 
 
