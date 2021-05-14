@@ -28,9 +28,9 @@ jobs:
           tags: |
             registry.heroku.com/mach-api/web:latest
             ghcr.io/jpedroh/mach-rest-api:latest
-            ghcr.io/jpedroh/mach-rest-api:${{ github.ref }}
+            ghcr.io/jpedroh/mach-rest-api:${{ github.event.release.tag_name }}
           file: ./packages/rest-api/Dockerfile
-          build-args: APP_VERSION_ARG=${{ github.ref }}
+          build-args: APP_VERSION_ARG=${{ github.event.release.tag_name }}
           push: true
       - run: heroku container:release web -a mach-api
         env:
@@ -48,8 +48,8 @@ jobs:
       - uses: docker/build-push-action@v2
         with:
           tags: |
-            ghcr.io/jpedroh/mach-rest-api:latest
-            ghcr.io/jpedroh/mach-rest-api:${{ github.ref }}
+            ghcr.io/jpedroh/mach-rpl-crawler:latest
+            ghcr.io/jpedroh/mach-rpl-crawler:${{ github.event.release.tag_name }}
           file: ./packages/rpl-crawler/Dockerfile
           push: true
   build_front:
@@ -68,10 +68,10 @@ jobs:
       - uses: docker/build-push-action@v2
         with:
           tags: |
-            ghcr.io/jpedroh/mach-rest-api:latest
-            ghcr.io/jpedroh/mach-rest-api:${{ github.ref }}
+            ghcr.io/jpedroh/mach-front:latest
+            ghcr.io/jpedroh/mach-front:${{ github.event.release.tag_name }}
           file: ./packages/front/Dockerfile
-          build-args: APP_VERSION_ARG=${{ github.ref }}
+          build-args: APP_VERSION_ARG=${{ github.event.release.tag_name }}
           push: true
       - run: yarn --frozen-lockfile
       - name: Run build
@@ -80,7 +80,7 @@ jobs:
           yarn workspace @mach/front build
         env:
           SKIP_PREFLIGHT_CHECK: true
-          REACT_APP_APP_VERSION: ${{ github.ref }}
+          REACT_APP_APP_VERSION: ${{ github.event.release.tag_name }}
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
