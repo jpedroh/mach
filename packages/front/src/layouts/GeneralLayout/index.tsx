@@ -6,8 +6,10 @@ import styles from './index.module.css'
 const GeneralLayout: FC = ({ children }) => {
   return (
     <div className={styles.container}>
-      <Header />
-      <div className={styles.content}>{children}</div>
+      <div className={styles.content}>
+        <Header />
+        {children}
+      </div>
       <Footer />
     </div>
   )
