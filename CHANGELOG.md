@@ -1,3 +1,10 @@
+## [5.1.1](https://github.com/jpedroh/mach/compare/v5.1.0...v5.1.1) (2021-05-14)
+
+
+### Bug Fixes
+
+* **dev-deps:** bump @typescript-eslint/eslint-plugin from 4.22.1 to 4.23.0 ([#51](https://github.com/jpedroh/mach/issues/51)) ([b5e6e69](https://github.com/jpedroh/mach/commit/b5e6e69db21576966cbcc1490f11c30806c7b2f4))
+
 # [5.1.0](https://github.com/jpedroh/mach/compare/v5.0.3...v5.1.0) (2021-05-14)
 
 
