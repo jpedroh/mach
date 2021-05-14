@@ -28,6 +28,7 @@ jobs:
           tags: jpedroh/mach/rest-api:${{ github.sha }}
           file: ./packages/rest-api/Dockerfile
           build-args: APP_VERSION_ARG=${{ github.sha }}
+          push: true
   build_rpl_crawler:
     runs-on: ubuntu-latest
     needs: test
@@ -43,4 +44,4 @@ jobs:
         with:
           tags: jpedroh/mach/rpl-crawler:${{ github.sha }}
           file: ./packages/rpl-crawler/Dockerfile
-          build-args: APP_VERSION_ARG=${{ github.sha }}
+          push: true
