@@ -1,3 +1,10 @@
+## [5.0.3](https://github.com/jpedroh/mach/compare/v5.0.2...v5.0.3) (2021-05-14)
+
+
+### Bug Fixes
+
+* increase modal width ([#56](https://github.com/jpedroh/mach/issues/56)) ([37797c0](https://github.com/jpedroh/mach/commit/37797c0ab9bb889bd80240060aa42805596db1dd))
+
 # Change Log
 
 All notable changes to this project will be documented in this file.
