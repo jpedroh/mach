@@ -1,3 +1,15 @@
+# [5.2.0](https://github.com/jpedroh/mach/compare/v5.1.2...v5.2.0) (2021-05-14)
+
+
+### Bug Fixes
+
+* **front:** fix wrong text color on light mode ([#59](https://github.com/jpedroh/mach/issues/59)) ([4d5d712](https://github.com/jpedroh/mach/commit/4d5d7120f77960e1847af569b696cbb57e255eac))
+
+
+### Features
+
+* **front:** tweak mobile responsiveness ([#58](https://github.com/jpedroh/mach/issues/58)) ([2bc33f4](https://github.com/jpedroh/mach/commit/2bc33f413377873a8c2d0f5c886af4b283a91f56))
+
 ## [5.1.2](https://github.com/jpedroh/mach/compare/v5.1.1...v5.1.2) (2021-05-14)
 
 
