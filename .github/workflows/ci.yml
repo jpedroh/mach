@@ -1,0 +1,81 @@
+name: CI
+on: push
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: yarn --frozen-lockfile
+      - name: Build application packages
+        run: |
+          yarn workspace @mach/common run build
+          yarn workspace @mach/database run build
+          yarn workspace @mach/rpl-crawler run build
+      - run: yarn test
+  build_rest_api:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - uses: docker/build-push-action@v2
+        with:
+          tags: ghcr.io/jpedroh/mach-rest-api:${{ github.sha }}
+          file: ./packages/rest-api/Dockerfile
+          build-args: APP_VERSION_ARG=${{ github.sha }}
+          push: true
+  build_rpl_crawler:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - uses: docker/build-push-action@v2
+        with:
+          tags: ghcr.io/jpedroh/mach-rpl-crawler:${{ github.sha }}
+          file: ./packages/rpl-crawler/Dockerfile
+          push: true
+  build_front:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - uses: docker/build-push-action@v2
+        with:
+          tags: ghcr.io/jpedroh/mach-front:${{ github.sha }}
+          file: ./packages/front/Dockerfile
+          build-args: APP_VERSION_ARG=${{ github.sha }}
+          push: true
+  tag:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/main'
+    needs: [test, build_rest_api, build_rpl_crawler, build_front]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - run: yarn install --frozen-lockfile
+      - run: npx semantic-release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

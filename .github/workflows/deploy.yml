@@ -1,29 +1,10 @@
 name: Deploy
 on:
-  push:
-    branches:
-      - master
+  release:
+    types:
+      - created
 jobs:
-  tag:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Git Identity
-        run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/$GITHUB_REPOSITORY
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Yarn install
-        run: yarn
-      - name: Run tag
-        run: yarn lerna version --conventional-commits --changelog-preset conventionalcommits --create-release github --yes
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  build-and-deploy-api:
-    needs: tag
+  build_rest_api:
     runs-on: ubuntu-latest
     environment:
       name: api_production
@@ -31,23 +12,44 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Build API Docker image
-        run: |
-          docker build -t registry.heroku.com/mach-api/web --build-arg APP_VERSION_ARG=$(cat lerna.json | grep -oP '(?<=\"version"\: ")[a-zA-Z0-9\.-]*(?=\")') -f ./packages/rest-api/Dockerfile .
-      - name: Login to Heroku Container registry
+      - uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - run: heroku container:login
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-        run: heroku container:login
-      - name: Push image
+      - uses: docker/build-push-action@v2
+        with:
+          tags: |
+            registry.heroku.com/mach-api/web:latest
+            ghcr.io/jpedroh/mach-rest-api:latest
+            ghcr.io/jpedroh/mach-rest-api:${{ github.ref }}
+          file: ./packages/rest-api/Dockerfile
+          build-args: APP_VERSION_ARG=${{ github.ref }}
+          push: true
+      - run: heroku container:release web -a mach-api
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-        run: docker push registry.heroku.com/mach-api/web
-      - name: Release application
-        env:
-          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-        run: heroku container:release web -a mach-api
-  build-and-deploy-front:
-    needs: tag
+  build_rpl_crawler:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - uses: docker/build-push-action@v2
+        with:
+          tags: |
+            ghcr.io/jpedroh/mach-rest-api:latest
+            ghcr.io/jpedroh/mach-rest-api:${{ github.ref }}
+          file: ./packages/rpl-crawler/Dockerfile
+          push: true
+  build_front:
     runs-on: ubuntu-latest
     environment:
       name: front_production
@@ -55,18 +57,27 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Yarn install
-        run: yarn
-      - name: Set app version variable
-        run: |
-          export REACT_APP_APP_VERSION=$(cat lerna.json | grep -oP '(?<=\"version": ")[a-zA-Z0-9\.-]*(?=\")')
-      - name: Skip preflight check
-        run: |
-          echo "SKIP_PREFLIGHT_CHECK=true" > packages/front/.env
+      - uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - uses: docker/build-push-action@v2
+        with:
+          tags: |
+            ghcr.io/jpedroh/mach-rest-api:latest
+            ghcr.io/jpedroh/mach-rest-api:${{ github.ref }}
+          file: ./packages/front/Dockerfile
+          build-args: APP_VERSION_ARG=${{ github.ref }}
+          push: true
+      - run: yarn --frozen-lockfile
       - name: Run build
         run: |
           yarn workspace @mach/common build
           yarn workspace @mach/front build
+        env:
+          SKIP_PREFLIGHT_CHECK: true
+          REACT_APP_APP_VERSION: ${{ github.ref }}
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
