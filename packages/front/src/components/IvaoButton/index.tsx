@@ -69,7 +69,7 @@ const IvaoButton: FC<Props> = ({ flight }) => {
         variant="primary"
         onClick={() => ref.current.submit()}
       >
-        File IVAO FP
+        IVAO FP
       </Button>
     </>
   )

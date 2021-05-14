@@ -11,7 +11,7 @@ const SkyVectorButton: FC<Props> = ({ flight }) => {
 
   return (
     <Button href={skyVectorLink} target="_blank">
-      View on SkyVector
+      SkyVector
     </Button>
   )
 }

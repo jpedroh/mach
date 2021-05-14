@@ -28,7 +28,7 @@ const VatsimButton: FC<Props> = ({ flight }) => {
 
   return (
     <Button href={simBriefLink} target="_blank">
-      View on SimBrief
+      SimBrief
     </Button>
   )
 }

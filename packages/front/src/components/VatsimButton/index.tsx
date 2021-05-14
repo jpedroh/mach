@@ -19,7 +19,7 @@ const VatsimButton: FC<Props> = ({ flight }) => {
 
   return (
     <Button href={vatsimLink} target="_blank">
-      File Vatsim FP
+      Vatsim FP
     </Button>
   )
 }
