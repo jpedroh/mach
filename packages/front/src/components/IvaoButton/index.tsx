@@ -12,7 +12,7 @@ const IvaoButton: FC<Props> = ({ flight }) => {
   const ref = useRef(document.createElement('form'))
 
   return (
-    <>
+    <div>
       <form
         ref={ref}
         id="ivaoform"
@@ -71,7 +71,7 @@ const IvaoButton: FC<Props> = ({ flight }) => {
       >
         IVAO FP
       </Button>
-    </>
+    </div>
   )
 }
 
