@@ -1,5 +1,6 @@
 {
   "name": "root",
+  "version": "0.0.0",
   "license": "MIT",
   "private": "true",
   "devDependencies": {
@@ -12,14 +13,11 @@
     "@types/node": "^15.0.1",
     "conventional-changelog-conventionalcommits": "^4.6.0",
     "jest": "^26.2.2",
-    "lerna": "^4.0.0",
     "semantic-release": "^17.4.3",
-    "semantic-release-lerna": "^0.2.2",
     "ts-jest": "^26.1.4",
     "typescript": "^4.2.4"
   },
   "scripts": {
-    "build": "yarn lerna run build",
     "test": "yarn jest",
     "front": "yarn workspace @mach/front"
   },
