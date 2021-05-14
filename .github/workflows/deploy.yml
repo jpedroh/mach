@@ -2,7 +2,8 @@ name: Deploy
 on:
   release:
     types:
-      - created
+      - published
+      - edited
 jobs:
   build_rest_api:
     runs-on: ubuntu-latest
