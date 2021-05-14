@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### 5.0.2 (2021-05-13)
+
+
+### Bug Fixes
+
+* add PUBLIC_URL to browser router ([31626f3](https://github.com/jpedroh/mach/commit/31626f31fa91fb2081731e71fbdde1ab12ff458e))
+
+
+
 ### 5.0.1 (2021-05-13)
 
 **Note:** Version bump only for package @mach/database
