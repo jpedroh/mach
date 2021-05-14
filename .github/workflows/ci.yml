@@ -62,3 +62,18 @@ jobs:
           file: ./packages/front/Dockerfile
           build-args: APP_VERSION_ARG=${{ github.sha }}
           push: true
+  tag:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/main'
+    needs: [test, build_rest_api, build_rpl_crawler, build_front]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - run: yarn install --frozen-lockfile
+      - run: npx semantic-release
