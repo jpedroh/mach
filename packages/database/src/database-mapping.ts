@@ -1,7 +1,7 @@
 import { DataTypes, Model, Sequelize } from 'sequelize'
 import FlightType from '@mach/common'
 
-export interface FlightModel extends Model, FlightType {}
+export interface FlightModel extends Model<FlightType>, FlightType {}
 
 const Flight = (sequelize: Sequelize) => {
   return sequelize.define<FlightModel>(
