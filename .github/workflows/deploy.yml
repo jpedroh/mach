@@ -1,11 +1,8 @@
 name: Deploy
 on:
-  workflow_dispatch:
   release:
     types:
       - created
-      - published
-      - edited
 jobs:
   build_rest_api:
     runs-on: ubuntu-latest
