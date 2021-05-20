@@ -7,7 +7,7 @@ import {
   resolveWeekDays
 } from './flight-decoder-utils'
 
-const makeFlightDecoder = () => {
+const makeFlightDecoder = ({ uuid }: { uuid: (line: string) => string }) => {
   return (line: string): Flight => {
     const callsign = line.substr(22, 7).trim()
     const company = callsign.substr(0, 3)
@@ -22,6 +22,7 @@ const makeFlightDecoder = () => {
     const flightRules = resolveFlightRules(route)
 
     return {
+      id: uuid(line),
       callsign: line.substr(22, 7).trim(),
       company,
       flightNumber,
