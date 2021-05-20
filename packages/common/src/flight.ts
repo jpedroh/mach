@@ -1,6 +1,7 @@
 import * as FlightEnum from './enum'
 
 type Flight = {
+  id: string
   callsign: string
   beginDate: Date
   endDate?: Date
