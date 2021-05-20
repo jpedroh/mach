@@ -1,8 +1,9 @@
 import makeFlightDecoder from '../../src/flight-decoder/flight-decoder'
 import { FlightRules, WakeTurbulence, Weekdays } from '@mach/common'
+import { v4 } from 'uuid'
 
 describe('flight-decoder', () => {
-  const flightDecoder = makeFlightDecoder()
+  const flightDecoder = makeFlightDecoder({ uuid: _ => v4() })
 
   test('Given flight with begin and end date', () => {
     const line =
