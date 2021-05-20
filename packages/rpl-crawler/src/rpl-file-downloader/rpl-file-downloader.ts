@@ -9,7 +9,7 @@ type HttpClient = {
 
 const firRplFileDownloader = ({ http }: { http: HttpClient }) => {
   return async (fir: string, date: string) => {
-    const fileLink = `http://portal.cgna.gov.br/files/abas/${date}/painel_rpl/bdr/RPL${fir}.zip`
+    const fileLink = `http://portal.cgna.decea.mil.br/files/abas/${date}/painel_rpl/bdr/RPL${fir}.zip`
 
     const { data } = await Axios.get(fileLink, { responseType: 'arraybuffer' })
 
