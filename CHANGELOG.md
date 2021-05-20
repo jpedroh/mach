@@ -1,3 +1,16 @@
+# [5.3.0](https://github.com/jpedroh/mach/compare/v5.2.0...v5.3.0) (2021-05-20)
+
+
+### Bug Fixes
+
+* **rpl-crawler:** add missing id field ([728a6b8](https://github.com/jpedroh/mach/commit/728a6b80e3fd2a5cf80290c8dc5e491706fb3c83))
+* **rpl-crawler:** correct wrong URL to CGNA website ([0bd92f0](https://github.com/jpedroh/mach/commit/0bd92f076ec93c0f5a4666e2c611b221bd4874ae))
+
+
+### Features
+
+* **common:** add id field declaration ([f8f5b9b](https://github.com/jpedroh/mach/commit/f8f5b9bf0aaa93a59ace2285ffc847468091ac9c))
+
 # [5.2.0](https://github.com/jpedroh/mach/compare/v5.1.2...v5.2.0) (2021-05-14)
 
 
