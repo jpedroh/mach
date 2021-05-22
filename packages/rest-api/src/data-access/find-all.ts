@@ -1,13 +1,16 @@
 import Flight from '@mach/common'
 import { FlightModel } from '@mach/database'
 
+export type FindFlightsWhere = {
+  departureIcao: string[]
+  arrivalIcao: string[]
+  company: string[]
+}
+
 export type FindFlightsQuery = {
   limit: number
   offset: number
-  departureIcao?: string
-  arrivalIcao?: string
-  company?: string
-}
+} & Partial<FindFlightsWhere>
 
 export type FindFlightsOutput = {
   count: number
