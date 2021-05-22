@@ -8,6 +8,14 @@ const makeFindAll = ({ findAll }: FlightUseCase) => {
     const limit = parseInt(query.limit as string) || 15
     const offset = parseInt(query.offset as string) || 0
 
+    if (limit < 0) {
+      throw new BadRequestException('Limit must be a positive integer')
+    }
+
+    if (offset < 0) {
+      throw new BadRequestException('Offset must be a positive integer')
+    }
+
     const where: FindFlightsWhere = {
       ...(query.departureIcao && {
         departureIcao: query.departureIcao.split(',')
