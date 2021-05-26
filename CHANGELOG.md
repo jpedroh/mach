@@ -1,3 +1,10 @@
+## [5.4.1](https://github.com/jpedroh/mach/compare/v5.4.0...v5.4.1) (2021-05-26)
+
+
+### Bug Fixes
+
+* **front:** correct airport in ICAO FPL String ([#61](https://github.com/jpedroh/mach/issues/61)) ([a76cba6](https://github.com/jpedroh/mach/commit/a76cba688a56653dcf84275ba68d57dd7aa409dd))
+
 # [5.4.0](https://github.com/jpedroh/mach/compare/v5.3.0...v5.4.0) (2021-05-22)
 
 
