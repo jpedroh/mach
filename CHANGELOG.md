@@ -1,3 +1,10 @@
+## [5.4.2](https://github.com/jpedroh/mach/compare/v5.4.1...v5.4.2) (2022-01-11)
+
+
+### Bug Fixes
+
+* **rpl-crawler:** use RVSM instead of EOBT for rpl crawler ([#62](https://github.com/jpedroh/mach/issues/62)) ([71cfb5e](https://github.com/jpedroh/mach/commit/71cfb5e188d315132230525d1fa7c10291532da3))
+
 ## [5.4.1](https://github.com/jpedroh/mach/compare/v5.4.0...v5.4.1) (2021-05-26)
 
 
