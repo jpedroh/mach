@@ -1,5 +1,4 @@
-import { WakeTurbulence } from '@mach/common'
-import Flight from '@mach/common'
+import Flight, { FlightRules, WakeTurbulence } from '@mach/common'
 import {
   resolveEstimatedEnrouteMinutes,
   resolveFlightDate,
@@ -9,42 +8,53 @@ import {
 
 const makeFlightDecoder = ({ uuid }: { uuid: (line: string) => string }) => {
   return (line: string): Flight => {
-    const callsign = line.substr(22, 7).trim()
-    const company = callsign.substr(0, 3)
-    const flightNumber = parseInt(callsign.substr(3))
+    const LINES = line.split("\n").map(line => line.trim())
 
-    const beginDate = resolveFlightDate(line.substr(0, 6).trim())
-    const endDatePlainText = line.substr(7, 6).trim()
-    const endDate =
-      endDatePlainText !== 'UFN' ? resolveFlightDate(endDatePlainText) : null
+    const LINE_1 = LINES[0];
+    const callsign = LINE_1.match(/[A-Z]{3}\d+/)[0]
+    const beginDate = resolveFlightDate(LINE_1.match(/(?<= )\d{6}(?= (\d| ))/)[0]);
+    const endDate = LINE_1.match(/(?<= )(\d{6}|( ){6})(?= [I|V|Y|Z])/)[0]
+    const company = callsign.match(/[A-Z]+/)[0];
+    const flightNumber = Number(callsign.match(/\d+/)[0]);
+    const departureIcao = LINE_1.match(/[A-Z]{4}/)[0];
+    const estimatedOffBlockTime = LINE_1.match(/\d{4}$/)[0]
+    const flightRules = LINE_1.match(/(?<= ).(?=[A-Z] )/)[0]
+    const weekDays = LINE_1.match(/(?<= )(\d| ){7}(?= )/)[0].trim();
 
-    const route = line.substr(56, line.indexOf('EQPT') - 66).trim()
-    const flightRules = resolveFlightRules(route)
+    const LINE_2 = LINES[1]
+    const cruisingSpeed = LINE_2.match(/(?<=\/)N\d+/)[0];
+    const cruisingLevel = Number(LINE_2.match(/(?<=F)\d+/)[0]);
+    const route = LINE_2.match(/(?<=\/N\d+F\d+ ).*/)[0]
+
+    const LINE_3 = LINES[2]
+    const arrivalIcao = LINE_3.match(/^[A-Z]{4}/)[0]
+    const estimatedEnrouteMinutes = resolveEstimatedEnrouteMinutes(LINE_3.match(/\d{4}/)[0])
+    const remarks = LINE_3.match(/(?<=\d{4} C\/ ).*/)[0]
+
+    const aircraft = {
+      icaoCode: LINE_1.match(/[A-Z0-9]+(?=(\/(M|L|H|J)))/)[0],
+      wakeTurbulence: LINE_1.match(/(?<=\/)(M|L|H|J)/)[0] as WakeTurbulence,
+      equipment: remarks.match(/(?<=EQPT\/)[^\s]+/)[0]
+    }
 
     return {
       id: uuid(line),
-      callsign: line.substr(22, 7).trim(),
+      callsign,
       company,
       flightNumber,
-      beginDate,
-      endDate,
-      aircraft: {
-        icaoCode: line.substr(30, 4).trim(),
-        wakeTurbulence: line.charAt(35) as WakeTurbulence,
-        equipment: line.match(/EQPT\/([^\s]+)/)[1]
-      },
-      departureIcao: line.substr(37, 4).trim(),
-      estimatedOffBlockTime: line.substr(41, 4).trim(),
-      cruisingSpeed: line.substr(46, 5).trim(),
-      cruisingLevel: parseInt(line.substr(52, 3).trim()),
-      weekdays: resolveWeekDays(line.substr(14, 8).trim()),
+      cruisingSpeed,
+      cruisingLevel,
       route,
-      flightRules,
-      arrivalIcao: line.substr(line.indexOf('EQPT') - 9, 4).trim(),
-      estimatedEnrouteMinutes: resolveEstimatedEnrouteMinutes(
-        line.substr(line.indexOf('EQPT') - 5, 4).trim()
-      ),
-      remarks: line.match(/EQPT(.*)/)[0]
+      arrivalIcao,
+      estimatedEnrouteMinutes,
+      remarks,
+      departureIcao,
+      aircraft,
+      estimatedOffBlockTime,
+      flightRules: resolveFlightRules(route),
+      weekdays: resolveWeekDays(weekDays),
+      beginDate,
+      endDate: endDate.trim() ? resolveFlightDate(endDate) : null
     }
   }
 }

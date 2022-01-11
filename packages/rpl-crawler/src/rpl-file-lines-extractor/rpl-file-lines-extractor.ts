@@ -3,7 +3,7 @@ type ZipPort = {
     buffer: Buffer
   ) => {
     listZipFileNames: () => string[]
-    readFileLines: (fileName: string) => string[]
+    readFileLines: (fileName: string) => string
   }
 }
 
@@ -13,11 +13,12 @@ const makeRplFileLinesExtractor = ({ zip }: { zip: ZipPort }) => {
 
     const flightsFileName = zipFile
       .listZipFileNames()
-      .find(fileName => fileName.includes('EOBT'))
+      .find(fileName => fileName.includes('RVSM'))
 
-    return zipFile
-      .readFileLines(flightsFileName)
-      .filter(line => line.includes('EQPT'))
+    const fileLines = zipFile.readFileLines(flightsFileName)
+    const tokens = fileLines.matchAll(new RegExp(/(?<=#C \d{6})[^@]*/gs));
+
+    return Array.from(tokens).map(([token]) => token.trim())
   }
 }
 

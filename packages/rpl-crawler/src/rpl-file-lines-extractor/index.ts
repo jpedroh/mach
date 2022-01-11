@@ -8,11 +8,7 @@ export default makeRplFileLinesExtractor({
 
       return {
         listZipFileNames: () => file.getEntries().map(file => file.entryName),
-        readFileLines: fileName =>
-          file
-            .readAsText(fileName)
-            .split('\n')
-            .map(line => line.trim())
+        readFileLines: fileName => file.readAsText(fileName)
       }
     }
   }
