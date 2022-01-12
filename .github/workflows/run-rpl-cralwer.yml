@@ -19,5 +19,5 @@ jobs:
       - name: Run Update
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-          RPL_DATE: ${{ github.event.inputs.date }} || $(date +"%Y-%m-%d")
-        run: docker run -e DATABASE_URL=$(heroku config:get DATABASE_URL --app=mach-api) ghcr.io/jpedroh/mach-rpl-crawler:latest node packages/rpl-crawler/dist/main SBAZ,SBBS,SBCW,SBRE $RPL_DATE
+          RPL_DATE: ${{ github.event.inputs.date }}
+        run: docker run -e DATABASE_URL=$(heroku config:get DATABASE_URL --app=mach-api) ghcr.io/jpedroh/mach-rpl-crawler:latest node packages/rpl-crawler/dist/main SBAZ,SBBS,SBCW,SBRE ${RPL_DATE:-(date +"%Y-%m-%d")}
