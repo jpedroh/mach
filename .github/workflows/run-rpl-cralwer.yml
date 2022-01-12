@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
     inputs:
       date:
-        description: 'Date of publication of RPL'
+        description: 'Date of publication of RPL (YYYY-MM-DD)'
         required: false
   schedule:
     - cron: '0 0 * * *'
