@@ -1,29 +1,27 @@
-import { FC, useContext, useEffect } from 'react'
-import { useHistory } from 'react-router-dom'
+import { FC } from 'react'
+import { useNavigate } from 'react-router-dom'
 import Lead from '../components/Lead'
-import SearchFlightsForm from '../components/SearchFlightsForm'
-import { FlightsContext } from '../contexts/FlightsContext'
+import SearchFlightsForm, { SearchFlightsFormFields } from '../components/SearchFlightsForm'
 import GeneralLayout from '../layouts/GeneralLayout'
 
 const Home: FC = () => {
-  const { state, loadFlights } = useContext(FlightsContext)
-  const history = useHistory()
+  const navigate = useNavigate()
 
-  useEffect(() => {
-    if (state.data.count > 0) {
-      history.push('/search')
+  const handleSubmit = (params: Partial<SearchFlightsFormFields>) => {
+    const urlParams = new URLSearchParams()
+    if (params.departureIcao) {
+      urlParams.set('departureIcao', params.departureIcao)
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [state.data.count])
+    if (params.arrivalIcao) {
+      urlParams.set('arrivalIcao', params.arrivalIcao)
+    }
+    navigate(`/search?${urlParams.toString()}`);
+  }
 
   return (
     <GeneralLayout>
       <Lead>To begin, fill at least one of the following fields.</Lead>
-      <SearchFlightsForm
-        onSubmit={params => loadFlights({ offset: 0, limit: 30, ...params })}
-        loading={state.loading}
-        error={state.error ? state.error.message : ''}
-      />
+      <SearchFlightsForm onSubmit={handleSubmit} />
     </GeneralLayout>
   )
 }
