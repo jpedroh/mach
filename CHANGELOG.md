@@ -1,3 +1,10 @@
+## [5.5.1](https://github.com/jpedroh/mach/compare/v5.5.0...v5.5.1) (2022-09-06)
+
+
+### Bug Fixes
+
+* incorrect directory in deployment ([94f21b2](https://github.com/jpedroh/mach/commit/94f21b21a2d28b1b8bd7ad01e9a4b74d9ef5e7eb))
+
 # [5.5.0](https://github.com/jpedroh/mach/compare/v5.4.3...v5.5.0) (2022-09-06)
 
 
