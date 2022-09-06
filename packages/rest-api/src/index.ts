@@ -1,6 +1,7 @@
 import * as express from 'express'
 import actions from './actions'
 import makeExpressCallback from './express-callback'
+import * as compression from 'compression';
 
 const app = express()
 const port = process.env.PORT || 3000
@@ -13,6 +14,8 @@ app.use(function (req, res, next) {
   )
   next()
 })
+
+app.use(compression())
 
 app.get(
   '/',
