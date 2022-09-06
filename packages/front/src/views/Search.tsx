@@ -24,8 +24,8 @@ const Search: FC = () => {
   if (query.totalItems === 0 && query.isSuccess) {
     return <GeneralLayout>
       <Lead>
-        <p>There are no results for your search.</p>
-        <p><Link to="/">Click here</Link> to make a new search.</p>
+        There are no results for your search.{" "}
+        <Link to="/">Click here</Link> to make a new search.
       </Lead>
     </GeneralLayout>
   }
