@@ -1,3 +1,10 @@
+## [5.5.2](https://github.com/jpedroh/mach/compare/v5.5.1...v5.5.2) (2022-09-06)
+
+
+### Bug Fixes
+
+* use hash router instead of browser router ([c90035b](https://github.com/jpedroh/mach/commit/c90035bee3bbd1198de636e1e25adedbb1756278))
+
 ## [5.5.1](https://github.com/jpedroh/mach/compare/v5.5.0...v5.5.1) (2022-09-06)
 
 
