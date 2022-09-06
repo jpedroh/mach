@@ -10,6 +10,5 @@ export default defineConfig({
     commonjsOptions: {
       include: [/common/, /node_modules/],
     }
-  },
-  base: '/mach/'
+  }
 })
