@@ -1,3 +1,10 @@
+# [5.6.0](https://github.com/jpedroh/mach/compare/v5.5.3...v5.6.0) (2022-09-06)
+
+
+### Features
+
+* add compression middleware ([2ce5819](https://github.com/jpedroh/mach/commit/2ce58192ca8c22e2d82aa08839496cdf52c688c6))
+
 ## [5.5.3](https://github.com/jpedroh/mach/compare/v5.5.2...v5.5.3) (2022-09-06)
 
 
