@@ -27,9 +27,9 @@ const makeFlightDecoder = ({ uuid }: { uuid: (line: string) => string }) => {
     const route = LINE_2.match(/(?<=\/N\d+F\d+ ).*/)[0]
 
     const LINE_3 = LINES[2]
-    const arrivalIcao = LINE_3.match(/^[A-Z]{4}/)[0]
-    const estimatedEnrouteMinutes = resolveEstimatedEnrouteMinutes(LINE_3.match(/\d{4}/)[0])
-    const remarks = LINE_3.match(/(?<=\d{4} C\/ ).*/)[0]
+    const arrivalIcao = LINE_3.substring(0, 4)
+    const estimatedEnrouteMinutes = resolveEstimatedEnrouteMinutes((LINE_3.match(/\d{4}/) ?? ["0000"])[0])
+    const remarks = LINE_3.substring(13)
 
     const aircraft = {
       icaoCode: LINE_1.match(/[A-Z0-9]+(?=(\/(M|L|H|J)))/)[0],
