@@ -23,5 +23,5 @@ RUN yarn workspace @mach/common build
 RUN yarn workspace @mach/front build
 
 FROM nginx:1.15-alpine
-COPY --from=build /usr/src/app/packages/front/build /usr/share/nginx/html
+COPY --from=build /usr/src/app/packages/front/dist /usr/share/nginx/html
 COPY packages/front/nginx/nginx.conf /etc/nginx/conf.d/default.conf
