@@ -1,16 +1,14 @@
 name: CI
-on: push
+on:
+  - push
+  - pull_request
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - run: yarn --frozen-lockfile
-      - name: Build application packages
-        run: |
-          yarn workspace @mach/common run build
-          yarn workspace @mach/database run build
-          yarn workspace @mach/rpl-crawler run build
+      - run: yarn nx run-many --target=build
       - run: yarn test
   build_rest_api:
     runs-on: ubuntu-latest

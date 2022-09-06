@@ -77,7 +77,7 @@ jobs:
           yarn workspace @mach/front build
         env:
           SKIP_PREFLIGHT_CHECK: true
-          REACT_APP_APP_VERSION: ${{ github.event.release.tag_name }}
+          VITE_APP_VERSION: ${{ github.event.release.tag_name }}
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:

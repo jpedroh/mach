@@ -1,7 +1,7 @@
 FROM node:lts AS build
 
 ARG APP_VERSION_ARG=v0.0.0
-ENV REACT_APP_APP_VERSION=$APP_VERSION_ARG
+ENV VITE_APP_VERSION=$APP_VERSION_ARG
 ENV SKIP_PREFLIGHT_CHECK=true
 ENV PUBLIC_URL=/
 
@@ -23,5 +23,5 @@ RUN yarn workspace @mach/common build
 RUN yarn workspace @mach/front build
 
 FROM nginx:1.15-alpine
-COPY --from=build /usr/src/app/packages/front/build /usr/share/nginx/html
+COPY --from=build /usr/src/app/packages/front/dist /usr/share/nginx/html
 COPY packages/front/nginx/nginx.conf /etc/nginx/conf.d/default.conf
