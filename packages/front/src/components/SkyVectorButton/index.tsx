@@ -7,7 +7,7 @@ type Props = {
 }
 
 const SkyVectorButton: FC<Props> = ({ flight }) => {
-  const skyVectorLink = `https://skyvector.com/?fpl=${flight.cruisingSpeed}F${flight.cruisingLevel} ${flight.departureIcao} ${flight.route} ${flight.arrivalIcao}`
+  const skyVectorLink = `https://skyvector.com/?fpl=${flight.cruisingSpeed}F${flight.cruisingLevel.toString().padStart(3, "0")} ${flight.departureIcao} ${flight.route} ${flight.arrivalIcao}`
 
   return (
     <Button href={skyVectorLink} target="_blank">

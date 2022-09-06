@@ -53,7 +53,7 @@ const IvaoButton: FC<Props> = ({ flight }) => {
           value={flight.cruisingSpeed.substr(1)}
         />
         <input type="hidden" name="LEVELTYPE" value="F" />
-        <input type="hidden" name="LEVEL" value={flight.cruisingLevel} />
+        <input type="hidden" name="LEVEL" value={flight.cruisingLevel.toString().padStart(3, "0")} />
         <input type="hidden" name="ROUTE" value={flight.route} />
         <input type="hidden" name="DESTICAO" value={flight.arrivalIcao} />
         <input

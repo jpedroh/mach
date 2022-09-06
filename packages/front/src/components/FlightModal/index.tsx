@@ -46,7 +46,7 @@ const FlightModal: FC<Props> = ({ show, onClose, flight }) => {
                 <span>CRUISING SPEED </span> {flight.cruisingSpeed}
               </p>
               <p>
-                <span>FL </span> {flight.cruisingLevel}
+                <span>FL </span> {flight.cruisingLevel.toString().padStart(3, "0")}
               </p>
             </div>
 
