@@ -1,3 +1,15 @@
+## [5.5.3](https://github.com/jpedroh/mach/compare/v5.5.2...v5.5.3) (2022-09-06)
+
+
+### Bug Fixes
+
+* fpl prefilling ([afdca56](https://github.com/jpedroh/mach/commit/afdca5603573cf3e5771d1026953dd836e57be01))
+
+
+### Reverts
+
+* Revert "fix: use hash router instead of browser router" ([327bde7](https://github.com/jpedroh/mach/commit/327bde7afe2229ed2e64f5906ce69fea9025dbba))
+
 ## [5.5.2](https://github.com/jpedroh/mach/compare/v5.5.1...v5.5.2) (2022-09-06)
 
 
