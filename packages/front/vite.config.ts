@@ -1,0 +1,15 @@
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+
+export default defineConfig({
+  plugins: [react()],
+  optimizeDeps: {
+    include: ["@mach/common"],
+  },
+  build: {
+    commonjsOptions: {
+      include: [/common/, /node_modules/],
+    }
+  },
+  base: '/mach/'
+})
