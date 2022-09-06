@@ -1,3 +1,10 @@
+# [5.5.0](https://github.com/jpedroh/mach/compare/v5.4.3...v5.5.0) (2022-09-06)
+
+
+### Features
+
+* update frontend to React 18 ([cc8daaf](https://github.com/jpedroh/mach/commit/cc8daaff6a837f16dbc45b6ff9bae106667b957f))
+
 ## [5.4.3](https://github.com/jpedroh/mach/compare/v5.4.2...v5.4.3) (2022-09-06)
 
 
