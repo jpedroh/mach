@@ -1,10 +1,11 @@
 import Flight from '@mach/common'
-import { FC, useContext, useEffect, useState } from 'react'
+import { FC, useState } from 'react'
 import { Link } from 'react-router-dom'
 import FlightModal from '../components/FlightModal'
 import FlightsTable from '../components/FlightsTable'
 import Lead from '../components/Lead'
-import { FlightsContext } from '../contexts/FlightsContext'
+import { useExtractFlightParameters } from '../hooks/use-extract-flight-parameters'
+import { useFlightsQuery } from '../hooks/use-flights-query'
 import GeneralLayout from '../layouts/GeneralLayout'
 
 const getLeadMessage = (count: number) => {
@@ -14,43 +15,39 @@ const getLeadMessage = (count: number) => {
 }
 
 const Search: FC = () => {
-  const { state, loadFlights, reset } = useContext(FlightsContext)
-  const [offset, setOffset] = useState(0)
-  const [showModal, setShowModal] = useState(false)
-  const [flight, setFlight] = useState<Flight>({} as Flight)
+  const flightsParameters = useExtractFlightParameters();
+  const query = useFlightsQuery(flightsParameters);
+  const [flight, setFlight] = useState<Flight>();
 
-  useEffect(() => {
-    if (offset === 0) {
-      return
-    }
-    loadFlights({ ...state.query, offset })
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [offset])
+  const showModal = flight !== undefined;
+
+  if (query.totalItems === 0 && query.isSuccess) {
+    return <GeneralLayout>
+      <Lead>
+        <p>There are no results for your search.</p>
+        <p><Link to="/">Click here</Link> to make a new search.</p>
+      </Lead>
+    </GeneralLayout>
+  }
 
   return (
     <GeneralLayout>
       <Lead>
-        {getLeadMessage(state.data.count)}{' '}
-        <Link onClick={() => reset()} to="/">
-          Click here
-        </Link>{' '}
-        to make a new search.
+        {getLeadMessage(query.totalItems)}{' '}
+        <Link to="/">Click here</Link> to make a new search.
       </Lead>
 
       <FlightsTable
-        items={state.data.items}
-        next={() => setOffset(v => v + state.query.limit)}
-        count={state.data.count}
-        onButtonClick={flight => {
-          setFlight(flight)
-          setShowModal(true)
-        }}
+        items={query.data}
+        next={() => query.fetchNextPage()}
+        count={query.totalItems}
+        onButtonClick={flight => setFlight(flight)}
       />
 
       <FlightModal
-        flight={flight}
+        flight={flight!}
         show={showModal}
-        onClose={() => setShowModal(false)}
+        onClose={() => setFlight(undefined)}
       />
     </GeneralLayout>
   )
