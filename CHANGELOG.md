@@ -1,3 +1,10 @@
+## [5.4.3](https://github.com/jpedroh/mach/compare/v5.4.2...v5.4.3) (2022-09-06)
+
+
+### Bug Fixes
+
+* simplify parsing of some fields. add fallback value to EET ([7675382](https://github.com/jpedroh/mach/commit/767538286d9acac12f0300edbe8d17d487842c85))
+
 ## [5.4.2](https://github.com/jpedroh/mach/compare/v5.4.1...v5.4.2) (2022-01-11)
 
 
