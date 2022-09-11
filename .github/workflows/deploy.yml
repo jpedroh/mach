@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: api_production
-      url: https://mach-api.herokuapp.com
+      url: https://mach-api-production.up.railway.app/
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -17,21 +17,14 @@ jobs:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - run: heroku container:login
-        env:
-          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
       - uses: docker/build-push-action@v2
         with:
           tags: |
-            registry.heroku.com/mach-api/web:latest
             ghcr.io/jpedroh/mach-rest-api:latest
             ghcr.io/jpedroh/mach-rest-api:${{ github.event.release.tag_name }}
           file: ./packages/rest-api/Dockerfile
           build-args: APP_VERSION_ARG=${{ github.event.release.tag_name }}
           push: true
-      - run: heroku container:release web -a mach-api
-        env:
-          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
   build_rpl_crawler:
     runs-on: ubuntu-latest
     steps:

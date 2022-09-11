@@ -13,7 +13,7 @@ type FlightsResponse = {
 }
 
 function fetchFlights(query: FlightsQuery & { offset: number }) {
-  return http<FlightsResponse>({ url: '//mach-api.herokuapp.com/flights', query: { ...query, limit: 30 } })
+  return http<FlightsResponse>({ url: '//mach-api-production.up.railway.app/flights', query: { ...query, limit: 30 } })
 }
 
 export function useFlightsQuery(params: FlightsQuery) {
