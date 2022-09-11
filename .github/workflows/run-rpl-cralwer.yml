@@ -20,4 +20,4 @@ jobs:
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
           RPL_DATE: ${{ github.event.inputs.date }}
-        run: docker run -e DATABASE_URL=${DATABSE_URL} ghcr.io/jpedroh/mach-rpl-crawler:latest node packages/rpl-crawler/dist/main SBAZ,SBBS,SBCW,SBRE ${RPL_DATE:-$(date +"%Y-%m-%d")}
+        run: docker run -e DATABASE_URL=${DATABASE_URL} ghcr.io/jpedroh/mach-rpl-crawler:latest node packages/rpl-crawler/dist/main SBAZ,SBBS,SBCW,SBRE ${RPL_DATE:-$(date +"%Y-%m-%d")}
