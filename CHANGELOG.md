@@ -1,3 +1,13 @@
+# [6.0.0](https://github.com/jpedroh/mach/compare/v5.6.0...v6.0.0) (2022-09-11)
+
+
+* feat!: migrate from Heroku to Railways ([c28d32f](https://github.com/jpedroh/mach/commit/c28d32fc6dfbce4f06efc96222c7fa404518e0c3))
+
+
+### BREAKING CHANGES
+
+* Starting November 28th, 2022, Heroku free tier will no longer be available. Thus, in order to avoid service disruption for Mach, its API was migrated to Railways.app.
+
 # [5.6.0](https://github.com/jpedroh/mach/compare/v5.5.3...v5.6.0) (2022-09-06)
 
 
