@@ -3,7 +3,7 @@ import actions from './actions'
 import makeExpressCallback from './express-callback'
 import * as compression from 'compression';
 
-const app = express()
+const app: express.Application = express();
 const port = process.env.PORT || 3000
 
 app.use(function (req, res, next) {
