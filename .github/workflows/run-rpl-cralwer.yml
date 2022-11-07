@@ -14,13 +14,13 @@ jobs:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
+      - uses: pnpm/action-setup@v2.2.4
+        with:
+          version: 7
       - uses: actions/setup-node@v3
         with:
           node-version: 16
           cache: "pnpm"
-      - uses: pnpm/action-setup@v2.2.4
-        with:
-          version: 7
       - run: pnpm install
       - run: npx nx run @mach/rpl-crawler build
       - run: node packages/rpl-crawler/dist/main SBAZ,SBBS,SBCW,SBRE ${RPL_DATE:-$(date +"%Y-%m-%d")}
