@@ -4,33 +4,6 @@ on:
     types:
       - created
 jobs:
-  build_rpl_crawler:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16
-          cache: "pnpm"
-      - uses: pnpm/action-setup@v2.2.4
-        with:
-          version: 7
-      - uses: docker/login-action@v1
-        with:
-          registry: ghcr.io
-          username: ${{ github.repository_owner }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-      - run: pnpm install
-      - run: npx nx run @mach/rpl-crawler:build      
-      - uses: docker/build-push-action@v2
-        with:
-          tags: |
-            ghcr.io/jpedroh/mach-rpl-crawler:latest
-            ghcr.io/jpedroh/mach-rpl-crawler:${{ github.event.release.tag_name }}
-          file: ./packages/rpl-crawler/Dockerfile
-          push: true
   build_front:
     runs-on: ubuntu-latest
     environment:
