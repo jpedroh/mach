@@ -48,32 +48,34 @@ jobs:
       name: front_production
       url: https://jpedroh.github.io/mach
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: "pnpm"
+      - uses: pnpm/action-setup@v2.2.4
+        with:
+          version: 7
       - uses: docker/login-action@v1
         with:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
+      - run: pnpm install
+      - run: npx nx run @mach/front:build
+        env:
+          VITE_APP_VERSION: ${{ github.event.release.tag_name }}
+      - uses: JamesIves/github-pages-deploy-action@releases/v3
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: packages/front/dist
       - uses: docker/build-push-action@v2
         with:
           tags: |
             ghcr.io/jpedroh/mach-front:latest
             ghcr.io/jpedroh/mach-front:${{ github.event.release.tag_name }}
           file: ./packages/front/Dockerfile
-          build-args: APP_VERSION_ARG=${{ github.event.release.tag_name }}
           push: true
-      - run: yarn --frozen-lockfile
-      - name: Run build
-        run: |
-          yarn workspace @mach/common build
-          yarn workspace @mach/front build
-        env:
-          SKIP_PREFLIGHT_CHECK: true
-          VITE_APP_VERSION: ${{ github.event.release.tag_name }}
-      - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@releases/v3
-        with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH: gh-pages
-          FOLDER: packages/front/dist
