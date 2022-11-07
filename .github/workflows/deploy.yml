@@ -4,37 +4,26 @@ on:
     types:
       - created
 jobs:
-  build_rest_api:
-    runs-on: ubuntu-latest
-    environment:
-      name: api_production
-      url: https://mach-api-production.up.railway.app/
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - uses: docker/login-action@v1
-        with:
-          registry: ghcr.io
-          username: ${{ github.repository_owner }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-      - uses: docker/build-push-action@v2
-        with:
-          tags: |
-            ghcr.io/jpedroh/mach-rest-api:latest
-            ghcr.io/jpedroh/mach-rest-api:${{ github.event.release.tag_name }}
-          file: ./packages/rest-api/Dockerfile
-          build-args: APP_VERSION_ARG=${{ github.event.release.tag_name }}
-          push: true
   build_rpl_crawler:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: "pnpm"
+      - uses: pnpm/action-setup@v2.2.4
+        with:
+          version: 7
       - uses: docker/login-action@v1
         with:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
+      - run: pnpm install
+      - run: npx nx run @mach/rpl-crawler:build      
       - uses: docker/build-push-action@v2
         with:
           tags: |

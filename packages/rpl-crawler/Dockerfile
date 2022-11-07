@@ -1,25 +1,18 @@
 FROM node:lts-alpine AS base
 
+RUN apk add curl
+RUN curl -f https://get.pnpm.io/v6.16.js | node - add --global pnpm
+
 WORKDIR /usr/src/app
 
 COPY package.json .
-COPY yarn.lock .
-COPY tsconfig.json .
-
-COPY packages/eslint-config/ packages/eslint-config/
-COPY packages/prettier-config/ packages/prettier-config/
+COPY pnpm-*.yaml ./
 
 COPY packages/common/ packages/common/
 COPY packages/database/ packages/database/
 COPY packages/rpl-crawler/ packages/rpl-crawler/
 
-RUN yarn install --non-interactive
-
-RUN yarn workspace @mach/common build
-RUN yarn workspace @mach/database build
-RUN yarn workspace @mach/rpl-crawler build
-
 ENV NODE_ENV=production
-RUN yarn install --production --pure-lockfile --non-interactive --cache-folder ./ycache; rm -rf ./ycache
+RUN pnpm install
 
 CMD ["node", "packages/rpl-crawler/dist/main"]
