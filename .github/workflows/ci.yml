@@ -23,7 +23,7 @@ jobs:
           main-branch-name: "master"
       - run: pnpm install
       - run: npx nx workspace-lint
-      - run: npx nx affected --target=test --parallel=3 --ci --code-coverage
+      - run: npx nx affected --target=test --parallel=3 --ci
       - run: npx nx affected --target=build --parallel=3
       - run: npx semantic-release
         env:
