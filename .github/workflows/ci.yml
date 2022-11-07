@@ -1,69 +1,34 @@
 name: CI
 on:
-  - push
-  - pull_request
+  push:
+    branches:
+      - master
+  pull_request:
 jobs:
-  test:
+  main:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - run: yarn --frozen-lockfile
-      - run: yarn nx run-many --target=build
-      - run: yarn test
-  build_rest_api:
-    runs-on: ubuntu-latest
-    needs: test
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - uses: docker/login-action@v1
+      - uses: actions/checkout@v3
         with:
-          registry: ghcr.io
-          username: ${{ github.repository_owner }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-      - uses: docker/build-push-action@v2
+          fetch-depth: 0
+      - uses: pnpm/action-setup@v2.2.4
         with:
-          tags: ghcr.io/jpedroh/mach-rest-api:${{ github.sha }}
-          file: ./packages/rest-api/Dockerfile
-          build-args: APP_VERSION_ARG=${{ github.sha }}
-          push: true
-  build_rpl_crawler:
-    runs-on: ubuntu-latest
-    needs: test
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - uses: docker/login-action@v1
+          version: 7
+      - uses: actions/setup-node@v3
         with:
-          registry: ghcr.io
-          username: ${{ github.repository_owner }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-      - uses: docker/build-push-action@v2
+          node-version: 16
+          cache: 'pnpm'
+      - uses: nrwl/nx-set-shas@v3
         with:
-          tags: ghcr.io/jpedroh/mach-rpl-crawler:${{ github.sha }}
-          file: ./packages/rpl-crawler/Dockerfile
-          push: true
-  build_front:
-    runs-on: ubuntu-latest
-    needs: test
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - uses: docker/login-action@v1
-        with:
-          registry: ghcr.io
-          username: ${{ github.repository_owner }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-      - uses: docker/build-push-action@v2
-        with:
-          tags: ghcr.io/jpedroh/mach-front:${{ github.sha }}
-          file: ./packages/front/Dockerfile
-          build-args: APP_VERSION_ARG=${{ github.sha }}
-          push: true
+          main-branch-name: 'master'
+      - run: pnpm install
+      - run: npx nx workspace-lint
+      - run: npx nx affected --target=test --parallel=3 --ci --code-coverage
+      - run: npx nx affected --target=build --parallel=3
   tag:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/main'
-    needs: [test, build_rest_api, build_rpl_crawler, build_front]
+    needs: [main]
     steps:
       - name: Checkout
         uses: actions/checkout@v2
