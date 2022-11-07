@@ -22,7 +22,7 @@ jobs:
           node-version: 16
           cache: "pnpm"
       - run: pnpm install
-      - run: npx nx run @mach/rpl-crawler build
+      - run: npx nx run @mach/rpl-crawler:build
       - run: node packages/rpl-crawler/dist/main SBAZ,SBBS,SBCW,SBRE ${RPL_DATE:-$(date +"%Y-%m-%d")}
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
