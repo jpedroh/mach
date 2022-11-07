@@ -17,28 +17,14 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-          cache: 'pnpm'
+          cache: "pnpm"
       - uses: nrwl/nx-set-shas@v3
         with:
-          main-branch-name: 'master'
+          main-branch-name: "master"
       - run: pnpm install
       - run: npx nx workspace-lint
       - run: npx nx affected --target=test --parallel=3 --ci --code-coverage
       - run: npx nx affected --target=build --parallel=3
-  tag:
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/main'
-    needs: [main]
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-      - name: Setup Node.js
-        uses: actions/setup-node@v1
-        with:
-          node-version: 16
-      - run: yarn install --frozen-lockfile
       - run: npx semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
