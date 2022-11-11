@@ -12,6 +12,8 @@ use serde::Serialize;
 use sqlx::Row;
 
 use models::{error_message::ErrorMessage, flight::Flight};
+use rocket_cors::{AllowedHeaders, AllowedOrigins};
+use std::str::FromStr;
 
 #[derive(Database)]
 #[database("main")]
@@ -149,8 +151,24 @@ fn internal_server_error(_req: &Request) -> Json<ErrorMessage> {
 
 #[launch]
 fn rocket() -> _ {
+    let allowed_origins = AllowedOrigins::all();
+
+    // You can also deserialize this
+    let cors = rocket_cors::CorsOptions {
+        allowed_origins: AllowedOrigins::all(),
+        allowed_headers: AllowedHeaders::all(),
+        allowed_methods: vec!["Get"]
+            .into_iter()
+            .map(|s| FromStr::from_str(s).unwrap())
+            .collect(),
+        ..Default::default()
+    }
+    .to_cors()
+    .unwrap();
+
     rocket::build()
         .attach(MainDatabase::init())
+        .attach(cors)
         .mount("/", routes![get_flights, get_flight_by_id, index])
         .register("/", catchers![not_found, internal_server_error])
 }
