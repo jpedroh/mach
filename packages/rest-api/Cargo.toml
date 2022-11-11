@@ -5,6 +5,11 @@ edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
-[dependencies.rocket]
-version = "0.5.0-rc.2"
-features = ["uuid"]
+[dependencies]
+rocket = {version = "0.5.0-rc.2", features = ["uuid", "json"]}
+sqlx = { version = "0.5.1", features = [ "runtime-tokio-rustls", "postgres", "chrono", "time", "macros", "migrate", "uuid", "json" ] }
+rocket_db_pools = {version = "0.1.0-rc.2", features = ["sqlx_postgres"]}
+uuid = {version = "0.8.2", features=["serde"]}
+chrono = { version = "0.4.19", features = ["clock", "serde"]}
+serde_json = { version = "1.0.73"}
+serde = { version = "1.0.132", features = ["derive"] }
