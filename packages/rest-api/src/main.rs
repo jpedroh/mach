@@ -1,3 +1,5 @@
+mod models;
+
 #[macro_use]
 extern crate rocket;
 use rocket::http::Status;
@@ -5,46 +7,16 @@ use rocket::serde::uuid::Uuid;
 use rocket::Request;
 
 use rocket::response::status::NotFound;
-use rocket_db_pools::sqlx::{self};
+use rocket_db_pools::sqlx;
 use rocket_db_pools::{Connection, Database};
+
+use models::{error_message::ErrorMessage, flight::Flight};
 
 #[derive(Database)]
 #[database("main")]
 struct MainDatabase(sqlx::PgPool);
 
-use rocket::serde::{json::Json, Serialize};
-use sqlx::types::chrono::{self};
-use sqlx::FromRow;
-
-#[derive(Serialize, FromRow)]
-#[serde(crate = "rocket::serde")]
-struct Flight {
-    id: sqlx::types::Uuid,
-    callsign: String,
-    beginDate: sqlx::types::chrono::DateTime<chrono::Utc>,
-    endDate: Option<sqlx::types::chrono::DateTime<chrono::Utc>>,
-    company: String,
-    flightNumber: i32,
-    aircraft: serde_json::Value,
-    departureIcao: String,
-    estimatedOffBlockTime: String,
-    cruisingSpeed: String,
-    remarks: String,
-    flightRules: String,
-    estimatedEnrouteMinutes: i32,
-    arrivalIcao: String,
-    route: String,
-    cruisingLevel: i32,
-    weekdays: serde_json::Value,
-    updatedAt: sqlx::types::chrono::DateTime<chrono::Utc>,
-    createdAt: sqlx::types::chrono::DateTime<chrono::Utc>,
-}
-
-#[derive(Serialize)]
-struct ErrorMessage {
-    status: i32,
-    message: &'static str,
-}
+use rocket::serde::json::Json;
 
 #[get("/flights?<offset>&<limit>&<company>&<departureIcao>&<arrivalIcao>")]
 async fn get_flights(
@@ -58,7 +30,8 @@ async fn get_flights(
     let an_offset = offset.map_or(0, |x| x);
     let a_limit: i64 = limit.map_or(15, |x| x.into());
 
-    sqlx::query_as("SELECT * FROM flights LIMIT $1")
+    sqlx::query_as("SELECT * FROM flights OFFSET $1 LIMIT $2")
+        .bind(an_offset)
         .bind(a_limit)
         .fetch_all(&mut *db)
         .await
@@ -84,7 +57,7 @@ async fn get_flight_by_id(
 }
 
 #[catch(404)]
-fn not_found(req: &Request) -> Json<ErrorMessage> {
+fn not_found(_req: &Request) -> Json<ErrorMessage> {
     Json(ErrorMessage {
         status: 404,
         message: "No results found",
@@ -92,7 +65,7 @@ fn not_found(req: &Request) -> Json<ErrorMessage> {
 }
 
 #[catch(500)]
-fn internal_server_error(req: &Request) -> Json<ErrorMessage> {
+fn internal_server_error(_req: &Request) -> Json<ErrorMessage> {
     Json(ErrorMessage {
         status: 500,
         message: "Internal server error",
