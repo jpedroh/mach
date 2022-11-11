@@ -24,6 +24,8 @@ jobs:
       - run: pnpm install
       - run: npx nx workspace-lint
       - run: npx nx affected --target=build --parallel=3
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
       - run: npx nx affected --target=test --parallel=3 --ci
       - run: npx semantic-release
         env:
