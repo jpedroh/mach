@@ -115,8 +115,20 @@ async fn get_flight_by_id(
             err => {
                 println!("{}", err.to_string());
                 Status { code: 500 }
-            },
+            }
         })
+}
+
+#[get("/")]
+async fn index() -> Result<Json<serde_json::Value>, Status> {
+    let bytes = include_bytes!("openapi.json");
+
+    serde_json::from_slice::<serde_json::Value>(bytes)
+        .map_err(|e| {
+            println!("{}", e.to_string());
+            Status { code: 500 }
+        })
+        .map(|v| Json(v))
 }
 
 #[catch(404)]
@@ -139,6 +151,6 @@ fn internal_server_error(_req: &Request) -> Json<ErrorMessage> {
 fn rocket() -> _ {
     rocket::build()
         .attach(MainDatabase::init())
-        .mount("/", routes![get_flights, get_flight_by_id])
+        .mount("/", routes![get_flights, get_flight_by_id, index])
         .register("/", catchers![not_found, internal_server_error])
 }
