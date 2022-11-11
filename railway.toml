@@ -1,6 +1,0 @@
-[build]
-builder = "nixpacks"
-buildCommand = "npx nx run @mach/rest-api:build"
-
-[deploy]
-startCommand = "node packages/rest-api/dist"
