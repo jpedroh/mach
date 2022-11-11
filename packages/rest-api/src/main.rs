@@ -91,7 +91,7 @@ fn not_found(req: &Request) -> Json<ErrorMessage> {
     })
 }
 
-#[catch(404)]
+#[catch(500)]
 fn internal_server_error(req: &Request) -> Json<ErrorMessage> {
     Json(ErrorMessage {
         status: 500,
