@@ -6,7 +6,7 @@
     "contact": {
       "email": "joao.pedro.hsd@gmail.com"
     },
-    "version": "4.1.0"
+    "version": "6.0.0"
   },
   "servers": [
     {
@@ -21,7 +21,9 @@
   "paths": {
     "/flights": {
       "get": {
-        "tags": ["Flight"],
+        "tags": [
+          "Flight"
+        ],
         "summary": "Returns a list of Paginated Flights",
         "parameters": [
           {
@@ -104,7 +106,9 @@
     },
     "/flights/{id}": {
       "get": {
-        "tags": ["Flight"],
+        "tags": [
+          "Flight"
+        ],
         "summary": "Get a flight by ID.",
         "parameters": [
           {
@@ -223,7 +227,11 @@
           },
           "flightRules": {
             "type": "string",
-            "enum": ["IFR", "Y", "Z"]
+            "enum": [
+              "IFR",
+              "Y",
+              "Z"
+            ]
           },
           "createdAt": {
             "type": "string",
@@ -243,7 +251,12 @@
           },
           "wakeTurbulence": {
             "type": "string",
-            "enum": ["LIGHT", "MEDIUM", "HEAVY", "SUPER"]
+            "enum": [
+              "LIGHT",
+              "MEDIUM",
+              "HEAVY",
+              "SUPER"
+            ]
           },
           "equipment": {
             "type": "string"
