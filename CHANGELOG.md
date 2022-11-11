@@ -1,3 +1,11 @@
+## [6.0.1](https://github.com/jpedroh/mach/compare/v6.0.0...v6.0.1) (2022-11-11)
+
+
+### Bug Fixes
+
+* **deps:** bump axios from 0.21.4 to 1.1.3 ([#85](https://github.com/jpedroh/mach/issues/85)) ([285755a](https://github.com/jpedroh/mach/commit/285755ace8f0c55c3afb5cd9ccb3a44a84b64c80))
+* incorrect usage of axios with typescript ([2f8e56a](https://github.com/jpedroh/mach/commit/2f8e56a7509223632fc70a0863ddffab30290852))
+
 # [6.0.0](https://github.com/jpedroh/mach/compare/v5.6.0...v6.0.0) (2022-09-11)
 
 
