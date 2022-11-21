@@ -1,4 +1,4 @@
-use crate::models::flight;
+use ::models::flight;
 use sea_orm::*;
 
 pub enum GetFlightsError {
@@ -10,8 +10,8 @@ pub async fn get_flights(
     offset: Option<u32>,
     limit: Option<u32>,
     company: Option<String>,
-    departureIcao: Option<String>,
-    arrivalIcao: Option<String>,
+    departure_icao: Option<String>,
+    arrival_icao: Option<String>,
 ) -> Result<(Vec<flight::Model>, u64), GetFlightsError> {
     let an_offset = offset.unwrap_or(0);
     let a_limit = limit.unwrap_or(15);
@@ -21,10 +21,10 @@ pub async fn get_flights(
     if let Some(company) = company {
         query = query.filter(flight::Column::Company.eq(company));
     }
-    if let Some(departure_icao) = departureIcao {
+    if let Some(departure_icao) = departure_icao {
         query = query.filter(flight::Column::DepartureIcao.eq(departure_icao));
     }
-    if let Some(arrival_icao) = arrivalIcao {
+    if let Some(arrival_icao) = arrival_icao {
         query = query.filter(flight::Column::ArrivalIcao.eq(arrival_icao));
     }
 

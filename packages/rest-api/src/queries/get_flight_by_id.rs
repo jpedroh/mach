@@ -1,4 +1,4 @@
-use crate::models::flight;
+use ::models::flight;
 use sea_orm::*;
 use uuid::Uuid;
 

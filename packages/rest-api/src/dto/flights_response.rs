@@ -1,6 +1,6 @@
 use serde::Serialize;
 
-use super::flight;
+use ::models::flight;
 
 #[derive(Serialize)]
 pub struct FlightsResponse {

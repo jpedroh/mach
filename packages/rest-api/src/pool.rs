@@ -4,7 +4,7 @@ use sea_orm_rocket::{rocket::figment::Figment, Config, Database};
 use std::time::Duration;
 
 #[derive(Database, Debug)]
-#[database("sea_orm")]
+#[database("main")]
 pub struct MainDatabase(SeaOrmPool);
 
 #[derive(Debug, Clone)]

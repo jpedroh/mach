@@ -1,11 +1,12 @@
 #[macro_use]
 extern crate rocket;
 
-mod models;
+mod dto;
 mod pool;
 mod queries;
 
-use models::{error_message::ErrorMessage, flight, flights_response::FlightsResponse};
+use ::models::flight;
+use dto::{error_message::ErrorMessage, flights_response::FlightsResponse};
 use pool::MainDatabase;
 use queries::{
     get_flight_by_id::{get_flight_by_id, GetFlightByIdError},

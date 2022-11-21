@@ -1,19 +1,13 @@
 [package]
-name = "rest-api"
+name = "models"
 version = "0.1.0"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-rocket = {version = "0.5.0-rc.2", features = ["uuid", "json"]}
-
 uuid = { version = "^1", features = ["serde"] }
 chrono = { version = "0.4.19", features = ["clock", "serde"]}
 serde_json = { version = "1.0.73"}
 serde = { version = "1.0.132", features = ["derive"] }
-rocket_cors = { git = "https://github.com/lawliet89/rocket_cors.git", rev = "54fae070"  }
 sea-orm = { version = "0.10.3", features = ["with-uuid", "sqlx-postgres", "runtime-tokio-rustls"] }
-sea-orm-rocket = "0.5.2"
-async-trait = { version = "0.1"}
-models = { path = "../models" }
