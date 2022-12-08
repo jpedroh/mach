@@ -18,3 +18,16 @@ resource "vercel_project_domain" "domain" {
   project_id = vercel_project.mach.id
   domain     = "mach.jpedroh.dev"
 }
+
+data "github_release" "mach-latest" {
+  repository  = "mach"
+  owner       = "jpedroh"
+  retrieve_by = "latest"
+}
+
+resource "vercel_project_environment_variable" "example" {
+  project_id = vercel_project.mach.id
+  key        = "VITE_APP_VERSION"
+  value      = data.github_release.mach-latest.release_tag
+  target     = ["production"]
+}
