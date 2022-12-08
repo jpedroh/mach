@@ -1,3 +1,10 @@
+## [6.0.2](https://github.com/jpedroh/mach/compare/v6.0.1...v6.0.2) (2022-12-08)
+
+
+### Bug Fixes
+
+* use new FPL API for IVAO prefile ([bece3f1](https://github.com/jpedroh/mach/commit/bece3f1572b4d2fcc5192561b9a97b404e24c497))
+
 ## [6.0.1](https://github.com/jpedroh/mach/compare/v6.0.0...v6.0.1) (2022-11-11)
 
 
