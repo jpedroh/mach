@@ -40,14 +40,14 @@ importers:
       tailwindcss: ^3.1.8
       ts-jest: ^26.1.4
       typescript: ^4.8.2
-      uuid: ^8.3.2
+      uuid: ^9.0.0
       vite: ^3.1.0
       web-vitals: ^1.1.2
     dependencies:
       adm-zip: 0.4.16
       axios: 1.1.3
       next: 13.0.6_biqbaboplfbrettd7655fr4n2y
-      uuid: 8.3.2
+      uuid: 9.0.0
     devDependencies:
       '@semantic-release/changelog': 6.0.1_semantic-release@19.0.5
       '@semantic-release/exec': 6.0.3_semantic-release@19.0.5
@@ -88,12 +88,6 @@ importers:
   packages/common:
     specifiers: {}
 
-  packages/cpu-count:
-    specifiers:
-      cargo-cp-artifact: ^0.1
-    devDependencies:
-      cargo-cp-artifact: 0.1.7
-
   packages/database:
     specifiers:
       '@mach/common': '*'
@@ -105,6 +99,9 @@ importers:
       '@mach/common': '*'
     dependencies:
       '@mach/common': link:../common
+
+  packages/models:
+    specifiers: {}
 
   packages/rest-api:
     specifiers: {}
@@ -6935,6 +6932,12 @@ packages:
   /uuid/8.3.2:
     resolution: {integrity: sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==}
     hasBin: true
+    dev: true
+
+  /uuid/9.0.0:
+    resolution: {integrity: sha512-MXcSTerfPa4uqyzStbRoTgt5XIe3x5+42+q1sDuy3R5MDk66URdLMOZe5aPX/SQd+kuYAh0FdP/pO28IkQyTeg==}
+    hasBin: true
+    dev: false
 
   /v8-compile-cache/2.3.0:
     resolution: {integrity: sha512-l8lCEmLcLYZh4nbunNZvQCJc5pv7+RCwa8q/LdUx8u7lsWvPDKmpodJAJNwkAhJC//dFY48KuIEmjtd4RViDrA==}
