@@ -1,9 +1,9 @@
-import { FC } from 'react'
+import { FC, ReactNode } from 'react'
 import Footer from '../../components/Footer'
 import Header from '../../components/Header'
 import styles from './index.module.css'
 
-const GeneralLayout: FC = ({ children }) => {
+const GeneralLayout: FC<{ children: ReactNode }> = ({ children }) => {
   return (
     <div className={styles.container}>
       <div className={styles.content}>
