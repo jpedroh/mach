@@ -1,3 +1,10 @@
+## [6.0.3](https://github.com/jpedroh/mach/compare/v6.0.2...v6.0.3) (2022-12-10)
+
+
+### Bug Fixes
+
+* **deps:** bump uuid from 8.3.2 to 9.0.0 ([#86](https://github.com/jpedroh/mach/issues/86)) ([4754a2c](https://github.com/jpedroh/mach/commit/4754a2cccc6342fa2192125fc7286b10457ab27c))
+
 ## [6.0.2](https://github.com/jpedroh/mach/compare/v6.0.1...v6.0.2) (2022-12-08)
 
 
