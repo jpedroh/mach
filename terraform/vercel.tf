@@ -4,14 +4,14 @@ provider "vercel" {
 
 resource "vercel_project" "mach" {
   name      = "mach"
-  framework = "vite"
+  framework = "nextjs"
   git_repository = {
     production_branch = "master"
     repo              = "jpedroh/mach"
     type              = "github"
   }
   build_command    = "nx run @mach/front:build"
-  output_directory = "packages/front/dist"
+  output_directory = "packages/front/.next"
 }
 
 resource "vercel_project_domain" "domain" {
@@ -25,9 +25,9 @@ data "github_release" "mach_latest" {
   retrieve_by = "latest"
 }
 
-resource "vercel_project_environment_variable" "vite_app_version" {
+resource "vercel_project_environment_variable" "next_public_app_version" {
   project_id = vercel_project.mach.id
-  key        = "VITE_APP_VERSION"
+  key        = "NEXT_PUBLIC_APP_VERSION"
   value      = data.github_release.mach_latest.release_tag
   target     = ["production"]
 }
