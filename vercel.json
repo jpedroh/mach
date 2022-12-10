@@ -1,10 +1,6 @@
 {
     "rewrites": [
         {
-            "source": "/(.*)",
-            "destination": "/"
-        },
-        {
             "source": "/api/:match*",
             "destination": "https://mach-api-production.up.railway.app/:match*"
         }
