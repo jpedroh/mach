@@ -1,0 +1,12 @@
+{
+    "rewrites": [
+        {
+            "source": "/api/:match*",
+            "destination": "https://mach-api-production.up.railway.app/:match*"
+        },
+        {
+            "source": "/search",
+            "destination": "/"
+        }
+    ]
+}

@@ -1,0 +1,13 @@
+[package]
+name = "models"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+uuid = { version = "^1", features = ["serde"] }
+chrono = { version = "0.4.19", features = ["clock", "serde"]}
+serde_json = { version = "1.0.73"}
+serde = { version = "1.0.132", features = ["derive"] }
+sea-orm = { version = "0.10.3", features = ["with-uuid", "sqlx-postgres", "runtime-tokio-rustls"] }

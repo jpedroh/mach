@@ -1,7 +1,5 @@
 import Flight from '@mach/common'
 import { FC, useRef } from 'react'
-import { formatEet } from '../../utils/formatEet'
-import { formatFlightRules } from '../../utils/formatFlightRules'
 import Button from '../Button'
 
 type Props = {
@@ -11,67 +9,48 @@ type Props = {
 const IvaoButton: FC<Props> = ({ flight }) => {
   const ref = useRef(document.createElement('form'))
 
-  return (
-    <div>
-      <form
-        ref={ref}
-        id="ivaoform"
-        action="https://fpl.ivao.aero/api/fp/load"
-        method="POST"
-        target="_blank"
-      >
-        <input type="hidden" name="CALLSIGN" value={flight.callsign} />
-        <input
-          type="hidden"
-          name="RULES"
-          value={formatFlightRules(flight.flightRules)}
-        />
-        <input type="hidden" name="FLIGHTTYPE" value="S" />
-        <input type="hidden" name="NUMBER" value="1" />
-        <input type="hidden" name="ACTYPE" value={flight.aircraft.icaoCode} />
-        <input
-          type="hidden"
-          name="WAKECAT"
-          value={flight.aircraft.wakeTurbulence}
-        />
-        <input
-          type="hidden"
-          name="EQUIPMENT"
-          value={flight.aircraft.equipment}
-        />
-        <input type="hidden" name="TRANSPONDER" value="LB1" />
-        <input type="hidden" name="DEPICAO" value={flight.departureIcao} />
-        <input
-          type="hidden"
-          name="DEPTIME"
-          value={flight.estimatedOffBlockTime}
-        />
-        <input type="hidden" name="SPEEDTYPE" value="N" />
-        <input
-          type="hidden"
-          name="SPEED"
-          value={flight.cruisingSpeed.substr(1)}
-        />
-        <input type="hidden" name="LEVELTYPE" value="F" />
-        <input type="hidden" name="LEVEL" value={flight.cruisingLevel.toString().padStart(3, "0")} />
-        <input type="hidden" name="ROUTE" value={flight.route} />
-        <input type="hidden" name="DESTICAO" value={flight.arrivalIcao} />
-        <input
-          type="hidden"
-          name="EET"
-          value={formatEet(flight.estimatedEnrouteMinutes)}
-        />
-        <input type="hidden" name="OTHER" value={flight.remarks} />
-      </form>
+  function stringToSeconds(time: string) {
+    const hours = Number(time.substring(0, 2))
+    const minutes = Number(time.substring(2, 4))
 
-      <Button
-        type="submit"
-        variant="primary"
-        onClick={() => ref.current.submit()}
-      >
-        IVAO FP
-      </Button>
-    </div>
+    return (hours * 3600) + (minutes * 60)
+  }
+
+  const flightPlan = {
+    callsign: flight.callsign,
+    flightRules: flight.flightRules,
+    flightType: "S",
+    aircraftNumber: 1,
+    aircraftId: flight.aircraft.icaoCode,
+    aircraftWakeTurbulence: flight.aircraft.wakeTurbulence,
+    aircraftEquipments: flight.aircraft.equipment.split(''),
+    aircraftTransponderTypes: ["L1", "B1"],
+    departureId: flight.departureIcao,
+    departureTime: stringToSeconds(flight.estimatedOffBlockTime),
+    cruisingSpeedType: "N",
+    cruisingSpeed: flight.cruisingSpeed,
+    altitudeType: "F",
+    altitude: flight.cruisingLevel,
+    route: flight.route,
+    arrivalId: flight.arrivalIcao,
+    eet: flight.estimatedEnrouteMinutes * 60,
+    remarks: flight.remarks,
+  }
+
+  const url = new URL('https://fpl.ivao.aero/flight-plans/create')
+  url.searchParams.set('flightPlan', btoa(JSON.stringify(flightPlan)))
+
+  return (
+    <Button
+      href={url.toString()}
+      target="_blank"
+      rel="noreferrer"
+      type="submit"
+      variant="primary"
+      onClick={() => ref.current.submit()}
+    >
+      IVAO FP
+    </Button>
   )
 }
 

@@ -1,16 +1,16 @@
-import { useLocation } from "react-router-dom"
+import { useRouter } from "next/router";
 
 export function useExtractFlightParameters() {
-  const params = new URLSearchParams(useLocation().search)
+  const params = useRouter().query;
 
-  let query: Record<string, string> = {}
+  let query: Record<string, string> = {};
 
-  if (params.get('departureIcao')) {
-    query.departureIcao = params.get('departureIcao')!
+  if (params?.departureIcao) {
+    query.departureIcao = params?.departureIcao!.toString().toUpperCase();
   }
-  if (params.get('arrivalIcao')) {
-    query.arrivalIcao = params.get('arrivalIcao')!
+  if (params?.arrivalIcao) {
+    query.arrivalIcao = params?.arrivalIcao!.toString().toUpperCase();
   }
 
-  return query
+  return query;
 }

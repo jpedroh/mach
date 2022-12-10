@@ -9,7 +9,7 @@ const Footer = () => {
           target="_blank"
           rel="noreferrer"
         >
-          Mach {import.meta.env.VITE_APP_VERSION}
+          Mach {process.env.NEXT_PUBLIC_APP_VERSION}
         </a>
         {' - '}
         Use for flight simulation only

@@ -1,3 +1,25 @@
+## [6.0.3](https://github.com/jpedroh/mach/compare/v6.0.2...v6.0.3) (2022-12-10)
+
+
+### Bug Fixes
+
+* **deps:** bump uuid from 8.3.2 to 9.0.0 ([#86](https://github.com/jpedroh/mach/issues/86)) ([4754a2c](https://github.com/jpedroh/mach/commit/4754a2cccc6342fa2192125fc7286b10457ab27c))
+
+## [6.0.2](https://github.com/jpedroh/mach/compare/v6.0.1...v6.0.2) (2022-12-08)
+
+
+### Bug Fixes
+
+* use new FPL API for IVAO prefile ([bece3f1](https://github.com/jpedroh/mach/commit/bece3f1572b4d2fcc5192561b9a97b404e24c497))
+
+## [6.0.1](https://github.com/jpedroh/mach/compare/v6.0.0...v6.0.1) (2022-11-11)
+
+
+### Bug Fixes
+
+* **deps:** bump axios from 0.21.4 to 1.1.3 ([#85](https://github.com/jpedroh/mach/issues/85)) ([285755a](https://github.com/jpedroh/mach/commit/285755ace8f0c55c3afb5cd9ccb3a44a84b64c80))
+* incorrect usage of axios with typescript ([2f8e56a](https://github.com/jpedroh/mach/commit/2f8e56a7509223632fc70a0863ddffab30290852))
+
 # [6.0.0](https://github.com/jpedroh/mach/compare/v5.6.0...v6.0.0) (2022-09-11)
 
 

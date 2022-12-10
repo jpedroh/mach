@@ -6,10 +6,10 @@ import styles from './index.module.css'
 export type SearchFlightsFormFields = { departureIcao: string; arrivalIcao: string }
 
 type Props = {
-  onSubmit: (params: Partial<SearchFlightsFormFields>) => void
+  onSubmit?: (params: Partial<SearchFlightsFormFields>) => void
 }
 
-const SearchFlightsForm: FC<Props> = ({ onSubmit }) => {
+const SearchFlightsForm: FC<Props> = ({ onSubmit = () => { } }) => {
   const [form, setForm] = useState<SearchFlightsFormFields>({
     arrivalIcao: '',
     departureIcao: ''
@@ -33,7 +33,7 @@ const SearchFlightsForm: FC<Props> = ({ onSubmit }) => {
   }
 
   return (
-    <form className={styles.container} onSubmit={handleSubmit}>
+    <form className={styles.container} action={"/search"}>
       <div>
         <label>Departure ICAO</label>
         <FormInput

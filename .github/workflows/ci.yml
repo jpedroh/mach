@@ -21,10 +21,15 @@ jobs:
       - uses: nrwl/nx-set-shas@v3
         with:
           main-branch-name: "master"
+      - uses: actions-rs/toolchain@v1
+        with:
+          toolchain: nightly
       - run: pnpm install
       - run: npx nx workspace-lint
-      - run: npx nx affected --target=test --parallel=3 --ci --code-coverage
       - run: npx nx affected --target=build --parallel=3
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      - run: npx nx affected --target=test --parallel=3 --ci
       - run: npx semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
