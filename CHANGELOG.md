@@ -1,3 +1,11 @@
+# [6.1.0](https://github.com/jpedroh/mach/compare/v6.0.3...v6.1.0) (2022-12-12)
+
+
+### Features
+
+* migrate app to use server components ([56f1401](https://github.com/jpedroh/mach/commit/56f14019a114254a39808f4c7f6852665cb1139b))
+* use nextjs for data fetching ([3ca0b46](https://github.com/jpedroh/mach/commit/3ca0b46a604aa6b944642292a2e72e318a40755a))
+
 ## [6.0.3](https://github.com/jpedroh/mach/compare/v6.0.2...v6.0.3) (2022-12-10)
 
 
