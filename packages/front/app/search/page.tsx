@@ -5,19 +5,14 @@ import Lead from '../../src/components/Lead'
 import GeneralLayout from '../../src/layouts/GeneralLayout'
 import { fetchFlights } from '../../src/services/fetch-flights'
 
-const getLeadMessage = (count: number) => {
-    return count === 1
-        ? 'There is a single result for your search.'
-        : `There are ${count} results for your search.`
-}
+export const revalidate = 0;
 
 export default async function Search({
     searchParams,
 }: {
     searchParams?: { [key: string]: string | string[] | undefined };
 }) {
-
-    const flights = (await fetchFlights(searchParams as any))
+    const flights = await fetchFlights(searchParams ?? {});
 
     if (flights.length === 0) {
         return <GeneralLayout>
@@ -26,6 +21,12 @@ export default async function Search({
                 <Link href="/">Click here</Link> to make a new search.
             </Lead>
         </GeneralLayout>
+    }
+
+    const getLeadMessage = (count: number) => {
+        return count === 1
+            ? 'There is a single result for your search.'
+            : `There are ${count} results for your search.`
     }
 
     return (

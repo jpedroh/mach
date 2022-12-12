@@ -1,28 +1,27 @@
-import Flight from "@mach/common";
-import http from "../utils/http";
+import { FlightModel } from "@mach/database";
+import z from "zod";
 
-export type FlightsQuery = Partial<{
-  departureIcao: string;
-  arrivalIcao: string;
-}>;
+const schema = z.object({
+  departureIcao: z
+    .string()
+    .transform((v) => v.toUpperCase())
+    .optional(),
+  arrivalIcao: z
+    .string()
+    .transform((v) => v.toUpperCase())
+    .optional(),
+});
 
-type FlightsResponse = {
-  items: Flight[];
-  count: number;
-};
-
-export function fetchFlights(params: FlightsQuery) {
-  const query: Record<string, string> = {};
-
-  if (params?.departureIcao) {
-    query.departureIcao = params?.departureIcao!.toString().toUpperCase();
-  }
-  if (params?.arrivalIcao) {
-    query.arrivalIcao = params?.arrivalIcao!.toString().toUpperCase();
-  }
-
-  return http<FlightsResponse>({
-    url: "https://mach-api-production.up.railway.app/flights",
-    query: { ...query, limit: 15000 },
-  }).then((data) => data.items);
+export function fetchFlights(searchParams: Record<string, unknown>) {
+  const where = schema.parse(searchParams);
+  return FlightModel.findAll({
+    where: {
+      ...(where.departureIcao && { departureIcao: where.departureIcao }),
+      ...(where.arrivalIcao && { arrivalIcao: where.arrivalIcao }),
+    },
+    attributes: {
+      exclude: ["createdAt", "updatedAt", "beginDate", "endDate"],
+    },
+    raw: true,
+  });
 }
