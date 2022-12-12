@@ -1,11 +1,11 @@
 import Flight from '@mach/common'
-import { FC, useState } from 'react'
+import { GetServerSideProps } from 'next'
 import Link from 'next/link'
+import React, { useState } from 'react'
 import FlightModal from '../src/components/FlightModal'
 import FlightsTable from '../src/components/FlightsTable'
 import Lead from '../src/components/Lead'
-import { useExtractFlightParameters } from '../src/hooks/use-extract-flight-parameters'
-import { useFlightsQuery } from '../src/hooks/use-flights-query'
+import { fetchFlights } from '../src/services/fetch-flights'
 import GeneralLayout from '../src/layouts/GeneralLayout'
 
 const getLeadMessage = (count: number) => {
@@ -14,14 +14,27 @@ const getLeadMessage = (count: number) => {
         : `There are ${count} results for your search.`
 }
 
-const Search: FC = () => {
-    const flightsParameters = useExtractFlightParameters();
-    const query = useFlightsQuery(flightsParameters);
+export const getServerSideProps: GetServerSideProps = async (context) => {
+    let query: Record<string, string> = { limit: "15000" };
+
+    if (context.query?.departureIcao) {
+        query.departureIcao = context.query?.departureIcao!.toString().toUpperCase();
+    }
+    if (context.query?.arrivalIcao) {
+        query.arrivalIcao = context.query?.arrivalIcao!.toString().toUpperCase();
+    }
+
+    const flights = await fetchFlights(query)
+
+    return { props: { flights: flights.items } }
+}
+
+export default function Search({ flights }: { flights: Flight[] }) {
     const [flight, setFlight] = useState<Flight>();
 
     const showModal = flight !== undefined;
 
-    if (query.totalItems === 0 && query.isSuccess) {
+    if (flights.length === 0) {
         return <GeneralLayout>
             <Lead>
                 There are no results for your search.{" "}
@@ -33,14 +46,14 @@ const Search: FC = () => {
     return (
         <GeneralLayout>
             <Lead>
-                {getLeadMessage(query.totalItems)}{' '}
+                {getLeadMessage(flights.length)}{' '}
                 <Link href="/">Click here</Link> to make a new search.
             </Lead>
 
             <FlightsTable
-                items={query.data}
-                next={() => query.fetchNextPage()}
-                count={query.totalItems}
+                items={flights}
+                next={() => { }}
+                count={flights.length}
                 onButtonClick={flight => setFlight(flight)}
             />
 
@@ -52,5 +65,3 @@ const Search: FC = () => {
         </GeneralLayout>
     )
 }
-
-export default Search
