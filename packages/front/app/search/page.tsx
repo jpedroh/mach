@@ -10,6 +10,8 @@ export default async function Search({
 }: {
     searchParams?: { [key: string]: string | string[] | undefined };
 }) {
+    console.log("Logging searchparams")
+    console.log(searchParams)
     const flights = await fetchFlights(searchParams ?? {});
 
     if (flights.length === 0) {
