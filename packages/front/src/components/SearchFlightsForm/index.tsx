@@ -1,3 +1,5 @@
+"use client"
+
 import { ChangeEventHandler, FC, FormEventHandler, useState } from 'react'
 import Button from '../Button'
 import FormInput from '../FormInput'

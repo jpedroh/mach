@@ -1,25 +1,21 @@
-import { FC } from 'react'
-import InfiniteScroll from 'react-infinite-scroll-component'
-import styles from './index.module.css'
+"use client"
+
 import Flight from '@mach/common'
+import { FC, useState } from 'react'
 import Button from '../Button'
+import FlightModal from '../FlightModal'
+import styles from './index.module.css'
 
 type Props = {
   items: Flight[]
-  next: () => void
-  count: number
-  onButtonClick: (flight: Flight) => void
 }
 
-const FlightsTable: FC<Props> = ({ items, next, count, onButtonClick }) => {
+const FlightsTable: FC<Props> = ({ items }) => {
+  const [flight, setFlight] = useState<Flight>();
+  const showModal = flight !== undefined;
+
   return (
     <div>
-      <InfiniteScroll
-        dataLength={items.length}
-        next={next}
-        hasMore={items.length < count}
-        loader={<span className={styles.loading}>Loading...</span>}
-      >
         <table className={styles.table}>
           <thead>
             <tr>
@@ -42,7 +38,7 @@ const FlightsTable: FC<Props> = ({ items, next, count, onButtonClick }) => {
                 <td className="grid justify-items-center">
                   <Button
                     variant={'primary'}
-                    onClick={() => onButtonClick(flight)}
+                    onClick={() => setFlight(flight)}
                   >
                     View Details
                   </Button>
@@ -50,8 +46,12 @@ const FlightsTable: FC<Props> = ({ items, next, count, onButtonClick }) => {
               </tr>
             ))}
           </tbody>
-        </table>
-      </InfiniteScroll>
+      </table>
+      <FlightModal
+        flight={flight!}
+        show={showModal}
+        onClose={() => setFlight(undefined)}
+      />
     </div>
   )
 }
