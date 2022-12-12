@@ -1,3 +1,10 @@
+## [6.1.1](https://github.com/jpedroh/mach/compare/v6.1.0...v6.1.1) (2022-12-12)
+
+
+### Bug Fixes
+
+* use no store in fetch caching ([650cb0f](https://github.com/jpedroh/mach/commit/650cb0fb9d6bdbb67d5a349ab7b90ba6c8a34c13))
+
 # [6.1.0](https://github.com/jpedroh/mach/compare/v6.0.3...v6.1.0) (2022-12-12)
 
 
