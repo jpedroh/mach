@@ -38,11 +38,13 @@ importers:
       ts-jest: ^29.0.0
       typescript: ^4.8.2
       uuid: ^9.0.0
+      zod: ^3.20.1
     dependencies:
       adm-zip: 0.5.9
       axios: 1.1.3
       next: 13.0.6_biqbaboplfbrettd7655fr4n2y
       uuid: 9.0.0
+      zod: 3.20.1
     devDependencies:
       '@semantic-release/changelog': 6.0.1_semantic-release@19.0.5
       '@semantic-release/exec': 6.0.3_semantic-release@19.0.5
@@ -87,8 +89,10 @@ importers:
   packages/front:
     specifiers:
       '@mach/common': '*'
+      '@mach/database': '*'
     dependencies:
       '@mach/common': link:../common
+      '@mach/database': link:../database
 
   packages/models:
     specifiers: {}
@@ -5634,3 +5638,7 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
     dev: true
+
+  /zod/3.20.1:
+    resolution: {integrity: sha512-At2YngeqktnHk6L9vf6Sdt7IGcRFziasf7JyQfKwxMd2rOWIUvURP6oLUTW6N0WKQ5bcIdI+IZ3+uGZCCcQcQg==}
+    dev: false
