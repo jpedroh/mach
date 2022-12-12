@@ -87,8 +87,12 @@ importers:
   packages/front:
     specifiers:
       '@mach/common': '*'
+      '@mach/database': '*'
+      zod: ^3.20.2
     dependencies:
       '@mach/common': link:../common
+      '@mach/database': link:../database
+      zod: 3.20.2
 
   packages/models:
     specifiers: {}
@@ -5634,3 +5638,7 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
     dev: true
+
+  /zod/3.20.2:
+    resolution: {integrity: sha512-1MzNQdAvO+54H+EaK5YpyEy0T+Ejo/7YLHS93G3RnYWh5gaotGHwGeN/ZO687qEDU2y4CdStQYXVHIgrUl5UVQ==}
+    dev: false
