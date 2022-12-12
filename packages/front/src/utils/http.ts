@@ -7,7 +7,9 @@ function http<R = any, T = any>({
 }): Promise<R> {
   const fullUrl = `${url}?${new URLSearchParams(query as any).toString()}`
 
-  return fetch(fullUrl).then(response => response.json())
+  return fetch(fullUrl, { cache: "no-store" }).then((response) =>
+    response.json()
+  );
 }
 
 export default http
