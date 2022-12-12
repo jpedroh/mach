@@ -5,6 +5,8 @@ import Lead from '../../src/components/Lead'
 import GeneralLayout from '../../src/layouts/GeneralLayout'
 import { fetchFlights } from '../../src/services/fetch-flights'
 
+export const revalidate = 0;
+
 export default async function Search({
     searchParams,
 }: {
