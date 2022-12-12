@@ -1,3 +1,5 @@
+import { NextApiRequest, NextApiResponse } from "next";
+
 const openApi = {
   openapi: "3.0.1",
   info: {
@@ -277,4 +279,8 @@ const openApi = {
       },
     },
   },
+};
+
+export default async (req: NextApiRequest, res: NextApiResponse) => {
+  res.status(200).json(openApi);
 };
