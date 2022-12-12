@@ -31,3 +31,11 @@ resource "vercel_project_environment_variable" "next_public_app_version" {
   value      = data.github_release.mach_latest.release_tag
   target     = ["production"]
 }
+
+
+resource "vercel_project_environment_variable" "database_url" {
+  project_id = vercel_project.mach.id
+  key        = "DATABASE_URL"
+  value      = var.database_url
+  target     = ["production", "preview"]
+}
