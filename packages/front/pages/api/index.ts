@@ -1,4 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
+import NextCors from "nextjs-cors";
 
 const openApi = {
   openapi: "3.0.1",
@@ -282,5 +283,7 @@ const openApi = {
 };
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
+  await NextCors(req, res, { methods: ["GET"], origin: "*" });
+
   res.status(200).json(openApi);
 };

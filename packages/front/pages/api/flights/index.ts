@@ -1,6 +1,7 @@
 import { FlightModel } from "@mach/database";
 import type { NextApiRequest, NextApiResponse } from "next";
 import z from "zod";
+import NextCors from "nextjs-cors";
 
 const schema = z.object({
   departureIcao: z.string().optional(),
@@ -10,6 +11,8 @@ const schema = z.object({
 });
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
+  await NextCors(req, res, { methods: ["GET"], origin: "*" });
+
   const data = schema.safeParse(req.query);
 
   if (!data.success) {
