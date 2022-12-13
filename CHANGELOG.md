@@ -1,3 +1,10 @@
+# [6.3.0](https://github.com/jpedroh/mach/compare/v6.2.0...v6.3.0) (2022-12-13)
+
+
+### Features
+
+* add filter to show only current flights ([2a0ed9c](https://github.com/jpedroh/mach/commit/2a0ed9c07cb1e10051b8f75c16a7315656e1cee3))
+
 # [6.2.0](https://github.com/jpedroh/mach/compare/v6.1.1...v6.2.0) (2022-12-13)
 
 
