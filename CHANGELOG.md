@@ -1,3 +1,10 @@
+## [6.3.1](https://github.com/jpedroh/mach/compare/v6.3.0...v6.3.1) (2022-12-13)
+
+
+### Bug Fixes
+
+* incorrect mapping of dates ([320a6de](https://github.com/jpedroh/mach/commit/320a6dea9d79f04467714dcadeaf9ef28cba7cdb))
+
 # [6.3.0](https://github.com/jpedroh/mach/compare/v6.2.0...v6.3.0) (2022-12-13)
 
 
