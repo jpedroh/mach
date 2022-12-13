@@ -1,3 +1,10 @@
+# [6.2.0](https://github.com/jpedroh/mach/compare/v6.1.1...v6.2.0) (2022-12-13)
+
+
+### Features
+
+* add possibility to filter results by company ([#99](https://github.com/jpedroh/mach/issues/99)) ([c38bf85](https://github.com/jpedroh/mach/commit/c38bf85f5ffc363ca22f5730ca73f07007fe5051))
+
 ## [6.1.1](https://github.com/jpedroh/mach/compare/v6.1.0...v6.1.1) (2022-12-12)
 
 
