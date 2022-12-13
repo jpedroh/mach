@@ -7,7 +7,6 @@ importers:
       '@semantic-release/changelog': ^6.0.1
       '@semantic-release/exec': ^6.0.0
       '@semantic-release/git': ^10.0.1
-      '@tanstack/react-query': ^4.2.3
       '@testing-library/dom': ^8.19.0
       '@testing-library/jest-dom': ^5.12.0
       '@testing-library/react': ^13.4.0
@@ -31,7 +30,6 @@ importers:
       postcss: ^8.4.16
       react: ^18.2.0
       react-dom: ^18.2.0
-      react-infinite-scroll-component: ^6.1.0
       semantic-release: ^19.0.5
       sequelize: ^6.3.4
       tailwindcss: ^3.1.8
@@ -48,7 +46,6 @@ importers:
       '@semantic-release/changelog': 6.0.1_semantic-release@19.0.5
       '@semantic-release/exec': 6.0.3_semantic-release@19.0.5
       '@semantic-release/git': 10.0.1_semantic-release@19.0.5
-      '@tanstack/react-query': 4.14.5_biqbaboplfbrettd7655fr4n2y
       '@testing-library/dom': 8.19.0
       '@testing-library/jest-dom': 5.16.5
       '@testing-library/react': 13.4.0_biqbaboplfbrettd7655fr4n2y
@@ -69,7 +66,6 @@ importers:
       postcss: 8.4.18
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
-      react-infinite-scroll-component: 6.1.0_react@18.2.0
       semantic-release: 19.0.5
       sequelize: 6.25.4_pg-hstore@2.3.4+pg@8.8.0
       tailwindcss: 3.2.2_postcss@8.4.18
@@ -1190,28 +1186,6 @@ packages:
     dependencies:
       tslib: 2.4.1
     dev: false
-
-  /@tanstack/query-core/4.14.5:
-    resolution: {integrity: sha512-Su1AyrPb6xnm7wXTvpN5tt+B7LViYSh9k04vvuc6+eMVH0HkE9ktZTXibRrTvV83BI1KP5MG7v/k90ne/4zQzw==}
-    dev: true
-
-  /@tanstack/react-query/4.14.5_biqbaboplfbrettd7655fr4n2y:
-    resolution: {integrity: sha512-CuWl/SxSB0zHhHaTja8LNhy9Vdk+vk9IkW3Oiq3lo4gPnTguHmbUzfjEA1x3RfvPeHfPMuq/pYMSbV+CX4aDQA==}
-    peerDependencies:
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0
-      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
-      react-native: '*'
-    peerDependenciesMeta:
-      react-dom:
-        optional: true
-      react-native:
-        optional: true
-    dependencies:
-      '@tanstack/query-core': 4.14.5
-      react: 18.2.0
-      react-dom: 18.2.0_react@18.2.0
-      use-sync-external-store: 1.2.0_react@18.2.0
-    dev: true
 
   /@testing-library/dom/8.19.0:
     resolution: {integrity: sha512-6YWYPPpxG3e/xOo6HIWwB/58HukkwIVTOaZ0VwdMVjhRUX/01E4FtQbck9GazOOj7MXHc5RBzMrU86iBJHbI+A==}
@@ -4595,15 +4569,6 @@ packages:
       react: 18.2.0
       scheduler: 0.23.0
 
-  /react-infinite-scroll-component/6.1.0_react@18.2.0:
-    resolution: {integrity: sha512-SQu5nCqy8DxQWpnUVLx7V7b7LcA37aM7tvoWjTLZp1dk6EJibM5/4EJKzOnl07/BsM1Y40sKLuqjCwwH/xV0TQ==}
-    peerDependencies:
-      react: '>=16.0.0'
-    dependencies:
-      react: 18.2.0
-      throttle-debounce: 2.3.0
-    dev: true
-
   /react-is/17.0.2:
     resolution: {integrity: sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==}
     dev: true
@@ -5254,11 +5219,6 @@ packages:
     engines: {node: '>=0.10'}
     dev: true
 
-  /throttle-debounce/2.3.0:
-    resolution: {integrity: sha512-H7oLPV0P7+jgvrk+6mwwwBDmxTaxnu9HMXmloNLXwnNO0ZxZ31Orah2n8lU1eMPvsaowP2CX+USCgyovXfdOFQ==}
-    engines: {node: '>=8'}
-    dev: true
-
   /through/2.3.8:
     resolution: {integrity: sha512-w89qg7PI8wAdvX60bMDP+bFoD5Dvhm9oLheFp5O4a2QF0cSBGsBX4qZmadPMvVqlLJBBci+WqGGOAPvcDeNSVg==}
     dev: true
@@ -5443,14 +5403,6 @@ packages:
 
   /url-join/4.0.1:
     resolution: {integrity: sha512-jk1+QP6ZJqyOiuEI9AEWQfju/nB2Pw466kbA0LEZljHwKeMgd9WrAEgEGxjPDD2+TNbbb37rTyhEfrCXfuKXnA==}
-    dev: true
-
-  /use-sync-external-store/1.2.0_react@18.2.0:
-    resolution: {integrity: sha512-eEgnFxGQ1Ife9bzYs6VLi8/4X6CObHMw9Qr9tPY43iKwsPw8xE8+EFsf/2cFZ5S3esXgpWgtSCtLNS41F+sKPA==}
-    peerDependencies:
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0
-    dependencies:
-      react: 18.2.0
     dev: true
 
   /util-deprecate/1.0.2:
