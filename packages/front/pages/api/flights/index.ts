@@ -6,6 +6,7 @@ import NextCors from "nextjs-cors";
 const schema = z.object({
   departureIcao: z.string().optional(),
   arrivalIcao: z.string().optional(),
+  company: z.string().optional(),
   limit: z.number().positive().optional().default(15),
   offset: z.number().min(0).optional().default(0),
 });
