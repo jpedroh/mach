@@ -17,11 +17,11 @@ const Flight = (sequelize: Sequelize) => {
         allowNull: false
       },
       beginDate: {
-        type: DataTypes.DATE,
+        type: DataTypes.DATEONLY,
         allowNull: false
       },
       endDate: {
-        type: DataTypes.DATE
+        type: DataTypes.DATEONLY
       },
       company: {
         type: DataTypes.STRING,

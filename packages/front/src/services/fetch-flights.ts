@@ -23,9 +23,6 @@ const schema = z.object({
 
 export function fetchFlights(searchParams: Record<string, unknown>) {
   const today = new Date();
-  today.setHours(0);
-  today.setMinutes(0);
-  today.setSeconds(0);
 
   const where = schema.parse(searchParams);
   return FlightModel.findAll({
