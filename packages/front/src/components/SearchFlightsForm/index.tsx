@@ -1,59 +1,64 @@
 "use client"
 
-import { ChangeEventHandler, FC, FormEventHandler, useState } from 'react'
+import { ChangeEventHandler, FC, useState } from 'react'
 import Button from '../Button'
 import FormInput from '../FormInput'
 import styles from './index.module.css'
 
-export type SearchFlightsFormFields = { departureIcao: string; arrivalIcao: string }
+export type SearchFlightsFormFields = { departureIcao: string; arrivalIcao: string, company: string }
 
 type Props = {
-  onSubmit?: (params: Partial<SearchFlightsFormFields>) => void
+  companies: string[]
 }
 
-const SearchFlightsForm: FC<Props> = ({ onSubmit = () => { } }) => {
+const SearchFlightsForm: FC<Props> = ({ companies }) => {
   const [form, setForm] = useState<SearchFlightsFormFields>({
     arrivalIcao: '',
-    departureIcao: ''
+    departureIcao: '',
+    company: ''
   })
 
-  const isSubmitDisabled = form.arrivalIcao.trim().length === 0 && form.departureIcao.trim().length === 0
+  const isSubmitDisabled = form.arrivalIcao.trim().length === 0 && form.departureIcao.trim().length === 0 && form.company.length === 0
 
-  const onChange: ChangeEventHandler<HTMLInputElement> = evt => {
+  const onChange: ChangeEventHandler<HTMLInputElement | HTMLSelectElement> = evt => {
     setForm(form => ({
       ...form,
       [evt.target.name]: evt.target.value.toUpperCase()
     }))
   }
 
-  const handleSubmit: FormEventHandler = evt => {
-    evt.preventDefault()
-    onSubmit({
-      ...(form.departureIcao && { departureIcao: form.departureIcao }),
-      ...(form.arrivalIcao && { arrivalIcao: form.arrivalIcao })
-    })
-  }
-
   return (
     <form className={styles.container} action={"/search"}>
       <div>
-        <label>Departure ICAO</label>
+        <label htmlFor="departureIcao">Departure ICAO</label>
         <FormInput
           type="text"
           placeholder="SBSP"
+          id="departureIcao"
           name="departureIcao"
           onChange={onChange}
         />
       </div>
 
       <div>
-        <label>Arrival ICAO</label>
+        <label htmlFor="arrivalIcao">Arrival ICAO</label>
         <FormInput
           type="text"
           placeholder="SBRF"
+          id="arrivalIcao"
           name="arrivalIcao"
           onChange={onChange}
         />
+      </div>
+
+      <div>
+        <label htmlFor="company">Company</label>
+        <select name="company" className={styles.input} id="company" value={form.company} onChange={onChange}>
+          <option value="" disabled>Pick a company</option>
+          {companies.map((company) => {
+            return <option key={company} value={company}>{company}</option>
+          })}
+        </select>
       </div>
 
       <Button type="submit" disabled={isSubmitDisabled}>Search flights</Button>
