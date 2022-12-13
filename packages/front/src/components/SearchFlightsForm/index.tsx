@@ -53,13 +53,18 @@ const SearchFlightsForm: FC<Props> = ({ companies }) => {
 
       <div>
         <label htmlFor="company">Company</label>
-        <select name="company" className={styles.input} id="company" value={form.company} onChange={onChange}>
+        <select name="company" id="company" value={form.company} onChange={onChange}>
           <option value="" disabled>Pick a company</option>
           {companies.map((company) => {
             return <option key={company} value={company}>{company}</option>
           })}
         </select>
       </div>
+
+      <section className='flex gap-3 items-center'>
+        <input type="checkbox" name="onlyCurrent" id="onlyCurrent" />
+        <label htmlFor="onlyCurrent">Show only current flights.</label>
+      </section>
 
       <Button type="submit" disabled={isSubmitDisabled}>Search flights</Button>
     </form>
