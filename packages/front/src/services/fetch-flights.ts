@@ -10,6 +10,10 @@ const schema = z.object({
     .string()
     .transform((v) => v.toUpperCase())
     .optional(),
+  company: z
+    .string()
+    .transform((v) => v.toUpperCase())
+    .optional(),
 });
 
 export function fetchFlights(searchParams: Record<string, unknown>) {
@@ -18,6 +22,7 @@ export function fetchFlights(searchParams: Record<string, unknown>) {
     where: {
       ...(where.departureIcao && { departureIcao: where.departureIcao }),
       ...(where.arrivalIcao && { arrivalIcao: where.arrivalIcao }),
+      ...(where.company && { company: where.company }),
     },
     attributes: {
       exclude: ["createdAt", "updatedAt", "beginDate", "endDate"],
