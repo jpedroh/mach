@@ -39,3 +39,19 @@ resource "vercel_project_environment_variable" "database_url" {
   value      = var.database_url
   target     = ["production", "preview"]
 }
+
+
+resource "vercel_project_environment_variable" "aisweb_api_key" {
+  project_id = vercel_project.mach.id
+  key        = "AISWEB_API_KEY"
+  value      = var.aisweb_api_key
+  target     = ["production", "preview"]
+}
+
+
+resource "vercel_project_environment_variable" "aisweb_api_password" {
+  project_id = vercel_project.mach.id
+  key        = "AISWEB_API_PASSWORD"
+  value      = var.aisweb_api_password
+  target     = ["production", "preview"]
+}
