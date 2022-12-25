@@ -1,17 +1,21 @@
 "use client"
 
 import { ChangeEventHandler, FC, useState } from 'react'
+import { Airport } from '../../services/fetch-airports'
 import Button from '../Button'
 import FormInput from '../FormInput'
 import styles from './index.module.css'
+import Select from 'react-select'
+import { SelectInput } from '../SelectInput'
 
 export type SearchFlightsFormFields = { departureIcao: string; arrivalIcao: string, company: string }
 
 type Props = {
   companies: string[]
+  airports: Airport[]
 }
 
-const SearchFlightsForm: FC<Props> = ({ companies }) => {
+const SearchFlightsForm: FC<Props> = ({ companies, airports }) => {
   const [form, setForm] = useState<SearchFlightsFormFields>({
     arrivalIcao: '',
     departureIcao: '',
@@ -27,27 +31,27 @@ const SearchFlightsForm: FC<Props> = ({ companies }) => {
     }))
   }
 
+  const airportsOptions = airports.map(airport => {
+    return { value: airport.AeroCode, label: `${airport.AeroCode} - ${airport.name} - ${airport.city}` }
+  })
+
   return (
     <form className={styles.container} action={"/search"}>
       <div>
         <label htmlFor="departureIcao">Departure ICAO</label>
-        <FormInput
-          type="text"
-          placeholder="SBSP"
-          id="departureIcao"
+        <SelectInput
+          options={airportsOptions}
           name="departureIcao"
-          onChange={onChange}
+          onChange={departureIcao => setForm(form => ({ ...form, departureIcao }))}
         />
       </div>
 
       <div>
         <label htmlFor="arrivalIcao">Arrival ICAO</label>
-        <FormInput
-          type="text"
-          placeholder="SBRF"
-          id="arrivalIcao"
+        <SelectInput
+          options={airportsOptions}
           name="arrivalIcao"
-          onChange={onChange}
+          onChange={arrivalIcao => setForm(form => ({ ...form, arrivalIcao }))}
         />
       </div>
 
