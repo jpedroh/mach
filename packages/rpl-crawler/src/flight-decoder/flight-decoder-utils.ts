@@ -14,7 +14,7 @@ export const resolveFlightDate = (date: string): Date => {
   const month = parseInt(date.substr(2, 2)) - 1
   const year = parseInt(date.substr(4, 2)) + 2000
 
-  return new Date(year, month, day)
+  return new Date(Date.UTC(year, month, day))
 }
 
 export const resolveWeekDays = (weekdays: string): Weekdays[] => {

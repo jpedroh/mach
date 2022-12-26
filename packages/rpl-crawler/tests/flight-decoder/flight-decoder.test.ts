@@ -13,8 +13,8 @@ describe('flight-decoder', () => {
       @`
     const flight = flightDecoder(line)
 
-    expect(flight.beginDate).toEqual(new Date('2020-07-23'))
-    expect(flight.endDate).toEqual(new Date('2020-10-01'))
+    expect(flight.beginDate).toEqual(new Date(Date.UTC(2020, 6, 23)));
+    expect(flight.endDate).toEqual(new Date(Date.UTC(2020, 9, 1)));
   })
 
   test('Given flight with IFR Flight Rule', () => {
