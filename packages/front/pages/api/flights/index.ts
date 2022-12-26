@@ -4,9 +4,18 @@ import z from "zod";
 import NextCors from "nextjs-cors";
 
 const schema = z.object({
-  departureIcao: z.string().optional(),
-  arrivalIcao: z.string().optional(),
-  company: z.string().optional(),
+  departureIcao: z
+    .preprocess((x) => (Array.isArray(x) ? x : [x]), z.array(z.string()))
+    .transform((values) => values.map((value) => value.toUpperCase()))
+    .optional(),
+  arrivalIcao: z
+    .preprocess((x) => (Array.isArray(x) ? x : [x]), z.array(z.string()))
+    .transform((values) => values.map((value) => value.toUpperCase()))
+    .optional(),
+  company: z
+    .preprocess((x) => (Array.isArray(x) ? x : [x]), z.array(z.string()))
+    .transform((values) => values.map((value) => value.toUpperCase()))
+    .optional(),
   limit: z.number().positive().optional().default(15),
   offset: z.number().min(0).optional().default(0),
 });
@@ -26,6 +35,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     where,
     limit,
     offset,
+    order: ["id"],
   });
 
   res.status(200).json({ count, items });
