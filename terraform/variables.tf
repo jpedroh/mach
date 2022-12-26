@@ -17,3 +17,8 @@ variable "aisweb_api_password" {
   type      = string
   sensitive = true
 }
+
+variable "base_url" {
+  type      = string
+  sensitive = false
+}

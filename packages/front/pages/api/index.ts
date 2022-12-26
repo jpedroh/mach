@@ -1,6 +1,13 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import NextCors from "nextjs-cors";
 
+function getApiUrl() {
+  if (process.env.VERCEL_ENV === "production") {
+    return `https://${process.env.BASE_URL}/api`;
+  }
+  return `https://${process.env.VERCEL_URL}/api`;
+}
+
 const openApi = {
   openapi: "3.0.1",
   info: {
@@ -13,7 +20,7 @@ const openApi = {
   },
   servers: [
     {
-      url: process.env.VERCEL_URL,
+      url: getApiUrl(),
     },
   ],
   tags: [
