@@ -12,10 +12,9 @@ describe('update-checker', () => {
     describe('When request return 404 status', () => {
       httpMock.get.mockResolvedValueOnce({ status: 404 })
 
-      test('Then update checker should return false', async done => {
+      test('Then update checker should return false', async () => {
         const hasUpdate = await updateChecker(date)
         expect(hasUpdate).toBeFalsy()
-        done()
       })
     })
   })
@@ -26,10 +25,9 @@ describe('update-checker', () => {
     describe('When request return 200 status', () => {
       httpMock.get.mockResolvedValueOnce({ status: 200 })
 
-      test('Then update checker should return true', async done => {
+      test('Then update checker should return true', async () => {
         const hasUpdate = await updateChecker(date)
         expect(hasUpdate).toBeTruthy()
-        done()
       })
     })
   })
