@@ -10,8 +10,8 @@ resource "vercel_project" "mach" {
     repo              = "jpedroh/mach"
     type              = "github"
   }
-  build_command    = "nx run @mach/front:build"
-  output_directory = "packages/front/.next"
+  build_command    = "nx run @mach/app:build"
+  output_directory = "packages/app/.next"
 }
 
 resource "vercel_project_domain" "domain" {
