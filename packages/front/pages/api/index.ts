@@ -55,7 +55,7 @@ const openApi = {
             in: "query",
             name: "company",
             style: "form",
-            explode: false,
+            explode: true,
             schema: {
               type: "array",
               items: {
@@ -67,7 +67,7 @@ const openApi = {
             in: "query",
             name: "departureIcao",
             style: "form",
-            explode: false,
+            explode: true,
             schema: {
               type: "array",
               items: {
@@ -79,7 +79,7 @@ const openApi = {
             in: "query",
             name: "arrivalIcao",
             style: "form",
-            explode: false,
+            explode: true,
             schema: {
               type: "array",
               items: {
