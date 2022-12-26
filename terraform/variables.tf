@@ -22,3 +22,9 @@ variable "base_url" {
   type      = string
   sensitive = false
 }
+
+variable "github_token" {
+  type      = string
+  sensitive = true
+}
+

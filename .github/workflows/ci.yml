@@ -25,7 +25,10 @@ jobs:
       - run: npx nx workspace-lint
       - run: npx nx affected --target=build --parallel=3
         env:
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          DATABASE_URL: ${{ secrets.database_url }}
+          AISWEB_API_KEY: ${{ secrets.aisweb_api_key }}
+          AISWEB_API_PASSWORD: ${{ secrets.aisweb_api_password }}
+          RPL_DATE: ${{ github.event.inputs.date }}
       - run: npx nx affected --target=test --parallel=3 --ci
       - run: npx semantic-release
         env:
