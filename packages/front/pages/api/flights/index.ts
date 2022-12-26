@@ -16,8 +16,14 @@ const schema = z.object({
     .preprocess((x) => (Array.isArray(x) ? x : [x]), z.array(z.string()))
     .transform((values) => values.map((value) => value.toUpperCase()))
     .optional(),
-  limit: z.number().positive().optional().default(15),
-  offset: z.number().min(0).optional().default(0),
+  limit: z.preprocess(
+    (x) => (x ? Number(x) : undefined),
+    z.number().min(1).optional().default(15).optional()
+  ),
+  offset: z.preprocess(
+    (x) => (x ? Number(x) : undefined),
+    z.number().min(0).optional().default(0).optional()
+  ),
 });
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
