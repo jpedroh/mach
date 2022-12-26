@@ -4,7 +4,6 @@ importers:
 
   .:
     specifiers:
-      '@semantic-release/changelog': ^6.0.1
       '@semantic-release/exec': ^6.0.0
       '@semantic-release/git': ^10.0.1
       '@testing-library/dom': ^8.19.0
@@ -49,7 +48,6 @@ importers:
       react-select: 5.7.0_ib3m5ricvtkl2cll7qpr2f6lvq
       uuid: 9.0.0
     devDependencies:
-      '@semantic-release/changelog': 6.0.1_semantic-release@19.0.5
       '@semantic-release/exec': 6.0.3_semantic-release@19.0.5
       '@semantic-release/git': 10.0.1_semantic-release@19.0.5
       '@testing-library/dom': 8.19.0
@@ -79,6 +77,14 @@ importers:
       typescript: 4.8.4
       zod: 3.20.2
 
+  packages/app:
+    specifiers:
+      '@mach/common': '*'
+      '@mach/database': '*'
+    dependencies:
+      '@mach/common': link:../common
+      '@mach/database': link:../database
+
   packages/common:
     specifiers: {}
 
@@ -87,14 +93,6 @@ importers:
       '@mach/common': '*'
     dependencies:
       '@mach/common': link:../common
-
-  packages/front:
-    specifiers:
-      '@mach/common': '*'
-      '@mach/database': '*'
-    dependencies:
-      '@mach/common': link:../common
-      '@mach/database': link:../database
 
   packages/rpl-crawler:
     specifiers:
@@ -1124,19 +1122,6 @@ packages:
       node-gyp-build: 4.5.0
     dev: true
 
-  /@semantic-release/changelog/6.0.1_semantic-release@19.0.5:
-    resolution: {integrity: sha512-FT+tAGdWHr0RCM3EpWegWnvXJ05LQtBkQUaQRIExONoXjVjLuOILNm4DEKNaV+GAQyJjbLRVs57ti//GypH6PA==}
-    engines: {node: '>=14.17'}
-    peerDependencies:
-      semantic-release: '>=18.0.0'
-    dependencies:
-      '@semantic-release/error': 3.0.0
-      aggregate-error: 3.1.0
-      fs-extra: 9.1.0
-      lodash: 4.17.21
-      semantic-release: 19.0.5
-    dev: true
-
   /@semantic-release/commit-analyzer/9.0.2_semantic-release@19.0.5:
     resolution: {integrity: sha512-E+dr6L+xIHZkX4zNMe6Rnwg4YQrWNXK+rNsvwOPpdFppvZO1olE2fIgWhv89TkQErygevbjsZFSIxp+u6w2e5g==}
     engines: {node: '>=14.17'}
@@ -1722,11 +1707,6 @@ packages:
 
   /asynckit/0.4.0:
     resolution: {integrity: sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==}
-
-  /at-least-node/1.0.0:
-    resolution: {integrity: sha512-+q/t7Ekv1EDY2l6Gda6LLiX14rU9TV20Wa3ofeQmwPFZbOMo9DXrLbOjFaaclkXKWidIaopwAObQDqwWtGUjqg==}
-    engines: {node: '>= 4.0.0'}
-    dev: true
 
   /autoprefixer/10.4.13_postcss@8.4.18:
     resolution: {integrity: sha512-49vKpMqcZYsJjwotvt4+h/BCjJVnhGwcLpDt5xkcaOG3eLrG/HUYLagrihYsQ+qrIBgIzX1Rw7a6L8I/ZA1Atg==}
@@ -2662,16 +2642,6 @@ packages:
     resolution: {integrity: sha512-oRXApq54ETRj4eMiFzGnHWGy+zo5raudjuxN0b8H7s/RU2oW0Wvsx9O0ACRN/kRq9E8Vu/ReskGB5o3ji+FzHQ==}
     engines: {node: '>=12'}
     dependencies:
-      graceful-fs: 4.2.10
-      jsonfile: 6.1.0
-      universalify: 2.0.0
-    dev: true
-
-  /fs-extra/9.1.0:
-    resolution: {integrity: sha512-hcg3ZmepS30/7BSFqRvoo3DOMQu7IjqxO5nCDt+zM9XWjb33Wg7ziNT+Qvqbuc3+gWpzO02JubVyk2G4Zvo1OQ==}
-    engines: {node: '>=10'}
-    dependencies:
-      at-least-node: 1.0.0
       graceful-fs: 4.2.10
       jsonfile: 6.1.0
       universalify: 2.0.0
