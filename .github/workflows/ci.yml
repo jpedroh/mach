@@ -31,3 +31,5 @@ jobs:
           RPL_DATE: ${{ github.event.inputs.date }}
       - run: npx nx affected --target=test --parallel=3 --ci
       - run: npx semantic-release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
