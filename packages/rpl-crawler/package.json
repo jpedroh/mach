@@ -10,15 +10,11 @@
   "author": "Joao Pedro Henrique <joao.pedro.hsd@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build": "tsc && cargo-cp-artifact -nc dist/index.node -- cargo build --message-format=json-render-diagnostics --release",
-    "build:dev": "tsc && cargo-cp-artifact -nc src/index.node -- cargo build --message-format=json-render-diagnostics",
-    "test": "cargo test && jest"
+    "build": "tsc",
+    "test": "jest"
   },
   "dependencies": {
     "@mach/common": "*",
     "@mach/database": "*"
-  },
-  "devDependencies": {
-    "cargo-cp-artifact": "^0.1"
   }
 }

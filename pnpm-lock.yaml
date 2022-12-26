@@ -103,12 +103,9 @@ importers:
     specifiers:
       '@mach/common': '*'
       '@mach/database': '*'
-      cargo-cp-artifact: ^0.1
     dependencies:
       '@mach/common': link:../common
       '@mach/database': link:../database
-    devDependencies:
-      cargo-cp-artifact: 0.1.7
 
 packages:
 
@@ -1972,11 +1969,6 @@ packages:
     dependencies:
       ansicolors: 0.3.2
       redeyed: 2.1.1
-    dev: true
-
-  /cargo-cp-artifact/0.1.7:
-    resolution: {integrity: sha512-pxEV9p1on8vu3BOKstVisF9TwMyGKCBRvzaVpQHuU2sLULCKrn3MJWx/4XlNzmG6xNCTPf78DJ7WCGgr2mOzjg==}
-    hasBin: true
     dev: true
 
   /chalk/2.4.2:

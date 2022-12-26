@@ -2,13 +2,9 @@ import flightDecoder from './flight-decoder'
 import rplFileDownloader from './rpl-file-downloader'
 import rplFileLinesExtractor from './rpl-file-lines-extractor'
 import saveFlights from './save-flights'
-import Flight from "@mach/common";
+import Flight from '@mach/common'
+import updateChecker from './update-checker'
 import Logger from './utils/logger'
-
-// @ts-ignore
-import rustBindings from './index.node'
-
-const updateChecker: (date: string) => Promise<boolean> = rustBindings.hasRplUpdate;
 
 type MainDependencies = {
   updateChecker: (date: string) => Promise<boolean>
