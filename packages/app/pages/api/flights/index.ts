@@ -18,11 +18,11 @@ const schema = z.object({
     .optional(),
   limit: z.preprocess(
     (x) => (x ? Number(x) : undefined),
-    z.number().min(1).optional().default(15).optional()
+    z.number().min(1).default(15)
   ),
   offset: z.preprocess(
     (x) => (x ? Number(x) : undefined),
-    z.number().min(0).optional().default(0).optional()
+    z.number().min(0).default(0)
   ),
 });
 
