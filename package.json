@@ -43,8 +43,9 @@
     "uuid": "^9.0.0"
   },
   "scripts": {
-    "test": "yarn jest",
-    "app": "yarn workspace @mach/app"
+    "serve": "nx run @mach/app:dev",
+    "build": "nx run-many --target=build",
+    "test": "nx run-many --target=test"
   },
   "workspaces": {
     "packages": [
