@@ -112,6 +112,65 @@ const openApi = {
         },
       },
     },
+    "/flights/all": {
+      get: {
+        tags: ["Flight"],
+        summary: "Returns a list of Flights",
+        parameters: [
+          {
+            in: "query",
+            name: "company",
+            style: "form",
+            explode: true,
+            schema: {
+              type: "array",
+              items: {
+                type: "string",
+              },
+            },
+          },
+          {
+            in: "query",
+            name: "departureIcao",
+            style: "form",
+            explode: true,
+            schema: {
+              type: "array",
+              items: {
+                type: "string",
+              },
+            },
+          },
+          {
+            in: "query",
+            name: "arrivalIcao",
+            style: "form",
+            explode: true,
+            schema: {
+              type: "array",
+              items: {
+                type: "string",
+              },
+            },
+          },
+        ],
+        responses: {
+          "200": {
+            description: "A List of Flights",
+            content: {
+              "application/json": {
+                schema: {
+                  type: "array",
+                  items: {
+                    $ref: "#/components/schemas/Flight",
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    },
     "/flights/{id}": {
       get: {
         tags: ["Flight"],
