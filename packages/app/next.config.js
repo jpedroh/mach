@@ -10,6 +10,9 @@ const nextConfig = {
         config.plugins.push(new webpack.IgnorePlugin({ resourceRegExp: /^pg-native$/ }))
         return config
     },
+    api: {
+        responseLimit: false,
+    },
 }
 
 module.exports = nextConfig
