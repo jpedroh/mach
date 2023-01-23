@@ -1,6 +1,7 @@
 import { FlightModel } from "@mach/database";
 import { Op } from "sequelize";
 import z from "zod";
+import { fetchAirportsData } from "./fetch-airports";
 
 const schema = z.object({
   departureIcao: z
@@ -21,11 +22,11 @@ const schema = z.object({
     .optional(),
 });
 
-export function fetchFlights(searchParams: Record<string, unknown>) {
+export async function fetchFlights(searchParams: Record<string, unknown>) {
   const today = new Date();
 
   const where = schema.parse(searchParams);
-  return FlightModel.findAll({
+  const flights = await FlightModel.findAll({
     where: {
       ...(where.departureIcao && { departureIcao: where.departureIcao }),
       ...(where.arrivalIcao && { arrivalIcao: where.arrivalIcao }),
@@ -43,5 +44,24 @@ export function fetchFlights(searchParams: Record<string, unknown>) {
       exclude: ["createdAt", "updatedAt", "beginDate", "endDate"],
     },
     raw: true,
+  });
+
+  const icaos = flights.flatMap((flight) => [
+    flight.departureIcao,
+    flight.arrivalIcao,
+  ]);
+
+  const airports = await fetchAirportsData(icaos);
+
+  return flights.map((flight) => {
+    return {
+      ...flight,
+      departure: airports.find(
+        ({ AeroCode }) => AeroCode === flight.departureIcao
+      )!,
+      arrival: airports.find(
+        ({ AeroCode }) => AeroCode === flight.arrivalIcao
+      )!,
+    };
   });
 }

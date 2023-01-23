@@ -2,12 +2,14 @@
 
 import Flight from '@mach/common'
 import { FC, useState } from 'react'
+import { Airport } from '../../services/fetch-airports'
+import { formatAirport } from '../../utils/format-airport'
 import Button from '../Button'
 import FlightModal from '../FlightModal'
 import styles from './index.module.css'
 
 type Props = {
-  items: Flight[]
+  items: Array<Flight & { departure: Airport, arrival: Airport }>
 }
 
 const FlightsTable: FC<Props> = ({ items }) => {
@@ -31,8 +33,8 @@ const FlightsTable: FC<Props> = ({ items }) => {
             {items.map((flight, key) => (
               <tr key={key}>
                 <td>{flight.callsign}</td>
-                <td>{flight.departureIcao}</td>
-                <td>{flight.arrivalIcao}</td>
+                <td><abbr title={formatAirport(flight.departure)}>{flight.departureIcao}</abbr></td>
+                <td><abbr title={formatAirport(flight.arrival)}>{flight.arrivalIcao}</abbr></td>
                 <td>{flight.estimatedOffBlockTime}</td>
                 <td>{flight.aircraft.icaoCode}</td>
                 <td className="grid justify-items-center">

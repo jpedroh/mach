@@ -26,7 +26,7 @@ const airportSchema = z.object({
 
 export type Airport = z.infer<typeof airportSchema>;
 
-async function fetchAirportsData(icaoCodes: string[]) {
+export async function fetchAirportsData(icaoCodes: string[]) {
   const endpoint = new URL("https://aisweb.decea.mil.br/api");
   endpoint.searchParams.set("apiKey", environment.AISWEB_API_KEY);
   endpoint.searchParams.set("apiPass", environment.AISWEB_API_PASSWORD);

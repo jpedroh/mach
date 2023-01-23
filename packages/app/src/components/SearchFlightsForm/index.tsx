@@ -2,11 +2,10 @@
 
 import { ChangeEventHandler, FC, useState } from 'react'
 import { Airport } from '../../services/fetch-airports'
+import { formatAirport } from '../../utils/format-airport'
 import Button from '../Button'
-import FormInput from '../FormInput'
-import styles from './index.module.css'
-import Select from 'react-select'
 import { SelectInput } from '../SelectInput'
+import styles from './index.module.css'
 
 export type SearchFlightsFormFields = { departureIcao: string; arrivalIcao: string, company: string }
 
@@ -32,7 +31,7 @@ const SearchFlightsForm: FC<Props> = ({ companies, airports }) => {
   }
 
   const airportsOptions = airports.map(airport => {
-    return { value: airport.AeroCode, label: `${airport.AeroCode} - ${airport.name} - ${airport.city}` }
+    return { value: airport.AeroCode, label: formatAirport(airport) }
   })
 
   return (
