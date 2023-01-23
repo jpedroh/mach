@@ -9,7 +9,7 @@ import FlightModal from '../FlightModal'
 import styles from './index.module.css'
 
 type Props = {
-  items: Array<Flight & { departure: Airport, arrival: Airport }>
+  items: Array<Flight & { departure?: Airport, arrival?: Airport }>
 }
 
 const FlightsTable: FC<Props> = ({ items }) => {
@@ -33,8 +33,8 @@ const FlightsTable: FC<Props> = ({ items }) => {
             {items.map((flight, key) => (
               <tr key={key}>
                 <td>{flight.callsign}</td>
-                <td><abbr title={formatAirport(flight.departure)}>{flight.departureIcao}</abbr></td>
-                <td><abbr title={formatAirport(flight.arrival)}>{flight.arrivalIcao}</abbr></td>
+                <td><abbr title={flight.departure ? formatAirport(flight.departure) : undefined}>{flight.departureIcao}</abbr></td>
+                <td><abbr title={flight.arrival ? formatAirport(flight.arrival) : undefined}>{flight.arrivalIcao}</abbr></td>
                 <td>{flight.estimatedOffBlockTime}</td>
                 <td>{flight.aircraft.icaoCode}</td>
                 <td className="grid justify-items-center">

@@ -58,10 +58,8 @@ export async function fetchFlights(searchParams: Record<string, unknown>) {
       ...flight,
       departure: airports.find(
         ({ AeroCode }) => AeroCode === flight.departureIcao
-      )!,
-      arrival: airports.find(
-        ({ AeroCode }) => AeroCode === flight.arrivalIcao
-      )!,
+      ),
+      arrival: airports.find(({ AeroCode }) => AeroCode === flight.arrivalIcao),
     };
   });
 }

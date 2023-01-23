@@ -26,6 +26,16 @@ const airportSchema = z.object({
 
 export type Airport = z.infer<typeof airportSchema>;
 
+const parser = new XMLParser({ ignoreAttributes: true });
+
+const xmlSchema = z.object({
+  aisweb: z.object({
+    rotaer: z.object({
+      item: z.array(airportSchema),
+    }),
+  }),
+});
+
 export async function fetchAirportsData(icaoCodes: string[]) {
   const endpoint = new URL("https://aisweb.decea.mil.br/api");
   endpoint.searchParams.set("apiKey", environment.AISWEB_API_KEY);
@@ -33,16 +43,13 @@ export async function fetchAirportsData(icaoCodes: string[]) {
   endpoint.searchParams.set("area", "rotaer");
   endpoint.searchParams.set("rowstart", "0");
   endpoint.searchParams.set("rowend", "30000");
-  icaoCodes.forEach((icaoCode) => {
+  new Set(icaoCodes).forEach((icaoCode) => {
     endpoint.searchParams.append("aero", icaoCode);
   });
 
   const response = await fetch(endpoint).then((r) => r.text());
 
-  const parser = new XMLParser({ ignoreAttributes: true });
-  return (parser.parse(response).aisweb.rotaer.item as any[]).map((item) =>
-    airportSchema.parse(item)
-  );
+  return xmlSchema.parse(parser.parse(response)).aisweb.rotaer.item;
 }
 
 export async function fetchAirports() {
