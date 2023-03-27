@@ -60,7 +60,7 @@ const main = async (
     Logger.info(`STARTING DECODING OF RPL FILES DATA`)
     const flights = Array.from(filesLines).map(rawFlight => {
       try {
-        return flightDecoder
+        return flightDecoder(rawFlight);
       } catch (error) {
         Logger.info(`ERROR WHEN PARSING FLIGHT: ${rawFlight}`);
       }
