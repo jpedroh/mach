@@ -58,7 +58,13 @@ const main = async (
     Logger.info(`COMPLETED LINES EXTRACTION FROM RPL FILES`)
 
     Logger.info(`STARTING DECODING OF RPL FILES DATA`)
-    const flights = Array.from(filesLines).map(flightDecoder)
+    const flights = Array.from(filesLines).map(rawFlight => {
+      try {
+        return flightDecoder
+      } catch (error) {
+        Logger.info(`ERROR WHEN PARSING FLIGHT: ${rawFlight}`);
+      }
+    }).filter(Boolean) as Flight[];
     Logger.info(`COMPLETED DECODING OF RPL FILES DATA`)
 
     Logger.info(`STARTING SAVING DECODED DATA TO DATABASE`)
