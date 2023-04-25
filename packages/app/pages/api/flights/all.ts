@@ -1,22 +1,40 @@
 import { FlightModel } from "@mach/database";
 import type { NextApiRequest, NextApiResponse } from "next";
 import NextCors from "nextjs-cors";
+import { Op } from "sequelize";
 import z from "zod";
 
-const schema = z.object({
-  departureIcao: z
-    .preprocess((x) => (Array.isArray(x) ? x : [x]), z.array(z.string()))
-    .transform((values) => values.map((value) => value.toUpperCase()))
-    .optional(),
-  arrivalIcao: z
-    .preprocess((x) => (Array.isArray(x) ? x : [x]), z.array(z.string()))
-    .transform((values) => values.map((value) => value.toUpperCase()))
-    .optional(),
-  company: z
-    .preprocess((x) => (Array.isArray(x) ? x : [x]), z.array(z.string()))
-    .transform((values) => values.map((value) => value.toUpperCase()))
-    .optional(),
-});
+const schema = z
+  .object({
+    departureIcao: z
+      .preprocess((x) => (Array.isArray(x) ? x : [x]), z.array(z.string()))
+      .transform((values) => values.map((value) => value.toUpperCase()))
+      .optional(),
+    arrivalIcao: z
+      .preprocess((x) => (Array.isArray(x) ? x : [x]), z.array(z.string()))
+      .transform((values) => values.map((value) => value.toUpperCase()))
+      .optional(),
+    company: z
+      .preprocess((x) => (Array.isArray(x) ? x : [x]), z.array(z.string()))
+      .transform((values) => values.map((value) => value.toUpperCase()))
+      .optional(),
+    aircraftIcaoCode: z
+      .preprocess((x) => (Array.isArray(x) ? x : [x]), z.array(z.string()))
+      .transform((values) => values.map((value) => value.toUpperCase()))
+      .optional(),
+  })
+  .transform(({ aircraftIcaoCode, ...rest }) => {
+    return {
+      ...rest,
+      ...(aircraftIcaoCode && {
+        aircraft: {
+          icaoCode: {
+            [Op.in]: aircraftIcaoCode,
+          },
+        },
+      }),
+    };
+  });
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   try {
