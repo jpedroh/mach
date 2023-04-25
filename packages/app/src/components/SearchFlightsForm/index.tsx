@@ -7,18 +7,20 @@ import Button from '../Button'
 import { SelectInput } from '../SelectInput'
 import styles from './index.module.css'
 
-export type SearchFlightsFormFields = { departureIcao: string; arrivalIcao: string, company: string }
+export type SearchFlightsFormFields = { departureIcao: string; arrivalIcao: string, company: string; aircraftIcaoCode: string }
 
 type Props = {
   companies: string[]
+  aircraftIcaoCodes: string[]
   airports: Airport[]
 }
 
-const SearchFlightsForm: FC<Props> = ({ companies, airports }) => {
+const SearchFlightsForm: FC<Props> = ({ companies, aircraftIcaoCodes, airports }) => {
   const [form, setForm] = useState<SearchFlightsFormFields>({
     arrivalIcao: '',
     departureIcao: '',
-    company: ''
+    company: '',
+    aircraftIcaoCode: ''
   })
 
   const isSubmitDisabled = form.arrivalIcao.trim().length === 0 && form.departureIcao.trim().length === 0 && form.company.length === 0
@@ -60,6 +62,16 @@ const SearchFlightsForm: FC<Props> = ({ companies, airports }) => {
           <option value="" disabled>Pick a company</option>
           {companies.map((company) => {
             return <option key={company} value={company}>{company}</option>
+          })}
+        </select>
+      </div>
+
+      <div>
+        <label htmlFor="aircraftIcaoCode">Aircraft</label>
+        <select name="aircraftIcaoCode" id="aircraftIcaoCode" value={form.aircraftIcaoCode} onChange={onChange}>
+          <option value="" disabled>Pick an Aircraft</option>
+          {aircraftIcaoCodes.map((aircraftIcaoCode) => {
+            return <option key={aircraftIcaoCode} value={aircraftIcaoCode}>{aircraftIcaoCode}</option>
           })}
         </select>
       </div>
