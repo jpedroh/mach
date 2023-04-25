@@ -16,6 +16,10 @@ const schema = z.object({
     .string()
     .transform((v) => v.toUpperCase())
     .optional(),
+  aircraftIcaoCode: z
+    .string()
+    .transform((v) => v.toUpperCase())
+    .optional(),
   onlyCurrent: z
     .string()
     .transform((v) => Boolean(v))
@@ -31,6 +35,9 @@ export async function fetchFlights(searchParams: Record<string, unknown>) {
       ...(where.departureIcao && { departureIcao: where.departureIcao }),
       ...(where.arrivalIcao && { arrivalIcao: where.arrivalIcao }),
       ...(where.company && { company: where.company }),
+      ...(where.aircraftIcaoCode && {
+        aircraft: { icaoCode: where.aircraftIcaoCode },
+      }),
       ...(where.onlyCurrent && {
         beginDate: {
           [Op.lte]: today,
