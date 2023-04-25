@@ -35,7 +35,9 @@ export async function fetchFlights(searchParams: Record<string, unknown>) {
       ...(where.departureIcao && { departureIcao: where.departureIcao }),
       ...(where.arrivalIcao && { arrivalIcao: where.arrivalIcao }),
       ...(where.company && { company: where.company }),
-      ...(where.aircraftIcaoCode && { aircraft: { icaoCode: where.aircraftIcaoCode } }),
+      ...(where.aircraftIcaoCode && {
+        aircraft: { icaoCode: where.aircraftIcaoCode },
+      }),
       ...(where.onlyCurrent && {
         beginDate: {
           [Op.lte]: today,
