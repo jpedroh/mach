@@ -53,6 +53,18 @@ const openApi = {
           },
           {
             in: "query",
+            name: "aircraftIcaoCode",
+            style: "form",
+            explode: true,
+            schema: {
+              type: "array",
+              items: {
+                type: "string",
+              },
+            },
+          },
+          {
+            in: "query",
             name: "company",
             style: "form",
             explode: true,
@@ -120,6 +132,18 @@ const openApi = {
           {
             in: "query",
             name: "company",
+            style: "form",
+            explode: true,
+            schema: {
+              type: "array",
+              items: {
+                type: "string",
+              },
+            },
+          },
+          {
+            in: "query",
+            name: "aircraftIcaoCode",
             style: "form",
             explode: true,
             schema: {
