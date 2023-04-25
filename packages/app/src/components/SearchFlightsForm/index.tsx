@@ -35,7 +35,8 @@ const SearchFlightsForm: FC<Props> = ({
   const isSubmitDisabled =
     form.arrivalIcao.trim().length === 0 &&
     form.departureIcao.trim().length === 0 &&
-    form.company.length === 0;
+    form.company.length === 0 &&
+    form.aircraftIcaoCode.length === 0;
 
   const onChange: ChangeEventHandler<HTMLInputElement | HTMLSelectElement> = (
     evt
