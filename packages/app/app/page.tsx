@@ -8,8 +8,8 @@ import { fetchAirports } from "../src/services/fetch-airports";
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Mach'
-}
+  title: "Mach",
+};
 
 export default async function Page() {
   const companies = await fetchCompanies();
