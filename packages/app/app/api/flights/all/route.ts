@@ -1,6 +1,5 @@
 import { FlightModel } from "@mach/database";
-import type { NextApiRequest, NextApiResponse } from "next";
-import NextCors from "nextjs-cors";
+import { NextResponse } from "next/server";
 import { Op } from "sequelize";
 import z from "zod";
 
@@ -36,14 +35,23 @@ const schema = z
     };
   });
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+export async function GET(request: Request) {
   try {
-    await NextCors(req, res, { methods: ["GET"], origin: "*" });
-
-    const data = schema.safeParse(req.query);
+    const { searchParams } = new URL(request.url);
+    const data = schema.safeParse(Object.fromEntries(searchParams.entries()));
 
     if (!data.success) {
-      return res.status(400).json({ message: "Bad Request" });
+      return NextResponse.json(
+        { message: "Bad Request" },
+        {
+          status: 400,
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+            "Access-Control-Allow-Headers": "Content-Type, Authorization",
+          },
+        }
+      );
     }
 
     const items = await FlightModel.findAll({
@@ -51,9 +59,25 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       order: ["id"],
     });
 
-    res.status(200).json(items);
+    return NextResponse.json(items, {
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type, Authorization",
+      },
+    });
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ message: "Internal server error" });
+    return NextResponse.json(
+      { message: "Internal server error" },
+      {
+        status: 500,
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+          "Access-Control-Allow-Headers": "Content-Type, Authorization",
+        },
+      }
+    );
   }
-};
+}

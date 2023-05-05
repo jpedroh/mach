@@ -1,5 +1,6 @@
-import { NextApiRequest, NextApiResponse } from "next";
-import NextCors from "nextjs-cors";
+import { NextResponse } from "next/server";
+
+export const runtime = "edge";
 
 function getApiUrl() {
   if (process.env.VERCEL_ENV === "production") {
@@ -372,8 +373,12 @@ const openApi = {
   },
 };
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
-  await NextCors(req, res, { methods: ["GET"], origin: "*" });
-
-  res.status(200).json(openApi);
-};
+export async function GET() {
+  return NextResponse.json(openApi, {
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+      "Access-Control-Allow-Headers": "Content-Type, Authorization",
+    },
+  });
+}
