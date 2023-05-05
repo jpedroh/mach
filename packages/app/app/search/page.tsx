@@ -7,6 +7,10 @@ import { fetchFlights } from '../../src/services/fetch-flights'
 
 export const revalidate = 0;
 
+export const metadata = {
+    title: 'Mach'
+}
+
 export default async function Search({
     searchParams,
 }: {
