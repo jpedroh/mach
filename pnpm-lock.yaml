@@ -88,8 +88,8 @@ importers:
         specifier: 16.3.2
         version: 16.3.2
       pg:
-        specifier: ^8.3.0
-        version: 8.8.0
+        specifier: ^8.11.1
+        version: 8.11.1
       pg-hstore:
         specifier: ^2.3.3
         version: 2.3.4
@@ -110,7 +110,7 @@ importers:
         version: 21.0.5
       sequelize:
         specifier: ^6.32.0
-        version: 6.32.0(pg-hstore@2.3.4)(pg@8.8.0)
+        version: 6.32.0(pg-hstore@2.3.4)(pg@8.11.1)
       tailwindcss:
         specifier: ^3.1.8
         version: 3.2.2(postcss@8.4.18)
@@ -4678,8 +4678,18 @@ packages:
     resolution: {integrity: sha512-gDKb8aZMDeD/tZWs9P6+q0J9Mwkdl6xMV8TjnGP3qJVJ06bdMgkbBlLU8IdfOsIsFz2BW1rNVT3XuNEl8zPAvw==}
     engines: {node: '>=8'}
 
+  /pg-cloudflare@1.1.1:
+    resolution: {integrity: sha512-xWPagP/4B6BgFO+EKz3JONXv3YDgvkbVrGw2mTo3D6tVDQRh1e7cqVGvyR3BE+eQgAvx1XhW/iEASj4/jCWl3Q==}
+    requiresBuild: true
+    dev: true
+    optional: true
+
   /pg-connection-string@2.5.0:
     resolution: {integrity: sha512-r5o/V/ORTA6TmUnyWZR9nCj1klXCO2CEKNRlVuJptZe85QuhFayC7WeMic7ndayT5IRIR0S0xFxFi2ousartlQ==}
+    dev: true
+
+  /pg-connection-string@2.6.1:
+    resolution: {integrity: sha512-w6ZzNu6oMmIzEAYVw+RLK0+nqHPt8K3ZnknKi+g48Ak2pr3dtljJW3o+D/n2zzCG07Zoe9VOX3aiKpj+BN0pjg==}
     dev: true
 
   /pg-hstore@2.3.4:
@@ -4694,16 +4704,16 @@ packages:
     engines: {node: '>=4.0.0'}
     dev: true
 
-  /pg-pool@3.5.2(pg@8.8.0):
-    resolution: {integrity: sha512-His3Fh17Z4eg7oANLob6ZvH8xIVen3phEZh2QuyrIl4dQSDVEabNducv6ysROKpDNPSD+12tONZVWfSgMvDD9w==}
+  /pg-pool@3.6.1(pg@8.11.1):
+    resolution: {integrity: sha512-jizsIzhkIitxCGfPRzJn1ZdcosIt3pz9Sh3V01fm1vZnbnCMgmGl5wvGGdNN2EL9Rmb0EcFoCkixH4Pu+sP9Og==}
     peerDependencies:
       pg: '>=8.0'
     dependencies:
-      pg: 8.8.0
+      pg: 8.11.1
     dev: true
 
-  /pg-protocol@1.5.0:
-    resolution: {integrity: sha512-muRttij7H8TqRNu/DxrAJQITO4Ac7RmX3Klyr/9mJEOBeIpgnF8f9jAfRz5d3XwQZl5qBjF9gLsUtMPJE0vezQ==}
+  /pg-protocol@1.6.0:
+    resolution: {integrity: sha512-M+PDm637OY5WM307051+bsDia5Xej6d9IR4GwJse1qA1DIhiKlksvrneZOYQq42OM+spubpcNYEo2FcKQrDk+Q==}
     dev: true
 
   /pg-types@2.2.0:
@@ -4717,8 +4727,8 @@ packages:
       postgres-interval: 1.2.0
     dev: true
 
-  /pg@8.8.0:
-    resolution: {integrity: sha512-UXYN0ziKj+AeNNP7VDMwrehpACThH7LUl/p8TDFpEUuSejCUIwGSfxpHsPvtM6/WXFy6SU4E5RG4IJV/TZAGjw==}
+  /pg@8.11.1:
+    resolution: {integrity: sha512-utdq2obft07MxaDg0zBJI+l/M3mBRfIpEN3iSemsz0G5F2/VXx+XzqF4oxrbIZXQxt2AZzIUzyVg/YM6xOP/WQ==}
     engines: {node: '>= 8.0.0'}
     peerDependencies:
       pg-native: '>=3.0.1'
@@ -4728,11 +4738,13 @@ packages:
     dependencies:
       buffer-writer: 2.0.0
       packet-reader: 1.0.0
-      pg-connection-string: 2.5.0
-      pg-pool: 3.5.2(pg@8.8.0)
-      pg-protocol: 1.5.0
+      pg-connection-string: 2.6.1
+      pg-pool: 3.6.1(pg@8.11.1)
+      pg-protocol: 1.6.0
       pg-types: 2.2.0
       pgpass: 1.0.5
+    optionalDependencies:
+      pg-cloudflare: 1.1.1
     dev: true
 
   /pgpass@1.0.5:
@@ -5280,7 +5292,7 @@ packages:
     engines: {node: '>= 10.0.0'}
     dev: true
 
-  /sequelize@6.32.0(pg-hstore@2.3.4)(pg@8.8.0):
+  /sequelize@6.32.0(pg-hstore@2.3.4)(pg@8.11.1):
     resolution: {integrity: sha512-gMd1M6kPANyrCeU/vtgEP5gnse7sVsiKbJyz7p4huuW8zZcRopj47UlglvdrMuIoqksZmsUPfApmMo6ZlJpcvg==}
     engines: {node: '>=10.0.0'}
     peerDependencies:
@@ -5321,7 +5333,7 @@ packages:
       lodash: 4.17.21
       moment: 2.29.4
       moment-timezone: 0.5.38
-      pg: 8.8.0
+      pg: 8.11.1
       pg-connection-string: 2.5.0
       pg-hstore: 2.3.4
       retry-as-promised: 7.0.4
