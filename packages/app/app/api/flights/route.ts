@@ -3,6 +3,8 @@ import { NextResponse } from "next/server";
 import { Op } from "sequelize";
 import z from "zod";
 
+export const dynamic = "force-dynamic";
+
 const schema = z
   .object({
     departureIcao: z
