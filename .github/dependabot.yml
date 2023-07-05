@@ -9,3 +9,11 @@ updates:
       prefix: "build"
       prefix-development: "build"
       include: "scope"
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    target-branch: "master"
+    schedule:
+      interval: "daily"
+    commit-message:
+      prefix: "ci"
+      include: "scope"
