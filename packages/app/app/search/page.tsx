@@ -7,6 +7,8 @@ import { fetchFlights } from "../../src/services/fetch-flights";
 
 export const revalidate = 0;
 
+export const runtime = 'edge';
+
 export const metadata = {
   title: "Mach",
 };
