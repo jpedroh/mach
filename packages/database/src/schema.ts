@@ -1,17 +1,17 @@
+import { WakeTurbulence, Weekdays } from "@mach/common";
 import {
   date,
   int,
   json,
   mysqlEnum,
-  mysqlSchema,
+  mysqlTableCreator,
   text,
-  varchar,
+  varchar
 } from "drizzle-orm/mysql-core";
-import { WakeTurbulence, Weekdays } from "@mach/common";
 
-export const schema = mysqlSchema("mach");
+export const mysqlTable = mysqlTableCreator((name) => `mach_${name}`);
 
-export const flights = schema.table("flights", {
+export const flights = mysqlTable("flights", {
   id: varchar("id", { length: 36 }).primaryKey(),
   callsign: varchar("callsign", { length: 7 }).notNull(),
   beginDate: date("begin_date", { mode: "date" }).notNull(),
