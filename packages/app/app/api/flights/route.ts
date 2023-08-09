@@ -5,7 +5,7 @@ import z from "zod";
 
 export const dynamic = "force-dynamic";
 
-export const runtime = 'edge';
+export const runtime = "edge";
 
 const schema = z.object({
   departureIcao: z

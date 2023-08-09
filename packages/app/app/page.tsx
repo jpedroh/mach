@@ -7,7 +7,7 @@ import { fetchAirports } from "../src/services/fetch-airports";
 
 export const revalidate = 3600;
 
-export const runtime = 'edge';
+export const runtime = "edge";
 
 export const metadata = {
   title: "Mach",

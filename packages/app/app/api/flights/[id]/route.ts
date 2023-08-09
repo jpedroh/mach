@@ -2,7 +2,7 @@ import { db } from "@mach/database";
 import { NextResponse } from "next/server";
 import z from "zod";
 
-export const runtime = 'edge';
+export const runtime = "edge";
 
 const schema = z.object({
   id: z.string().uuid(),
