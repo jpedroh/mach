@@ -1,11 +1,10 @@
-import { FlightModel } from "@mach/database";
-import { QueryTypes } from "sequelize";
+import { db, flights } from "@mach/database";
+import { sql } from 'drizzle-orm';
 
 export async function fetchAircraftIcaoCodes() {
-  const companies = await FlightModel.sequelize?.query(
-    `SELECT DISTINCT(aircraft#>>'{icaoCode}') AS "aircraftIcaoCode" FROM "flights" AS "flight";`,
-    { type: QueryTypes.SELECT }
-  );
+  const aircrafts = await db.select({
+    "aircraftIcaoCode": sql`DISTINCT(${flights.aircraft}->>"$.icaoCode")`
+  }).from(flights)
 
-  return companies?.map((v: any) => v.aircraftIcaoCode) ?? [];
+  return aircrafts?.map((v: any) => v.aircraftIcaoCode) ?? [];
 }

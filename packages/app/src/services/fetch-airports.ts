@@ -1,21 +1,13 @@
-import { FlightModel } from "@mach/database";
+import { db, flights } from "@mach/database";
+import { sql } from 'drizzle-orm';
 import { XMLParser } from "fast-xml-parser";
-import { Sequelize } from "sequelize";
 import z from "zod";
 import { environment } from "../utils/env";
 
-async function fetchAirportsFromDb(column: "departure" | "arrival") {
-  const airports = await FlightModel.findAll({
-    attributes: [
-      [
-        Sequelize.fn("DISTINCT", Sequelize.col(`${column}Icao`)),
-        `${column}Icao`,
-      ],
-    ],
-    raw: true,
-  });
+async function fetchAirportsFromDb(column: "departureIcao" | "arrivalIcao") {
+  const airports = await db.select({ icaoCode: sql`DISTINCT(${flights[column]})` }).from(flights);
 
-  return airports.map((v) => v[`${column}Icao`]);
+  return airports.map((v) => String(v.icaoCode));
 }
 
 const airportSchema = z.object({
@@ -54,8 +46,8 @@ export async function fetchAirportsData(icaoCodes: string[]) {
 
 export async function fetchAirports() {
   const [departureIcaos, arrivalIcaos] = await Promise.all([
-    fetchAirportsFromDb("departure"),
-    fetchAirportsFromDb("arrival"),
+    fetchAirportsFromDb("departureIcao"),
+    fetchAirportsFromDb("arrivalIcao"),
   ]);
 
   return fetchAirportsData([...departureIcaos, ...arrivalIcaos]);
