@@ -25,7 +25,9 @@ jobs:
       - run: npx nx format:check
       - run: npx nx affected --target=build --parallel=3
         env:
-          DATABASE_URL: ${{ secrets.database_url }}
+          DATABASE_HOST: ${{ secrets.database_host_preview }}
+          DATABASE_USERNAME: ${{ secrets.database_username_preview }}
+          DATABASE_PASSWORD: ${{ secrets.database_password_preview }}
           AISWEB_API_KEY: ${{ secrets.aisweb_api_key }}
           AISWEB_API_PASSWORD: ${{ secrets.aisweb_api_password }}
           RPL_DATE: ${{ github.event.inputs.date }}

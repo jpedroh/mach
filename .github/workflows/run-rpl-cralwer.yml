@@ -25,5 +25,7 @@ jobs:
       - run: npx nx run @mach/rpl-crawler:build
       - run: node packages/rpl-crawler/dist/main SBAZ,SBBS,SBCW,SBRE ${RPL_DATE:-$(date +"%Y-%m-%d")}
         env:
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          DATABASE_HOST: ${{ secrets.database_host_production }}
+          DATABASE_USERNAME: ${{ secrets.database_username_production }}
+          DATABASE_PASSWORD: ${{ secrets.database_password_production }}
           RPL_DATE: ${{ github.event.inputs.date }}
