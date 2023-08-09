@@ -2,11 +2,11 @@ import { FlightRules, Weekdays } from '@mach/common'
 
 export const resolveFlightRules = (route: string): FlightRules => {
   if (route.includes(' IFR ')) {
-    return FlightRules.Z
+    return 'Z'
   } else if (route.includes(' VFR ')) {
-    return FlightRules.Y
+    return 'Y'
   }
-  return FlightRules.IFR
+  return 'IFR'
 }
 
 export const resolveFlightDate = (date: string): Date => {
@@ -19,13 +19,13 @@ export const resolveFlightDate = (date: string): Date => {
 
 export const resolveWeekDays = (weekdays: string): Weekdays[] => {
   const weekdaysMap = {
-    '1': Weekdays.MONDAY,
-    '2': Weekdays.TUESDAY,
-    '3': Weekdays.WEDNESDAY,
-    '4': Weekdays.THURSDAY,
-    '5': Weekdays.FRIDAY,
-    '6': Weekdays.SATURDAY,
-    '7': Weekdays.SUNDAY
+    '1': 'MONDAY',
+    '2': 'TUESDAY',
+    '3': 'WEDNESDAY',
+    '4': 'THURSDAY',
+    '5': 'FRIDAY',
+    '6': 'SATURDAY',
+    '7': 'SUNDAY'
   }
 
   return weekdays

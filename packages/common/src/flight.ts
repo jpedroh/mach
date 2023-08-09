@@ -1,27 +1,29 @@
-import * as FlightEnum from './enum'
+import { FlightRules, WakeTurbulence, Weekdays } from './enum'
+
+export * from './enum'
 
 type Flight = {
   id: string
   callsign: string
   beginDate: Date
-  endDate?: Date
+  endDate: Date | null
   company: string
   flightNumber: number
   aircraft: {
     icaoCode: string
     equipment: string
-    wakeTurbulence: FlightEnum.WakeTurbulence
+    wakeTurbulence: WakeTurbulence
   }
   departureIcao: string
   estimatedOffBlockTime: string
   cruisingSpeed: string
-  weekdays: FlightEnum.Weekdays[]
+  weekdays: Weekdays[]
   cruisingLevel: number
   route: string
   arrivalIcao: string
   estimatedEnrouteMinutes: number
   remarks: string
-  flightRules: FlightEnum.FlightRules
+  flightRules: FlightRules
 }
 
 export default Flight

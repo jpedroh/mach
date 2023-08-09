@@ -1,28 +1,16 @@
-export enum Weekdays {
-  MONDAY = 'MONDAY',
-  TUESDAY = 'TUESDAY',
-  WEDNESDAY = 'WEDNESDAY',
-  THURSDAY = 'THURSDAY',
-  FRIDAY = 'FRIDAY',
-  SATURDAY = 'SATURDAY',
-  SUNDAY = 'SUNDAY'
-}
+const weekdays = [
+  'MONDAY',
+  'TUESDAY',
+  'WEDNESDAY',
+  'THURSDAY',
+  'FRIDAY',
+  'SATURDAY',
+  'SUNDAY'
+]
+export type Weekdays = typeof weekdays[number]
 
-export enum FlightRules {
-  IFR = 'IFR',
-  Y = 'Y',
-  Z = 'Z'
-}
+const flightRules = ["IFR", "Y", "Z"] as const
+export type FlightRules = typeof flightRules[number]
 
-export enum WakeTurbulence {
-  LIGHT = 'L',
-  MEDIUM = 'M',
-  HEAVY = 'H',
-  SUPER = 'S'
-}
-
-export default {
-  Weekdays,
-  FlightRules,
-  WakeTurbulence
-}
+const wakeTurbulence = ["L", "M", "H"] as const
+export type WakeTurbulence = typeof wakeTurbulence[number]

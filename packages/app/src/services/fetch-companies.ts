@@ -6,5 +6,5 @@ export async function fetchCompanies() {
     "company": sql`DISTINCT(${flights.company})`
   }).from(flights)
 
-  return companies.map((v) => v.company);
+  return companies.map((v) => String(v.company));
 }

@@ -69,6 +69,7 @@ const main = async (
 
     Logger.info(`${flights.length} FLIGHTS INSERTED`)
   } catch (error) {
+    console.error(error)
     Logger.error(error.message)
     process.exit(1)
   }
