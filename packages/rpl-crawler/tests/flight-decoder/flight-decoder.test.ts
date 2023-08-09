@@ -1,4 +1,3 @@
-import { FlightRules, WakeTurbulence, Weekdays } from "@mach/common";
 import { randomUUID } from "crypto";
 import makeFlightDecoder from "../../src/flight-decoder/flight-decoder";
 
@@ -23,7 +22,7 @@ describe("flight-decoder", () => {
       @`;
     const flight = flightDecoder(line);
 
-    expect(flight.flightRules).toEqual(FlightRules.IFR);
+    expect(flight.flightRules).toEqual("IFR");
   });
 
   test("Given flight with Y Flight Rule", () => {
@@ -33,7 +32,7 @@ describe("flight-decoder", () => {
       @`;
     const flight = flightDecoder(line);
 
-    expect(flight.flightRules).toEqual(FlightRules.Y);
+    expect(flight.flightRules).toEqual("Y");
   });
 
   test("Given flight with Z Flight Rule", () => {
@@ -43,7 +42,7 @@ describe("flight-decoder", () => {
       @`;
     const flight = flightDecoder(line);
 
-    expect(flight.flightRules).toEqual(FlightRules.Z);
+    expect(flight.flightRules).toEqual("Z");
   });
 
   test("Given a flight", () => {
@@ -57,19 +56,19 @@ describe("flight-decoder", () => {
     expect(flight.company).toEqual("TAM");
     expect(flight.flightNumber).toEqual(3587);
     expect(flight.aircraft.icaoCode).toEqual("A321");
-    expect(flight.aircraft.wakeTurbulence).toEqual(WakeTurbulence.MEDIUM);
+    expect(flight.aircraft.wakeTurbulence).toEqual("M");
     expect(flight.aircraft.equipment).toEqual("SDE2FGHIM1RWXYZ");
     expect(flight.departureIcao).toEqual("SBRF");
     expect(flight.estimatedOffBlockTime).toEqual("0005");
     expect(flight.cruisingSpeed).toEqual("N0450");
     expect(flight.cruisingLevel).toEqual(360);
-    expect(flight.weekdays).toEqual([Weekdays.TUESDAY, Weekdays.SATURDAY]);
+    expect(flight.weekdays).toEqual(["TUESDAY", "SATURDAY"]);
     expect(flight.route).toEqual("DCT KIDAN UZ59 CARVA DCT");
     expect(flight.arrivalIcao).toEqual("SBBR");
     expect(flight.estimatedEnrouteMinutes).toEqual(145);
     expect(flight.remarks).toEqual(
       "EQPT/SDE2FGHIM1RWXYZ PBN/A1B1C1D1L1O2S2 DAT/SV EET/SBBS0142 RMK/TCAS"
     );
-    expect(flight.flightRules).toEqual(FlightRules.IFR);
+    expect(flight.flightRules).toEqual("IFR");
   });
 });

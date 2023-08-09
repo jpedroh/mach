@@ -1,6 +1,8 @@
-import { FlightModel } from "@mach/database";
+import { db } from "@mach/database";
 import { NextResponse } from "next/server";
 import z from "zod";
+
+export const runtime = "edge";
 
 const schema = z.object({
   id: z.string().uuid(),
@@ -26,7 +28,9 @@ export async function GET(
     );
   }
 
-  const flight = await FlightModel.findByPk(data.data.id);
+  const flight = await db.query.flights.findFirst({
+    where: (flights, { eq }) => eq(flights.id, data.data.id),
+  });
   if (flight === null) {
     return NextResponse.json(
       { message: "Not found" },

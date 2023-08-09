@@ -1,54 +1,52 @@
-import { FlightModel } from "@mach/database";
+import { db, flights } from "@mach/database";
+import { sql, and } from "drizzle-orm";
 import { NextResponse } from "next/server";
-import { Op } from "sequelize";
 import z from "zod";
 
 export const dynamic = "force-dynamic";
 
-const schema = z
-  .object({
-    departureIcao: z
-      .preprocess((x) => (Array.isArray(x) ? x : [x]), z.array(z.string()))
-      .transform((values) => values.map((value) => value.toUpperCase()))
-      .optional(),
-    arrivalIcao: z
-      .preprocess((x) => (Array.isArray(x) ? x : [x]), z.array(z.string()))
-      .transform((values) => values.map((value) => value.toUpperCase()))
-      .optional(),
-    company: z
-      .preprocess((x) => (Array.isArray(x) ? x : [x]), z.array(z.string()))
-      .transform((values) => values.map((value) => value.toUpperCase()))
-      .optional(),
-    aircraftIcaoCode: z
-      .preprocess((x) => (Array.isArray(x) ? x : [x]), z.array(z.string()))
-      .transform((values) => values.map((value) => value.toUpperCase()))
-      .optional(),
-    limit: z.preprocess(
-      (x) => (x ? Number(x) : undefined),
-      z.number().min(1).default(15)
-    ),
-    offset: z.preprocess(
-      (x) => (x ? Number(x) : undefined),
-      z.number().min(0).default(0)
-    ),
-  })
-  .transform(({ aircraftIcaoCode, ...rest }) => {
-    return {
-      ...rest,
-      ...(aircraftIcaoCode && {
-        aircraft: {
-          icaoCode: {
-            [Op.in]: aircraftIcaoCode,
-          },
-        },
-      }),
-    };
-  });
+export const runtime = "edge";
+
+const schema = z.object({
+  departureIcao: z
+    .preprocess((x) => (Array.isArray(x) ? x : [x]), z.array(z.string()))
+    .transform((values) => values.map((value) => value.toUpperCase()))
+    .optional(),
+  arrivalIcao: z
+    .preprocess((x) => (Array.isArray(x) ? x : [x]), z.array(z.string()))
+    .transform((values) => values.map((value) => value.toUpperCase()))
+    .optional(),
+  company: z
+    .preprocess((x) => (Array.isArray(x) ? x : [x]), z.array(z.string()))
+    .transform((values) => values.map((value) => value.toUpperCase()))
+    .optional(),
+  aircraftIcaoCode: z
+    .preprocess((x) => (Array.isArray(x) ? x : [x]), z.array(z.string()))
+    .transform((values) => values.map((value) => value.toUpperCase()))
+    .optional(),
+  limit: z.preprocess(
+    (x) => (x ? Number(x) : undefined),
+    z.number().min(1).default(15)
+  ),
+  offset: z.preprocess(
+    (x) => (x ? Number(x) : undefined),
+    z.number().min(0).default(0)
+  ),
+});
 
 export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
-    const data = schema.safeParse(Object.fromEntries(searchParams.entries()));
+    const query = Array.from(searchParams.entries()).reduce(
+      (curr, [key, value]) => {
+        return {
+          ...curr,
+          [key]: curr[key] ? curr[key].concat([value]) : [value],
+        };
+      },
+      {} as Record<string, string[]>
+    );
+    const data = schema.safeParse(query);
 
     if (!data.success) {
       return NextResponse.json(
@@ -64,17 +62,29 @@ export async function GET(request: Request) {
       );
     }
 
-    const { limit, offset, ...where } = data.data;
+    const criteria = and(
+      data.data.departureIcao &&
+        sql`${flights.departureIcao} IN ${data.data.departureIcao}`,
+      data.data.arrivalIcao &&
+        sql`${flights.arrivalIcao} IN ${data.data.arrivalIcao}`,
+      data.data.company && sql`${flights.company} IN ${data.data.company}`,
+      data.data.aircraftIcaoCode &&
+        sql`${flights.aircraft}->>"$.icaoCode" IN ${data.data.aircraftIcaoCode}`
+    );
 
-    const { count, rows: items } = await FlightModel.findAndCountAll({
-      where,
-      limit,
-      offset,
-      order: ["id"],
-    });
+    const countResponse = await db
+      .select({ count: sql`count(${flights.id})` })
+      .from(flights)
+      .where(criteria);
+    const items = await db
+      .select()
+      .from(flights)
+      .where(criteria)
+      .limit(data.data.limit)
+      .offset(data.data.offset);
 
     return NextResponse.json(
-      { count, items },
+      { count: Number(countResponse[0].count), items },
       {
         headers: {
           "Access-Control-Allow-Origin": "*",

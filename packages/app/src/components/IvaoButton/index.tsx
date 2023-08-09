@@ -1,19 +1,19 @@
-import Flight from '@mach/common'
-import { FC, useRef } from 'react'
-import Button from '../Button'
+import Flight from "@mach/common";
+import { FC, useRef } from "react";
+import Button from "../Button";
 
 type Props = {
-  flight: Flight
-}
+  flight: Flight;
+};
 
 const IvaoButton: FC<Props> = ({ flight }) => {
-  const ref = useRef(document.createElement('form'))
+  const ref = useRef(document.createElement("form"));
 
   function stringToSeconds(time: string) {
-    const hours = Number(time.substring(0, 2))
-    const minutes = Number(time.substring(2, 4))
+    const hours = Number(time.substring(0, 2));
+    const minutes = Number(time.substring(2, 4));
 
-    return (hours * 3600) + (minutes * 60)
+    return hours * 3600 + minutes * 60;
   }
 
   const flightPlan = {
@@ -23,7 +23,7 @@ const IvaoButton: FC<Props> = ({ flight }) => {
     aircraftNumber: 1,
     aircraftId: flight.aircraft.icaoCode,
     aircraftWakeTurbulence: flight.aircraft.wakeTurbulence,
-    aircraftEquipments: flight.aircraft.equipment.split(''),
+    aircraftEquipments: flight.aircraft.equipment.split(""),
     aircraftTransponderTypes: ["L1", "B1"],
     departureId: flight.departureIcao,
     departureTime: stringToSeconds(flight.estimatedOffBlockTime),
@@ -35,10 +35,10 @@ const IvaoButton: FC<Props> = ({ flight }) => {
     arrivalId: flight.arrivalIcao,
     eet: flight.estimatedEnrouteMinutes * 60,
     remarks: flight.remarks,
-  }
+  };
 
-  const url = new URL('https://fpl.ivao.aero/flight-plans/create')
-  url.searchParams.set('flightPlan', btoa(JSON.stringify(flightPlan)))
+  const url = new URL("https://fpl.ivao.aero/flight-plans/create");
+  url.searchParams.set("flightPlan", btoa(JSON.stringify(flightPlan)));
 
   return (
     <Button
@@ -51,7 +51,7 @@ const IvaoButton: FC<Props> = ({ flight }) => {
     >
       IVAO FP
     </Button>
-  )
-}
+  );
+};
 
-export default IvaoButton
+export default IvaoButton;

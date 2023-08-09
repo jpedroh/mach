@@ -1,20 +1,33 @@
-import Flight from '@mach/common'
-import Connection, { FlightModel } from '@mach/database'
+import Flight from "@mach/common";
+import { db, flights as flightsSchema } from "@mach/database";
 
-type SaveFlightsDependecies = {
-  connection: typeof Connection
-  model: typeof FlightModel
-}
+function sliceArray(flights: Flight[]) {
+  const response: Flight[][] = [];
 
-const makeSaveFlights = ({ connection, model }: SaveFlightsDependecies) => {
-  return async (flights: Flight[]): Promise<void> => {
-    await connection.transaction(async transaction => {
-      await model.destroy({ truncate: true, transaction })
-      await model.bulkCreate(flights, { transaction })
-    })
+  let i = 0;
+  const step = 5000;
 
-    await connection.close()
+  for (; i < flights.length; i += step) {
+    response.push(flights.slice(i, i + step));
   }
+
+  if (i < flights.length) {
+    response.push(flights.slice(i));
+  }
+
+  return response;
 }
 
-export default makeSaveFlights
+const makeSaveFlights = () => {
+  return async (flights: Flight[]): Promise<void> => {
+    await db.transaction(async (tx) => {
+      await tx.delete(flightsSchema);
+      const sliced = sliceArray(flights);
+      for (const slice of sliced) {
+        await tx.insert(flightsSchema).values(slice);
+      }
+    });
+  };
+};
+
+export default makeSaveFlights;

@@ -1,7 +1,9 @@
 import z from "zod";
 
 const envSchema = z.object({
-  DATABASE_URL: z.string(),
+  DATABASE_HOST: z.string(),
+  DATABASE_USERNAME: z.string(),
+  DATABASE_PASSWORD: z.string(),
   AISWEB_API_KEY: z.string(),
   AISWEB_API_PASSWORD: z.string(),
 });

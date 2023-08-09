@@ -1,11 +1,11 @@
 function http<R = any, T = any>({
   url,
-  query
+  query,
 }: {
-  url: string
-  query: T
+  url: string;
+  query: T;
 }): Promise<R> {
-  const fullUrl = `${url}?${new URLSearchParams(query as any).toString()}`
+  const fullUrl = `${url}?${new URLSearchParams(query as any).toString()}`;
   console.log(`Making HTTP request to ${fullUrl}`);
 
   return fetch(fullUrl, { cache: "no-store" }).then((response) =>
@@ -13,4 +13,4 @@ function http<R = any, T = any>({
   );
 }
 
-export default http
+export default http;

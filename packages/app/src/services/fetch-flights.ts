@@ -1,5 +1,4 @@
-import { FlightModel } from "@mach/database";
-import { Op } from "sequelize";
+import { db } from "@mach/database";
 import z from "zod";
 import { fetchAirportsData } from "./fetch-airports";
 
@@ -27,30 +26,32 @@ const schema = z.object({
 });
 
 export async function fetchFlights(searchParams: Record<string, unknown>) {
-  const today = new Date();
+  const today = new Date().toISOString().substring(0, 10);
 
   const where = schema.parse(searchParams);
-  const flights = await FlightModel.findAll({
-    where: {
-      ...(where.departureIcao && { departureIcao: where.departureIcao }),
-      ...(where.arrivalIcao && { arrivalIcao: where.arrivalIcao }),
-      ...(where.company && { company: where.company }),
-      ...(where.aircraftIcaoCode && {
-        aircraft: { icaoCode: where.aircraftIcaoCode },
-      }),
-      ...(where.onlyCurrent && {
-        beginDate: {
-          [Op.lte]: today,
-        },
-        endDate: {
-          [Op.or]: [{ [Op.is]: null }, { [Op.gte]: today }],
-        } as any,
-      }),
-    },
-    attributes: {
-      exclude: ["createdAt", "updatedAt", "beginDate", "endDate"],
-    },
-    raw: true,
+  const flights = await db.query.flights.findMany({
+    where: (fields, { sql, and, eq, or }) =>
+      and(
+        where.departureIcao
+          ? eq(fields.departureIcao, where.departureIcao)
+          : undefined,
+        where.arrivalIcao
+          ? eq(fields.arrivalIcao, where.arrivalIcao)
+          : undefined,
+        where.company ? eq(fields.company, where.company) : undefined,
+        where.aircraftIcaoCode
+          ? sql`${fields.aircraft}->>"$.icaoCode" = ${where.aircraftIcaoCode}`
+          : undefined,
+        where.onlyCurrent
+          ? and(
+              sql`${fields.beginDate} <= ${today}`,
+              or(
+                sql`${fields.endDate} IS NULL`,
+                sql`${fields.endDate} >= ${today}`
+              )
+            )
+          : undefined
+      ),
   });
 
   const icaos = flights.flatMap((flight) => [
