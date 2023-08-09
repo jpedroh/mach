@@ -6,7 +6,7 @@ import {
   mysqlEnum,
   mysqlTableCreator,
   text,
-  varchar
+  varchar,
 } from "drizzle-orm/mysql-core";
 
 export const mysqlTable = mysqlTableCreator((name) => `mach_${name}`);

@@ -6,5 +6,5 @@ export default {
   dbCredentials: {
     connectionString: process.env.DATABASE_URL!,
   },
-  driver: 'mysql2'
+  driver: "mysql2",
 } satisfies Config;
