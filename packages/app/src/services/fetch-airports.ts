@@ -1,11 +1,13 @@
 import { db, flights } from "@mach/database";
-import { sql } from 'drizzle-orm';
+import { sql } from "drizzle-orm";
 import { XMLParser } from "fast-xml-parser";
 import z from "zod";
 import { environment } from "../utils/env";
 
 async function fetchAirportsFromDb(column: "departureIcao" | "arrivalIcao") {
-  const airports = await db.select({ icaoCode: sql`DISTINCT(${flights[column]})` }).from(flights);
+  const airports = await db
+    .select({ icaoCode: sql`DISTINCT(${flights[column]})` })
+    .from(flights);
 
   return airports.map((v) => String(v.icaoCode));
 }

@@ -1,19 +1,19 @@
-import Flight from '@mach/common'
-import { FC } from 'react'
-import { formatEet } from '../../utils/formatEet'
-import Button from '../Button'
-import IcaoFpl from '../IcaoFpl'
-import IvaoButton from '../IvaoButton'
-import SimBriefButton from '../SimBriefButton'
-import SkyVectorButton from '../SkyVectorButton'
-import VatsimButton from '../VatsimButton'
-import styles from './index.module.css'
+import Flight from "@mach/common";
+import { FC } from "react";
+import { formatEet } from "../../utils/formatEet";
+import Button from "../Button";
+import IcaoFpl from "../IcaoFpl";
+import IvaoButton from "../IvaoButton";
+import SimBriefButton from "../SimBriefButton";
+import SkyVectorButton from "../SkyVectorButton";
+import VatsimButton from "../VatsimButton";
+import styles from "./index.module.css";
 
 type Props = {
-  show: boolean
-  onClose: () => void
-  flight: Flight
-}
+  show: boolean;
+  onClose: () => void;
+  flight: Flight;
+};
 
 const FlightModal: FC<Props> = ({ show, onClose, flight }) => {
   return show ? (
@@ -22,7 +22,7 @@ const FlightModal: FC<Props> = ({ show, onClose, flight }) => {
         <div className={styles.modal}>
           <div className={styles.header}>
             <h3>
-              Flight {flight.callsign} from {flight.departureIcao} to{' '}
+              Flight {flight.callsign} from {flight.departureIcao} to{" "}
               {flight.arrivalIcao}
             </h3>
           </div>
@@ -33,7 +33,7 @@ const FlightModal: FC<Props> = ({ show, onClose, flight }) => {
                 <span>EOBT </span> {flight.estimatedOffBlockTime}Z
               </p>
               <p>
-                <span>FLIGHT TIME </span>{' '}
+                <span>FLIGHT TIME </span>{" "}
                 {formatEet(flight.estimatedEnrouteMinutes)}
               </p>
             </div>
@@ -46,7 +46,8 @@ const FlightModal: FC<Props> = ({ show, onClose, flight }) => {
                 <span>CRUISING SPEED </span> {flight.cruisingSpeed}
               </p>
               <p>
-                <span>FL </span> {flight.cruisingLevel.toString().padStart(3, "0")}
+                <span>FL </span>{" "}
+                {flight.cruisingLevel.toString().padStart(3, "0")}
               </p>
             </div>
 
@@ -79,7 +80,7 @@ const FlightModal: FC<Props> = ({ show, onClose, flight }) => {
     </>
   ) : (
     <></>
-  )
-}
+  );
+};
 
-export default FlightModal
+export default FlightModal;

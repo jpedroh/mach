@@ -1,18 +1,20 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    experimental: {
-        appDir: true,
-    },
-    webpack: (
-        config,
-        { buildId, dev, isServer, defaultLoaders, nextRuntime, webpack }
-    ) => {
-        config.plugins.push(new webpack.IgnorePlugin({ resourceRegExp: /^pg-native$/ }))
-        return config
-    },
-    api: {
-        responseLimit: false,
-    },
-}
+  experimental: {
+    appDir: true,
+  },
+  webpack: (
+    config,
+    { buildId, dev, isServer, defaultLoaders, nextRuntime, webpack }
+  ) => {
+    config.plugins.push(
+      new webpack.IgnorePlugin({ resourceRegExp: /^pg-native$/ })
+    );
+    return config;
+  },
+  api: {
+    responseLimit: false,
+  },
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

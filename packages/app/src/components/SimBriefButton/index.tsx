@@ -1,10 +1,10 @@
-import Flight from '@mach/common'
-import { FC } from 'react'
-import Button from '../Button'
+import Flight from "@mach/common";
+import { FC } from "react";
+import Button from "../Button";
 
 type Props = {
-  flight: Flight
-}
+  flight: Flight;
+};
 
 const VatsimButton: FC<Props> = ({ flight }) => {
   const query = {
@@ -19,18 +19,18 @@ const VatsimButton: FC<Props> = ({ flight }) => {
     steh: Math.floor(flight.estimatedEnrouteMinutes / 60),
     stem: flight.estimatedEnrouteMinutes % 60,
     fl: flight.cruisingLevel * 100,
-    manualrmk: flight.remarks
-  }
+    manualrmk: flight.remarks,
+  };
 
   const simBriefLink = `http://www.simbrief.com/system/dispatch.php?${new URLSearchParams(
     query as any
-  ).toString()}`
+  ).toString()}`;
 
   return (
     <Button href={simBriefLink} target="_blank">
       SimBrief
     </Button>
-  )
-}
+  );
+};
 
-export default VatsimButton
+export default VatsimButton;

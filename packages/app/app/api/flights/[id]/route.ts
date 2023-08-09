@@ -27,7 +27,7 @@ export async function GET(
   }
 
   const flight = await db.query.flights.findFirst({
-    where: (flights, { eq }) => eq(flights.id, data.data.id)
+    where: (flights, { eq }) => eq(flights.id, data.data.id),
   });
   if (flight === null) {
     return NextResponse.json(
