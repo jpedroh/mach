@@ -17,7 +17,14 @@ const credentialsSchema = z
     };
   });
 
-const connection = connect(credentialsSchema.parse(process.env));
+const connection = connect({
+  ...credentialsSchema.parse(process.env),
+  fetch: (url, init) => {
+    delete (init as any)["cache"]; // Remove cache header
+    // @ts-expect-error missing fetch
+    return fetch(url, init);
+  },
+});
 
 export const db = drizzle(connection, {
   schema,
