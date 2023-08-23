@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@planetscale/database':
-        specifier: ^1.10.0
-        version: 1.10.0
+        specifier: ^1.11.0
+        version: 1.11.0
       adm-zip:
         specifier: ^0.5.10
         version: 0.5.10
@@ -19,7 +19,7 @@ importers:
         version: 1.4.0
       drizzle-orm:
         specifier: ^0.28.2
-        version: 0.28.2(@planetscale/database@1.10.0)
+        version: 0.28.2(@planetscale/database@1.11.0)
       fast-xml-parser:
         specifier: ^4.2.7
         version: 4.2.7
@@ -141,11 +141,11 @@ importers:
         specifier: '*'
         version: link:../common
       '@planetscale/database':
-        specifier: ^1.10.0
-        version: 1.10.0
+        specifier: ^1.11.0
+        version: 1.11.0
       drizzle-orm:
         specifier: ^0.28.2
-        version: 0.28.2(@planetscale/database@1.10.0)
+        version: 0.28.2(@planetscale/database@1.11.0)
 
   packages/rpl-crawler:
     dependencies:
@@ -1672,8 +1672,8 @@ packages:
       node-gyp-build: 4.5.0
     dev: true
 
-  /@planetscale/database@1.10.0:
-    resolution: {integrity: sha512-XMfNRjIPgGTga6g1YpGr7E21CcnHZcHZdyhRUIiZ/AlpD+ts65UF2B3wKjcu7MKMynmmcOGs6R9kAT6D1OTlZQ==}
+  /@planetscale/database@1.11.0:
+    resolution: {integrity: sha512-aWbU+D/IRHoDE9975y+Q4c+EwwAWxCPwFId+N1AhQVFXzbeJMkj6KN2iQtoi03elcLMRdfT+V3i9Z4WRw+/oIA==}
     engines: {node: '>=16'}
     dev: false
 
@@ -3205,7 +3205,7 @@ packages:
       - supports-color
     dev: true
 
-  /drizzle-orm@0.28.2(@planetscale/database@1.10.0):
+  /drizzle-orm@0.28.2(@planetscale/database@1.11.0):
     resolution: {integrity: sha512-QRyuzvpJr7GE6LpvZ/sg2nAKNg2if1uGGkgFTiXn4auuYId//vVJe6HBsDTktfKfcaDGzIYos+/f+PS5EkBmrg==}
     peerDependencies:
       '@aws-sdk/client-rds-data': '>=3'
@@ -3267,7 +3267,7 @@ packages:
       sqlite3:
         optional: true
     dependencies:
-      '@planetscale/database': 1.10.0
+      '@planetscale/database': 1.11.0
     dev: false
 
   /duplexer2@0.1.4:
