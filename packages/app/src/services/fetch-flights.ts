@@ -1,6 +1,6 @@
-import { db } from "@mach/database";
-import z from "zod";
-import { fetchAirportsData } from "./fetch-airports";
+import { db } from '@mach/database'
+import z from 'zod'
+import { fetchAirportsData } from './fetch-airports'
 
 const schema = z.object({
   departureIcao: z
@@ -23,12 +23,12 @@ const schema = z.object({
     .string()
     .transform((v) => Boolean(v))
     .optional(),
-});
+})
 
 export async function fetchFlights(searchParams: Record<string, unknown>) {
-  const today = new Date().toISOString().substring(0, 10);
+  const today = new Date().toISOString().substring(0, 10)
 
-  const where = schema.parse(searchParams);
+  const where = schema.parse(searchParams)
   const flights = await db.query.flights.findMany({
     where: (fields, { sql, and, eq, or }) =>
       and(
@@ -52,14 +52,14 @@ export async function fetchFlights(searchParams: Record<string, unknown>) {
             )
           : undefined
       ),
-  });
+  })
 
   const icaos = flights.flatMap((flight) => [
     flight.departureIcao,
     flight.arrivalIcao,
-  ]);
+  ])
 
-  const airports = await fetchAirportsData(icaos);
+  const airports = await fetchAirportsData(icaos)
 
   return flights.map((flight) => {
     return {
@@ -68,6 +68,6 @@ export async function fetchFlights(searchParams: Record<string, unknown>) {
         ({ AeroCode }) => AeroCode === flight.departureIcao
       ),
       arrival: airports.find(({ AeroCode }) => AeroCode === flight.arrivalIcao),
-    };
-  });
+    }
+  })
 }

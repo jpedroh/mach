@@ -1,21 +1,21 @@
-import { NextResponse } from "next/server";
+import { NextResponse } from 'next/server'
 
-export const runtime = "edge";
+export const runtime = 'edge'
 
 function getApiUrl() {
-  if (process.env.VERCEL_ENV === "production") {
-    return `https://${process.env.BASE_URL}/api`;
+  if (process.env.VERCEL_ENV === 'production') {
+    return `https://${process.env.BASE_URL}/api`
   }
-  return `https://${process.env.VERCEL_URL}/api`;
+  return `https://${process.env.VERCEL_URL}/api`
 }
 
 const openApi = {
-  openapi: "3.0.1",
+  openapi: '3.0.1',
   info: {
-    title: "Mach",
-    description: "An API to retrieve a timetable from Brazilian RPL - CGNA",
+    title: 'Mach',
+    description: 'An API to retrieve a timetable from Brazilian RPL - CGNA',
     contact: {
-      email: "joao.pedro.hsd@gmail.com",
+      email: 'joao.pedro.hsd@gmail.com',
     },
     version: process.env.NEXT_PUBLIC_APP_VERSION,
   },
@@ -26,98 +26,98 @@ const openApi = {
   ],
   tags: [
     {
-      name: "Flight",
+      name: 'Flight',
     },
   ],
   paths: {
-    "/flights": {
+    '/flights': {
       get: {
-        tags: ["Flight"],
-        summary: "Returns a list of Paginated Flights",
+        tags: ['Flight'],
+        summary: 'Returns a list of Paginated Flights',
         parameters: [
           {
-            in: "query",
-            name: "offset",
+            in: 'query',
+            name: 'offset',
             schema: {
-              type: "number",
+              type: 'number',
               default: 0,
             },
           },
           {
-            in: "query",
-            name: "limit",
+            in: 'query',
+            name: 'limit',
             schema: {
-              type: "number",
+              type: 'number',
               default: 15,
               minimum: 0,
             },
           },
           {
-            in: "query",
-            name: "aircraftIcaoCode",
-            style: "form",
+            in: 'query',
+            name: 'aircraftIcaoCode',
+            style: 'form',
             explode: true,
             schema: {
-              type: "array",
+              type: 'array',
               items: {
-                type: "string",
+                type: 'string',
               },
             },
           },
           {
-            in: "query",
-            name: "company",
-            style: "form",
+            in: 'query',
+            name: 'company',
+            style: 'form',
             explode: true,
             schema: {
-              type: "array",
+              type: 'array',
               items: {
-                type: "string",
+                type: 'string',
               },
             },
           },
           {
-            in: "query",
-            name: "departureIcao",
-            style: "form",
+            in: 'query',
+            name: 'departureIcao',
+            style: 'form',
             explode: true,
             schema: {
-              type: "array",
+              type: 'array',
               items: {
-                type: "string",
+                type: 'string',
               },
             },
           },
           {
-            in: "query",
-            name: "arrivalIcao",
-            style: "form",
+            in: 'query',
+            name: 'arrivalIcao',
+            style: 'form',
             explode: true,
             schema: {
-              type: "array",
+              type: 'array',
               items: {
-                type: "string",
+                type: 'string',
               },
             },
           },
         ],
         responses: {
-          "200": {
-            description: "A Paginated List of Flights",
+          '200': {
+            description: 'A Paginated List of Flights',
             content: {
-              "application/json": {
+              'application/json': {
                 schema: {
-                  $ref: "#/components/schemas/PaginatedFlights",
+                  $ref: '#/components/schemas/PaginatedFlights',
                 },
               },
             },
           },
-          "500": {
-            description: "Internal server error",
+          '500': {
+            description: 'Internal server error',
             content: {
-              "application/json": {
+              'application/json': {
                 schema: {
-                  $ref: "#/components/schemas/ErrorResponse",
+                  $ref: '#/components/schemas/ErrorResponse',
                 },
               },
             },
@@ -125,69 +125,69 @@ const openApi = {
         },
       },
     },
-    "/flights/all": {
+    '/flights/all': {
       get: {
-        tags: ["Flight"],
-        summary: "Returns a list of Flights",
+        tags: ['Flight'],
+        summary: 'Returns a list of Flights',
         parameters: [
           {
-            in: "query",
-            name: "company",
-            style: "form",
+            in: 'query',
+            name: 'company',
+            style: 'form',
             explode: true,
             schema: {
-              type: "array",
+              type: 'array',
               items: {
-                type: "string",
+                type: 'string',
               },
             },
           },
           {
-            in: "query",
-            name: "aircraftIcaoCode",
-            style: "form",
+            in: 'query',
+            name: 'aircraftIcaoCode',
+            style: 'form',
             explode: true,
             schema: {
-              type: "array",
+              type: 'array',
               items: {
-                type: "string",
+                type: 'string',
               },
             },
           },
           {
-            in: "query",
-            name: "departureIcao",
-            style: "form",
+            in: 'query',
+            name: 'departureIcao',
+            style: 'form',
             explode: true,
             schema: {
-              type: "array",
+              type: 'array',
               items: {
-                type: "string",
+                type: 'string',
               },
             },
           },
           {
-            in: "query",
-            name: "arrivalIcao",
-            style: "form",
+            in: 'query',
+            name: 'arrivalIcao',
+            style: 'form',
             explode: true,
             schema: {
-              type: "array",
+              type: 'array',
               items: {
-                type: "string",
+                type: 'string',
               },
             },
           },
         ],
         responses: {
-          "200": {
-            description: "A List of Flights",
+          '200': {
+            description: 'A List of Flights',
             content: {
-              "application/json": {
+              'application/json': {
                 schema: {
-                  type: "array",
+                  type: 'array',
                   items: {
-                    $ref: "#/components/schemas/Flight",
+                    $ref: '#/components/schemas/Flight',
                   },
                 },
               },
@@ -196,48 +196,48 @@ const openApi = {
         },
       },
     },
-    "/flights/{id}": {
+    '/flights/{id}': {
       get: {
-        tags: ["Flight"],
-        summary: "Get a flight by ID.",
+        tags: ['Flight'],
+        summary: 'Get a flight by ID.',
         parameters: [
           {
-            in: "path",
-            name: "id",
+            in: 'path',
+            name: 'id',
             schema: {
-              type: "string",
-              format: "uuid",
+              type: 'string',
+              format: 'uuid',
             },
             required: true,
           },
         ],
         responses: {
-          "200": {
-            description: "A flight object",
+          '200': {
+            description: 'A flight object',
             content: {
-              "application/json": {
+              'application/json': {
                 schema: {
-                  $ref: "#/components/schemas/Flight",
+                  $ref: '#/components/schemas/Flight',
                 },
               },
             },
           },
-          "404": {
-            description: "Flight not found",
+          '404': {
+            description: 'Flight not found',
             content: {
-              "application/json": {
+              'application/json': {
                 schema: {
-                  $ref: "#/components/schemas/ErrorResponse",
+                  $ref: '#/components/schemas/ErrorResponse',
                 },
               },
             },
           },
-          "500": {
-            description: "Internal server error",
+          '500': {
+            description: 'Internal server error',
             content: {
-              "application/json": {
+              'application/json': {
                 schema: {
-                  $ref: "#/components/schemas/ErrorResponse",
+                  $ref: '#/components/schemas/ErrorResponse',
                 },
               },
             },
@@ -249,136 +249,136 @@ const openApi = {
   components: {
     schemas: {
       Flight: {
-        type: "object",
+        type: 'object',
         properties: {
           id: {
-            type: "string",
-            format: "uuid",
+            type: 'string',
+            format: 'uuid',
           },
           callsign: {
-            type: "string",
+            type: 'string',
           },
           beginDate: {
-            type: "string",
-            format: "date-time",
+            type: 'string',
+            format: 'date-time',
           },
           endDate: {
-            type: "string",
-            format: "date-time",
+            type: 'string',
+            format: 'date-time',
             nullable: true,
           },
           company: {
-            type: "string",
+            type: 'string',
           },
           flightNumber: {
-            type: "number",
+            type: 'number',
           },
           aircraft: {
-            $ref: "#/components/schemas/Aircraft",
+            $ref: '#/components/schemas/Aircraft',
           },
           departureIcao: {
-            type: "string",
+            type: 'string',
           },
           estimatedOffBlockTime: {
-            type: "string",
+            type: 'string',
           },
           cruisingSpeed: {
-            type: "string",
+            type: 'string',
           },
           weekdays: {
-            type: "array",
+            type: 'array',
             items: {
-              type: "string",
+              type: 'string',
               enum: [
-                "MONDAY",
-                "TUESDAY",
-                "WEDNESDAY",
-                "THURSDAY",
-                "FRIDAY",
-                "SATURDAY",
-                "SUNDAY",
+                'MONDAY',
+                'TUESDAY',
+                'WEDNESDAY',
+                'THURSDAY',
+                'FRIDAY',
+                'SATURDAY',
+                'SUNDAY',
               ],
             },
           },
           cruisingLevel: {
-            type: "number",
+            type: 'number',
           },
           route: {
-            type: "string",
+            type: 'string',
           },
           arrivalIcao: {
-            type: "string",
+            type: 'string',
           },
           remarks: {
-            type: "string",
+            type: 'string',
           },
           estimatedEnrouteMinutes: {
-            type: "number",
+            type: 'number',
           },
           flightRules: {
-            type: "string",
-            enum: ["IFR", "Y", "Z"],
+            type: 'string',
+            enum: ['IFR', 'Y', 'Z'],
           },
           createdAt: {
-            type: "string",
-            format: "date-time",
+            type: 'string',
+            format: 'date-time',
           },
           updatedAt: {
-            type: "string",
-            format: "date-time",
+            type: 'string',
+            format: 'date-time',
           },
         },
       },
       Aircraft: {
-        type: "object",
+        type: 'object',
         properties: {
           icaoCode: {
-            type: "string",
+            type: 'string',
           },
           wakeTurbulence: {
-            type: "string",
-            enum: ["LIGHT", "MEDIUM", "HEAVY", "SUPER"],
+            type: 'string',
+            enum: ['LIGHT', 'MEDIUM', 'HEAVY', 'SUPER'],
           },
           equipment: {
-            type: "string",
+            type: 'string',
           },
         },
       },
       PaginatedFlights: {
-        type: "object",
+        type: 'object',
         properties: {
           count: {
-            type: "number",
+            type: 'number',
           },
           items: {
-            type: "array",
+            type: 'array',
             items: {
-              $ref: "#/components/schemas/Flight",
+              $ref: '#/components/schemas/Flight',
             },
           },
         },
       },
       ErrorResponse: {
-        type: "object",
+        type: 'object',
         properties: {
           status: {
-            type: "number",
+            type: 'number',
           },
           message: {
-            type: "string",
+            type: 'string',
           },
         },
       },
     },
   },
-};
+}
 
 export async function GET() {
   return NextResponse.json(openApi, {
     headers: {
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
-      "Access-Control-Allow-Headers": "Content-Type, Authorization",
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type, Authorization',
     },
-  });
+  })
 }

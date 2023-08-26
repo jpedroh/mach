@@ -17,10 +17,10 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18
-          cache: "pnpm"
+          cache: 'pnpm'
       - uses: nrwl/nx-set-shas@v3
         with:
-          main-branch-name: "master"
+          main-branch-name: 'master'
       - run: pnpm install
       - run: npx nx format:check
       - run: npx nx affected --target=build --parallel=3

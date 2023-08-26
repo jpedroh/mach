@@ -1,4 +1,4 @@
-import styles from "./index.module.css";
+import styles from './index.module.css'
 
 const Footer = () => {
   return (
@@ -11,7 +11,7 @@ const Footer = () => {
         >
           Mach {process.env.NEXT_PUBLIC_APP_VERSION}
         </a>
-        {" - "}
+        {' - '}
         Use for flight simulation only
       </p>
       <p>
@@ -20,7 +20,7 @@ const Footer = () => {
         </a>
       </p>
     </div>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer
