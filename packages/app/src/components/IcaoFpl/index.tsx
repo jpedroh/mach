@@ -1,11 +1,11 @@
-import Flight from "@mach/common";
-import { formatEet } from "../../utils/formatEet";
-import { formatFlightRules } from "../../utils/formatFlightRules";
-import styles from "./index.module.css";
+import Flight from '@mach/common'
+import { formatEet } from '../../utils/formatEet'
+import { formatFlightRules } from '../../utils/formatFlightRules'
+import styles from './index.module.css'
 
 type Props = {
-  flight: Flight;
-};
+  flight: Flight
+}
 
 const getIcaoFpl = (flight: Flight) => {
   return [
@@ -14,11 +14,11 @@ const getIcaoFpl = (flight: Flight) => {
     `-${flight.departureIcao}${flight.estimatedOffBlockTime}`,
     `-${flight.cruisingSpeed}F${flight.cruisingLevel
       .toString()
-      .padStart(3, "0")} ${flight.route}`,
+      .padStart(3, '0')} ${flight.route}`,
     `-${flight.arrivalIcao}${formatEet(flight.estimatedEnrouteMinutes)}`,
     `-${flight.remarks})`,
-  ];
-};
+  ]
+}
 
 const IcaoFpl: React.FC<Props> = ({ flight }) => {
   return (
@@ -27,7 +27,7 @@ const IcaoFpl: React.FC<Props> = ({ flight }) => {
         <p key={key}>{line}</p>
       ))}
     </div>
-  );
-};
+  )
+}
 
-export default IcaoFpl;
+export default IcaoFpl

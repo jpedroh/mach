@@ -1,7 +1,7 @@
-import { FC, ReactNode } from "react";
-import Footer from "../../components/Footer";
-import Header from "../../components/Header";
-import styles from "./index.module.css";
+import { FC, ReactNode } from 'react'
+import Footer from '../../components/Footer'
+import Header from '../../components/Header'
+import styles from './index.module.css'
 
 const GeneralLayout: FC<{ children: ReactNode }> = ({ children }) => {
   return (
@@ -12,7 +12,7 @@ const GeneralLayout: FC<{ children: ReactNode }> = ({ children }) => {
       </div>
       <Footer />
     </div>
-  );
-};
+  )
+}
 
-export default GeneralLayout;
+export default GeneralLayout

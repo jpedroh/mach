@@ -1,28 +1,28 @@
-"use client";
+'use client'
 
-import Flight from "@mach/common";
-import { FC, useState } from "react";
-import { Airport } from "../../services/fetch-airports";
-import { formatAirport } from "../../utils/format-airport";
-import Button from "../Button";
-import FlightModal from "../FlightModal";
-import styles from "./index.module.css";
+import Flight from '@mach/common'
+import { FC, useState } from 'react'
+import { Airport } from '../../services/fetch-airports'
+import { formatAirport } from '../../utils/format-airport'
+import Button from '../Button'
+import FlightModal from '../FlightModal'
+import styles from './index.module.css'
 
 type Props = {
-  items: Array<Flight & { departure?: Airport; arrival?: Airport }>;
-};
+  items: Array<Flight & { departure?: Airport; arrival?: Airport }>
+}
 
 function minutesToEet(totalMinutes: number) {
-  const hours = Math.floor(totalMinutes / 60);
-  const minutes = totalMinutes % 60;
-  return `${hours.toString().padStart(2, "0")}${minutes
+  const hours = Math.floor(totalMinutes / 60)
+  const minutes = totalMinutes % 60
+  return `${hours.toString().padStart(2, '0')}${minutes
     .toString()
-    .padStart(2, "0")}`;
+    .padStart(2, '0')}`
 }
 
 const FlightsTable: FC<Props> = ({ items }) => {
-  const [flight, setFlight] = useState<Flight>();
-  const showModal = flight !== undefined;
+  const [flight, setFlight] = useState<Flight>()
+  const showModal = flight !== undefined
 
   return (
     <div>
@@ -66,7 +66,7 @@ const FlightsTable: FC<Props> = ({ items }) => {
               <td>{minutesToEet(flight.estimatedEnrouteMinutes)}</td>
               <td>{flight.aircraft.icaoCode}</td>
               <td className="grid justify-items-center">
-                <Button variant={"primary"} onClick={() => setFlight(flight)}>
+                <Button variant={'primary'} onClick={() => setFlight(flight)}>
                   View Details
                 </Button>
               </td>
@@ -80,7 +80,7 @@ const FlightsTable: FC<Props> = ({ items }) => {
         onClose={() => setFlight(undefined)}
       />
     </div>
-  );
-};
+  )
+}
 
-export default FlightsTable;
+export default FlightsTable

@@ -1,4 +1,4 @@
-import z from "zod";
+import z from 'zod'
 
 const envSchema = z.object({
   DATABASE_HOST: z.string(),
@@ -6,6 +6,6 @@ const envSchema = z.object({
   DATABASE_PASSWORD: z.string(),
   AISWEB_API_KEY: z.string(),
   AISWEB_API_PASSWORD: z.string(),
-});
+})
 
-export const environment = envSchema.parse(process.env);
+export const environment = envSchema.parse(process.env)

@@ -1,3 +1,3 @@
-import makeSaveFlights from "./save-flights";
+import makeSaveFlights from './save-flights'
 
-export default makeSaveFlights();
+export default makeSaveFlights()

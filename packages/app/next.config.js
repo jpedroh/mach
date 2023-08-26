@@ -9,17 +9,17 @@ const nextConfig = {
   ) => {
     config.plugins.push(
       new webpack.IgnorePlugin({ resourceRegExp: /^pg-native$/ })
-    );
-    return config;
+    )
+    return config
   },
   api: {
     responseLimit: false,
   },
-};
+}
 
 // Injected content via Sentry wizard below
 
-const { withSentryConfig } = require("@sentry/nextjs");
+const { withSentryConfig } = require('@sentry/nextjs')
 
 module.exports = withSentryConfig(
   nextConfig,
@@ -30,8 +30,8 @@ module.exports = withSentryConfig(
     // Suppresses source map uploading logs during build
     silent: true,
 
-    org: "jpedroh",
-    project: "mach-vq",
+    org: 'jpedroh',
+    project: 'mach-vq',
   },
   {
     // For all available options, see:
@@ -49,4 +49,4 @@ module.exports = withSentryConfig(
     // Automatically tree-shake Sentry logger statements to reduce bundle size
     disableLogger: true,
   }
-);
+)

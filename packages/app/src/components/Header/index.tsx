@@ -1,5 +1,5 @@
-import { FC } from "react";
-import styles from "./index.module.css";
+import { FC } from 'react'
+import styles from './index.module.css'
 
 const Home: FC = () => {
   return (
@@ -7,7 +7,7 @@ const Home: FC = () => {
       <h1>mach</h1>
       <h2>An open source tool for flight simulation</h2>
     </div>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home

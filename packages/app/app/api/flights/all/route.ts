@@ -1,10 +1,10 @@
-import { db } from "@mach/database";
-import { NextResponse } from "next/server";
-import z from "zod";
+import { db } from '@mach/database'
+import { NextResponse } from 'next/server'
+import z from 'zod'
 
-export const dynamic = "force-dynamic";
+export const dynamic = 'force-dynamic'
 
-export const runtime = "edge";
+export const runtime = 'edge'
 
 const schema = z.object({
   departureIcao: z
@@ -23,34 +23,34 @@ const schema = z.object({
     .preprocess((x) => (Array.isArray(x) ? x : [x]), z.array(z.string()))
     .transform((values) => values.map((value) => value.toUpperCase()))
     .optional(),
-});
+})
 
 export async function GET(request: Request) {
   try {
-    const { searchParams } = new URL(request.url);
+    const { searchParams } = new URL(request.url)
     const query = Array.from(searchParams.entries()).reduce(
       (curr, [key, value]) => {
         return {
           ...curr,
           [key]: curr[key] ? curr[key].concat([value]) : [value],
-        };
+        }
       },
       {} as Record<string, string[]>
-    );
-    const data = schema.safeParse(query);
+    )
+    const data = schema.safeParse(query)
 
     if (!data.success) {
       return NextResponse.json(
-        { message: "Bad Request" },
+        { message: 'Bad Request' },
         {
           status: 400,
           headers: {
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
-            "Access-Control-Allow-Headers": "Content-Type, Authorization",
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+            'Access-Control-Allow-Headers': 'Content-Type, Authorization',
           },
         }
-      );
+      )
     }
 
     const items = await db.query.flights.findMany({
@@ -65,27 +65,27 @@ export async function GET(request: Request) {
           data.data.aircraftIcaoCode &&
             sql`${fields.aircraft}->>"$.icaoCode" IN ${data.data.aircraftIcaoCode}`
         ),
-    });
+    })
 
     return NextResponse.json(items, {
       headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
-        "Access-Control-Allow-Headers": "Content-Type, Authorization",
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+        'Access-Control-Allow-Headers': 'Content-Type, Authorization',
       },
-    });
+    })
   } catch (error) {
-    console.error(error);
+    console.error(error)
     return NextResponse.json(
-      { message: "Internal server error" },
+      { message: 'Internal server error' },
       {
         status: 500,
         headers: {
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
-          "Access-Control-Allow-Headers": "Content-Type, Authorization",
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+          'Access-Control-Allow-Headers': 'Content-Type, Authorization',
         },
       }
-    );
+    )
   }
 }
