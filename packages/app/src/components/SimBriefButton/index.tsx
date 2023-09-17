@@ -7,23 +7,23 @@ type Props = {
 }
 
 const VatsimButton: FC<Props> = ({ flight }) => {
-  const query = {
+  const query: Record<string, string> = {
     airline: flight.company,
-    fltnum: flight.flightNumber,
+    fltnum: flight.flightNumber.toString(),
     type: flight.aircraft.icaoCode,
     orig: flight.departureIcao,
     dest: flight.arrivalIcao,
     deph: flight.estimatedOffBlockTime.substr(0, 2),
     depm: flight.estimatedOffBlockTime.substr(2, 2),
     route: flight.route,
-    steh: Math.floor(flight.estimatedEnrouteMinutes / 60),
-    stem: flight.estimatedEnrouteMinutes % 60,
-    fl: flight.cruisingLevel * 100,
+    steh: Math.floor(flight.estimatedEnrouteMinutes / 60).toString(),
+    stem: (flight.estimatedEnrouteMinutes % 60).toString(),
+    fl: (flight.cruisingLevel ** 100).toString(),
     manualrmk: flight.remarks,
   }
 
   const simBriefLink = `http://www.simbrief.com/system/dispatch.php?${new URLSearchParams(
-    query as any
+    query
   ).toString()}`
 
   return (

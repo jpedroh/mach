@@ -4,9 +4,9 @@ import { sql } from 'drizzle-orm'
 export async function fetchAircraftIcaoCodes() {
   const aircrafts = await db
     .select({
-      aircraftIcaoCode: sql`DISTINCT(${flights.aircraft}->>"$.icaoCode")`,
+      aircraftIcaoCode: sql<string>`DISTINCT(${flights.aircraft}->>"$.icaoCode")`,
     })
     .from(flights)
 
-  return aircrafts?.map((v: any) => v.aircraftIcaoCode) ?? []
+  return aircrafts?.map((v) => v.aircraftIcaoCode) ?? []
 }

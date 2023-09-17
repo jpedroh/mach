@@ -3,7 +3,7 @@ import { describe, expect, test } from 'vitest'
 import makeFlightDecoder from './flight-decoder'
 
 describe('flight-decoder', () => {
-  const flightDecoder = makeFlightDecoder({ uuid: (_) => randomUUID() })
+  const flightDecoder = makeFlightDecoder({ uuid: () => randomUUID() })
 
   test('Given flight with begin and end date', () => {
     const line = `#C 230720 TAM3587 26      230720 011020 IS A321/M SW/C SBRF 0005

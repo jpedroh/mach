@@ -2,10 +2,10 @@ import { describe, expect, test, vi } from 'vitest'
 import makeUpdateChecker from './update-checker'
 
 describe('update-checker', () => {
-  let httpMock = {
+  const httpMock = {
     get: vi.fn(),
   }
-  let updateChecker = makeUpdateChecker({ http: httpMock })
+  const updateChecker = makeUpdateChecker({ http: httpMock })
 
   describe('Given a date with no updates was given', () => {
     const date = '2020-08-02'

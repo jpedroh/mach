@@ -32,6 +32,7 @@ jobs:
           AISWEB_API_PASSWORD: ${{ secrets.aisweb_api_password }}
           RPL_DATE: ${{ github.event.inputs.date }}
       - run: pnpm test
+      - run: pnpm lint
       - run: npx semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
