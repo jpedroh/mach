@@ -2,7 +2,7 @@ import flightDecoder from './flight-decoder'
 import rplFileDownloader from './rpl-file-downloader'
 import rplFileLinesExtractor from './rpl-file-lines-extractor'
 import saveFlights from './save-flights'
-import Flight from '@mach/common'
+import { Flight } from '@mach/database'
 import updateChecker from './update-checker'
 import Logger from './utils/logger'
 

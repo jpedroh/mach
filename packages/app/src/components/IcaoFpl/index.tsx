@@ -1,4 +1,4 @@
-import Flight from '@mach/common'
+import { Flight } from '@mach/database'
 import { formatEet } from '../../utils/formatEet'
 import { formatFlightRules } from '../../utils/formatFlightRules'
 import styles from './index.module.css'

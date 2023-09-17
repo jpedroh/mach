@@ -1,5 +1,4 @@
-import Flight from '@mach/common'
-import { db, flights as flightsSchema } from '@mach/database'
+import { db, Flight, flights as flightsSchema } from '@mach/database'
 
 function sliceArray(flights: Flight[]) {
   const response: Flight[][] = []

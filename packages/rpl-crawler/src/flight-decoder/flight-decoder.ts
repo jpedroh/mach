@@ -1,4 +1,5 @@
-import Flight, { FlightRules, WakeTurbulence } from '@mach/common'
+import { WakeTurbulence } from '@mach/database'
+import { Flight } from '@mach/database'
 import {
   resolveEstimatedEnrouteMinutes,
   resolveFlightDate,
