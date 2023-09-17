@@ -10,7 +10,8 @@
   "author": "Joao Pedro Henrique <joao.pedro.hsd@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build": "esbuild src/main.ts --outdir=dist --bundle --platform=node"
+    "build": "tsc",
+    "test": "jest"
   },
   "dependencies": {
     "@mach/database": "*"
