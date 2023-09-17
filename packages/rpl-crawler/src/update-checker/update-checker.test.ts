@@ -1,8 +1,9 @@
-import makeUpdateChecker from '../../src/update-checker/update-checker'
+import { describe, expect, test, vi } from 'vitest'
+import makeUpdateChecker from './update-checker'
 
 describe('update-checker', () => {
   let httpMock = {
-    get: jest.fn(),
+    get: vi.fn(),
   }
   let updateChecker = makeUpdateChecker({ http: httpMock })
 
