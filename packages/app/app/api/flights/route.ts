@@ -68,7 +68,9 @@ export async function GET(request: Request) {
     }
 
     const criteria = and(
-      data.data.cycle ? sql`${flights.cycle} IN ${data.data.cycle}` : eq(flights.cycle, currentCycleSubquery),
+      data.data.cycle
+        ? sql`${flights.cycle} IN ${data.data.cycle}`
+        : eq(flights.cycle, currentCycleSubquery),
       data.data.departureIcao &&
         sql`${flights.departureIcao} IN ${data.data.departureIcao}`,
       data.data.arrivalIcao &&

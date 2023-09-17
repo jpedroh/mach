@@ -62,7 +62,9 @@ export async function GET(request: Request) {
       orderBy: (fields, { desc }) => desc(fields.id),
       where: (fields, { sql, and, eq }) =>
         and(
-          data.data.cycle ? sql`${fields.cycle} IN ${data.data.cycle}` : eq(fields.cycle, currentCycleSubquery),
+          data.data.cycle
+            ? sql`${fields.cycle} IN ${data.data.cycle}`
+            : eq(fields.cycle, currentCycleSubquery),
           data.data.departureIcao &&
             sql`${fields.departureIcao} IN ${data.data.departureIcao}`,
           data.data.arrivalIcao &&

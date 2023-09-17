@@ -37,7 +37,9 @@ export async function fetchFlights(searchParams: Record<string, unknown>) {
   const flights = await db.query.flights.findMany({
     where: (fields, { sql, and, eq, or }) =>
       and(
-        where.cycle ? eq(fields.cycle, where.cycle) : eq(fields.cycle, currentCycleSubquery),
+        where.cycle
+          ? eq(fields.cycle, where.cycle)
+          : eq(fields.cycle, currentCycleSubquery),
         where.departureIcao
           ? eq(fields.departureIcao, where.departureIcao)
           : undefined,

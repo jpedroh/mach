@@ -67,9 +67,7 @@ const SearchFlightsForm: FC<Props> = ({
           options={cyclesOptions}
           name="cycle"
           defaultValue={cyclesOptions[0]}
-          onChange={(cycle) =>
-            setForm((form) => ({ ...form, cycle }))
-          }
+          onChange={(cycle) => setForm((form) => ({ ...form, cycle }))}
         />
       </div>
 
