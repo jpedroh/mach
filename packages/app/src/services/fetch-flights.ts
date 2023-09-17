@@ -1,6 +1,7 @@
 import { db } from '@mach/database'
 import z from 'zod'
 import { fetchAirportsData } from './fetch-airports'
+import { currentCycleSubquery } from '../utils/currentCycleSubquery'
 
 const schema = z.object({
   departureIcao: z
@@ -32,6 +33,7 @@ export async function fetchFlights(searchParams: Record<string, unknown>) {
   const flights = await db.query.flights.findMany({
     where: (fields, { sql, and, eq, or }) =>
       and(
+        eq(fields.cycle, currentCycleSubquery),
         where.departureIcao
           ? eq(fields.departureIcao, where.departureIcao)
           : undefined,

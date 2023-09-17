@@ -20,7 +20,6 @@ function sliceArray(flights: Flight[]) {
 const makeSaveFlights = () => {
   return async (flights: Flight[]): Promise<void> => {
     await db.transaction(async (tx) => {
-      await tx.delete(flightsSchema)
       const sliced = sliceArray(flights)
       for (const slice of sliced) {
         await tx.insert(flightsSchema).values(slice)

@@ -1,13 +1,15 @@
 import { db, flights } from '@mach/database'
-import { sql } from 'drizzle-orm'
+import { eq, sql } from 'drizzle-orm'
 import { XMLParser } from 'fast-xml-parser'
 import z from 'zod'
 import { environment } from '../utils/env'
+import { currentCycleSubquery } from '../utils/currentCycleSubquery'
 
 async function fetchAirportsFromDb(column: 'departureIcao' | 'arrivalIcao') {
   const airports = await db
     .select({ icaoCode: sql`DISTINCT(${flights[column]})` })
     .from(flights)
+    .where(eq(flights.cycle, currentCycleSubquery))
 
   return airports.map((v) => String(v.icaoCode))
 }

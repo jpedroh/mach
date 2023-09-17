@@ -1,7 +1,8 @@
 import { db, flights } from '@mach/database'
-import { sql, and } from 'drizzle-orm'
+import { sql, and, eq } from 'drizzle-orm'
 import { NextResponse } from 'next/server'
 import z from 'zod'
+import { currentCycleSubquery } from '../../../src/utils/currentCycleSubquery'
 
 export const dynamic = 'force-dynamic'
 
@@ -63,6 +64,7 @@ export async function GET(request: Request) {
     }
 
     const criteria = and(
+      eq(flights.cycle, currentCycleSubquery),
       data.data.departureIcao &&
         sql`${flights.departureIcao} IN ${data.data.departureIcao}`,
       data.data.arrivalIcao &&

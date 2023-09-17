@@ -8,7 +8,7 @@ import {
 } from './flight-decoder-utils'
 
 const makeFlightDecoder = ({ uuid }: { uuid: (line: string) => string }) => {
-  return (line: string): Flight => {
+  return (line: string): Omit<Flight, 'cycle'> => {
     const LINES = line.split('\n').map((line) => line.trim())
 
     const LINE_1 = LINES[0]
