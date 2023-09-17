@@ -114,9 +114,6 @@ importers:
 
   packages/app:
     dependencies:
-      '@mach/common':
-        specifier: '*'
-        version: link:../common
       '@mach/database':
         specifier: '*'
         version: link:../database
@@ -124,13 +121,8 @@ importers:
         specifier: ^7.68.0
         version: 7.68.0(next@13.4.19)(react@18.2.0)
 
-  packages/common: {}
-
   packages/database:
     dependencies:
-      '@mach/common':
-        specifier: '*'
-        version: link:../common
       '@planetscale/database':
         specifier: ^1.11.0
         version: 1.11.0
@@ -140,9 +132,6 @@ importers:
 
   packages/rpl-crawler:
     dependencies:
-      '@mach/common':
-        specifier: '*'
-        version: link:../common
       '@mach/database':
         specifier: '*'
         version: link:../database

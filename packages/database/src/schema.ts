@@ -1,4 +1,4 @@
-import { WakeTurbulence, Weekdays } from '@mach/common'
+import { WakeTurbulence, Weekdays } from './enum'
 import {
   date,
   int,
@@ -36,3 +36,5 @@ export const flights = mysqlTable('flights', {
   flightRules: mysqlEnum('flight_rules', ['IFR', 'Y', 'Z']).notNull(),
   remarks: text('remarks').notNull(),
 })
+
+export type Flight = typeof flights.$inferSelect

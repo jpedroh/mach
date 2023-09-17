@@ -11,7 +11,11 @@
     "esModuleInterop": true,
     "sourceMap": true,
     "lib": ["es6", "es2020"],
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@mach/database": ["packages/database/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "**/*.spec.ts"]
 }

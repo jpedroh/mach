@@ -1,4 +1,4 @@
-import { FlightRules } from '@mach/common'
+import { FlightRules } from '@mach/database'
 
 export const formatFlightRules = (flightRule: FlightRules) => {
   const mappings = {
