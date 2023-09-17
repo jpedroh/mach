@@ -26,5 +26,7 @@ module.exports = {
     sourceType: 'module',
   },
   plugins: ['@typescript-eslint', 'react'],
-  rules: {},
+  rules: {
+    '@next/next/no-html-link-for-pages': ['error', 'packages/app'],
+  },
 }
