@@ -31,7 +31,7 @@ jobs:
           AISWEB_API_KEY: ${{ secrets.aisweb_api_key }}
           AISWEB_API_PASSWORD: ${{ secrets.aisweb_api_password }}
           RPL_DATE: ${{ github.event.inputs.date }}
-      - run: npx nx affected --target=test --parallel=3 --ci
+      - run: pnpm test
       - run: npx semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
