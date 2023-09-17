@@ -16,10 +16,15 @@
     "@types/node": "^20.6.0",
     "@types/react": "^18.2.21",
     "@types/react-dom": "^18.2.7",
+    "@typescript-eslint/eslint-plugin": "^6.7.0",
+    "@typescript-eslint/parser": "^6.7.0",
     "autoprefixer": "^10.4.15",
     "conventional-changelog-conventionalcommits": "^7.0.2",
     "drizzle-kit": "^0.19.13",
     "esbuild": "^0.19.3",
+    "eslint": "^8.49.0",
+    "eslint-config-next": "^13.4.19",
+    "eslint-plugin-react": "^7.33.2",
     "nx": "16.8.1",
     "pg-hstore": "^2.3.3",
     "postcss": "^8.4.29",
@@ -45,6 +50,7 @@
   "scripts": {
     "serve": "nx run @mach/app:dev",
     "build": "nx run-many --target=build",
+    "lint": "eslint .",
     "test": "vitest"
   },
   "workspaces": {
