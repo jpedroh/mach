@@ -1,12 +1,14 @@
 import Select from 'react-select'
 
-export function SelectInput<Option>(props: {
+type Option = { value: string; label: string }
+
+export function SelectInput(props: {
   options: Option[]
   onChange: (value: string) => void
   name: string
 }) {
   return (
-    <Select
+    <Select<Option>
       options={props.options}
       name={props.name}
       unstyled
@@ -20,7 +22,7 @@ export function SelectInput<Option>(props: {
           return className
         },
         option(props) {
-          let className = `py-2 px-4 ${
+          const className = `py-2 px-4 ${
             props.isFocused
               ? 'bg-blue-600 text-white'
               : 'bg-white dark:bg-gray-600 dark:text-gray-200'
@@ -28,7 +30,7 @@ export function SelectInput<Option>(props: {
           return className
         },
       }}
-      onChange={(evt: any) => props.onChange(!!evt ? evt.value : '')}
+      onChange={(evt) => props.onChange(evt?.value ?? '')}
     ></Select>
   )
 }

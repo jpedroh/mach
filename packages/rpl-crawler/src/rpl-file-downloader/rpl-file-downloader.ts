@@ -1,5 +1,3 @@
-import Axios from 'axios'
-
 type HttpClient = {
   get: (
     url: string,
@@ -11,7 +9,7 @@ const firRplFileDownloader = ({ http }: { http: HttpClient }) => {
   return async (fir: string, date: string) => {
     const fileLink = `http://portal.cgna.decea.mil.br/files/abas/${date}/painel_rpl/bdr/RPL${fir}.zip`
 
-    const { data } = await Axios.get(fileLink, {
+    const { data } = await http.get(fileLink, {
       responseType: 'arraybuffer',
     })
 

@@ -21,7 +21,6 @@ const makeFlightDecoder = ({ uuid }: { uuid: (line: string) => string }) => {
     const flightNumber = Number(callsign.match(/\d+/)[0])
     const departureIcao = LINE_1.substr(-9, 4)
     const estimatedOffBlockTime = LINE_1.match(/\d{4}$/)[0]
-    const flightRules = LINE_1.match(/(?<= ).(?=[A-Z] )/)[0]
     const weekDays = LINE_1.match(/(?<= )(\d| ){7}(?= )/)[0].trim()
 
     const LINE_2 = LINES[1]
