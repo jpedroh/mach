@@ -29,7 +29,6 @@ export async function GET(
   }
 
   const flight = await db.query.flights.findFirst({
-    columns: { cycle: false },
     where: (flights, { eq }) => eq(flights.id, data.data.id),
   })
   if (flight === null) {

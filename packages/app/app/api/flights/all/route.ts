@@ -24,6 +24,10 @@ const schema = z.object({
     .preprocess((x) => (Array.isArray(x) ? x : [x]), z.array(z.string()))
     .transform((values) => values.map((value) => value.toUpperCase()))
     .optional(),
+  cycle: z
+    .preprocess((x) => (Array.isArray(x) ? x : [x]), z.array(z.string()))
+    .transform((values) => values.map((value) => new Date(value)))
+    .optional(),
 })
 
 export async function GET(request: Request) {
@@ -55,11 +59,10 @@ export async function GET(request: Request) {
     }
 
     const items = await db.query.flights.findMany({
-      columns: { cycle: false },
       orderBy: (fields, { desc }) => desc(fields.id),
       where: (fields, { sql, and, eq }) =>
         and(
-          eq(fields.cycle, currentCycleSubquery),
+          data.data.cycle ? sql`${fields.cycle} IN ${data.data.cycle}` : eq(fields.cycle, currentCycleSubquery),
           data.data.departureIcao &&
             sql`${fields.departureIcao} IN ${data.data.departureIcao}`,
           data.data.arrivalIcao &&

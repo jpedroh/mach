@@ -100,6 +100,18 @@ const openApi = {
               },
             },
           },
+          {
+            in: 'query',
+            name: 'cycle',
+            style: 'form',
+            explode: true,
+            schema: {
+              type: 'array',
+              items: {
+                type: 'string',
+              },
+            },
+          },
         ],
         responses: {
           '200': {
@@ -169,6 +181,18 @@ const openApi = {
           {
             in: 'query',
             name: 'arrivalIcao',
+            style: 'form',
+            explode: true,
+            schema: {
+              type: 'array',
+              items: {
+                type: 'string',
+              },
+            },
+          },
+          {
+            in: 'query',
+            name: 'cycle',
             style: 'form',
             explode: true,
             schema: {
@@ -318,6 +342,10 @@ const openApi = {
           flightRules: {
             type: 'string',
             enum: ['IFR', 'Y', 'Z'],
+          },
+          cycle: {
+            type: 'string',
+            format: 'date-time',
           },
           createdAt: {
             type: 'string',

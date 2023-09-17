@@ -33,6 +33,10 @@ const schema = z.object({
     (x) => (x ? Number(x) : undefined),
     z.number().min(0).default(0)
   ),
+  cycle: z
+    .preprocess((x) => (Array.isArray(x) ? x : [x]), z.array(z.string()))
+    .transform((values) => values.map((value) => new Date(value)))
+    .optional(),
 })
 
 export async function GET(request: Request) {
@@ -64,7 +68,7 @@ export async function GET(request: Request) {
     }
 
     const criteria = and(
-      eq(flights.cycle, currentCycleSubquery),
+      data.data.cycle ? sql`${flights.cycle} IN ${data.data.cycle}` : eq(flights.cycle, currentCycleSubquery),
       data.data.departureIcao &&
         sql`${flights.departureIcao} IN ${data.data.departureIcao}`,
       data.data.arrivalIcao &&
