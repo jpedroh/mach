@@ -1,5 +1,6 @@
 import { randomUUID } from 'crypto'
-import makeFlightDecoder from '../../src/flight-decoder/flight-decoder'
+import { describe, expect, test } from 'vitest'
+import makeFlightDecoder from './flight-decoder'
 
 describe('flight-decoder', () => {
   const flightDecoder = makeFlightDecoder({ uuid: (_) => randomUUID() })
