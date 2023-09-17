@@ -8,6 +8,7 @@ import { SelectInput } from '../SelectInput'
 import styles from './index.module.css'
 
 export type SearchFlightsFormFields = {
+  cycle: string
   departureIcao: string
   arrivalIcao: string
   company: string
@@ -15,17 +16,20 @@ export type SearchFlightsFormFields = {
 }
 
 type Props = {
+  cycles: string[]
   companies: string[]
   aircraftIcaoCodes: string[]
   airports: Airport[]
 }
 
 const SearchFlightsForm: FC<Props> = ({
+  cycles,
   companies,
   aircraftIcaoCodes,
   airports,
 }) => {
   const [form, setForm] = useState<SearchFlightsFormFields>({
+    cycle: cycles[0],
     arrivalIcao: '',
     departureIcao: '',
     company: '',
@@ -51,8 +55,24 @@ const SearchFlightsForm: FC<Props> = ({
     return { value: airport.AeroCode, label: formatAirport(airport) }
   })
 
+  const cyclesOptions = cycles.map((cycle) => {
+    return { value: cycle, label: cycle }
+  })
+
   return (
     <form className={styles.container} action={'/search'}>
+      <div>
+        <label htmlFor="cycle">Cycle</label>
+        <SelectInput
+          options={cyclesOptions}
+          name="cycle"
+          defaultValue={cyclesOptions[0]}
+          onChange={(cycle) =>
+            setForm((form) => ({ ...form, cycle }))
+          }
+        />
+      </div>
+
       <div>
         <label htmlFor="departureIcao">Departure ICAO</label>
         <SelectInput

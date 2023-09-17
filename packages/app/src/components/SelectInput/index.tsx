@@ -6,12 +6,14 @@ export function SelectInput(props: {
   options: Option[]
   onChange: (value: string) => void
   name: string
+  defaultValue?: Option
 }) {
   return (
     <Select<Option>
       options={props.options}
       name={props.name}
       unstyled
+      defaultValue={props.defaultValue}
       classNames={{
         control: (state) => {
           let className =

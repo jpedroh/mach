@@ -4,6 +4,10 @@ import { fetchAirportsData } from './fetch-airports'
 import { currentCycleSubquery } from '../utils/currentCycleSubquery'
 
 const schema = z.object({
+  cycle: z
+    .string()
+    .transform((v) => new Date(v))
+    .optional(),
   departureIcao: z
     .string()
     .transform((v) => v.toUpperCase())
@@ -33,7 +37,7 @@ export async function fetchFlights(searchParams: Record<string, unknown>) {
   const flights = await db.query.flights.findMany({
     where: (fields, { sql, and, eq, or }) =>
       and(
-        eq(fields.cycle, currentCycleSubquery),
+        where.cycle ? eq(fields.cycle, where.cycle) : eq(fields.cycle, currentCycleSubquery),
         where.departureIcao
           ? eq(fields.departureIcao, where.departureIcao)
           : undefined,

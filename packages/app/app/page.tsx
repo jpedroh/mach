@@ -4,6 +4,7 @@ import SearchFlightsForm from '../src/components/SearchFlightsForm'
 import { fetchCompanies } from '../src/services/fetch-companies'
 import { fetchAircraftIcaoCodes } from '../src/services/fetch-aircraft-icao-codes'
 import { fetchAirports } from '../src/services/fetch-airports'
+import { fetchCycles } from '../src/services/fetch-cycles'
 
 export const revalidate = 3600
 
@@ -14,6 +15,7 @@ export const metadata = {
 }
 
 export default async function Page() {
+  const cycles = await fetchCycles()
   const companies = await fetchCompanies()
   const airports = await fetchAirports()
   const aircraftIcaoCodes = await fetchAircraftIcaoCodes()
@@ -22,6 +24,7 @@ export default async function Page() {
     <GeneralLayout>
       <Lead>To begin, fill at least one of the following fields.</Lead>
       <SearchFlightsForm
+        cycles={cycles}
         airports={airports}
         companies={companies}
         aircraftIcaoCodes={aircraftIcaoCodes}
