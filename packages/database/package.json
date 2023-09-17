@@ -17,7 +17,7 @@
     "access": "public"
   },
   "scripts": {
-    "build": "esbuild src/index.ts --outdir=dist"
+    "build": "esbuild --bundle --outdir=dist ./src/index.ts"
   },
   "bugs": {
     "url": "https://github.com/jpedroh/mach/issues"
