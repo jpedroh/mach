@@ -17,7 +17,7 @@
     "access": "public"
   },
   "scripts": {
-    "build": "esbuild --bundle --outdir=dist ./src/index.ts"
+    "build": "esbuild src/index.ts --outdir=dist --sourcemap --bundle && tsc --emitDeclarationOnly --declaration"
   },
   "bugs": {
     "url": "https://github.com/jpedroh/mach/issues"
