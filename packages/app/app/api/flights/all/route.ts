@@ -1,5 +1,4 @@
-import { db, flights } from '@mach/database'
-import { desc } from 'drizzle-orm'
+import { db } from '@mach/database'
 import { NextResponse } from 'next/server'
 import z from 'zod'
 import { currentCycleSubquery } from '../../../../src/utils/currentCycleSubquery'
