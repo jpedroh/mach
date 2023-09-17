@@ -12,9 +12,6 @@ const nextConfig = {
     )
     return config
   },
-  api: {
-    responseLimit: false,
-  },
 }
 
 // Injected content via Sentry wizard below
