@@ -10,7 +10,7 @@ type MainDependencies = {
   updateChecker: (date: string) => Promise<boolean>
   rplFileDownloader: (fir: string, date: string) => Promise<Buffer>
   rplFileLinesExtractor: (file: Buffer) => string[]
-  flightDecoder: (line: string) => Flight
+  flightDecoder: (line: string) => Omit<Flight, 'cycle'>
   saveFlights: (flights: Flight[]) => Promise<void>
 }
 
@@ -62,7 +62,9 @@ const main = async (
     Logger.info(`COMPLETED DECODING OF RPL FILES DATA`)
 
     Logger.info(`STARTING SAVING DECODED DATA TO DATABASE`)
-    await saveFlights(flights)
+    await saveFlights(
+      flights.map((flight) => ({ ...flight, cycle: new Date(date) }))
+    )
     Logger.info(`COMPLETED SAVING DECODED DATA TO DATABASE`)
 
     Logger.info(`COMPLETED RPL UPDATE FOR ${date}`)

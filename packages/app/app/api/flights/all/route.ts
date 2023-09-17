@@ -1,6 +1,7 @@
 import { db } from '@mach/database'
 import { NextResponse } from 'next/server'
 import z from 'zod'
+import { currentCycleSubquery } from '../../../../src/utils/currentCycleSubquery'
 
 export const dynamic = 'force-dynamic'
 
@@ -54,9 +55,11 @@ export async function GET(request: Request) {
     }
 
     const items = await db.query.flights.findMany({
+      columns: { cycle: false },
       orderBy: (fields, { desc }) => desc(fields.id),
-      where: (fields, { sql, and }) =>
+      where: (fields, { sql, and, eq }) =>
         and(
+          eq(fields.cycle, currentCycleSubquery),
           data.data.departureIcao &&
             sql`${fields.departureIcao} IN ${data.data.departureIcao}`,
           data.data.arrivalIcao &&

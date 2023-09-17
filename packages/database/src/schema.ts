@@ -35,6 +35,7 @@ export const flights = mysqlTable('flights', {
   estimatedEnrouteMinutes: int('estimated_enroute_minutes').notNull(),
   flightRules: mysqlEnum('flight_rules', ['IFR', 'Y', 'Z']).notNull(),
   remarks: text('remarks').notNull(),
+  cycle: date('cycle', { mode: 'date' }).notNull(),
 })
 
 export type Flight = typeof flights.$inferSelect
