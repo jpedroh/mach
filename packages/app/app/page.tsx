@@ -15,10 +15,12 @@ export const metadata = {
 }
 
 export default async function Page() {
-  const cycles = await fetchCycles()
-  const companies = await fetchCompanies()
-  const airports = await fetchAirports()
-  const aircraftIcaoCodes = await fetchAircraftIcaoCodes()
+  const [cycles, companies, airports, aircraftIcaoCodes] = await Promise.all([
+    fetchCycles(),
+    fetchCompanies(),
+    fetchAirports(),
+    fetchAircraftIcaoCodes(),
+  ])
 
   return (
     <GeneralLayout>
