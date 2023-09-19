@@ -5,7 +5,7 @@ import { currentCycleSubquery } from '../utils/currentCycleSubquery'
 export async function fetchAircraftIcaoCodes() {
   const aircrafts = await db
     .select({
-      aircraftIcaoCode: sql<string>`DISTINCT(${flights.aircraft}->>"$.icaoCode")`,
+      aircraftIcaoCode: sql<string>`DISTINCT(aircraft_icao_code)`,
     })
     .from(flights)
     .where(eq(flights.cycle, currentCycleSubquery))
