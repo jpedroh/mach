@@ -1,8 +1,6 @@
 import { db, flights } from '@mach/database'
-import { desc } from 'drizzle-orm'
+import { sql } from 'drizzle-orm'
 
 export const currentCycleSubquery = db
-  .select({ cycle: flights.cycle })
+  .select({ cycle: sql<string>`MAX(${flights.cycle})` })
   .from(flights)
-  .limit(1)
-  .orderBy(desc(flights.cycle))
