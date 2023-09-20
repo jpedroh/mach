@@ -16,8 +16,8 @@ const nextConfig = {
     responseLimit: false,
   },
   eslint: {
-    ignoreDuringBuilds: true
-  }
+    ignoreDuringBuilds: true,
+  },
 }
 
 // Injected content via Sentry wizard below
