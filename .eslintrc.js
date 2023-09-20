@@ -7,7 +7,6 @@ module.exports = {
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
-    'plugin:@next/next/recommended',
   ],
   overrides: [
     {
@@ -26,7 +25,4 @@ module.exports = {
     sourceType: 'module',
   },
   plugins: ['@typescript-eslint', 'react'],
-  rules: {
-    '@next/next/no-html-link-for-pages': ['error', 'packages/app'],
-  },
 }
