@@ -17,7 +17,8 @@
     "access": "public"
   },
   "scripts": {
-    "build": "tsc --emitDeclarationOnly --declaration --project tsconfig.json && esbuild --bundle --sourcemap --platform=node --outdir=dist src/index.ts"
+    "build": "tsc --emitDeclarationOnly --declaration --project tsconfig.json && esbuild --bundle --sourcemap --platform=node --outdir=dist src/index.ts",
+    "lint": "eslint ."
   },
   "bugs": {
     "url": "https://github.com/jpedroh/mach/issues"
@@ -25,5 +26,14 @@
   "dependencies": {
     "@planetscale/database": "^1.11.0",
     "drizzle-orm": "^0.28.6"
+  },
+  "nx": {
+    "targets": {
+      "build": {
+        "outputs": [
+          "{projectRoot}/dist"
+        ]
+      }
+    }
   }
 }

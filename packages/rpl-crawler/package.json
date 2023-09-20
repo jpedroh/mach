@@ -10,9 +10,20 @@
   "author": "Joao Pedro Henrique <joao.pedro.hsd@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build": "esbuild --bundle --sourcemap --platform=node --outdir=dist src/main.ts"
+    "build": "esbuild --bundle --sourcemap --platform=node --outdir=dist src/main.ts",
+    "test": "vitest --watch=false",
+    "lint": "eslint ."
   },
   "dependencies": {
     "@mach/database": "*"
+  },
+  "nx": {
+    "targets": {
+      "build": {
+        "outputs": [
+          "{projectRoot}/dist"
+        ]
+      }
+    }
   }
 }
