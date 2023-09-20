@@ -4,12 +4,14 @@
   "private": true,
   "homepage": "https://jpedroh.github.io/mach",
   "dependencies": {
+    "@cloudflare/next-on-pages": "^1.6.1",
     "@mach/database": "*",
     "@sentry/nextjs": "^7.69.0"
   },
   "scripts": {
     "dev": "next dev",
-    "build": "nx exec -- next build",
+    "build": "next build",
+    "pack": "next-on-pages",
     "start": "next start",
     "lint": "next lint"
   },
@@ -30,6 +32,11 @@
       "build": {
         "outputs": [
           "{projectRoot}/.next"
+        ]
+      },
+      "pack": {
+        "outputs": [
+          "{projectRoot}/.vercel"
         ]
       }
     }

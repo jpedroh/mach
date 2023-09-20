@@ -4,13 +4,13 @@
     "default": {
       "runner": "@nx-aws-plugin/nx-aws-cache",
       "options": {
-        "cacheableOperations": ["build", "test", "eject"]
+        "cacheableOperations": ["pack", "test", "eject"]
       }
     }
   },
   "targetDefaults": {
-    "build": {
-      "dependsOn": ["^build"]
+    "pack": {
+      "dependsOn": ["^pack"]
     }
   },
   "affected": {
