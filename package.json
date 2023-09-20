@@ -51,8 +51,8 @@
   "scripts": {
     "serve": "nx run @mach/app:dev",
     "build": "nx run-many --target=build",
-    "lint": "eslint .",
-    "test": "vitest"
+    "lint": "nx run-many --target=lint",
+    "test": "nx run-many --target=test"
   },
   "workspaces": {
     "packages": [
