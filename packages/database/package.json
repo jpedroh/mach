@@ -17,7 +17,7 @@
     "access": "public"
   },
   "scripts": {
-    "build": "tsc --emitDeclarationOnly --declaration --project tsconfig.json && esbuild --bundle --sourcemap --platform=node --outdir=dist src/index.ts",
+    "pack": "tsc --emitDeclarationOnly --declaration --project tsconfig.json && esbuild --bundle --sourcemap --platform=node --outdir=dist src/index.ts",
     "lint": "eslint ."
   },
   "bugs": {
@@ -29,7 +29,7 @@
   },
   "nx": {
     "targets": {
-      "build": {
+      "pack": {
         "outputs": [
           "{projectRoot}/dist"
         ]

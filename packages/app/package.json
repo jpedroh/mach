@@ -10,8 +10,8 @@
   },
   "scripts": {
     "dev": "next dev",
-    "build": "nx exec -- next build",
-    "build:cf": "nx exec -- next-on-pages",
+    "build": "next build",
+    "pack": "next-on-pages",
     "start": "next start",
     "lint": "next lint"
   },
@@ -34,7 +34,7 @@
           "{projectRoot}/.next"
         ]
       },
-      "build:cf": {
+      "pack": {
         "outputs": [
           "{projectRoot}/.vercel"
         ]
