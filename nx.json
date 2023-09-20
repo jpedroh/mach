@@ -2,10 +2,13 @@
   "extends": "nx/presets/npm.json",
   "tasksRunnerOptions": {
     "default": {
-      "runner": "@nrwl/nx-cloud",
+      "runner": "@nx-aws-plugin/nx-aws-cache",
       "options": {
-        "cacheableOperations": ["build", "test", "eject"],
-        "accessToken": "NWIyMWU5OTUtYjdiMi00OGVkLTk1MjUtYzg2NzZmYjRkOThlfHJlYWQtd3JpdGU="
+        "cacheableOperations": [
+          "build",
+          "test",
+          "eject"
+        ]
       }
     }
   },
