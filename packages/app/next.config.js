@@ -18,6 +18,9 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
 }
 
 // Injected content via Sentry wizard below

@@ -50,6 +50,7 @@
   },
   "scripts": {
     "serve": "nx run @mach/app:dev",
+    "build:app": "nx build:cf @mach/app",
     "build": "nx run-many --target=build",
     "lint": "nx run-many --target=lint",
     "test": "nx run-many --target=test"
