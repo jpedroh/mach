@@ -8,12 +8,17 @@
     "@mach/database": "*",
     "@sentry/nextjs": "^7.72.0"
   },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.1.0",
+    "jsdom": "^22.1.0"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "pack": "next-on-pages",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "vitest --watch=false"
   },
   "browserslist": {
     "production": [
