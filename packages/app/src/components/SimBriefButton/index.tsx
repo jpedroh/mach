@@ -1,5 +1,5 @@
 import { Flight } from '@mach/database'
-import React, { FC } from 'react'
+import { FC } from 'react'
 import Button from '../Button'
 
 type Props = {
