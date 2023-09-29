@@ -3,7 +3,19 @@ import { FC } from 'react'
 import Button from '../Button'
 
 type Props = {
-  flight: Flight
+  flight: Pick<
+    Flight,
+    | 'company'
+    | 'flightNumber'
+    | 'aircraft'
+    | 'departureIcao'
+    | 'arrivalIcao'
+    | 'estimatedOffBlockTime'
+    | 'route'
+    | 'estimatedEnrouteMinutes'
+    | 'cruisingLevel'
+    | 'remarks'
+  >
 }
 
 const VatsimButton: FC<Props> = ({ flight }) => {
@@ -18,7 +30,7 @@ const VatsimButton: FC<Props> = ({ flight }) => {
     route: flight.route,
     steh: Math.floor(flight.estimatedEnrouteMinutes / 60).toString(),
     stem: (flight.estimatedEnrouteMinutes % 60).toString(),
-    fl: (flight.cruisingLevel ** 100).toString(),
+    fl: (flight.cruisingLevel * 100).toString(),
     manualrmk: flight.remarks,
   }
 
