@@ -43,8 +43,8 @@ importers:
         specifier: '>=7.0.0 <8.0.0'
         version: 7.22.20
       '@cloudflare/next-on-pages':
-        specifier: ^1.6.1
-        version: 1.6.1(vercel@32.2.5)(wrangler@3.8.0)
+        specifier: ^1.6.3
+        version: 1.6.3(vercel@32.2.5)(wrangler@3.8.0)
       '@semantic-release/exec':
         specifier: ^6.0.0
         version: 6.0.3(semantic-release@22.0.5)
@@ -136,8 +136,8 @@ importers:
   packages/app:
     dependencies:
       '@cloudflare/next-on-pages':
-        specifier: ^1.6.1
-        version: 1.6.1(vercel@32.2.5)(wrangler@3.8.0)
+        specifier: ^1.6.3
+        version: 1.6.3(vercel@32.2.5)(wrangler@3.8.0)
       '@mach/database':
         specifier: '*'
         version: link:../database
@@ -1052,11 +1052,11 @@ packages:
     dependencies:
       mime: 3.0.0
 
-  /@cloudflare/next-on-pages@1.6.1(vercel@32.2.5)(wrangler@3.8.0):
-    resolution: {integrity: sha512-f1v82OUVELH6FD71wGN5B0UsHU1xgNC44m6KcxXU3ujIr+S7QiOLhK18aiPqWPWlmkDMibDS3kY9XXRGeiOh8g==}
+  /@cloudflare/next-on-pages@1.6.3(vercel@32.2.5)(wrangler@3.8.0):
+    resolution: {integrity: sha512-v+gmG3M8mOUJxeby3Odtuz64D5ta/6bF9rjAiKiq7YQtoRNgYaMZwLOFz7sejabEC2CukjW1Zbj8YULFM1jcOw==}
     hasBin: true
     peerDependencies:
-      vercel: ^30.0.0 || ^31.0.0 || ^32.0.0
+      vercel: '>=30.0.0'
       wrangler: ^3.0.0
     dependencies:
       acorn: 8.10.0
@@ -1963,7 +1963,7 @@ packages:
       npmlog: 5.0.1
       rimraf: 3.0.2
       semver: 7.5.4
-      tar: 6.1.15
+      tar: 6.2.0
     transitivePeerDependencies:
       - encoding
       - supports-color
@@ -9039,17 +9039,6 @@ packages:
       inherits: 2.0.4
       readable-stream: 3.6.2
 
-  /tar@6.1.15:
-    resolution: {integrity: sha512-/zKt9UyngnxIT/EAGYuxaMYgOIJiP81ab9ZfkILq4oNLPFX50qyYmu7jRj9qeXoxmJHjGlbH0+cm2uy1WCs10A==}
-    engines: {node: '>=10'}
-    dependencies:
-      chownr: 2.0.0
-      fs-minipass: 2.1.0
-      minipass: 5.0.0
-      minizlib: 2.1.2
-      mkdirp: 1.0.4
-      yallist: 4.0.0
-
   /tar@6.2.0:
     resolution: {integrity: sha512-/Wo7DcT0u5HUV486xg675HtjNd3BXZ6xDbzsCUZPt5iw8bTQ63bP0Raut3mvro9u+CUyq7YQd8Cx55fsZXxqLQ==}
     engines: {node: '>=10'}
@@ -9060,7 +9049,6 @@ packages:
       minizlib: 2.1.2
       mkdirp: 1.0.4
       yallist: 4.0.0
-    dev: false
 
   /temp-dir@3.0.0:
     resolution: {integrity: sha512-nHc6S/bwIilKHNRgK/3jlhDoIHcp45YgyiwcAk46Tr0LfEqGBVpmiAyuiuxeVE44m3mXnEeVhaipLOEWmH+Njw==}
