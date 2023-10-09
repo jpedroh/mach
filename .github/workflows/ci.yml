@@ -30,7 +30,7 @@ jobs:
         with:
           node-version: 20
           cache: 'pnpm'
-      - uses: nrwl/nx-set-shas@v3
+      - uses: nrwl/nx-set-shas@v4
         with:
           main-branch-name: 'master'
       - run: pnpm install
