@@ -130,8 +130,8 @@ importers:
         specifier: ^5.2.2
         version: 5.2.2
       zod:
-        specifier: ^3.22.3
-        version: 3.22.3
+        specifier: ^3.22.4
+        version: 3.22.4
 
   packages/app:
     dependencies:
@@ -1148,8 +1148,8 @@ packages:
       semver: 7.5.4
       vercel: 32.2.5
       wrangler: 3.8.0
-      zod: 3.22.3
-      zodcli: 0.0.4(zod@3.22.3)
+      zod: 3.22.4
+      zodcli: 0.0.4(zod@3.22.4)
 
   /@cloudflare/workerd-darwin-64@1.20230904.0:
     resolution: {integrity: sha512-/GDlmxAFbDtrQwP4zOXFbqOfaPvkDxdsCoEa+KEBcAl5uR98+7WW5/b8naBHX+t26uS7p4bLlImM8J5F1ienRQ==}
@@ -4998,7 +4998,7 @@ packages:
       hanji: 0.0.5
       json-diff: 0.9.0
       minimatch: 7.4.6
-      zod: 3.22.3
+      zod: 3.22.4
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -10260,10 +10260,13 @@ packages:
   /zod@3.22.3:
     resolution: {integrity: sha512-EjIevzuJRiRPbVH4mGc8nApb/lVLKVpmUhAaR5R5doKGfAnGJ6Gr3CViAVjP+4FWSxCsybeWQdcgCtbX+7oZug==}
 
-  /zodcli@0.0.4(zod@3.22.3):
+  /zod@3.22.4:
+    resolution: {integrity: sha512-iC+8Io04lddc+mVqQ9AZ7OQ2MrUKGN+oIQyq1vemgt46jwCwLfhq7/pwnBnNXXXZb8VTVLKwp9EDkx+ryxIWmg==}
+
+  /zodcli@0.0.4(zod@3.22.4):
     resolution: {integrity: sha512-+WdBcf7Z19ueKI/w9SbxRXGyPnn5Fg/hc2nvOL3YKwcnhL2dvp58MvZwScvJS/Zqt4ePwSOLajboFG6su8BM8w==}
     peerDependencies:
       zod: ^3.21.4
     dependencies:
       typescript: 4.9.5
-      zod: 3.22.3
+      zod: 3.22.4
