@@ -20,9 +20,7 @@ const credentialsSchema = z
 const connection = connect({
   ...credentialsSchema.parse(process.env),
   fetch: (url, init) => {
-    // eslint-disable-next-line
-    delete (init as any)['cache'] // Remove cache header
-    // @ts-expect-error missing fetch
+    delete init['cache'] // Remove cache header
     return fetch(url, init)
   },
 })
