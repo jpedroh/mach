@@ -43,8 +43,8 @@ importers:
         specifier: '>=7.0.0 <8.0.0'
         version: 7.23.2
       '@cloudflare/next-on-pages':
-        specifier: ^1.6.3
-        version: 1.6.3(vercel@32.2.5)(wrangler@3.8.0)
+        specifier: ^1.7.2
+        version: 1.7.2(vercel@32.2.5)(wrangler@3.8.0)
       '@semantic-release/exec':
         specifier: ^6.0.0
         version: 6.0.3(semantic-release@22.0.5)
@@ -136,8 +136,8 @@ importers:
   packages/app:
     dependencies:
       '@cloudflare/next-on-pages':
-        specifier: ^1.6.3
-        version: 1.6.3(vercel@32.2.5)(wrangler@3.8.0)
+        specifier: ^1.7.2
+        version: 1.7.2(vercel@32.2.5)(wrangler@3.8.0)
       '@mach/database':
         specifier: '*'
         version: link:../database
@@ -1114,8 +1114,8 @@ packages:
     dependencies:
       mime: 3.0.0
 
-  /@cloudflare/next-on-pages@1.6.3(vercel@32.2.5)(wrangler@3.8.0):
-    resolution: {integrity: sha512-v+gmG3M8mOUJxeby3Odtuz64D5ta/6bF9rjAiKiq7YQtoRNgYaMZwLOFz7sejabEC2CukjW1Zbj8YULFM1jcOw==}
+  /@cloudflare/next-on-pages@1.7.2(vercel@32.2.5)(wrangler@3.8.0):
+    resolution: {integrity: sha512-Jr1s8CIo/S1e6/5R0jKmUueOcJMEGYp96viBUvw0rCRLo3Uw88V+tYr0eubzlTbvhI0Vq4aSLLtiyco9kLsJBQ==}
     hasBin: true
     peerDependencies:
       vercel: '>=30.0.0'
@@ -1128,6 +1128,7 @@ packages:
       cookie: 0.5.0
       esbuild: 0.15.18
       js-yaml: 4.1.0
+      package-manager-manager: 0.2.0
       pcre-to-regexp: 1.1.0
       semver: 7.5.4
       vercel: 32.2.5
@@ -8216,6 +8217,12 @@ packages:
     engines: {node: '>=4'}
     dev: true
 
+  /package-manager-manager@0.2.0:
+    resolution: {integrity: sha512-V02gl0bafXJ2gcY6j+5IHM7UdnYwmF+2OsFZuqVcha6iMSStD4dpIOBOsypnUIwOi4jLcPz6RQuyifmAE3mG8g==}
+    dependencies:
+      js-yaml: 4.1.0
+      shellac: 0.8.0
+
   /parent-module@1.0.1:
     resolution: {integrity: sha512-GQ2EWRpQV8/o+Aw8YqtfZZPfNRWZYkbidE9k5rpl/hC3vtHHBfGm2Ifi6qWV+coDGkrUKZAxE3Lot5kcsRlh+g==}
     engines: {node: '>=6'}
@@ -8699,6 +8706,9 @@ packages:
       set-function-name: 2.0.1
     dev: true
 
+  /reghex@1.0.2:
+    resolution: {integrity: sha512-bYtyDmFGHxn1Y4gxIs12+AUQ1WRDNvaIhn6ZuKc5KUbSVcmm6U6vx/RA66s26xGhTWBErKKDKK7lorkvvIBB5g==}
+
   /registry-auth-token@5.0.2:
     resolution: {integrity: sha512-o/3ikDxtXaA59BmZuZrJZDJv8NMDGSj+6j6XaeBmHw8eY1i1qd9+6H+LjVvQXx3HN6aRCGa1cUdJ9RaJZUugnQ==}
     engines: {node: '>=14'}
@@ -8958,6 +8968,11 @@ packages:
     resolution: {integrity: sha512-7++dFhtcx3353uBaq8DDR4NuxBetBzC7ZQOhmTQInHEd6bSrXdiEyzCvG07Z44UYdLShWUyXt5M/yhz8ekcb1A==}
     engines: {node: '>=8'}
     dev: true
+
+  /shellac@0.8.0:
+    resolution: {integrity: sha512-M3F2vzYIM7frKOs0+kgs/ITMlXhGpgtqs9HxDPciz3bckzAqqfd4LrBn+CCmSbICyJS+Jz5UDkmkR1jE+m+g+Q==}
+    dependencies:
+      reghex: 1.0.2
 
   /side-channel@1.0.4:
     resolution: {integrity: sha512-q5XPytqFEIKHkGdiMIrY10mvLRvnQh42/+GoBlFW3b2LXLE2xxJpZFdm94we0BaoV3RwJyGqg5wS7epxTv0Zvw==}
