@@ -5,9 +5,9 @@ type HttpClient = {
   ) => Promise<{ data: string }>
 }
 
-const firRplFileDownloader = ({ http }: { http: HttpClient }) => {
-  return async (fir: string, date: string) => {
-    const fileLink = `http://portal.cgna.decea.mil.br/files/abas/${date}/painel_rpl/bdr/RPL${fir}.zip`
+const rplFileDownloader = ({ http }: { http: HttpClient }) => {
+  return async (date: string) => {
+    const fileLink = `http://portal.cgna.decea.mil.br/files/abas/${date}/painel_rpl/bdr/RPL_NAVBRASIL.zip`
 
     const { data } = await http.get(fileLink, {
       responseType: 'arraybuffer',
@@ -17,4 +17,4 @@ const firRplFileDownloader = ({ http }: { http: HttpClient }) => {
   }
 }
 
-export default firRplFileDownloader
+export default rplFileDownloader

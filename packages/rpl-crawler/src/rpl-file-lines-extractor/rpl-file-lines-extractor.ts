@@ -11,12 +11,9 @@ const makeRplFileLinesExtractor = ({ zip }: { zip: ZipPort }) => {
 
     const flightsFileName = zipFile
       .listZipFileNames()
-      .find((fileName) => fileName.includes('RVSM'))
+      .find((fileName) => fileName.startsWith('RPL'))
 
-    const fileLines = zipFile.readFileLines(flightsFileName)
-    const tokens = fileLines.matchAll(new RegExp(/(?<=#C \d{6})[^@]*/gs))
-
-    return Array.from(tokens).map(([token]) => token.trim())
+    return zipFile.readFileLines(flightsFileName).split('\n').slice(1)
   }
 }
 

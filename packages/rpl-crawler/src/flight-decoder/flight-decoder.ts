@@ -9,35 +9,31 @@ import {
 
 const makeFlightDecoder = ({ uuid }: { uuid: (line: string) => string }) => {
   return (line: string): Omit<Flight, 'cycle'> => {
-    const LINES = line.split('\n').map((line) => line.trim())
+    line = line.trim()
 
-    const LINE_1 = LINES[0]
-    const callsign = LINE_1.match(/[A-Z]{3}\d+/)[0]
-    const beginDate = resolveFlightDate(
-      LINE_1.match(/(?<= )\d{6}(?= (\d| ))/)[0]
-    )
-    const endDate = LINE_1.match(/(?<= )(\d{6}|( ){6})(?= [I|V|Y|Z])/)[0]
+    const callsign = line.substring(22, 29).trim()
+    const beginDate = resolveFlightDate(line.substring(0, 6))
+    const endDate =
+      line.substring(7, 13).trim() === 'UFN'
+        ? null
+        : resolveFlightDate(line.substring(7, 13))
     const company = callsign.match(/[A-Z]+/)[0]
     const flightNumber = Number(callsign.match(/\d+/)[0])
-    const departureIcao = LINE_1.substr(-9, 4)
-    const estimatedOffBlockTime = LINE_1.match(/\d{4}$/)[0]
-    const weekDays = LINE_1.match(/(?<= )(\d| ){7}(?= )/)[0].trim()
-
-    const LINE_2 = LINES[1]
-    const cruisingSpeed = LINE_2.match(/(?<=\/)N\d+/)[0]
-    const cruisingLevel = Number(LINE_2.match(/(?<=F)\d+/)[0])
-    const route = LINE_2.match(/(?<=\/N\d+F\d+ ).*/)[0]
-
-    const LINE_3 = LINES[2]
-    const arrivalIcao = LINE_3.substring(0, 4)
+    const departureIcao = line.substring(37, 41)
+    const estimatedOffBlockTime = line.substring(41, 45)
+    const weekDays = line.substring(14, 21)
+    const cruisingSpeed = line.substring(46, 51)
+    const cruisingLevel = Number(line.substring(52, 55))
+    const route = line.substring(56, line.indexOf('  ')).trim()
+    const rightPadStart = line.lastIndexOf('  ') + 2
+    const arrivalIcao = line.substring(rightPadStart, rightPadStart + 4).trim()
     const estimatedEnrouteMinutes = resolveEstimatedEnrouteMinutes(
-      (LINE_3.match(/\d{4}/) ?? ['0000'])[0]
+      line.substring(rightPadStart + 4, rightPadStart + 8).trim()
     )
-    const remarks = LINE_3.substring(13)
-
+    const remarks = line.substring(rightPadStart + 9)
     const aircraft = {
-      icaoCode: LINE_1.match(/[A-Z0-9]+(?=(\/(M|L|H|J)))/)[0],
-      wakeTurbulence: LINE_1.match(/(?<=\/)(M|L|H|J)/)[0] as WakeTurbulence,
+      icaoCode: line.match(/[A-Z0-9]+(?=(\/(M|L|H|J)))/)[0],
+      wakeTurbulence: line.match(/(?<=\/)(M|L|H|J)/)[0] as WakeTurbulence,
       equipment: remarks.match(/(?<=EQPT\/)[^\s]+/)[0],
     }
 
@@ -58,7 +54,7 @@ const makeFlightDecoder = ({ uuid }: { uuid: (line: string) => string }) => {
       flightRules: resolveFlightRules(route),
       weekdays: resolveWeekDays(weekDays),
       beginDate,
-      endDate: endDate.trim() ? resolveFlightDate(endDate) : null,
+      endDate,
     }
   }
 }
