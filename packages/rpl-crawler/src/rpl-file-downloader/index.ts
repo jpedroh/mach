@@ -1,6 +1,6 @@
 import Axios from 'axios'
-import firRplFileDownloader from './rpl-file-downloader'
+import rplFileDownloader from './rpl-file-downloader'
 
-export default firRplFileDownloader({
+export default rplFileDownloader({
   http: Axios,
 })

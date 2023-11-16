@@ -8,7 +8,7 @@ import Logger from './utils/logger'
 
 type MainDependencies = {
   updateChecker: (date: string) => Promise<boolean>
-  rplFileDownloader: (fir: string, date: string) => Promise<Buffer>
+  rplFileDownloader: (date: string) => Promise<Buffer>
   rplFileLinesExtractor: (file: Buffer) => string[]
   flightDecoder: (line: string) => Omit<Flight, 'cycle'>
   saveFlights: (flights: Flight[]) => Promise<void>
@@ -25,8 +25,7 @@ const main = async (
   }: MainDependencies
 ) => {
   try {
-    const firs = args[2].split(',')
-    const date = args[3]
+    const date = args[2]
 
     Logger.info(`CHECKING IF EXISTS UPDATES FOR ${date}`)
     const hasUpdate = await updateChecker(date)
@@ -37,25 +36,13 @@ const main = async (
 
     Logger.info(`STARTING RPL UPDATE FOR ${date}`)
 
-    Logger.info(`STARTING RPL FILES DOWNLOAD`)
-    const files = await Promise.all(
-      firs.map(async (fir) => {
-        Logger.info(`STARTING DOWNLOAD OF RPL FILE FOR ${fir}`)
-        const file = await rplFileDownloader(fir, date)
-        Logger.info(`COMPLETED DOWNLOAD OF RPL FILE FOR ${fir}`)
-        return file
-      })
-    )
-    Logger.info(`COMPLETED RPL FILES DOWNLOAD`)
+    Logger.info(`STARTING RPL FILE DOWNLOAD`)
+    const file = await rplFileDownloader(date)
+    Logger.info(`COMPLETED RPL FILE DOWNLOAD`)
 
-    Logger.info(`STARTING LINES EXTRACTION FROM RPL FILES`)
-    const filesLines = new Set(
-      files.reduce((carry, file) => {
-        const lines = rplFileLinesExtractor(file)
-        return carry.concat(lines)
-      }, [] as string[])
-    )
-    Logger.info(`COMPLETED LINES EXTRACTION FROM RPL FILES`)
+    Logger.info(`STARTING LINES EXTRACTION FROM RPL FILE`)
+    const filesLines = rplFileLinesExtractor(file)
+    Logger.info(`COMPLETED LINES EXTRACTION FROM RPL FILE`)
 
     Logger.info(`STARTING DECODING OF RPL FILES DATA`)
     const flights = Array.from(filesLines).map(flightDecoder)
@@ -71,7 +58,6 @@ const main = async (
 
     Logger.info(`${flights.length} FLIGHTS INSERTED`)
   } catch (error) {
-    console.error(error)
     Logger.error(error.message)
     process.exit(1)
   }

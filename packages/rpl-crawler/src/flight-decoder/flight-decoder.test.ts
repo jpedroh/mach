@@ -6,69 +6,54 @@ describe('flight-decoder', () => {
   const flightDecoder = makeFlightDecoder({ uuid: () => randomUUID() })
 
   test('Given flight with begin and end date', () => {
-    const line = `#C 230720 TAM3587 26      230720 011020 IS A321/M SW/C SBRF 0005
-      /N0450F360 DCT KIDAN UZ59 CARVA DCT
-      SBBR 0225 C/ EQPT/SDE2FGHIM1RWXYZ PBN/A1B1C1D1L1O2S2 DAT/SV EET/SBBS0142 RMK/TCAS
-      @`
+    const line = `121123 191123 0000007 AZU2737 AT76/M SBAR1330 N0258 150 DENDO DCT ANBEX                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  SBRF0106 EQPT/SDFGHIRY/LB1 PBN/B2B3B4C2D2D3O2S1`
     const flight = flightDecoder(line)
 
-    expect(flight.beginDate).toEqual(new Date(Date.UTC(2020, 6, 23)))
-    expect(flight.endDate).toEqual(new Date(Date.UTC(2020, 9, 1)))
+    expect(flight.beginDate).toEqual(new Date(Date.UTC(2023, 10, 12)))
+    expect(flight.endDate).toEqual(new Date(Date.UTC(2023, 10, 19)))
   })
 
   test('Given flight with IFR Flight Rule', () => {
-    const line = `#C 230720 TAM3587 26      230720 011020 IS A321/M SW/C SBRF 0005
-      /N0450F360 DCT KIDAN UZ59 CARVA DCT
-      SBBR 0225 C/ EQPT/SDE2FGHIM1RWXYZ PBN/A1B1C1D1L1O2S2 DAT/SV EET/SBBS0142 RMK/TCAS
-      @`
+    const line = `121123 191123 0000007 AZU2737 AT76/M SBAR1330 N0258 150 DENDO DCT ANBEX                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  SBRF0106 EQPT/SDFGHIRY/LB1 PBN/B2B3B4C2D2D3O2S1`
     const flight = flightDecoder(line)
 
     expect(flight.flightRules).toEqual('IFR')
   })
 
   test('Given flight with Y Flight Rule', () => {
-    const line = `#C 030820 GLO1913 12356   030820 120820 IS B738/M SW/C SBFZ 0000
-      /N0460F360 UZ19 SVD/N0250F055 VFR DCT
-      SBSV 0136 C/ EQPT/SDFGIKRWY PBN/B1C1D1O1S2 RALT/F370 DCT SV051 DCT CONDE UZ17 SBAR
-      @`
+    const line = `   131123 131123 1000000 ACN5580 C208/L SBBE0945 N0155 100 DCT TAMAR DCT APURU DCT 0055S05219W/N0150F065 VFR DCT                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            SBMD0135 EQPT/SDFGR/S PBN/B2C2D2O2S1 OPR/AZUL CONECTA LTDA PER/A RALT/F090 DCT SBBE RMK/JAH VOADO VMC`
     const flight = flightDecoder(line)
 
     expect(flight.flightRules).toEqual('Y')
   })
 
   test('Given flight with Z Flight Rule', () => {
-    const line = `#C 090820 GLO1750 7       090820 090820 IS B737/M SW/C SBIL 1845
-      /N0250F145 ILSIN/N0333F180 IFR DCT RAIRA DCT SGR
-      SBPS 0027 C/ EQPT/SDFGIKRWY PBN/B1C1D1O1S2
-      @`
+    const line = `   131123 171123 1204500 ACN5341 C208/L SBBW1810 N0155 085 DCT MASVO/N0155F100 IFR DCT MAGDA DCT                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            SBCY0120 EQPT/SDFGR/S PBN/B2C2D2O2S1 EET/SBAZ0021 OPR/AZUL CONECTA LTDA PER/A RMK/JAH VOADO VMC`
     const flight = flightDecoder(line)
 
     expect(flight.flightRules).toEqual('Z')
   })
 
   test('Given a flight', () => {
-    const line = `#C 230720 TAM3587 26      230720 011020 IS A321/M SW/C SBRF 0005
-      /N0450F360 DCT KIDAN UZ59 CARVA DCT
-      SBBR 0225 C/ EQPT/SDE2FGHIM1RWXYZ PBN/A1B1C1D1L1O2S2 DAT/SV EET/SBBS0142 RMK/TCAS
-      @`
+    const line = `   171123 181123 0000500 TAM3710 A320/M SBBR2350 N0450 340 ILKUS DCT OPNAX UZ24 ANBIX UM402 BVI DCT                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         SBBV0320 EQPT/SDE2FGHIM1RWXYZ/C PBN/A1B1C1D1L1O2S2 DAT/SV EET/SBAZ0055 RMK/TCAS`
     const flight = flightDecoder(line)
 
-    expect(flight.callsign).toEqual('TAM3587')
+    expect(flight.callsign).toEqual('TAM3710')
     expect(flight.company).toEqual('TAM')
-    expect(flight.flightNumber).toEqual(3587)
-    expect(flight.aircraft.icaoCode).toEqual('A321')
+    expect(flight.flightNumber).toEqual(3710)
+    expect(flight.aircraft.icaoCode).toEqual('A320')
     expect(flight.aircraft.wakeTurbulence).toEqual('M')
-    expect(flight.aircraft.equipment).toEqual('SDE2FGHIM1RWXYZ')
-    expect(flight.departureIcao).toEqual('SBRF')
-    expect(flight.estimatedOffBlockTime).toEqual('0005')
+    expect(flight.aircraft.equipment).toEqual('SDE2FGHIM1RWXYZ/C')
+    expect(flight.departureIcao).toEqual('SBBR')
+    expect(flight.estimatedOffBlockTime).toEqual('2350')
     expect(flight.cruisingSpeed).toEqual('N0450')
-    expect(flight.cruisingLevel).toEqual(360)
-    expect(flight.weekdays).toEqual(['TUESDAY', 'SATURDAY'])
-    expect(flight.route).toEqual('DCT KIDAN UZ59 CARVA DCT')
-    expect(flight.arrivalIcao).toEqual('SBBR')
-    expect(flight.estimatedEnrouteMinutes).toEqual(145)
+    expect(flight.cruisingLevel).toEqual(340)
+    expect(flight.weekdays).toEqual(['FRIDAY'])
+    expect(flight.route).toEqual('ILKUS DCT OPNAX UZ24 ANBIX UM402 BVI DCT')
+    expect(flight.arrivalIcao).toEqual('SBBV')
+    expect(flight.estimatedEnrouteMinutes).toEqual(200)
     expect(flight.remarks).toEqual(
-      'EQPT/SDE2FGHIM1RWXYZ PBN/A1B1C1D1L1O2S2 DAT/SV EET/SBBS0142 RMK/TCAS'
+      'EQPT/SDE2FGHIM1RWXYZ/C PBN/A1B1C1D1L1O2S2 DAT/SV EET/SBAZ0055 RMK/TCAS'
     )
     expect(flight.flightRules).toEqual('IFR')
   })

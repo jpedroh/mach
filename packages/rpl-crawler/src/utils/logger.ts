@@ -7,8 +7,13 @@ class Logger {
     console.info(Logger.formatMessage(LoggingLevel.INFO, message))
   }
 
-  public static error(message: string): void {
-    console.error(Logger.formatMessage(LoggingLevel.ERROR, message))
+  public static error(error: Error): void {
+    console.error(
+      `${Logger.formatMessage(
+        LoggingLevel.ERROR,
+        error.message
+      )} - ${JSON.stringify(error)}`
+    )
   }
 }
 
