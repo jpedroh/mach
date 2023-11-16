@@ -1,35 +1,12 @@
-import { describe, expect, test, vi } from 'vitest'
-import makeUpdateChecker from './update-checker'
+import { expect, test } from 'vitest'
+import updateChecker from './index'
 
-describe('update-checker', () => {
-  const httpMock = {
-    get: vi.fn(),
-  }
-  const updateChecker = makeUpdateChecker({ http: httpMock })
+test('The update checker returns true if there are updates for the given date', async () => {
+  const hasUpdate = await updateChecker("2022-08-22")
+  expect(hasUpdate).toBeTruthy()
+})
 
-  describe('Given a date with no updates was given', () => {
-    const date = '2020-08-02'
-
-    describe('When request return 404 status', () => {
-      httpMock.get.mockResolvedValueOnce({ status: 404 })
-
-      test('Then update checker should return false', async () => {
-        const hasUpdate = await updateChecker(date)
-        expect(hasUpdate).toBeFalsy()
-      })
-    })
-  })
-
-  describe('Given a date with updates was given', () => {
-    const date = '2020-08-02'
-
-    describe('When request return 200 status', () => {
-      httpMock.get.mockResolvedValueOnce({ status: 200 })
-
-      test('Then update checker should return true', async () => {
-        const hasUpdate = await updateChecker(date)
-        expect(hasUpdate).toBeTruthy()
-      })
-    })
-  })
+test('The update checker returns false if there are non updates for the given date', async () => {
+  const hasUpdate = await updateChecker("2022-08-23")
+  expect(hasUpdate).toBeFalsy()
 })
