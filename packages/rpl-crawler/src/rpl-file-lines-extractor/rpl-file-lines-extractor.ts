@@ -13,7 +13,11 @@ const makeRplFileLinesExtractor = ({ zip }: { zip: ZipPort }) => {
       .listZipFileNames()
       .find((fileName) => fileName.startsWith('RPL'))
 
-    return zipFile.readFileLines(flightsFileName).split('\n').slice(1)
+    return zipFile
+      .readFileLines(flightsFileName)
+      .split('\n')
+      .slice(1, -1)
+      .map((v) => v.trim())
   }
 }
 
