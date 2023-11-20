@@ -38,7 +38,12 @@ const makeSaveData = () => {
         await tx.insert(flightsSchema).values(slice)
       }
 
-      await tx.delete(airportsSchema).where(inArray(airportsSchema.id, airports.map(v => v.id)))
+      await tx.delete(airportsSchema).where(
+        inArray(
+          airportsSchema.id,
+          airports.map((v) => v.id)
+        )
+      )
 
       const slicedAirports = sliceArray(airports)
       for (const slice of slicedAirports) {
