@@ -39,3 +39,11 @@ export const flights = mysqlTable('flights', {
 })
 
 export type Flight = typeof flights.$inferSelect
+
+export const airports = mysqlTable('airports', {
+  id: varchar('id', { length: 4 }).primaryKey(),
+  name: varchar('name', { length: 255 }).notNull(),
+  city: varchar('city', { length: 255 }).notNull(),
+})
+
+export type Airport = typeof airports.$inferSelect
