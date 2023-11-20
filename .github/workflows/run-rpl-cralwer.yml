@@ -28,4 +28,6 @@ jobs:
           DATABASE_HOST: ${{ secrets.database_host_production }}
           DATABASE_USERNAME: ${{ secrets.database_username_production }}
           DATABASE_PASSWORD: ${{ secrets.database_password_production }}
+          AISWEB_API_KEY: ${{ secrets.aisweb_api_key }}
+          AISWEB_API_PASSWORD: ${{ secrets.aisweb_api_password }}
           RPL_DATE: ${{ github.event.inputs.date }}
