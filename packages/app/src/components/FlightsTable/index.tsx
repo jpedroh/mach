@@ -2,7 +2,7 @@
 
 import { Flight } from '@mach/database'
 import { FC, useState } from 'react'
-import { Airport } from '../../services/fetch-airports'
+import { Airport } from '@mach/database'
 import { formatAirport } from '../../utils/format-airport'
 import Button from '../Button'
 import FlightModal from '../FlightModal'
