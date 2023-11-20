@@ -1,12 +1,13 @@
-import { Flight } from '@mach/database'
+import { Airport, Flight } from '@mach/database'
 import Logger from './utils/logger'
+import { fetchAirportsData } from './fetch-airports-data'
 
 type MainDependencies = {
   updateChecker: (date: string) => Promise<boolean>
   rplFileDownloader: (date: string) => Promise<Buffer>
   rplFileLinesExtractor: (file: Buffer) => string[]
   flightDecoder: (line: string) => Omit<Flight, 'cycle'>
-  saveFlights: (flights: Flight[]) => Promise<void>
+  saveData: (data: { flights: Flight[]; airports: Airport[] }) => Promise<void>
 }
 
 export async function runRplCrawler(
@@ -16,7 +17,7 @@ export async function runRplCrawler(
     rplFileDownloader,
     rplFileLinesExtractor,
     flightDecoder,
-    saveFlights,
+    saveData,
   }: MainDependencies
 ) {
   Logger.info(`CHECKING IF EXISTS UPDATES FOR ${date}`)
@@ -37,13 +38,22 @@ export async function runRplCrawler(
   Logger.info(`COMPLETED LINES EXTRACTION FROM RPL FILE`)
 
   Logger.info(`STARTING DECODING OF RPL FILES DATA`)
-  const flights = Array.from(filesLines).map(flightDecoder)
+  const flights = Array.from(filesLines)
+    .map(flightDecoder)
+    .map((flight) => ({ ...flight, cycle: new Date(date) }))
   Logger.info(`COMPLETED DECODING OF RPL FILES DATA`)
 
-  Logger.info(`STARTING SAVING DECODED DATA TO DATABASE`)
-  await saveFlights(
-    flights.map((flight) => ({ ...flight, cycle: new Date(date) }))
+  Logger.info(`STARTING FETCHING OF AIRPORTS DATA`)
+  const airports = await fetchAirportsData(
+    new Set([
+      ...flights.map((v) => v.departureIcao),
+      ...flights.map((v) => v.arrivalIcao),
+    ])
   )
+  Logger.info(`COMPLETED FETCHING OF AIRPORTS DATA`)
+
+  Logger.info(`STARTING SAVING DECODED DATA TO DATABASE`)
+  await saveData({ flights, airports })
   Logger.info(`COMPLETED SAVING DECODED DATA TO DATABASE`)
 
   Logger.info(`COMPLETED RPL UPDATE FOR ${date}`)
