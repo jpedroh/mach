@@ -2,7 +2,7 @@ import flightDecoder from './flight-decoder'
 import { runRplCrawler } from './main'
 import rplFileDownloader from './rpl-file-downloader'
 import rplFileLinesExtractor from './rpl-file-lines-extractor'
-import saveFlights from './save-flights'
+import saveData from './save-data'
 import updateChecker from './update-checker'
 import Logger from './utils/logger'
 
@@ -13,7 +13,7 @@ runRplCrawler(date, {
   rplFileDownloader,
   rplFileLinesExtractor,
   flightDecoder,
-  saveFlights,
+  saveData,
 }).catch((error) => {
   Logger.error(error)
   process.exit(1)
