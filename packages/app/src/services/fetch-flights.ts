@@ -1,6 +1,5 @@
 import { db } from '@mach/database'
 import z from 'zod'
-import { fetchAirportsData } from './fetch-airports'
 import { currentCycleSubquery } from '../utils/currentCycleSubquery'
 
 const schema = z.object({
@@ -34,7 +33,11 @@ export async function fetchFlights(searchParams: Record<string, unknown>) {
   const today = new Date().toISOString().substring(0, 10)
 
   const where = schema.parse(searchParams)
-  const flights = await db.query.flights.findMany({
+  return db.query.flights.findMany({
+    with: {
+      arrival: true,
+      departure: true,
+    },
     where: (fields, { sql, and, eq, or }) =>
       and(
         where.cycle
@@ -60,22 +63,5 @@ export async function fetchFlights(searchParams: Record<string, unknown>) {
             )
           : undefined
       ),
-  })
-
-  const icaos = flights.flatMap((flight) => [
-    flight.departureIcao,
-    flight.arrivalIcao,
-  ])
-
-  const airports = await fetchAirportsData(icaos)
-
-  return flights.map((flight) => {
-    return {
-      ...flight,
-      departure: airports.find(
-        ({ AeroCode }) => AeroCode === flight.departureIcao
-      ),
-      arrival: airports.find(({ AeroCode }) => AeroCode === flight.arrivalIcao),
-    }
   })
 }

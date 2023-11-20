@@ -1,7 +1,7 @@
 'use client'
 
 import { ChangeEventHandler, FC, useState } from 'react'
-import { Airport } from '../../services/fetch-airports'
+import { Airport } from '@mach/database'
 import { formatAirport } from '../../utils/format-airport'
 import Button from '../Button'
 import { SelectInput } from '../SelectInput'
@@ -52,7 +52,7 @@ const SearchFlightsForm: FC<Props> = ({
   }
 
   const airportsOptions = airports.map((airport) => {
-    return { value: airport.AeroCode, label: formatAirport(airport) }
+    return { value: airport.id, label: formatAirport(airport) }
   })
 
   const cyclesOptions = cycles.map((cycle) => {

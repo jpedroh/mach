@@ -1,3 +1,4 @@
+import { relations } from 'drizzle-orm'
 import { WakeTurbulence, Weekdays } from './enum'
 import {
   date,
@@ -38,6 +39,17 @@ export const flights = mysqlTable('flights', {
   cycle: date('cycle', { mode: 'date' }).notNull(),
 })
 
+export const flightsRelations = relations(flights, ({ one }) => ({
+  departure: one(airports, {
+    fields: [flights.departureIcao],
+    references: [airports.id],
+  }),
+  arrival: one(airports, {
+    fields: [flights.arrivalIcao],
+    references: [airports.id],
+  }),
+}))
+
 export type Flight = typeof flights.$inferSelect
 
 export const airports = mysqlTable('airports', {
@@ -45,5 +57,9 @@ export const airports = mysqlTable('airports', {
   name: varchar('name', { length: 255 }).notNull(),
   city: varchar('city', { length: 255 }).notNull(),
 })
+
+export const airportsRelations = relations(airports, ({ many }) => ({
+  flights: many(flights),
+}))
 
 export type Airport = typeof airports.$inferSelect
