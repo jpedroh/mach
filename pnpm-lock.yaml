@@ -46,8 +46,8 @@ importers:
         specifier: '>=7.0.0 <8.0.0'
         version: 7.23.6
       '@cloudflare/next-on-pages':
-        specifier: ^1.8.1
-        version: 1.8.1(vercel@32.5.5)(wrangler@3.16.0)
+        specifier: ^1.8.2
+        version: 1.8.2(vercel@32.5.5)(wrangler@3.16.0)
       '@semantic-release/exec':
         specifier: ^6.0.0
         version: 6.0.3(semantic-release@22.0.12)
@@ -1068,8 +1068,8 @@ packages:
       mime: 3.0.0
     dev: true
 
-  /@cloudflare/next-on-pages@1.8.1(vercel@32.5.5)(wrangler@3.16.0):
-    resolution: {integrity: sha512-tHkpmIpp3l5c6eELp8HVip7bqHbl7LwDSnDJTW6r9aRnGsHiLGtzafpxpnjWNDOamXcwJ/xDaJmKZ0jfhf20bg==}
+  /@cloudflare/next-on-pages@1.8.2(vercel@32.5.5)(wrangler@3.16.0):
+    resolution: {integrity: sha512-TVQL+1Xdmy/7qyuWrEb12k9DxIhEqdi8k2qat0oLifERqc3s9udzaS4jHPVghQmiR5xfaZhrt3fzBnqH5437RA==}
     hasBin: true
     peerDependencies:
       vercel: '>=30.0.0'
@@ -1079,6 +1079,7 @@ packages:
       ast-types: 0.14.2
       chalk: 5.3.0
       chokidar: 3.5.3
+      commander: 11.1.0
       cookie: 0.5.0
       esbuild: 0.15.18
       js-yaml: 4.1.0
@@ -1088,8 +1089,6 @@ packages:
       semver: 7.5.4
       vercel: 32.5.5
       wrangler: 3.16.0
-      zod: 3.22.4
-      zodcli: 0.0.4(zod@3.22.4)
     transitivePeerDependencies:
       - bufferutil
       - supports-color
@@ -4652,6 +4651,11 @@ packages:
     engines: {node: '>= 0.8'}
     dependencies:
       delayed-stream: 1.0.0
+
+  /commander@11.1.0:
+    resolution: {integrity: sha512-yPVavfyCcRhmorC7rWlkHn15b4wDVgVmBA7kV4QVBsF7kv/9TKJAbAXVTxvTnwP8HHKjRCJDClKbciiYS7p0DQ==}
+    engines: {node: '>=16'}
+    dev: true
 
   /commander@4.1.1:
     resolution: {integrity: sha512-NOKm8xhkzAjzFx8B2v5OAHT+u5pRQc2UCa2Vq9jYL/31o2wi9mxBA7LIFs3sV5VSC49z6pEhfbMULvShKj26WA==}
@@ -10769,13 +10773,4 @@ packages:
 
   /zod@3.22.4:
     resolution: {integrity: sha512-iC+8Io04lddc+mVqQ9AZ7OQ2MrUKGN+oIQyq1vemgt46jwCwLfhq7/pwnBnNXXXZb8VTVLKwp9EDkx+ryxIWmg==}
-    dev: true
-
-  /zodcli@0.0.4(zod@3.22.4):
-    resolution: {integrity: sha512-+WdBcf7Z19ueKI/w9SbxRXGyPnn5Fg/hc2nvOL3YKwcnhL2dvp58MvZwScvJS/Zqt4ePwSOLajboFG6su8BM8w==}
-    peerDependencies:
-      zod: ^3.21.4
-    dependencies:
-      typescript: 4.9.5
-      zod: 3.22.4
     dev: true
