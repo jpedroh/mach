@@ -1,7 +1,6 @@
-import { Flight } from '@mach/shared/database'
-import { FC } from 'react'
+import { fetchFlightById } from '../../../services/fetch-flight-by-id'
 import { formatEet } from '../../../utils/formatEet'
-import { Button } from '@mach/shared/ui'
+import { CloseButton } from './CloseButton'
 import IcaoFpl from './IcaoFpl'
 import IvaoButton from './IvaoButton'
 import SimBriefButton from './SimBriefButton'
@@ -10,14 +9,13 @@ import VatsimButton from './VatsimButton'
 import styles from './index.module.css'
 
 type Props = {
-  show: boolean
-  onClose: () => void
-  flight: Flight
+  id: string
 }
 
-const FlightModal: FC<Props> = ({ show, onClose, flight }) => {
-  return show ? (
-    <>
+export async function FlightModal({ id }: Props) {
+  const flight = await fetchFlightById(id);
+
+  return <>
       <div className={styles.container}>
         <div className={styles.modal}>
           <div className={styles.header}>
@@ -70,17 +68,11 @@ const FlightModal: FC<Props> = ({ show, onClose, flight }) => {
             <VatsimButton flight={flight} />
             <SimBriefButton flight={flight} />
             <SkyVectorButton flight={flight} />
-            <Button variant="danger" onClick={onClose}>
-              Close
-            </Button>
+          <CloseButton />
           </div>
         </div>
       </div>
       <div className={styles.background}></div>
-    </>
-  ) : (
-    <></>
-  )
+  </>
 }
 
-export default FlightModal

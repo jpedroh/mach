@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { Layout, Lead } from '@mach/shared/ui/server'
 import { SearchFlightsQuery, fetchFlights } from '../services/fetch-flights'
-import FlightsTable from './FlightsTable'
+import { FlightsTable } from './flights-table'
 
 type Props = {
   query: SearchFlightsQuery
@@ -34,7 +34,7 @@ export async function SearchPage({ query }: Props) {
         make a new search.
       </Lead>
 
-      <FlightsTable items={flights} />
+      <FlightsTable flights={flights} />
     </Layout>
   )
 }
