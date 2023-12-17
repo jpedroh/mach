@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import styles from './index.module.css'
 
-const Home: FC = () => {
+export const Header: FC = () => {
   return (
     <div className={styles.container}>
       <h1>mach</h1>
@@ -9,5 +9,3 @@ const Home: FC = () => {
     </div>
   )
 }
-
-export default Home

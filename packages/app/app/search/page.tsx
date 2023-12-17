@@ -1,8 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
 import FlightsTable from '../../src/components/FlightsTable'
-import { Lead } from '@mach/shared/ui/server'
-import GeneralLayout from '../../src/layouts/GeneralLayout'
+import { Layout, Lead } from '@mach/shared/ui/server'
 import { fetchFlights } from '../../src/services/fetch-flights'
 
 export const revalidate = 0
@@ -22,12 +21,12 @@ export default async function Search({
 
   if (flights.length === 0) {
     return (
-      <GeneralLayout>
+      <Layout>
         <Lead>
           There are no results for your search. <Link href="/">Click here</Link>{' '}
           to make a new search.
         </Lead>
-      </GeneralLayout>
+      </Layout>
     )
   }
 
@@ -38,13 +37,13 @@ export default async function Search({
   }
 
   return (
-    <GeneralLayout>
+    <Layout>
       <Lead>
         {getLeadMessage(flights.length)} <Link href="/">Click here</Link> to
         make a new search.
       </Lead>
 
       <FlightsTable items={flights} />
-    </GeneralLayout>
+    </Layout>
   )
 }

@@ -1,5 +1,4 @@
-import GeneralLayout from '../src/layouts/GeneralLayout'
-import { Lead } from '@mach/shared/ui/server'
+import { Layout, Lead } from '@mach/shared/ui/server'
 import SearchFlightsForm from '../src/components/SearchFlightsForm'
 import { fetchCompanies } from '../src/services/fetch-companies'
 import { fetchAircraftIcaoCodes } from '../src/services/fetch-aircraft-icao-codes'
@@ -23,7 +22,7 @@ export default async function Page() {
   ])
 
   return (
-    <GeneralLayout>
+    <Layout>
       <Lead>To begin, fill at least one of the following fields.</Lead>
       <SearchFlightsForm
         cycles={cycles}
@@ -31,6 +30,6 @@ export default async function Page() {
         companies={companies}
         aircraftIcaoCodes={aircraftIcaoCodes}
       />
-    </GeneralLayout>
+    </Layout>
   )
 }
