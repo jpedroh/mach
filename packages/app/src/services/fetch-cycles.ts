@@ -1,4 +1,4 @@
-import { db, flights } from '@mach/database'
+import { db, flights } from '@mach/shared/database'
 import { desc, sql } from 'drizzle-orm'
 
 export async function fetchCycles() {

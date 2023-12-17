@@ -1,8 +1,8 @@
 'use client'
 
-import { Flight } from '@mach/database'
+import { Flight } from '@mach/shared/database'
 import { FC, useState } from 'react'
-import { Airport } from '@mach/database'
+import { Airport } from '@mach/shared/database'
 import { formatAirport } from '../../utils/format-airport'
 import Button from '../Button'
 import FlightModal from '../FlightModal'

@@ -1,7 +1,7 @@
 'use client'
 
 import { ChangeEventHandler, FC, useState } from 'react'
-import { Airport } from '@mach/database'
+import { Airport } from '@mach/shared/database'
 import { formatAirport } from '../../utils/format-airport'
 import Button from '../Button'
 import { SelectInput } from '../SelectInput'

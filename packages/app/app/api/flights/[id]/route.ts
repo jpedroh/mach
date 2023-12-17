@@ -1,4 +1,4 @@
-import { db } from '@mach/database'
+import { db } from '@mach/shared/database'
 import { NextResponse } from 'next/server'
 import z from 'zod'
 
