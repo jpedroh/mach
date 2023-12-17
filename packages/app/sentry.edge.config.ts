@@ -3,12 +3,13 @@
 // Note that this config is unrelated to the Vercel Edge Runtime and is also required when running locally.
 // https://docs.sentry.io/platforms/javascript/guides/nextjs/
 
+import { getEnvironmentVariable } from '@mach/shared/env'
 import * as Sentry from '@sentry/nextjs'
 
 Sentry.init({
-  dsn: process.env.NEXT_PUBLIC_SENTRY_DSN,
-  release: process.env.NEXT_PUBLIC_SENTRY_RELEASE,
-  environment: process.env.NEXT_PUBLIC_SENTRY_ENVIRONMENT,
+  dsn: getEnvironmentVariable('NEXT_PUBLIC_SENTRY_DSN'),
+  release: getEnvironmentVariable('NEXT_PUBLIC_SENTRY_RELEASE'),
+  environment: getEnvironmentVariable('NEXT_PUBLIC_SENTRY_ENVIRONMENT'),
 
   // Adjust this value in production, or use tracesSampler for greater control
   tracesSampleRate: 0.001,

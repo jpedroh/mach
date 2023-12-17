@@ -2,13 +2,6 @@ import { NextResponse } from 'next/server'
 
 export const runtime = 'edge'
 
-function getApiUrl() {
-  if (process.env.VERCEL_ENV === 'production') {
-    return `https://${process.env.BASE_URL}/api`
-  }
-  return `https://${process.env.VERCEL_URL}/api`
-}
-
 const openApi = {
   openapi: '3.0.1',
   info: {
@@ -17,11 +10,10 @@ const openApi = {
     contact: {
       email: 'joao.pedro.hsd@gmail.com',
     },
-    version: process.env.NEXT_PUBLIC_APP_VERSION,
   },
   servers: [
     {
-      url: getApiUrl(),
+      url: 'https://mach.jpedroh.dev/api',
     },
   ],
   tags: [
