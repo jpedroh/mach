@@ -1,4 +1,4 @@
-import { db, flights } from '@mach/database'
+import { db, flights } from '@mach/shared/database'
 import { sql, and, eq } from 'drizzle-orm'
 import { NextResponse } from 'next/server'
 import z from 'zod'

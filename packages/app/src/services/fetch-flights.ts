@@ -1,4 +1,4 @@
-import { db } from '@mach/database'
+import { db } from '@mach/shared/database'
 import z from 'zod'
 import { currentCycleSubquery } from '../utils/currentCycleSubquery'
 

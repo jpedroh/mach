@@ -1,4 +1,4 @@
-import { Flight } from '@mach/database'
+import { Flight } from '@mach/shared/database'
 import { FC } from 'react'
 import Button from '../Button'
 

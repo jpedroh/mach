@@ -1,0 +1,17 @@
+{
+  "name": "@mach/shared/database",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "targets": {
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": [
+        "{options.outputFile}"
+      ],
+      "options": {
+        "lintFilePatterns": [
+          "modules/shared/database/**/*.ts"
+        ]
+      }
+    }
+  }
+}

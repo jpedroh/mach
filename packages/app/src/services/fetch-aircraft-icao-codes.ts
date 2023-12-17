@@ -1,4 +1,4 @@
-import { db, flights } from '@mach/database'
+import { db, flights } from '@mach/shared/database'
 import { eq, sql } from 'drizzle-orm'
 import { currentCycleSubquery } from '../utils/currentCycleSubquery'
 

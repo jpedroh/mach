@@ -14,7 +14,9 @@
     "skipLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@mach/database": ["packages/database/src/index.ts"]
+      "@mach/shared/database": [
+        "packages/database/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "**/*.spec.ts"]
