@@ -28,7 +28,7 @@ jobs:
           version: 8
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version-file: '.nvmrc'
           cache: 'pnpm'
       - uses: nrwl/nx-set-shas@v4
         with:
