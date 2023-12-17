@@ -1,6 +1,6 @@
 import 'dotenv/config'
 import type { Config } from 'drizzle-kit'
-import { getEnvironmentVariable } from './modules/shared/env/src'
+import { getEnvironmentVariable } from '@mach/shared/env'
 
 export default {
   schema: './packages/database/src/schema.ts',
