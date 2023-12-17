@@ -4,13 +4,9 @@
   "targets": {
     "lint": {
       "executor": "@nx/eslint:lint",
-      "outputs": [
-        "{options.outputFile}"
-      ],
+      "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": [
-          "modules/shared/database/**/*.ts"
-        ]
+        "lintFilePatterns": ["modules/shared/database/**/*.ts"]
       }
     }
   }
