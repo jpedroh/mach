@@ -1,8 +1,5 @@
-import Link from 'next/link'
-import React from 'react'
-import FlightsTable from '../../src/components/FlightsTable'
-import { Layout, Lead } from '@mach/shared/ui/server'
-import { fetchFlights } from '../../src/services/fetch-flights'
+import { SearchPage } from '@mach/web/search'
+import { searchFlightsQuerySchema } from '@mach/web/search/server'
 
 export const revalidate = 0
 
@@ -15,35 +12,8 @@ export const metadata = {
 export default async function Search({
   searchParams,
 }: {
-  searchParams?: { [key: string]: string | string[] | undefined }
+  searchParams?: unknown
 }) {
-  const flights = await fetchFlights(searchParams ?? {})
-
-  if (flights.length === 0) {
-    return (
-      <Layout>
-        <Lead>
-          There are no results for your search. <Link href="/">Click here</Link>{' '}
-          to make a new search.
-        </Lead>
-      </Layout>
-    )
-  }
-
-  const getLeadMessage = (count: number) => {
-    return count === 1
-      ? 'There is a single result for your search.'
-      : `There are ${count} results for your search.`
-  }
-
-  return (
-    <Layout>
-      <Lead>
-        {getLeadMessage(flights.length)} <Link href="/">Click here</Link> to
-        make a new search.
-      </Lead>
-
-      <FlightsTable items={flights} />
-    </Layout>
-  )
+  const query = searchFlightsQuerySchema.parse(searchParams)
+  return <SearchPage query={query} />
 }

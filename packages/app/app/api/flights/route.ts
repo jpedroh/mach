@@ -2,7 +2,7 @@ import { db, flights } from '@mach/shared/database'
 import { sql, and, eq } from 'drizzle-orm'
 import { NextResponse } from 'next/server'
 import z from 'zod'
-import { currentCycleSubquery } from '../../../src/utils/currentCycleSubquery'
+import { currentCycleSubquery } from './(utils)/current-cycle-subquery'
 
 export const dynamic = 'force-dynamic'
 

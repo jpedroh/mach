@@ -1,7 +1,7 @@
 import { db } from '@mach/shared/database'
 import { NextResponse } from 'next/server'
 import z from 'zod'
-import { currentCycleSubquery } from '../../../../src/utils/currentCycleSubquery'
+import { currentCycleSubquery } from '../(utils)/current-cycle-subquery'
 
 export const dynamic = 'force-dynamic'
 

@@ -1,6 +1,6 @@
 import { Flight } from '@mach/shared/database'
-import { formatEet } from '../../utils/formatEet'
-import { formatFlightRules } from '../../utils/formatFlightRules'
+import { formatEet } from '../../../../utils/formatEet'
+import { formatFlightRules } from '../../../../utils/formatFlightRules'
 import styles from './index.module.css'
 
 type Props = {
