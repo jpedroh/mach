@@ -1,2 +1,2 @@
 // Use this file to export React server components
-export * from './components/lead'
+export { Lead } from './components/lead'

@@ -1,6 +1,6 @@
 import { Flight } from '@mach/shared/database'
 import { FC } from 'react'
-import Button from '../Button'
+import { Button } from '@mach/shared/ui'
 
 type Props = {
   flight: Flight
@@ -14,8 +14,10 @@ const SkyVectorButton: FC<Props> = ({ flight }) => {
   } ${flight.route} ${flight.arrivalIcao}`
 
   return (
-    <Button href={skyVectorLink} target="_blank">
-      SkyVector
+    <Button asChild>
+      <a href={skyVectorLink} target="_blank">
+        SkyVector
+      </a>
     </Button>
   )
 }

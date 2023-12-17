@@ -3,7 +3,7 @@
 import { ChangeEventHandler, FC, useState } from 'react'
 import { Airport } from '@mach/shared/database'
 import { formatAirport } from '../../utils/format-airport'
-import Button from '../Button'
+import { Button } from '@mach/shared/ui'
 import { SelectInput } from '../SelectInput'
 import styles from './index.module.css'
 
