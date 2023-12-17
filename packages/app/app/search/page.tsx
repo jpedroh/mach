@@ -1,4 +1,5 @@
 import { SearchPage } from '@mach/web/search'
+import { searchFlightsQuerySchema } from '@mach/web/search/server'
 
 export const revalidate = 0
 
@@ -11,8 +12,8 @@ export const metadata = {
 export default async function Search({
   searchParams,
 }: {
-  searchParams?: { [key: string]: string | string[] | undefined }
-  }) {
-
-  return <SearchPage query={searchParams ?? {}} />
+  searchParams?: unknown
+}) {
+  const query = searchFlightsQuerySchema.parse(searchParams)
+  return <SearchPage query={query} />
 }

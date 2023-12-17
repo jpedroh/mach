@@ -1,9 +1,13 @@
 import Link from 'next/link'
 import { Layout, Lead } from '@mach/shared/ui/server'
-import { fetchFlights } from '../services/fetch-flights'
+import { SearchFlightsQuery, fetchFlights } from '../services/fetch-flights'
 import FlightsTable from './FlightsTable'
 
-export async function SearchPage({ query }: { query: Record<string, unknown> }) {
+type Props = {
+  query: SearchFlightsQuery
+}
+
+export async function SearchPage({ query }: Props) {
   const flights = await fetchFlights(query)
 
   if (flights.length === 0) {
