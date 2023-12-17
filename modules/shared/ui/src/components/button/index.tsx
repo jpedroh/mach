@@ -6,11 +6,6 @@ const VARIANTS = ['primary', 'danger'] as const
 
 type Variant = (typeof VARIANTS)[number]
 
-const VARIANTS_CLASS_NAMES: Record<Variant, string> = {
-  primary: styles.primary,
-  danger: styles.danger,
-}
-
 type Props = { variant?: Variant; children: ReactNode } & (
   | { asChild: true }
   | ({ asChild?: false } & ButtonHTMLAttributes<HTMLButtonElement>)
@@ -18,7 +13,5 @@ type Props = { variant?: Variant; children: ReactNode } & (
 
 export function Button({ asChild, variant = 'primary', ...rest }: Props) {
   const Comp = asChild ? Slot : 'button'
-  const className = [styles.button, VARIANTS_CLASS_NAMES[variant]].join(' ')
-
-  return <Comp className={className} {...rest} />
+  return <Comp className={styles.button} data-variant={variant} {...rest} />
 }
