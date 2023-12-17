@@ -1,6 +1,6 @@
 import { db, flights } from '@mach/shared/database'
 import { eq, sql } from 'drizzle-orm'
-import { currentCycleSubquery } from '../utils/currentCycleSubquery'
+import { currentCycleSubquery } from '../utils/current-cycle-subquery'
 
 export async function fetchAircraftIcaoCodes() {
   const aircrafts = await db
