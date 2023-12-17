@@ -1,12 +1,12 @@
 import { Flight } from '@mach/shared/database'
 import { FC } from 'react'
-import { formatEet } from '../../utils/formatEet'
+import { formatEet } from '../../../utils/formatEet'
 import { Button } from '@mach/shared/ui'
-import IcaoFpl from '../IcaoFpl'
-import IvaoButton from '../IvaoButton'
-import SimBriefButton from '../SimBriefButton'
-import SkyVectorButton from '../SkyVectorButton'
-import VatsimButton from '../VatsimButton'
+import IcaoFpl from './IcaoFpl'
+import IvaoButton from './IvaoButton'
+import SimBriefButton from './SimBriefButton'
+import SkyVectorButton from './SkyVectorButton'
+import VatsimButton from './VatsimButton'
 import styles from './index.module.css'
 
 type Props = {

@@ -3,10 +3,10 @@
 import { Flight } from '@mach/shared/database'
 import { FC, useState } from 'react'
 import { Airport } from '@mach/shared/database'
-import { formatAirport } from '../../utils/format-airport'
 import { Button } from '@mach/shared/ui'
-import FlightModal from '../FlightModal'
 import styles from './index.module.css'
+import { formatAirport } from '../../utils/format-airport'
+import FlightModal from './FlightModal'
 
 type Props = {
   items: Array<Flight & { departure?: Airport; arrival?: Airport }>
