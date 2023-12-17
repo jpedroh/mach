@@ -1,21 +1,9 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
-    "declaration": true,
     "noImplicitAny": false,
     "removeComments": true,
     "noLib": false,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "target": "es6",
-    "esModuleInterop": true,
-    "sourceMap": true,
-    "lib": ["es6", "es2020"],
-    "skipLibCheck": true,
-    "baseUrl": ".",
-    "paths": {
-      "@mach/shared/database": ["modules/shared/database/src/index.ts"]
-    }
+    "esModuleInterop": true
   },
-  "exclude": ["node_modules", "**/*.spec.ts"]
+  "extends": "./tsconfig.base.json"
 }

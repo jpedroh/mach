@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
 import FlightsTable from '../../src/components/FlightsTable'
-import Lead from '../../src/components/Lead'
+import { Lead } from '@mach/shared/ui/server'
 import GeneralLayout from '../../src/layouts/GeneralLayout'
 import { fetchFlights } from '../../src/services/fetch-flights'
 

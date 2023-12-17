@@ -1,5 +1,5 @@
 import GeneralLayout from '../src/layouts/GeneralLayout'
-import Lead from '../src/components/Lead'
+import { Lead } from '@mach/shared/ui/server'
 import SearchFlightsForm from '../src/components/SearchFlightsForm'
 import { fetchCompanies } from '../src/services/fetch-companies'
 import { fetchAircraftIcaoCodes } from '../src/services/fetch-aircraft-icao-codes'
