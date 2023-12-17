@@ -11,9 +11,28 @@
   "targetDefaults": {
     "pack": {
       "dependsOn": ["^pack"]
+    },
+    "@nx/vite:test": {
+      "cache": true,
+      "inputs": ["default", "^default"]
     }
   },
   "affected": {
     "defaultBase": "master"
+  },
+  "generators": {
+    "@nx/react": {
+      "application": {
+        "babel": true
+      },
+      "library": {
+        "unitTestRunner": "vitest"
+      }
+    }
+  },
+  "pluginsConfig": {
+    "@nx/js": {
+      "analyzeSourceFiles": true
+    }
   }
 }

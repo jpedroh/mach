@@ -4,7 +4,7 @@ import { Flight } from '@mach/shared/database'
 import { FC, useState } from 'react'
 import { Airport } from '@mach/shared/database'
 import { formatAirport } from '../../utils/format-airport'
-import Button from '../Button'
+import { Button } from '@mach/shared/ui'
 import FlightModal from '../FlightModal'
 import styles from './index.module.css'
 

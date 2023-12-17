@@ -1,14 +1,12 @@
 import { Flight } from '@mach/shared/database'
-import { FC, useRef } from 'react'
-import Button from '../Button'
+import { FC } from 'react'
+import { Button } from '@mach/shared/ui'
 
 type Props = {
   flight: Flight
 }
 
 const IvaoButton: FC<Props> = ({ flight }) => {
-  const ref = useRef(document.createElement('form'))
-
   function stringToSeconds(time: string) {
     const hours = Number(time.substring(0, 2))
     const minutes = Number(time.substring(2, 4))
@@ -41,15 +39,10 @@ const IvaoButton: FC<Props> = ({ flight }) => {
   url.searchParams.set('flightPlan', btoa(JSON.stringify(flightPlan)))
 
   return (
-    <Button
-      href={url.toString()}
-      target="_blank"
-      rel="noreferrer"
-      type="submit"
-      variant="primary"
-      onClick={() => ref.current.submit()}
-    >
-      IVAO FP
+    <Button asChild variant="primary">
+      <a href={url.toString()} target="_blank">
+        IVAO FP
+      </a>
     </Button>
   )
 }

@@ -1,6 +1,6 @@
 import { Flight } from '@mach/shared/database'
 import { FC } from 'react'
-import Button from '../Button'
+import { Button } from '@mach/shared/ui'
 
 type Props = {
   flight: Pick<
@@ -39,8 +39,10 @@ const VatsimButton: FC<Props> = ({ flight }) => {
   ).toString()}`
 
   return (
-    <Button href={simBriefLink} target="_blank">
-      SimBrief
+    <Button asChild>
+      <a href={simBriefLink} target="_blank">
+        SimBrief
+      </a>
     </Button>
   )
 }
