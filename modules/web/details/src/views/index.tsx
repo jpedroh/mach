@@ -1,22 +1,25 @@
-import { Flight } from '@mach/shared/database'
-import { FC } from 'react'
-import { formatEet } from '../../../utils/formatEet'
-import { Button } from '@mach/shared/ui'
-import IcaoFpl from './IcaoFpl'
-import IvaoButton from './IvaoButton'
-import SimBriefButton from './SimBriefButton'
-import SkyVectorButton from './SkyVectorButton'
-import VatsimButton from './VatsimButton'
+import { fetchFlightById } from '../services/fetch-flight-by-id'
+import { formatEet } from '../utils/format-eet'
+import { CloseButton } from './close-button'
+import { IcaoFpl } from './icao-fpl'
 import styles from './index.module.css'
+import { IvaoFplButton } from './ivao-fpl-button'
+import { SimBriefButton } from './simbrief-button'
+import { SkyVectorButton } from './sky-vector-button'
+import { VatsimFplButton } from './vatsim-fpl-button'
 
 type Props = {
-  show: boolean
-  onClose: () => void
-  flight: Flight
+  id: string
 }
 
-const FlightModal: FC<Props> = ({ show, onClose, flight }) => {
-  return show ? (
+export async function FlightDetailsModal({ id }: Props) {
+  const flight = await fetchFlightById(id)
+
+  if (!flight) {
+    throw new Error(`Flight with id ${id} not found`)
+  }
+
+  return (
     <>
       <div className={styles.container}>
         <div className={styles.modal}>
@@ -66,21 +69,15 @@ const FlightModal: FC<Props> = ({ show, onClose, flight }) => {
             <IcaoFpl flight={flight} />
           </div>
           <div className={styles.footer}>
-            <IvaoButton flight={flight} />
-            <VatsimButton flight={flight} />
+            <IvaoFplButton flight={flight} />
+            <VatsimFplButton flight={flight} />
             <SimBriefButton flight={flight} />
             <SkyVectorButton flight={flight} />
-            <Button variant="danger" onClick={onClose}>
-              Close
-            </Button>
+            <CloseButton />
           </div>
         </div>
       </div>
       <div className={styles.background}></div>
     </>
-  ) : (
-    <></>
   )
 }
-
-export default FlightModal

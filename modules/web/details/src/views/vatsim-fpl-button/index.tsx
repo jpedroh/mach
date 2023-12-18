@@ -1,12 +1,11 @@
 import { Flight } from '@mach/shared/database'
-import { FC } from 'react'
 import { Button } from '@mach/shared/ui'
 
 type Props = {
   flight: Flight
 }
 
-const VatsimButton: FC<Props> = ({ flight }) => {
+export function VatsimFplButton({ flight }: Props) {
   const vatsimLink = `https://cert.vatsim.net/fp/file.php?2=${
     flight.callsign
   }&3=${flight.aircraft.icaoCode}&4=${flight.cruisingSpeed}&5=${
@@ -27,5 +26,3 @@ const VatsimButton: FC<Props> = ({ flight }) => {
     </Button>
   )
 }
-
-export default VatsimButton

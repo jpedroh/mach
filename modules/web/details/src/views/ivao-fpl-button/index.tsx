@@ -1,12 +1,11 @@
 import { Flight } from '@mach/shared/database'
-import { FC } from 'react'
 import { Button } from '@mach/shared/ui'
 
 type Props = {
   flight: Flight
 }
 
-const IvaoButton: FC<Props> = ({ flight }) => {
+export function IvaoFplButton({ flight }: Props) {
   function stringToSeconds(time: string) {
     const hours = Number(time.substring(0, 2))
     const minutes = Number(time.substring(2, 4))
@@ -46,5 +45,3 @@ const IvaoButton: FC<Props> = ({ flight }) => {
     </Button>
   )
 }
-
-export default IvaoButton
