@@ -5,14 +5,7 @@ import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin'
 export default defineConfig({
   root: __dirname,
   cacheDir: '../../../node_modules/.vite/modules/web/details',
-
   plugins: [react(), nxViteTsPaths()],
-
-  // Uncomment this if you are using workers.
-  // worker: {
-  //  plugins: [ nxViteTsPaths() ],
-  // },
-
   test: {
     globals: true,
     cache: { dir: '../../../node_modules/.vitest' },
@@ -23,5 +16,7 @@ export default defineConfig({
       reportsDirectory: '../../../coverage/modules/web/details',
       provider: 'v8',
     },
+    setupFiles: ['./vitest-setup.ts'],
+    passWithNoTests: true,
   },
 })
