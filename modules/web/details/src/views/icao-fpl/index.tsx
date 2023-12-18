@@ -1,6 +1,6 @@
 import { Flight } from '@mach/shared/database'
-import { formatEet } from '../../../../utils/formatEet'
-import { formatFlightRules } from '../../../../utils/formatFlightRules'
+import { formatEet } from '../../../../search/src/utils/formatEet'
+import { formatFlightRules } from '../../../../search/src/utils/formatFlightRules'
 import styles from './index.module.css'
 
 type Props = {
@@ -20,7 +20,7 @@ const getIcaoFpl = (flight: Flight) => {
   ]
 }
 
-const IcaoFpl: React.FC<Props> = ({ flight }) => {
+export function IcaoFpl({ flight }: Props) {
   return (
     <div className={styles.container}>
       {getIcaoFpl(flight).map((line, key) => (
@@ -29,5 +29,3 @@ const IcaoFpl: React.FC<Props> = ({ flight }) => {
     </div>
   )
 }
-
-export default IcaoFpl

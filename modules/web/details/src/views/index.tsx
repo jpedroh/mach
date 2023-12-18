@@ -1,21 +1,22 @@
-import { fetchFlightById } from '../../../services/fetch-flight-by-id'
-import { formatEet } from '../../../utils/formatEet'
-import { CloseButton } from './CloseButton'
-import IcaoFpl from './IcaoFpl'
-import IvaoButton from './IvaoButton'
-import SimBriefButton from './SimBriefButton'
-import SkyVectorButton from './SkyVectorButton'
-import VatsimButton from './VatsimButton'
+import { fetchFlightById } from '../services/fetch-flight-by-id'
+import { formatEet } from '../../../search/src/utils/formatEet'
+import { CloseButton } from './close-button'
+import { IcaoFpl } from './icao-fpl'
+import { IvaoFplButton } from './ivao-fpl-button'
+import { SimBriefButton } from './simbrief-button'
+import { SkyVectorButton } from './sky-vector-button'
+import { VatsimFplButton } from './vatsim-fpl-button'
 import styles from './index.module.css'
 
 type Props = {
   id: string
 }
 
-export async function FlightModal({ id }: Props) {
-  const flight = await fetchFlightById(id);
+export async function FlightDetailsModal({ id }: Props) {
+  const flight = await fetchFlightById(id)
 
-  return <>
+  return (
+    <>
       <div className={styles.container}>
         <div className={styles.modal}>
           <div className={styles.header}>
@@ -64,15 +65,15 @@ export async function FlightModal({ id }: Props) {
             <IcaoFpl flight={flight} />
           </div>
           <div className={styles.footer}>
-            <IvaoButton flight={flight} />
-            <VatsimButton flight={flight} />
+            <IvaoFplButton flight={flight} />
+            <VatsimFplButton flight={flight} />
             <SimBriefButton flight={flight} />
             <SkyVectorButton flight={flight} />
-          <CloseButton />
+            <CloseButton />
           </div>
         </div>
       </div>
       <div className={styles.background}></div>
-  </>
+    </>
+  )
 }
-

@@ -1,8 +1,7 @@
-import { Button } from '@mach/shared/ui'
-import Link from 'next/link'
 import { fetchFlights } from '../../services/fetch-flights'
 import { formatAirport } from '../../utils/format-airport'
 import styles from './index.module.css'
+import { ViewDetailsButton } from './view-details-button'
 
 type Props = {
   flights: Awaited<ReturnType<typeof fetchFlights>>
@@ -36,22 +35,12 @@ export function FlightsTable({ flights }: Props) {
             <tr key={key}>
               <td>{flight.callsign}</td>
               <td>
-                <abbr
-                  title={
-                    flight.departure
-                      ? formatAirport(flight.departure)
-                      : undefined
-                  }
-                >
+                <abbr title={formatAirport(flight.departure)}>
                   {flight.departureIcao}
                 </abbr>
               </td>
               <td>
-                <abbr
-                  title={
-                    flight.arrival ? formatAirport(flight.arrival) : undefined
-                  }
-                >
+                <abbr title={formatAirport(flight.arrival)}>
                   {flight.arrivalIcao}
                 </abbr>
               </td>
@@ -59,11 +48,7 @@ export function FlightsTable({ flights }: Props) {
               <td>{minutesToEet(flight.estimatedEnrouteMinutes)}</td>
               <td>{flight.aircraft.icaoCode}</td>
               <td className="grid justify-items-center">
-                <Button asChild variant={'primary'}>
-                  <Link className='normal-case' href={`/search/${flight.id}`}>
-                    View Details
-                  </Link>
-                </Button>
+                <ViewDetailsButton flightId={flight.id} />
               </td>
             </tr>
           ))}

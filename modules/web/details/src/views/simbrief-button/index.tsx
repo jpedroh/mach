@@ -1,5 +1,4 @@
 import { Flight } from '@mach/shared/database'
-import { FC } from 'react'
 import { Button } from '@mach/shared/ui'
 
 type Props = {
@@ -18,7 +17,7 @@ type Props = {
   >
 }
 
-const VatsimButton: FC<Props> = ({ flight }) => {
+export function SimBriefButton({ flight }: Props) {
   const query: Record<string, string> = {
     airline: flight.company,
     fltnum: flight.flightNumber.toString(),
@@ -46,5 +45,3 @@ const VatsimButton: FC<Props> = ({ flight }) => {
     </Button>
   )
 }
-
-export default VatsimButton

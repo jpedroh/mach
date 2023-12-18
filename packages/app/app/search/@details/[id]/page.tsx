@@ -1,5 +1,5 @@
-import { FlightModal } from 'modules/web/search/src/views/FlightsTable/FlightModal'
+import { FlightDetailsModal } from '@mach/web/details/server'
 
 export default async function Page({ params }) {
-  return <FlightModal id={params.id} />
+  return <FlightDetailsModal id={params.id} />
 }

@@ -1,5 +1,5 @@
 import { describe, test, expect } from 'vitest'
-import SimBriefButton from '.'
+import { SimBriefButton } from '.'
 import { render, screen } from '@testing-library/react'
 
 describe('SimBriefButton', () => {
