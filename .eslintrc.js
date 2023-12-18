@@ -7,6 +7,23 @@ module.exports = {
   extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended'],
   overrides: [
     {
+      files: ['*.ts', '*.tsx', '*.js', '*.jsx'],
+      rules: {
+        '@nx/enforce-module-boundaries': [
+          'error',
+          {
+            allow: [],
+            depConstraints: [
+              {
+                sourceTag: '*',
+                onlyDependOnLibsWithTags: ['*'],
+              },
+            ],
+          },
+        ],
+      },
+    },
+    {
       env: {
         node: true,
       },
@@ -21,5 +38,5 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
-  plugins: ['@typescript-eslint', 'react'],
+  plugins: ['@typescript-eslint', 'react', '@nx'],
 }
