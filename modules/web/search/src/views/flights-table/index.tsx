@@ -36,12 +36,12 @@ export function FlightsTable({ flights }: Props) {
               <td>{flight.callsign}</td>
               <td>
                 <abbr title={formatAirport(flight.departure)}>
-                  {flight.departureIcao}
+                  {flight.departure.id}
                 </abbr>
               </td>
               <td>
                 <abbr title={formatAirport(flight.arrival)}>
-                  {flight.arrivalIcao}
+                  {flight.arrival.id}
                 </abbr>
               </td>
               <td>{flight.estimatedOffBlockTime}</td>

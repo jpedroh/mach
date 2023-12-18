@@ -39,6 +39,13 @@ export async function fetchFlights(where: SearchFlightsQuery) {
       arrival: true,
       departure: true,
     },
+    columns: {
+      id: true,
+      callsign: true,
+      estimatedOffBlockTime: true,
+      estimatedEnrouteMinutes: true,
+      aircraft: true,
+    },
     where: (fields, { sql, and, eq, or }) =>
       and(
         where.cycle
