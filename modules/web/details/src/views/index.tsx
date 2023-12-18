@@ -1,12 +1,12 @@
 import { fetchFlightById } from '../services/fetch-flight-by-id'
+import { formatEet } from '../utils/format-eet'
 import { CloseButton } from './close-button'
 import { IcaoFpl } from './icao-fpl'
+import styles from './index.module.css'
 import { IvaoFplButton } from './ivao-fpl-button'
 import { SimBriefButton } from './simbrief-button'
 import { SkyVectorButton } from './sky-vector-button'
 import { VatsimFplButton } from './vatsim-fpl-button'
-import styles from './index.module.css'
-import { formatEet } from '../utils/format-eet'
 
 type Props = {
   id: string
