@@ -5,9 +5,5 @@ export async function fetchFlightById(id: string) {
     where: (fields, { eq }) => eq(fields.id, id),
   })
 
-  if (!flight) {
-    throw new Error('Flight not found')
-  }
-
   return flight
 }

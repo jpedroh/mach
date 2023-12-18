@@ -15,6 +15,10 @@ type Props = {
 export async function FlightDetailsModal({ id }: Props) {
   const flight = await fetchFlightById(id)
 
+  if (!flight) {
+    throw new Error(`Flight with id ${id} not found`)
+  }
+
   return (
     <>
       <div className={styles.container}>
