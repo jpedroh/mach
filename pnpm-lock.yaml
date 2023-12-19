@@ -73,8 +73,8 @@ importers:
         specifier: v17.2.5
         version: 17.2.5(@swc-node/register@1.6.8)(@swc/core@1.3.100)(@types/node@20.10.5)(eslint@8.55.0)(nx@17.2.6)(typescript@5.2.2)(webpack@5.89.0)
       '@nx/vite':
-        specifier: v17.2.5
-        version: 17.2.5(@swc-node/register@1.6.8)(@swc/core@1.3.100)(@types/node@20.10.5)(nx@17.2.6)(typescript@5.2.2)(vite@5.0.10)(vitest@1.0.4)
+        specifier: v17.2.6
+        version: 17.2.6(@swc-node/register@1.6.8)(@swc/core@1.3.100)(@types/node@20.10.5)(nx@17.2.6)(typescript@5.2.2)(vite@5.0.10)(vitest@1.0.4)
       '@semantic-release/exec':
         specifier: ^6.0.0
         version: 6.0.3(semantic-release@22.0.12)
@@ -3316,10 +3316,10 @@ packages:
       - '@swc/core'
       - debug
 
-  /@nrwl/vite@17.2.5(@swc-node/register@1.6.8)(@swc/core@1.3.100)(@types/node@20.10.5)(nx@17.2.6)(typescript@5.2.2)(vite@5.0.10)(vitest@1.0.4):
-    resolution: {integrity: sha512-GnZ/0mKaxPZRfDnEIAePpb7FOKdqSzbXaLSko2FlRtqTVnIpQYu8VxqgLt3KQQUIpL+1l9UmeMan+6A8UXWyBg==}
+  /@nrwl/vite@17.2.6(@swc-node/register@1.6.8)(@swc/core@1.3.100)(@types/node@20.10.5)(nx@17.2.6)(typescript@5.2.2)(vite@5.0.10)(vitest@1.0.4):
+    resolution: {integrity: sha512-MmdlPQj2ogBkOFHFFs6pNCjXfTDjNbctfeXxFWHvwSo6fOUa3G8HoCzYrMnH/H43owZs3Z3QKZ/i3Qs1n41e0g==}
     dependencies:
-      '@nx/vite': 17.2.5(@swc-node/register@1.6.8)(@swc/core@1.3.100)(@types/node@20.10.5)(nx@17.2.6)(typescript@5.2.2)(vite@5.0.10)(vitest@1.0.4)
+      '@nx/vite': 17.2.6(@swc-node/register@1.6.8)(@swc/core@1.3.100)(@types/node@20.10.5)(nx@17.2.6)(typescript@5.2.2)(vite@5.0.10)(vitest@1.0.4)
     transitivePeerDependencies:
       - '@babel/traverse'
       - '@swc-node/register'
@@ -3951,15 +3951,15 @@ packages:
       - webpack
     dev: true
 
-  /@nx/vite@17.2.5(@swc-node/register@1.6.8)(@swc/core@1.3.100)(@types/node@20.10.5)(nx@17.2.6)(typescript@5.2.2)(vite@5.0.10)(vitest@1.0.4):
-    resolution: {integrity: sha512-8ENp30M0B3cQhYWBBNZFQZIZYEKXF6EjELUPZPHk+20LhozBFvVGpdutHzsGG+B0mq0qxuUn8W22Xl3VmcR6sg==}
+  /@nx/vite@17.2.6(@swc-node/register@1.6.8)(@swc/core@1.3.100)(@types/node@20.10.5)(nx@17.2.6)(typescript@5.2.2)(vite@5.0.10)(vitest@1.0.4):
+    resolution: {integrity: sha512-ezu+w0yzDIqv7iBfZOEGPVvjkIP3opUJgegMw4cyIp6r+rBcIe/CSMtE8eD+JEAfzXSsmuzObj/37oCxNug4Rw==}
     peerDependencies:
       vite: ^5.0.0
-      vitest: ^1.0.0
+      vitest: '>=0.34.6'
     dependencies:
-      '@nrwl/vite': 17.2.5(@swc-node/register@1.6.8)(@swc/core@1.3.100)(@types/node@20.10.5)(nx@17.2.6)(typescript@5.2.2)(vite@5.0.10)(vitest@1.0.4)
-      '@nx/devkit': 17.2.5(nx@17.2.6)
-      '@nx/js': 17.2.5(@swc-node/register@1.6.8)(@swc/core@1.3.100)(@types/node@20.10.5)(nx@17.2.6)(typescript@5.2.2)
+      '@nrwl/vite': 17.2.6(@swc-node/register@1.6.8)(@swc/core@1.3.100)(@types/node@20.10.5)(nx@17.2.6)(typescript@5.2.2)(vite@5.0.10)(vitest@1.0.4)
+      '@nx/devkit': 17.2.6(nx@17.2.6)
+      '@nx/js': 17.2.6(@swc-node/register@1.6.8)(@swc/core@1.3.100)(@types/node@20.10.5)(nx@17.2.6)(typescript@5.2.2)
       '@phenomnomnominal/tsquery': 5.0.1(typescript@5.2.2)
       '@swc/helpers': 0.5.2
       enquirer: 2.3.6
