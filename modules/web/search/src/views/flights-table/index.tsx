@@ -1,6 +1,5 @@
 import { fetchFlights } from '../../services/fetch-flights'
 import { formatAirport } from '../../utils/format-airport'
-import styles from './index.module.css'
 import { ViewDetailsButton } from './view-details-button'
 
 type Props = {
@@ -18,36 +17,40 @@ function minutesToEet(totalMinutes: number) {
 export function FlightsTable({ flights }: Props) {
   return (
     <div>
-      <table className={styles.table}>
-        <thead>
+      <table className={'table-fixed w-full'}>
+        <thead className="bg-blue-700 text-white uppercase">
           <tr>
-            <th>Callsign</th>
-            <th>Departure</th>
-            <th>Arrival</th>
-            <th>EOBT</th>
-            <th>EET</th>
-            <th>Aircraft</th>
-            <th className="grid justify-items-center">Details</th>
+            <th className="font-semibold p-2">Callsign</th>
+            <th className="font-semibold p-2">Departure</th>
+            <th className="font-semibold p-2">Arrival</th>
+            <th className="font-semibold p-2">EOBT</th>
+            <th className="font-semibold p-2">EET</th>
+            <th className="font-semibold p-2">Aircraft</th>
+            <th className="font-semibold p-2">Details</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="bg-gray-300 bg-opacity-10 dark:text-white uppercase">
           {flights.map((flight, key) => (
             <tr key={key}>
-              <td>{flight.callsign}</td>
-              <td>
+              <td className="p-2 text-center">{flight.callsign}</td>
+              <td className="p-2 text-center">
                 <abbr title={formatAirport(flight.departure)}>
                   {flight.departure.id}
                 </abbr>
               </td>
-              <td>
+              <td className="p-2 text-center">
                 <abbr title={formatAirport(flight.arrival)}>
                   {flight.arrival.id}
                 </abbr>
               </td>
-              <td>{flight.estimatedOffBlockTime}</td>
-              <td>{minutesToEet(flight.estimatedEnrouteMinutes)}</td>
-              <td>{flight.aircraft.icaoCode}</td>
-              <td className="grid justify-items-center">
+              <td className="p-2 text-center">
+                {flight.estimatedOffBlockTime}
+              </td>
+              <td className="p-2 text-center">
+                {minutesToEet(flight.estimatedEnrouteMinutes)}
+              </td>
+              <td className="p-2 text-center">{flight.aircraft.icaoCode}</td>
+              <td className="p-2 text-center grid">
                 <ViewDetailsButton flightId={flight.id} />
               </td>
             </tr>

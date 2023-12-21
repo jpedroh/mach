@@ -1,11 +1,12 @@
 import { FC } from 'react'
-import styles from './index.module.css'
 
 export const Header: FC = () => {
   return (
-    <div className={styles.container}>
-      <h1>mach</h1>
-      <h2>An open source tool for flight simulation</h2>
+    <div className={'text-center grid gap-4'}>
+      <h1 className="text-6xl font-light dark:text-white">mach</h1>
+      <h2 className="text-2xl text-gray-500 dark:text-gray-300">
+        An open source tool for flight simulation
+      </h2>
     </div>
   )
 }

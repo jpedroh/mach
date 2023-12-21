@@ -1,9 +1,8 @@
 import { FC } from 'react'
-import styles from './index.module.css'
 
 export const Footer: FC = () => {
   return (
-    <div className={styles.container}>
+    <div className={'dark:text-white text-center w-full'}>
       <p>
         <a
           href="https://github.com/jpedroh/mach/"
