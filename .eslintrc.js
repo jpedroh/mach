@@ -18,6 +18,14 @@ module.exports = {
                 sourceTag: '*',
                 onlyDependOnLibsWithTags: ['*'],
               },
+              {
+                sourceTag: 'type:feature',
+                onlyDependOnLibsWithTags: ['type:shared'],
+              },
+              {
+                sourceTag: 'type:shared',
+                onlyDependOnLibsWithTags: ['type:shared'],
+              },
             ],
           },
         ],
