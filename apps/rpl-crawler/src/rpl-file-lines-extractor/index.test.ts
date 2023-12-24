@@ -1,11 +1,11 @@
 import { readFile } from 'fs/promises'
-import path from 'path'
+import { join } from 'path'
 import { test, expect } from 'vitest'
 import rplFileLinesExtractor from '.'
 
 test('It extracts the lines from the zip file', async () => {
   const file = await readFile(
-    path.join(__dirname, '../../__mocks__/RPL_NAVBRASIL.zip')
+    join(__dirname, '../../__mocks__/RPL_NAVBRASIL.zip')
   )
   const lines = rplFileLinesExtractor(file)
 

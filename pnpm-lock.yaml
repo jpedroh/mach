@@ -63,6 +63,9 @@ importers:
       '@cloudflare/next-on-pages':
         specifier: ^1.8.2
         version: 1.8.2(vercel@32.5.5)(wrangler@3.16.0)
+      '@nx/esbuild':
+        specifier: ^17.2.7
+        version: 17.2.7(@swc-node/register@1.6.8)(@swc/core@1.3.100)(@types/node@20.10.5)(esbuild@0.19.10)(nx@17.2.6)(typescript@5.2.2)
       '@nx/eslint':
         specifier: ^17.2.7
         version: 17.2.7(@swc-node/register@1.6.8)(@swc/core@1.3.100)(@types/node@20.10.5)(eslint@8.56.0)(nx@17.2.6)
@@ -3201,6 +3204,31 @@ packages:
     transitivePeerDependencies:
       - nx
 
+  /@nrwl/devkit@17.2.7(nx@17.2.7):
+    resolution: {integrity: sha512-TISLlIH3xSWre2NLg0aMUBmTvMus+xUicaMeg8DWvwSXJJIMC5QFlB1hjw0VkyLsSraHpd5PWtyDqldHWRfKUQ==}
+    dependencies:
+      '@nx/devkit': 17.2.7(nx@17.2.7)
+    transitivePeerDependencies:
+      - nx
+
+  /@nrwl/esbuild@17.2.7(@swc-node/register@1.6.8)(@swc/core@1.3.100)(@types/node@20.10.5)(esbuild@0.19.10)(nx@17.2.6)(typescript@5.2.2):
+    resolution: {integrity: sha512-CnCfojDRK921ABuonfVAdBQ1Bc5q/kVXBstQfnTEgcaMjWPCt/zowUnYk+llL+WkKXu33UQYLId/gskzUKzGRw==}
+    dependencies:
+      '@nx/esbuild': 17.2.7(@swc-node/register@1.6.8)(@swc/core@1.3.100)(@types/node@20.10.5)(esbuild@0.19.10)(nx@17.2.6)(typescript@5.2.2)
+    transitivePeerDependencies:
+      - '@babel/traverse'
+      - '@swc-node/register'
+      - '@swc/core'
+      - '@swc/wasm'
+      - '@types/node'
+      - debug
+      - esbuild
+      - nx
+      - supports-color
+      - typescript
+      - verdaccio
+    dev: true
+
   /@nrwl/eslint-plugin-nx@17.2.6(@swc-node/register@1.6.8)(@swc/core@1.3.100)(@types/node@20.10.5)(@typescript-eslint/parser@6.15.0)(eslint@8.56.0)(nx@17.2.6)(typescript@5.2.2):
     resolution: {integrity: sha512-xQDmFeIc+VR3q6scSSciSNVSdcRI52FFTTlDw4/pZCJk59LJTt6GgnqeL0Aj4EIgELfZQLOsKrxIoup5gzKlrQ==}
     dependencies:
@@ -3536,7 +3564,7 @@ packages:
     peerDependencies:
       nx: '>= 16 <= 18'
     dependencies:
-      '@nrwl/devkit': 17.2.7(nx@17.2.6)
+      '@nrwl/devkit': 17.2.7(nx@17.2.7)
       ejs: 3.1.9
       enquirer: 2.3.6
       ignore: 5.3.0
@@ -3544,6 +3572,36 @@ packages:
       semver: 7.5.3
       tmp: 0.2.1
       tslib: 2.6.2
+
+  /@nx/esbuild@17.2.7(@swc-node/register@1.6.8)(@swc/core@1.3.100)(@types/node@20.10.5)(esbuild@0.19.10)(nx@17.2.6)(typescript@5.2.2):
+    resolution: {integrity: sha512-Hq435xcv2hrCdbmybRKvVhrWaayfq1+tIFnMtPQZ3B/jKIjFpoWHAhdOUraGoqFrKsIkF9c40tsl6g0T5MCgbg==}
+    peerDependencies:
+      esbuild: ~0.19.2
+    peerDependenciesMeta:
+      esbuild:
+        optional: true
+    dependencies:
+      '@nrwl/esbuild': 17.2.7(@swc-node/register@1.6.8)(@swc/core@1.3.100)(@types/node@20.10.5)(esbuild@0.19.10)(nx@17.2.6)(typescript@5.2.2)
+      '@nx/devkit': 17.2.7(nx@17.2.6)
+      '@nx/js': 17.2.7(@swc-node/register@1.6.8)(@swc/core@1.3.100)(@types/node@20.10.5)(nx@17.2.6)(typescript@5.2.2)
+      chalk: 4.1.2
+      esbuild: 0.19.10
+      fast-glob: 3.2.7
+      fs-extra: 11.1.1
+      tsconfig-paths: 4.2.0
+      tslib: 2.6.2
+    transitivePeerDependencies:
+      - '@babel/traverse'
+      - '@swc-node/register'
+      - '@swc/core'
+      - '@swc/wasm'
+      - '@types/node'
+      - debug
+      - nx
+      - supports-color
+      - typescript
+      - verdaccio
+    dev: true
 
   /@nx/eslint-plugin@17.2.6(@swc-node/register@1.6.8)(@swc/core@1.3.100)(@types/node@20.10.5)(@typescript-eslint/parser@6.15.0)(eslint@8.56.0)(nx@17.2.6)(typescript@5.2.2):
     resolution: {integrity: sha512-P9+G9r6fz0RP/muchPFHyicfA4o80kUD8oRmrJJAjI3KolpRk3Kld7GAbXPkunnGuMcf/nSJxaUkt+QCe5zOhQ==}
