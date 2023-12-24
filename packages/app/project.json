@@ -1,0 +1,35 @@
+{
+  "name": "@mach/app",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/next:build",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "outputPath": "packages/app/.next"
+      }
+    },
+    "serve": {
+      "executor": "@nx/next:server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "@mach/app:build",
+        "dev": true
+      }
+    },
+    "pack": {
+      "executor": "nx:run-commands",
+      "outputs": ["{projectRoot}/.vercel"],
+      "options": {
+        "commands": ["npx next-on-pages", "rm package.json"],
+        "cwd": "packages/app",
+        "parallel": false
+      }
+    },
+    "test": {
+      "executor": "@nx/vite:test"
+    }
+  }
+}

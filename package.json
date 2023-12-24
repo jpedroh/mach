@@ -74,16 +74,10 @@
     "vitest": "^1.1.0"
   },
   "scripts": {
-    "serve": "nx run @mach/app:dev",
-    "pack": "nx run-many --target=pack",
+    "serve": "nx run @mach/app:serve",
+    "pack": "nx affected --target=pack",
     "pack:app": "nx pack @mach/app",
-    "lint": "nx run-many --target=lint",
-    "test": "nx run-many --target=test"
-  },
-  "workspaces": {
-    "packages": [
-      "packages/**/*",
-      "apps/**/*"
-    ]
+    "lint": "nx affected --target=lint",
+    "test": "nx affected --target=test"
   }
 }
