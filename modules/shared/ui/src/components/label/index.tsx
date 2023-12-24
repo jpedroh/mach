@@ -1,18 +1,13 @@
 'use client'
 
-import { ReactNode, ComponentProps } from 'react'
-import { useFormGroupContext } from '../form-group/context'
+import { LabelProps, Label as ReactAriaLabel } from 'react-aria-components'
 
-type Props = {
-  children: ReactNode
-} & Omit<ComponentProps<'label'>, 'htmlFor'>
+type Props = Omit<LabelProps, 'className'>
 
 export function Label({ children, ...rest }: Props) {
-  const { controlId } = useFormGroupContext()
-
   return (
-    <label htmlFor={controlId} className="dark:text-gray-200" {...rest}>
+    <ReactAriaLabel className="dark:text-white" {...rest}>
       {children}
-    </label>
+    </ReactAriaLabel>
   )
 }

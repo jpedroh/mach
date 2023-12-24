@@ -1,20 +1,40 @@
-import { ComponentProps, ReactNode, useId } from 'react'
-import { FormGroupProvider } from '../form-group/context'
-import { Label } from '../label'
+import { ReactNode } from 'react'
+import {
+  CheckboxProps,
+  Checkbox as ReactAriaCheckbox,
+} from 'react-aria-components'
 
 type Props = {
   label: ReactNode
-} & Omit<ComponentProps<'input'>, 'type'>
+} & Omit<CheckboxProps, 'className'>
 
-export function Checkbox({ label, ...rest }: Props) {
-  const generatedId = useId()
-
+export function Checkbox({ label, ...props }: Props) {
   return (
-    <FormGroupProvider controlId={rest.id ?? generatedId}>
-      <div className="flex gap-3 items-center">
-        <input type="checkbox" id={rest.id ?? generatedId} {...rest} />
-        <Label>{label}</Label>
-      </div>
-    </FormGroupProvider>
+    <div>
+      <ReactAriaCheckbox
+        className={'flex items-center gap-2 text-white'}
+        {...props}
+      >
+        {({ isSelected }) => (
+          <>
+            <svg
+              className={`w-6 h-6 border p-1 border-gray-400 fill-none transition-all rounded duration-200 ${
+                isSelected ? 'bg-blue-600 stroke-white' : ''
+              }`}
+              viewBox="0 0 18 18"
+              aria-hidden="true"
+              style={{
+                strokeWidth: isSelected ? '3px' : '0',
+                strokeDashoffset: isSelected ? '44' : '66',
+                strokeDasharray: '22px',
+              }}
+            >
+              <polyline points="1 9 7 14 15 4" />
+            </svg>
+            {label}
+          </>
+        )}
+      </ReactAriaCheckbox>
+    </div>
   )
 }
