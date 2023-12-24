@@ -1,13 +1,13 @@
 'use client'
 
 import { Button } from '@mach/shared/ui'
-import { useRouter } from 'next/navigation'
+import { useDismissFlightDetailsModal } from '../../hooks/use-dismiss-flight-details-modal'
 
 export function CloseButton() {
-  const router = useRouter()
+  const { dismiss } = useDismissFlightDetailsModal()
 
   return (
-    <Button variant="danger" onClick={() => router.back()}>
+    <Button variant="danger" onPress={dismiss}>
       Close
     </Button>
   )
