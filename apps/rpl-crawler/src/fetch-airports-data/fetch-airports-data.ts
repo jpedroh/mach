@@ -1,5 +1,5 @@
 import { XMLParser } from 'fast-xml-parser'
-import z from 'zod'
+import { z } from 'zod'
 
 const airportSchema = z.object({
   AeroCode: z.string(),

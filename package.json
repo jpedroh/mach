@@ -6,6 +6,7 @@
   "devDependencies": {
     "@babel/core": ">=7.0.0 <8.0.0",
     "@cloudflare/next-on-pages": "^1.8.2",
+    "@nx/esbuild": "^17.2.7",
     "@nx/eslint": "^17.2.7",
     "@nx/eslint-plugin": "^17.2.6",
     "@nx/js": "v17.2.6",
@@ -81,7 +82,8 @@
   },
   "workspaces": {
     "packages": [
-      "packages/**/*"
+      "packages/**/*",
+      "apps/**/*"
     ]
   }
 }
