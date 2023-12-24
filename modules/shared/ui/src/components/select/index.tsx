@@ -1,38 +1,38 @@
 'use client'
 
-import ReactSelect from 'react-select'
+import {
+  ComboBox,
+  ComboBoxProps,
+  Label,
+  ListBox,
+  Popover,
+} from 'react-aria-components'
+import { Button } from '../button'
+import { Input } from '../input'
+import { SelectOption } from './option'
+import { Option } from './types'
 
-type Option = { value: string; label: string }
+type Props = { label: string } & Omit<ComboBoxProps<Option>, 'children'>
 
-export function Select(props: {
-  options: Option[]
-  name: string
-  defaultValue?: Option
-}) {
+export function Select({ label, ...props }: Props) {
   return (
-    <ReactSelect<Option>
-      options={props.options}
-      name={props.name}
-      unstyled
-      defaultValue={props.defaultValue}
-      classNames={{
-        control: (state) => {
-          let className =
-            'py-2 px-3 rounded-lg border dark:bg-gray-600 dark:border-gray-800 dark:text-gray-200'
-          if (state.isFocused) {
-            className += ' outline-none ring-2 ring-blue-400 ring-opacity-50'
-          }
-          return className
-        },
-        option(props) {
-          const className = `py-2 px-4 ${
-            props.isFocused
-              ? 'bg-blue-600 text-white'
-              : 'bg-white dark:bg-gray-600 dark:text-gray-200'
-          }`
-          return className
-        },
-      }}
-    />
+    <ComboBox className={'grid gap-2'} {...props}>
+      <Label className="text-white">{label}</Label>
+      <div className="flex">
+        <Input className={'flex-grow'} />
+        <Button className={'w-fit ml-[-1.714rem] border dark:border-gray-400'}>
+          ▼
+        </Button>
+      </div>
+      <Popover
+        className={
+          'max-h-[20rem] overflow-auto rounded-lg border dark:border-gray-400'
+        }
+      >
+        <ListBox<Option>>
+          {(item) => <SelectOption>{item.name}</SelectOption>}
+        </ListBox>
+      </Popover>
+    </ComboBox>
   )
 }

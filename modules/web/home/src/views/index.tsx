@@ -1,6 +1,6 @@
 import { Layout, Lead } from '@mach/shared/ui/server'
 
-import { Button, Checkbox, FormGroup, Label, Select } from '@mach/shared/ui'
+import { Button, Checkbox, Select } from '@mach/shared/ui'
 import { fetchAircraftIcaoCodes } from '../services/fetch-aircraft-icao-codes'
 import { fetchAirports } from '../services/fetch-airports'
 import { fetchCompanies } from '../services/fetch-companies'
@@ -17,67 +17,53 @@ export async function HomePage() {
     fetchAircraftIcaoCodes(),
   ])
 
-  const cyclesOptions = cycles.map((cycle) => {
-    return { value: cycle, label: cycle }
-  })
-
   return (
     <Layout>
       <Lead>To begin, fill at least one of the following fields.</Lead>
 
       <SearchForm>
-        <FormGroup>
-          <Label>Cycle</Label>
-          <Select
-            options={cyclesOptions}
-            name="cycle"
-            defaultValue={cyclesOptions[0]}
-          />
-        </FormGroup>
+        <Select
+          label={'Cycle'}
+          name="cycle"
+          defaultItems={cycles.map((cycle) => ({ id: cycle, name: cycle }))}
+          defaultSelectedKey={cycles[0]}
+        />
 
-        <FormGroup>
-          <Label>Departure ICAO</Label>
-          <Select
-            options={airports.map((airport) => ({
-              value: airport.id,
-              label: formatAirport(airport),
-            }))}
-            name="departureIcao"
-          />
-        </FormGroup>
+        <Select
+          label={'Departure ICAO'}
+          name="departureIcao"
+          defaultItems={airports.map((airport) => ({
+            id: airport.id,
+            name: formatAirport(airport),
+          }))}
+        />
 
-        <FormGroup>
-          <Label>Arrival ICAO</Label>
-          <Select
-            options={airports.map((airport) => ({
-              value: airport.id,
-              label: formatAirport(airport),
-            }))}
-            name="arrivalIcao"
-          />
-        </FormGroup>
+        <Select
+          label={'Arrival ICAO'}
+          name="arrivalIcao"
+          defaultItems={airports.map((airport) => ({
+            id: airport.id,
+            name: formatAirport(airport),
+          }))}
+        />
 
-        <FormGroup>
-          <Label>Company</Label>
-          <Select
-            options={companies.map((company) => ({
-              value: company,
-              label: company,
-            }))}
-            name="company"
-          />
-        </FormGroup>
+        <Select
+          label={'Company'}
+          name="company"
+          defaultItems={companies.map((company) => ({
+            id: company,
+            name: company,
+          }))}
+        />
 
-        <FormGroup>
-          <Label>Aircraft</Label>
-          <Select
-            options={aircraftIcaoCodes.map((aircraftIcaoCode) => ({
-              value: aircraftIcaoCode,
-              label: aircraftIcaoCode,
-            }))}
-            name="aircraftIcaoCode"
-          />
-        </FormGroup>
+        <Select
+          label={'Aircraft'}
+          name="aircraftIcaoCode"
+          defaultItems={aircraftIcaoCodes.map((aircraftIcaoCode) => ({
+            id: aircraftIcaoCode,
+            name: aircraftIcaoCode,
+          }))}
+        />
 
         <Checkbox name="onlyCurrent" label="Show only current flights." />
 
