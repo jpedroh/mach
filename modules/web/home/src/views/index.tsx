@@ -1,50 +1,13 @@
 import { Layout, Lead } from '@mach/shared/ui/server'
 
-import { fetchCompanies } from '../services/fetch-companies'
+import { Button, Checkbox, FormGroup, Label, Select } from '@mach/shared/ui'
 import { fetchAircraftIcaoCodes } from '../services/fetch-aircraft-icao-codes'
 import { fetchAirports } from '../services/fetch-airports'
+import { fetchCompanies } from '../services/fetch-companies'
 import { fetchCycles } from '../services/fetch-cycles'
-import { Button, Select } from '@mach/shared/ui'
 
 import { formatAirport } from '../utils/format-airport'
 import { SearchForm } from './form'
-import { ComponentProps, ReactNode, useId } from 'react'
-
-function Label({
-  children,
-  ...rest
-}: { children: ReactNode } & ComponentProps<'label'>) {
-  return (
-    <label className="dark:text-gray-200" {...rest}>
-      {children}
-    </label>
-  )
-}
-
-function FormGroup({
-  children,
-  ...rest
-}: { children: ReactNode } & ComponentProps<'div'>) {
-  return (
-    <div className="grid gap-2" {...rest}>
-      {children}
-    </div>
-  )
-}
-
-function Checkbox({
-  label,
-  ...rest
-}: { label: ReactNode } & ComponentProps<'input'>) {
-  const id = useId()
-
-  return (
-    <div className="flex gap-3 items-center">
-      <input type="checkbox" name="onlyCurrent" id={id} {...rest} />
-      <Label htmlFor={id}>{label}</Label>
-    </div>
-  )
-}
 
 export async function HomePage() {
   const [cycles, companies, airports, aircraftIcaoCodes] = await Promise.all([
@@ -64,7 +27,7 @@ export async function HomePage() {
 
       <SearchForm>
         <FormGroup>
-          <Label htmlFor="cycle">Cycle</Label>
+          <Label>Cycle</Label>
           <Select
             options={cyclesOptions}
             name="cycle"
@@ -73,7 +36,7 @@ export async function HomePage() {
         </FormGroup>
 
         <FormGroup>
-          <Label htmlFor="departureIcao">Departure ICAO</Label>
+          <Label>Departure ICAO</Label>
           <Select
             options={airports.map((airport) => ({
               value: airport.id,
@@ -84,7 +47,7 @@ export async function HomePage() {
         </FormGroup>
 
         <FormGroup>
-          <Label htmlFor="arrivalIcao">Arrival ICAO</Label>
+          <Label>Arrival ICAO</Label>
           <Select
             options={airports.map((airport) => ({
               value: airport.id,
@@ -95,7 +58,7 @@ export async function HomePage() {
         </FormGroup>
 
         <FormGroup>
-          <Label htmlFor="company">Company</Label>
+          <Label>Company</Label>
           <Select
             options={companies.map((company) => ({
               value: company,
@@ -106,7 +69,7 @@ export async function HomePage() {
         </FormGroup>
 
         <FormGroup>
-          <Label htmlFor="aircraftIcaoCode">Aircraft</Label>
+          <Label>Aircraft</Label>
           <Select
             options={aircraftIcaoCodes.map((aircraftIcaoCode) => ({
               value: aircraftIcaoCode,

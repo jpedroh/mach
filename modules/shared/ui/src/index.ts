@@ -1,6 +1,9 @@
 'use client'
 
 export { Button } from './components/button'
+export { Checkbox } from './components/checkbox'
+export { FormGroup } from './components/form-group'
+export { Label } from './components/label'
 export {
   Modal,
   ModalContent,
