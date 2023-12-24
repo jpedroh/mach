@@ -74,9 +74,9 @@
     "vitest": "^1.1.0"
   },
   "scripts": {
-    "serve": "nx run @mach/app:serve",
+    "serve": "nx run @mach/web:serve",
     "pack": "nx affected --target=pack",
-    "pack:app": "nx pack @mach/app",
+    "pack:web": "nx pack @mach/web",
     "lint": "nx affected --target=lint",
     "test": "nx affected --target=test"
   }
