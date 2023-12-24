@@ -1,4 +1,4 @@
-import { Link } from '@mach/shared/ui/server'
+import { Link } from '../../link'
 
 export function Footer() {
   return (

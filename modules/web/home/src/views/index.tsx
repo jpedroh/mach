@@ -1,6 +1,6 @@
 import { Layout, Lead } from '@mach/shared/ui/server'
 
-import { Button, Checkbox, Select } from '@mach/shared/ui'
+import { Checkbox, Select } from '@mach/shared/ui'
 import { fetchAircraftIcaoCodes } from '../services/fetch-aircraft-icao-codes'
 import { fetchAirports } from '../services/fetch-airports'
 import { fetchCompanies } from '../services/fetch-companies'
@@ -8,6 +8,7 @@ import { fetchCycles } from '../services/fetch-cycles'
 
 import { formatAirport } from '../utils/format-airport'
 import { SearchForm } from './form'
+import { SubmitButton } from './form/submit-button'
 
 export async function HomePage() {
   const [cycles, companies, airports, aircraftIcaoCodes] = await Promise.all([
@@ -67,7 +68,7 @@ export async function HomePage() {
 
         <Checkbox name="onlyCurrent" label="Show only current flights." />
 
-        <Button type="submit">Search flights</Button>
+        <SubmitButton>Search flights</SubmitButton>
       </SearchForm>
     </Layout>
   )
