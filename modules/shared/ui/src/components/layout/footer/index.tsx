@@ -1,23 +1,20 @@
-import { FC } from 'react'
+import { Link } from '@mach/shared/ui/server'
 
-export const Footer: FC = () => {
+export function Footer() {
   return (
     <div className={'dark:text-white text-center w-full'}>
       <p>
-        <a
-          href="https://github.com/jpedroh/mach/"
-          target="_blank"
-          rel="noreferrer"
-        >
-          Mach {process.env.NEXT_PUBLIC_APP_VERSION}
-        </a>
+        <Link href="https://github.com/jpedroh/mach/" target="_blank">
+          Mach
+        </Link>
         {' - '}
         Use for flight simulation only
       </p>
       <p>
-        <a href="https://jpedroh.github.io" target="_blank" rel="noreferrer">
-          Developed by João Pedro Henrique
-        </a>
+        Developed by{' '}
+        <Link href="https://jpedroh.dev" target="_blank">
+          João Pedro Henrique
+        </Link>
       </p>
     </div>
   )
