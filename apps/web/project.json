@@ -5,9 +5,7 @@
   "targets": {
     "build": {
       "executor": "@nx/next:build",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "outputs": ["{options.outputPath}"],
       "defaultConfiguration": "production",
       "options": {
         "outputPath": "apps/web/.next"
@@ -23,14 +21,9 @@
     },
     "pack": {
       "executor": "nx:run-commands",
-      "outputs": [
-        "{projectRoot}/.vercel"
-      ],
+      "outputs": ["{projectRoot}/.vercel"],
       "options": {
-        "commands": [
-          "npx next-on-pages",
-          "rm package.json"
-        ],
+        "commands": ["npx next-on-pages", "rm package.json"],
         "cwd": "apps/web",
         "parallel": false
       }
