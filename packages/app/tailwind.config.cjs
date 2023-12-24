@@ -12,5 +12,8 @@ module.exports = {
   variants: {
     extend: { opacity: ['disabled'] },
   },
-  plugins: [],
+  plugins: [
+    require('tailwindcss-react-aria-components'),
+    require('tailwindcss-animate'),
+  ],
 }

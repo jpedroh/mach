@@ -1,15 +1,38 @@
+import { ModalContent, ModalFooter, ModalHeading } from '@mach/shared/ui'
+import { ReactNode } from 'react'
 import { fetchFlightById } from '../services/fetch-flight-by-id'
 import { formatEet } from '../utils/format-eet'
 import { CloseButton } from './close-button'
 import { IcaoFpl } from './icao-fpl'
-import styles from './index.module.css'
 import { IvaoFplButton } from './ivao-fpl-button'
+import { ModalWrapper } from './modal-wrapper'
 import { SimBriefButton } from './simbrief-button'
 import { SkyVectorButton } from './sky-vector-button'
 import { VatsimFplButton } from './vatsim-fpl-button'
 
 type Props = {
   id: string
+}
+
+function FlightInfoGroup({ children }: { children: ReactNode }) {
+  return (
+    <div className='flex justify-between gap-2 md:gap-4 flex-wrap'>
+      {children}
+    </div>
+  )
+}
+
+function FlightInfo({ label, children }: { label: string, children: ReactNode }) {
+  return (
+    <div className='flex items-center gap-2'>
+      <span className='font-semibold'>{label}</span>
+      <span>{children}</span>
+    </div>
+  )
+}
+
+function SectionTitle({ children }: { children: ReactNode }) {
+  return <h4 className='mb-2 font-semibold mt-2'>{children}</h4>
 }
 
 export async function FlightDetailsModal({ id }: Props) {
@@ -20,64 +43,35 @@ export async function FlightDetailsModal({ id }: Props) {
   }
 
   return (
-    <>
-      <div className={styles.container}>
-        <div className={styles.modal}>
-          <div className={styles.header}>
-            <h3>
-              Flight {flight.callsign} from {flight.departureIcao} to{' '}
-              {flight.arrivalIcao}
-            </h3>
-          </div>
-          <div className={styles.content}>
-            <h4>GENERAL INFORMATION</h4>
-            <div className="grid grid-cols-2">
-              <p>
-                <span>EOBT </span> {flight.estimatedOffBlockTime}Z
-              </p>
-              <p>
-                <span>FLIGHT TIME </span>{' '}
-                {formatEet(flight.estimatedEnrouteMinutes)}
-              </p>
-            </div>
+    <ModalWrapper>
+      <ModalHeading>
+        Flight {flight.callsign} from {flight.departureIcao} to{' '}
+        {flight.arrivalIcao}
+      </ModalHeading>
+      <ModalContent>
+        <SectionTitle>GENERAL INFORMATION</SectionTitle>
+        <FlightInfoGroup>
+          <FlightInfo label='EOBT'>{flight.estimatedOffBlockTime}Z</FlightInfo>
+          <FlightInfo label='EET'>{formatEet(flight.estimatedEnrouteMinutes)}</FlightInfo>
+          <FlightInfo label='AIRCRAFT'>{flight.aircraft.icaoCode}</FlightInfo>
+          <FlightInfo label='SPEED'>{flight.cruisingSpeed}</FlightInfo>
+          <FlightInfo label='FL'>{flight.cruisingLevel.toString().padStart(3, '0')}</FlightInfo>
+        </FlightInfoGroup>
 
-            <div className="grid grid-cols-3">
-              <p>
-                <span>AIRCRAFT </span> {flight.aircraft.icaoCode}
-              </p>
-              <p>
-                <span>CRUISING SPEED </span> {flight.cruisingSpeed}
-              </p>
-              <p>
-                <span>FL </span>{' '}
-                {flight.cruisingLevel.toString().padStart(3, '0')}
-              </p>
-            </div>
+        <FlightInfo label={'ROUTE'}>{flight.route}</FlightInfo>
+        <FlightInfo label={'REMARKS'}>{flight.remarks}</FlightInfo>
 
-            <div className="grid">
-              <p>
-                <span>ROUTE </span> {flight.route}
-              </p>
-            </div>
-            <div className="grid">
-              <p>
-                <span>REMARKS </span> {flight.remarks}
-              </p>
-            </div>
+        <SectionTitle>ICAO FPL</SectionTitle>
+        <IcaoFpl flight={flight} />
+      </ModalContent>
 
-            <h4>ICAO FPL</h4>
-            <IcaoFpl flight={flight} />
-          </div>
-          <div className={styles.footer}>
-            <IvaoFplButton flight={flight} />
-            <VatsimFplButton flight={flight} />
-            <SimBriefButton flight={flight} />
-            <SkyVectorButton flight={flight} />
-            <CloseButton />
-          </div>
-        </div>
-      </div>
-      <div className={styles.background}></div>
-    </>
+      <ModalFooter className={'flex flex-wrap md:flex-nowrap gap-3'}>
+        <IvaoFplButton flight={flight} />
+        <VatsimFplButton flight={flight} />
+        <SimBriefButton flight={flight} />
+        <SkyVectorButton flight={flight} />
+        <CloseButton />
+      </ModalFooter>
+    </ModalWrapper>
   )
 }
