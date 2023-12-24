@@ -47,14 +47,29 @@ export function ModalHeading({ children }: { children: ReactNode }) {
   )
 }
 
-export function ModalContent({ children, className = '', ...rest }: { children: ReactNode } & HTMLProps<HTMLDivElement>) {
+export function ModalContent({
+  children,
+  className = '',
+  ...rest
+}: { children: ReactNode } & HTMLProps<HTMLDivElement>) {
   return (
-    <div className={`p-4 dark:text-white gap-2 flex flex-col ${className}`} {...rest}>{children}</div>
+    <div
+      className={`p-4 dark:text-white gap-2 flex flex-col ${className}`}
+      {...rest}
+    >
+      {children}
+    </div>
   )
 }
 
-export function ModalFooter({ children, className = '', ...rest }: { children: ReactNode } & HTMLProps<HTMLDivElement>) {
+export function ModalFooter({
+  children,
+  className = '',
+  ...rest
+}: { children: ReactNode } & HTMLProps<HTMLDivElement>) {
   return (
-    <div className={`p-4 ${className}`} {...rest}>{children}</div>
+    <div className={`p-4 ${className}`} {...rest}>
+      {children}
+    </div>
   )
 }
