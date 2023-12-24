@@ -1,4 +1,4 @@
-import { Table } from '@mach/shared/ui/server'
+import { Table } from '@mach/web/shared/ui/server'
 import { fetchFlights } from '../../services/fetch-flights'
 import { formatAirport } from '../../utils/format-airport'
 import { ViewDetailsButton } from './view-details-button'

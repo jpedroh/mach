@@ -1,7 +1,7 @@
 {
-  "name": "@mach/shared/ui",
-  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "modules/shared/ui/src",
+  "name": "@mach/web/shared/ui",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "modules/web/shared/ui/src",
   "projectType": "library",
   "tags": ["type:shared"],
   "targets": {
@@ -13,7 +13,7 @@
       "executor": "@nx/vite:test",
       "outputs": ["{options.reportsDirectory}"],
       "options": {
-        "reportsDirectory": "../../../coverage/modules/shared/ui"
+        "reportsDirectory": "../../../../coverage/modules/web/shared/ui"
       }
     }
   }

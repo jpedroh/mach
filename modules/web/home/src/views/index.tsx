@@ -1,6 +1,6 @@
-import { Layout, Lead } from '@mach/shared/ui/server'
+import { Layout, Lead } from '@mach/web/shared/ui/server'
 
-import { Checkbox, Select } from '@mach/shared/ui'
+import { Checkbox, Select } from '@mach/web/shared/ui'
 import { fetchAircraftIcaoCodes } from '../services/fetch-aircraft-icao-codes'
 import { fetchAirports } from '../services/fetch-airports'
 import { fetchCompanies } from '../services/fetch-companies'

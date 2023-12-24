@@ -1,4 +1,4 @@
-import { Layout, Lead, Link } from '@mach/shared/ui/server'
+import { Layout, Lead, Link } from '@mach/web/shared/ui/server'
 import { SearchPage } from '@mach/web/search'
 import { searchFlightsQuerySchema } from '@mach/web/search/server'
 

@@ -1,5 +1,5 @@
 import { Flight } from '@mach/shared/database'
-import { Button } from '@mach/shared/ui'
+import { Button } from '@mach/web/shared/ui'
 
 type Props = {
   flight: Flight

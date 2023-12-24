@@ -1,4 +1,4 @@
-import { ModalContent, ModalFooter, ModalHeading } from '@mach/shared/ui'
+import { ModalContent, ModalFooter, ModalHeading } from '@mach/web/shared/ui'
 import { ReactNode } from 'react'
 import { fetchFlightById } from '../services/fetch-flight-by-id'
 import { formatEet } from '../utils/format-eet'

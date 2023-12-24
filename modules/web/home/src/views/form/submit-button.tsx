@@ -1,6 +1,6 @@
 'use client'
 
-import { Button } from '@mach/shared/ui'
+import { Button } from '@mach/web/shared/ui'
 import { ReactNode } from 'react'
 import { useFormStatus } from 'react-dom'
 

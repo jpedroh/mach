@@ -1,6 +1,6 @@
 'use client'
 
-import { Modal } from '@mach/shared/ui'
+import { Modal } from '@mach/web/shared/ui'
 import { ReactNode } from 'react'
 import { useDismissFlightDetailsModal } from '../hooks/use-dismiss-flight-details-modal'
 
