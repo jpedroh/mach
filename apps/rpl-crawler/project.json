@@ -11,18 +11,14 @@
     },
     "pack": {
       "executor": "@nx/esbuild:esbuild",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "outputs": ["{options.outputPath}"],
       "options": {
         "main": "apps/rpl-crawler/src/index.ts",
         "tsConfig": "apps/rpl-crawler/tsconfig.json",
         "outputPath": "apps/rpl-crawler/dist",
         "platform": "node",
         "sourceMap": true,
-        "format": [
-          "esm"
-        ],
+        "format": ["esm"],
         "generatePackageJson": true
       }
     }
