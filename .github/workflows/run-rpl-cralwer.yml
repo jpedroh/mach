@@ -31,3 +31,6 @@ jobs:
           AISWEB_API_KEY: ${{ secrets.aisweb_api_key }}
           AISWEB_API_PASSWORD: ${{ secrets.aisweb_api_password }}
           RPL_DATE: ${{ github.event.inputs.date }}
+          RPL_CRAWLER_SENTRY_DSN: ${{ secrets.rpl_crawler_sentry_dsn }}
+          RPL_CRAWLER_SENTRY_RELEASE: 'rpl-crawler@${{ github.sha }}'
+          RPL_CRAWLER_SENTRY_ENVIRONMENT: production
