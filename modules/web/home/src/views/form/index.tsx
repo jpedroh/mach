@@ -1,44 +1,17 @@
 'use client'
 
-import { useRouter } from 'next/navigation'
-import { ReactNode, useState } from 'react'
-import { searchFlightsQuerySchema } from '../../services/validate-search-filters'
+import { ReactNode } from 'react'
+import { useFormState } from 'react-dom'
+import { runFlightSearchQuery } from './action'
+import { ErrorAlert } from './error-alert'
 
 export function SearchForm({ children }: { children: ReactNode }) {
-  const [errorMessage, setErrorMessage] = useState('')
-  const router = useRouter()
-
-  function onSubmit(evt: React.FormEvent<HTMLFormElement>) {
-    evt.preventDefault()
-    setErrorMessage('')
-    const result = searchFlightsQuerySchema.safeParse(
-      // @ts-expect-error Broken typing for FomrData
-      Object.fromEntries(new FormData(evt.currentTarget))
-    )
-    if (!result.success) {
-      return setErrorMessage(result.error.flatten().formErrors[0])
-    }
-    router.push('/search?' + new URLSearchParams(result.data).toString())
-  }
+  const [formState, formAction] = useFormState(runFlightSearchQuery, null)
 
   return (
-    <form
-      className="flex flex-col gap-4 w-full max-w-sm"
-      onSubmit={(evt) => onSubmit(evt)}
-    >
+    <form className="flex flex-col gap-4 w-full max-w-sm" action={formAction}>
       {children}
-      {errorMessage && <ErrorAlert>{errorMessage}</ErrorAlert>}
+      {formState?.error && <ErrorAlert>{formState?.error}</ErrorAlert>}
     </form>
-  )
-}
-
-function ErrorAlert({ children }: { children: ReactNode }) {
-  return (
-    <p
-      role="alert"
-      className="bg-red-700 text-white border border-red-900 p-3 rounded"
-    >
-      {children}
-    </p>
   )
 }
