@@ -1,20 +1,8 @@
-import flightDecoder from './flight-decoder'
-import { runRplCrawler } from './main'
-import rplFileDownloader from './rpl-file-downloader'
-import rplFileLinesExtractor from './rpl-file-lines-extractor'
-import saveData from './save-data'
-import updateChecker from './update-checker'
-import Logger from './utils/logger'
+import { runRplCrawler } from '@mach/rpl-crawler'
 
 const date = process.argv[2]
 
-runRplCrawler(date, {
-  updateChecker,
-  rplFileDownloader,
-  rplFileLinesExtractor,
-  flightDecoder,
-  saveData,
-}).catch((error) => {
-  Logger.error(error)
+runRplCrawler(date).catch((error) => {
+  console.error(error)
   process.exit(1)
 })
