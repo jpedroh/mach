@@ -1,8 +1,12 @@
 import { runRplCrawler } from '@mach/rpl-crawler'
+import * as Sentry from '@sentry/node'
 
 const date = process.argv[2]
 
-runRplCrawler(date).catch((error) => {
-  console.error(error)
-  process.exit(1)
+Sentry.init({
+  dsn: process.env.RPL_CRAWLER_SENTRY_DSN,
+  release: process.env.RPL_CRAWLER_SENTRY_RELEASE,
+  environment: process.env.RPL_CRAWLER_SENTRY_ENVIRONMENT,
 })
+
+runRplCrawler(date)

@@ -22,7 +22,7 @@ export function makeRunRplCrawler({
     const hasUpdate = await updateChecker(date)
     if (!hasUpdate) {
       Logger.info(`NO UPDATES FOUND FOR ${date}`)
-      process.exit(0)
+      return
     }
 
     Logger.info(`STARTING RPL UPDATE FOR ${date}`)
