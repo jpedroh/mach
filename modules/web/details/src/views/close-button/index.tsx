@@ -7,7 +7,7 @@ export function CloseButton() {
   const { dismiss } = useDismissFlightDetailsModal()
 
   return (
-    <Button variant="danger" onClick={dismiss}>
+    <Button variant="danger" onPress={dismiss}>
       Close
     </Button>
   )
