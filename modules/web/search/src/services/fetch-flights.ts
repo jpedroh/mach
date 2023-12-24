@@ -2,32 +2,42 @@ import { db } from '@mach/shared/database'
 import { currentCycleSubquery } from '../utils/currentCycleSubquery'
 import { z } from 'zod'
 
-export const searchFlightsQuerySchema = z.object({
-  cycle: z
-    .string()
-    .transform((v) => new Date(v))
-    .optional(),
-  departureIcao: z
-    .string()
-    .transform((v) => v.toUpperCase())
-    .optional(),
-  arrivalIcao: z
-    .string()
-    .transform((v) => v.toUpperCase())
-    .optional(),
-  company: z
-    .string()
-    .transform((v) => v.toUpperCase())
-    .optional(),
-  aircraftIcaoCode: z
-    .string()
-    .transform((v) => v.toUpperCase())
-    .optional(),
-  onlyCurrent: z
-    .string()
-    .transform((v) => Boolean(v))
-    .optional(),
-})
+export const searchFlightsQuerySchema = z
+  .object({
+    cycle: z
+      .string()
+      .transform((v) => new Date(v))
+      .optional(),
+    departureIcao: z
+      .string()
+      .transform((v) => v.toUpperCase())
+      .optional(),
+    arrivalIcao: z
+      .string()
+      .transform((v) => v.toUpperCase())
+      .optional(),
+    company: z
+      .string()
+      .transform((v) => v.toUpperCase())
+      .optional(),
+    aircraftIcaoCode: z
+      .string()
+      .transform((v) => v.toUpperCase())
+      .optional(),
+    onlyCurrent: z
+      .string()
+      .transform((v) => Boolean(v))
+      .optional(),
+  })
+  .refine(
+    ({ departureIcao, arrivalIcao, company, aircraftIcaoCode }) => {
+      return departureIcao || arrivalIcao || company || aircraftIcaoCode
+    },
+    {
+      message:
+        'At least one filter (either departureIcao, arrivalIcao, company or aircraftIcaoCode) must be provided',
+    }
+  )
 
 export type SearchFlightsQuery = z.infer<typeof searchFlightsQuerySchema>
 

@@ -6,8 +6,45 @@ import { fetchAirports } from '../services/fetch-airports'
 import { fetchCycles } from '../services/fetch-cycles'
 import { Button, Select } from '@mach/shared/ui'
 
-import styles from './index.module.css'
 import { formatAirport } from '../utils/format-airport'
+import { SearchForm } from './form'
+import { ComponentProps, ReactNode, useId } from 'react'
+
+function Label({
+  children,
+  ...rest
+}: { children: ReactNode } & ComponentProps<'label'>) {
+  return (
+    <label className="dark:text-gray-200" {...rest}>
+      {children}
+    </label>
+  )
+}
+
+function FormGroup({
+  children,
+  ...rest
+}: { children: ReactNode } & ComponentProps<'div'>) {
+  return (
+    <div className="grid gap-2" {...rest}>
+      {children}
+    </div>
+  )
+}
+
+function Checkbox({
+  label,
+  ...rest
+}: { label: ReactNode } & ComponentProps<'input'>) {
+  const id = useId()
+
+  return (
+    <div className="flex gap-3 items-center">
+      <input type="checkbox" name="onlyCurrent" id={id} {...rest} />
+      <Label htmlFor={id}>{label}</Label>
+    </div>
+  )
+}
 
 export async function HomePage() {
   const [cycles, companies, airports, aircraftIcaoCodes] = await Promise.all([
@@ -25,18 +62,18 @@ export async function HomePage() {
     <Layout>
       <Lead>To begin, fill at least one of the following fields.</Lead>
 
-      <form className={styles.container} action={'/search'}>
-        <div>
-          <label htmlFor="cycle">Cycle</label>
+      <SearchForm>
+        <FormGroup>
+          <Label htmlFor="cycle">Cycle</Label>
           <Select
             options={cyclesOptions}
             name="cycle"
             defaultValue={cyclesOptions[0]}
           />
-        </div>
+        </FormGroup>
 
-        <div>
-          <label htmlFor="departureIcao">Departure ICAO</label>
+        <FormGroup>
+          <Label htmlFor="departureIcao">Departure ICAO</Label>
           <Select
             options={airports.map((airport) => ({
               value: airport.id,
@@ -44,10 +81,10 @@ export async function HomePage() {
             }))}
             name="departureIcao"
           />
-        </div>
+        </FormGroup>
 
-        <div>
-          <label htmlFor="arrivalIcao">Arrival ICAO</label>
+        <FormGroup>
+          <Label htmlFor="arrivalIcao">Arrival ICAO</Label>
           <Select
             options={airports.map((airport) => ({
               value: airport.id,
@@ -55,10 +92,10 @@ export async function HomePage() {
             }))}
             name="arrivalIcao"
           />
-        </div>
+        </FormGroup>
 
-        <div>
-          <label htmlFor="company">Company</label>
+        <FormGroup>
+          <Label htmlFor="company">Company</Label>
           <Select
             options={companies.map((company) => ({
               value: company,
@@ -66,10 +103,10 @@ export async function HomePage() {
             }))}
             name="company"
           />
-        </div>
+        </FormGroup>
 
-        <div>
-          <label htmlFor="aircraftIcaoCode">Aircraft</label>
+        <FormGroup>
+          <Label htmlFor="aircraftIcaoCode">Aircraft</Label>
           <Select
             options={aircraftIcaoCodes.map((aircraftIcaoCode) => ({
               value: aircraftIcaoCode,
@@ -77,15 +114,12 @@ export async function HomePage() {
             }))}
             name="aircraftIcaoCode"
           />
-        </div>
+        </FormGroup>
 
-        <section className="flex gap-3 items-center">
-          <input type="checkbox" name="onlyCurrent" id="onlyCurrent" />
-          <label htmlFor="onlyCurrent">Show only current flights.</label>
-        </section>
+        <Checkbox name="onlyCurrent" label="Show only current flights." />
 
         <Button type="submit">Search flights</Button>
-      </form>
+      </SearchForm>
     </Layout>
   )
 }
