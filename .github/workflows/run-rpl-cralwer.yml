@@ -23,7 +23,7 @@ jobs:
           cache: 'pnpm'
       - run: pnpm install
       - run: npx nx run @mach/rpl-crawler:pack
-      - run: node apps/rpl-crawler/dist ${RPL_DATE:-$(date +"%Y-%m-%d")}
+      - run: node apps/rpl-crawler/dist/index.cjs ${RPL_DATE:-$(date +"%Y-%m-%d")}
         env:
           DATABASE_HOST: ${{ secrets.database_host_production }}
           DATABASE_USERNAME: ${{ secrets.database_username_production }}
