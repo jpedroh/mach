@@ -16,7 +16,8 @@
       "defaultConfiguration": "development",
       "options": {
         "buildTarget": "@mach/web:build",
-        "dev": true
+        "dev": true,
+        "port": 3000
       }
     },
     "pack": {
@@ -30,6 +31,18 @@
     },
     "test": {
       "executor": "@nx/vite:test"
+    },
+    "e2e": {
+      "executor": "@nx/playwright:playwright",
+      "dependsOn": ["build"],
+      "outputs": ["{workspaceRoot}/dist/.playwright/apps/web"],
+      "options": {
+        "config": "apps/web/playwright.config.ts"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
     }
   }
 }
