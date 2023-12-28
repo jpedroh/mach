@@ -17,9 +17,9 @@ function minutesToEet(totalMinutes: number) {
 
 export function FlightsTable({ flights }: Props) {
   return (
-    <div>
-      <Table>
-        <Table.Head>
+    <Table.Root>
+      <Table.Head>
+        <Table.Row>
           <Table.Heading>Callsign</Table.Heading>
           <Table.Heading>Departure</Table.Heading>
           <Table.Heading>Arrival</Table.Heading>
@@ -27,33 +27,33 @@ export function FlightsTable({ flights }: Props) {
           <Table.Heading>EET</Table.Heading>
           <Table.Heading>Aircraft</Table.Heading>
           <Table.Heading>Details</Table.Heading>
-        </Table.Head>
-        <Table.Body>
-          {flights.map((flight, key) => (
-            <Table.Row key={key}>
-              <Table.Column>{flight.callsign}</Table.Column>
-              <Table.Column>
-                <abbr title={formatAirport(flight.departure)}>
-                  {flight.departure.id}
-                </abbr>
-              </Table.Column>
-              <Table.Column>
-                <abbr title={formatAirport(flight.arrival)}>
-                  {flight.arrival.id}
-                </abbr>
-              </Table.Column>
-              <Table.Column>{flight.estimatedOffBlockTime}</Table.Column>
-              <Table.Column>
-                {minutesToEet(flight.estimatedEnrouteMinutes)}
-              </Table.Column>
-              <Table.Column>{flight.aircraft.icaoCode}</Table.Column>
-              <Table.Column className="grid">
-                <ViewDetailsButton flightId={flight.id} />
-              </Table.Column>
-            </Table.Row>
-          ))}
-        </Table.Body>
-      </Table>
-    </div>
+        </Table.Row>
+      </Table.Head>
+      <Table.Body>
+        {flights.map((flight, key) => (
+          <Table.Row key={key}>
+            <Table.Column>{flight.callsign}</Table.Column>
+            <Table.Column>
+              <abbr title={formatAirport(flight.departure)}>
+                {flight.departure.id}
+              </abbr>
+            </Table.Column>
+            <Table.Column>
+              <abbr title={formatAirport(flight.arrival)}>
+                {flight.arrival.id}
+              </abbr>
+            </Table.Column>
+            <Table.Column>{flight.estimatedOffBlockTime}</Table.Column>
+            <Table.Column>
+              {minutesToEet(flight.estimatedEnrouteMinutes)}
+            </Table.Column>
+            <Table.Column>{flight.aircraft.icaoCode}</Table.Column>
+            <Table.Column className="grid">
+              <ViewDetailsButton flightId={flight.id} />
+            </Table.Column>
+          </Table.Row>
+        ))}
+      </Table.Body>
+    </Table.Root>
   )
 }

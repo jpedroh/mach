@@ -3,7 +3,7 @@
 export { Button } from './components/button'
 export { Checkbox } from './components/checkbox'
 export {
-  Modal,
+  ModalRoot,
   ModalContent,
   ModalFooter,
   ModalHeading,

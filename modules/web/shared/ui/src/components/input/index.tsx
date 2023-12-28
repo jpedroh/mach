@@ -1,16 +1,9 @@
-import { InputProps, Input as ReactAriaInput } from 'react-aria-components'
+import {
+  InputProps as RACInputProps,
+  Input as RACInput,
+} from 'react-aria-components'
+import { twc } from 'react-twc'
 
-export function Input({ className = '', ...props }: InputProps) {
-  return (
-    <ReactAriaInput
-      className={({ isFocused }) => {
-        return [
-          'py-2 px-3 pr-[2rem] rounded-lg border flex-grow dark:bg-gray-600 dark:border-gray-400 dark:text-gray-200',
-          isFocused ? 'outline-none ring-2 ring-blue-400 ring-opacity-50' : '',
-          className,
-        ].join(' ')
-      }}
-      {...props}
-    />
-  )
-}
+export const Input = twc(
+  RACInput
+)<RACInputProps>`py-2 px-3 pr-[2rem] rounded-lg border flex-grow dark:bg-gray-600 dark:border-gray-400 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50`

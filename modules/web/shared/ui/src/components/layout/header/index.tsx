@@ -1,12 +1,14 @@
-import { FC } from 'react'
+import { twc } from 'react-twc'
 
-export const Header: FC = () => {
+const Container = twc.div`grid gap-4 text-center`
+const Title = twc.h1`text-6xl font-light dark:text-white`
+const SubTitle = twc.h2`text-2xl text-gray-500 dark:text-gray-300`
+
+export function Header() {
   return (
-    <div className={'text-center grid gap-4'}>
-      <h1 className="text-6xl font-light dark:text-white">mach</h1>
-      <h2 className="text-2xl text-gray-500 dark:text-gray-300">
-        An open source tool for flight simulation
-      </h2>
-    </div>
+    <Container>
+      <Title>mach</Title>
+      <SubTitle>An open source tool for flight simulation</SubTitle>
+    </Container>
   )
 }

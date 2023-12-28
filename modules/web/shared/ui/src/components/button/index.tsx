@@ -1,33 +1,28 @@
-import { Slot } from '@radix-ui/react-slot'
-import { ComponentPropsWithoutRef, ReactNode } from 'react'
-import { Button as ReactAriaButton } from 'react-aria-components'
+import { VariantProps, cva } from 'class-variance-authority'
+import {
+  Button as RACButton,
+  ButtonProps as RACButtonProps,
+} from 'react-aria-components'
+import { twc } from 'react-twc'
 
-const VARIANTS = ['primary', 'danger'] as const
-
-type Variant = (typeof VARIANTS)[number]
-
-type Props = { variant?: Variant; className?: string; children: ReactNode } & (
-  | { asChild: true }
-  | ({ asChild?: false } & Omit<
-      ComponentPropsWithoutRef<typeof ReactAriaButton>,
-      'slot'
-    >)
+const button = cva(
+  'text-center w-full text-white p-2 rounded-lg focus:ring-4 focus:ring-opacity-50 focus:outline-none disabled:opacity-75 ease-linear transition-all duration-150',
+  {
+    variants: {
+      variant: {
+        primary: 'bg-blue-600 hover:bg-blue-700 focus:ring-blue-800',
+        danger: 'bg-red-600 hover:bg-red-700 focus:ring-red-800',
+      },
+    },
+    defaultVariants: {
+      variant: 'primary',
+    },
+  }
 )
 
-export function Button({
-  asChild,
-  variant = 'primary',
-  className = '',
-  ...rest
-}: Props) {
-  const Comp = asChild ? Slot : ReactAriaButton
+type Props = RACButtonProps &
+  VariantProps<typeof button> & { asChild?: boolean }
 
-  const derivedClassName = [
-    'text-center w-full text-white p-2 rounded-lg focus:ring-4 focus:ring-opacity-50 focus:outline-none disabled:opacity-75 ease-linear transition-all duration-150',
-    'data-[variant=primary]:bg-blue-600 data-[variant=primary]:hover:bg-blue-700 data-[variant=primary]:focus:ring-blue-800',
-    'data-[variant=danger]:bg-red-600 data-[variant=danger]:hover:bg-red-700 data-[variant=danger]:focus:ring-red-800',
-    className,
-  ].join(' ')
-
-  return <Comp className={derivedClassName} data-variant={variant} {...rest} />
-}
+export const Button = twc(RACButton)(({ variant }: Props) =>
+  button({ variant })
+)

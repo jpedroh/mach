@@ -1,9 +1,6 @@
-import { ReactNode } from 'react'
+import { ComponentProps } from 'react'
+import { twc } from 'react-twc'
 
-export function Lead({ children }: { children: ReactNode }) {
-  return (
-    <p className={`font-light text-xl dark:text-white text-center`}>
-      {children}
-    </p>
-  )
-}
+export const Lead = twc.p<
+  ComponentProps<'p'>
+>`font-light text-xl dark:text-white text-center`

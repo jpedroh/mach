@@ -1,17 +1,7 @@
-import { ComponentPropsWithoutRef, ReactNode } from 'react'
-import { Link as ReactAriaLink } from 'react-aria-components'
+import {
+  Link as RACLink,
+  LinkProps as RACLinkProps,
+} from 'react-aria-components'
+import { twc } from 'react-twc'
 
-export function Link({
-  children,
-  className = '',
-  ...props
-}: { children: ReactNode } & ComponentPropsWithoutRef<typeof ReactAriaLink>) {
-  return (
-    <ReactAriaLink
-      className={`underline decoration-blue-600 ${className}`}
-      {...props}
-    >
-      {children}
-    </ReactAriaLink>
-  )
-}
+export const Link = twc(RACLink)<RACLinkProps>`underline decoration-blue-600`
