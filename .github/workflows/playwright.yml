@@ -39,4 +39,4 @@ jobs:
           node-version-file: .nvmrc
           cache: 'pnpm'
       - run: pnpm install
-      - run: pnpm nx e2e @mach/web
+      - run: HOME=/root pnpm nx e2e @mach/web
