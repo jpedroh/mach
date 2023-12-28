@@ -1,3 +1,6 @@
+/**
+ * @type {import('semantic-release').GlobalConfig}
+ */
 module.exports = {
   plugins: [
     '@semantic-release/commit-analyzer',
@@ -6,4 +9,5 @@ module.exports = {
   ],
   preset: 'angular',
   tagFormat: 'v${version}',
+  branches: ['main'],
 }
