@@ -2,7 +2,7 @@ name: CI
 on:
   push:
     branches:
-      - master
+      - main
   pull_request:
 jobs:
   main:
@@ -32,7 +32,7 @@ jobs:
           cache: 'pnpm'
       - uses: nrwl/nx-set-shas@v4
         with:
-          main-branch-name: 'master'
+          main-branch-name: 'main'
       - run: pnpm install
       - run: npx nx format:check
       - run: npx nx affected --target=pack --parallel=3
