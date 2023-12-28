@@ -1,0 +1,42 @@
+name: Playwright Tests
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+jobs:
+  test_e2e:
+    name: Playwright tests
+    timeout-minutes: 20
+    runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.40.0-jammy
+    env:
+      PLAYWRIGHT_TEST_BASE_URL: 'http://localhost:3000'
+      DATABASE_URL: ${{ secrets.database_url }}
+      DATABASE_HOST: ${{ secrets.database_host_preview }}
+      DATABASE_USERNAME: ${{ secrets.database_username_preview }}
+      DATABASE_PASSWORD: ${{ secrets.database_password_preview }}
+      AISWEB_API_KEY: ${{ secrets.aisweb_api_key }}
+      AISWEB_API_PASSWORD: ${{ secrets.aisweb_api_password }}
+      NXCACHE_AWS_ACCESS_KEY_ID: ${{secrets.nxcache_aws_access_key_id}}
+      NXCACHE_AWS_SECRET_ACCESS_KEY: ${{secrets.nxcache_aws_secret_access_key}}
+      NXCACHE_AWS_ENDPOINT: ${{secrets.nxcache_aws_endpoint}}
+      NXCACHE_AWS_REGION: ${{secrets.nxcache_aws_region}}
+      NXCACHE_AWS_BUCKET: ${{secrets.nxcache_aws_bucket}}
+      NXCACHE_AWS_FORCE_PATH_STYLE: ${{secrets.nxcache_aws_force_path_style}}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: pnpm/action-setup@v2.4.0
+        with:
+          version: 7
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: 'pnpm'
+      - run: pnpm install
+      - run: HOME=/root pnpm nx e2e @mach/web
