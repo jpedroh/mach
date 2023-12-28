@@ -29,9 +29,6 @@
         "parallel": false
       }
     },
-    "test": {
-      "executor": "@nx/vite:test"
-    },
     "e2e": {
       "executor": "@nx/playwright:playwright",
       "dependsOn": ["build"],
