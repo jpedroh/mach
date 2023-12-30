@@ -40,3 +40,14 @@ export function AnalyticsProvider({ children }: { children: ReactNode }) {
 
   return <PostHogProvider client={posthog}>{children}</PostHogProvider>
 }
+
+export function useAnalyticsClient() {
+  function captureEvent<T extends Record<string, unknown>>(
+    name: string,
+    properties: T
+  ): void {
+    posthog.capture(name, properties)
+  }
+
+  return { captureEvent }
+}
