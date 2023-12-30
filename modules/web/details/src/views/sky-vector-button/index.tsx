@@ -17,15 +17,15 @@ export function SkyVectorButton({ flight }: Props) {
     flight.departureIcao
   } ${flight.route} ${flight.arrivalIcao}`
 
-  function handlePress() {
+  function handleClick() {
     analyticsClient.captureEvent('sky_vector_button_click', {
       flightId: flight.id,
     })
   }
 
   return (
-    <Button onPress={handlePress} asChild>
-      <a href={skyVectorLink} target="_blank">
+    <Button asChild>
+      <a onClick={handleClick} href={skyVectorLink} target="_blank">
         SkyVector
       </a>
     </Button>

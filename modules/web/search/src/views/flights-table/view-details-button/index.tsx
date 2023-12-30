@@ -9,13 +9,14 @@ export function ViewDetailsButton({ flightId }: { flightId: string }) {
   const searchParams = useSearchParams()
   const analyticsClient = useAnalyticsClient()
 
-  function handlePress() {
+  function handleClick() {
     analyticsClient.captureEvent('view_flight_details_click', { flightId })
   }
 
   return (
-    <Button onPress={handlePress} asChild variant={'primary'}>
+    <Button asChild variant={'primary'}>
       <Link
+        onClick={handleClick}
         className="normal-case"
         href={`/search/${flightId}?${searchParams.toString()}`}
       >

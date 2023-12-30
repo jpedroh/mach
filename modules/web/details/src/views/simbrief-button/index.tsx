@@ -43,15 +43,15 @@ export function SimBriefButton({ flight }: Props) {
     query
   ).toString()}`
 
-  function handlePress() {
+  function handleClick() {
     analyticsClient.captureEvent('simbrief_button_click', {
       flightId: flight.id,
     })
   }
 
   return (
-    <Button onPress={handlePress} asChild>
-      <a href={simBriefLink} target="_blank">
+    <Button asChild>
+      <a onClick={handleClick} href={simBriefLink} target="_blank">
         SimBrief
       </a>
     </Button>

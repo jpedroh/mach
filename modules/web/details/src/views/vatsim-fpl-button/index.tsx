@@ -23,13 +23,13 @@ export function VatsimFplButton({ flight }: Props) {
     flight.estimatedEnrouteMinutes % 60
   }&11=${flight.remarks}`
 
-  function handlePress() {
+  function handleClick() {
     analyticsClient.captureEvent('vatsim_button_click', { flightId: flight.id })
   }
 
   return (
-    <Button onPress={handlePress} asChild>
-      <a href={vatsimLink} target="_blank">
+    <Button asChild>
+      <a onClick={handleClick} href={vatsimLink} target="_blank">
         Vatsim FP
       </a>
     </Button>

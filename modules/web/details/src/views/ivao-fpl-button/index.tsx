@@ -42,15 +42,15 @@ export function IvaoFplButton({ flight }: Props) {
   const url = new URL('https://fpl.ivao.aero/flight-plans/create')
   url.searchParams.set('flightPlan', btoa(JSON.stringify(flightPlan)))
 
-  function handlePress() {
+  function handleClick() {
     analyticsClient.captureEvent('ivao_fpl_button_click', {
       flightId: flight.id,
     })
   }
 
   return (
-    <Button onPress={handlePress} asChild variant="primary">
-      <a href={url.toString()} target="_blank">
+    <Button asChild variant="primary">
+      <a onClick={handleClick} href={url.toString()} target="_blank">
         IVAO FP
       </a>
     </Button>
