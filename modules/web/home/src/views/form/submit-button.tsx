@@ -2,7 +2,6 @@
 
 import { Button } from '@mach/web/shared/ui'
 import { ReactNode } from 'react'
-import { PressEvent } from 'react-aria-components'
 import { useFormStatus } from 'react-dom'
 
 function LoadingSpinner() {
