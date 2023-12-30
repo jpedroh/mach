@@ -1,6 +1,7 @@
-import { Layout, Lead, Link } from '@mach/web/shared/ui/server'
 import { SearchPage } from '@mach/web/search'
 import { searchFlightsQuerySchema } from '@mach/web/search/server'
+import { getAnalyticsClient } from '@mach/web/shared/analytics/server'
+import { Layout, Lead, Link } from '@mach/web/shared/ui/server'
 
 export const revalidate = 0
 
@@ -13,9 +14,12 @@ export const metadata = {
 export default async function Search({
   searchParams,
 }: {
-  searchParams?: unknown
+  searchParams?: Record<string, unknown>
 }) {
   const query = searchFlightsQuerySchema.safeParse(searchParams)
+
+  const client = getAnalyticsClient()
+  client.captureEvent('search', { query })
 
   if (query.success === false) {
     return (

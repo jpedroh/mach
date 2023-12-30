@@ -1,5 +1,9 @@
 import React from 'react'
 import './index.css'
+import {
+  AnalyticsPageViewTracker,
+  AnalyticsProvider,
+} from '@mach/web/shared/analytics'
 
 export default function RootLayout({
   children,
@@ -9,7 +13,12 @@ export default function RootLayout({
   return (
     <html>
       <head />
-      <body>{children}</body>
+      <body>
+        <AnalyticsProvider>
+          <AnalyticsPageViewTracker />
+          {children}
+        </AnalyticsProvider>
+      </body>
     </html>
   )
 }
