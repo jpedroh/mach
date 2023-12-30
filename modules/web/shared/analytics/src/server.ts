@@ -31,8 +31,13 @@ class PosthogAnalyticsClient implements AnalyticsClient {
 }
 
 export function getAnalyticsClient(): AnalyticsClient {
-  return new PosthogAnalyticsClient({
-    posthogHost: process.env.NEXT_PUBLIC_POSTHOG_HOST ?? '',
-    posthogKey: process.env.NEXT_PUBLIC_POSTHOG_KEY ?? '',
-  })
+  if (process.env.NODE_ENV === 'production') {
+    return new PosthogAnalyticsClient({
+      posthogHost: process.env.NEXT_PUBLIC_POSTHOG_HOST ?? '',
+      posthogKey: process.env.NEXT_PUBLIC_POSTHOG_KEY ?? '',
+    })
+  }
+  return {
+    captureEvent: () => {},
+  }
 }
