@@ -18,11 +18,12 @@ export function AnalyticsPageViewTracker(): JSX.Element {
       }
       posthog.capture('$pageview', {
         $current_url: url,
+        query_params: Object.fromEntries(searchParams.entries()),
       })
     }
   }, [pathname, searchParams])
 
-  return <></>
+  return null
 }
 
 export function AnalyticsProvider({ children }: { children: ReactNode }) {
@@ -32,7 +33,7 @@ export function AnalyticsProvider({ children }: { children: ReactNode }) {
       capture_pageview: false,
       autocapture: false,
       loaded: (posthog) => {
-        if (process.env.NODE_ENV === 'development') posthog.debug()
+        if (process.env.NODE_ENV !== 'production') posthog.debug()
       },
     })
   }, [])
