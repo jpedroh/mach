@@ -1,7 +1,6 @@
 import { Layout, Lead, Link } from '@mach/web/shared/ui/server'
 import { SearchFlightsQuery, fetchFlights } from '../services/fetch-flights'
 import { FlightsTable } from './flights-table'
-import { SearchAnalytics } from './analytics'
 
 type Props = {
   query: SearchFlightsQuery
@@ -13,7 +12,6 @@ export async function SearchPage({ query }: Props) {
   if (flights.length === 0) {
     return (
       <Layout>
-        {/* <SearchAnalytics query={query} /> */}
         <Lead>
           There are no results for your search. <Link href="/">Click here</Link>{' '}
           to make a new search.
@@ -35,7 +33,6 @@ export async function SearchPage({ query }: Props) {
         make a new search.
       </Lead>
 
-      {/* <SearchAnalytics query={query} /> */}
       <FlightsTable flights={flights} />
     </Layout>
   )
