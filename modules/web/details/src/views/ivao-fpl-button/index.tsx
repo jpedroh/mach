@@ -1,4 +1,7 @@
+'use client'
+
 import { Flight } from '@mach/shared/database'
+import { useAnalyticsClient } from '@mach/web/shared/analytics'
 import { Button } from '@mach/web/shared/ui'
 
 type Props = {
@@ -6,6 +9,8 @@ type Props = {
 }
 
 export function IvaoFplButton({ flight }: Props) {
+  const analyticsClient = useAnalyticsClient()
+
   function stringToSeconds(time: string) {
     const hours = Number(time.substring(0, 2))
     const minutes = Number(time.substring(2, 4))
@@ -37,8 +42,14 @@ export function IvaoFplButton({ flight }: Props) {
   const url = new URL('https://fpl.ivao.aero/flight-plans/create')
   url.searchParams.set('flightPlan', btoa(JSON.stringify(flightPlan)))
 
+  function handlePress() {
+    analyticsClient.captureEvent('ivao_fpl_button_click', {
+      flightId: flight.id,
+    })
+  }
+
   return (
-    <Button asChild variant="primary">
+    <Button onPress={handlePress} asChild variant="primary">
       <a href={url.toString()} target="_blank">
         IVAO FP
       </a>

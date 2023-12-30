@@ -80,7 +80,7 @@ export async function FlightDetailsModal({ id }: Props) {
         <VatsimFplButton flight={flight} />
         <SimBriefButton flight={flight} />
         <SkyVectorButton flight={flight} />
-        <CloseButton />
+        <CloseButton flight={flight} />
       </ModalFooter>
     </ModalWrapper>
   )

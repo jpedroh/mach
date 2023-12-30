@@ -1,10 +1,12 @@
 import { describe, test, expect } from 'vitest'
 import { SimBriefButton } from '.'
 import { render, screen } from '@testing-library/react'
+import { randomUUID } from 'crypto'
 
 describe('SimBriefButton', () => {
   test('It builds the correct URL for Simbrief', () => {
     const flight = {
+      id: randomUUID(),
       company: 'GLO',
       flightNumber: 1827,
       aircraft: {

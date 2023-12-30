@@ -1,4 +1,7 @@
+'use client'
+
 import { Flight } from '@mach/shared/database'
+import { useAnalyticsClient } from '@mach/web/shared/analytics'
 import { Button } from '@mach/web/shared/ui'
 
 type Props = {
@@ -6,6 +9,8 @@ type Props = {
 }
 
 export function VatsimFplButton({ flight }: Props) {
+  const analyticsClient = useAnalyticsClient()
+
   const vatsimLink = `https://cert.vatsim.net/fp/file.php?2=${
     flight.callsign
   }&3=${flight.aircraft.icaoCode}&4=${flight.cruisingSpeed}&5=${
@@ -18,8 +23,12 @@ export function VatsimFplButton({ flight }: Props) {
     flight.estimatedEnrouteMinutes % 60
   }&11=${flight.remarks}`
 
+  function handlePress() {
+    analyticsClient.captureEvent('vatsim_button_click', { flightId: flight.id })
+  }
+
   return (
-    <Button asChild>
+    <Button onPress={handlePress} asChild>
       <a href={vatsimLink} target="_blank">
         Vatsim FP
       </a>
