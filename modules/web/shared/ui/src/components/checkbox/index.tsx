@@ -10,7 +10,7 @@ type Props = {
 
 export function Checkbox({ label, ...props }: Props) {
   return (
-    <div>
+    <div className="focus-within:outline-none focus-within:ring-2 focus-within:rounded focus-within:ring-offset-0 focus-within:ring-blue-400 focus-within:ring-opacity-50">
       <ReactAriaCheckbox
         className={'flex items-center gap-2 text-white'}
         {...props}
