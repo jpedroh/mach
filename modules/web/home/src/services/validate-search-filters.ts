@@ -7,6 +7,7 @@ export const searchFlightsQuerySchema = z
     arrivalIcao: z.string(),
     company: z.string(),
     aircraftIcaoCode: z.string(),
+    onlyCurrent: z.string().optional(),
   })
   .refine(
     ({ departureIcao, arrivalIcao, company, aircraftIcaoCode }) => {
