@@ -9,6 +9,29 @@ updates:
       prefix: 'build'
       prefix-development: 'build'
       include: 'scope'
+    groups:
+      commitlint:
+        patterns:
+          - '@commitlint/*'
+        update-types:
+          - 'major'
+          - 'minor'
+          - 'patch'
+      nx:
+        patterns:
+          - 'nx'
+          - '@nx/*'
+        update-types:
+          - 'major'
+          - 'minor'
+          - 'patch'
+      typescript-eslint:
+        patterns:
+          - '@typescript-eslint/*'
+        update-types:
+          - 'major'
+          - 'minor'
+          - 'patch'
   - package-ecosystem: 'github-actions'
     directory: '/'
     target-branch: 'main'
