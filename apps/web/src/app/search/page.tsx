@@ -1,7 +1,8 @@
 import { SearchPage } from '@mach/web/search'
 import { searchFlightsQuerySchema } from '@mach/web/search/server'
 import { getAnalyticsClient } from '@mach/web/shared/analytics/server'
-import { Layout, Lead, Link } from '@mach/web/shared/ui/server'
+import { Link } from '@mach/web/shared/ui'
+import { Layout, Lead } from '@mach/web/shared/ui/server'
 
 export const revalidate = 0
 
