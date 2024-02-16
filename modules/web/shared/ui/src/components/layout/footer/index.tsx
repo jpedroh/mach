@@ -1,3 +1,5 @@
+'use client'
+
 import { twc } from 'react-twc'
 import { Link } from '../../link'
 

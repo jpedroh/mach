@@ -1,4 +1,5 @@
-import { Layout, Lead, Link } from '@mach/web/shared/ui/server'
+import { Link } from '@mach/web/shared/ui'
+import { Layout, Lead } from '@mach/web/shared/ui/server'
 import { SearchFlightsQuery, fetchFlights } from '../services/fetch-flights'
 import { FlightsTable } from './flights-table'
 
