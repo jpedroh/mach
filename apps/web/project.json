@@ -24,7 +24,7 @@
       "executor": "nx:run-commands",
       "outputs": ["{projectRoot}/.vercel"],
       "options": {
-        "commands": ["npx next-on-pages", "rm package.json"],
+        "commands": ["npx next-on-pages", "rm package.json pnpm-lock.yaml"],
         "cwd": "apps/web",
         "parallel": false
       }
