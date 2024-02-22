@@ -15,7 +15,11 @@
   },
   "targetDefaults": {
     "pack": {
-      "dependsOn": ["^pack"]
+      "dependsOn": ["^pack"],
+      "cache": true
+    },
+    "build": {
+      "cache": true
     },
     "@nx/vite:test": {
       "cache": true,
