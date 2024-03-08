@@ -25,9 +25,8 @@ jobs:
       - run: npx nx run @mach/rpl-crawler:pack
       - run: node apps/rpl-crawler/dist/index.cjs ${RPL_DATE:-$(date +"%Y-%m-%d")}
         env:
-          DATABASE_HOST: ${{ secrets.database_host_production }}
-          DATABASE_USERNAME: ${{ secrets.database_username_production }}
-          DATABASE_PASSWORD: ${{ secrets.database_password_production }}
+          TURSO_CONNECTION_URL: ${{ secrets.turso_connection_url_production }}
+          TURSO_AUTH_TOKEN: ${{ secrets.turso_auth_token_production }}
           AISWEB_API_KEY: ${{ secrets.aisweb_api_key }}
           AISWEB_API_PASSWORD: ${{ secrets.aisweb_api_password }}
           RPL_DATE: ${{ github.event.inputs.date }}

@@ -9,12 +9,8 @@ export const resolveFlightRules = (route: string): FlightRules => {
   return 'IFR'
 }
 
-export const resolveFlightDate = (date: string): Date => {
-  const day = parseInt(date.substr(0, 2))
-  const month = parseInt(date.substr(2, 2)) - 1
-  const year = parseInt(date.substr(4, 2)) + 2000
-
-  return new Date(Date.UTC(year, month, day))
+export const resolveFlightDate = (date: string): string => {
+  return `20${date.substr(4, 2)}-${date.substr(2, 2)}-${date.substr(0, 2)}`
 }
 
 export const resolveWeekDays = (weekdays: string): Weekdays[] => {

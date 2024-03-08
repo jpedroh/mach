@@ -10,7 +10,7 @@ type Props = {
 const getIcaoFpl = (flight: Flight) => {
   return [
     `(FPL-${flight.callsign}-${formatFlightRules(flight.flightRules)}S`,
-    `-1/${flight.aircraft.icaoCode}/${flight.aircraft.wakeTurbulence}-${flight.aircraft.equipment}/L1B1`,
+    `-1/${flight.aircraftIcaoCode}/${flight.aircraftWakeTurbulence}-${flight.aircraftEquipment}/L1B1`,
     `-${flight.departureIcao}${flight.estimatedOffBlockTime}`,
     `-${flight.cruisingSpeed}F${flight.cruisingLevel
       .toString()

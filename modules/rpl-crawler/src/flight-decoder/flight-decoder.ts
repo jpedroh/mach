@@ -31,11 +31,6 @@ const makeFlightDecoder = ({ uuid }: { uuid: (line: string) => string }) => {
       line.substring(rightPadStart + 4, rightPadStart + 8).trim()
     )
     const remarks = line.substring(rightPadStart + 9)
-    const aircraft = {
-      icaoCode: line.match(/[A-Z0-9]+(?=(\/(M|L|H|J)))/)[0],
-      wakeTurbulence: line.match(/(?<=\/)(M|L|H|J)/)[0] as WakeTurbulence,
-      equipment: remarks.match(/(?<=EQPT\/)[^\s]+/)[0],
-    }
 
     return {
       id: uuid(line),
@@ -49,7 +44,11 @@ const makeFlightDecoder = ({ uuid }: { uuid: (line: string) => string }) => {
       estimatedEnrouteMinutes,
       remarks,
       departureIcao,
-      aircraft,
+      aircraftIcaoCode: line.match(/[A-Z0-9]+(?=(\/(M|L|H|J)))/)![0],
+      aircraftEquipment: remarks.match(/(?<=EQPT\/)[^\s]+/)![0],
+      aircraftWakeTurbulence: line.match(
+        /(?<=\/)(M|L|H|J)/
+      )![0] as WakeTurbulence,
       estimatedOffBlockTime,
       flightRules: resolveFlightRules(route),
       weekdays: resolveWeekDays(weekDays),

@@ -4,10 +4,7 @@ import { z } from 'zod'
 
 export const searchFlightsQuerySchema = z
   .object({
-    cycle: z
-      .string()
-      .transform((v) => new Date(v))
-      .optional(),
+    cycle: z.string().optional(),
     departureIcao: z
       .string()
       .transform((v) => v.toUpperCase())
@@ -54,7 +51,7 @@ export async function fetchFlights(where: SearchFlightsQuery) {
       callsign: true,
       estimatedOffBlockTime: true,
       estimatedEnrouteMinutes: true,
-      aircraft: true,
+      aircraftIcaoCode: true,
     },
     where: (fields, { sql, and, eq, or }) =>
       and(
@@ -69,7 +66,7 @@ export async function fetchFlights(where: SearchFlightsQuery) {
           : undefined,
         where.company ? eq(fields.company, where.company) : undefined,
         where.aircraftIcaoCode
-          ? sql`${fields.aircraft}->>"$.icaoCode" = ${where.aircraftIcaoCode}`
+          ? sql`${fields.aircraftIcaoCode} = ${where.aircraftIcaoCode}`
           : undefined,
         where.onlyCurrent
           ? and(

@@ -45,11 +45,28 @@ export async function GET(
     )
   }
 
-  return NextResponse.json(flight, {
-    headers: {
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-      'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+  const {
+    aircraftIcaoCode,
+    aircraftEquipment,
+    aircraftWakeTurbulence,
+    ...rest
+  } = flight
+
+  return NextResponse.json(
+    {
+      ...rest,
+      aircraft: {
+        icaoCode: aircraftIcaoCode,
+        equipment: aircraftEquipment,
+        wakeTurbulence: aircraftWakeTurbulence,
+      },
     },
-  })
+    {
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+        'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+      },
+    }
+  )
 }

@@ -15,10 +15,8 @@ jobs:
       image: mcr.microsoft.com/playwright:v1.40.0-jammy
     env:
       PLAYWRIGHT_TEST_BASE_URL: 'http://localhost:3000'
-      DATABASE_URL: ${{ secrets.database_url }}
-      DATABASE_HOST: ${{ secrets.database_host_preview }}
-      DATABASE_USERNAME: ${{ secrets.database_username_preview }}
-      DATABASE_PASSWORD: ${{ secrets.database_password_preview }}
+      TURSO_CONNECTION_URL: ${{ secrets.turso_connection_url }}
+      TURSO_AUTH_TOKEN: ${{ secrets.turso_auth_token }}
       AISWEB_API_KEY: ${{ secrets.aisweb_api_key }}
       AISWEB_API_PASSWORD: ${{ secrets.aisweb_api_password }}
       NXCACHE_AWS_ACCESS_KEY_ID: ${{secrets.nxcache_aws_access_key_id}}

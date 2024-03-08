@@ -38,7 +38,7 @@ export function makeRunRplCrawler({
     Logger.info(`STARTING DECODING OF RPL FILES DATA`)
     const flights = Array.from(filesLines)
       .map(flightDecoder)
-      .map((flight) => ({ ...flight, cycle: new Date(date) }))
+      .map((flight) => ({ ...flight, cycle: date }))
     Logger.info(`COMPLETED DECODING OF RPL FILES DATA`)
 
     Logger.info(`STARTING FETCHING OF AIRPORTS DATA`)
