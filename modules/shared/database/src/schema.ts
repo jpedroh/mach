@@ -9,11 +9,11 @@ export const flights = sqliteTable('flights', {
   endDate: text('end_date'),
   company: text('company', { length: 3 }).notNull(),
   flightNumber: int('flight_number').notNull(),
-  aircraftIcaoCode: text('aircraft_icao_code'),
-  aircraftEquipment: text('aircraft_equipment'),
+  aircraftIcaoCode: text('aircraft_icao_code').notNull(),
+  aircraftEquipment: text('aircraft_equipment').notNull(),
   aircraftWakeTurbulence: text('aircraft_wake_turbulence', {
     enum: wakeTurbulence,
-  }),
+  }).notNull(),
   departureIcao: text('departure_icao', { length: 4 }).notNull(),
   estimatedOffBlockTime: text('estimated_off_block_time', {
     length: 4,

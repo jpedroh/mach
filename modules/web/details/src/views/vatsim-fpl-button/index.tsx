@@ -13,7 +13,7 @@ export function VatsimFplButton({ flight }: Props) {
 
   const vatsimLink = `https://cert.vatsim.net/fp/file.php?2=${
     flight.callsign
-  }&3=${flight.aircraft.icaoCode}&4=${flight.cruisingSpeed}&5=${
+  }&3=${flight.aircraftIcaoCode}&4=${flight.cruisingSpeed}&5=${
     flight.departureIcao
   }&6=${flight.estimatedOffBlockTime}&7=${flight.cruisingLevel
     .toString()
