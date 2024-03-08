@@ -9,8 +9,8 @@ describe('flight-decoder', () => {
     const line = `121123 191123 0000007 AZU2737 AT76/M SBAR1330 N0258 150 DENDO DCT ANBEX                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  SBRF0106 EQPT/SDFGHIRY/LB1 PBN/B2B3B4C2D2D3O2S1`
     const flight = flightDecoder(line)
 
-    expect(flight.beginDate).toEqual(new Date(Date.UTC(2023, 10, 12)))
-    expect(flight.endDate).toEqual(new Date(Date.UTC(2023, 10, 19)))
+    expect(flight.beginDate).toEqual('2023-11-12')
+    expect(flight.endDate).toEqual('2023-11-19')
   })
 
   test('Given flight with IFR Flight Rule', () => {
@@ -41,9 +41,9 @@ describe('flight-decoder', () => {
     expect(flight.callsign).toEqual('TAM3710')
     expect(flight.company).toEqual('TAM')
     expect(flight.flightNumber).toEqual(3710)
-    expect(flight.aircraft.icaoCode).toEqual('A320')
-    expect(flight.aircraft.wakeTurbulence).toEqual('M')
-    expect(flight.aircraft.equipment).toEqual('SDE2FGHIM1RWXYZ/C')
+    expect(flight.aircraftIcaoCode).toEqual('A320')
+    expect(flight.aircraftWakeTurbulence).toEqual('M')
+    expect(flight.aircraftEquipment).toEqual('SDE2FGHIM1RWXYZ/C')
     expect(flight.departureIcao).toEqual('SBBR')
     expect(flight.estimatedOffBlockTime).toEqual('2350')
     expect(flight.cruisingSpeed).toEqual('N0450')
