@@ -47,7 +47,7 @@ export function FlightsTable({ flights }: Props) {
             <Table.Column>
               {minutesToEet(flight.estimatedEnrouteMinutes)}
             </Table.Column>
-            <Table.Column>{flight.aircraft.icaoCode}</Table.Column>
+            <Table.Column>{flight.aircraftIcaoCode}</Table.Column>
             <Table.Column className="grid">
               <ViewDetailsButton flightId={flight.id} />
             </Table.Column>

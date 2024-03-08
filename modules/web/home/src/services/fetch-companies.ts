@@ -1,11 +1,11 @@
 import { db, flights } from '@mach/shared/database'
-import { eq, sql } from 'drizzle-orm'
+import { eq } from 'drizzle-orm'
 import { currentCycleSubquery } from '../utils/current-cycle-subquery'
 
 export async function fetchCompanies() {
   const companies = await db
-    .select({
-      company: sql`DISTINCT(${flights.company})`,
+    .selectDistinct({
+      company: flights.company,
     })
     .from(flights)
     .where(eq(flights.cycle, currentCycleSubquery))

@@ -61,7 +61,7 @@ export async function FlightDetailsModal({ id }: Props) {
           <FlightInfo label="EET">
             {formatEet(flight.estimatedEnrouteMinutes)}
           </FlightInfo>
-          <FlightInfo label="AIRCRAFT">{flight.aircraft.icaoCode}</FlightInfo>
+          <FlightInfo label="AIRCRAFT">{flight.aircraftIcaoCode}</FlightInfo>
           <FlightInfo label="SPEED">{flight.cruisingSpeed}</FlightInfo>
           <FlightInfo label="FL">
             {flight.cruisingLevel.toString().padStart(3, '0')}

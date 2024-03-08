@@ -26,7 +26,6 @@ const schema = z.object({
     .optional(),
   cycle: z
     .preprocess((x) => (Array.isArray(x) ? x : [x]), z.array(z.string()))
-    .transform((values) => values.map((value) => new Date(value)))
     .optional(),
 })
 
@@ -58,22 +57,40 @@ export async function GET(request: Request) {
       )
     }
 
-    const items = await db.query.flights.findMany({
-      orderBy: (fields, { desc }) => desc(fields.id),
-      where: (fields, { sql, and, eq }) =>
-        and(
-          data.data.cycle
-            ? sql`${fields.cycle} IN ${data.data.cycle}`
-            : eq(fields.cycle, currentCycleSubquery),
-          data.data.departureIcao &&
-            sql`${fields.departureIcao} IN ${data.data.departureIcao}`,
-          data.data.arrivalIcao &&
-            sql`${fields.arrivalIcao} IN ${data.data.arrivalIcao}`,
-          data.data.company && sql`${fields.company} IN ${data.data.company}`,
-          data.data.aircraftIcaoCode &&
-            sql`${fields.aircraft}->>"$.icaoCode" IN ${data.data.aircraftIcaoCode}`
-        ),
-    })
+    const items = (
+      await db.query.flights.findMany({
+        orderBy: (fields, { desc }) => desc(fields.id),
+        where: (fields, { sql, and, eq }) =>
+          and(
+            data.data.cycle
+              ? sql`${fields.cycle} IN ${data.data.cycle}`
+              : eq(fields.cycle, currentCycleSubquery),
+            data.data.departureIcao &&
+              sql`${fields.departureIcao} IN ${data.data.departureIcao}`,
+            data.data.arrivalIcao &&
+              sql`${fields.arrivalIcao} IN ${data.data.arrivalIcao}`,
+            data.data.company && sql`${fields.company} IN ${data.data.company}`,
+            data.data.aircraftIcaoCode &&
+              sql`${fields.aircraftIcaoCode} IN ${data.data.aircraftIcaoCode}`
+          ),
+      })
+    ).map(
+      ({
+        aircraftIcaoCode,
+        aircraftEquipment,
+        aircraftWakeTurbulence,
+        ...flight
+      }) => {
+        return {
+          ...flight,
+          aircraft: {
+            icaoCode: aircraftIcaoCode,
+            equipment: aircraftEquipment,
+            wakeTurbulence: aircraftWakeTurbulence,
+          },
+        }
+      }
+    )
 
     return NextResponse.json(items, {
       headers: {

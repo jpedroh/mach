@@ -1,21 +1,10 @@
-import { Client } from '@planetscale/database'
-import { drizzle } from 'drizzle-orm/planetscale-serverless'
-import { z } from 'zod'
+import { createClient } from '@libsql/client'
+import { drizzle } from 'drizzle-orm/libsql'
 import * as schema from './schema'
 
-const credentialsSchema = z.object({
-  DATABASE_HOST: z.string(),
-  DATABASE_USERNAME: z.string(),
-  DATABASE_PASSWORD: z.string(),
+const client = createClient({
+  url: process.env.TURSO_CONNECTION_URL,
+  authToken: process.env.TURSO_AUTH_TOKEN,
 })
 
-const credentials = credentialsSchema.parse(process.env)
-
-export const db = drizzle(
-  new Client({
-    host: credentials.DATABASE_HOST,
-    username: credentials.DATABASE_USERNAME,
-    password: credentials.DATABASE_PASSWORD,
-  }),
-  { schema }
-)
+export const db = drizzle(client, { schema })

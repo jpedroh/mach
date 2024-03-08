@@ -9,8 +9,8 @@ const weekdays = [
 ]
 export type Weekdays = (typeof weekdays)[number]
 
-const flightRules = ['IFR', 'Y', 'Z'] as const
+export const flightRules = ['IFR', 'Y', 'Z'] as const
 export type FlightRules = (typeof flightRules)[number]
 
-const wakeTurbulence = ['L', 'M', 'H'] as const
+export const wakeTurbulence = ['L', 'M', 'H'] as const
 export type WakeTurbulence = (typeof wakeTurbulence)[number]

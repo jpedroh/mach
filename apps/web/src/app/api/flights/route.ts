@@ -35,7 +35,6 @@ const schema = z.object({
   ),
   cycle: z
     .preprocess((x) => (Array.isArray(x) ? x : [x]), z.array(z.string()))
-    .transform((values) => values.map((value) => new Date(value)))
     .optional(),
 })
 
@@ -77,19 +76,38 @@ export async function GET(request: Request) {
         sql`${flights.arrivalIcao} IN ${data.data.arrivalIcao}`,
       data.data.company && sql`${flights.company} IN ${data.data.company}`,
       data.data.aircraftIcaoCode &&
-        sql`${flights.aircraft}->>"$.icaoCode" IN ${data.data.aircraftIcaoCode}`
+        sql`${flights.aircraftIcaoCode} IN ${data.data.aircraftIcaoCode}`
     )
 
     const countResponse = await db
       .select({ count: sql`count(${flights.id})` })
       .from(flights)
       .where(criteria)
-    const items = await db
-      .select()
-      .from(flights)
-      .where(criteria)
-      .limit(data.data.limit)
-      .offset(data.data.offset)
+
+    const items = (
+      await db
+        .select()
+        .from(flights)
+        .where(criteria)
+        .limit(data.data.limit)
+        .offset(data.data.offset)
+    ).map(
+      ({
+        aircraftIcaoCode,
+        aircraftEquipment,
+        aircraftWakeTurbulence,
+        ...flight
+      }) => {
+        return {
+          ...flight,
+          aircraft: {
+            icaoCode: aircraftIcaoCode,
+            equipment: aircraftEquipment,
+            wakeTurbulence: aircraftWakeTurbulence,
+          },
+        }
+      }
+    )
 
     return NextResponse.json(
       { count: Number(countResponse[0].count), items },

@@ -10,7 +10,7 @@ type Props = {
     | 'id'
     | 'company'
     | 'flightNumber'
-    | 'aircraft'
+    | 'aircraftIcaoCode'
     | 'departureIcao'
     | 'arrivalIcao'
     | 'estimatedOffBlockTime'
@@ -27,7 +27,7 @@ export function SimBriefButton({ flight }: Props) {
   const query: Record<string, string> = {
     airline: flight.company,
     fltnum: flight.flightNumber.toString(),
-    type: flight.aircraft.icaoCode,
+    type: flight.aircraftIcaoCode,
     orig: flight.departureIcao,
     dest: flight.arrivalIcao,
     deph: flight.estimatedOffBlockTime.substr(0, 2),
