@@ -8,8 +8,6 @@ dotenv.config()
 // For CI, you may want to set BASE_URL to the deployed application.
 const baseURL = process.env.BASE_URL ?? 'http://localhost:3000'
 
-console.log(process.env)
-
 export default defineConfig({
   ...nxE2EPreset(__filename, { testDir: './e2e/specs' }),
   globalSetup: require.resolve('./e2e/setup/global-setup.ts'),

@@ -1,7 +1,6 @@
 import { db, airports, flights } from '@mach/shared/database'
 
 async function globalSetup() {
-  console.log('running global setup')
   await db.insert(flights).values([
     {
       id: '967e0cdb-72e3-439c-8bfd-b310a0bd25c1',
