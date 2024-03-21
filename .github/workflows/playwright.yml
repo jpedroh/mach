@@ -8,6 +8,11 @@ on:
       - main
 jobs:
   test_e2e:
+    services:
+      libsql:
+        image: ghcr.io/tursodatabase/libsql-server:ef44612
+        ports:
+          - 8080:8080
     name: Playwright tests
     timeout-minutes: 20
     runs-on: ubuntu-latest
@@ -15,8 +20,8 @@ jobs:
       image: mcr.microsoft.com/playwright:v1.40.0-jammy
     env:
       PLAYWRIGHT_TEST_BASE_URL: 'http://localhost:3000'
-      TURSO_CONNECTION_URL: ${{ secrets.turso_connection_url }}
-      TURSO_AUTH_TOKEN: ${{ secrets.turso_auth_token }}
+      TURSO_CONNECTION_URL: 'http://libsql:8080'
+      TURSO_AUTH_TOKEN: 'secret'
       AISWEB_API_KEY: ${{ secrets.aisweb_api_key }}
       AISWEB_API_PASSWORD: ${{ secrets.aisweb_api_password }}
       NXCACHE_AWS_ACCESS_KEY_ID: ${{secrets.nxcache_aws_access_key_id}}
@@ -37,4 +42,5 @@ jobs:
           node-version-file: .nvmrc
           cache: 'pnpm'
       - run: pnpm install
+      - run: pnpm drizzle-kit push:sqlite
       - run: HOME=/root pnpm nx e2e @mach/web
