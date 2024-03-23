@@ -29,5 +29,6 @@ test('if I select options and click search flights it redirects me to search res
 async function selectComboboxValue(page: Page, name: RegExp, value: string) {
   await page.getByRole('combobox', { name }).fill(value)
   await page.getByRole('combobox', { name }).press('ArrowDown')
+  await page.getByRole('combobox', { name }).press('ArrowDown')
   await page.getByRole('combobox', { name }).press('Enter')
 }
