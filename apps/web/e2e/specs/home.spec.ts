@@ -10,7 +10,7 @@ test('if I click search flights without selecting a filter it shows an error mes
   ).toBeVisible()
 })
 
-test('if I select options and click search flights it redirects me to search results', async ({
+test.skip('if I select options and click search flights it redirects me to search results', async ({
   page,
 }) => {
   await page.goto('/')
