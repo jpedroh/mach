@@ -20,7 +20,7 @@ async function globalSetup() {
       flightRules: 'IFR',
       remarks: 'EQPT/SDFGIKRWY/LB1 STS/ATFMX PBN/B1C1D1O1S2T1 EET/SBCW0004',
       cycle: '2023-12-21',
-      aircraftIcaoCode: 'B737',
+      aircraftIcaoCode: 'B738',
       aircraftEquipment: 'SDFGIKRWY/LB1',
       aircraftWakeTurbulence: 'M',
     },
