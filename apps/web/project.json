@@ -31,7 +31,6 @@
     },
     "e2e": {
       "executor": "@nx/playwright:playwright",
-      "dependsOn": ["build"],
       "outputs": ["{workspaceRoot}/dist/.playwright/apps/web"],
       "options": {
         "config": "apps/web/playwright.config.ts"
