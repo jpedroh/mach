@@ -21,10 +21,8 @@ test('if there are no results for the search query it shows a friendly message',
 test('if there are results for the search it shows them on the table', async ({
   page,
 }) => {
-  // Unless something really weird is going on, there will always be flights from SBSP to SBRJ
   await page.goto('/search?departureIcao=SBSP&arrivalIcao=SBRJ')
-
-  await expect(page.getByText(/there are \d+ results/i)).toBeVisible()
+  await expect(page.getByText(/there is a single result/i)).toBeVisible()
   await expect(page.getByRole('table')).toBeVisible()
 })
 

@@ -21,5 +21,5 @@ export default defineConfig({
     reuseExistingServer: !process.env.CI,
     cwd: workspaceRoot,
   },
-  reporter: process.env.CI ? 'github' : 'list',
+  reporter: [[process.env.CI ? 'github' : 'list'], ['html', { open: 'never' }]],
 })
