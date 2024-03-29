@@ -27,8 +27,8 @@ dependencies:
     specifier: ^0.7.0
     version: 0.7.0
   drizzle-orm:
-    specifier: ^0.30.4
-    version: 0.30.4(@libsql/client@0.6.0)(@types/react@18.2.73)(react@18.2.0)
+    specifier: ^0.30.6
+    version: 0.30.6(@libsql/client@0.6.0)(@types/react@18.2.73)(react@18.2.0)
   fast-xml-parser:
     specifier: ^4.3.6
     version: 4.3.6
@@ -10401,11 +10401,12 @@ packages:
       - supports-color
     dev: true
 
-  /drizzle-orm@0.30.4(@libsql/client@0.6.0)(@types/react@18.2.73)(react@18.2.0):
-    resolution: {integrity: sha512-kWoSMGbrOFkmkAweLTFtHJMpN+nwhx89q0mLELqT2aEU+1szNV8jrnBmJwZ0WGNp7J7yQn/ezEtxBI/qzTSElQ==}
+  /drizzle-orm@0.30.6(@libsql/client@0.6.0)(@types/react@18.2.73)(react@18.2.0):
+    resolution: {integrity: sha512-8RgNUmY7J03GRuRgBV5SaJNbYgLVPjdSWNS/bRkIMIHt2TFCA439lJsNpqYX8asyKMqkw8ceBiamUnCIXZIt9w==}
     peerDependencies:
       '@aws-sdk/client-rds-data': '>=3'
       '@cloudflare/workers-types': '>=3'
+      '@electric-sql/pglite': '>=0.1.1'
       '@libsql/client': '*'
       '@neondatabase/serverless': '>=0.1'
       '@op-engineering/op-sqlite': '>=2'
@@ -10432,6 +10433,8 @@ packages:
       '@aws-sdk/client-rds-data':
         optional: true
       '@cloudflare/workers-types':
+        optional: true
+      '@electric-sql/pglite':
         optional: true
       '@libsql/client':
         optional: true
