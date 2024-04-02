@@ -38,6 +38,10 @@ export const flightsRelations = relations(flights, ({ one }) => ({
     fields: [flights.arrivalIcao],
     references: [airports.id],
   }),
+  cycle: one(cycles, {
+    fields: [flights.cycle],
+    references: [cycles.cycle],
+  }),
 }))
 
 export type Flight = typeof flights.$inferSelect
@@ -49,3 +53,8 @@ export const airports = sqliteTable('airports', {
 })
 
 export type Airport = typeof airports.$inferSelect
+
+export const cycles = sqliteTable('cycles', {
+  cycle: text('cycle', { length: 10 }).notNull().primaryKey(),
+  totalFlights: int('total_flights').notNull(),
+})

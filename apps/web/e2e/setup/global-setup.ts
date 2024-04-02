@@ -1,4 +1,4 @@
-import { db, airports, flights } from '@mach/shared/database'
+import { db, airports, flights, cycles } from '@mach/shared/database'
 
 async function globalSetup() {
   await db
@@ -27,6 +27,11 @@ async function globalSetup() {
         aircraftWakeTurbulence: 'M',
       },
     ])
+    .onConflictDoNothing()
+
+  await db
+    .insert(cycles)
+    .values({ cycle: '2023-12-21', totalFlights: 1 })
     .onConflictDoNothing()
 
   await db
