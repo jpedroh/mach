@@ -7,7 +7,11 @@ type MainDependencies = {
   rplFileDownloader: (date: string) => Promise<Buffer>
   rplFileLinesExtractor: (file: Buffer) => string[]
   flightDecoder: (line: string) => Omit<Flight, 'cycle'>
-  saveData: (data: { flights: Flight[]; airports: Airport[] }) => Promise<void>
+  saveData: (data: {
+    cycle: string
+    flights: Flight[]
+    airports: Airport[]
+  }) => Promise<void>
 }
 
 export function makeRunRplCrawler({
@@ -51,7 +55,7 @@ export function makeRunRplCrawler({
     Logger.info(`COMPLETED FETCHING OF AIRPORTS DATA`)
 
     Logger.info(`STARTING SAVING DECODED DATA TO DATABASE`)
-    await saveData({ flights, airports })
+    await saveData({ cycle: date, flights, airports })
     Logger.info(`COMPLETED SAVING DECODED DATA TO DATABASE`)
 
     Logger.info(`COMPLETED RPL UPDATE FOR ${date}`)

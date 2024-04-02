@@ -2,6 +2,7 @@ import {
   Airport,
   Flight,
   airports as airportsSchema,
+  cycles,
   db,
   flights as flightsSchema,
 } from '@mach/shared/database'
@@ -26,9 +27,11 @@ function sliceArray<T>(items: T[]) {
 
 const makeSaveData = () => {
   return async ({
+    cycle,
     flights,
     airports,
   }: {
+    cycle: string
     flights: Flight[]
     airports: Airport[]
   }): Promise<void> => {
@@ -40,6 +43,7 @@ const makeSaveData = () => {
     )
 
     await db.batch([
+      db.insert(cycles).values({ cycle, totalFlights: flights.length }),
       db.delete(airportsSchema).where(
         inArray(
           airportsSchema.id,

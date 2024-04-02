@@ -1,11 +1,9 @@
-import { db, flights } from '@mach/shared/database'
-import { desc } from 'drizzle-orm'
+import { db } from '@mach/shared/database'
 
 export async function fetchCycles() {
-  const cycles = await db
-    .selectDistinct({ cycle: flights.cycle })
-    .from(flights)
-    .orderBy(desc(flights.cycle))
-
+  const cycles = await db.query.cycles.findMany({
+    columns: { cycle: true },
+    orderBy: (cycles, { desc }) => desc(cycles.cycle),
+  })
   return cycles.map((v) => v.cycle)
 }
