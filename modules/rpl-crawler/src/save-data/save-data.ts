@@ -2,6 +2,7 @@ import {
   Airport,
   Flight,
   airports as airportsSchema,
+  companies,
   cycles,
   db,
   flights as flightsSchema,
@@ -42,8 +43,14 @@ const makeSaveData = () => {
       db.insert(airportsSchema).values(airports)
     )
 
+    const filteredCompanies = [...new Set(flights.map((v) => v.company))]
+    const companiesSlices = filteredCompanies.map((company) => {
+      return db.insert(companies).values({ company }).onConflictDoNothing()
+    })
+
     await db.batch([
       db.insert(cycles).values({ cycle, totalFlights: flights.length }),
+      ...companiesSlices,
       db.delete(airportsSchema).where(
         inArray(
           airportsSchema.id,
