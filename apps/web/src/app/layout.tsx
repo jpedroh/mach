@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import './index.css'
 import {
   AnalyticsPageViewTracker,
@@ -14,10 +14,12 @@ export default function RootLayout({
     <html>
       <head />
       <body>
-        <AnalyticsProvider>
-          <AnalyticsPageViewTracker />
-          {children}
-        </AnalyticsProvider>
+        <Suspense>
+          <AnalyticsProvider>
+            <AnalyticsPageViewTracker />
+            {children}
+          </AnalyticsProvider>
+        </Suspense>
       </body>
     </html>
   )
