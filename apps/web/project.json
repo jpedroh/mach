@@ -29,13 +29,6 @@
         "parallel": false
       }
     },
-    "e2e": {
-      "executor": "@nx/playwright:playwright",
-      "outputs": ["{workspaceRoot}/dist/.playwright/apps/web"],
-      "options": {
-        "config": "apps/web/playwright.config.ts"
-      }
-    },
     "lint": {
       "executor": "@nx/eslint:lint",
       "outputs": ["{options.outputFile}"],
