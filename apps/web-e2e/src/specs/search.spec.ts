@@ -36,5 +36,5 @@ test('when i click in view details it shows me the flight details modal', async 
   await expect(page.getByRole('dialog')).toBeVisible()
 
   await page.click('text=Close')
-  await expect(page.getByRole('dialog')).not.toBeVisible()
+  await expect(page.getByRole('dialog')).toBeHidden()
 })

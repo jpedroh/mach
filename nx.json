@@ -8,9 +8,7 @@
   "tasksRunnerOptions": {
     "default": {
       "runner": "@nx-aws-plugin/nx-aws-cache",
-      "options": {
-        "cacheableOperations": ["pack", "test", "eject"]
-      }
+      "options": {}
     }
   },
   "targetDefaults": {
@@ -24,10 +22,13 @@
     "@nx/vite:test": {
       "cache": true,
       "inputs": ["default", "^default"]
+    },
+    "test": {
+      "cache": true
+    },
+    "eject": {
+      "cache": true
     }
-  },
-  "affected": {
-    "defaultBase": "main"
   },
   "generators": {
     "@nx/react": {
@@ -38,5 +39,6 @@
         "unitTestRunner": "vitest"
       }
     }
-  }
+  },
+  "defaultBase": "main"
 }
