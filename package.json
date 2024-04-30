@@ -95,7 +95,7 @@
     "lint": "nx affected --target=lint",
     "test": "nx affected --target=test",
     "e2e": "nx e2e web-e2e",
-    "preview": "npx wrangler pages dev apps/web/.vercel/output/static --compatibility-flag=nodejs_compat",
+    "preview": "npx wrangler pages dev apps/web/.vercel/output/static --compatibility-flag=nodejs_compat --port=3000",
     "prepare": "husky install"
   }
 }
