@@ -1,9 +1,5 @@
 import React, { Suspense } from 'react'
 import './index.css'
-import {
-  AnalyticsPageViewTracker,
-  AnalyticsProvider,
-} from '@mach/web/shared/analytics'
 
 export default function RootLayout({
   children,
@@ -14,12 +10,7 @@ export default function RootLayout({
     <html>
       <head />
       <body>
-        <Suspense>
-          <AnalyticsProvider>
-            <AnalyticsPageViewTracker />
-            {children}
-          </AnalyticsProvider>
-        </Suspense>
+        <Suspense>{children}</Suspense>
       </body>
     </html>
   )

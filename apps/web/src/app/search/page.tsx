@@ -1,6 +1,5 @@
 import { SearchPage } from '@mach/web/search'
 import { searchFlightsQuerySchema } from '@mach/web/search/server'
-import { getAnalyticsClient } from '@mach/web/shared/analytics/server'
 import { Link } from '@mach/web/shared/ui'
 import { Layout, Lead } from '@mach/web/shared/ui/server'
 
@@ -18,9 +17,6 @@ export default async function Search({
   searchParams?: Record<string, unknown>
 }) {
   const query = searchFlightsQuerySchema.safeParse(searchParams)
-
-  const client = getAnalyticsClient()
-  client.captureEvent('search', { query })
 
   if (query.success === false) {
     return (
