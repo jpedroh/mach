@@ -36,7 +36,7 @@ dependencies:
     specifier: ^2.2.14
     version: 2.2.14(typescript@5.4.5)
   next:
-    specifier: ^14.2.3
+    specifier: ^14.2.1
     version: 14.2.3(@babel/core@7.24.4)(@playwright/test@1.43.1)(react-dom@18.2.0)(react@18.2.0)
   posthog-js:
     specifier: ^1.116.6
@@ -13895,6 +13895,8 @@ packages:
       webpack: '*'
     peerDependenciesMeta:
       webpack:
+        optional: true
+      webpack-sources:
         optional: true
     dependencies:
       webpack: 5.91.0(@swc/core@1.4.13)(esbuild@0.19.12)
