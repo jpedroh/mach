@@ -43,6 +43,8 @@ jobs:
           cache: 'pnpm'
       - run: pnpm install
       - run: pnpm drizzle-kit push:sqlite
+      - run: pnpm pack
+      - run: pnpm preview &
       - run: HOME=/root pnpm e2e
       - uses: actions/upload-artifact@v4
         if: always()

@@ -64,7 +64,8 @@
     "typescript": "^5.4.5",
     "typescript-eslint": "^7.7.0",
     "vite": "^5.2.10",
-    "vitest": "^1.5.3"
+    "vitest": "^1.5.3",
+    "wrangler": "^3.52.0"
   },
   "dependencies": {
     "@libsql/client": "^0.6.0",
@@ -94,6 +95,7 @@
     "lint": "nx affected --target=lint",
     "test": "nx affected --target=test",
     "e2e": "nx e2e web-e2e",
+    "preview": "npx wrangler pages dev apps/web/.vercel/output/static --compatibility-flag=nodejs_compat",
     "prepare": "husky install"
   }
 }
