@@ -37,7 +37,7 @@ dependencies:
     version: 2.2.14(typescript@5.4.5)
   next:
     specifier: ^14.2.1
-    version: 14.2.3(@babel/core@7.24.4)(@playwright/test@1.43.1)(react-dom@18.2.0)(react@18.3.1)
+    version: 14.2.3(@babel/core@7.24.4)(@playwright/test@1.44.0)(react-dom@18.2.0)(react@18.3.1)
   posthog-node:
     specifier: ^4.0.1
     version: 4.0.1
@@ -102,7 +102,7 @@ devDependencies:
     version: 19.0.0(@babel/core@7.24.4)(@swc-node/register@1.9.0)(@swc/core@1.4.17)(@types/node@20.12.7)(esbuild@0.19.12)(next@14.2.3)(nx@19.0.0)(typescript@5.4.5)(webpack@5.91.0)
   '@nx/playwright':
     specifier: 19.0.0
-    version: 19.0.0(@playwright/test@1.43.1)(@swc-node/register@1.9.0)(@swc/core@1.4.17)(@types/node@20.12.7)(nx@19.0.0)(typescript@5.4.5)
+    version: 19.0.0(@playwright/test@1.44.0)(@swc-node/register@1.9.0)(@swc/core@1.4.17)(@types/node@20.12.7)(nx@19.0.0)(typescript@5.4.5)
   '@nx/react':
     specifier: 19.0.0
     version: 19.0.0(@swc-node/register@1.9.0)(@swc/core@1.4.17)(@types/node@20.12.7)(nx@19.0.0)(typescript@5.4.5)(webpack@5.91.0)
@@ -110,8 +110,8 @@ devDependencies:
     specifier: 19.0.0
     version: 19.0.0(@swc-node/register@1.9.0)(@swc/core@1.4.17)(@types/node@20.12.7)(nx@19.0.0)(typescript@5.4.5)(vite@5.2.10)(vitest@1.6.0)
   '@playwright/test':
-    specifier: ^1.43.1
-    version: 1.43.1
+    specifier: ^1.44.0
+    version: 1.44.0
   '@semantic-release/exec':
     specifier: ^6.0.0
     version: 6.0.3(semantic-release@23.0.8)
@@ -4327,7 +4327,7 @@ packages:
       file-loader: 6.2.0(webpack@5.91.0)
       fs-extra: 11.2.0
       ignore: 5.3.1
-      next: 14.2.3(@babel/core@7.24.4)(@playwright/test@1.43.1)(react-dom@18.2.0)(react@18.3.1)
+      next: 14.2.3(@babel/core@7.24.4)(@playwright/test@1.44.0)(react-dom@18.2.0)(react@18.3.1)
       semver: 7.6.0
       tslib: 2.6.2
       webpack-merge: 5.10.0
@@ -4453,7 +4453,7 @@ packages:
     dev: true
     optional: true
 
-  /@nx/playwright@19.0.0(@playwright/test@1.43.1)(@swc-node/register@1.9.0)(@swc/core@1.4.17)(@types/node@20.12.7)(nx@19.0.0)(typescript@5.4.5):
+  /@nx/playwright@19.0.0(@playwright/test@1.44.0)(@swc-node/register@1.9.0)(@swc/core@1.4.17)(@types/node@20.12.7)(nx@19.0.0)(typescript@5.4.5):
     resolution: {integrity: sha512-uBRVETzFMly4KN/tJIOnAWU0zPXPuuMEogoNxQMiAeCY+RWUi2X1XdHvZ9uyCkBRTHUFybUeWyVobZFMnElTpg==}
     peerDependencies:
       '@playwright/test': ^1.36.0
@@ -4465,7 +4465,7 @@ packages:
       '@nx/eslint': 19.0.0(@swc-node/register@1.9.0)(@swc/core@1.4.17)(@types/node@20.12.7)(nx@19.0.0)
       '@nx/js': 19.0.0(@swc-node/register@1.9.0)(@swc/core@1.4.17)(@types/node@20.12.7)(nx@19.0.0)(typescript@5.4.5)
       '@phenomnomnominal/tsquery': 5.0.1(typescript@5.4.5)
-      '@playwright/test': 1.43.1
+      '@playwright/test': 1.44.0
       minimatch: 9.0.3
       tslib: 2.6.2
     transitivePeerDependencies:
@@ -4773,12 +4773,12 @@ packages:
     dev: true
     optional: true
 
-  /@playwright/test@1.43.1:
-    resolution: {integrity: sha512-HgtQzFgNEEo4TE22K/X7sYTYNqEMMTZmFS8kTq6m8hXj+m1D8TgwgIbumHddJa9h4yl4GkKb8/bgAl2+g7eDgA==}
+  /@playwright/test@1.44.0:
+    resolution: {integrity: sha512-rNX5lbNidamSUorBhB4XZ9SQTjAqfe5M+p37Z8ic0jPFBMo5iCtQz1kRWkEMg+rYOKSlVycpQmpqjSFq7LXOfg==}
     engines: {node: '>=16'}
     hasBin: true
     dependencies:
-      playwright: 1.43.1
+      playwright: 1.44.0
 
   /@pnpm/config.env-replace@1.1.0:
     resolution: {integrity: sha512-htyl8TWnKL7K/ESFa1oW2UB5lVDxuF5DpM7tBi6Hu2LNL3mWkIzNLG6N4zoCUP1lCKNxWy/3iu8mS8MvToGd6w==}
@@ -6464,7 +6464,7 @@ packages:
       '@sentry/vercel-edge': 7.112.2
       '@sentry/webpack-plugin': 1.21.0
       chalk: 3.0.0
-      next: 14.2.3(@babel/core@7.24.4)(@playwright/test@1.43.1)(react-dom@18.2.0)(react@18.3.1)
+      next: 14.2.3(@babel/core@7.24.4)(@playwright/test@1.44.0)(react-dom@18.2.0)(react@18.3.1)
       react: 18.3.1
       resolve: 1.22.8
       rollup: 2.78.0
@@ -14679,7 +14679,7 @@ packages:
     resolution: {integrity: sha512-CXdUiJembsNjuToQvxayPZF9Vqht7hewsvy2sOWafLvi2awflj9mOC6bHIg50orX8IJvWKY9wYQ/zB2kogPslQ==}
     dev: true
 
-  /next@14.2.3(@babel/core@7.24.4)(@playwright/test@1.43.1)(react-dom@18.2.0)(react@18.3.1):
+  /next@14.2.3(@babel/core@7.24.4)(@playwright/test@1.44.0)(react-dom@18.2.0)(react@18.3.1):
     resolution: {integrity: sha512-dowFkFTR8v79NPJO4QsBUtxv0g9BrS/phluVpMAt2ku7H+cbcBJlopXjkWlwxrk/xGqMemr7JkGPGemPrLLX7A==}
     engines: {node: '>=18.17.0'}
     hasBin: true
@@ -14698,7 +14698,7 @@ packages:
         optional: true
     dependencies:
       '@next/env': 14.2.3
-      '@playwright/test': 1.43.1
+      '@playwright/test': 1.44.0
       '@swc/helpers': 0.5.5
       busboy: 1.6.0
       caniuse-lite: 1.0.30001612
@@ -15592,17 +15592,17 @@ packages:
       pathe: 1.1.2
     dev: true
 
-  /playwright-core@1.43.1:
-    resolution: {integrity: sha512-EI36Mto2Vrx6VF7rm708qSnesVQKbxEWvPrfA1IPY6HgczBplDx7ENtx+K2n4kJ41sLLkuGfmb0ZLSSXlDhqPg==}
+  /playwright-core@1.44.0:
+    resolution: {integrity: sha512-ZTbkNpFfYcGWohvTTl+xewITm7EOuqIqex0c7dNZ+aXsbrLj0qI8XlGKfPpipjm0Wny/4Lt4CJsWJk1stVS5qQ==}
     engines: {node: '>=16'}
     hasBin: true
 
-  /playwright@1.43.1:
-    resolution: {integrity: sha512-V7SoH0ai2kNt1Md9E3Gwas5B9m8KR2GVvwZnAI6Pg0m3sh7UvgiYhRrhsziCmqMJNouPckiOhk8T+9bSAK0VIA==}
+  /playwright@1.44.0:
+    resolution: {integrity: sha512-F9b3GUCLQ3Nffrfb6dunPOkE5Mh68tR7zN32L4jCk4FjQamgesGay7/dAAe1WaMEGV04DkdJfcJzjoCKygUaRQ==}
     engines: {node: '>=16'}
     hasBin: true
     dependencies:
-      playwright-core: 1.43.1
+      playwright-core: 1.44.0
     optionalDependencies:
       fsevents: 2.3.2
 
