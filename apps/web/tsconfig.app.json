@@ -1,0 +1,23 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../../dist/out-tsc",
+    "types": [
+      "node",
+      "@nx/react/typings/cssmodule.d.ts",
+      "@nx/react/typings/image.d.ts",
+      "vite/client"
+    ]
+  },
+  "exclude": [
+    "app/**/*.spec.ts",
+    "app/**/*.test.ts",
+    "app/**/*.spec.tsx",
+    "app/**/*.test.tsx",
+    "app/**/*.spec.js",
+    "app/**/*.test.js",
+    "app/**/*.spec.jsx",
+    "app/**/*.test.jsx"
+  ],
+  "include": ["app/**/*.js", "app/**/*.jsx", "app/**/*.ts", "app/**/*.tsx"]
+}

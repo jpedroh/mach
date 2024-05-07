@@ -33,12 +33,39 @@
   "generators": {
     "@nx/react": {
       "application": {
-        "babel": true
+        "babel": true,
+        "style": "none",
+        "linter": "eslint",
+        "bundler": "vite"
       },
       "library": {
+        "style": "none",
+        "linter": "eslint",
         "unitTestRunner": "vitest"
+      },
+      "component": {
+        "style": "none"
       }
     }
   },
-  "defaultBase": "main"
+  "defaultBase": "main",
+  "plugins": [
+    {
+      "plugin": "@nx/vite/plugin",
+      "options": {
+        "buildTargetName": "build",
+        "testTargetName": "vite:test",
+        "serveTargetName": "serve",
+        "previewTargetName": "preview",
+        "serveStaticTargetName": "serve-static"
+      }
+    },
+    {
+      "plugin": "@nx/eslint/plugin",
+      "options": {
+        "targetName": "eslint:lint",
+        "extensions": ["ts", "tsx", "js", "jsx", "html", "vue"]
+      }
+    }
+  ]
 }
