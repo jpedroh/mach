@@ -8,7 +8,7 @@ jobs:
   main:
     runs-on: ubuntu-latest
     permissions:
-      contents: write
+      contents: read
       deployments: write
     env:
       TURSO_CONNECTION_URL: ${{ secrets.turso_connection_url }}
