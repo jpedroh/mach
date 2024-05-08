@@ -4,261 +4,275 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-dependencies:
-  '@libsql/client':
-    specifier: ^0.6.0
-    version: 0.6.0
-  '@remix-run/cloudflare':
-    specifier: ^2.9.1
-    version: 2.9.1(@cloudflare/workers-types@4.20240502.0)(typescript@5.4.5)
-  '@remix-run/cloudflare-pages':
-    specifier: ^2.9.1
-    version: 2.9.1(@cloudflare/workers-types@4.20240502.0)(typescript@5.4.5)
-  '@remix-run/react':
-    specifier: ^2.9.1
-    version: 2.9.1(react-dom@18.3.1)(react@18.3.1)(typescript@5.4.5)
-  '@remix-run/serve':
-    specifier: ^2.9.1
-    version: 2.9.1(typescript@5.4.5)
-  '@sentry/nextjs':
-    specifier: ^7.112.2
-    version: 7.112.2(next@14.2.3)(react@18.3.1)(webpack@5.91.0)
-  '@sentry/node':
-    specifier: ^7.112.2
-    version: 7.112.2
-  '@swc/helpers':
-    specifier: ~0.5.11
-    version: 0.5.11
-  adm-zip:
-    specifier: ^0.5.12
-    version: 0.5.12
-  axios:
-    specifier: ^1.6.8
-    version: 1.6.8
-  class-variance-authority:
-    specifier: ^0.7.0
-    version: 0.7.0
-  drizzle-orm:
-    specifier: ^0.30.9
-    version: 0.30.9(@cloudflare/workers-types@4.20240502.0)(@libsql/client@0.6.0)(@types/react@18.3.1)(react@18.3.1)
-  fast-xml-parser:
-    specifier: ^4.3.6
-    version: 4.3.6
-  isbot:
-    specifier: '4'
-    version: 4.4.0
-  msw:
-    specifier: ^2.2.14
-    version: 2.2.14(typescript@5.4.5)
-  next:
-    specifier: ^14.2.1
-    version: 14.2.3(@babel/core@7.24.4)(@playwright/test@1.44.0)(react-dom@18.3.1)(react@18.3.1)
-  react-aria-components:
-    specifier: ^1.1.1
-    version: 1.1.1(react-dom@18.3.1)(react@18.3.1)
-  react-twc:
-    specifier: ^1.4.1
-    version: 1.4.1(@types/react@18.3.1)(react@18.3.1)
-  tailwindcss-animate:
-    specifier: ^1.0.7
-    version: 1.0.7(tailwindcss@3.4.1)
-  tailwindcss-react-aria-components:
-    specifier: ^1.1.2
-    version: 1.1.2(tailwindcss@3.4.1)
-  tslib:
-    specifier: ^2.3.0
-    version: 2.6.2
-  zod:
-    specifier: ^3.23.6
-    version: 3.23.6
+importers:
 
-devDependencies:
-  '@babel/core':
-    specifier: '>=7.0.0 <8.0.0'
-    version: 7.24.4
-  '@cloudflare/next-on-pages':
-    specifier: ^1.11.0
-    version: 1.11.0(@cloudflare/workers-types@4.20240502.0)(vercel@34.1.8)(wrangler@3.53.1)
-  '@commitlint/cli':
-    specifier: ^19.3.0
-    version: 19.3.0(@types/node@20.12.7)(typescript@5.4.5)
-  '@commitlint/config-conventional':
-    specifier: ^19.2.2
-    version: 19.2.2
-  '@eslint/eslintrc':
-    specifier: ^3.0.2
-    version: 3.0.2
-  '@eslint/js':
-    specifier: ~9.1.1
-    version: 9.1.1
-  '@nx-aws-plugin/nx-aws-cache':
-    specifier: ^3.2.0
-    version: 3.2.0(@nx/devkit@19.0.0)(@nx/workspace@19.0.0)(nx@19.0.0)
-  '@nx/devkit':
-    specifier: 19.0.0
-    version: 19.0.0(nx@19.0.0)
-  '@nx/eslint':
-    specifier: 19.0.0
-    version: 19.0.0(@swc-node/register@1.9.0)(@swc/core@1.4.17)(@types/node@20.12.7)(nx@19.0.0)
-  '@nx/eslint-plugin':
-    specifier: 19.0.0
-    version: 19.0.0(@swc-node/register@1.9.0)(@swc/core@1.4.17)(@types/node@20.12.7)(@typescript-eslint/parser@7.8.0)(eslint@8.57.0)(nx@19.0.0)(typescript@5.4.5)
-  '@nx/js':
-    specifier: 19.0.0
-    version: 19.0.0(@swc-node/register@1.9.0)(@swc/core@1.4.17)(@types/node@20.12.7)(nx@19.0.0)(typescript@5.4.5)
-  '@nx/next':
-    specifier: 19.0.0
-    version: 19.0.0(@babel/core@7.24.4)(@swc-node/register@1.9.0)(@swc/core@1.4.17)(@types/node@20.12.7)(esbuild@0.19.12)(next@14.2.3)(nx@19.0.0)(typescript@5.4.5)(webpack@5.91.0)
-  '@nx/playwright':
-    specifier: 19.0.0
-    version: 19.0.0(@playwright/test@1.44.0)(@swc-node/register@1.9.0)(@swc/core@1.4.17)(@types/node@20.12.7)(nx@19.0.0)(typescript@5.4.5)
-  '@nx/react':
-    specifier: 19.0.0
-    version: 19.0.0(@swc-node/register@1.9.0)(@swc/core@1.4.17)(@types/node@20.12.7)(nx@19.0.0)(typescript@5.4.5)(webpack@5.91.0)
-  '@nx/vite':
-    specifier: 19.0.0
-    version: 19.0.0(@swc-node/register@1.9.0)(@swc/core@1.4.17)(@types/node@20.12.7)(nx@19.0.0)(typescript@5.4.5)(vite@5.2.10)(vitest@1.6.0)
-  '@playwright/test':
-    specifier: ^1.44.0
-    version: 1.44.0
-  '@remix-run/dev':
-    specifier: ^2.9.1
-    version: 2.9.1(@remix-run/react@2.9.1)(@remix-run/serve@2.9.1)(@types/node@20.12.7)(less@4.1.3)(stylus@0.59.0)(typescript@5.4.5)(vite@5.2.10)(wrangler@3.53.1)
-  '@semantic-release/exec':
-    specifier: ^6.0.0
-    version: 6.0.3(semantic-release@23.0.8)
-  '@semantic-release/git':
-    specifier: ^10.0.1
-    version: 10.0.1(semantic-release@23.0.8)
-  '@swc-node/register':
-    specifier: ~1.9.0
-    version: 1.9.0(@swc/core@1.4.17)(@swc/types@0.1.6)(typescript@5.4.5)
-  '@swc/cli':
-    specifier: ~0.3.12
-    version: 0.3.12(@swc/core@1.4.17)
-  '@swc/core':
-    specifier: ~1.4.17
-    version: 1.4.17(@swc/helpers@0.5.11)
-  '@testing-library/dom':
-    specifier: ^10.1.0
-    version: 10.1.0
-  '@testing-library/jest-dom':
-    specifier: ^6.4.2
-    version: 6.4.2(vitest@1.6.0)
-  '@testing-library/react':
-    specifier: 15.0.6
-    version: 15.0.6(@types/react@18.3.1)(react-dom@18.3.1)(react@18.3.1)
-  '@testing-library/user-event':
-    specifier: ^14.5.2
-    version: 14.5.2(@testing-library/dom@10.1.0)
-  '@types/adm-zip':
-    specifier: ^0.5.5
-    version: 0.5.5
-  '@types/compression':
-    specifier: ^1.7.5
-    version: 1.7.5
-  '@types/node':
-    specifier: ^20.12.7
-    version: 20.12.7
-  '@types/react':
-    specifier: ^18.3.1
-    version: 18.3.1
-  '@types/react-dom':
-    specifier: 18.3.0
-    version: 18.3.0
-  '@vitejs/plugin-react':
-    specifier: ^4.2.1
-    version: 4.2.1(vite@5.2.10)
-  '@vitest/coverage-v8':
-    specifier: ^1.6.0
-    version: 1.6.0(vitest@1.6.0)
-  '@vitest/ui':
-    specifier: ^1.6.0
-    version: 1.6.0(vitest@1.6.0)
-  autoprefixer:
-    specifier: ^10.4.19
-    version: 10.4.19(postcss@8.4.38)
-  conventional-changelog-conventionalcommits:
-    specifier: ^7.0.2
-    version: 7.0.2
-  dotenv:
-    specifier: ^16.4.5
-    version: 16.4.5
-  drizzle-kit:
-    specifier: ^0.20.14
-    version: 0.20.14
-  esbuild:
-    specifier: ^0.19.12
-    version: 0.19.12
-  eslint:
-    specifier: ^8.57.0
-    version: 8.57.0
-  eslint-config-next:
-    specifier: ^14.2.3
-    version: 14.2.3(eslint@8.57.0)(typescript@5.4.5)
-  eslint-plugin-import:
-    specifier: 2.29.1
-    version: 2.29.1(@typescript-eslint/parser@7.8.0)(eslint@8.57.0)
-  eslint-plugin-jsx-a11y:
-    specifier: 6.8.0
-    version: 6.8.0(eslint@8.57.0)
-  eslint-plugin-playwright:
-    specifier: ^1.6.0
-    version: 1.6.0(eslint@8.57.0)
-  eslint-plugin-react:
-    specifier: ^7.34.1
-    version: 7.34.1(eslint@8.57.0)
-  eslint-plugin-react-hooks:
-    specifier: 4.6.2
-    version: 4.6.2(eslint@8.57.0)
-  husky:
-    specifier: ^9.0.11
-    version: 9.0.11
-  jsdom:
-    specifier: ^24.0.0
-    version: 24.0.0
-  lint-staged:
-    specifier: ^15.2.2
-    version: 15.2.2
-  nx:
-    specifier: 19.0.0
-    version: 19.0.0(@swc-node/register@1.9.0)(@swc/core@1.4.17)
-  pg-hstore:
-    specifier: ^2.3.3
-    version: 2.3.4
-  postcss:
-    specifier: ^8.4.38
-    version: 8.4.38
-  prettier:
-    specifier: 3.2.5
-    version: 3.2.5
-  react:
-    specifier: ^18.3.1
-    version: 18.3.1
-  react-dom:
-    specifier: 18.3.1
-    version: 18.3.1(react@18.3.1)
-  semantic-release:
-    specifier: ^23.0.8
-    version: 23.0.8(typescript@5.4.5)
-  tailwindcss:
-    specifier: ^3.4.1
-    version: 3.4.1
-  typescript:
-    specifier: ^5.4.5
-    version: 5.4.5
-  typescript-eslint:
-    specifier: ^7.7.0
-    version: 7.7.0(eslint@8.57.0)(typescript@5.4.5)
-  vite:
-    specifier: ^5.2.10
-    version: 5.2.10(@types/node@20.12.7)(less@4.1.3)(stylus@0.59.0)
-  vite-env-only:
-    specifier: ^2.2.1
-    version: 2.2.1
-  vitest:
-    specifier: ^1.6.0
-    version: 1.6.0(@types/node@20.12.7)(@vitest/ui@1.6.0)(jsdom@24.0.0)(less@4.1.3)(stylus@0.59.0)
+  .:
+    dependencies:
+      '@libsql/client':
+        specifier: ^0.6.0
+        version: 0.6.0
+      '@remix-run/cloudflare':
+        specifier: ^2.9.1
+        version: 2.9.1(@cloudflare/workers-types@4.20240502.0)(typescript@5.4.5)
+      '@remix-run/cloudflare-pages':
+        specifier: ^2.9.1
+        version: 2.9.1(@cloudflare/workers-types@4.20240502.0)(typescript@5.4.5)
+      '@remix-run/react':
+        specifier: ^2.9.1
+        version: 2.9.1(react-dom@18.3.1)(react@18.3.1)(typescript@5.4.5)
+      '@remix-run/serve':
+        specifier: ^2.9.1
+        version: 2.9.1(typescript@5.4.5)
+      '@sentry/nextjs':
+        specifier: ^7.112.2
+        version: 7.112.2(next@14.2.3)(react@18.3.1)(webpack@5.91.0)
+      '@sentry/node':
+        specifier: ^7.112.2
+        version: 7.112.2
+      '@swc/helpers':
+        specifier: ~0.5.11
+        version: 0.5.11
+      adm-zip:
+        specifier: ^0.5.12
+        version: 0.5.12
+      axios:
+        specifier: ^1.6.8
+        version: 1.6.8
+      class-variance-authority:
+        specifier: ^0.7.0
+        version: 0.7.0
+      drizzle-orm:
+        specifier: ^0.30.9
+        version: 0.30.9(@cloudflare/workers-types@4.20240502.0)(@libsql/client@0.6.0)(@types/react@18.3.1)(react@18.3.1)
+      fast-xml-parser:
+        specifier: ^4.3.6
+        version: 4.3.6
+      isbot:
+        specifier: '4'
+        version: 4.4.0
+      msw:
+        specifier: ^2.2.14
+        version: 2.2.14(typescript@5.4.5)
+      next:
+        specifier: ^14.2.1
+        version: 14.2.3(@babel/core@7.24.4)(@playwright/test@1.44.0)(react-dom@18.3.1)(react@18.3.1)
+      react-aria-components:
+        specifier: ^1.1.1
+        version: 1.1.1(react-dom@18.3.1)(react@18.3.1)
+      react-twc:
+        specifier: ^1.4.1
+        version: 1.4.1(@types/react@18.3.1)(react@18.3.1)
+      tailwindcss-animate:
+        specifier: ^1.0.7
+        version: 1.0.7(tailwindcss@3.4.1)
+      tailwindcss-react-aria-components:
+        specifier: ^1.1.2
+        version: 1.1.2(tailwindcss@3.4.1)
+      tslib:
+        specifier: ^2.3.0
+        version: 2.6.2
+      zod:
+        specifier: ^3.23.6
+        version: 3.23.6
+    devDependencies:
+      '@babel/core':
+        specifier: '>=7.0.0 <8.0.0'
+        version: 7.24.4
+      '@cloudflare/next-on-pages':
+        specifier: ^1.11.0
+        version: 1.11.0(@cloudflare/workers-types@4.20240502.0)(vercel@34.1.8)(wrangler@3.53.1)
+      '@commitlint/cli':
+        specifier: ^19.3.0
+        version: 19.3.0(@types/node@20.12.7)(typescript@5.4.5)
+      '@commitlint/config-conventional':
+        specifier: ^19.2.2
+        version: 19.2.2
+      '@eslint/eslintrc':
+        specifier: ^3.0.2
+        version: 3.0.2
+      '@eslint/js':
+        specifier: ~9.1.1
+        version: 9.1.1
+      '@nx-aws-plugin/nx-aws-cache':
+        specifier: ^3.2.0
+        version: 3.2.0(@nx/devkit@19.0.0)(@nx/workspace@19.0.0)(nx@19.0.0)
+      '@nx/devkit':
+        specifier: 19.0.0
+        version: 19.0.0(nx@19.0.0)
+      '@nx/eslint':
+        specifier: 19.0.0
+        version: 19.0.0(@swc-node/register@1.9.0)(@swc/core@1.4.17)(@types/node@20.12.7)(nx@19.0.0)
+      '@nx/eslint-plugin':
+        specifier: 19.0.0
+        version: 19.0.0(@swc-node/register@1.9.0)(@swc/core@1.4.17)(@types/node@20.12.7)(@typescript-eslint/parser@7.8.0)(eslint@8.57.0)(nx@19.0.0)(typescript@5.4.5)
+      '@nx/js':
+        specifier: 19.0.0
+        version: 19.0.0(@swc-node/register@1.9.0)(@swc/core@1.4.17)(@types/node@20.12.7)(nx@19.0.0)(typescript@5.4.5)
+      '@nx/next':
+        specifier: 19.0.0
+        version: 19.0.0(@babel/core@7.24.4)(@swc-node/register@1.9.0)(@swc/core@1.4.17)(@types/node@20.12.7)(esbuild@0.19.12)(next@14.2.3)(nx@19.0.0)(typescript@5.4.5)(webpack@5.91.0)
+      '@nx/playwright':
+        specifier: 19.0.0
+        version: 19.0.0(@playwright/test@1.44.0)(@swc-node/register@1.9.0)(@swc/core@1.4.17)(@types/node@20.12.7)(nx@19.0.0)(typescript@5.4.5)
+      '@nx/react':
+        specifier: 19.0.0
+        version: 19.0.0(@swc-node/register@1.9.0)(@swc/core@1.4.17)(@types/node@20.12.7)(nx@19.0.0)(typescript@5.4.5)(webpack@5.91.0)
+      '@nx/vite':
+        specifier: 19.0.0
+        version: 19.0.0(@swc-node/register@1.9.0)(@swc/core@1.4.17)(@types/node@20.12.7)(nx@19.0.0)(typescript@5.4.5)(vite@5.2.10)(vitest@1.6.0)
+      '@playwright/test':
+        specifier: ^1.44.0
+        version: 1.44.0
+      '@remix-run/dev':
+        specifier: ^2.9.1
+        version: 2.9.1(@remix-run/react@2.9.1)(@remix-run/serve@2.9.1)(@types/node@20.12.7)(less@4.1.3)(stylus@0.59.0)(typescript@5.4.5)(vite@5.2.10)(wrangler@3.53.1)
+      '@semantic-release/exec':
+        specifier: ^6.0.0
+        version: 6.0.3(semantic-release@23.0.8)
+      '@semantic-release/git':
+        specifier: ^10.0.1
+        version: 10.0.1(semantic-release@23.0.8)
+      '@swc-node/register':
+        specifier: ~1.9.0
+        version: 1.9.0(@swc/core@1.4.17)(@swc/types@0.1.6)(typescript@5.4.5)
+      '@swc/cli':
+        specifier: ~0.3.12
+        version: 0.3.12(@swc/core@1.4.17)
+      '@swc/core':
+        specifier: ~1.4.17
+        version: 1.4.17(@swc/helpers@0.5.11)
+      '@testing-library/dom':
+        specifier: ^10.1.0
+        version: 10.1.0
+      '@testing-library/jest-dom':
+        specifier: ^6.4.2
+        version: 6.4.2(vitest@1.6.0)
+      '@testing-library/react':
+        specifier: 15.0.6
+        version: 15.0.6(@types/react@18.3.1)(react-dom@18.3.1)(react@18.3.1)
+      '@testing-library/user-event':
+        specifier: ^14.5.2
+        version: 14.5.2(@testing-library/dom@10.1.0)
+      '@types/adm-zip':
+        specifier: ^0.5.5
+        version: 0.5.5
+      '@types/compression':
+        specifier: ^1.7.5
+        version: 1.7.5
+      '@types/node':
+        specifier: ^20.12.7
+        version: 20.12.7
+      '@types/react':
+        specifier: ^18.3.1
+        version: 18.3.1
+      '@types/react-dom':
+        specifier: 18.3.0
+        version: 18.3.0
+      '@vitejs/plugin-react':
+        specifier: ^4.2.1
+        version: 4.2.1(vite@5.2.10)
+      '@vitest/coverage-v8':
+        specifier: ^1.6.0
+        version: 1.6.0(vitest@1.6.0)
+      '@vitest/ui':
+        specifier: ^1.6.0
+        version: 1.6.0(vitest@1.6.0)
+      autoprefixer:
+        specifier: ^10.4.19
+        version: 10.4.19(postcss@8.4.38)
+      conventional-changelog-conventionalcommits:
+        specifier: ^7.0.2
+        version: 7.0.2
+      dotenv:
+        specifier: ^16.4.5
+        version: 16.4.5
+      drizzle-kit:
+        specifier: ^0.20.14
+        version: 0.20.14
+      esbuild:
+        specifier: ^0.19.12
+        version: 0.19.12
+      eslint:
+        specifier: ^8.57.0
+        version: 8.57.0
+      eslint-config-next:
+        specifier: ^14.2.3
+        version: 14.2.3(eslint@8.57.0)(typescript@5.4.5)
+      eslint-plugin-import:
+        specifier: 2.29.1
+        version: 2.29.1(@typescript-eslint/parser@7.8.0)(eslint@8.57.0)
+      eslint-plugin-jsx-a11y:
+        specifier: 6.8.0
+        version: 6.8.0(eslint@8.57.0)
+      eslint-plugin-playwright:
+        specifier: ^1.6.0
+        version: 1.6.0(eslint@8.57.0)
+      eslint-plugin-react:
+        specifier: ^7.34.1
+        version: 7.34.1(eslint@8.57.0)
+      eslint-plugin-react-hooks:
+        specifier: 4.6.2
+        version: 4.6.2(eslint@8.57.0)
+      husky:
+        specifier: ^9.0.11
+        version: 9.0.11
+      jsdom:
+        specifier: ^24.0.0
+        version: 24.0.0
+      lint-staged:
+        specifier: ^15.2.2
+        version: 15.2.2
+      nx:
+        specifier: 19.0.0
+        version: 19.0.0(@swc-node/register@1.9.0)(@swc/core@1.4.17)
+      pg-hstore:
+        specifier: ^2.3.3
+        version: 2.3.4
+      postcss:
+        specifier: ^8.4.38
+        version: 8.4.38
+      prettier:
+        specifier: 3.2.5
+        version: 3.2.5
+      react:
+        specifier: ^18.3.1
+        version: 18.3.1
+      react-dom:
+        specifier: 18.3.1
+        version: 18.3.1(react@18.3.1)
+      semantic-release:
+        specifier: ^23.0.8
+        version: 23.0.8(typescript@5.4.5)
+      tailwindcss:
+        specifier: ^3.4.1
+        version: 3.4.1
+      typescript:
+        specifier: ^5.4.5
+        version: 5.4.5
+      typescript-eslint:
+        specifier: ^7.7.0
+        version: 7.7.0(eslint@8.57.0)(typescript@5.4.5)
+      vite:
+        specifier: ^5.2.10
+        version: 5.2.10(@types/node@20.12.7)(less@4.1.3)(stylus@0.59.0)
+      vite-env-only:
+        specifier: ^2.2.1
+        version: 2.2.1
+      vitest:
+        specifier: ^1.6.0
+        version: 1.6.0(@types/node@20.12.7)(@vitest/ui@1.6.0)(jsdom@24.0.0)(less@4.1.3)(stylus@0.59.0)
+
+  apps/web:
+    dependencies:
+      '@remix-run/cloudflare':
+        specifier: ^2.9.1
+        version: 2.9.1(@cloudflare/workers-types@4.20240502.0)(typescript@5.4.5)
+      '@remix-run/cloudflare-pages':
+        specifier: ^2.9.1
+        version: 2.9.1(@cloudflare/workers-types@4.20240502.0)(typescript@5.4.5)
+      isbot:
+        specifier: ^4
+        version: 4.4.0
 
 packages:
 
