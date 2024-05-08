@@ -1,18 +1,13 @@
 import { Link } from '@mach/web/shared/ui'
 import { Layout, Lead } from '@mach/web/shared/ui/server'
+import { LoaderFunctionArgs } from '@remix-run/cloudflare'
 import { useLoaderData } from '@remix-run/react'
 import { serverOnly$ } from 'vite-env-only'
 import {
-  SearchFlightsQuery,
   fetchFlights,
   searchFlightsQuerySchema,
 } from '../services/fetch-flights'
 import { FlightsTable } from './flights-table'
-import { LoaderFunctionArgs } from '@remix-run/cloudflare'
-
-type Props = {
-  query: SearchFlightsQuery
-}
 
 export const loader = serverOnly$(({ request }: LoaderFunctionArgs) => {
   const url = new URL(request.url)
