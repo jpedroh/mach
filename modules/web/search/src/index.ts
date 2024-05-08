@@ -1,1 +1,1 @@
-export { SearchPage } from './views'
+export { SearchPage, loader } from './views'
