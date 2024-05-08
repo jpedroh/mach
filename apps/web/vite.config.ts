@@ -1,6 +1,9 @@
 /// <reference types='vitest' />
 import { defineConfig } from 'vite'
-import { vitePlugin as remix } from '@remix-run/dev'
+import {
+  vitePlugin as remix,
+  cloudflareDevProxyVitePlugin as remixCloudflareDevProxy,
+} from '@remix-run/dev'
 import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin'
 import envOnly from 'vite-env-only'
 
@@ -18,7 +21,7 @@ export default defineConfig({
     port: 4300,
     host: 'localhost',
   },
-  plugins: [remix(), envOnly(), nxViteTsPaths()],
+  plugins: [remixCloudflareDevProxy(), remix(), envOnly(), nxViteTsPaths()],
   build: {
     outDir: '../../dist/apps/web',
     reportCompressedSize: true,
