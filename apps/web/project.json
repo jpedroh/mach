@@ -13,8 +13,9 @@
       }
     },
     "pack": {
-      "command": "remix vite:build",
+      "executor": "nx:run-commands",
       "options": {
+        "commands": ["remix vite:build", "cp -r functions ../../"],
         "cwd": "apps/web"
       }
     }

@@ -17,6 +17,9 @@ export default defineConfig({
       allow: ['../..'],
     },
   },
+  define: {
+    'process.env': JSON.stringify(process.env),
+  },
   preview: {
     port: 4300,
     host: 'localhost',
