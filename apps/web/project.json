@@ -13,10 +13,9 @@
       }
     },
     "pack": {
-      "executor": "nx:run-commands",
       "outputs": ["{projectRoot}/build"],
+      "command": "remix vite:build",
       "options": {
-        "commands": ["remix vite:build"],
         "cwd": "apps/web"
       }
     }
