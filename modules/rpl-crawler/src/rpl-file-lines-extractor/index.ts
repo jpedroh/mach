@@ -1,4 +1,4 @@
-import AdmZip = require('adm-zip')
+import AdmZip from 'adm-zip'
 import makeRplFileLinesExtractor from './rpl-file-lines-extractor'
 
 export default makeRplFileLinesExtractor({

@@ -85,9 +85,6 @@ devDependencies:
   '@nx/devkit':
     specifier: 19.0.0
     version: 19.0.0(nx@19.0.0)
-  '@nx/esbuild':
-    specifier: 19.0.0
-    version: 19.0.0(@swc-node/register@1.9.0)(@swc/core@1.4.17)(@types/node@20.12.7)(esbuild@0.19.12)(nx@19.0.0)(typescript@5.4.5)
   '@nx/eslint':
     specifier: 19.0.0
     version: 19.0.0(@swc-node/register@1.9.0)(@swc/core@1.4.17)(@types/node@20.12.7)(nx@19.0.0)
@@ -3911,24 +3908,6 @@ packages:
       - nx
     dev: true
 
-  /@nrwl/esbuild@19.0.0(@swc-node/register@1.9.0)(@swc/core@1.4.17)(@types/node@20.12.7)(esbuild@0.19.12)(nx@19.0.0)(typescript@5.4.5):
-    resolution: {integrity: sha512-PMLRVkhdWSOYGoEU8Ha71y5rMXtpW8BAqsgikAmBIQDWL6jn8q4YZwzmMz0w2etG2bq9lxDOrjyhsOlZD2O1Ow==}
-    dependencies:
-      '@nx/esbuild': 19.0.0(@swc-node/register@1.9.0)(@swc/core@1.4.17)(@types/node@20.12.7)(esbuild@0.19.12)(nx@19.0.0)(typescript@5.4.5)
-    transitivePeerDependencies:
-      - '@babel/traverse'
-      - '@swc-node/register'
-      - '@swc/core'
-      - '@swc/wasm'
-      - '@types/node'
-      - debug
-      - esbuild
-      - nx
-      - supports-color
-      - typescript
-      - verdaccio
-    dev: true
-
   /@nrwl/eslint-plugin-nx@19.0.0(@swc-node/register@1.9.0)(@swc/core@1.4.17)(@types/node@20.12.7)(@typescript-eslint/parser@7.8.0)(eslint@8.57.0)(nx@19.0.0)(typescript@5.4.5):
     resolution: {integrity: sha512-L0ycAcMvMq073uD+JkNPQBAMzzmQxXeKo4yEJvDYVSyTEWtUAGsW9blwv/OkNmoDED4wxRV17Z60+HRFlmvZjg==}
     dependencies:
@@ -4149,36 +4128,6 @@ packages:
       tmp: 0.2.3
       tslib: 2.6.2
       yargs-parser: 21.1.1
-    dev: true
-
-  /@nx/esbuild@19.0.0(@swc-node/register@1.9.0)(@swc/core@1.4.17)(@types/node@20.12.7)(esbuild@0.19.12)(nx@19.0.0)(typescript@5.4.5):
-    resolution: {integrity: sha512-inX6SKEhOVUr2cBsCbHly9qCHQppL8zL9vaSLs9PeQD8JNVEn47ygljfXOaBOWnuBNQyHQvmfmhr3nOzK73dVA==}
-    peerDependencies:
-      esbuild: ~0.19.2
-    peerDependenciesMeta:
-      esbuild:
-        optional: true
-    dependencies:
-      '@nrwl/esbuild': 19.0.0(@swc-node/register@1.9.0)(@swc/core@1.4.17)(@types/node@20.12.7)(esbuild@0.19.12)(nx@19.0.0)(typescript@5.4.5)
-      '@nx/devkit': 19.0.0(nx@19.0.0)
-      '@nx/js': 19.0.0(@swc-node/register@1.9.0)(@swc/core@1.4.17)(@types/node@20.12.7)(nx@19.0.0)(typescript@5.4.5)
-      chalk: 4.1.2
-      esbuild: 0.19.12
-      fast-glob: 3.2.7
-      fs-extra: 11.2.0
-      tsconfig-paths: 4.2.0
-      tslib: 2.6.2
-    transitivePeerDependencies:
-      - '@babel/traverse'
-      - '@swc-node/register'
-      - '@swc/core'
-      - '@swc/wasm'
-      - '@types/node'
-      - debug
-      - nx
-      - supports-color
-      - typescript
-      - verdaccio
     dev: true
 
   /@nx/eslint-plugin@19.0.0(@swc-node/register@1.9.0)(@swc/core@1.4.17)(@types/node@20.12.7)(@typescript-eslint/parser@7.8.0)(eslint@8.57.0)(nx@19.0.0)(typescript@5.4.5):
@@ -13940,6 +13889,8 @@ packages:
       webpack: '*'
     peerDependenciesMeta:
       webpack:
+        optional: true
+      webpack-sources:
         optional: true
     dependencies:
       webpack: 5.91.0(@swc/core@1.4.17)(esbuild@0.19.12)
