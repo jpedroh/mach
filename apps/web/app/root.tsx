@@ -1,4 +1,4 @@
-import type { LinksFunction } from '@remix-run/node'
+import type { LinksFunction } from '@remix-run/cloudflare'
 import { Links, Meta, Outlet, Scripts } from '@remix-run/react'
 import stylesheet from './tailwind.css?url'
 
