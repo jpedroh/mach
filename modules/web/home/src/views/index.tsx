@@ -22,7 +22,11 @@ export async function HomePage() {
     <Layout>
       <Lead>To begin, fill at least one of the following fields.</Lead>
 
-      <SearchForm>
+      <form
+        className="flex flex-col gap-4 w-full max-w-sm"
+        action="/search"
+        method="GET"
+      >
         <Select
           label={'Cycle'}
           name="cycle"
@@ -69,7 +73,7 @@ export async function HomePage() {
         <Checkbox name="onlyCurrent" label="Show only current flights." />
 
         <SubmitButton>Search flights</SubmitButton>
-      </SearchForm>
+      </form>
     </Layout>
   )
 }
