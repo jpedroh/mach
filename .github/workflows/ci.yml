@@ -7,9 +7,6 @@ on:
 jobs:
   main:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      deployments: write
     env:
       TURSO_CONNECTION_URL: ${{ secrets.turso_connection_url }}
       TURSO_AUTH_TOKEN: ${{ secrets.turso_auth_token }}
@@ -43,12 +40,3 @@ jobs:
       - run: npx semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Publish
-        uses: cloudflare/pages-action@1
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: mach
-          directory: .vercel/output/static
-          workingDirectory: apps/web
-          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
