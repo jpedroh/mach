@@ -17,7 +17,7 @@ function minutesToEet(totalMinutes: number) {
 }
 
 export function FlightsTable({ flights }: Props) {
-  const [searchParams, setSearchParams] = useSearchParams()
+  const [searchParams] = useSearchParams()
 
   return (
     <Table.Root>

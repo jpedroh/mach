@@ -5,19 +5,17 @@ import {
   ModalHeading,
   ModalRoot,
 } from '@mach/web/shared/ui'
+import { LoaderFunctionArgs } from '@remix-run/cloudflare'
 import { useLoaderData, useNavigate } from '@remix-run/react'
 import { ReactNode } from 'react'
 import { serverOnly$ } from 'vite-env-only'
 import { fetchFlightById } from '../services/fetch-flight-by-id'
 import { formatEet } from '../utils/format-eet'
-import { CloseButton } from './close-button'
 import { IcaoFpl } from './icao-fpl'
 import { IvaoFplButton } from './ivao-fpl-button'
-import { ModalWrapper } from './modal-wrapper'
 import { SimBriefButton } from './simbrief-button'
 import { SkyVectorButton } from './sky-vector-button'
 import { VatsimFplButton } from './vatsim-fpl-button'
-import { LoaderFunctionArgs } from '@remix-run/cloudflare'
 
 type Props = {
   id: string
