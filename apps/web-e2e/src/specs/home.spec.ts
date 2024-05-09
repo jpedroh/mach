@@ -22,7 +22,7 @@ test('if I select options and click search flights it redirects me to search res
   await page.getByRole('button', { name: /search flights/i }).click()
 
   await expect(page).toHaveURL(
-    'http://localhost:4200/search?cycle=2023-12-27&departureIcao=SBSP&arrivalIcao=SBRJ&company=GLO&aircraftIcaoCode=B738'
+    'http://localhost:4200/search?cycle=2023-12-21&departureIcao=SBSP&arrivalIcao=SBRJ&company=GLO&aircraftIcaoCode=B738'
   )
 })
 
