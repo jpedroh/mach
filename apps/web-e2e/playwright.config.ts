@@ -6,7 +6,7 @@ import dotenv from 'dotenv'
 dotenv.config()
 
 // For CI, you may want to set BASE_URL to the deployed application.
-const baseURL = process.env.BASE_URL ?? 'http://localhost:3000'
+const baseURL = process.env.BASE_URL ?? 'http://localhost:4200'
 
 export default defineConfig({
   ...nxE2EPreset(__filename, { testDir: './src/specs' }),
@@ -17,7 +17,7 @@ export default defineConfig({
   },
   webServer: {
     command: 'pnpm serve',
-    url: 'http://127.0.0.1:3000',
+    port: 4200,
     reuseExistingServer: !process.env.CI,
     cwd: workspaceRoot,
   },
