@@ -2,7 +2,7 @@ import type { MetaFunction } from '@remix-run/cloudflare'
 
 export const meta: MetaFunction = () => {
   return [
-    { title: 'Mach' },
+    { title: 'Mach - Search' },
     { charSet: 'utf-8' },
     { name: 'viewport', content: 'width=device-width, initial-scale=1' },
   ]

@@ -1,7 +1,7 @@
 import { Link } from '@mach/web/shared/ui'
 import { Layout, Lead } from '@mach/web/shared/ui/server'
 import { LoaderFunctionArgs } from '@remix-run/cloudflare'
-import { useLoaderData } from '@remix-run/react'
+import { Outlet, useLoaderData } from '@remix-run/react'
 import { serverOnly$ } from 'vite-env-only'
 import {
   fetchFlights,
@@ -45,6 +45,7 @@ export function SearchPage() {
       </Lead>
 
       <FlightsTable flights={flights} />
+      <Outlet />
     </Layout>
   )
 }

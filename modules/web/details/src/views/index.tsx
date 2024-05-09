@@ -1,5 +1,13 @@
-import { ModalContent, ModalFooter, ModalHeading } from '@mach/web/shared/ui'
+import {
+  Button,
+  ModalContent,
+  ModalFooter,
+  ModalHeading,
+  ModalRoot,
+} from '@mach/web/shared/ui'
+import { useLoaderData, useNavigate } from '@remix-run/react'
 import { ReactNode } from 'react'
+import { serverOnly$ } from 'vite-env-only'
 import { fetchFlightById } from '../services/fetch-flight-by-id'
 import { formatEet } from '../utils/format-eet'
 import { CloseButton } from './close-button'
@@ -9,6 +17,7 @@ import { ModalWrapper } from './modal-wrapper'
 import { SimBriefButton } from './simbrief-button'
 import { SkyVectorButton } from './sky-vector-button'
 import { VatsimFplButton } from './vatsim-fpl-button'
+import { LoaderFunctionArgs } from '@remix-run/cloudflare'
 
 type Props = {
   id: string
@@ -41,15 +50,24 @@ function SectionTitle({ children }: { children: ReactNode }) {
   return <h4 className="mb-2 font-semibold mt-2">{children}</h4>
 }
 
-export async function FlightDetailsModal({ id }: Props) {
-  const flight = await fetchFlightById(id)
+export const loader = serverOnly$(({ params }: LoaderFunctionArgs) => {
+  return fetchFlightById(params.id)
+})
+
+export function FlightDetailsModal({ id }: Props) {
+  const flight = useLoaderData<typeof loader>()
+  const navigate = useNavigate()
 
   if (!flight) {
     throw new Error(`Flight with id ${id} not found`)
   }
 
+  function dismiss() {
+    navigate(-1)
+  }
+
   return (
-    <ModalWrapper>
+    <ModalRoot isOpen isDismissable onOpenChange={dismiss}>
       <ModalHeading>
         Flight {flight.callsign} from {flight.departureIcao} to{' '}
         {flight.arrivalIcao}
@@ -80,8 +98,10 @@ export async function FlightDetailsModal({ id }: Props) {
         <VatsimFplButton flight={flight} />
         <SimBriefButton flight={flight} />
         <SkyVectorButton flight={flight} />
-        <CloseButton />
+        <Button variant="danger" onPress={dismiss}>
+          Close
+        </Button>
       </ModalFooter>
-    </ModalWrapper>
+    </ModalRoot>
   )
 }

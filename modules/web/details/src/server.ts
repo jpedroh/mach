@@ -1,1 +1,1 @@
-export { FlightDetailsModal } from './views'
+export { FlightDetailsModal, loader } from './views'

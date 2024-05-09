@@ -5,9 +5,7 @@ import { useRouteError } from '@remix-run/react'
 export function SearchErrorBoundary() {
   const error = useRouteError()
   const errorMessage =
-    error instanceof Error
-      ? JSON.parse(error.message)[0].message
-      : 'Internal server error'
+    error instanceof Error ? error.message : 'Internal server error'
 
   return (
     <Layout>
