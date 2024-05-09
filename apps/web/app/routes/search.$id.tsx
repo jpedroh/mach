@@ -1,1 +1,1 @@
-export { FlightDetailsModal as default, loader } from '@mach/web/details/server'
+export { FlightDetailsModal as default, loader } from '@mach/web/details'

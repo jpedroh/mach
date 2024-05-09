@@ -1,5 +1,5 @@
 import { Button, Checkbox, Select } from '@mach/web/shared/ui'
-import { Layout, Lead } from '@mach/web/shared/ui/server'
+import { Layout, Lead } from '@mach/web/shared/ui'
 import { Form, useLoaderData } from '@remix-run/react'
 
 import { serverOnly$ } from 'vite-env-only'

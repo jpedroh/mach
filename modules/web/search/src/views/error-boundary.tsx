@@ -1,5 +1,5 @@
 import { Link } from '@mach/web/shared/ui'
-import { Layout, Lead } from '@mach/web/shared/ui/server'
+import { Layout, Lead } from '@mach/web/shared/ui'
 import { useRouteError } from '@remix-run/react'
 
 export function SearchErrorBoundary() {
