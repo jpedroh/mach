@@ -1,14 +1,24 @@
 import { Link } from '@mach/web/shared/ui'
-import { Layout, Lead } from '@mach/web/shared/ui/server'
-import { SearchFlightsQuery, fetchFlights } from '../services/fetch-flights'
+import { Layout, Lead } from '@mach/web/shared/ui'
+import { LoaderFunctionArgs } from '@remix-run/cloudflare'
+import { Outlet, useLoaderData } from '@remix-run/react'
+import { serverOnly$ } from 'vite-env-only'
+import {
+  fetchFlights,
+  searchFlightsQuerySchema,
+} from '../services/fetch-flights'
 import { FlightsTable } from './flights-table'
 
-type Props = {
-  query: SearchFlightsQuery
-}
+export const loader = serverOnly$(({ request }: LoaderFunctionArgs) => {
+  const url = new URL(request.url)
+  const query = searchFlightsQuerySchema.parse(
+    Object.fromEntries(url.searchParams.entries())
+  )
+  return fetchFlights(query)
+})
 
-export async function SearchPage({ query }: Props) {
-  const flights = await fetchFlights(query)
+export function SearchPage() {
+  const flights = useLoaderData<typeof loader>()
 
   if (flights.length === 0) {
     return (
@@ -35,6 +45,7 @@ export async function SearchPage({ query }: Props) {
       </Lead>
 
       <FlightsTable flights={flights} />
+      <Outlet />
     </Layout>
   )
 }

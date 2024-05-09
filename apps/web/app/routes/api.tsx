@@ -1,13 +1,4 @@
-import { NextResponse } from 'next/server'
-
-export const runtime = 'edge'
-
-function getApiUrl() {
-  if (process.env.VERCEL_ENV === 'production') {
-    return `https://${process.env.BASE_URL}/api`
-  }
-  return `https://${process.env.VERCEL_URL}/api`
-}
+import { LoaderFunctionArgs, json } from '@remix-run/cloudflare'
 
 const openApi = {
   openapi: '3.0.1',
@@ -17,11 +8,10 @@ const openApi = {
     contact: {
       email: 'joao.pedro.hsd@gmail.com',
     },
-    version: process.env.NEXT_PUBLIC_APP_VERSION,
   },
   servers: [
     {
-      url: getApiUrl(),
+      url: `https://mach.jpedroh.dev/api`,
     },
   ],
   tags: [
@@ -401,8 +391,8 @@ const openApi = {
   },
 }
 
-export async function GET() {
-  return NextResponse.json(openApi, {
+export async function loader() {
+  return json(openApi, {
     headers: {
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',

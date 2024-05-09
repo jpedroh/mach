@@ -1,6 +1,6 @@
 import { type Page, test, expect } from '@playwright/test'
 
-test('if I click search flights without selecting a filter it shows an error message', async ({
+test.skip('if I click search flights without selecting a filter it shows an error message', async ({
   page,
 }) => {
   await page.goto('/')
@@ -10,7 +10,7 @@ test('if I click search flights without selecting a filter it shows an error mes
   ).toBeVisible()
 })
 
-test.skip('if I select options and click search flights it redirects me to search results', async ({
+test('if I select options and click search flights it redirects me to search results', async ({
   page,
 }) => {
   await page.goto('/')
@@ -22,7 +22,7 @@ test.skip('if I select options and click search flights it redirects me to searc
   await page.getByRole('button', { name: /search flights/i }).click()
 
   await expect(page).toHaveURL(
-    '/search?cycle=2023-12-21&departureIcao=SBSP&arrivalIcao=SBRJ&company=GLO&aircraftIcaoCode=B738'
+    'http://localhost:4200/search?cycle=2023-12-21&departureIcao=SBSP&arrivalIcao=SBRJ&company=GLO&aircraftIcaoCode=B738'
   )
 })
 

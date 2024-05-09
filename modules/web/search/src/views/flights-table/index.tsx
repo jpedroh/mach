@@ -1,7 +1,8 @@
-import { Table } from '@mach/web/shared/ui/server'
+import { Button } from '@mach/web/shared/ui'
+import { Table } from '@mach/web/shared/ui'
+import { Link, useSearchParams } from '@remix-run/react'
 import { fetchFlights } from '../../services/fetch-flights'
 import { formatAirport } from '../../utils/format-airport'
-import { ViewDetailsButton } from './view-details-button'
 
 type Props = {
   flights: Awaited<ReturnType<typeof fetchFlights>>
@@ -16,6 +17,8 @@ function minutesToEet(totalMinutes: number) {
 }
 
 export function FlightsTable({ flights }: Props) {
+  const [searchParams] = useSearchParams()
+
   return (
     <Table.Root>
       <Table.Head>
@@ -49,7 +52,11 @@ export function FlightsTable({ flights }: Props) {
             </Table.Column>
             <Table.Column>{flight.aircraftIcaoCode}</Table.Column>
             <Table.Column className="grid">
-              <ViewDetailsButton flightId={flight.id} />
+              <Button variant={'primary'} className={'normal-case'} asChild>
+                <Link to={`/search/${flight.id}?${searchParams.toString()}`}>
+                  View Details
+                </Link>
+              </Button>
             </Table.Column>
           </Table.Row>
         ))}

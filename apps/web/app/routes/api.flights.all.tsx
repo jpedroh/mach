@@ -1,12 +1,8 @@
 import { db, flights } from '@mach/shared/database'
-import { sql, and, eq } from 'drizzle-orm'
-import { NextResponse } from 'next/server'
+import { json, type LoaderFunctionArgs } from '@remix-run/cloudflare'
+import { and, eq, sql } from 'drizzle-orm'
 import z from 'zod'
-import { currentCycleSubquery } from './(utils)/current-cycle-subquery'
-
-export const dynamic = 'force-dynamic'
-
-export const runtime = 'edge'
+import { currentCycleSubquery } from '../current-cycle-subquery'
 
 const schema = z.object({
   departureIcao: z
@@ -38,7 +34,7 @@ const schema = z.object({
     .optional(),
 })
 
-export async function GET(request: Request) {
+export async function loader({ request }: LoaderFunctionArgs) {
   try {
     const { searchParams } = new URL(request.url)
     const query = Array.from(searchParams.entries()).reduce(
@@ -53,7 +49,7 @@ export async function GET(request: Request) {
     const data = schema.safeParse(query)
 
     if (!data.success) {
-      return NextResponse.json(
+      return json(
         { message: 'Bad Request' },
         {
           status: 400,
@@ -66,31 +62,23 @@ export async function GET(request: Request) {
       )
     }
 
-    const criteria = and(
-      data.data.cycle
-        ? sql`${flights.cycle} IN ${data.data.cycle}`
-        : eq(flights.cycle, currentCycleSubquery),
-      data.data.departureIcao &&
-        sql`${flights.departureIcao} IN ${data.data.departureIcao}`,
-      data.data.arrivalIcao &&
-        sql`${flights.arrivalIcao} IN ${data.data.arrivalIcao}`,
-      data.data.company && sql`${flights.company} IN ${data.data.company}`,
-      data.data.aircraftIcaoCode &&
-        sql`${flights.aircraftIcaoCode} IN ${data.data.aircraftIcaoCode}`
-    )
-
-    const countResponse = await db
-      .select({ count: sql`count(${flights.id})` })
-      .from(flights)
-      .where(criteria)
-
     const items = (
-      await db
-        .select()
-        .from(flights)
-        .where(criteria)
-        .limit(data.data.limit)
-        .offset(data.data.offset)
+      await db.query.flights.findMany({
+        orderBy: (fields, { desc }) => desc(fields.id),
+        where: (fields, { sql, and, eq }) =>
+          and(
+            data.data.cycle
+              ? sql`${fields.cycle} IN ${data.data.cycle}`
+              : eq(fields.cycle, currentCycleSubquery),
+            data.data.departureIcao &&
+              sql`${fields.departureIcao} IN ${data.data.departureIcao}`,
+            data.data.arrivalIcao &&
+              sql`${fields.arrivalIcao} IN ${data.data.arrivalIcao}`,
+            data.data.company && sql`${fields.company} IN ${data.data.company}`,
+            data.data.aircraftIcaoCode &&
+              sql`${fields.aircraftIcaoCode} IN ${data.data.aircraftIcaoCode}`
+          ),
+      })
     ).map(
       ({
         aircraftIcaoCode,
@@ -109,19 +97,15 @@ export async function GET(request: Request) {
       }
     )
 
-    return NextResponse.json(
-      { count: Number(countResponse[0].count), items },
-      {
-        headers: {
-          'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-          'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-        },
-      }
-    )
+    return json(items, {
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+        'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+      },
+    })
   } catch (error) {
-    console.error(error)
-    return NextResponse.json(
+    return json(
       { message: 'Internal server error' },
       {
         status: 500,

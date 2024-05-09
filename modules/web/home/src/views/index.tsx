@@ -1,28 +1,33 @@
-import { Layout, Lead } from '@mach/web/shared/ui/server'
+import { Button, Checkbox, Select } from '@mach/web/shared/ui'
+import { Layout, Lead } from '@mach/web/shared/ui'
+import { Form, useLoaderData } from '@remix-run/react'
 
-import { Checkbox, Select } from '@mach/web/shared/ui'
+import { serverOnly$ } from 'vite-env-only'
+
 import { fetchAircraftIcaoCodes } from '../services/fetch-aircraft-icao-codes'
 import { fetchAirports } from '../services/fetch-airports'
 import { fetchCompanies } from '../services/fetch-companies'
 import { fetchCycles } from '../services/fetch-cycles'
-
 import { formatAirport } from '../utils/format-airport'
-import { SearchForm } from './form'
-import { SubmitButton } from './form/submit-button'
 
-export async function HomePage() {
-  const [cycles, companies, airports, aircraftIcaoCodes] = await Promise.all([
+export const loader = serverOnly$(() => {
+  return Promise.all([
     fetchCycles(),
     fetchCompanies(),
     fetchAirports(),
     fetchAircraftIcaoCodes(),
   ])
+})
+
+export function HomePage() {
+  const [cycles, companies, airports, aircraftIcaoCodes] =
+    useLoaderData<typeof loader>()
 
   return (
     <Layout>
       <Lead>To begin, fill at least one of the following fields.</Lead>
 
-      <form
+      <Form
         className="flex flex-col gap-4 w-full max-w-sm"
         action="/search"
         method="GET"
@@ -72,8 +77,8 @@ export async function HomePage() {
 
         <Checkbox name="onlyCurrent" label="Show only current flights." />
 
-        <SubmitButton>Search flights</SubmitButton>
-      </form>
+        <Button type="submit">Search flights</Button>
+      </Form>
     </Layout>
   )
 }

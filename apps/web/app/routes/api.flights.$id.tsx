@@ -1,5 +1,5 @@
 import { db } from '@mach/shared/database'
-import { NextResponse } from 'next/server'
+import { LoaderFunctionArgs, json } from '@remix-run/cloudflare'
 import z from 'zod'
 
 export const runtime = 'edge'
@@ -8,14 +8,11 @@ const schema = z.object({
   id: z.string().uuid(),
 })
 
-export async function GET(
-  req: Request,
-  { params }: { params: { id: string } }
-) {
+export async function loader({ params }: LoaderFunctionArgs) {
   const data = schema.safeParse(params)
 
   if (!data.success) {
-    return NextResponse.json(
+    return json(
       { message: 'Not found' },
       {
         status: 404,
@@ -31,8 +28,8 @@ export async function GET(
   const flight = await db.query.flights.findFirst({
     where: (flights, { eq }) => eq(flights.id, data.data.id),
   })
-  if (flight === null) {
-    return NextResponse.json(
+  if (flight == null) {
+    return json(
       { message: 'Not found' },
       {
         status: 404,
@@ -52,7 +49,7 @@ export async function GET(
     ...rest
   } = flight
 
-  return NextResponse.json(
+  return json(
     {
       ...rest,
       aircraft: {
