@@ -1,6 +1,5 @@
-import { db, flights } from '@mach/shared/database'
+import { makeDatabaseConnection } from '@mach/shared/database'
 import { json, type LoaderFunctionArgs } from '@remix-run/cloudflare'
-import { and, eq, sql } from 'drizzle-orm'
 import z from 'zod'
 import { currentCycleSubquery } from '../current-cycle-subquery'
 
@@ -34,7 +33,8 @@ const schema = z.object({
     .optional(),
 })
 
-export async function loader({ request }: LoaderFunctionArgs) {
+export async function loader({ request, context }: LoaderFunctionArgs) {
+  const db = makeDatabaseConnection(context)
   try {
     const { searchParams } = new URL(request.url)
     const query = Array.from(searchParams.entries()).reduce(

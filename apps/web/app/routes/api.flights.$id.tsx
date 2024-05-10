@@ -1,4 +1,4 @@
-import { db } from '@mach/shared/database'
+import { makeDatabaseConnection } from '@mach/shared/database'
 import { LoaderFunctionArgs, json } from '@remix-run/cloudflare'
 import z from 'zod'
 
@@ -8,7 +8,8 @@ const schema = z.object({
   id: z.string().uuid(),
 })
 
-export async function loader({ params }: LoaderFunctionArgs) {
+export async function loader({ params, context }: LoaderFunctionArgs) {
+  const db = makeDatabaseConnection(context)
   const data = schema.safeParse(params)
 
   if (!data.success) {
