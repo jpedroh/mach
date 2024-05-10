@@ -20,8 +20,6 @@ jobs:
       image: mcr.microsoft.com/playwright:v1.40.0-jammy
     env:
       PLAYWRIGHT_TEST_BASE_URL: 'http://localhost:3000'
-      TURSO_CONNECTION_URL: 'http://libsql:8080'
-      TURSO_AUTH_TOKEN: 'secret'
       AISWEB_API_KEY: ${{ secrets.aisweb_api_key }}
       AISWEB_API_PASSWORD: ${{ secrets.aisweb_api_password }}
       NXCACHE_AWS_ACCESS_KEY_ID: ${{secrets.nxcache_aws_access_key_id}}
@@ -43,6 +41,7 @@ jobs:
           cache: 'pnpm'
       - run: pnpm install
       - run: pnpm drizzle-kit push:sqlite
+      - run: echo "TURSO_CONNECTION_URL=http://libsql:8080\nTURSO_AUTH_TOKEN=secret" > apps/web/.dev.vars
       - run: HOME=/root pnpm e2e
       - uses: actions/upload-artifact@v4
         if: always()
