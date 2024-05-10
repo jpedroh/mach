@@ -8,14 +8,18 @@ import {
   searchFlightsQuerySchema,
 } from '../services/fetch-flights'
 import { FlightsTable } from './flights-table'
+import { makeDatabaseConnection } from '@mach/shared/database'
 
-export const loader = serverOnly$(({ request }: LoaderFunctionArgs) => {
-  const url = new URL(request.url)
-  const query = searchFlightsQuerySchema.parse(
-    Object.fromEntries(url.searchParams.entries())
-  )
-  return fetchFlights(query)
-})
+export const loader = serverOnly$(
+  ({ request, context }: LoaderFunctionArgs) => {
+    const url = new URL(request.url)
+    const query = searchFlightsQuerySchema.parse(
+      Object.fromEntries(url.searchParams.entries())
+    )
+    const db = makeDatabaseConnection(context)
+    return fetchFlights(db, query)
+  }
+)
 
 export function SearchPage() {
   const flights = useLoaderData<typeof loader>()

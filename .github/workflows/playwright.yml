@@ -43,6 +43,7 @@ jobs:
           cache: 'pnpm'
       - run: pnpm install
       - run: pnpm drizzle-kit push:sqlite
+      - run: echo "TURSO_CONNECTION_URL=http://libsql:8080\nTURSO_AUTH_TOKEN=secret" > apps/web/.dev.vars
       - run: HOME=/root pnpm e2e
       - uses: actions/upload-artifact@v4
         if: always()

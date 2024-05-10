@@ -16,6 +16,7 @@ import { IvaoFplButton } from './ivao-fpl-button'
 import { SimBriefButton } from './simbrief-button'
 import { SkyVectorButton } from './sky-vector-button'
 import { VatsimFplButton } from './vatsim-fpl-button'
+import { makeDatabaseConnection } from '@mach/shared/database'
 
 type Props = {
   id: string
@@ -48,8 +49,9 @@ function SectionTitle({ children }: { children: ReactNode }) {
   return <h4 className="mb-2 font-semibold mt-2">{children}</h4>
 }
 
-export const loader = serverOnly$(({ params }: LoaderFunctionArgs) => {
-  return fetchFlightById(params.id)
+export const loader = serverOnly$(({ params, context }: LoaderFunctionArgs) => {
+  if (params.id == null) throw new Error('Missing id')
+  return fetchFlightById(makeDatabaseConnection(context), params.id)
 })
 
 export function FlightDetailsModal({ id }: Props) {
