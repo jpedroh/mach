@@ -9,13 +9,17 @@ import { fetchAirports } from '../services/fetch-airports'
 import { fetchCompanies } from '../services/fetch-companies'
 import { fetchCycles } from '../services/fetch-cycles'
 import { formatAirport } from '../utils/format-airport'
+import { makeDatabaseConnection } from '@mach/shared/database'
+import { LoaderFunctionArgs } from '@remix-run/cloudflare'
 
-export const loader = serverOnly$(() => {
+export const loader = serverOnly$(({ context }: LoaderFunctionArgs) => {
+  const db = makeDatabaseConnection(context)
+
   return Promise.all([
-    fetchCycles(),
-    fetchCompanies(),
-    fetchAirports(),
-    fetchAircraftIcaoCodes(),
+    fetchCycles(db),
+    fetchCompanies(db),
+    fetchAirports(db),
+    fetchAircraftIcaoCodes(db),
   ])
 })
 

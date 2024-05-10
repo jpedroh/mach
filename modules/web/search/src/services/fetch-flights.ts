@@ -1,6 +1,6 @@
-import { db } from '@mach/shared/database'
-import { currentCycleSubquery } from '../utils/currentCycleSubquery'
+import { DatabaseConnection } from '@mach/shared/database'
 import { z } from 'zod'
+import { currentCycleSubquery } from '../utils/currentCycleSubquery'
 
 export const searchFlightsQuerySchema = z
   .object({
@@ -38,7 +38,10 @@ export const searchFlightsQuerySchema = z
 
 export type SearchFlightsQuery = z.infer<typeof searchFlightsQuerySchema>
 
-export async function fetchFlights(where: SearchFlightsQuery) {
+export async function fetchFlights(
+  db: DatabaseConnection,
+  where: SearchFlightsQuery
+) {
   const today = new Date().toISOString().substring(0, 10)
 
   return db.query.flights.findMany({
