@@ -27,9 +27,10 @@ export const loader = serverOnly$(({ context }: LoaderFunctionArgs) => {
 export function HomePage() {
   const [cycles, companies, airports, aircraftIcaoCodes] =
     useLoaderData<typeof loader>()
-  const [errorMessage, setErrorMessage] = useState<string>()
+  const [errorMessage, setErrorMessage] = useState('')
 
   function validateForm(evt: React.FormEvent<HTMLFormElement>) {
+    setErrorMessage('')
     const data = new FormData(evt.currentTarget)
     const validation = searchFlightsQuerySchema.safeParse(
       Object.fromEntries(data.entries())
