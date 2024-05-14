@@ -1,6 +1,6 @@
 import { type Page, test, expect } from '@playwright/test'
 
-test.skip('if I click search flights without selecting a filter it shows an error message', async ({
+test('if I click search flights without selecting a filter it shows an error message', async ({
   page,
 }) => {
   await page.goto('/')
