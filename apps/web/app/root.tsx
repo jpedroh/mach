@@ -1,3 +1,4 @@
+import { withSentry } from '@sentry/remix'
 import type { LinksFunction } from '@remix-run/cloudflare'
 import { Links, Meta, Outlet, Scripts } from '@remix-run/react'
 import stylesheet from './tailwind.css?url'
@@ -6,7 +7,7 @@ export const links: LinksFunction = () => [
   { rel: 'stylesheet', href: stylesheet },
 ]
 
-export default function App() {
+function App() {
   return (
     <html>
       <head>
@@ -22,3 +23,5 @@ export default function App() {
     </html>
   )
 }
+
+export default withSentry(App)
