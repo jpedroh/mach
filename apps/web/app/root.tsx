@@ -17,6 +17,7 @@ function App() {
       </head>
       <body>
         <Outlet />
+
         <Scripts />
       </body>
     </html>

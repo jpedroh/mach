@@ -1,4 +1,4 @@
-import { init as initSentry, sentryHandleError } from '@sentry/remix'
+import { init as initSentry, wrapRemixHandleError } from '@sentry/remix'
 
 /**
  * By default, Remix will handle generating the HTTP Response for you.
@@ -49,4 +49,4 @@ export default async function handleRequest(
   })
 }
 
-export const handleError = sentryHandleError
+export const handleError = wrapRemixHandleError
