@@ -1,4 +1,5 @@
-import * as Sentry from '@sentry/remix'
+import { init as initSentry, sentryHandleError } from '@sentry/remix'
+
 /**
  * By default, Remix will handle generating the HTTP Response for you.
  * You are free to delete this file if you'd like to, but if you ever want it revealed again, you can run `npx remix reveal` ✨
@@ -10,7 +11,7 @@ import { RemixServer } from '@remix-run/react'
 import { isbot } from 'isbot'
 import { renderToReadableStream } from 'react-dom/server'
 
-Sentry.init({
+initSentry({
   dsn: import.meta.env.VITE_SENTRY_DSN,
   environment: import.meta.env.VITE_SENTRY_ENVIRONMENT,
   tracesSampleRate: 1,
@@ -31,7 +32,6 @@ export default async function handleRequest(
     {
       signal: request.signal,
       onError(error: unknown) {
-        // Log streaming rendering errors from inside the shell
         console.error(error)
         responseStatusCode = 500
       },
@@ -48,3 +48,5 @@ export default async function handleRequest(
     status: responseStatusCode,
   })
 }
+
+export const handleError = sentryHandleError
