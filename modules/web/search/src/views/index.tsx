@@ -43,13 +43,6 @@ export function SearchPage() {
 
   return (
     <Layout>
-      <button
-        onClick={() => {
-          throw new Error('TEste')
-        }}
-      >
-        Testando
-      </button>
       <Lead>
         {getLeadMessage(flights.length)} <Link href="/">Click here</Link> to
         make a new search.
