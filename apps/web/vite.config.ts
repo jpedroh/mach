@@ -1,4 +1,5 @@
 /// <reference types='vitest' />
+import { sentryVitePlugin } from '@sentry/vite-plugin'
 import { defineConfig } from 'vite'
 import {
   vitePlugin as remix,
@@ -24,13 +25,23 @@ export default defineConfig({
     port: 4300,
     host: 'localhost',
   },
-  plugins: [remixCloudflareDevProxy(), remix(), envOnly(), nxViteTsPaths()],
+  plugins: [
+    remixCloudflareDevProxy(),
+    remix(),
+    envOnly(),
+    nxViteTsPaths(),
+    sentryVitePlugin({
+      org: 'jpedroh',
+      project: 'mach-vq',
+    }),
+  ],
   build: {
     outDir: '../../dist/apps/web',
     reportCompressedSize: true,
     commonjsOptions: {
       transformMixedEsModules: true,
     },
+    sourcemap: true,
   },
   test: {
     globals: true,

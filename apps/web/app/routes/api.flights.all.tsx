@@ -4,6 +4,7 @@ import {
   type HeadersFunction,
   type LoaderFunctionArgs,
 } from '@remix-run/cloudflare'
+import * as Sentry from '@sentry/remix'
 import { fetchFlights, fetchFlightsSchema } from '../services/fetch-flights'
 
 export const headers: HeadersFunction = () => ({
@@ -30,6 +31,7 @@ export async function loader({ request, context }: LoaderFunctionArgs) {
 
     return json(await fetchFlights(db, query.data))
   } catch (error) {
+    Sentry.captureException(error)
     return json({ message: 'Internal server error' }, { status: 500 })
   }
 }
