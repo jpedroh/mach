@@ -6,7 +6,7 @@ import {
   cloudflareDevProxyVitePlugin as remixCloudflareDevProxy,
 } from '@remix-run/dev'
 import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin'
-import envOnly from 'vite-env-only'
+import { envOnlyMacros } from 'vite-env-only'
 
 export default defineConfig({
   root: __dirname,
@@ -28,7 +28,7 @@ export default defineConfig({
   plugins: [
     remixCloudflareDevProxy(),
     remix(),
-    envOnly(),
+    envOnlyMacros(),
     nxViteTsPaths(),
     sentryVitePlugin({
       org: 'jpedroh',

@@ -8,7 +8,7 @@ import {
 import { LoaderFunctionArgs } from '@remix-run/cloudflare'
 import { useLoaderData, useNavigate } from '@remix-run/react'
 import { ReactNode } from 'react'
-import { serverOnly$ } from 'vite-env-only'
+import { serverOnly$ } from 'vite-env-only/macros'
 import { fetchFlightById } from '../services/fetch-flight-by-id'
 import { formatEet } from '../utils/format-eet'
 import { IcaoFpl } from './icao-fpl'
