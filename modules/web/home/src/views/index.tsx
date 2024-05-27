@@ -4,7 +4,7 @@ import { LoaderFunctionArgs } from '@remix-run/cloudflare'
 import { Form, useLoaderData } from '@remix-run/react'
 
 import { useState } from 'react'
-import { serverOnly$ } from 'vite-env-only'
+import { serverOnly$ } from 'vite-env-only/macros'
 
 import { fetchAircraftIcaoCodes } from '../services/fetch-aircraft-icao-codes'
 import { fetchAirports } from '../services/fetch-airports'
