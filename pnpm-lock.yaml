@@ -74,8 +74,8 @@ devDependencies:
     specifier: ^19.2.2
     version: 19.2.2
   '@eslint/js':
-    specifier: ~9.4.0
-    version: 9.4.0
+    specifier: ~9.5.0
+    version: 9.5.0
   '@nx-aws-plugin/nx-aws-cache':
     specifier: ^3.2.1
     version: 3.2.1(@aws-sdk/client-sso-oidc@3.596.0)(@nx/devkit@19.3.0)(@nx/workspace@19.3.0)(nx@19.3.0)
@@ -4453,8 +4453,8 @@ packages:
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: true
 
-  /@eslint/js@9.4.0:
-    resolution: {integrity: sha512-fdI7VJjP3Rvc70lC4xkFXHB0fiPeojiL1PxVG6t1ZvXQrarj893PweuBTujxDUFk0Fxj4R7PIIAZ/aiiyZPZcg==}
+  /@eslint/js@9.5.0:
+    resolution: {integrity: sha512-A7+AOT2ICkodvtsWnxZP4Xxk3NbZ3VMHd8oihydLRGrJgqqdEz1qSeEgXYyT/Cu8h1TWWsQRejIx48mtjZ5y1w==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
     dev: true
 
@@ -12501,7 +12501,7 @@ packages:
     dependencies:
       loader-utils: 2.0.4
       schema-utils: 3.3.0
-      webpack: 5.92.0(esbuild@0.19.12)
+      webpack: 5.92.0(esbuild@0.17.19)
     dev: true
 
   /filelist@1.0.4:
@@ -17528,7 +17528,7 @@ packages:
       unique-string: 3.0.0
     dev: true
 
-  /terser-webpack-plugin@5.3.10(esbuild@0.19.12)(webpack@5.92.0):
+  /terser-webpack-plugin@5.3.10(esbuild@0.17.19)(webpack@5.92.0):
     resolution: {integrity: sha512-BKFPWlPDndPs+NGGCr1U59t0XScL5317Y0UReNrHaw9/FwhPENlq6bfgs+4yPfyP51vqC1bQ4rp1EfXW5ZSH9w==}
     engines: {node: '>= 10.13.0'}
     peerDependencies:
@@ -17545,12 +17545,12 @@ packages:
         optional: true
     dependencies:
       '@jridgewell/trace-mapping': 0.3.25
-      esbuild: 0.19.12
+      esbuild: 0.17.19
       jest-worker: 27.5.1
       schema-utils: 3.3.0
       serialize-javascript: 6.0.2
       terser: 5.31.1
-      webpack: 5.92.0(esbuild@0.19.12)
+      webpack: 5.92.0(esbuild@0.17.19)
     dev: true
 
   /terser@5.31.1:
@@ -18382,7 +18382,7 @@ packages:
     resolution: {integrity: sha512-kyDivFZ7ZM0BVOUteVbDFhlRt7Ah/CSPwJdi8hBpkK7QLumUqdLtVfm/PX/hkcnrvr0i77fO5+TjZ94Pe+C9iw==}
     dev: true
 
-  /webpack@5.92.0(esbuild@0.19.12):
+  /webpack@5.92.0(esbuild@0.17.19):
     resolution: {integrity: sha512-Bsw2X39MYIgxouNATyVpCNVWBCuUwDgWtN78g6lSdPJRLaQ/PUVm/oXcaRAyY/sMFoKFQrsPeqvTizWtq7QPCA==}
     engines: {node: '>=10.13.0'}
     hasBin: true
@@ -18413,7 +18413,7 @@ packages:
       neo-async: 2.6.2
       schema-utils: 3.3.0
       tapable: 2.2.1
-      terser-webpack-plugin: 5.3.10(esbuild@0.19.12)(webpack@5.92.0)
+      terser-webpack-plugin: 5.3.10(esbuild@0.17.19)(webpack@5.92.0)
       watchpack: 2.4.1
       webpack-sources: 3.2.3
     transitivePeerDependencies:
