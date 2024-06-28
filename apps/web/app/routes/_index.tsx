@@ -1,4 +1,4 @@
-import type { MetaFunction } from '@remix-run/cloudflare'
+import type { MetaFunction, HeadersFunction } from '@remix-run/cloudflare'
 
 export const meta: MetaFunction = () => {
   return [
@@ -7,5 +7,9 @@ export const meta: MetaFunction = () => {
     { name: 'viewport', content: 'width=device-width, initial-scale=1' },
   ]
 }
+
+export const headers: HeadersFunction = () => ({
+  'Cache-Control': 'public, max-age=300, s-maxage=3600',
+})
 
 export { HomePage as default, loader } from '@mach/web/home'
