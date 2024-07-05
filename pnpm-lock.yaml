@@ -98,7 +98,7 @@ importers:
         version: 19.3.0(@babel/traverse@7.24.7)(@playwright/test@1.45.0)(@types/node@20.14.9)(@zkochan/js-yaml@0.0.7)(eslint@8.57.0)(nx@19.3.0)(typescript@5.5.2)
       '@nx/react':
         specifier: 19.3.0
-        version: 19.3.0(@babel/traverse@7.24.7)(@types/node@20.14.9)(@zkochan/js-yaml@0.0.7)(eslint@8.57.0)(nx@19.3.0)(typescript@5.5.2)(webpack@5.92.1(esbuild@0.17.19))
+        version: 19.3.0(@babel/traverse@7.24.7)(@types/node@20.14.9)(@zkochan/js-yaml@0.0.7)(eslint@8.57.0)(nx@19.3.0)(typescript@5.5.2)(webpack@5.92.1(esbuild@0.19.12))
       '@nx/vite':
         specifier: 19.3.0
         version: 19.3.0(@babel/traverse@7.24.7)(@types/node@20.14.9)(nx@19.3.0)(typescript@5.5.2)(vite@5.3.3(@types/node@20.14.9)(terser@5.31.1))(vitest@1.6.0(@types/node@20.14.9)(@vitest/ui@1.6.0)(jsdom@24.1.0)(terser@5.31.1))
@@ -107,7 +107,7 @@ importers:
         version: 1.45.0
       '@remix-run/dev':
         specifier: ^2.10.0
-        version: 2.10.0(@remix-run/react@2.10.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.5.2))(@remix-run/serve@2.10.0(typescript@5.5.2))(@types/node@20.14.9)(terser@5.31.1)(ts-node@10.9.1(@types/node@20.14.9)(typescript@5.5.2))(typescript@5.5.2)(vite@5.3.3(@types/node@20.14.9)(terser@5.31.1))(wrangler@3.62.0(@cloudflare/workers-types@4.20240620.0))
+        version: 2.10.0(@remix-run/react@2.10.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.5.2))(@remix-run/serve@2.10.0(typescript@5.5.2))(@types/node@20.14.9)(terser@5.31.1)(ts-node@10.9.1(@types/node@20.14.9)(typescript@5.5.2))(typescript@5.5.2)(vite@5.3.3(@types/node@20.14.9)(terser@5.31.1))(wrangler@3.63.1(@cloudflare/workers-types@4.20240620.0))
       '@semantic-release/exec':
         specifier: ^6.0.0
         version: 6.0.3(semantic-release@24.0.0(typescript@5.5.2))
@@ -229,8 +229,8 @@ importers:
         specifier: ^1.6.0
         version: 1.6.0(@types/node@20.14.9)(@vitest/ui@1.6.0)(jsdom@24.1.0)(terser@5.31.1)
       wrangler:
-        specifier: ^3.62.0
-        version: 3.62.0(@cloudflare/workers-types@4.20240620.0)
+        specifier: ^3.63.1
+        version: 3.63.1(@cloudflare/workers-types@4.20240620.0)
 
 packages:
 
@@ -1226,32 +1226,32 @@ packages:
     resolution: {integrity: sha512-YLPHc8yASwjNkmcDMQMY35yiWjoKAKnhUbPRszBRS0YgH+IXtsMp61j+yTcnCE3oO2DgP0U3iejLC8FTtKDC8Q==}
     engines: {node: '>=16.13'}
 
-  '@cloudflare/workerd-darwin-64@1.20240620.1':
-    resolution: {integrity: sha512-YWeS2aE8jAzDefuus/3GmZcFGu3Ef94uCAoxsQuaEXNsiGM9NeAhPpKC1BJAlcv168U/Q1J+6hckcGtipf6ZcQ==}
+  '@cloudflare/workerd-darwin-64@1.20240701.0':
+    resolution: {integrity: sha512-XAZa4ZP+qyTn6JQQACCPH09hGZXP2lTnWKkmg5mPwT8EyRzCKLkczAf98vPP5bq7JZD/zORdFWRY0dOTap8zTQ==}
     engines: {node: '>=16'}
     cpu: [x64]
     os: [darwin]
 
-  '@cloudflare/workerd-darwin-arm64@1.20240620.1':
-    resolution: {integrity: sha512-3rdND+EHpmCrwYX6hvxIBSBJ0f40tRNxond1Vfw7GiR1MJVi3gragiBx75UDFHCxfRw3J0GZ1qVlkRce2/Xbsg==}
+  '@cloudflare/workerd-darwin-arm64@1.20240701.0':
+    resolution: {integrity: sha512-w80ZVAgfH4UwTz7fXZtk7KmS2FzlXniuQm4ku4+cIgRTilBAuKqjpOjwUCbx5g13Gqcm9NuiHce+IDGtobRTIQ==}
     engines: {node: '>=16'}
     cpu: [arm64]
     os: [darwin]
 
-  '@cloudflare/workerd-linux-64@1.20240620.1':
-    resolution: {integrity: sha512-tURcTrXGeSbYqeM5ISVcofY20StKbVIcdxjJvNYNZ+qmSV9Fvn+zr7rRE+q64pEloVZfhsEPAlUCnFso5VV4XQ==}
+  '@cloudflare/workerd-linux-64@1.20240701.0':
+    resolution: {integrity: sha512-UWLr/Anxwwe/25nGv451MNd2jhREmPt/ws17DJJqTLAx6JxwGWA15MeitAIzl0dbxRFAJa+0+R8ag2WR3F/D6g==}
     engines: {node: '>=16'}
     cpu: [x64]
     os: [linux]
 
-  '@cloudflare/workerd-linux-arm64@1.20240620.1':
-    resolution: {integrity: sha512-TThvkwNxaZFKhHZnNjOGqIYCOk05DDWgO+wYMuXg15ymN/KZPnCicRAkuyqiM+R1Fgc4kwe/pehjP8pbmcf6sg==}
+  '@cloudflare/workerd-linux-arm64@1.20240701.0':
+    resolution: {integrity: sha512-3kCnF9kYgov1ggpuWbgpXt4stPOIYtVmPCa7MO2xhhA0TWP6JDUHRUOsnmIgKrvDjXuXqlK16cdg3v+EWsaPJg==}
     engines: {node: '>=16'}
     cpu: [arm64]
     os: [linux]
 
-  '@cloudflare/workerd-windows-64@1.20240620.1':
-    resolution: {integrity: sha512-Y/BA9Yj0r7Al1HK3nDHcfISgFllw6NR3XMMPChev57vrVT9C9D4erBL3sUBfofHU+2U9L+ShLsl6obBpe3vvUw==}
+  '@cloudflare/workerd-windows-64@1.20240701.0':
+    resolution: {integrity: sha512-6IPGITRAeS67j3BH1rN4iwYWDt47SqJG7KlZJ5bB4UaNAia4mvMBSy/p2p4vA89bbXoDRjMtEvRu7Robu6O7hQ==}
     engines: {node: '>=16'}
     cpu: [x64]
     os: [win32]
@@ -7173,8 +7173,8 @@ packages:
     resolution: {integrity: sha512-I9jwMn07Sy/IwOj3zVkVik2JTvgpaykDZEigL6Rx6N9LbMywwUSMtxET+7lVoDLLd3O3IXwJwvuuns8UB/HeAg==}
     engines: {node: '>=4'}
 
-  miniflare@3.20240620.0:
-    resolution: {integrity: sha512-NBMzqUE2mMlh/hIdt6U5MP+aFhEjKDq3l8CAajXAQa1WkndJdciWvzB2mfLETwoVFhMl/lphaVzyEN2AgwJpbQ==}
+  miniflare@3.20240701.0:
+    resolution: {integrity: sha512-m9+I+7JNyqDGftCMKp9cK9pCZkK72hAL2mM9IWwhct+ZmucLBA8Uu6+rHQqA5iod86cpwOkrB2PrPA3wx9YNgw==}
     engines: {node: '>=16.13'}
     hasBin: true
 
@@ -9258,13 +9258,13 @@ packages:
   wordwrap@1.0.0:
     resolution: {integrity: sha512-gvVzJFlPycKc5dZN4yPkP8w7Dc37BtP1yczEneOb4uq34pXZcvrtRTmWV8W+Ume+XCxKgbjM+nevkyFPMybd4Q==}
 
-  workerd@1.20240620.1:
-    resolution: {integrity: sha512-Qoq+RrFNk4pvEO+kpJVn8uJ5TRE9YJx5jX5pC5LjdKlw1XeD8EdXt5k0TbByvWunZ4qgYIcF9lnVxhcDFo203g==}
+  workerd@1.20240701.0:
+    resolution: {integrity: sha512-qSgNVqauqzNCij9MaJLF2c2ko3AnFioVSIxMSryGbRK+LvtGr9BKBt6JOxCb24DoJASoJDx3pe3DJHBVydUiBg==}
     engines: {node: '>=16'}
     hasBin: true
 
-  wrangler@3.62.0:
-    resolution: {integrity: sha512-TM1Bd8+GzxFw/JzwsC3i/Oss4LTWvIEWXXo1vZhx+7PHcsxdbnQGBBwPurHNJDSu2Pw22+2pCZiUGKexmgJksw==}
+  wrangler@3.63.1:
+    resolution: {integrity: sha512-fxMPNEyDc9pZNtQOuYqRikzv6lL5eP4S1zv7L/kw24uu1cCEmJ39j8bfJGzrAEqKDNsiFXVjEka0RjlpgEVWPg==}
     engines: {node: '>=16.17.0'}
     hasBin: true
     peerDependencies:
@@ -9996,7 +9996,7 @@ snapshots:
       '@aws-sdk/credential-provider-env': 3.577.0
       '@aws-sdk/credential-provider-process': 3.577.0
       '@aws-sdk/credential-provider-sso': 3.577.0(@aws-sdk/client-sso-oidc@3.577.0)
-      '@aws-sdk/credential-provider-web-identity': 3.577.0(@aws-sdk/client-sts@3.577.0(@aws-sdk/client-sso-oidc@3.577.0))
+      '@aws-sdk/credential-provider-web-identity': 3.577.0(@aws-sdk/client-sts@3.577.0)
       '@aws-sdk/types': 3.577.0
       '@smithy/credential-provider-imds': 3.0.0
       '@smithy/property-provider': 3.0.0
@@ -10030,7 +10030,7 @@ snapshots:
       '@aws-sdk/credential-provider-env': 3.577.0
       '@aws-sdk/credential-provider-process': 3.577.0
       '@aws-sdk/credential-provider-sso': 3.577.0(@aws-sdk/client-sso-oidc@3.600.0)
-      '@aws-sdk/credential-provider-web-identity': 3.577.0(@aws-sdk/client-sts@3.577.0(@aws-sdk/client-sso-oidc@3.577.0))
+      '@aws-sdk/credential-provider-web-identity': 3.577.0(@aws-sdk/client-sts@3.577.0)
       '@aws-sdk/types': 3.577.0
       '@smithy/credential-provider-imds': 3.0.0
       '@smithy/property-provider': 3.0.0
@@ -10066,7 +10066,7 @@ snapshots:
       '@aws-sdk/credential-provider-ini': 3.577.0(@aws-sdk/client-sso-oidc@3.577.0)(@aws-sdk/client-sts@3.577.0(@aws-sdk/client-sso-oidc@3.577.0))
       '@aws-sdk/credential-provider-process': 3.577.0
       '@aws-sdk/credential-provider-sso': 3.577.0(@aws-sdk/client-sso-oidc@3.577.0)
-      '@aws-sdk/credential-provider-web-identity': 3.577.0(@aws-sdk/client-sts@3.577.0(@aws-sdk/client-sso-oidc@3.577.0))
+      '@aws-sdk/credential-provider-web-identity': 3.577.0(@aws-sdk/client-sts@3.577.0)
       '@aws-sdk/types': 3.577.0
       '@smithy/credential-provider-imds': 3.0.0
       '@smithy/property-provider': 3.0.0
@@ -10104,7 +10104,7 @@ snapshots:
       '@aws-sdk/credential-provider-ini': 3.577.0(@aws-sdk/client-sso-oidc@3.600.0)(@aws-sdk/client-sts@3.577.0(@aws-sdk/client-sso-oidc@3.577.0))
       '@aws-sdk/credential-provider-process': 3.577.0
       '@aws-sdk/credential-provider-sso': 3.577.0(@aws-sdk/client-sso-oidc@3.600.0)
-      '@aws-sdk/credential-provider-web-identity': 3.577.0(@aws-sdk/client-sts@3.577.0(@aws-sdk/client-sso-oidc@3.577.0))
+      '@aws-sdk/credential-provider-web-identity': 3.577.0(@aws-sdk/client-sts@3.577.0)
       '@aws-sdk/types': 3.577.0
       '@smithy/credential-provider-imds': 3.0.0
       '@smithy/property-provider': 3.0.0
@@ -10190,17 +10190,9 @@ snapshots:
       - '@aws-sdk/client-sso-oidc'
       - aws-crt
 
-  '@aws-sdk/credential-provider-web-identity@3.577.0(@aws-sdk/client-sts@3.577.0(@aws-sdk/client-sso-oidc@3.577.0))':
-    dependencies:
-      '@aws-sdk/client-sts': 3.577.0(@aws-sdk/client-sso-oidc@3.577.0)
-      '@aws-sdk/types': 3.577.0
-      '@smithy/property-provider': 3.0.0
-      '@smithy/types': 3.0.0
-      tslib: 2.6.3
-
   '@aws-sdk/credential-provider-web-identity@3.577.0(@aws-sdk/client-sts@3.577.0)':
     dependencies:
-      '@aws-sdk/client-sts': 3.577.0
+      '@aws-sdk/client-sts': 3.577.0(@aws-sdk/client-sso-oidc@3.577.0)
       '@aws-sdk/types': 3.577.0
       '@smithy/property-provider': 3.0.0
       '@smithy/types': 3.0.0
@@ -10226,7 +10218,7 @@ snapshots:
       '@aws-sdk/credential-provider-node': 3.577.0(@aws-sdk/client-sso-oidc@3.600.0)(@aws-sdk/client-sts@3.577.0(@aws-sdk/client-sso-oidc@3.577.0))
       '@aws-sdk/credential-provider-process': 3.577.0
       '@aws-sdk/credential-provider-sso': 3.577.0(@aws-sdk/client-sso-oidc@3.600.0)
-      '@aws-sdk/credential-provider-web-identity': 3.577.0(@aws-sdk/client-sts@3.577.0(@aws-sdk/client-sso-oidc@3.577.0))
+      '@aws-sdk/credential-provider-web-identity': 3.577.0(@aws-sdk/client-sts@3.577.0)
       '@aws-sdk/types': 3.577.0
       '@smithy/credential-provider-imds': 3.0.0
       '@smithy/property-provider': 3.0.0
@@ -11392,19 +11384,19 @@ snapshots:
     dependencies:
       mime: 3.0.0
 
-  '@cloudflare/workerd-darwin-64@1.20240620.1':
+  '@cloudflare/workerd-darwin-64@1.20240701.0':
     optional: true
 
-  '@cloudflare/workerd-darwin-arm64@1.20240620.1':
+  '@cloudflare/workerd-darwin-arm64@1.20240701.0':
     optional: true
 
-  '@cloudflare/workerd-linux-64@1.20240620.1':
+  '@cloudflare/workerd-linux-64@1.20240701.0':
     optional: true
 
-  '@cloudflare/workerd-linux-arm64@1.20240620.1':
+  '@cloudflare/workerd-linux-arm64@1.20240701.0':
     optional: true
 
-  '@cloudflare/workerd-windows-64@1.20240620.1':
+  '@cloudflare/workerd-windows-64@1.20240701.0':
     optional: true
 
   '@cloudflare/workers-types@4.20240620.0': {}
@@ -12219,9 +12211,24 @@ snapshots:
       - typescript
       - verdaccio
 
-  '@nrwl/react@19.3.0(@babel/traverse@7.24.7)(@types/node@20.14.9)(@zkochan/js-yaml@0.0.7)(eslint@8.57.0)(nx@19.3.0)(typescript@5.5.2)(webpack@5.92.1(esbuild@0.17.19))':
+  '@nrwl/js@19.3.0(@babel/traverse@7.24.7)(@types/node@20.14.9)(nx@19.3.0)(typescript@5.5.2)':
     dependencies:
-      '@nx/react': 19.3.0(@babel/traverse@7.24.7)(@types/node@20.14.9)(@zkochan/js-yaml@0.0.7)(eslint@8.57.0)(nx@19.3.0)(typescript@5.5.2)(webpack@5.92.1(esbuild@0.17.19))
+      '@nx/js': 19.3.0(@babel/traverse@7.24.7)(@types/node@20.14.9)(nx@19.3.0)(typescript@5.5.2)
+    transitivePeerDependencies:
+      - '@babel/traverse'
+      - '@swc-node/register'
+      - '@swc/core'
+      - '@swc/wasm'
+      - '@types/node'
+      - debug
+      - nx
+      - supports-color
+      - typescript
+      - verdaccio
+
+  '@nrwl/react@19.3.0(@babel/traverse@7.24.7)(@types/node@20.14.9)(@zkochan/js-yaml@0.0.7)(eslint@8.57.0)(nx@19.3.0)(typescript@5.5.2)(webpack@5.92.1(esbuild@0.19.12))':
+    dependencies:
+      '@nx/react': 19.3.0(@babel/traverse@7.24.7)(@types/node@20.14.9)(@zkochan/js-yaml@0.0.7)(eslint@8.57.0)(nx@19.3.0)(typescript@5.5.2)(webpack@5.92.1(esbuild@0.19.12))
     transitivePeerDependencies:
       - '@babel/traverse'
       - '@swc-node/register'
@@ -12444,7 +12451,7 @@ snapshots:
       '@babel/preset-env': 7.24.7(@babel/core@7.24.7)
       '@babel/preset-typescript': 7.24.7(@babel/core@7.24.7)
       '@babel/runtime': 7.24.7
-      '@nrwl/js': 19.3.0(@babel/traverse@7.24.7)(@types/node@20.14.9)(nx@19.3.0)(typescript@5.4.5)
+      '@nrwl/js': 19.3.0(@babel/traverse@7.24.7)(@types/node@20.14.9)(nx@19.3.0)(typescript@5.5.2)
       '@nx/devkit': 19.3.0(nx@19.3.0)
       '@nx/workspace': 19.3.0
       babel-plugin-const-enum: 1.2.0(@babel/core@7.24.7)
@@ -12577,9 +12584,9 @@ snapshots:
       - typescript
       - verdaccio
 
-  '@nx/react@19.3.0(@babel/traverse@7.24.7)(@types/node@20.14.9)(@zkochan/js-yaml@0.0.7)(eslint@8.57.0)(nx@19.3.0)(typescript@5.5.2)(webpack@5.92.1(esbuild@0.17.19))':
+  '@nx/react@19.3.0(@babel/traverse@7.24.7)(@types/node@20.14.9)(@zkochan/js-yaml@0.0.7)(eslint@8.57.0)(nx@19.3.0)(typescript@5.5.2)(webpack@5.92.1(esbuild@0.19.12))':
     dependencies:
-      '@nrwl/react': 19.3.0(@babel/traverse@7.24.7)(@types/node@20.14.9)(@zkochan/js-yaml@0.0.7)(eslint@8.57.0)(nx@19.3.0)(typescript@5.5.2)(webpack@5.92.1(esbuild@0.17.19))
+      '@nrwl/react': 19.3.0(@babel/traverse@7.24.7)(@types/node@20.14.9)(@zkochan/js-yaml@0.0.7)(eslint@8.57.0)(nx@19.3.0)(typescript@5.5.2)(webpack@5.92.1(esbuild@0.19.12))
       '@nx/devkit': 19.3.0(nx@19.3.0)
       '@nx/eslint': 19.3.0(@babel/traverse@7.24.7)(@types/node@20.14.9)(@zkochan/js-yaml@0.0.7)(eslint@8.57.0)(nx@19.3.0)
       '@nx/js': 19.3.0(@babel/traverse@7.24.7)(@types/node@20.14.9)(nx@19.3.0)(typescript@5.5.2)
@@ -12587,7 +12594,7 @@ snapshots:
       '@phenomnomnominal/tsquery': 5.0.1(typescript@5.5.2)
       '@svgr/webpack': 8.1.0(typescript@5.5.2)
       chalk: 4.1.2
-      file-loader: 6.2.0(webpack@5.92.1(esbuild@0.17.19))
+      file-loader: 6.2.0(webpack@5.92.1(esbuild@0.19.12))
       minimatch: 9.0.3
       tslib: 2.6.3
     transitivePeerDependencies:
@@ -13942,7 +13949,7 @@ snapshots:
     optionalDependencies:
       typescript: 5.5.2
 
-  '@remix-run/dev@2.10.0(@remix-run/react@2.10.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.5.2))(@remix-run/serve@2.10.0(typescript@5.5.2))(@types/node@20.14.9)(terser@5.31.1)(ts-node@10.9.1(@types/node@20.14.9)(typescript@5.5.2))(typescript@5.5.2)(vite@5.3.3(@types/node@20.14.9)(terser@5.31.1))(wrangler@3.62.0(@cloudflare/workers-types@4.20240620.0))':
+  '@remix-run/dev@2.10.0(@remix-run/react@2.10.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.5.2))(@remix-run/serve@2.10.0(typescript@5.5.2))(@types/node@20.14.9)(terser@5.31.1)(ts-node@10.9.1(@types/node@20.14.9)(typescript@5.5.2))(typescript@5.5.2)(vite@5.3.3(@types/node@20.14.9)(terser@5.31.1))(wrangler@3.63.1(@cloudflare/workers-types@4.20240620.0))':
     dependencies:
       '@babel/core': 7.24.7
       '@babel/generator': 7.24.7
@@ -14002,7 +14009,7 @@ snapshots:
       '@remix-run/serve': 2.10.0(typescript@5.5.2)
       typescript: 5.5.2
       vite: 5.3.3(@types/node@20.14.9)(terser@5.31.1)
-      wrangler: 3.62.0(@cloudflare/workers-types@4.20240620.0)
+      wrangler: 3.63.1(@cloudflare/workers-types@4.20240620.0)
     transitivePeerDependencies:
       - '@types/node'
       - babel-plugin-macros
@@ -17437,11 +17444,11 @@ snapshots:
     dependencies:
       flat-cache: 3.2.0
 
-  file-loader@6.2.0(webpack@5.92.1(esbuild@0.17.19)):
+  file-loader@6.2.0(webpack@5.92.1(esbuild@0.19.12)):
     dependencies:
       loader-utils: 2.0.4
       schema-utils: 3.3.0
-      webpack: 5.92.1(esbuild@0.17.19)
+      webpack: 5.92.1(esbuild@0.19.12)
 
   filelist@1.0.4:
     dependencies:
@@ -18878,7 +18885,7 @@ snapshots:
 
   min-indent@1.0.1: {}
 
-  miniflare@3.20240620.0:
+  miniflare@3.20240701.0:
     dependencies:
       '@cspotcode/source-map-support': 0.8.1
       acorn: 8.12.0
@@ -18888,7 +18895,7 @@ snapshots:
       glob-to-regexp: 0.4.1
       stoppable: 1.1.0
       undici: 5.28.4
-      workerd: 1.20240620.1
+      workerd: 1.20240701.0
       ws: 8.17.1
       youch: 3.3.3
       zod: 3.23.8
@@ -20664,16 +20671,16 @@ snapshots:
       type-fest: 2.19.0
       unique-string: 3.0.0
 
-  terser-webpack-plugin@5.3.10(esbuild@0.17.19)(webpack@5.92.1(esbuild@0.17.19)):
+  terser-webpack-plugin@5.3.10(esbuild@0.19.12)(webpack@5.92.1(esbuild@0.19.12)):
     dependencies:
       '@jridgewell/trace-mapping': 0.3.25
       jest-worker: 27.5.1
       schema-utils: 3.3.0
       serialize-javascript: 6.0.2
       terser: 5.31.1
-      webpack: 5.92.1(esbuild@0.17.19)
+      webpack: 5.92.1(esbuild@0.19.12)
     optionalDependencies:
-      esbuild: 0.17.19
+      esbuild: 0.19.12
 
   terser@5.31.1:
     dependencies:
@@ -21188,7 +21195,7 @@ snapshots:
 
   webpack-virtual-modules@0.5.0: {}
 
-  webpack@5.92.1(esbuild@0.17.19):
+  webpack@5.92.1(esbuild@0.19.12):
     dependencies:
       '@types/eslint-scope': 3.7.7
       '@types/estree': 1.0.5
@@ -21211,7 +21218,7 @@ snapshots:
       neo-async: 2.6.2
       schema-utils: 3.3.0
       tapable: 2.2.1
-      terser-webpack-plugin: 5.3.10(esbuild@0.17.19)(webpack@5.92.1(esbuild@0.17.19))
+      terser-webpack-plugin: 5.3.10(esbuild@0.19.12)(webpack@5.92.1(esbuild@0.19.12))
       watchpack: 2.4.1
       webpack-sources: 3.2.3
     transitivePeerDependencies:
@@ -21294,15 +21301,15 @@ snapshots:
 
   wordwrap@1.0.0: {}
 
-  workerd@1.20240620.1:
+  workerd@1.20240701.0:
     optionalDependencies:
-      '@cloudflare/workerd-darwin-64': 1.20240620.1
-      '@cloudflare/workerd-darwin-arm64': 1.20240620.1
-      '@cloudflare/workerd-linux-64': 1.20240620.1
-      '@cloudflare/workerd-linux-arm64': 1.20240620.1
-      '@cloudflare/workerd-windows-64': 1.20240620.1
+      '@cloudflare/workerd-darwin-64': 1.20240701.0
+      '@cloudflare/workerd-darwin-arm64': 1.20240701.0
+      '@cloudflare/workerd-linux-64': 1.20240701.0
+      '@cloudflare/workerd-linux-arm64': 1.20240701.0
+      '@cloudflare/workerd-windows-64': 1.20240701.0
 
-  wrangler@3.62.0(@cloudflare/workers-types@4.20240620.0):
+  wrangler@3.63.1(@cloudflare/workers-types@4.20240620.0):
     dependencies:
       '@cloudflare/kv-asset-handler': 0.3.4
       '@esbuild-plugins/node-globals-polyfill': 0.2.3(esbuild@0.17.19)
@@ -21311,7 +21318,7 @@ snapshots:
       chokidar: 3.6.0
       date-fns: 3.6.0
       esbuild: 0.17.19
-      miniflare: 3.20240620.0
+      miniflare: 3.20240701.0
       nanoid: 3.3.7
       path-to-regexp: 6.2.2
       resolve: 1.22.8
