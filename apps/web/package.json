@@ -1,9 +1,18 @@
 {
   "name": "@mach/web",
   "type": "module",
+  "scripts": {
+    "serve": "remix vite:dev",
+    "pack": "remix vite:build"
+  },
   "dependencies": {
     "@remix-run/cloudflare": "^2.9.1",
     "@remix-run/cloudflare-pages": "^2.9.1",
     "isbot": "^4"
+  },
+  "nx": {
+    "tags": [
+      "type:application"
+    ]
   }
 }
