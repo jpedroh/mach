@@ -47,6 +47,13 @@ updates:
           - 'major'
           - 'minor'
           - 'patch'
+      sentry:
+        patterns:
+          - '@sentry/*'
+        update-types:
+          - 'major'
+          - 'minor'
+          - 'patch'
   - package-ecosystem: 'github-actions'
     directory: '/'
     target-branch: 'main'
