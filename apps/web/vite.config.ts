@@ -7,6 +7,7 @@ import {
 } from '@remix-run/dev'
 import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin'
 import { envOnlyMacros } from 'vite-env-only'
+import { viteStaticCopy } from 'vite-plugin-static-copy'
 
 export default defineConfig({
   root: __dirname,
@@ -33,6 +34,14 @@ export default defineConfig({
     sentryVitePlugin({
       org: 'jpedroh',
       project: 'mach-vq',
+    }),
+    viteStaticCopy({
+      targets: [
+        {
+          src: '_headers',
+          dest: './',
+        },
+      ],
     }),
   ],
   build: {
