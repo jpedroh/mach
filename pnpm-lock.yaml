@@ -266,7 +266,11 @@ importers:
         specifier: ^1.0.6
         version: 1.0.6(vite@5.3.3)
 
-  modules/rpl-crawler: {}
+  modules/rpl-crawler:
+    dependencies:
+      '@mach/shared-database':
+        specifier: workspace:*
+        version: link:../shared/database
 
   modules/shared/database: {}
 
