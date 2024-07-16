@@ -240,6 +240,9 @@ importers:
 
   apps/web:
     dependencies:
+      '@mach/web-details':
+        specifier: workspace:*
+        version: link:../../modules/web/details
       '@remix-run/cloudflare':
         specifier: ^2.9.1
         version: 2.10.2(@cloudflare/workers-types@4.20240512.0)(typescript@5.5.3)
@@ -255,6 +258,8 @@ importers:
         version: 1.0.6(vite@5.3.3)
 
   modules/rpl-crawler: {}
+
+  modules/web/details: {}
 
 packages:
 
