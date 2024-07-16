@@ -1,0 +1,20 @@
+{
+  "name": "@mach/rpl-crawler-cli",
+  "scripts": {
+    "lint": "eslint .",
+    "pack": "vite build",
+    "test": "vitest ."
+  },
+  "nx": {
+    "tags": [
+      "type:application"
+    ],
+    "targets": {
+      "pack": {
+        "outputs": [
+          "{projectRoot}/dist"
+        ]
+      }
+    }
+  }
+}
