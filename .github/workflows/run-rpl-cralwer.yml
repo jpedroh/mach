@@ -22,7 +22,7 @@ jobs:
           node-version-file: '.nvmrc'
           cache: 'pnpm'
       - run: pnpm install
-      - run: npx nx run @mach/rpl-crawler:pack
+      - run: npx nx run @mach/rpl-crawler-cli:pack
       - run: node apps/rpl-crawler/dist/index.mjs ${RPL_DATE:-$(date +"%Y-%m-%d")}
         env:
           TURSO_CONNECTION_URL: ${{ secrets.turso_connection_url_production }}
