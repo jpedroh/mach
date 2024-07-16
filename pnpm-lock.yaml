@@ -240,6 +240,9 @@ importers:
 
   apps/web:
     dependencies:
+      '@mach/shared-database':
+        specifier: workspace:*
+        version: link:../../modules/shared/database
       '@mach/web-details':
         specifier: workspace:*
         version: link:../../modules/web/details
