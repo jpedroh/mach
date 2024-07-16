@@ -221,19 +221,19 @@ importers:
     dependencies:
       '@mach/shared-database':
         specifier: workspace:*
-        version: link:../../modules/shared/database
+        version: link:../../modules/shared-database
       '@mach/web-details':
         specifier: workspace:*
-        version: link:../../modules/web/details
+        version: link:../../modules/web-details
       '@mach/web-home':
         specifier: workspace:*
-        version: link:../../modules/web/home
+        version: link:../../modules/web-home
       '@mach/web-search':
         specifier: workspace:*
-        version: link:../../modules/web/search
+        version: link:../../modules/web-search
       '@mach/web-shared-ui':
         specifier: workspace:*
-        version: link:../../modules/web/shared/ui
+        version: link:../../modules/web-shared-ui
       '@remix-run/cloudflare':
         specifier: ^2.9.1
         version: 2.10.2(@cloudflare/workers-types@4.20240512.0)(typescript@5.5.3)
@@ -264,52 +264,52 @@ importers:
     dependencies:
       '@mach/shared-database':
         specifier: workspace:*
-        version: link:../../modules/shared/database
+        version: link:../../modules/shared-database
 
   modules/rpl-crawler:
     dependencies:
       '@mach/shared-database':
         specifier: workspace:*
-        version: link:../shared/database
+        version: link:../shared-database
       adm-zip:
         specifier: ^0.5.14
         version: 0.5.14
 
-  modules/shared/database:
+  modules/shared-database:
     dependencies:
       '@libsql/client':
         specifier: ^0.7.0
         version: 0.7.0
 
-  modules/web/details:
+  modules/web-details:
     dependencies:
       '@mach/shared-database':
         specifier: workspace:*
-        version: link:../../shared/database
+        version: link:../shared-database
       '@mach/web-shared-ui':
         specifier: workspace:*
-        version: link:../shared/ui
+        version: link:../web-shared-ui
 
-  modules/web/home:
+  modules/web-home:
     dependencies:
       '@mach/shared-database':
         specifier: workspace:*
-        version: link:../../shared/database
+        version: link:../shared-database
       '@mach/web-shared-ui':
         specifier: workspace:*
-        version: link:../shared/ui
+        version: link:../web-shared-ui
       zod:
         specifier: ^3.23.6
         version: 3.23.8
 
-  modules/web/search:
+  modules/web-search:
     dependencies:
       '@mach/shared-database':
         specifier: workspace:*
-        version: link:../../shared/database
+        version: link:../shared-database
       '@mach/web-shared-ui':
         specifier: workspace:*
-        version: link:../shared/ui
+        version: link:../web-shared-ui
       '@sentry/remix':
         specifier: ^8.16.0
         version: 8.17.0(@opentelemetry/api@1.9.0)(@opentelemetry/core@1.25.1)(@opentelemetry/instrumentation@0.52.1)(@opentelemetry/sdk-trace-base@1.25.1)(@opentelemetry/semantic-conventions@1.25.1)(@remix-run/node@2.10.2)(@remix-run/react@2.10.2)(react@18.3.1)
@@ -317,7 +317,7 @@ importers:
         specifier: ^3.23.6
         version: 3.23.8
 
-  modules/web/shared/ui:
+  modules/web-shared-ui:
     dependencies:
       '@mach/web-shared-ui':
         specifier: workspace:*

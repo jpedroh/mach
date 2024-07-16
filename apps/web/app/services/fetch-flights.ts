@@ -3,7 +3,7 @@ import {
   cycles,
   flights,
   Flight,
-} from '@mach/shared-database'
+} from '../../../../modules/shared-database/src'
 import { and, eq, sql } from 'drizzle-orm'
 import z from 'zod'
 

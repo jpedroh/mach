@@ -1,4 +1,4 @@
-import { makeDatabaseConnection } from '@mach/shared-database'
+import { makeDatabaseConnection } from '../../../../modules/shared-database/src'
 import {
   LoaderFunctionArgs,
   json,
