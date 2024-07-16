@@ -6,7 +6,7 @@ import {
   cycles,
   db,
   flights as flightsSchema,
-} from '../../../shared-database/src'
+} from '@mach/shared-database'
 import { inArray } from 'drizzle-orm'
 
 function sliceArray<T>(items: T[]) {

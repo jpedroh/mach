@@ -1,4 +1,4 @@
-import { Airport } from '../../../../shared-database/src'
+import { Airport } from '@mach/shared-database'
 
 export function formatAirport(airport: Airport) {
   if (airport.name === airport.city) {

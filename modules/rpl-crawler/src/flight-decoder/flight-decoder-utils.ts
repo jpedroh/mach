@@ -1,4 +1,4 @@
-import { FlightRules, Weekdays } from '../../../shared-database/src'
+import { FlightRules, Weekdays } from '@mach/shared-database'
 
 export const resolveFlightRules = (route: string): FlightRules => {
   if (route.includes(' IFR ')) {

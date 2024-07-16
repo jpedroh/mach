@@ -1,6 +1,6 @@
 'use client'
 
-import { Flight } from '../../../../shared-database/src'
+import { Flight } from '@mach/shared-database'
 import { Button } from '@mach/web-shared-ui'
 
 type Props = {

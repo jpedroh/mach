@@ -1,4 +1,4 @@
-import type { db } from '../../../shared-database/src'
+import type { db } from '@mach/shared-database'
 
 export async function fetchFlightById(dbClient: typeof db, id: string) {
   return dbClient.query.flights.findFirst({

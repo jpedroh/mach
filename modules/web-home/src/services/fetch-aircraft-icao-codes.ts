@@ -1,7 +1,4 @@
-import {
-  flights,
-  type DatabaseConnection,
-} from '../../../../shared-database/src'
+import { flights, type DatabaseConnection } from '@mach/shared-database'
 import { eq } from 'drizzle-orm'
 import { currentCycleSubquery } from '../utils/current-cycle-subquery'
 
