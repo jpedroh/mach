@@ -33,6 +33,7 @@ jobs:
         with:
           main-branch-name: 'main'
       - run: pnpm install
+      - run: npx sherif
       - run: npx nx format:check
       - run: npx nx affected --target=pack --parallel=3
       - run: npx nx affected --target=test --parallel=3
