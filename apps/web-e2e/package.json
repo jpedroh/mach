@@ -1,0 +1,25 @@
+{
+  "name": "@mach/web-e2e",
+  "dependencies": {
+    "@mach/shared-database": "workspace:*"
+  },
+  "nx": {
+    "implicitDependencies": [
+      "@mach/web"
+    ],
+    "targets": {
+      "e2e": {
+        "outputs": [
+          "{workspaceRoot}/playwright-report"
+        ],
+        "executor": "@nx/playwright:playwright",
+        "options": {
+          "config": "apps/web-e2e/playwright.config.ts"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "lint": "eslint ."
+  }
+}

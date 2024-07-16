@@ -12,4 +12,4 @@ export const headers: HeadersFunction = () => ({
   'Cache-Control': 'public, max-age=300, stale-while-revalidate=3600',
 })
 
-export { HomePage as default, loader } from '@mach/web/home'
+export { HomePage as default, loader } from '@mach/web-home'

@@ -1,5 +1,5 @@
-import { Link } from '@mach/web/shared/ui'
-import { Layout, Lead } from '@mach/web/shared/ui'
+import { Link } from '@mach/web-shared-ui'
+import { Layout, Lead } from '@mach/web-shared-ui'
 import { LoaderFunctionArgs } from '@remix-run/cloudflare'
 import { Outlet, useLoaderData } from '@remix-run/react'
 import { serverOnly$ } from 'vite-env-only/macros'
@@ -8,7 +8,7 @@ import {
   searchFlightsQuerySchema,
 } from '../services/fetch-flights'
 import { FlightsTable } from './flights-table'
-import { makeDatabaseConnection } from '@mach/shared/database'
+import { makeDatabaseConnection } from '@mach/shared-database'
 
 export const loader = serverOnly$(
   ({ request, context }: LoaderFunctionArgs) => {

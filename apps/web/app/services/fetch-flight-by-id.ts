@@ -1,4 +1,4 @@
-import { DatabaseConnection } from '@mach/shared/database'
+import { DatabaseConnection } from '@mach/shared-database'
 import { z } from 'zod'
 
 const idSchema = z.string().uuid()

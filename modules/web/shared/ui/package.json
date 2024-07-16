@@ -1,0 +1,17 @@
+{
+  "name": "@mach/web-shared-ui",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "scripts": {
+    "lint": "eslint .",
+    "test": "vitest --watch=false ."
+  },
+  "dependencies": {
+    "@mach/web-shared-ui": "workspace:*"
+  },
+  "nx": {
+    "tags": [
+      "type:shared"
+    ]
+  }
+}
