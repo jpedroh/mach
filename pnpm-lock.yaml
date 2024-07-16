@@ -243,6 +243,12 @@ importers:
       '@mach/web-details':
         specifier: workspace:*
         version: link:../../modules/web/details
+      '@mach/web-home':
+        specifier: workspace:*
+        version: link:../../modules/web/home
+      '@mach/web-search':
+        specifier: workspace:*
+        version: link:../../modules/web/search
       '@remix-run/cloudflare':
         specifier: ^2.9.1
         version: 2.10.2(@cloudflare/workers-types@4.20240512.0)(typescript@5.5.3)
@@ -260,6 +266,10 @@ importers:
   modules/rpl-crawler: {}
 
   modules/web/details: {}
+
+  modules/web/home: {}
+
+  modules/web/search: {}
 
 packages:
 
