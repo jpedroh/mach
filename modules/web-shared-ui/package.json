@@ -1,5 +1,5 @@
 {
-  "name": "@mach/web-details",
+  "name": "@mach/web-shared-ui",
   "main": "./src/index.ts",
   "types": "./src/index.ts",
   "scripts": {
@@ -8,11 +8,13 @@
   },
   "dependencies": {
     "@mach/web-shared-ui": "workspace:*",
-    "@mach/shared-database": "workspace:*"
+    "class-variance-authority": "^0.7.0",
+    "react-aria-components": "^1.2.1",
+    "react-twc": "^1.4.1"
   },
   "nx": {
     "tags": [
-      "type:feature"
+      "type:shared"
     ]
   }
 }

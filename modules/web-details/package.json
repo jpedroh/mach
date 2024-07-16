@@ -1,5 +1,5 @@
 {
-  "name": "@mach/rpl-crawler",
+  "name": "@mach/web-details",
   "main": "./src/index.ts",
   "types": "./src/index.ts",
   "scripts": {
@@ -8,12 +8,10 @@
   },
   "dependencies": {
     "@mach/shared-database": "workspace:*",
-    "@mach/web": "workspace:^",
-    "adm-zip": "^0.5.14",
-    "axios": "^1.7.2",
-    "drizzle-orm": "^0.32.0",
-    "fast-xml-parser": "^4.4.0",
-    "zod": "^3.23.6"
+    "@mach/web-shared-ui": "workspace:*",
+    "@remix-run/cloudflare": "^2.10.2",
+    "@remix-run/react": "^2.10.0",
+    "react-twc": "^1.4.1"
   },
   "nx": {
     "tags": [

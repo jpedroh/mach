@@ -1,1 +1,4 @@
-export { FlightDetailsModal as default, loader } from '@mach/web-details'
+export {
+  FlightDetailsModal as default,
+  loader,
+} from '../../../../modules/web-details/src'
