@@ -7,8 +7,11 @@
     "test": "vitest --watch=false ."
   },
   "dependencies": {
+    "@mach/shared-database": "workspace:*",
     "@mach/web-shared-ui": "workspace:*",
-    "@mach/shared-database": "workspace:*"
+    "@remix-run/cloudflare": "^2.10.2",
+    "@remix-run/react": "^2.10.0",
+    "react-twc": "^1.4.1"
   },
   "nx": {
     "tags": [
