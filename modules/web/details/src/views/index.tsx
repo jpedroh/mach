@@ -16,7 +16,7 @@ import { IvaoFplButton } from './ivao-fpl-button'
 import { SimBriefButton } from './simbrief-button'
 import { SkyVectorButton } from './sky-vector-button'
 import { VatsimFplButton } from './vatsim-fpl-button'
-import { makeDatabaseConnection } from '@mach/shared/database'
+import { makeDatabaseConnection } from '@mach/shared-database'
 
 type Props = {
   id: string

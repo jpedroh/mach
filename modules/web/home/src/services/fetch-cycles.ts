@@ -1,4 +1,4 @@
-import { DatabaseConnection } from '@mach/shared/database'
+import { DatabaseConnection } from '@mach/shared-database'
 
 export async function fetchCycles(db: DatabaseConnection) {
   const cycles = await db.query.cycles.findMany({

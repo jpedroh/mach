@@ -8,7 +8,7 @@ import {
   searchFlightsQuerySchema,
 } from '../services/fetch-flights'
 import { FlightsTable } from './flights-table'
-import { makeDatabaseConnection } from '@mach/shared/database'
+import { makeDatabaseConnection } from '@mach/shared-database'
 
 export const loader = serverOnly$(
   ({ request, context }: LoaderFunctionArgs) => {

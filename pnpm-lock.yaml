@@ -268,20 +268,31 @@ importers:
 
   modules/rpl-crawler: {}
 
+  modules/shared/database: {}
+
   modules/web/details:
     dependencies:
+      '@mach/shared-database':
+        specifier: workspace:*
+        version: link:../../shared/database
       '@mach/web-shared-ui':
         specifier: workspace:*
         version: link:../shared/ui
 
   modules/web/home:
     dependencies:
+      '@mach/shared-database':
+        specifier: workspace:*
+        version: link:../../shared/database
       '@mach/web-shared-ui':
         specifier: workspace:*
         version: link:../shared/ui
 
   modules/web/search:
     dependencies:
+      '@mach/shared-database':
+        specifier: workspace:*
+        version: link:../../shared/database
       '@mach/web-shared-ui':
         specifier: workspace:*
         version: link:../shared/ui
