@@ -249,6 +249,9 @@ importers:
       '@mach/web-search':
         specifier: workspace:*
         version: link:../../modules/web/search
+      '@mach/web-shared-ui':
+        specifier: workspace:*
+        version: link:../../modules/web/shared/ui
       '@remix-run/cloudflare':
         specifier: ^2.9.1
         version: 2.10.2(@cloudflare/workers-types@4.20240512.0)(typescript@5.5.3)
@@ -265,11 +268,29 @@ importers:
 
   modules/rpl-crawler: {}
 
-  modules/web/details: {}
+  modules/web/details:
+    dependencies:
+      '@mach/web-shared-ui':
+        specifier: workspace:*
+        version: link:../shared/ui
 
-  modules/web/home: {}
+  modules/web/home:
+    dependencies:
+      '@mach/web-shared-ui':
+        specifier: workspace:*
+        version: link:../shared/ui
 
-  modules/web/search: {}
+  modules/web/search:
+    dependencies:
+      '@mach/web-shared-ui':
+        specifier: workspace:*
+        version: link:../shared/ui
+
+  modules/web/shared/ui:
+    dependencies:
+      '@mach/web-shared-ui':
+        specifier: workspace:*
+        version: 'link:'
 
 packages:
 

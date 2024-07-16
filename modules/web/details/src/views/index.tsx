@@ -4,7 +4,7 @@ import {
   ModalFooter,
   ModalHeading,
   ModalRoot,
-} from '@mach/web/shared/ui'
+} from '@mach/web-shared-ui'
 import { LoaderFunctionArgs } from '@remix-run/cloudflare'
 import { useLoaderData, useNavigate } from '@remix-run/react'
 import { ReactNode } from 'react'

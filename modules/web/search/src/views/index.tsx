@@ -1,5 +1,5 @@
-import { Link } from '@mach/web/shared/ui'
-import { Layout, Lead } from '@mach/web/shared/ui'
+import { Link } from '@mach/web-shared-ui'
+import { Layout, Lead } from '@mach/web-shared-ui'
 import { LoaderFunctionArgs } from '@remix-run/cloudflare'
 import { Outlet, useLoaderData } from '@remix-run/react'
 import { serverOnly$ } from 'vite-env-only/macros'

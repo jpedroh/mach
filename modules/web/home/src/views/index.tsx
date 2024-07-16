@@ -1,5 +1,5 @@
 import { makeDatabaseConnection } from '@mach/shared/database'
-import { Button, Checkbox, Layout, Lead, Select } from '@mach/web/shared/ui'
+import { Button, Checkbox, Layout, Lead, Select } from '@mach/web-shared-ui'
 import { LoaderFunctionArgs } from '@remix-run/cloudflare'
 import { Form, useLoaderData } from '@remix-run/react'
 
