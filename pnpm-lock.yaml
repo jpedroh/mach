@@ -269,6 +269,12 @@ importers:
         specifier: ^1.0.6
         version: 1.0.6(vite@5.3.3)
 
+  apps/web-e2e:
+    dependencies:
+      '@mach/shared-database':
+        specifier: workspace:*
+        version: link:../../modules/shared/database
+
   modules/rpl-crawler:
     dependencies:
       '@mach/shared-database':
