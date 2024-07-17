@@ -23,7 +23,7 @@ jobs:
           cache: 'pnpm'
       - run: pnpm install
       - run: npx nx run @mach/rpl-crawler-cli:pack
-      - run: node apps/rpl-crawler/dist/index.mjs ${RPL_DATE:-$(date +"%Y-%m-%d")}
+      - run: node apps/rpl-crawler-cli/dist/index.mjs ${RPL_DATE:-$(date +"%Y-%m-%d")}
         env:
           TURSO_CONNECTION_URL: ${{ secrets.turso_connection_url_production }}
           TURSO_AUTH_TOKEN: ${{ secrets.turso_auth_token_production }}
