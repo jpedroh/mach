@@ -95,7 +95,7 @@ importers:
         version: 19.5.1(@babel/traverse@7.24.8)(@types/node@20.14.11)(nx@19.5.1)(typescript@5.5.3)
       '@nx/playwright':
         specifier: 19.5.1
-        version: 19.5.1(@babel/traverse@7.24.8)(@playwright/test@1.45.1)(@types/node@20.14.11)(@zkochan/js-yaml@0.0.7)(eslint@8.57.0)(nx@19.5.1)(typescript@5.5.3)
+        version: 19.5.1(@babel/traverse@7.24.8)(@playwright/test@1.45.2)(@types/node@20.14.11)(@zkochan/js-yaml@0.0.7)(eslint@8.57.0)(nx@19.5.1)(typescript@5.5.3)
       '@nx/react':
         specifier: 19.5.1
         version: 19.5.1(@babel/traverse@7.24.8)(@types/node@20.14.11)(@zkochan/js-yaml@0.0.7)(eslint@8.57.0)(nx@19.5.1)(typescript@5.5.3)(webpack@5.91.0(esbuild@0.17.19))
@@ -103,8 +103,8 @@ importers:
         specifier: 19.5.1
         version: 19.5.1(@babel/traverse@7.24.8)(@types/node@20.14.11)(nx@19.5.1)(typescript@5.5.3)(vite@5.3.4(@types/node@20.14.11)(terser@5.31.3))(vitest@2.0.3(@types/node@20.14.11)(@vitest/ui@2.0.3)(jsdom@24.1.0)(terser@5.31.3))
       '@playwright/test':
-        specifier: ^1.45.0
-        version: 1.45.1
+        specifier: ^1.45.2
+        version: 1.45.2
       '@remix-run/dev':
         specifier: ^2.10.3
         version: 2.10.3(@remix-run/react@2.10.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.5.3))(@remix-run/serve@2.10.3(typescript@5.5.3))(@types/node@20.14.11)(terser@5.31.3)(ts-node@10.9.1(@types/node@20.14.11)(typescript@5.5.3))(typescript@5.5.3)(vite@5.3.4(@types/node@20.14.11)(terser@5.31.3))(wrangler@3.65.0(@cloudflare/workers-types@4.20240512.0))
@@ -2775,8 +2775,8 @@ packages:
     resolution: {integrity: sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==}
     engines: {node: '>=14'}
 
-  '@playwright/test@1.45.1':
-    resolution: {integrity: sha512-Wo1bWTzQvGA7LyKGIZc8nFSTFf2TkthGIFBR+QVNilvwouGzFd4PYukZe3rvf5PSqjHi1+1NyKSDZKcQWETzaA==}
+  '@playwright/test@1.45.2':
+    resolution: {integrity: sha512-JxG9eq92ET75EbVi3s+4sYbcG7q72ECeZNbdBlaMkGcNbiDQ4cAi8U2QP5oKkOx+1gpaiL1LDStmzCaEM1Z6fQ==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -7958,13 +7958,13 @@ packages:
   pkg-types@1.1.3:
     resolution: {integrity: sha512-+JrgthZG6m3ckicaOB74TwQ+tBWsFl3qVQg7mN8ulwSOElJ7gBhKzj2VkCPnZ4NlF6kEquYU+RIYNVAvzd54UA==}
 
-  playwright-core@1.45.1:
-    resolution: {integrity: sha512-LF4CUUtrUu2TCpDw4mcrAIuYrEjVDfT1cHbJMfwnE2+1b8PZcFzPNgvZCvq2JfQ4aTjRCCHw5EJ2tmr2NSzdPg==}
+  playwright-core@1.45.2:
+    resolution: {integrity: sha512-ha175tAWb0dTK0X4orvBIqi3jGEt701SMxMhyujxNrgd8K0Uy5wMSwwcQHtyB4om7INUkfndx02XnQ2p6dvLDw==}
     engines: {node: '>=18'}
     hasBin: true
 
-  playwright@1.45.1:
-    resolution: {integrity: sha512-Hjrgae4kpSQBr98nhCj3IScxVeVUixqj+5oyif8TdIn2opTCPEzqAqNMeK42i3cWDCVu9MI+ZsGWw+gVR4ISBg==}
+  playwright@1.45.2:
+    resolution: {integrity: sha512-ReywF2t/0teRvNBpfIgh5e4wnrI/8Su8ssdo5XsQKpjxJj+jspm00jSoz9BTg91TT0c9HRjXO7LBNVrgYj9X0g==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -10171,7 +10171,7 @@ snapshots:
       '@aws-sdk/credential-provider-env': 3.577.0
       '@aws-sdk/credential-provider-process': 3.577.0
       '@aws-sdk/credential-provider-sso': 3.577.0(@aws-sdk/client-sso-oidc@3.577.0)
-      '@aws-sdk/credential-provider-web-identity': 3.577.0(@aws-sdk/client-sts@3.577.0)
+      '@aws-sdk/credential-provider-web-identity': 3.577.0(@aws-sdk/client-sts@3.577.0(@aws-sdk/client-sso-oidc@3.577.0))
       '@aws-sdk/types': 3.577.0
       '@smithy/credential-provider-imds': 3.0.0
       '@smithy/property-provider': 3.0.0
@@ -10242,7 +10242,7 @@ snapshots:
       '@aws-sdk/credential-provider-ini': 3.577.0(@aws-sdk/client-sso-oidc@3.577.0)(@aws-sdk/client-sts@3.577.0)
       '@aws-sdk/credential-provider-process': 3.577.0
       '@aws-sdk/credential-provider-sso': 3.577.0(@aws-sdk/client-sso-oidc@3.577.0)
-      '@aws-sdk/credential-provider-web-identity': 3.577.0(@aws-sdk/client-sts@3.577.0)
+      '@aws-sdk/credential-provider-web-identity': 3.577.0(@aws-sdk/client-sts@3.577.0(@aws-sdk/client-sso-oidc@3.577.0))
       '@aws-sdk/types': 3.577.0
       '@smithy/credential-provider-imds': 3.0.0
       '@smithy/property-provider': 3.0.0
@@ -10342,14 +10342,6 @@ snapshots:
   '@aws-sdk/credential-provider-web-identity@3.577.0(@aws-sdk/client-sts@3.577.0(@aws-sdk/client-sso-oidc@3.577.0))':
     dependencies:
       '@aws-sdk/client-sts': 3.577.0(@aws-sdk/client-sso-oidc@3.577.0)
-      '@aws-sdk/types': 3.577.0
-      '@smithy/property-provider': 3.0.0
-      '@smithy/types': 3.0.0
-      tslib: 2.6.3
-
-  '@aws-sdk/credential-provider-web-identity@3.577.0(@aws-sdk/client-sts@3.577.0)':
-    dependencies:
-      '@aws-sdk/client-sts': 3.577.0
       '@aws-sdk/types': 3.577.0
       '@smithy/property-provider': 3.0.0
       '@smithy/types': 3.0.0
@@ -12542,21 +12534,6 @@ snapshots:
       - typescript
       - verdaccio
 
-  '@nrwl/js@19.5.1(@babel/traverse@7.24.8)(@types/node@20.14.11)(nx@19.5.1)(typescript@5.5.3)':
-    dependencies:
-      '@nx/js': 19.5.1(@babel/traverse@7.24.8)(@types/node@20.14.11)(nx@19.5.1)(typescript@5.5.3)
-    transitivePeerDependencies:
-      - '@babel/traverse'
-      - '@swc-node/register'
-      - '@swc/core'
-      - '@swc/wasm'
-      - '@types/node'
-      - debug
-      - nx
-      - supports-color
-      - typescript
-      - verdaccio
-
   '@nrwl/react@19.5.1(@babel/traverse@7.24.8)(@types/node@20.14.11)(@zkochan/js-yaml@0.0.7)(eslint@8.57.0)(nx@19.5.1)(typescript@5.5.3)(webpack@5.91.0(esbuild@0.17.19))':
     dependencies:
       '@nx/react': 19.5.1(@babel/traverse@7.24.8)(@types/node@20.14.11)(@zkochan/js-yaml@0.0.7)(eslint@8.57.0)(nx@19.5.1)(typescript@5.5.3)(webpack@5.91.0(esbuild@0.17.19))
@@ -12755,7 +12732,7 @@ snapshots:
       '@babel/preset-env': 7.24.8(@babel/core@7.24.9)
       '@babel/preset-typescript': 7.24.7(@babel/core@7.24.9)
       '@babel/runtime': 7.24.8
-      '@nrwl/js': 19.5.1(@babel/traverse@7.24.8)(@types/node@20.14.11)(nx@19.5.1)(typescript@5.5.3)
+      '@nrwl/js': 19.5.1(@babel/traverse@7.24.8)(@types/node@20.14.11)(nx@19.5.1)(typescript@5.4.5)
       '@nx/devkit': 19.5.1(nx@19.5.1)
       '@nx/workspace': 19.5.1
       babel-plugin-const-enum: 1.2.0(@babel/core@7.24.9)
@@ -12834,7 +12811,7 @@ snapshots:
   '@nx/nx-win32-x64-msvc@19.5.1':
     optional: true
 
-  '@nx/playwright@19.5.1(@babel/traverse@7.24.8)(@playwright/test@1.45.1)(@types/node@20.14.11)(@zkochan/js-yaml@0.0.7)(eslint@8.57.0)(nx@19.5.1)(typescript@5.5.3)':
+  '@nx/playwright@19.5.1(@babel/traverse@7.24.8)(@playwright/test@1.45.2)(@types/node@20.14.11)(@zkochan/js-yaml@0.0.7)(eslint@8.57.0)(nx@19.5.1)(typescript@5.5.3)':
     dependencies:
       '@nx/devkit': 19.5.1(nx@19.5.1)
       '@nx/eslint': 19.5.1(@babel/traverse@7.24.8)(@types/node@20.14.11)(@zkochan/js-yaml@0.0.7)(eslint@8.57.0)(nx@19.5.1)
@@ -12843,7 +12820,7 @@ snapshots:
       minimatch: 9.0.3
       tslib: 2.6.3
     optionalDependencies:
-      '@playwright/test': 1.45.1
+      '@playwright/test': 1.45.2
     transitivePeerDependencies:
       - '@babel/traverse'
       - '@swc-node/register'
@@ -13238,9 +13215,9 @@ snapshots:
   '@pkgjs/parseargs@0.11.0':
     optional: true
 
-  '@playwright/test@1.45.1':
+  '@playwright/test@1.45.2':
     dependencies:
-      playwright: 1.45.1
+      playwright: 1.45.2
 
   '@pnpm/config.env-replace@1.1.0': {}
 
@@ -19797,11 +19774,11 @@ snapshots:
       mlly: 1.7.1
       pathe: 1.1.2
 
-  playwright-core@1.45.1: {}
+  playwright-core@1.45.2: {}
 
-  playwright@1.45.1:
+  playwright@1.45.2:
     dependencies:
-      playwright-core: 1.45.1
+      playwright-core: 1.45.2
     optionalDependencies:
       fsevents: 2.3.2
 
