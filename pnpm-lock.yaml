@@ -98,7 +98,7 @@ importers:
         version: 19.5.1(@babel/traverse@7.24.8)(@playwright/test@1.45.2)(@types/node@20.14.11)(@zkochan/js-yaml@0.0.7)(eslint@8.57.0)(nx@19.5.1)(typescript@5.5.3)
       '@nx/react':
         specifier: 19.5.1
-        version: 19.5.1(@babel/traverse@7.24.8)(@types/node@20.14.11)(@zkochan/js-yaml@0.0.7)(eslint@8.57.0)(nx@19.5.1)(typescript@5.5.3)(webpack@5.91.0(esbuild@0.17.19))
+        version: 19.5.1(@babel/traverse@7.24.8)(@types/node@20.14.11)(@zkochan/js-yaml@0.0.7)(eslint@8.57.0)(nx@19.5.1)(typescript@5.5.3)(webpack@5.91.0(esbuild@0.19.12))
       '@nx/vite':
         specifier: 19.5.1
         version: 19.5.1(@babel/traverse@7.24.8)(@types/node@20.14.11)(nx@19.5.1)(typescript@5.5.3)(vite@5.3.4(@types/node@20.14.11)(terser@5.31.3))(vitest@2.0.4(@types/node@20.14.11)(@vitest/ui@2.0.4)(jsdom@24.1.0)(terser@5.31.3))
@@ -107,7 +107,7 @@ importers:
         version: 1.45.2
       '@remix-run/dev':
         specifier: ^2.10.3
-        version: 2.10.3(@remix-run/react@2.10.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.5.3))(@remix-run/serve@2.10.3(typescript@5.5.3))(@types/node@20.14.11)(terser@5.31.3)(ts-node@10.9.1(@types/node@20.14.11)(typescript@5.5.3))(typescript@5.5.3)(vite@5.3.4(@types/node@20.14.11)(terser@5.31.3))(wrangler@3.65.1(@cloudflare/workers-types@4.20240512.0))
+        version: 2.10.3(@remix-run/react@2.10.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.5.3))(@remix-run/serve@2.10.3(typescript@5.5.3))(@types/node@20.14.11)(terser@5.31.3)(ts-node@10.9.1(@types/node@20.14.11)(typescript@5.5.3))(typescript@5.5.3)(vite@5.3.4(@types/node@20.14.11)(terser@5.31.3))(wrangler@3.66.0(@cloudflare/workers-types@4.20240512.0))
       '@semantic-release/exec':
         specifier: ^6.0.0
         version: 6.0.3(semantic-release@24.0.0(typescript@5.5.3))
@@ -229,8 +229,8 @@ importers:
         specifier: ^2.0.4
         version: 2.0.4(@types/node@20.14.11)(@vitest/ui@2.0.4)(jsdom@24.1.0)(terser@5.31.3)
       wrangler:
-        specifier: ^3.65.1
-        version: 3.65.1(@cloudflare/workers-types@4.20240512.0)
+        specifier: ^3.66.0
+        version: 3.66.0(@cloudflare/workers-types@4.20240512.0)
 
   apps/rpl-crawler-cli:
     dependencies:
@@ -9476,8 +9476,8 @@ packages:
     engines: {node: '>=16'}
     hasBin: true
 
-  wrangler@3.65.1:
-    resolution: {integrity: sha512-Z5NyrbpGMQCpim/6VnI1im0/Weh5+CU1sdep1JbfFxHjn/Jt9K+MeUq+kCns5ubkkdRx2EYsusB/JKyX2JdJ4w==}
+  wrangler@3.66.0:
+    resolution: {integrity: sha512-5fEyXsP8qvrUeR13kCfA3OG1z/ABx+/a8hzIA55nCUM2/tjI67ZkfeN1VdOmG6cipZDvs4HfN8rp7j+e+21nKA==}
     engines: {node: '>=16.17.0'}
     hasBin: true
     peerDependencies:
@@ -10209,7 +10209,7 @@ snapshots:
       '@aws-sdk/credential-provider-env': 3.577.0
       '@aws-sdk/credential-provider-process': 3.577.0
       '@aws-sdk/credential-provider-sso': 3.577.0(@aws-sdk/client-sso-oidc@3.577.0)
-      '@aws-sdk/credential-provider-web-identity': 3.577.0(@aws-sdk/client-sts@3.577.0)
+      '@aws-sdk/credential-provider-web-identity': 3.577.0(@aws-sdk/client-sts@3.577.0(@aws-sdk/client-sso-oidc@3.577.0))
       '@aws-sdk/types': 3.577.0
       '@smithy/credential-provider-imds': 3.0.0
       '@smithy/property-provider': 3.0.0
@@ -10280,7 +10280,7 @@ snapshots:
       '@aws-sdk/credential-provider-ini': 3.577.0(@aws-sdk/client-sso-oidc@3.577.0)(@aws-sdk/client-sts@3.577.0)
       '@aws-sdk/credential-provider-process': 3.577.0
       '@aws-sdk/credential-provider-sso': 3.577.0(@aws-sdk/client-sso-oidc@3.577.0)
-      '@aws-sdk/credential-provider-web-identity': 3.577.0(@aws-sdk/client-sts@3.577.0)
+      '@aws-sdk/credential-provider-web-identity': 3.577.0(@aws-sdk/client-sts@3.577.0(@aws-sdk/client-sso-oidc@3.577.0))
       '@aws-sdk/types': 3.577.0
       '@smithy/credential-provider-imds': 3.0.0
       '@smithy/property-provider': 3.0.0
@@ -10378,14 +10378,6 @@ snapshots:
       - aws-crt
 
   '@aws-sdk/credential-provider-web-identity@3.577.0(@aws-sdk/client-sts@3.577.0(@aws-sdk/client-sso-oidc@3.577.0))':
-    dependencies:
-      '@aws-sdk/client-sts': 3.577.0(@aws-sdk/client-sso-oidc@3.577.0)
-      '@aws-sdk/types': 3.577.0
-      '@smithy/property-provider': 3.0.0
-      '@smithy/types': 3.0.0
-      tslib: 2.6.3
-
-  '@aws-sdk/credential-provider-web-identity@3.577.0(@aws-sdk/client-sts@3.577.0)':
     dependencies:
       '@aws-sdk/client-sts': 3.577.0(@aws-sdk/client-sso-oidc@3.577.0)
       '@aws-sdk/types': 3.577.0
@@ -12398,7 +12390,7 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  '@module-federation/enhanced@0.2.6(typescript@5.5.3)(webpack@5.91.0(esbuild@0.17.19))':
+  '@module-federation/enhanced@0.2.6(typescript@5.5.3)(webpack@5.91.0(esbuild@0.19.12))':
     dependencies:
       '@module-federation/bridge-react-webpack-plugin': 0.2.6
       '@module-federation/dts-plugin': 0.2.6(typescript@5.5.3)
@@ -12411,7 +12403,7 @@ snapshots:
       upath: 2.0.1
     optionalDependencies:
       typescript: 5.5.3
-      webpack: 5.91.0(esbuild@0.17.19)
+      webpack: 5.91.0(esbuild@0.19.12)
     transitivePeerDependencies:
       - bufferutil
       - debug
@@ -12580,24 +12572,9 @@ snapshots:
       - typescript
       - verdaccio
 
-  '@nrwl/js@19.5.1(@babel/traverse@7.24.8)(@types/node@20.14.11)(nx@19.5.1)(typescript@5.5.3)':
+  '@nrwl/react@19.5.1(@babel/traverse@7.24.8)(@types/node@20.14.11)(@zkochan/js-yaml@0.0.7)(eslint@8.57.0)(nx@19.5.1)(typescript@5.5.3)(webpack@5.91.0(esbuild@0.19.12))':
     dependencies:
-      '@nx/js': 19.5.1(@babel/traverse@7.24.8)(@types/node@20.14.11)(nx@19.5.1)(typescript@5.5.3)
-    transitivePeerDependencies:
-      - '@babel/traverse'
-      - '@swc-node/register'
-      - '@swc/core'
-      - '@swc/wasm'
-      - '@types/node'
-      - debug
-      - nx
-      - supports-color
-      - typescript
-      - verdaccio
-
-  '@nrwl/react@19.5.1(@babel/traverse@7.24.8)(@types/node@20.14.11)(@zkochan/js-yaml@0.0.7)(eslint@8.57.0)(nx@19.5.1)(typescript@5.5.3)(webpack@5.91.0(esbuild@0.17.19))':
-    dependencies:
-      '@nx/react': 19.5.1(@babel/traverse@7.24.8)(@types/node@20.14.11)(@zkochan/js-yaml@0.0.7)(eslint@8.57.0)(nx@19.5.1)(typescript@5.5.3)(webpack@5.91.0(esbuild@0.17.19))
+      '@nx/react': 19.5.1(@babel/traverse@7.24.8)(@types/node@20.14.11)(@zkochan/js-yaml@0.0.7)(eslint@8.57.0)(nx@19.5.1)(typescript@5.5.3)(webpack@5.91.0(esbuild@0.19.12))
     transitivePeerDependencies:
       - '@babel/traverse'
       - '@swc-node/register'
@@ -12793,7 +12770,7 @@ snapshots:
       '@babel/preset-env': 7.24.8(@babel/core@7.24.9)
       '@babel/preset-typescript': 7.24.7(@babel/core@7.24.9)
       '@babel/runtime': 7.24.8
-      '@nrwl/js': 19.5.1(@babel/traverse@7.24.8)(@types/node@20.14.11)(nx@19.5.1)(typescript@5.5.3)
+      '@nrwl/js': 19.5.1(@babel/traverse@7.24.8)(@types/node@20.14.11)(nx@19.5.1)(typescript@5.4.5)
       '@nx/devkit': 19.5.1(nx@19.5.1)
       '@nx/workspace': 19.5.1
       babel-plugin-const-enum: 1.2.0(@babel/core@7.24.9)
@@ -12896,10 +12873,10 @@ snapshots:
       - typescript
       - verdaccio
 
-  '@nx/react@19.5.1(@babel/traverse@7.24.8)(@types/node@20.14.11)(@zkochan/js-yaml@0.0.7)(eslint@8.57.0)(nx@19.5.1)(typescript@5.5.3)(webpack@5.91.0(esbuild@0.17.19))':
+  '@nx/react@19.5.1(@babel/traverse@7.24.8)(@types/node@20.14.11)(@zkochan/js-yaml@0.0.7)(eslint@8.57.0)(nx@19.5.1)(typescript@5.5.3)(webpack@5.91.0(esbuild@0.19.12))':
     dependencies:
-      '@module-federation/enhanced': 0.2.6(typescript@5.5.3)(webpack@5.91.0(esbuild@0.17.19))
-      '@nrwl/react': 19.5.1(@babel/traverse@7.24.8)(@types/node@20.14.11)(@zkochan/js-yaml@0.0.7)(eslint@8.57.0)(nx@19.5.1)(typescript@5.5.3)(webpack@5.91.0(esbuild@0.17.19))
+      '@module-federation/enhanced': 0.2.6(typescript@5.5.3)(webpack@5.91.0(esbuild@0.19.12))
+      '@nrwl/react': 19.5.1(@babel/traverse@7.24.8)(@types/node@20.14.11)(@zkochan/js-yaml@0.0.7)(eslint@8.57.0)(nx@19.5.1)(typescript@5.5.3)(webpack@5.91.0(esbuild@0.19.12))
       '@nx/devkit': 19.5.1(nx@19.5.1)
       '@nx/eslint': 19.5.1(@babel/traverse@7.24.8)(@types/node@20.14.11)(@zkochan/js-yaml@0.0.7)(eslint@8.57.0)(nx@19.5.1)
       '@nx/js': 19.5.1(@babel/traverse@7.24.8)(@types/node@20.14.11)(nx@19.5.1)(typescript@5.5.3)
@@ -12907,7 +12884,7 @@ snapshots:
       '@phenomnomnominal/tsquery': 5.0.1(typescript@5.5.3)
       '@svgr/webpack': 8.1.0(typescript@5.5.3)
       chalk: 4.1.2
-      file-loader: 6.2.0(webpack@5.91.0(esbuild@0.17.19))
+      file-loader: 6.2.0(webpack@5.91.0(esbuild@0.19.12))
       minimatch: 9.0.3
       tslib: 2.6.3
     transitivePeerDependencies:
@@ -14272,7 +14249,7 @@ snapshots:
     optionalDependencies:
       typescript: 5.5.3
 
-  '@remix-run/dev@2.10.3(@remix-run/react@2.10.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.5.3))(@remix-run/serve@2.10.3(typescript@5.5.3))(@types/node@20.14.11)(terser@5.31.3)(ts-node@10.9.1(@types/node@20.14.11)(typescript@5.5.3))(typescript@5.5.3)(vite@5.3.4(@types/node@20.14.11)(terser@5.31.3))(wrangler@3.65.1(@cloudflare/workers-types@4.20240512.0))':
+  '@remix-run/dev@2.10.3(@remix-run/react@2.10.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.5.3))(@remix-run/serve@2.10.3(typescript@5.5.3))(@types/node@20.14.11)(terser@5.31.3)(ts-node@10.9.1(@types/node@20.14.11)(typescript@5.5.3))(typescript@5.5.3)(vite@5.3.4(@types/node@20.14.11)(terser@5.31.3))(wrangler@3.66.0(@cloudflare/workers-types@4.20240512.0))':
     dependencies:
       '@babel/core': 7.24.9
       '@babel/generator': 7.24.10
@@ -14332,7 +14309,7 @@ snapshots:
       '@remix-run/serve': 2.10.3(typescript@5.5.3)
       typescript: 5.5.3
       vite: 5.3.4(@types/node@20.14.11)(terser@5.31.3)
-      wrangler: 3.65.1(@cloudflare/workers-types@4.20240512.0)
+      wrangler: 3.66.0(@cloudflare/workers-types@4.20240512.0)
     transitivePeerDependencies:
       - '@types/node'
       - babel-plugin-macros
@@ -17701,11 +17678,11 @@ snapshots:
     dependencies:
       flat-cache: 3.2.0
 
-  file-loader@6.2.0(webpack@5.91.0(esbuild@0.17.19)):
+  file-loader@6.2.0(webpack@5.91.0(esbuild@0.19.12)):
     dependencies:
       loader-utils: 2.0.4
       schema-utils: 3.3.0
-      webpack: 5.91.0(esbuild@0.17.19)
+      webpack: 5.91.0(esbuild@0.19.12)
 
   filelist@1.0.4:
     dependencies:
@@ -21026,16 +21003,16 @@ snapshots:
       type-fest: 2.19.0
       unique-string: 3.0.0
 
-  terser-webpack-plugin@5.3.10(esbuild@0.17.19)(webpack@5.91.0(esbuild@0.17.19)):
+  terser-webpack-plugin@5.3.10(esbuild@0.19.12)(webpack@5.91.0(esbuild@0.19.12)):
     dependencies:
       '@jridgewell/trace-mapping': 0.3.25
       jest-worker: 27.5.1
       schema-utils: 3.3.0
       serialize-javascript: 6.0.2
       terser: 5.31.3
-      webpack: 5.91.0(esbuild@0.17.19)
+      webpack: 5.91.0(esbuild@0.19.12)
     optionalDependencies:
-      esbuild: 0.17.19
+      esbuild: 0.19.12
 
   terser@5.31.3:
     dependencies:
@@ -21580,7 +21557,7 @@ snapshots:
 
   webpack-virtual-modules@0.5.0: {}
 
-  webpack@5.91.0(esbuild@0.17.19):
+  webpack@5.91.0(esbuild@0.19.12):
     dependencies:
       '@types/eslint-scope': 3.7.7
       '@types/estree': 1.0.5
@@ -21603,7 +21580,7 @@ snapshots:
       neo-async: 2.6.2
       schema-utils: 3.3.0
       tapable: 2.2.1
-      terser-webpack-plugin: 5.3.10(esbuild@0.17.19)(webpack@5.91.0(esbuild@0.17.19))
+      terser-webpack-plugin: 5.3.10(esbuild@0.19.12)(webpack@5.91.0(esbuild@0.19.12))
       watchpack: 2.4.1
       webpack-sources: 3.2.3
     transitivePeerDependencies:
@@ -21698,7 +21675,7 @@ snapshots:
       '@cloudflare/workerd-linux-arm64': 1.20240718.0
       '@cloudflare/workerd-windows-64': 1.20240718.0
 
-  wrangler@3.65.1(@cloudflare/workers-types@4.20240512.0):
+  wrangler@3.66.0(@cloudflare/workers-types@4.20240512.0):
     dependencies:
       '@cloudflare/kv-asset-handler': 0.3.4
       '@esbuild-plugins/node-globals-polyfill': 0.2.3(esbuild@0.17.19)
@@ -21715,6 +21692,7 @@ snapshots:
       selfsigned: 2.4.1
       source-map: 0.6.1
       unenv: unenv-nightly@1.10.0-1717606461.a117952
+      workerd: 1.20240718.0
       xxhash-wasm: 1.0.2
     optionalDependencies:
       '@cloudflare/workers-types': 4.20240512.0
