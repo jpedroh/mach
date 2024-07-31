@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@libsql/client':
-        specifier: ^0.7.0
-        version: 0.7.0
+        specifier: ^0.8.0
+        version: 0.8.0
       '@remix-run/cloudflare':
         specifier: ^2.10.3
         version: 2.10.3(@cloudflare/workers-types@4.20240512.0)(typescript@5.5.4)
@@ -40,7 +40,7 @@ importers:
         version: 0.7.0
       drizzle-orm:
         specifier: ^0.32.1
-        version: 0.32.1(@cloudflare/workers-types@4.20240512.0)(@libsql/client@0.7.0)(@opentelemetry/api@1.9.0)(@types/pg@8.6.1)(@types/react@18.3.3)(react@18.3.1)
+        version: 0.32.1(@cloudflare/workers-types@4.20240512.0)(@libsql/client@0.8.0)(@opentelemetry/api@1.9.0)(@types/pg@8.6.1)(@types/react@18.3.3)(react@18.3.1)
       fast-xml-parser:
         specifier: ^4.4.1
         version: 4.4.1
@@ -2258,11 +2258,11 @@ packages:
   '@jspm/core@2.0.1':
     resolution: {integrity: sha512-Lg3PnLp0QXpxwLIAuuJboLeRaIhrgJjeuh797QADg3xz8wGLugQOS5DpsE8A6i6Adgzf+bacllkKZG3J0tGfDw==}
 
-  '@libsql/client@0.7.0':
-    resolution: {integrity: sha512-1aLDtWzsErr68GZ640TVyOLkL/+lB2YK8cYvJIfiI7Mt+DEPB22Jkoz2QfBDg5PVGX/efeRHog2j/oVbUhxO8Q==}
+  '@libsql/client@0.8.0':
+    resolution: {integrity: sha512-ncx6p2wsaZtCAbRJCIkaTO14ya18qFYLJ1yTm5zHgwd9mlcvgenG4imSgJy2zNrKJkeyr1wzD+80jNqI7nCYoA==}
 
-  '@libsql/core@0.7.0':
-    resolution: {integrity: sha512-hCYfXa0S4t9CJtxZIWacboylrcx94ZQO0dEngH4f0f/LHg6ymHSZiubbojAwD7tNy94ahICoGPjEi6aEIyhlcQ==}
+  '@libsql/core@0.8.0':
+    resolution: {integrity: sha512-Bqs7bKfUNwm8NTLfKPbI4WME+3BTEBeDZTec0b9XZQ9hvjM4YlGXKKCuIDm8ECUYx4Mb1Gc0X14pm2/4r6ImdA==}
 
   '@libsql/darwin-arm64@0.3.18':
     resolution: {integrity: sha512-Zt49dt+cwhPCkuoWgvjbQd4ckNfCJR5xzIAyhgHl3CBZqZaEuaXTOGKLNQT7bnFRPuQcdLt5PBT1cenKu2N6pA==}
@@ -2274,8 +2274,8 @@ packages:
     cpu: [x64]
     os: [darwin]
 
-  '@libsql/hrana-client@0.6.0':
-    resolution: {integrity: sha512-k+fqzdjqg3IvWfKmVJK5StsbjeTcyNAXFelUbXbGNz3yH1gEVT9mZ6kmhsIXP30ZSyVV0AE1Gi25p82mxC9hwg==}
+  '@libsql/hrana-client@0.6.2':
+    resolution: {integrity: sha512-MWxgD7mXLNf9FXXiM0bc90wCjZSpErWKr5mGza7ERy2FJNNMXd7JIOv+DepBA1FQTIfI8TFO4/QDYgaQC0goNw==}
 
   '@libsql/isomorphic-fetch@0.2.1':
     resolution: {integrity: sha512-Sv07QP1Aw8A5OOrmKgRUBKe2fFhF2hpGJhtHe3d1aRnTESZCGkn//0zDycMKTGamVWb3oLYRroOsCV8Ukes9GA==}
@@ -10372,7 +10372,7 @@ snapshots:
 
   '@aws-sdk/credential-provider-web-identity@3.577.0(@aws-sdk/client-sts@3.577.0)':
     dependencies:
-      '@aws-sdk/client-sts': 3.577.0(@aws-sdk/client-sso-oidc@3.577.0)
+      '@aws-sdk/client-sts': 3.577.0
       '@aws-sdk/types': 3.577.0
       '@smithy/property-provider': 3.0.0
       '@smithy/types': 3.0.0
@@ -12282,10 +12282,10 @@ snapshots:
 
   '@jspm/core@2.0.1': {}
 
-  '@libsql/client@0.7.0':
+  '@libsql/client@0.8.0':
     dependencies:
-      '@libsql/core': 0.7.0
-      '@libsql/hrana-client': 0.6.0
+      '@libsql/core': 0.8.0
+      '@libsql/hrana-client': 0.6.2
       js-base64: 3.7.7
       libsql: 0.3.18
       promise-limit: 2.7.0
@@ -12293,7 +12293,7 @@ snapshots:
       - bufferutil
       - utf-8-validate
 
-  '@libsql/core@0.7.0':
+  '@libsql/core@0.8.0':
     dependencies:
       js-base64: 3.7.7
 
@@ -12303,7 +12303,7 @@ snapshots:
   '@libsql/darwin-x64@0.3.18':
     optional: true
 
-  '@libsql/hrana-client@0.6.0':
+  '@libsql/hrana-client@0.6.2':
     dependencies:
       '@libsql/isomorphic-fetch': 0.2.1
       '@libsql/isomorphic-ws': 0.1.5
@@ -16986,10 +16986,10 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  drizzle-orm@0.32.1(@cloudflare/workers-types@4.20240512.0)(@libsql/client@0.7.0)(@opentelemetry/api@1.9.0)(@types/pg@8.6.1)(@types/react@18.3.3)(react@18.3.1):
+  drizzle-orm@0.32.1(@cloudflare/workers-types@4.20240512.0)(@libsql/client@0.8.0)(@opentelemetry/api@1.9.0)(@types/pg@8.6.1)(@types/react@18.3.3)(react@18.3.1):
     optionalDependencies:
       '@cloudflare/workers-types': 4.20240512.0
-      '@libsql/client': 0.7.0
+      '@libsql/client': 0.8.0
       '@opentelemetry/api': 1.9.0
       '@types/pg': 8.6.1
       '@types/react': 18.3.3
