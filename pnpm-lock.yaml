@@ -163,8 +163,8 @@ importers:
         specifier: ^16.4.5
         version: 16.4.5
       drizzle-kit:
-        specifier: ^0.23.2
-        version: 0.23.2
+        specifier: ^0.24.0
+        version: 0.24.0
       eslint:
         specifier: ^8.57.0
         version: 8.57.0
@@ -5477,8 +5477,8 @@ packages:
     resolution: {integrity: sha512-ZmdL2rui+eB2YwhsWzjInR8LldtZHGDoQ1ugH85ppHKwpUHL7j7rN0Ti9NCnGiQbhaZ11FpR+7ao1dNsmduNUg==}
     engines: {node: '>=12'}
 
-  drizzle-kit@0.23.2:
-    resolution: {integrity: sha512-NWkQ7GD2OTbQ7HzcjsaCOf3n0tlFPSEAF38fvDpwDj8jRbGWGFtN2cD8I8wp4lU+5Os/oyP2xycTKGLHdPipUw==}
+  drizzle-kit@0.24.0:
+    resolution: {integrity: sha512-rUl5Rf5HLOVkAwHEVEi8xgulIRWzoys0q77RHGCxv5e9v8AI3JGFg7Ug5K1kn513RwNZbuNJMUKOXo0j8kPRgg==}
     hasBin: true
 
   drizzle-orm@0.32.1:
@@ -12567,6 +12567,21 @@ snapshots:
       - typescript
       - verdaccio
 
+  '@nrwl/js@19.5.6(@babel/traverse@7.25.3)(@types/node@20.14.12)(nx@19.5.6)(typescript@5.5.4)':
+    dependencies:
+      '@nx/js': 19.5.6(@babel/traverse@7.25.3)(@types/node@20.14.12)(nx@19.5.6)(typescript@5.5.4)
+    transitivePeerDependencies:
+      - '@babel/traverse'
+      - '@swc-node/register'
+      - '@swc/core'
+      - '@swc/wasm'
+      - '@types/node'
+      - debug
+      - nx
+      - supports-color
+      - typescript
+      - verdaccio
+
   '@nrwl/react@19.5.6(@babel/traverse@7.25.3)(@types/node@20.14.12)(@zkochan/js-yaml@0.0.7)(eslint@8.57.0)(nx@19.5.6)(typescript@5.5.4)(webpack@5.91.0(esbuild@0.17.19))':
     dependencies:
       '@nx/react': 19.5.6(@babel/traverse@7.25.3)(@types/node@20.14.12)(@zkochan/js-yaml@0.0.7)(eslint@8.57.0)(nx@19.5.6)(typescript@5.5.4)(webpack@5.91.0(esbuild@0.17.19))
@@ -12765,7 +12780,7 @@ snapshots:
       '@babel/preset-env': 7.25.3(@babel/core@7.25.2)
       '@babel/preset-typescript': 7.24.7(@babel/core@7.25.2)
       '@babel/runtime': 7.25.0
-      '@nrwl/js': 19.5.6(@babel/traverse@7.25.3)(@types/node@20.14.12)(nx@19.5.6)(typescript@5.4.5)
+      '@nrwl/js': 19.5.6(@babel/traverse@7.25.3)(@types/node@20.14.12)(nx@19.5.6)(typescript@5.5.4)
       '@nx/devkit': 19.5.6(nx@19.5.6)
       '@nx/workspace': 19.5.6
       babel-plugin-const-enum: 1.2.0(@babel/core@7.25.2)
@@ -16918,7 +16933,7 @@ snapshots:
 
   dotenv@16.4.5: {}
 
-  drizzle-kit@0.23.2:
+  drizzle-kit@0.24.0:
     dependencies:
       '@drizzle-team/brocli': 0.8.2
       '@esbuild-kit/esm-loader': 2.6.5
