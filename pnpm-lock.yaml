@@ -115,8 +115,8 @@ importers:
         specifier: ^10.0.1
         version: 10.0.1(semantic-release@24.0.0(typescript@5.5.4))
       '@sentry/vite-plugin':
-        specifier: ^2.21.1
-        version: 2.21.1
+        specifier: ^2.22.0
+        version: 2.22.0
       '@testing-library/dom':
         specifier: ^10.4.0
         version: 10.4.0
@@ -3599,16 +3599,16 @@ packages:
     resolution: {integrity: sha512-+3d+3Ln7iDOZo2wOBv7EWojVHigEskjKsz8vR3WFdxYyue8e3zPQ/xg/t9A6BtEVRPQsEyhM3oN6LyjqFv2nfg==}
     engines: {node: '>=14.18'}
 
-  '@sentry/babel-plugin-component-annotate@2.21.1':
-    resolution: {integrity: sha512-u1L8gZ4He0WdyiIsohYkA/YOY1b6Oa5yIMRtfZZ9U5TiWYLgOfMWyb88X0GotZeghSbgxrse/yI4WeHnhAUQDQ==}
+  '@sentry/babel-plugin-component-annotate@2.22.0':
+    resolution: {integrity: sha512-UzH+NNhgnOo6UFku3C4TEz+pO/yDcIA5FKTJvLbJ7lQwAjsqLs3DZWm4cCA08skICb8mULArF6S/dn5/butVCA==}
     engines: {node: '>= 14'}
 
   '@sentry/browser@8.24.0':
     resolution: {integrity: sha512-WdCLUoMAE0ZWsZDb3G/FQI5YgkH59VVEpnPqrWI08m2KuqLz8eU724JZvNzaDv/L2yzksgS4HDDUXkNRzDeCrQ==}
     engines: {node: '>=14.18'}
 
-  '@sentry/bundler-plugin-core@2.21.1':
-    resolution: {integrity: sha512-F8FdL/bS8cy1SY1Gw0Mfo3ROTqlrq9Lvt5QGvhXi22dpVcDkWmoTWE2k+sMEnXOa8SdThMc/gyC8lMwHGd3kFQ==}
+  '@sentry/bundler-plugin-core@2.22.0':
+    resolution: {integrity: sha512-/xXN8o7565WMsewBnQFfjm0E5wqhYsegg++HJ5RjrY/cTM4qcd/ven44GEMxqGFJitZizvkk3NHszaHylzcRUw==}
     engines: {node: '>= 14'}
 
   '@sentry/cli-darwin@2.33.1':
@@ -3698,8 +3698,8 @@ packages:
     resolution: {integrity: sha512-AGo5PldxCJYn3g0IYXeBkeALNa+NieJaaCDpYyzrKAFdxoA6Qp+Z/wmN9m5BYZ9eHx9N+xMOoz2aIh4hG48VbQ==}
     engines: {node: '>=14.18'}
 
-  '@sentry/vite-plugin@2.21.1':
-    resolution: {integrity: sha512-i2PqeLafGBcSROnmr9mS0dL2/JBJji/4rJZ2U2A+tqtAhDAAaCUNalbn6xLp/hawLExt/wRuBj1J7j46sGDOaA==}
+  '@sentry/vite-plugin@2.22.0':
+    resolution: {integrity: sha512-U1dWldo3gb1oDqERgiSM7zexMwAuqiXO/YUO3xVSpWmhoHz2AqxOcfIX1SygW02NF7Ss3ay4qMAta8PbvdsrnQ==}
     engines: {node: '>= 14'}
 
   '@sinclair/typebox@0.27.8':
@@ -12567,21 +12567,6 @@ snapshots:
       - typescript
       - verdaccio
 
-  '@nrwl/js@19.5.6(@babel/traverse@7.25.3)(@types/node@20.14.12)(nx@19.5.6)(typescript@5.5.4)':
-    dependencies:
-      '@nx/js': 19.5.6(@babel/traverse@7.25.3)(@types/node@20.14.12)(nx@19.5.6)(typescript@5.5.4)
-    transitivePeerDependencies:
-      - '@babel/traverse'
-      - '@swc-node/register'
-      - '@swc/core'
-      - '@swc/wasm'
-      - '@types/node'
-      - debug
-      - nx
-      - supports-color
-      - typescript
-      - verdaccio
-
   '@nrwl/react@19.5.6(@babel/traverse@7.25.3)(@types/node@20.14.12)(@zkochan/js-yaml@0.0.7)(eslint@8.57.0)(nx@19.5.6)(typescript@5.5.4)(webpack@5.91.0(esbuild@0.17.19))':
     dependencies:
       '@nx/react': 19.5.6(@babel/traverse@7.25.3)(@types/node@20.14.12)(@zkochan/js-yaml@0.0.7)(eslint@8.57.0)(nx@19.5.6)(typescript@5.5.4)(webpack@5.91.0(esbuild@0.17.19))
@@ -12780,7 +12765,7 @@ snapshots:
       '@babel/preset-env': 7.25.3(@babel/core@7.25.2)
       '@babel/preset-typescript': 7.24.7(@babel/core@7.25.2)
       '@babel/runtime': 7.25.0
-      '@nrwl/js': 19.5.6(@babel/traverse@7.25.3)(@types/node@20.14.12)(nx@19.5.6)(typescript@5.5.4)
+      '@nrwl/js': 19.5.6(@babel/traverse@7.25.3)(@types/node@20.14.12)(nx@19.5.6)(typescript@5.4.5)
       '@nx/devkit': 19.5.6(nx@19.5.6)
       '@nx/workspace': 19.5.6
       babel-plugin-const-enum: 1.2.0(@babel/core@7.25.2)
@@ -14598,7 +14583,7 @@ snapshots:
       '@sentry/types': 8.24.0
       '@sentry/utils': 8.24.0
 
-  '@sentry/babel-plugin-component-annotate@2.21.1': {}
+  '@sentry/babel-plugin-component-annotate@2.22.0': {}
 
   '@sentry/browser@8.24.0':
     dependencies:
@@ -14610,10 +14595,10 @@ snapshots:
       '@sentry/types': 8.24.0
       '@sentry/utils': 8.24.0
 
-  '@sentry/bundler-plugin-core@2.21.1':
+  '@sentry/bundler-plugin-core@2.22.0':
     dependencies:
       '@babel/core': 7.25.2
-      '@sentry/babel-plugin-component-annotate': 2.21.1
+      '@sentry/babel-plugin-component-annotate': 2.22.0
       '@sentry/cli': 2.33.1
       dotenv: 16.4.5
       find-up: 5.0.0
@@ -14756,9 +14741,9 @@ snapshots:
     dependencies:
       '@sentry/types': 8.24.0
 
-  '@sentry/vite-plugin@2.21.1':
+  '@sentry/vite-plugin@2.22.0':
     dependencies:
-      '@sentry/bundler-plugin-core': 2.21.1
+      '@sentry/bundler-plugin-core': 2.22.0
       unplugin: 1.0.1
     transitivePeerDependencies:
       - encoding
@@ -21332,7 +21317,7 @@ snapshots:
 
   unplugin@1.0.1:
     dependencies:
-      acorn: 8.11.3
+      acorn: 8.12.1
       chokidar: 3.6.0
       webpack-sources: 3.2.3
       webpack-virtual-modules: 0.5.0
