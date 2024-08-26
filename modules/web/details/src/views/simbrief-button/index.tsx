@@ -12,7 +12,6 @@ type Props = {
     | 'aircraftIcaoCode'
     | 'departureIcao'
     | 'arrivalIcao'
-    | 'estimatedOffBlockTime'
     | 'route'
     | 'estimatedEnrouteMinutes'
     | 'cruisingLevel'
@@ -27,8 +26,6 @@ export function SimBriefButton({ flight }: Props) {
     type: flight.aircraftIcaoCode,
     orig: flight.departureIcao,
     dest: flight.arrivalIcao,
-    deph: flight.estimatedOffBlockTime.substr(0, 2),
-    depm: flight.estimatedOffBlockTime.substr(2, 2),
     route: flight.route,
     steh: Math.floor(flight.estimatedEnrouteMinutes / 60).toString(),
     stem: (flight.estimatedEnrouteMinutes % 60).toString(),
