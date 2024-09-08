@@ -42,8 +42,8 @@ importers:
         specifier: ^0.33.0
         version: 0.33.0(@cloudflare/workers-types@4.20240512.0)(@libsql/client@0.10.0)(@opentelemetry/api@1.9.0)(@types/pg@8.6.1)(@types/react@18.3.4)(react@18.3.1)
       fast-xml-parser:
-        specifier: ^4.4.1
-        version: 4.4.1
+        specifier: ^4.5.0
+        version: 4.5.0
       isbot:
         specifier: '5'
         version: 5.1.17
@@ -6125,6 +6125,10 @@ packages:
 
   fast-xml-parser@4.4.1:
     resolution: {integrity: sha512-xkjOecfnKGkSsOwtZ5Pz7Us/T6mrbPQrq0nh+aCO5V9nk5NLWmasAHumTKjiPJPWANe+kAZ84Jc8ooJkzZ88Sw==}
+    hasBin: true
+
+  fast-xml-parser@4.5.0:
+    resolution: {integrity: sha512-/PlTQCI96+fZMAOLMZK4CWG1ItCbfZ/0jx7UIJFChPNrx7tcEgerUgWbeieCM9MfHInUDyK8DWYZ+YrywDJuTg==}
     hasBin: true
 
   fastq@1.17.1:
@@ -18204,6 +18208,10 @@ snapshots:
   fast-uri@3.0.1: {}
 
   fast-xml-parser@4.4.1:
+    dependencies:
+      strnum: 1.0.5
+
+  fast-xml-parser@4.5.0:
     dependencies:
       strnum: 1.0.5
 
