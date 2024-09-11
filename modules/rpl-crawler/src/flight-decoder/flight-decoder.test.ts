@@ -87,4 +87,10 @@ describe('flight-decoder', () => {
     )
     expect(flight.flightRules).toEqual('IFR')
   })
+
+  test('Route with airport containing numbers on ICAO', () => {
+    const line = `   070924 100924 0200060 ACN5135 C208/L SN6L1330 N0155 085 DCT                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              SWBE0015 EQPT/SDFGR/S PBN/B2C2D2O2S1 OPR/AZUL CONECTA LTDA PER/A RMK/JAH VOADO VMC`
+    const flight = flightDecoder(line)
+    expect(flight.route).toEqual('DCT')
+  })
 })

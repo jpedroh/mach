@@ -25,7 +25,7 @@ const makeFlightDecoder = ({ uuid }: { uuid: (line: string) => string }) => {
     const cruisingSpeed = line.substring(46, 51)
     const cruisingLevel = Number(line.substring(52, 55))
     const route = line
-      .match(/(?<=[A-Z]{4}\d{4} N\d{4} \d{3} ).+(?= {2})/)![0]
+      .match(/(?<=[A-Z0-9]{4}\d{4} N\d{4} \d{3} ).+(?= {2})/)![0]
       .trim()
     const rightPadStart = line.lastIndexOf('  ') + 2
     const arrivalIcao = line.substring(rightPadStart, rightPadStart + 4).trim()
