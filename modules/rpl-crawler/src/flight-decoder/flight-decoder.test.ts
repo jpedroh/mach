@@ -57,4 +57,34 @@ describe('flight-decoder', () => {
     )
     expect(flight.flightRules).toEqual('IFR')
   })
+
+  test('Fonfs bug', () => {
+    const line = `   290824 UFN    0234560 TTL5683 B734/M SBGL0720 N0440 330 TISVA UL206 TODET                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                SBVT0045 EQPT/SDFGHIRW/SB1 PBN/B2D2O2S1 NAV/GNSS PER/C EET/SBRE0032 OPR/TOTAL LINHAS AEREAS SA`
+    const flight = flightDecoder(line)
+
+    expect(flight.callsign).toEqual('TTL5683')
+    expect(flight.company).toEqual('TTL')
+    expect(flight.flightNumber).toEqual(5683)
+    expect(flight.aircraftIcaoCode).toEqual('B734')
+    expect(flight.aircraftWakeTurbulence).toEqual('M')
+    expect(flight.aircraftEquipment).toEqual('SDFGHIRW/SB1')
+    expect(flight.departureIcao).toEqual('SBGL')
+    expect(flight.estimatedOffBlockTime).toEqual('0720')
+    expect(flight.cruisingSpeed).toEqual('N0440')
+    expect(flight.cruisingLevel).toEqual(330)
+    expect(flight.weekdays).toEqual([
+      'TUESDAY',
+      'WEDNESDAY',
+      'THURSDAY',
+      'FRIDAY',
+      'SATURDAY',
+    ])
+    expect(flight.route).toEqual('TISVA UL206 TODET')
+    expect(flight.arrivalIcao).toEqual('SBVT')
+    expect(flight.estimatedEnrouteMinutes).toEqual(45)
+    expect(flight.remarks).toEqual(
+      'EQPT/SDFGHIRW/SB1 PBN/B2D2O2S1 NAV/GNSS PER/C EET/SBRE0032 OPR/TOTAL LINHAS AEREAS SA'
+    )
+    expect(flight.flightRules).toEqual('IFR')
+  })
 })
