@@ -1,7 +1,7 @@
 import { createClient } from '@libsql/client'
+import { AppLoadContext } from '@remix-run/cloudflare'
 import { drizzle } from 'drizzle-orm/libsql'
 import * as schema from './schema'
-import { AppLoadContext } from '@remix-run/cloudflare'
 
 const client = createClient({
   url: process.env.TURSO_CONNECTION_URL,

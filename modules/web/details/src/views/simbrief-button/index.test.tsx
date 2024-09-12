@@ -1,7 +1,7 @@
-import { describe, test, expect } from 'vitest'
-import { SimBriefButton } from '.'
-import { render, screen } from '@testing-library/react'
 import { randomUUID } from 'crypto'
+import { render, screen } from '@testing-library/react'
+import { describe, expect, test } from 'vitest'
+import { SimBriefButton } from '.'
 
 describe('SimBriefButton', () => {
   test('It builds the correct URL for Simbrief', () => {

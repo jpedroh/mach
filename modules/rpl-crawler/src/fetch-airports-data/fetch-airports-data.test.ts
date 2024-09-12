@@ -1,4 +1,4 @@
-import { test, expect } from 'vitest'
+import { expect, test } from 'vitest'
 import { makeFetchAirportsData } from './fetch-airports-data'
 
 const fetchAirportsData = makeFetchAirportsData({

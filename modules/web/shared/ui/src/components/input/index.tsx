@@ -1,6 +1,6 @@
 import {
-  InputProps as RACInputProps,
   Input as RACInput,
+  InputProps as RACInputProps,
 } from 'react-aria-components'
 import { twc } from 'react-twc'
 

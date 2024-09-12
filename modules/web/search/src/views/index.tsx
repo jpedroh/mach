@@ -1,3 +1,4 @@
+import { makeDatabaseConnection } from '@mach/shared-database'
 import { Link } from '@mach/web-shared-ui'
 import { Layout, Lead } from '@mach/web-shared-ui'
 import { LoaderFunctionArgs } from '@remix-run/cloudflare'
@@ -8,7 +9,6 @@ import {
   searchFlightsQuerySchema,
 } from '../services/fetch-flights'
 import { FlightsTable } from './flights-table'
-import { makeDatabaseConnection } from '@mach/shared-database'
 
 export const loader = serverOnly$(
   ({ request, context }: LoaderFunctionArgs) => {

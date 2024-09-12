@@ -1,8 +1,8 @@
 import { makeDatabaseConnection } from '@mach/shared-database'
 import {
-  json,
   type HeadersFunction,
   type LoaderFunctionArgs,
+  json,
 } from '@remix-run/cloudflare'
 import * as Sentry from '@sentry/remix'
 import { fetchFlights, fetchFlightsSchema } from '../services/fetch-flights'

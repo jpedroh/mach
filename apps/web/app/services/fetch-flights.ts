@@ -1,8 +1,8 @@
 import {
   type DatabaseConnection,
+  Flight,
   cycles,
   flights,
-  Flight,
 } from '@mach/shared-database'
 import { and, eq, sql } from 'drizzle-orm'
 import z from 'zod'
