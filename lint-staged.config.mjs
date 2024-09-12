@@ -1,3 +1,3 @@
 export default {
-  '*': ['nx format:write --files'],
+  '*': ['pnpm biome format --write'],
 }

@@ -1,4 +1,4 @@
-import type { MetaFunction, HeadersFunction } from '@remix-run/cloudflare'
+import type { HeadersFunction, MetaFunction } from '@remix-run/cloudflare'
 
 export const meta: MetaFunction = () => {
   return [

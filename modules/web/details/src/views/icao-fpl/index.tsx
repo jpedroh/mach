@@ -1,7 +1,7 @@
 import { Flight } from '@mach/shared-database'
+import { twc } from 'react-twc'
 import { formatEet } from '../../utils/format-eet'
 import { formatFlightRules } from '../../utils/format-flight-rules'
-import { twc } from 'react-twc'
 
 type Props = {
   flight: Flight

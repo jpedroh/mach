@@ -1,6 +1,6 @@
-import { readFile } from 'fs/promises'
 import { join } from 'path'
-import { test, expect } from 'vitest'
+import { readFile } from 'fs/promises'
+import { expect, test } from 'vitest'
 import rplFileLinesExtractor from '.'
 
 test('It extracts the lines from the zip file', async () => {
