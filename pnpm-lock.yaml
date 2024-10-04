@@ -113,10 +113,10 @@ importers:
         version: 2.12.1(@remix-run/react@2.12.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.6.2))(@remix-run/serve@2.12.1(typescript@5.6.2))(@types/node@22.5.5)(less@4.1.3)(sass@1.79.4)(stylus@0.59.0)(terser@5.34.1)(ts-node@10.9.1(@types/node@22.5.5)(typescript@5.6.2))(typescript@5.6.2)(vite@5.4.6(@types/node@22.5.5)(less@4.1.3)(sass@1.79.4)(stylus@0.59.0)(terser@5.34.1))(wrangler@3.78.6(@cloudflare/workers-types@4.20240512.0))
       '@semantic-release/exec':
         specifier: ^6.0.0
-        version: 6.0.3(semantic-release@24.1.1(typescript@5.6.2))
+        version: 6.0.3(semantic-release@24.1.2(typescript@5.6.2))
       '@semantic-release/git':
         specifier: ^10.0.1
-        version: 10.0.1(semantic-release@24.1.1(typescript@5.6.2))
+        version: 10.0.1(semantic-release@24.1.2(typescript@5.6.2))
       '@sentry/vite-plugin':
         specifier: ^2.22.4
         version: 2.22.4
@@ -208,8 +208,8 @@ importers:
         specifier: 18.3.1
         version: 18.3.1(react@18.3.1)
       semantic-release:
-        specifier: ^24.1.0
-        version: 24.1.1(typescript@5.6.2)
+        specifier: ^24.1.2
+        version: 24.1.2(typescript@5.6.2)
       tailwindcss:
         specifier: ^3.4.13
         version: 3.4.13(ts-node@10.9.1(@types/node@22.5.5)(typescript@5.6.2))
@@ -3747,11 +3747,11 @@ packages:
     peerDependencies:
       semantic-release: '>=18.0.0'
 
-  '@semantic-release/github@10.0.3':
-    resolution: {integrity: sha512-nSJQboKrG4xBn7hHpRMrK8lt5DgqJg50ZMz9UbrsfTxuRk55XVoQEadbGZ2L9M0xZAC6hkuwkDhQJKqfPU35Fw==}
+  '@semantic-release/github@11.0.0':
+    resolution: {integrity: sha512-Uon6G6gJD8U1JNvPm7X0j46yxNRJ8Ui6SgK4Zw5Ktu8RgjEft3BGn+l/RX1TTzhhO3/uUcKuqM+/9/ETFxWS/Q==}
     engines: {node: '>=20.8.1'}
     peerDependencies:
-      semantic-release: '>=20.1.0'
+      semantic-release: '>=24.1.0'
 
   '@semantic-release/npm@12.0.0':
     resolution: {integrity: sha512-72TVYQCH9NvVsO/y13eF8vE4bNnfls518+4KcFwJUKi7AtA/ZXoNgSg9gTTfw5eMZMkiH0izUrpGXgZE/cSQhA==}
@@ -5722,15 +5722,6 @@ packages:
       supports-color:
         optional: true
 
-  debug@4.3.5:
-    resolution: {integrity: sha512-pt0bNEmneDIvdL1Xsd9oDQ/wrQRkXDT4AUWlNZNPKvW5x/jyO9VFXkJUP07vQ2upmw5PlaITaPKc31jK13V+jg==}
-    engines: {node: '>=6.0'}
-    peerDependencies:
-      supports-color: '*'
-    peerDependenciesMeta:
-      supports-color:
-        optional: true
-
   debug@4.3.7:
     resolution: {integrity: sha512-Er2nc/H7RrMXZBFCEim6TCmMk02Z8vLC2Rbi1KEBggpo0fS6l0S1nnapwmIi3yW/+GOJap1Krg4w0Hg80oCqgQ==}
     engines: {node: '>=6.0'}
@@ -7648,10 +7639,6 @@ packages:
   lower-case@2.0.2:
     resolution: {integrity: sha512-7fm3l3NAF9WfN6W3JOmf5drwpVqX78JtoGJ3A6W0a6ZnldM41w2fV5D490psKFTpMds8TJse/eHLFFsNHHjHgg==}
 
-  lru-cache@10.2.2:
-    resolution: {integrity: sha512-9hp3Vp2/hFQUiIwKo8XCeFVnrg8Pk3TYNPIR7tJADKi5YfcF7vEaK7avFHTlSy3kOKYaJQaalfEo6YuXdceBOQ==}
-    engines: {node: 14 || >=16.14}
-
   lru-cache@10.4.3:
     resolution: {integrity: sha512-JNAzZcXrCt42VGLuYz0zfAzDfAvJWW6AfYlDBQyDV5DClI2m5sAmK+OIO7s59XfsRsWHp02jAJrRadPRGTt6SQ==}
 
@@ -9350,8 +9337,8 @@ packages:
     resolution: {integrity: sha512-th5B4L2U+eGLq1TVh7zNRGBapioSORUeymIydxgFpwww9d2qyKvtuPU2jJuHvYAwwqi2Y596QBL3eEqcPEYL8Q==}
     engines: {node: '>=10'}
 
-  semantic-release@24.1.1:
-    resolution: {integrity: sha512-4Ax2GxD411jUe9IdhOjMLuN+6wAj+aKjvOGngByrpD/iKL+UKN/2puQglhyI4gxNyy9XzEBMzBwbqpnEwbXGEg==}
+  semantic-release@24.1.2:
+    resolution: {integrity: sha512-hvEJ7yI97pzJuLsDZCYzJgmRxF8kiEJvNZhf0oiZQcexw+Ycjy4wbdsn/sVMURgNCu8rwbAXJdBRyIxM4pe32g==}
     engines: {node: '>=20.8.1'}
     hasBin: true
 
@@ -9369,11 +9356,6 @@ packages:
 
   semver@6.3.1:
     resolution: {integrity: sha512-BR7VvDCVHO+q2xBEWskxS6DJE1qRnb7DxzUrogb71CWoSficBxYsiAGd+Kl0mmq/MprG9yArRkyrQxTO6XjMzA==}
-    hasBin: true
-
-  semver@7.6.2:
-    resolution: {integrity: sha512-FNAIBWCx9qcRhoHcgcJ0gvU7SN1lYU2ZXuSfl04bSC5OpvDHFyJCjdNHomPXxjQlCBU67YW64PzY7/VIEH7F2w==}
-    engines: {node: '>=10'}
     hasBin: true
 
   semver@7.6.3:
@@ -15677,7 +15659,7 @@ snapshots:
 
   '@sec-ant/readable-stream@0.4.1': {}
 
-  '@semantic-release/commit-analyzer@13.0.0(semantic-release@24.1.1(typescript@5.6.2))':
+  '@semantic-release/commit-analyzer@13.0.0(semantic-release@24.1.2(typescript@5.6.2))':
     dependencies:
       conventional-changelog-angular: 8.0.0
       conventional-changelog-writer: 8.0.0
@@ -15687,7 +15669,7 @@ snapshots:
       import-from-esm: 1.3.4
       lodash-es: 4.17.21
       micromatch: 4.0.8
-      semantic-release: 24.1.1(typescript@5.6.2)
+      semantic-release: 24.1.2(typescript@5.6.2)
     transitivePeerDependencies:
       - supports-color
 
@@ -15695,7 +15677,7 @@ snapshots:
 
   '@semantic-release/error@4.0.0': {}
 
-  '@semantic-release/exec@6.0.3(semantic-release@24.1.1(typescript@5.6.2))':
+  '@semantic-release/exec@6.0.3(semantic-release@24.1.2(typescript@5.6.2))':
     dependencies:
       '@semantic-release/error': 3.0.0
       aggregate-error: 3.1.0
@@ -15703,11 +15685,11 @@ snapshots:
       execa: 5.1.1
       lodash: 4.17.21
       parse-json: 5.2.0
-      semantic-release: 24.1.1(typescript@5.6.2)
+      semantic-release: 24.1.2(typescript@5.6.2)
     transitivePeerDependencies:
       - supports-color
 
-  '@semantic-release/git@10.0.1(semantic-release@24.1.1(typescript@5.6.2))':
+  '@semantic-release/git@10.0.1(semantic-release@24.1.2(typescript@5.6.2))':
     dependencies:
       '@semantic-release/error': 3.0.0
       aggregate-error: 3.1.0
@@ -15717,11 +15699,11 @@ snapshots:
       lodash: 4.17.21
       micromatch: 4.0.5
       p-reduce: 2.1.0
-      semantic-release: 24.1.1(typescript@5.6.2)
+      semantic-release: 24.1.2(typescript@5.6.2)
     transitivePeerDependencies:
       - supports-color
 
-  '@semantic-release/github@10.0.3(semantic-release@24.1.1(typescript@5.6.2))':
+  '@semantic-release/github@11.0.0(semantic-release@24.1.2(typescript@5.6.2))':
     dependencies:
       '@octokit/core': 6.1.2
       '@octokit/plugin-paginate-rest': 11.3.0(@octokit/core@6.1.2)
@@ -15738,12 +15720,12 @@ snapshots:
       lodash-es: 4.17.21
       mime: 4.0.3
       p-filter: 4.1.0
-      semantic-release: 24.1.1(typescript@5.6.2)
+      semantic-release: 24.1.2(typescript@5.6.2)
       url-join: 5.0.0
     transitivePeerDependencies:
       - supports-color
 
-  '@semantic-release/npm@12.0.0(semantic-release@24.1.1(typescript@5.6.2))':
+  '@semantic-release/npm@12.0.0(semantic-release@24.1.2(typescript@5.6.2))':
     dependencies:
       '@semantic-release/error': 4.0.0
       aggregate-error: 5.0.0
@@ -15756,11 +15738,11 @@ snapshots:
       rc: 1.2.8
       read-pkg: 9.0.1
       registry-auth-token: 5.0.2
-      semantic-release: 24.1.1(typescript@5.6.2)
-      semver: 7.6.2
+      semantic-release: 24.1.2(typescript@5.6.2)
+      semver: 7.6.3
       tempy: 3.1.0
 
-  '@semantic-release/release-notes-generator@14.0.1(semantic-release@24.1.1(typescript@5.6.2))':
+  '@semantic-release/release-notes-generator@14.0.1(semantic-release@24.1.2(typescript@5.6.2))':
     dependencies:
       conventional-changelog-angular: 8.0.0
       conventional-changelog-writer: 8.0.0
@@ -15772,7 +15754,7 @@ snapshots:
       into-stream: 7.0.0
       lodash-es: 4.17.21
       read-package-up: 11.0.0
-      semantic-release: 24.1.1(typescript@5.6.2)
+      semantic-release: 24.1.2(typescript@5.6.2)
     transitivePeerDependencies:
       - supports-color
 
@@ -18253,10 +18235,6 @@ snapshots:
     dependencies:
       ms: 2.1.2
 
-  debug@4.3.5:
-    dependencies:
-      ms: 2.1.2
-
   debug@4.3.7:
     dependencies:
       ms: 2.1.3
@@ -19586,7 +19564,7 @@ snapshots:
 
   hosted-git-info@8.0.0:
     dependencies:
-      lru-cache: 10.2.2
+      lru-cache: 10.4.3
 
   hpack.js@2.1.6:
     dependencies:
@@ -20439,8 +20417,6 @@ snapshots:
   lower-case@2.0.2:
     dependencies:
       tslib: 2.7.0
-
-  lru-cache@10.2.2: {}
 
   lru-cache@10.4.3: {}
 
@@ -22384,16 +22360,16 @@ snapshots:
       '@types/node-forge': 1.3.11
       node-forge: 1.3.1
 
-  semantic-release@24.1.1(typescript@5.6.2):
+  semantic-release@24.1.2(typescript@5.6.2):
     dependencies:
-      '@semantic-release/commit-analyzer': 13.0.0(semantic-release@24.1.1(typescript@5.6.2))
+      '@semantic-release/commit-analyzer': 13.0.0(semantic-release@24.1.2(typescript@5.6.2))
       '@semantic-release/error': 4.0.0
-      '@semantic-release/github': 10.0.3(semantic-release@24.1.1(typescript@5.6.2))
-      '@semantic-release/npm': 12.0.0(semantic-release@24.1.1(typescript@5.6.2))
-      '@semantic-release/release-notes-generator': 14.0.1(semantic-release@24.1.1(typescript@5.6.2))
+      '@semantic-release/github': 11.0.0(semantic-release@24.1.2(typescript@5.6.2))
+      '@semantic-release/npm': 12.0.0(semantic-release@24.1.2(typescript@5.6.2))
+      '@semantic-release/release-notes-generator': 14.0.1(semantic-release@24.1.2(typescript@5.6.2))
       aggregate-error: 5.0.0
       cosmiconfig: 9.0.0(typescript@5.6.2)
-      debug: 4.3.5
+      debug: 4.3.7
       env-ci: 11.0.0
       execa: 9.0.2
       figures: 6.1.0
@@ -22406,12 +22382,12 @@ snapshots:
       lodash-es: 4.17.21
       marked: 12.0.2
       marked-terminal: 7.0.0(marked@12.0.2)
-      micromatch: 4.0.7
+      micromatch: 4.0.8
       p-each-series: 3.0.0
       p-reduce: 3.0.0
       read-package-up: 11.0.0
       resolve-from: 5.0.0
-      semver: 7.6.2
+      semver: 7.6.3
       semver-diff: 4.0.0
       signale: 1.4.0
       yargs: 17.7.2
@@ -22421,7 +22397,7 @@ snapshots:
 
   semver-diff@4.0.0:
     dependencies:
-      semver: 7.6.2
+      semver: 7.6.3
 
   semver-regex@4.0.5: {}
 
@@ -22429,8 +22405,6 @@ snapshots:
     optional: true
 
   semver@6.3.1: {}
-
-  semver@7.6.2: {}
 
   semver@7.6.3: {}
 
