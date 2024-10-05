@@ -2,12 +2,13 @@ import {
   Airport,
   Flight,
   airports as airportsSchema,
-  companies,
-  cycles,
+  companies as companiesSchema,
+  cycles as cyclesSchema,
   db,
   flights as flightsSchema,
 } from '@mach/shared-database'
 import { inArray } from 'drizzle-orm'
+import Logger from '../utils/logger'
 
 function sliceArray<T>(items: T[]) {
   const response: T[][] = []
@@ -36,30 +37,50 @@ const makeSaveData = () => {
     flights: Flight[]
     airports: Airport[]
   }): Promise<void> => {
-    const flightsSlices = sliceArray(flights).map((flights) =>
-      db.insert(flightsSchema).values(flights)
-    )
-    const airportsSlices = sliceArray(airports).map((airports) =>
-      db.insert(airportsSchema).values(airports)
-    )
-
     const filteredCompanies = [...new Set(flights.map((v) => v.company))]
-    const companiesSlices = filteredCompanies.map((company) => {
-      return db.insert(companies).values({ company }).onConflictDoNothing()
-    })
 
-    await db.batch([
-      db.insert(cycles).values({ cycle, totalFlights: flights.length }),
-      ...companiesSlices,
-      db.delete(airportsSchema).where(
+    await db.transaction(async (tx) => {
+      // Insert cycles
+      Logger.info('Started inserting cycles')
+      await tx
+        .insert(cyclesSchema)
+        .values({ cycle, totalFlights: flights.length })
+        .onConflictDoNothing()
+      Logger.info('Finished inserting cycles')
+
+      // Insert companies
+      Logger.info('Started inserting companies')
+      await tx
+        .insert(companiesSchema)
+        .values(filteredCompanies.map((company) => ({ company })))
+        .onConflictDoNothing()
+      Logger.info('Finished inserting companies')
+
+      // Update airports
+      Logger.info('Started removing airports')
+      await tx.delete(airportsSchema).where(
         inArray(
           airportsSchema.id,
           airports.map((v) => v.id)
         )
-      ),
-      ...airportsSlices,
-      ...flightsSlices,
-    ])
+      )
+      Logger.info('Started inserting updated airports')
+      await tx.insert(airportsSchema).values(airports)
+
+      // Insert flights
+      Logger.info('Started inserting flights')
+      const flightsSlices = sliceArray(flights)
+      for (const [index, flightsSlice] of flightsSlices.entries()) {
+        Logger.info(
+          `Started inserting slice ${index} of ${flightsSlices.length}`
+        )
+        await tx.insert(flightsSchema).values(flightsSlice)
+        Logger.info(
+          `Finished inserting slice ${index} of ${flightsSlices.length}`
+        )
+      }
+      Logger.info('Finished inserting flights')
+    })
   }
 }
 
