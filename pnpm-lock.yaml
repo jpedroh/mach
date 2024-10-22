@@ -48,8 +48,8 @@ importers:
         specifier: '5'
         version: 5.1.17
       msw:
-        specifier: ^2.4.11
-        version: 2.4.11(typescript@5.6.3)
+        specifier: ^2.5.0
+        version: 2.5.0(typescript@5.6.3)
       react-aria-components:
         specifier: ^1.4.0
         version: 1.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -98,13 +98,13 @@ importers:
         version: 20.0.3(@babel/traverse@7.25.9)(@types/node@22.7.5)(nx@20.0.3)(typescript@5.6.3)
       '@nx/playwright':
         specifier: 20.0.3
-        version: 20.0.3(@babel/traverse@7.25.9)(@playwright/test@1.48.0)(@types/node@22.7.5)(@zkochan/js-yaml@0.0.7)(esbuild@0.17.19)(eslint@8.57.1)(nx@20.0.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.6.3)(vite@5.4.9(@types/node@22.7.5)(less@4.1.3)(sass@1.80.3)(stylus@0.59.0)(terser@5.36.0))(vitest@2.1.3(@types/node@22.7.5)(@vitest/ui@2.1.3)(jsdom@25.0.1)(less@4.1.3)(msw@2.4.11(typescript@5.6.3))(sass@1.80.3)(stylus@0.59.0)(terser@5.36.0))
+        version: 20.0.3(@babel/traverse@7.25.9)(@playwright/test@1.48.0)(@types/node@22.7.5)(@zkochan/js-yaml@0.0.7)(esbuild@0.17.19)(eslint@8.57.1)(nx@20.0.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.6.3)(vite@5.4.9(@types/node@22.7.5)(less@4.1.3)(sass@1.80.3)(stylus@0.59.0)(terser@5.36.0))(vitest@2.1.3(@types/node@22.7.5)(@vitest/ui@2.1.3)(jsdom@25.0.1)(less@4.1.3)(msw@2.5.0(typescript@5.6.3))(sass@1.80.3)(stylus@0.59.0)(terser@5.36.0))
       '@nx/react':
         specifier: 20.0.3
         version: 20.0.3(@babel/traverse@7.25.9)(@types/node@22.7.5)(@zkochan/js-yaml@0.0.7)(eslint@8.57.1)(nx@20.0.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.6.3)(webpack@5.95.0(esbuild@0.17.19))
       '@nx/vite':
         specifier: 20.0.3
-        version: 20.0.3(@babel/traverse@7.25.9)(@types/node@22.7.5)(nx@20.0.3)(typescript@5.6.3)(vite@5.4.9(@types/node@22.7.5)(less@4.1.3)(sass@1.80.3)(stylus@0.59.0)(terser@5.36.0))(vitest@2.1.3(@types/node@22.7.5)(@vitest/ui@2.1.3)(jsdom@25.0.1)(less@4.1.3)(msw@2.4.11(typescript@5.6.3))(sass@1.80.3)(stylus@0.59.0)(terser@5.36.0))
+        version: 20.0.3(@babel/traverse@7.25.9)(@types/node@22.7.5)(nx@20.0.3)(typescript@5.6.3)(vite@5.4.9(@types/node@22.7.5)(less@4.1.3)(sass@1.80.3)(stylus@0.59.0)(terser@5.36.0))(vitest@2.1.3(@types/node@22.7.5)(@vitest/ui@2.1.3)(jsdom@25.0.1)(less@4.1.3)(msw@2.5.0(typescript@5.6.3))(sass@1.80.3)(stylus@0.59.0)(terser@5.36.0))
       '@playwright/test':
         specifier: ^1.48.0
         version: 1.48.0
@@ -152,7 +152,7 @@ importers:
         version: 4.3.2(vite@5.4.9(@types/node@22.7.5)(less@4.1.3)(sass@1.80.3)(stylus@0.59.0)(terser@5.36.0))
       '@vitest/coverage-v8':
         specifier: ^2.1.3
-        version: 2.1.3(vitest@2.1.3(@types/node@22.7.5)(@vitest/ui@2.1.3)(jsdom@25.0.1)(less@4.1.3)(msw@2.4.11(typescript@5.6.3))(sass@1.80.3)(stylus@0.59.0)(terser@5.36.0))
+        version: 2.1.3(vitest@2.1.3(@types/node@22.7.5)(@vitest/ui@2.1.3)(jsdom@25.0.1)(less@4.1.3)(msw@2.5.0(typescript@5.6.3))(sass@1.80.3)(stylus@0.59.0)(terser@5.36.0))
       '@vitest/ui':
         specifier: ^2.1.3
         version: 2.1.3(vitest@2.1.3)
@@ -227,7 +227,7 @@ importers:
         version: 3.0.3(vite@5.4.9(@types/node@22.7.5)(less@4.1.3)(sass@1.80.3)(stylus@0.59.0)(terser@5.36.0))
       vitest:
         specifier: ^2.1.3
-        version: 2.1.3(@types/node@22.7.5)(@vitest/ui@2.1.3)(jsdom@25.0.1)(less@4.1.3)(msw@2.4.11(typescript@5.6.3))(sass@1.80.3)(stylus@0.59.0)(terser@5.36.0)
+        version: 2.1.3(@types/node@22.7.5)(@vitest/ui@2.1.3)(jsdom@25.0.1)(less@4.1.3)(msw@2.5.0(typescript@5.6.3))(sass@1.80.3)(stylus@0.59.0)(terser@5.36.0)
       wrangler:
         specifier: ^3.80.4
         version: 3.80.4(@cloudflare/workers-types@4.20240512.0)
@@ -2296,20 +2296,20 @@ packages:
     resolution: {integrity: sha512-93zYdMES/c1D69yZiKDBj0V24vqNzB/koF26KPaagAfd3P/4gUlh3Dys5ogAK+Exi9QyzlD8x/08Zt7wIKcDcA==}
     deprecated: Use @eslint/object-schema instead
 
-  '@inquirer/confirm@3.1.6':
-    resolution: {integrity: sha512-Mj4TU29g6Uy+37UtpA8UpEOI2icBfpCwSW1QDtfx60wRhUy90s/kHPif2OXSSvuwDQT1lhAYRWUfkNf9Tecxvg==}
+  '@inquirer/confirm@4.0.1':
+    resolution: {integrity: sha512-46yL28o2NJ9doViqOy0VDcoTzng7rAb6yPQKU7VDLqkmbCaH4JqK4yk4XqlzNWy9PVC5pG1ZUXPBQv+VqnYs2w==}
     engines: {node: '>=18'}
 
-  '@inquirer/core@8.1.0':
-    resolution: {integrity: sha512-kfx0SU9nWgGe1f03ao/uXc85SFH1v2w3vQVH7QDGjKxdtJz+7vPitFtG++BTyJMYyYgH8MpXigutcXJeiQwVRw==}
+  '@inquirer/core@9.2.1':
+    resolution: {integrity: sha512-F2VBt7W/mwqEU4bL0RnHNZmC/OxzNx9cOYxHqnXX3MP6ruYvZUZAW9imgN9+h/uBT/oP8Gh888J2OZSbjSeWcg==}
     engines: {node: '>=18'}
 
-  '@inquirer/figures@1.0.1':
-    resolution: {integrity: sha512-mtup3wVKia3ZwULPHcbs4Mor8Voi+iIXEWD7wCNbIO6lYR62oPCTQyrddi5OMYVXHzeCSoneZwJuS8sBvlEwDw==}
+  '@inquirer/figures@1.0.7':
+    resolution: {integrity: sha512-m+Trk77mp54Zma6xLkLuY+mvanPxlE4A7yNKs2HBiyZ4UkVs28Mv5c/pgWrHeInx+USHeX/WEPzjrWrcJiQgjw==}
     engines: {node: '>=18'}
 
-  '@inquirer/type@1.3.1':
-    resolution: {integrity: sha512-Pe3PFccjPVJV1vtlfVvm9OnlbxqdnP5QcscFEFEnK5quChf1ufZtM0r8mR5ToWHMxZOh0s8o/qp9ANGRTo/DAw==}
+  '@inquirer/type@2.0.0':
+    resolution: {integrity: sha512-XvJRx+2KR3YXyYtPUUy+qd9i7p+GO9Ko6VIIpWlBrpWwXDv8WLFeHTxz35CfQFUiBMLXlGHhGzys7lqit9gWag==}
     engines: {node: '>=18'}
 
   '@internationalized/date@3.5.6':
@@ -2574,8 +2574,8 @@ packages:
   '@module-federation/webpack-bundler-runtime@0.6.6':
     resolution: {integrity: sha512-0UnY9m1fBgHwTpacYWbht1jB5X4Iqspiu1q8kfjUrv6y+R224//ydUFYYO8xfWx4V9SGQFKlU8XFH0FP/r0Hng==}
 
-  '@mswjs/interceptors@0.35.9':
-    resolution: {integrity: sha512-SSnyl/4ni/2ViHKkiZb8eajA/eN1DNFaHjhGiLUdZvDz6PKF4COSf/17xqSz64nOo2Ia29SA6B2KNCsyCbVmaQ==}
+  '@mswjs/interceptors@0.36.5':
+    resolution: {integrity: sha512-aQ8WF5zQwOdcxLsxSEk9Jd01GgGb80xxqCaiDDlewhtwqpSm8MOvUHslwPydVirasdW09++NxDNNftm1vLY8yA==}
     engines: {node: '>=18'}
 
   '@napi-rs/wasm-runtime@0.2.4':
@@ -4606,9 +4606,6 @@ packages:
 
   '@types/node-forge@1.3.11':
     resolution: {integrity: sha512-FQx220y22OKNTqaByeBGqHWYz4cl94tpcxeFdvBo3wjG6XPBuZ0BNgNZRV5J5TFmmcsJ4IzsLkmGRiQbnYsBEQ==}
-
-  '@types/node@20.14.15':
-    resolution: {integrity: sha512-Fz1xDMCF/B00/tYSVMlmK7hVeLh7jE5f3B7X1/hmV0MJBwE27KlS7EvD/Yp+z1lm8mVhwV5w+n8jOZG8AfTlKw==}
 
   '@types/node@22.7.5':
     resolution: {integrity: sha512-jML7s2NAzMWc//QSJ1a3prpk78cOPchGvXJsC3C6R6PSMoooztvRVQEz89gmBTBY1SPMaqo5teB4uNHPdetShQ==}
@@ -8208,8 +8205,8 @@ packages:
   ms@2.1.3:
     resolution: {integrity: sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==}
 
-  msw@2.4.11:
-    resolution: {integrity: sha512-TVEw9NOPTc6ufOQLJ53234S9NBRxQbu7xFMxs+OCP43JQcNEIOKiZHxEm2nDzYIrwccoIhUxUf8wr99SukD76A==}
+  msw@2.5.0:
+    resolution: {integrity: sha512-DwIGQV/XFzkseQD7Ux3rPWMRa7DpozicRQ87QLX9Gzik2xyqcXvtvlBEUs57RziTBZPe/QzaKSl92fJVdxxt2g==}
     engines: {node: '>=18'}
     hasBin: true
     peerDependencies:
@@ -10151,10 +10148,6 @@ packages:
     resolution: {integrity: sha512-RAH822pAdBgcNMAfWnCBU3CFZcfZ/i1eZjwFU/dsLKumyuuP3niueg2UAukXYF0E2AAoc82ZSSf9J0WQBinzHA==}
     engines: {node: '>=12.20'}
 
-  type-fest@4.18.2:
-    resolution: {integrity: sha512-+suCYpfJLAe4OXS6+PPXjW3urOS4IoP9waSiLuXfLgqZODKw/aWwASvzqE886wA0kQgGy0mIWyhd87VpqIy6Xg==}
-    engines: {node: '>=16'}
-
   type-fest@4.26.1:
     resolution: {integrity: sha512-yOGpmOAL7CkKe/91I5O3gPICmJNLJ1G4zFYVAsRHg7M64biSnPtRj0WNQt++bRkjYOqjWXrhnUw1utzmVErAdg==}
     engines: {node: '>=16'}
@@ -10215,9 +10208,6 @@ packages:
 
   unbox-primitive@1.0.2:
     resolution: {integrity: sha512-61pPlCD9h51VoreyJ0BReideM3MDKMKnh6+V9L08331ipq6Q8OFXZYiqP6n/tbHx4s5I9uRhcye6BrbkizkBDw==}
-
-  undici-types@5.26.5:
-    resolution: {integrity: sha512-JlCMO+ehdEIKqlFxk6IfVoAUVmgz7cU7zD/h9XZ0qzeosSHmUJVOzSQvvYSYWXkFXC+IfLKSIffhv0sVZup6pA==}
 
   undici-types@6.19.8:
     resolution: {integrity: sha512-ve2KP6f/JnbPBFyobGHuerC9g1FYGn/F8n1LWTwNxCEzd6IfqTwUQcNXgEtmmQ6DlRrC1hrSrBnCZPokRrDHjw==}
@@ -10768,6 +10758,10 @@ packages:
   yocto-queue@1.0.0:
     resolution: {integrity: sha512-9bnSc/HEW2uRy67wc+T8UwauLuPJVn28jb+GtJY16iiKWyvmYJRXVT4UamsAEGQfPohgr2q4Tq0sQbQlxTfi1g==}
     engines: {node: '>=12.20'}
+
+  yoctocolors-cjs@2.1.2:
+    resolution: {integrity: sha512-cYVsTjKl8b+FrnidjibDWskAv7UKOfcwaVZdp/it9n1s9fU3IkgDbhdIRKCW4JDsAlECJY0ytoVPT3sK6kideA==}
+    engines: {node: '>=18'}
 
   yoctocolors@2.0.0:
     resolution: {integrity: sha512-esbDnt0Z1zI1KgvOZU90hJbL6BkoUbrP9yy7ArNZ6TmxBxydMJTYMf9FZjmwwcA8ZgEQzriQ3hwZ0NYXhlFo8Q==}
@@ -13366,30 +13360,31 @@ snapshots:
 
   '@humanwhocodes/object-schema@2.0.3': {}
 
-  '@inquirer/confirm@3.1.6':
+  '@inquirer/confirm@4.0.1':
     dependencies:
-      '@inquirer/core': 8.1.0
-      '@inquirer/type': 1.3.1
+      '@inquirer/core': 9.2.1
+      '@inquirer/type': 2.0.0
 
-  '@inquirer/core@8.1.0':
+  '@inquirer/core@9.2.1':
     dependencies:
-      '@inquirer/figures': 1.0.1
-      '@inquirer/type': 1.3.1
+      '@inquirer/figures': 1.0.7
+      '@inquirer/type': 2.0.0
       '@types/mute-stream': 0.0.4
-      '@types/node': 20.14.15
+      '@types/node': 22.7.5
       '@types/wrap-ansi': 3.0.0
       ansi-escapes: 4.3.2
-      chalk: 4.1.2
-      cli-spinners: 2.9.2
       cli-width: 4.1.0
       mute-stream: 1.0.0
       signal-exit: 4.1.0
       strip-ansi: 6.0.1
       wrap-ansi: 6.2.0
+      yoctocolors-cjs: 2.1.2
 
-  '@inquirer/figures@1.0.1': {}
+  '@inquirer/figures@1.0.7': {}
 
-  '@inquirer/type@1.3.1': {}
+  '@inquirer/type@2.0.0':
+    dependencies:
+      mute-stream: 1.0.0
 
   '@internationalized/date@3.5.6':
     dependencies:
@@ -13801,7 +13796,7 @@ snapshots:
       '@module-federation/runtime': 0.6.6
       '@module-federation/sdk': 0.6.6
 
-  '@mswjs/interceptors@0.35.9':
+  '@mswjs/interceptors@0.36.5':
     dependencies:
       '@open-draft/deferred-promise': 2.2.0
       '@open-draft/logger': 0.3.0
@@ -14055,12 +14050,12 @@ snapshots:
   '@nx/nx-win32-x64-msvc@20.0.3':
     optional: true
 
-  '@nx/playwright@20.0.3(@babel/traverse@7.25.9)(@playwright/test@1.48.0)(@types/node@22.7.5)(@zkochan/js-yaml@0.0.7)(esbuild@0.17.19)(eslint@8.57.1)(nx@20.0.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.6.3)(vite@5.4.9(@types/node@22.7.5)(less@4.1.3)(sass@1.80.3)(stylus@0.59.0)(terser@5.36.0))(vitest@2.1.3(@types/node@22.7.5)(@vitest/ui@2.1.3)(jsdom@25.0.1)(less@4.1.3)(msw@2.4.11(typescript@5.6.3))(sass@1.80.3)(stylus@0.59.0)(terser@5.36.0))':
+  '@nx/playwright@20.0.3(@babel/traverse@7.25.9)(@playwright/test@1.48.0)(@types/node@22.7.5)(@zkochan/js-yaml@0.0.7)(esbuild@0.17.19)(eslint@8.57.1)(nx@20.0.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.6.3)(vite@5.4.9(@types/node@22.7.5)(less@4.1.3)(sass@1.80.3)(stylus@0.59.0)(terser@5.36.0))(vitest@2.1.3(@types/node@22.7.5)(@vitest/ui@2.1.3)(jsdom@25.0.1)(less@4.1.3)(msw@2.5.0(typescript@5.6.3))(sass@1.80.3)(stylus@0.59.0)(terser@5.36.0))':
     dependencies:
       '@nx/devkit': 20.0.3(nx@20.0.3)
       '@nx/eslint': 20.0.3(@babel/traverse@7.25.9)(@types/node@22.7.5)(@zkochan/js-yaml@0.0.7)(eslint@8.57.1)(nx@20.0.3)
       '@nx/js': 20.0.3(@babel/traverse@7.25.9)(@types/node@22.7.5)(nx@20.0.3)(typescript@5.6.3)
-      '@nx/vite': 20.0.3(@babel/traverse@7.25.9)(@types/node@22.7.5)(nx@20.0.3)(typescript@5.6.3)(vite@5.4.9(@types/node@22.7.5)(less@4.1.3)(sass@1.80.3)(stylus@0.59.0)(terser@5.36.0))(vitest@2.1.3(@types/node@22.7.5)(@vitest/ui@2.1.3)(jsdom@25.0.1)(less@4.1.3)(msw@2.4.11(typescript@5.6.3))(sass@1.80.3)(stylus@0.59.0)(terser@5.36.0))
+      '@nx/vite': 20.0.3(@babel/traverse@7.25.9)(@types/node@22.7.5)(nx@20.0.3)(typescript@5.6.3)(vite@5.4.9(@types/node@22.7.5)(less@4.1.3)(sass@1.80.3)(stylus@0.59.0)(terser@5.36.0))(vitest@2.1.3(@types/node@22.7.5)(@vitest/ui@2.1.3)(jsdom@25.0.1)(less@4.1.3)(msw@2.5.0(typescript@5.6.3))(sass@1.80.3)(stylus@0.59.0)(terser@5.36.0))
       '@nx/webpack': 20.0.3(@babel/traverse@7.25.9)(@types/node@22.7.5)(esbuild@0.17.19)(nx@20.0.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.6.3)
       '@phenomnomnominal/tsquery': 5.0.1(typescript@5.6.3)
       minimatch: 9.0.3
@@ -14137,7 +14132,7 @@ snapshots:
       - vue-tsc
       - webpack
 
-  '@nx/vite@20.0.3(@babel/traverse@7.25.9)(@types/node@22.7.5)(nx@20.0.3)(typescript@5.6.3)(vite@5.4.9(@types/node@22.7.5)(less@4.1.3)(sass@1.80.3)(stylus@0.59.0)(terser@5.36.0))(vitest@2.1.3(@types/node@22.7.5)(@vitest/ui@2.1.3)(jsdom@25.0.1)(less@4.1.3)(msw@2.4.11(typescript@5.6.3))(sass@1.80.3)(stylus@0.59.0)(terser@5.36.0))':
+  '@nx/vite@20.0.3(@babel/traverse@7.25.9)(@types/node@22.7.5)(nx@20.0.3)(typescript@5.6.3)(vite@5.4.9(@types/node@22.7.5)(less@4.1.3)(sass@1.80.3)(stylus@0.59.0)(terser@5.36.0))(vitest@2.1.3(@types/node@22.7.5)(@vitest/ui@2.1.3)(jsdom@25.0.1)(less@4.1.3)(msw@2.5.0(typescript@5.6.3))(sass@1.80.3)(stylus@0.59.0)(terser@5.36.0))':
     dependencies:
       '@nx/devkit': 20.0.3(nx@20.0.3)
       '@nx/js': 20.0.3(@babel/traverse@7.25.9)(@types/node@22.7.5)(nx@20.0.3)(typescript@5.6.3)
@@ -14147,7 +14142,7 @@ snapshots:
       minimatch: 9.0.3
       tsconfig-paths: 4.2.0
       vite: 5.4.9(@types/node@22.7.5)(less@4.1.3)(sass@1.80.3)(stylus@0.59.0)(terser@5.36.0)
-      vitest: 2.1.3(@types/node@22.7.5)(@vitest/ui@2.1.3)(jsdom@25.0.1)(less@4.1.3)(msw@2.4.11(typescript@5.6.3))(sass@1.80.3)(stylus@0.59.0)(terser@5.36.0)
+      vitest: 2.1.3(@types/node@22.7.5)(@vitest/ui@2.1.3)(jsdom@25.0.1)(less@4.1.3)(msw@2.5.0(typescript@5.6.3))(sass@1.80.3)(stylus@0.59.0)(terser@5.36.0)
     transitivePeerDependencies:
       - '@babel/traverse'
       - '@swc-node/register'
@@ -17077,10 +17072,6 @@ snapshots:
     dependencies:
       '@types/node': 22.7.5
 
-  '@types/node@20.14.15':
-    dependencies:
-      undici-types: 5.26.5
-
   '@types/node@22.7.5':
     dependencies:
       undici-types: 6.19.8
@@ -17359,7 +17350,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@vitest/coverage-v8@2.1.3(vitest@2.1.3(@types/node@22.7.5)(@vitest/ui@2.1.3)(jsdom@25.0.1)(less@4.1.3)(msw@2.4.11(typescript@5.6.3))(sass@1.80.3)(stylus@0.59.0)(terser@5.36.0))':
+  '@vitest/coverage-v8@2.1.3(vitest@2.1.3(@types/node@22.7.5)(@vitest/ui@2.1.3)(jsdom@25.0.1)(less@4.1.3)(msw@2.5.0(typescript@5.6.3))(sass@1.80.3)(stylus@0.59.0)(terser@5.36.0))':
     dependencies:
       '@ampproject/remapping': 2.3.0
       '@bcoe/v8-coverage': 0.2.3
@@ -17373,7 +17364,7 @@ snapshots:
       std-env: 3.7.0
       test-exclude: 7.0.1
       tinyrainbow: 1.2.0
-      vitest: 2.1.3(@types/node@22.7.5)(@vitest/ui@2.1.3)(jsdom@25.0.1)(less@4.1.3)(msw@2.4.11(typescript@5.6.3))(sass@1.80.3)(stylus@0.59.0)(terser@5.36.0)
+      vitest: 2.1.3(@types/node@22.7.5)(@vitest/ui@2.1.3)(jsdom@25.0.1)(less@4.1.3)(msw@2.5.0(typescript@5.6.3))(sass@1.80.3)(stylus@0.59.0)(terser@5.36.0)
     transitivePeerDependencies:
       - supports-color
 
@@ -17384,13 +17375,13 @@ snapshots:
       chai: 5.1.1
       tinyrainbow: 1.2.0
 
-  '@vitest/mocker@2.1.3(@vitest/spy@2.1.3)(msw@2.4.11(typescript@5.6.3))(vite@5.4.9(@types/node@22.7.5)(less@4.1.3)(sass@1.80.3)(stylus@0.59.0)(terser@5.36.0))':
+  '@vitest/mocker@2.1.3(@vitest/spy@2.1.3)(msw@2.5.0(typescript@5.6.3))(vite@5.4.9(@types/node@22.7.5)(less@4.1.3)(sass@1.80.3)(stylus@0.59.0)(terser@5.36.0))':
     dependencies:
       '@vitest/spy': 2.1.3
       estree-walker: 3.0.3
       magic-string: 0.30.12
     optionalDependencies:
-      msw: 2.4.11(typescript@5.6.3)
+      msw: 2.5.0(typescript@5.6.3)
       vite: 5.4.9(@types/node@22.7.5)(less@4.1.3)(sass@1.80.3)(stylus@0.59.0)(terser@5.36.0)
 
   '@vitest/pretty-format@2.1.3':
@@ -17421,7 +17412,7 @@ snapshots:
       sirv: 2.0.4
       tinyglobby: 0.2.9
       tinyrainbow: 1.2.0
-      vitest: 2.1.3(@types/node@22.7.5)(@vitest/ui@2.1.3)(jsdom@25.0.1)(less@4.1.3)(msw@2.4.11(typescript@5.6.3))(sass@1.80.3)(stylus@0.59.0)(terser@5.36.0)
+      vitest: 2.1.3(@types/node@22.7.5)(@vitest/ui@2.1.3)(jsdom@25.0.1)(less@4.1.3)(msw@2.5.0(typescript@5.6.3))(sass@1.80.3)(stylus@0.59.0)(terser@5.36.0)
 
   '@vitest/utils@2.1.3':
     dependencies:
@@ -21290,13 +21281,13 @@ snapshots:
 
   ms@2.1.3: {}
 
-  msw@2.4.11(typescript@5.6.3):
+  msw@2.5.0(typescript@5.6.3):
     dependencies:
       '@bundled-es-modules/cookie': 2.0.0
       '@bundled-es-modules/statuses': 1.0.1
       '@bundled-es-modules/tough-cookie': 0.1.6
-      '@inquirer/confirm': 3.1.6
-      '@mswjs/interceptors': 0.35.9
+      '@inquirer/confirm': 4.0.1
+      '@mswjs/interceptors': 0.36.5
       '@open-draft/until': 2.1.0
       '@types/cookie': 0.6.0
       '@types/statuses': 2.0.5
@@ -22361,7 +22352,7 @@ snapshots:
     dependencies:
       find-up-simple: 1.0.0
       read-pkg: 9.0.1
-      type-fest: 4.18.2
+      type-fest: 4.26.1
 
   read-pkg@9.0.1:
     dependencies:
@@ -23438,8 +23429,6 @@ snapshots:
 
   type-fest@2.19.0: {}
 
-  type-fest@4.18.2: {}
-
   type-fest@4.26.1: {}
 
   type-is@1.6.18:
@@ -23516,8 +23505,6 @@ snapshots:
       has-bigints: 1.0.2
       has-symbols: 1.0.3
       which-boxed-primitive: 1.0.2
-
-  undici-types@5.26.5: {}
 
   undici-types@6.19.8: {}
 
@@ -23778,10 +23765,10 @@ snapshots:
       stylus: 0.59.0
       terser: 5.36.0
 
-  vitest@2.1.3(@types/node@22.7.5)(@vitest/ui@2.1.3)(jsdom@25.0.1)(less@4.1.3)(msw@2.4.11(typescript@5.6.3))(sass@1.80.3)(stylus@0.59.0)(terser@5.36.0):
+  vitest@2.1.3(@types/node@22.7.5)(@vitest/ui@2.1.3)(jsdom@25.0.1)(less@4.1.3)(msw@2.5.0(typescript@5.6.3))(sass@1.80.3)(stylus@0.59.0)(terser@5.36.0):
     dependencies:
       '@vitest/expect': 2.1.3
-      '@vitest/mocker': 2.1.3(@vitest/spy@2.1.3)(msw@2.4.11(typescript@5.6.3))(vite@5.4.9(@types/node@22.7.5)(less@4.1.3)(sass@1.80.3)(stylus@0.59.0)(terser@5.36.0))
+      '@vitest/mocker': 2.1.3(@vitest/spy@2.1.3)(msw@2.5.0(typescript@5.6.3))(vite@5.4.9(@types/node@22.7.5)(less@4.1.3)(sass@1.80.3)(stylus@0.59.0)(terser@5.36.0))
       '@vitest/pretty-format': 2.1.3
       '@vitest/runner': 2.1.3
       '@vitest/snapshot': 2.1.3
@@ -24140,6 +24127,8 @@ snapshots:
   yocto-queue@0.1.0: {}
 
   yocto-queue@1.0.0: {}
+
+  yoctocolors-cjs@2.1.2: {}
 
   yoctocolors@2.0.0: {}
 
