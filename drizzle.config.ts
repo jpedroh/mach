@@ -4,7 +4,7 @@ import { defineConfig } from 'drizzle-kit'
 dotenv.config()
 
 export default defineConfig({
-  schema: './modules/shared/database/src/schema.ts',
+  schema: './modules/shared-database/src/schema.ts',
   dialect: 'turso',
   dbCredentials: {
     url: process.env.TURSO_CONNECTION_URL,
