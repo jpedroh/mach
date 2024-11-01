@@ -129,8 +129,8 @@ importers:
         specifier: ^0.27.0
         version: 0.27.0
       drizzle-orm:
-        specifier: ^0.35.3
-        version: 0.35.3(@cloudflare/workers-types@4.20240512.0)(@libsql/client-wasm@0.14.0)(@libsql/client@0.14.0)(@opentelemetry/api@1.9.0)(@types/react@18.3.12)(react@18.3.1)
+        specifier: ^0.36.0
+        version: 0.36.0(@cloudflare/workers-types@4.20240512.0)(@libsql/client@0.14.0)(@opentelemetry/api@1.9.0)(@types/react@18.3.12)(react@18.3.1)
       eslint:
         specifier: ^8.57.1
         version: 8.57.1
@@ -4724,15 +4724,6 @@ packages:
   /@leichtgewicht/ip-codec@2.0.5:
     resolution: {integrity: sha512-Vo+PSpZG2/fmgmiNzYK9qWRh8h/CHrwD0mo1h1DzL4yzHNSfWYujGTYsWGreD000gcgmZ7K4Ys6Tx9TxtsKdDw==}
     dev: true
-
-  /@libsql/client-wasm@0.14.0:
-    resolution: {integrity: sha512-gB/jtz0xuwrqAHApBv9e9JSew2030Fhj2edyZ83InZ4yPj/Q2LTUlEhaspEYT0T0xsAGqPy38uGrmq/OGS+DdQ==}
-    dependencies:
-      '@libsql/core': 0.14.0
-      js-base64: 3.7.7
-    dev: true
-    bundledDependencies:
-      - '@libsql/libsql-wasm-experimental'
 
   /@libsql/client@0.14.0:
     resolution: {integrity: sha512-/9HEKfn6fwXB5aTEEoMeFh4CtG0ZzbncBb1e++OCdVpgKZ/xyMsIVYXm0w7Pv4RUel803vE6LwniB3PqD72R0Q==}
@@ -12197,12 +12188,12 @@ packages:
       - supports-color
     dev: true
 
-  /drizzle-orm@0.35.3(@cloudflare/workers-types@4.20240512.0)(@libsql/client-wasm@0.14.0)(@libsql/client@0.14.0)(@opentelemetry/api@1.9.0)(@types/react@18.3.12)(react@18.3.1):
-    resolution: {integrity: sha512-Uv6N+b36x4BaZlxc96e+ag7RnMapBLGhc4SSi2F7RDwqYJipWjaU/P68RUp1FbW9r+mxoDp8nMz2Eece8PJxfA==}
+  /drizzle-orm@0.36.0(@cloudflare/workers-types@4.20240512.0)(@libsql/client@0.14.0)(@opentelemetry/api@1.9.0)(@types/react@18.3.12)(react@18.3.1):
+    resolution: {integrity: sha512-6BETYPdKSR7cDHC0ZfqZk2VrKJ8n/Rfd3ajFPsAbc69gi87nwZ6oBA2wUGMELHA0tQE4kUKN0Ds00LUZQ6Z69A==}
     peerDependencies:
       '@aws-sdk/client-rds-data': '>=3'
       '@cloudflare/workers-types': '>=3'
-      '@electric-sql/pglite': '>=0.1.1'
+      '@electric-sql/pglite': '>=0.2.0'
       '@libsql/client': '>=0.10.0'
       '@libsql/client-wasm': '>=0.10.0'
       '@neondatabase/serverless': '>=0.1'
@@ -12237,6 +12228,8 @@ packages:
       '@electric-sql/pglite':
         optional: true
       '@libsql/client':
+        optional: true
+      '@libsql/client-wasm':
         optional: true
       '@neondatabase/serverless':
         optional: true
@@ -12289,7 +12282,6 @@ packages:
     dependencies:
       '@cloudflare/workers-types': 4.20240512.0
       '@libsql/client': 0.14.0
-      '@libsql/client-wasm': 0.14.0
       '@opentelemetry/api': 1.9.0
       '@types/react': 18.3.12
       react: 18.3.1
