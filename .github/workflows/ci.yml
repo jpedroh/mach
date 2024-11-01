@@ -34,6 +34,7 @@ jobs:
           main-branch-name: 'main'
       - run: pnpm install
       - run: pnpm biome check
+      - run: pnpm sherif
       - run: npx nx affected --target=pack --parallel=3
       - run: npx nx affected --target=test --parallel=3
       - run: npx nx affected --target=lint --parallel=3

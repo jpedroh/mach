@@ -197,6 +197,9 @@ importers:
       semantic-release:
         specifier: ^24.1.2
         version: 24.1.2(typescript@5.6.3)
+      sherif:
+        specifier: ^1.0.1
+        version: 1.0.1
       tailwindcss:
         specifier: ^3.4.14
         version: 3.4.14
@@ -19076,6 +19079,66 @@ packages:
 
   /shell-quote@1.8.1:
     resolution: {integrity: sha512-6j1W9l1iAs/4xYBI1SYOVZyFcCis9b4KCLQ8fgAGG07QvzaRLVVRQvAy85yNmmZSjYjg4MWh4gNvlPujU/5LpA==}
+    dev: true
+
+  /sherif-darwin-arm64@1.0.1:
+    resolution: {integrity: sha512-eDYzUO6ksjYZF6swtoJ5F4AVa4og+sqrs0H7gGw57FoiMHEe5+4tD4M2ojTbVAaeeFtRS0gMbVZFGkhSAshQMw==}
+    cpu: [arm64]
+    os: [darwin]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /sherif-darwin-x64@1.0.1:
+    resolution: {integrity: sha512-lnNZTck5F2eZoB1nZFwixfFQe/DXt4HuOMNCTG+Iyzq8w7kdSXUr/IIPYk2p88L+d4AtPWApmKE6mpmQaDzOVg==}
+    cpu: [x64]
+    os: [darwin]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /sherif-linux-arm64@1.0.1:
+    resolution: {integrity: sha512-/fj3rJoSb26FA5wRlZpauLFaFeWCe9usIQAE+e9IEaC2751IU9I0d+nE7pmGmuOwTCR1/kPOlrDGfV4ucpP/ng==}
+    cpu: [arm64]
+    os: [linux]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /sherif-linux-x64@1.0.1:
+    resolution: {integrity: sha512-I07H4VAPM0+N8rpIgxV47vBSKViJ3F/EiaUi4DnlhySivGg/6oOacHFOfzKeNPMaMK+3usMEmU+UVm6vEvtPYA==}
+    cpu: [x64]
+    os: [linux]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /sherif-windows-arm64@1.0.1:
+    resolution: {integrity: sha512-UfIYXDya60VmAcYuuKe6bwnBWiJHA6lof97rG2+EN8f3LiGyEx95/3qUdUoOn7qB5pl3xaeazMGcpc1O4FpExg==}
+    cpu: [arm64]
+    os: [win32]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /sherif-windows-x64@1.0.1:
+    resolution: {integrity: sha512-ep+acRpTeIhU3BB7GL1NdedD9ubhcIO1lwOJ9uf3rOrmKIlbKd55LgmVRfl/Spy96qcCGx6izdyypMhDOoWa/Q==}
+    cpu: [x64]
+    os: [win32]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /sherif@1.0.1:
+    resolution: {integrity: sha512-1zXt6XQHT3d7L2dMhmlAoWpPhQhqvxdjrYSOoGwnbbZA8nX4jrGrUPpryOe96XBSaG/d+DJtoDujujjydXICSg==}
+    hasBin: true
+    optionalDependencies:
+      sherif-darwin-arm64: 1.0.1
+      sherif-darwin-x64: 1.0.1
+      sherif-linux-arm64: 1.0.1
+      sherif-linux-x64: 1.0.1
+      sherif-windows-arm64: 1.0.1
+      sherif-windows-x64: 1.0.1
     dev: true
 
   /shimmer@1.2.1:
