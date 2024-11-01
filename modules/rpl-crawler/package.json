@@ -7,7 +7,12 @@
     "test": "vitest --watch=false ."
   },
   "dependencies": {
-    "@mach/shared-database": "workspace:*"
+    "@mach/shared-database": "workspace:*",
+    "adm-zip": "^0.5.16",
+    "axios": "^1.7.7"
+  },
+  "devDependencies": {
+    "@types/adm-zip": "^0.5.6"
   },
   "nx": {
     "tags": ["type:feature"]
