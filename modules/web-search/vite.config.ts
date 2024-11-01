@@ -4,18 +4,19 @@ import { defineConfig } from 'vite'
 
 export default defineConfig({
   root: __dirname,
-  cacheDir: '../../../node_modules/.vite/modules/web/home',
+  cacheDir: '../../node_modules/.vite/modules/web/search',
   plugins: [react(), nxViteTsPaths()],
   test: {
     globals: true,
-    cache: { dir: '../../../node_modules/.vitest' },
+    cache: { dir: '../../node_modules/.vitest' },
     environment: 'jsdom',
     include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
     reporters: ['default'],
     coverage: {
-      reportsDirectory: '../../../coverage/modules/web/home',
+      reportsDirectory: '../../coverage/modules/web/search',
       provider: 'v8',
     },
+    setupFiles: ['./vitest-setup.ts'],
     passWithNoTests: true,
   },
 })
