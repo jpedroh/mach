@@ -1,13 +1,52 @@
 {
   "name": "@mach/web-shared-ui",
-  "main": "./src/index.ts",
-  "types": "./src/index.ts",
+  "type": "module",
+  "exports": {
+    "./package.json": "./package.json",
+    "./button": {
+      "import": "./src/components/button/index.tsx",
+      "types": "./src/components/button/index.tsx"
+    },
+    "./checkbox": {
+      "import": "./src/components/checkbox/index.tsx",
+      "types": "./src/components/checkbox/index.tsx"
+    },
+    "./input": {
+      "import": "./src/components/input/index.tsx",
+      "types": "./src/components/input/index.tsx"
+    },
+    "./label": {
+      "import": "./src/components/label/index.tsx",
+      "types": "./src/components/label/index.tsx"
+    },
+    "./layout": {
+      "import": "./src/components/layout/index.tsx",
+      "types": "./src/components/layout/index.tsx"
+    },
+    "./lead": {
+      "import": "./src/components/lead/index.tsx",
+      "types": "./src/components/lead/index.tsx"
+    },
+    "./link": {
+      "import": "./src/components/link/index.tsx",
+      "types": "./src/components/link/index.tsx"
+    },
+    "./modal": {
+      "import": "./src/components/modal/index.tsx",
+      "types": "./src/components/modal/index.tsx"
+    },
+    "./select": {
+      "import": "./src/components/select/index.tsx",
+      "types": "./src/components/select/index.tsx"
+    },
+    "./table": {
+      "import": "./src/components/table/index.tsx",
+      "types": "./src/components/table/index.tsx"
+    }
+  },
   "scripts": {
     "lint": "eslint .",
     "test": "vitest --watch=false ."
-  },
-  "dependencies": {
-    "@mach/web-shared-ui": "workspace:*"
   },
   "nx": {
     "tags": ["type:shared"]

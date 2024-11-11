@@ -1,5 +1,6 @@
-import { Link } from '@mach/web-shared-ui'
-import { Layout, Lead } from '@mach/web-shared-ui'
+import { Layout } from '@mach/web-shared-ui/layout'
+import { Lead } from '@mach/web-shared-ui/lead'
+import { Link } from '@mach/web-shared-ui/link'
 import { useRouteError } from '@remix-run/react'
 import { captureRemixErrorBoundaryError } from '@sentry/remix'
 

@@ -41,5 +41,5 @@ module.exports = tsEslint.config(
       ],
     },
   },
-  { ignores: ['**/eslint.config.js', '**/dist'] }
+  { ignores: ['**/eslint.config.js', '**/eslint.config.cjs', '**/dist'] }
 )

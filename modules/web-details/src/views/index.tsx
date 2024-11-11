@@ -1,11 +1,11 @@
 import { makeDatabaseConnection } from '@mach/shared-database'
+import { Button } from '@mach/web-shared-ui/button'
 import {
-  Button,
   ModalContent,
   ModalFooter,
   ModalHeading,
   ModalRoot,
-} from '@mach/web-shared-ui'
+} from '@mach/web-shared-ui/modal'
 import { LoaderFunctionArgs } from '@remix-run/cloudflare'
 import { useLoaderData, useNavigate } from '@remix-run/react'
 import { ReactNode } from 'react'
