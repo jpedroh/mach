@@ -39,7 +39,7 @@ export function SimBriefButton({ flight }: Props) {
 
   return (
     <Button asChild>
-      <a href={simBriefLink} target="_blank">
+      <a href={simBriefLink} target="_blank" rel="noreferrer">
         SimBrief
       </a>
     </Button>

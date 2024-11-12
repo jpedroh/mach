@@ -1,23 +1,32 @@
-const eslint = require('@eslint/js')
-const tsEslint = require('typescript-eslint')
-const reactEslint = require('eslint-plugin-react/configs/recommended')
-const nxEslint = require('@nx/eslint-plugin')
+// @ts-check
 
-module.exports = tsEslint.config(
+import eslint from '@eslint/js'
+import nxPlugin from '@nx/eslint-plugin'
+import reactPlugin from 'eslint-plugin-react'
+import tseslint from 'typescript-eslint'
+
+export default tseslint.config(
   eslint.configs.recommended,
-  ...tsEslint.configs.recommended,
+  ...tseslint.configs.strict,
+  ...tseslint.configs.stylistic,
   {
-    ...reactEslint,
     rules: {
-      ...reactEslint.rules,
-      'react/react-in-jsx-scope': 'off',
-      'react/jsx-no-target-blank': 'off',
+      '@typescript-eslint/consistent-type-definitions': ['error', 'type'],
     },
   },
+  reactPlugin.configs.flat.recommended,
   {
-    plugins: {
-      '@nx': nxEslint,
+    settings: {
+      react: {
+        version: '18.3.1',
+      },
     },
+  },
+  reactPlugin.configs.flat['jsx-runtime'],
+  { plugins: { '@nx': nxPlugin } },
+  {
+    files: ['*.ts', '*.tsx', '*.js', '*.jsx'],
+
     rules: {
       '@nx/enforce-module-boundaries': [
         'error',
@@ -41,5 +50,5 @@ module.exports = tsEslint.config(
       ],
     },
   },
-  { ignores: ['**/eslint.config.js', '**/eslint.config.cjs', '**/dist'] }
+  { ignores: ['**/eslint.config.js', '**/dist'] }
 )
