@@ -25,7 +25,7 @@ const makeFlightDecoder = ({ uuid }: { uuid: (line: string) => string }) => {
     const cruisingSpeed = line.substring(46, 51)
     const cruisingLevel = Number(line.substring(52, 55))
     const route = line
-      .match(/(?<=[A-Z0-9]{4}\d{4} N\d{4} \d{3} ).+(?= {2})/)![0]
+      .match(/(?<=[A-Z0-9]{4}\d{4} N\d{4} \d{3} ).+(?= {2})/)[0]
       .trim()
     const rightPadStart = line.lastIndexOf('  ') + 2
     const arrivalIcao = line.substring(rightPadStart, rightPadStart + 4).trim()
@@ -46,11 +46,11 @@ const makeFlightDecoder = ({ uuid }: { uuid: (line: string) => string }) => {
       estimatedEnrouteMinutes,
       remarks,
       departureIcao,
-      aircraftIcaoCode: line.match(/[A-Z0-9]+(?=(\/(M|L|H|J)))/)![0],
-      aircraftEquipment: remarks.match(/(?<=EQPT\/)[^\s]+/)![0],
+      aircraftIcaoCode: line.match(/[A-Z0-9]+(?=(\/(M|L|H|J)))/)[0],
+      aircraftEquipment: remarks.match(/(?<=EQPT\/)[^\s]+/)[0],
       aircraftWakeTurbulence: line.match(
         /(?<=\/)(M|L|H|J)/
-      )![0] as WakeTurbulence,
+      )[0] as WakeTurbulence,
       estimatedOffBlockTime,
       flightRules: resolveFlightRules(route),
       weekdays: resolveWeekDays(weekDays),

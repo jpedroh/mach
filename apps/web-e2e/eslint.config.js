@@ -1,6 +1,6 @@
-const eslintPluginPlaywright = require('eslint-plugin-playwright')
+// @ts-check
 
-module.exports = [
-  ...require('../../eslint.config'),
-  eslintPluginPlaywright.configs['flat/recommended'],
-]
+import playwright from 'eslint-plugin-playwright'
+import defaultConfigs from '../../eslint.config.js'
+
+export default [...defaultConfigs, playwright.configs['flat/recommended']]

@@ -1,6 +1,6 @@
 import { Airport, Flight } from '@mach/shared-database'
 import { fetchAirportsData } from './fetch-airports-data'
-import Logger from './utils/logger'
+import * as Logger from './utils/logger'
 
 type MainDependencies = {
   updateChecker: (date: string) => Promise<boolean>

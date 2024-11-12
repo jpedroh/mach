@@ -9,7 +9,11 @@ export function Footer() {
   return (
     <Container>
       <p>
-        <Link href="https://github.com/jpedroh/mach/" target="_blank">
+        <Link
+          href="https://github.com/jpedroh/mach/"
+          target="_blank"
+          rel="noreferrer"
+        >
           Mach
         </Link>
         {' - '}
@@ -17,7 +21,7 @@ export function Footer() {
       </p>
       <p>
         Developed by{' '}
-        <Link href="https://jpedroh.dev" target="_blank">
+        <Link href="https://jpedroh.dev" target="_blank" rel="noreferrer">
           João Pedro Henrique
         </Link>
       </p>
