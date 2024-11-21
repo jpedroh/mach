@@ -40,7 +40,7 @@ importers:
         version: 20.1.2(@types/node@22.9.0)(nx@20.1.2)(typescript@5.6.3)
       '@nx/playwright':
         specifier: 20.1.2
-        version: 20.1.2(@playwright/test@1.48.2)(@types/node@22.9.0)(esbuild@0.17.19)(eslint@9.14.0)(nx@20.1.2)(react-dom@18.3.1)(react@18.3.1)(typescript@5.6.3)(vite@5.4.11)(vitest@2.1.5)
+        version: 20.1.2(@playwright/test@1.48.2)(@types/node@22.9.0)(esbuild@0.19.12)(eslint@9.14.0)(nx@20.1.2)(react-dom@18.3.1)(react@18.3.1)(typescript@5.6.3)(vite@5.4.11)(vitest@2.1.5)
       '@nx/react':
         specifier: 20.1.2
         version: 20.1.2(@types/node@22.9.0)(eslint@9.14.0)(nx@20.1.2)(react-dom@18.3.1)(react@18.3.1)(typescript@5.6.3)(webpack@5.96.1)
@@ -58,7 +58,7 @@ importers:
         version: 2.14.0(@cloudflare/workers-types@4.20241112.0)(typescript@5.6.3)
       '@remix-run/dev':
         specifier: ^2.14.0
-        version: 2.14.0(@remix-run/react@2.14.0)(@remix-run/serve@2.14.0)(@types/node@22.9.0)(less@4.1.3)(stylus@0.64.0)(typescript@5.6.3)(vite@5.4.11)(wrangler@3.86.1)
+        version: 2.14.0(@remix-run/react@2.14.0)(@remix-run/serve@2.14.0)(@types/node@22.9.0)(less@4.1.3)(stylus@0.64.0)(typescript@5.6.3)(vite@5.4.11)(wrangler@3.89.0)
       '@remix-run/react':
         specifier: ^2.14.0
         version: 2.14.0(react-dom@18.3.1)(react@18.3.1)(typescript@5.6.3)
@@ -219,8 +219,8 @@ importers:
         specifier: ^2.1.5
         version: 2.1.5(@types/node@22.9.0)(@vitest/ui@2.1.5)(jsdom@25.0.1)(less@4.1.3)(msw@2.6.0)(stylus@0.64.0)
       wrangler:
-        specifier: ^3.86.1
-        version: 3.86.1(@cloudflare/workers-types@4.20241112.0)
+        specifier: ^3.89.0
+        version: 3.89.0(@cloudflare/workers-types@4.20241112.0)
       zod:
         specifier: ^3.23.6
         version: 3.23.8
@@ -4876,7 +4876,7 @@ packages:
       btoa: 1.2.1
       typescript: 5.6.3
       upath: 2.0.1
-      webpack: 5.96.1(esbuild@0.17.19)
+      webpack: 5.96.1(esbuild@0.19.12)
     transitivePeerDependencies:
       - bufferutil
       - debug
@@ -4911,7 +4911,7 @@ packages:
       btoa: 1.2.1
       typescript: 5.6.3
       upath: 2.0.1
-      webpack: 5.96.1(esbuild@0.17.19)
+      webpack: 5.96.1(esbuild@0.19.12)
     transitivePeerDependencies:
       - bufferutil
       - debug
@@ -5471,7 +5471,7 @@ packages:
     dev: true
     optional: true
 
-  /@nx/playwright@20.1.2(@playwright/test@1.48.2)(@types/node@22.9.0)(esbuild@0.17.19)(eslint@9.14.0)(nx@20.1.2)(react-dom@18.3.1)(react@18.3.1)(typescript@5.6.3)(vite@5.4.11)(vitest@2.1.5):
+  /@nx/playwright@20.1.2(@playwright/test@1.48.2)(@types/node@22.9.0)(esbuild@0.19.12)(eslint@9.14.0)(nx@20.1.2)(react-dom@18.3.1)(react@18.3.1)(typescript@5.6.3)(vite@5.4.11)(vitest@2.1.5):
     resolution: {integrity: sha512-s8bXBYsECbebMOs1m/HqreFtcKrYIeh5WCWpIfB6pDFU+YQ97pSswsxVoH8cXqIj6RaCiDTs/Rl2A5EdsDgAtg==}
     peerDependencies:
       '@playwright/test': ^1.36.0
@@ -5483,7 +5483,7 @@ packages:
       '@nx/eslint': 20.1.2(@types/node@22.9.0)(eslint@9.14.0)(nx@20.1.2)
       '@nx/js': 20.1.2(@types/node@22.9.0)(nx@20.1.2)(typescript@5.6.3)
       '@nx/vite': 20.1.2(@types/node@22.9.0)(nx@20.1.2)(typescript@5.6.3)(vite@5.4.11)(vitest@2.1.5)
-      '@nx/webpack': 20.1.2(@types/node@22.9.0)(esbuild@0.17.19)(nx@20.1.2)(react-dom@18.3.1)(react@18.3.1)(typescript@5.6.3)
+      '@nx/webpack': 20.1.2(@types/node@22.9.0)(esbuild@0.19.12)(nx@20.1.2)(react-dom@18.3.1)(react@18.3.1)(typescript@5.6.3)
       '@phenomnomnominal/tsquery': 5.0.1(typescript@5.6.3)
       '@playwright/test': 1.48.2
       minimatch: 9.0.3
@@ -5611,7 +5611,7 @@ packages:
       - verdaccio
     dev: true
 
-  /@nx/webpack@20.1.2(@types/node@22.9.0)(esbuild@0.17.19)(nx@20.1.2)(react-dom@18.3.1)(react@18.3.1)(typescript@5.6.3):
+  /@nx/webpack@20.1.2(@types/node@22.9.0)(esbuild@0.19.12)(nx@20.1.2)(react-dom@18.3.1)(react@18.3.1)(typescript@5.6.3):
     resolution: {integrity: sha512-H67DkdpaGnUwYbz4u31+2/TSRmkvBQHX742FNKJAc1/D0uzHH6GI3am0h0QF9wrJyc/fXGVNfRZLEh9ScU70Jw==}
     dependencies:
       '@babel/core': 7.26.0
@@ -5626,7 +5626,7 @@ packages:
       browserslist: 4.24.2
       copy-webpack-plugin: 10.2.4(webpack@5.96.1)
       css-loader: 6.11.0(webpack@5.96.1)
-      css-minimizer-webpack-plugin: 5.0.1(esbuild@0.17.19)(webpack@5.96.1)
+      css-minimizer-webpack-plugin: 5.0.1(esbuild@0.19.12)(webpack@5.96.1)
       express: 4.21.1
       fork-ts-checker-webpack-plugin: 7.2.13(typescript@5.6.3)(webpack@5.96.1)
       http-proxy-middleware: 3.0.3
@@ -5647,11 +5647,11 @@ packages:
       style-loader: 3.3.4(webpack@5.96.1)
       stylus: 0.64.0
       stylus-loader: 7.1.3(stylus@0.64.0)(webpack@5.96.1)
-      terser-webpack-plugin: 5.3.10(esbuild@0.17.19)(webpack@5.96.1)
+      terser-webpack-plugin: 5.3.10(esbuild@0.19.12)(webpack@5.96.1)
       ts-loader: 9.5.1(typescript@5.6.3)(webpack@5.96.1)
       tsconfig-paths-webpack-plugin: 4.0.0
       tslib: 2.8.1
-      webpack: 5.96.1(esbuild@0.17.19)
+      webpack: 5.96.1(esbuild@0.19.12)
       webpack-dev-server: 5.1.0(webpack@5.96.1)
       webpack-node-externals: 3.0.0
       webpack-subresource-integrity: 5.1.0(webpack@5.96.1)
@@ -8016,7 +8016,7 @@ packages:
       '@remix-run/server-runtime': 2.14.0(typescript@5.6.3)
       typescript: 5.6.3
 
-  /@remix-run/dev@2.14.0(@remix-run/react@2.14.0)(@remix-run/serve@2.14.0)(@types/node@22.9.0)(less@4.1.3)(stylus@0.64.0)(typescript@5.6.3)(vite@5.4.11)(wrangler@3.86.1):
+  /@remix-run/dev@2.14.0(@remix-run/react@2.14.0)(@remix-run/serve@2.14.0)(@types/node@22.9.0)(less@4.1.3)(stylus@0.64.0)(typescript@5.6.3)(vite@5.4.11)(wrangler@3.89.0):
     resolution: {integrity: sha512-WMun4fy0ANh92WecufUNb3IV/R02uyfBslM7g7nCO1/lzDII+XmfEkZY5CWPaLmnkoAc1DR2G60+eTHRo480Ug==}
     engines: {node: '>=18.0.0'}
     hasBin: true
@@ -8094,7 +8094,7 @@ packages:
       valibot: 0.41.0(typescript@5.6.3)
       vite: 5.4.11(@types/node@22.9.0)(less@4.1.3)(stylus@0.64.0)
       vite-node: 1.6.0(@types/node@22.9.0)(less@4.1.3)(stylus@0.64.0)
-      wrangler: 3.86.1(@cloudflare/workers-types@4.20241112.0)
+      wrangler: 3.89.0(@cloudflare/workers-types@4.20241112.0)
       ws: 7.5.10
     transitivePeerDependencies:
       - '@types/node'
@@ -11289,7 +11289,7 @@ packages:
       '@babel/core': 7.26.0
       find-cache-dir: 4.0.0
       schema-utils: 4.2.0
-      webpack: 5.96.1(esbuild@0.17.19)
+      webpack: 5.96.1(esbuild@0.19.12)
     dev: true
 
   /babel-plugin-const-enum@1.2.0(@babel/core@7.26.0):
@@ -12116,7 +12116,7 @@ packages:
       normalize-path: 3.0.0
       schema-utils: 4.2.0
       serialize-javascript: 6.0.2
-      webpack: 5.96.1(esbuild@0.17.19)
+      webpack: 5.96.1(esbuild@0.19.12)
     dev: true
 
   /core-js-compat@3.39.0:
@@ -12267,10 +12267,10 @@ packages:
       postcss-modules-values: 4.0.0(postcss@8.4.48)
       postcss-value-parser: 4.2.0
       semver: 7.6.3
-      webpack: 5.96.1(esbuild@0.17.19)
+      webpack: 5.96.1(esbuild@0.19.12)
     dev: true
 
-  /css-minimizer-webpack-plugin@5.0.1(esbuild@0.17.19)(webpack@5.96.1):
+  /css-minimizer-webpack-plugin@5.0.1(esbuild@0.19.12)(webpack@5.96.1):
     resolution: {integrity: sha512-3caImjKFQkS+ws1TGcFn0V1HyDJFq1Euy589JlD6/3rV2kj+w7r5G9WDMgSHvpvXHNZ2calVypZWuEDQd9wfLg==}
     engines: {node: '>= 14.15.0'}
     peerDependencies:
@@ -12297,12 +12297,12 @@ packages:
     dependencies:
       '@jridgewell/trace-mapping': 0.3.25
       cssnano: 6.1.2(postcss@8.4.48)
-      esbuild: 0.17.19
+      esbuild: 0.19.12
       jest-worker: 29.7.0
       postcss: 8.4.48
       schema-utils: 4.2.0
       serialize-javascript: 6.0.2
-      webpack: 5.96.1(esbuild@0.17.19)
+      webpack: 5.96.1(esbuild@0.19.12)
     dev: true
 
   /css-select@5.1.0:
@@ -13958,7 +13958,7 @@ packages:
     dependencies:
       loader-utils: 2.0.4
       schema-utils: 3.3.0
-      webpack: 5.96.1(esbuild@0.17.19)
+      webpack: 5.96.1(esbuild@0.19.12)
     dev: true
 
   /filelist@1.0.4:
@@ -14132,7 +14132,7 @@ packages:
       semver: 7.6.3
       tapable: 2.2.1
       typescript: 5.6.3
-      webpack: 5.96.1(esbuild@0.17.19)
+      webpack: 5.96.1(esbuild@0.19.12)
     dev: true
 
   /form-data@4.0.0:
@@ -15840,7 +15840,7 @@ packages:
     dependencies:
       klona: 2.0.6
       less: 4.1.3
-      webpack: 5.96.1(esbuild@0.17.19)
+      webpack: 5.96.1(esbuild@0.19.12)
     dev: true
 
   /less@4.1.3:
@@ -15896,7 +15896,7 @@ packages:
       webpack-sources:
         optional: true
     dependencies:
-      webpack: 5.96.1(esbuild@0.17.19)
+      webpack: 5.96.1(esbuild@0.19.12)
       webpack-sources: 3.2.3
     dev: true
 
@@ -16790,11 +16790,11 @@ packages:
       webpack: ^5.0.0
     dependencies:
       schema-utils: 4.2.0
-      webpack: 5.96.1(esbuild@0.17.19)
+      webpack: 5.96.1(esbuild@0.19.12)
     dev: true
 
-  /miniflare@3.20241106.0:
-    resolution: {integrity: sha512-PjOoJKjUUofCueQskfhXlGvvHxZj36UAJAp1DnquMK88MFF50zCULblh0KXMSNM+bXeQYA94Gj06a7kfmBGxPw==}
+  /miniflare@3.20241106.1:
+    resolution: {integrity: sha512-dM3RBlJE8rUFxnqlPCaFCq0E7qQqEQvKbYX7W/APGCK+rLcyLmEBzC4GQR/niXdNM/oV6gdg9AA50ghnn2ALuw==}
     engines: {node: '>=16.13'}
     hasBin: true
     dependencies:
@@ -18179,7 +18179,7 @@ packages:
       klona: 2.0.6
       postcss: 8.4.48
       semver: 7.6.3
-      webpack: 5.96.1(esbuild@0.17.19)
+      webpack: 5.96.1(esbuild@0.19.12)
     dev: true
 
   /postcss-merge-longhand@6.0.5(postcss@8.4.48):
@@ -19381,7 +19381,7 @@ packages:
       klona: 2.0.6
       neo-async: 2.6.2
       sass: 1.81.0
-      webpack: 5.96.1(esbuild@0.17.19)
+      webpack: 5.96.1(esbuild@0.19.12)
     dev: true
 
   /sass@1.81.0:
@@ -19791,7 +19791,7 @@ packages:
     dependencies:
       iconv-lite: 0.6.3
       source-map-js: 1.2.1
-      webpack: 5.96.1(esbuild@0.17.19)
+      webpack: 5.96.1(esbuild@0.19.12)
     dev: true
 
   /source-map-support@0.5.19:
@@ -20144,7 +20144,7 @@ packages:
     peerDependencies:
       webpack: ^5.0.0
     dependencies:
-      webpack: 5.96.1(esbuild@0.17.19)
+      webpack: 5.96.1(esbuild@0.19.12)
     dev: true
 
   /style-to-object@0.4.4:
@@ -20174,7 +20174,7 @@ packages:
       fast-glob: 3.3.2
       normalize-path: 3.0.0
       stylus: 0.64.0
-      webpack: 5.96.1(esbuild@0.17.19)
+      webpack: 5.96.1(esbuild@0.19.12)
     dev: true
 
   /stylus@0.64.0:
@@ -20380,7 +20380,7 @@ packages:
       unique-string: 3.0.0
     dev: true
 
-  /terser-webpack-plugin@5.3.10(esbuild@0.17.19)(webpack@5.96.1):
+  /terser-webpack-plugin@5.3.10(esbuild@0.19.12)(webpack@5.96.1):
     resolution: {integrity: sha512-BKFPWlPDndPs+NGGCr1U59t0XScL5317Y0UReNrHaw9/FwhPENlq6bfgs+4yPfyP51vqC1bQ4rp1EfXW5ZSH9w==}
     engines: {node: '>= 10.13.0'}
     peerDependencies:
@@ -20397,12 +20397,12 @@ packages:
         optional: true
     dependencies:
       '@jridgewell/trace-mapping': 0.3.25
-      esbuild: 0.17.19
+      esbuild: 0.19.12
       jest-worker: 27.5.1
       schema-utils: 3.3.0
       serialize-javascript: 6.0.2
       terser: 5.36.0
-      webpack: 5.96.1(esbuild@0.17.19)
+      webpack: 5.96.1(esbuild@0.19.12)
     dev: true
 
   /terser@5.36.0:
@@ -20635,7 +20635,7 @@ packages:
       semver: 7.6.3
       source-map: 0.7.4
       typescript: 5.6.3
-      webpack: 5.96.1(esbuild@0.17.19)
+      webpack: 5.96.1(esbuild@0.19.12)
     dev: true
 
   /ts-node@10.9.1(@types/node@22.9.0)(typescript@5.4.5):
@@ -20906,8 +20906,8 @@ packages:
     engines: {node: '>=18.17'}
     dev: true
 
-  /unenv-nightly@2.0.0-20241024-111401-d4156ac:
-    resolution: {integrity: sha512-xJO1hfY+Te+/XnfCYrCbFbRcgu6XEODND1s5wnVbaBCkuQX7JXF7fHEXPrukFE2j8EOH848P8QN19VO47XN8hw==}
+  /unenv-nightly@2.0.0-20241111-080453-894aa31:
+    resolution: {integrity: sha512-0W39QQOQ9VE8kVVUpGwEG+pZcsCXk5wqNG6rDPE6Gr+fiA69LR0qERM61hW5KCOkC1/ArCFrfCGjwHyyv/bI0Q==}
     dependencies:
       defu: 6.1.4
       ohash: 1.1.4
@@ -21455,7 +21455,7 @@ packages:
       on-finished: 2.4.1
       range-parser: 1.2.1
       schema-utils: 4.2.0
-      webpack: 5.96.1(esbuild@0.17.19)
+      webpack: 5.96.1(esbuild@0.19.12)
     dev: true
 
   /webpack-dev-server@5.1.0(webpack@5.96.1):
@@ -21497,7 +21497,7 @@ packages:
       serve-index: 1.9.1
       sockjs: 0.3.24
       spdy: 4.0.2
-      webpack: 5.96.1(esbuild@0.17.19)
+      webpack: 5.96.1(esbuild@0.19.12)
       webpack-dev-middleware: 7.4.2(webpack@5.96.1)
       ws: 8.18.0
     transitivePeerDependencies:
@@ -21528,14 +21528,14 @@ packages:
         optional: true
     dependencies:
       typed-assert: 1.0.9
-      webpack: 5.96.1(esbuild@0.17.19)
+      webpack: 5.96.1(esbuild@0.19.12)
     dev: true
 
   /webpack-virtual-modules@0.5.0:
     resolution: {integrity: sha512-kyDivFZ7ZM0BVOUteVbDFhlRt7Ah/CSPwJdi8hBpkK7QLumUqdLtVfm/PX/hkcnrvr0i77fO5+TjZ94Pe+C9iw==}
     dev: true
 
-  /webpack@5.96.1(esbuild@0.17.19):
+  /webpack@5.96.1(esbuild@0.19.12):
     resolution: {integrity: sha512-l2LlBSvVZGhL4ZrPwyr8+37AunkcYj5qh8o6u2/2rzoPc8gxFJkLj1WxNgooi9pnoc06jh0BjuXnamM4qlujZA==}
     engines: {node: '>=10.13.0'}
     hasBin: true
@@ -21565,7 +21565,7 @@ packages:
       neo-async: 2.6.2
       schema-utils: 3.3.0
       tapable: 2.2.1
-      terser-webpack-plugin: 5.3.10(esbuild@0.17.19)(webpack@5.96.1)
+      terser-webpack-plugin: 5.3.10(esbuild@0.19.12)(webpack@5.96.1)
       watchpack: 2.4.2
       webpack-sources: 3.2.3
     transitivePeerDependencies:
@@ -21725,8 +21725,8 @@ packages:
       '@cloudflare/workerd-windows-64': 1.20241106.1
     dev: true
 
-  /wrangler@3.86.1(@cloudflare/workers-types@4.20241112.0):
-    resolution: {integrity: sha512-ujN74lPQCQRsMcvf48WLLZUqOqUbJJzt5+Xm5T3tGrpRJLW+dTB0ffvT/e2DBBvHZ7R52ZzZdm1akyLPsZmZ9Q==}
+  /wrangler@3.89.0(@cloudflare/workers-types@4.20241112.0):
+    resolution: {integrity: sha512-ix3Rir/cu9Cn6FklvPDIW1QwOMcRU8iPj3IrkBWGdB66K9z1uqyqoTP64UZZyXrBItfrU7SbQT4L5wJ5y10TPA==}
     engines: {node: '>=16.17.0'}
     hasBin: true
     peerDependencies:
@@ -21741,18 +21741,18 @@ packages:
       '@esbuild-plugins/node-globals-polyfill': 0.2.3(esbuild@0.17.19)
       '@esbuild-plugins/node-modules-polyfill': 0.2.2(esbuild@0.17.19)
       blake3-wasm: 2.1.5
-      chokidar: 3.6.0
+      chokidar: 4.0.1
       date-fns: 4.1.0
       esbuild: 0.17.19
       itty-time: 1.0.6
-      miniflare: 3.20241106.0
+      miniflare: 3.20241106.1
       nanoid: 3.3.7
       path-to-regexp: 6.3.0
       resolve: 1.22.8
       resolve.exports: 2.0.2
       selfsigned: 2.4.1
       source-map: 0.6.1
-      unenv: /unenv-nightly@2.0.0-20241024-111401-d4156ac
+      unenv: /unenv-nightly@2.0.0-20241111-080453-894aa31
       workerd: 1.20241106.1
       xxhash-wasm: 1.0.2
     optionalDependencies:
