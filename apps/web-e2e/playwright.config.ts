@@ -9,7 +9,7 @@ dotenv.config()
 const baseURL = process.env.BASE_URL ?? 'http://localhost:4200'
 
 export default defineConfig({
-  ...nxE2EPreset(__filename, { testDir: './src/specs' }),
+  ...nxE2EPreset(import.meta.filename, { testDir: './src/specs' }),
   globalSetup: require.resolve('./src/setup/global-setup.ts'),
   use: {
     baseURL,
