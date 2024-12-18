@@ -1,1 +1,1 @@
-module.exports = require('../../eslint.config')
+export { default } from '@mach/shared-eslint-config'

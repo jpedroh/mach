@@ -22,7 +22,7 @@ export function VatsimFplButton({ flight }: Props) {
 
   return (
     <Button asChild>
-      <a href={vatsimLink} target="_blank">
+      <a href={vatsimLink} target="_blank" rel="noreferrer">
         Vatsim FP
       </a>
     </Button>

@@ -41,7 +41,7 @@ export function IvaoFplButton({ flight }: Props) {
 
   return (
     <Button asChild variant="primary">
-      <a href={url.toString()} target="_blank">
+      <a href={url.toString()} target="_blank" rel="noreferrer">
         IVAO FP
       </a>
     </Button>
