@@ -1,3 +1,3 @@
 export default {
-  '*': ['pnpm biome format --write'],
+  '*': ['pnpm biome format --no-errors-on-unmatched --write'],
 }
