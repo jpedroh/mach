@@ -1,9 +1,9 @@
 import { makeDatabaseConnection } from '@mach/shared-database'
 import {
   type HeadersFunction,
-  LoaderFunctionArgs,
+  type LoaderFunctionArgs,
   data,
-} from '@remix-run/cloudflare'
+} from 'react-router'
 import * as Sentry from '@sentry/remix'
 import { fetchFlightById } from '../services/fetch-flight-by-id'
 

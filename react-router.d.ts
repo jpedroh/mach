@@ -1,7 +1,7 @@
 export {}
 
-declare module '@remix-run/cloudflare' {
-  export interface AppLoadContext {
+declare module 'react-router' {
+  interface AppLoadContext {
     cloudflare: {
       env: {
         TURSO_CONNECTION_URL: string

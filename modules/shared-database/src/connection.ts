@@ -1,5 +1,5 @@
 import { createClient } from '@libsql/client'
-import { AppLoadContext } from '@remix-run/cloudflare'
+import type { AppLoadContext } from 'react-router'
 import { drizzle } from 'drizzle-orm/libsql'
 import * as schema from './schema'
 

@@ -2,8 +2,8 @@ import { makeDatabaseConnection } from '@mach/shared-database'
 import { Layout } from '@mach/web-shared-ui/layout'
 import { Lead } from '@mach/web-shared-ui/lead'
 import { Link } from '@mach/web-shared-ui/link'
-import { LoaderFunctionArgs } from '@remix-run/cloudflare'
-import { Outlet, useLoaderData } from '@remix-run/react'
+import { LoaderFunctionArgs } from 'react-router'
+import { Outlet, useLoaderData } from 'react-router'
 import { serverOnly$ } from 'vite-env-only/macros'
 import {
   fetchFlights,

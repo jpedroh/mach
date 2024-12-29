@@ -6,8 +6,8 @@ import {
   ModalHeading,
   ModalRoot,
 } from '@mach/web-shared-ui/modal'
-import { LoaderFunctionArgs } from '@remix-run/cloudflare'
-import { useLoaderData, useNavigate } from '@remix-run/react'
+import { LoaderFunctionArgs } from 'react-router'
+import { useLoaderData, useNavigate } from 'react-router'
 import { ReactNode } from 'react'
 import { serverOnly$ } from 'vite-env-only/macros'
 import { fetchFlightById } from '../services/fetch-flight-by-id'

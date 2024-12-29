@@ -1,4 +1,4 @@
-import { data } from '@remix-run/cloudflare'
+import { data } from 'react-router'
 
 const openApi = {
   openapi: '3.0.1',

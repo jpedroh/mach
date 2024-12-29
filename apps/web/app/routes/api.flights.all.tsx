@@ -3,7 +3,7 @@ import {
   type HeadersFunction,
   type LoaderFunctionArgs,
   data,
-} from '@remix-run/cloudflare'
+} from 'react-router'
 import * as Sentry from '@sentry/remix'
 import { fetchFlights, fetchFlightsSchema } from '../services/fetch-flights'
 
