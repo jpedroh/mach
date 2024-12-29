@@ -2,8 +2,8 @@
   "name": "@mach/web",
   "type": "module",
   "scripts": {
-    "serve": "remix vite:dev",
-    "pack": "remix vite:build"
+    "serve": "react-router dev",
+    "pack": "react-router build"
   },
   "dependencies": {
     "@mach/shared-database": "workspace:*",
@@ -11,9 +11,8 @@
     "@mach/web-home": "workspace:*",
     "@mach/web-search": "workspace:*",
     "@mach/web-shared-ui": "workspace:*",
-    "@remix-run/cloudflare": "^2.15.2",
-    "@remix-run/cloudflare-pages": "^2.15.2",
-    "isbot": "^5"
+    "isbot": "^5",
+    "react-router": "^7.1.1"
   },
   "nx": {
     "tags": ["type:application"],

@@ -1,6 +1,6 @@
 import { Button } from '@mach/web-shared-ui/button'
 import { Table } from '@mach/web-shared-ui/table'
-import { Link, useSearchParams } from '@remix-run/react'
+import { Link, useSearchParams } from 'react-router'
 import { fetchFlights } from '../../services/fetch-flights'
 import { formatAirport } from '../../utils/format-airport'
 

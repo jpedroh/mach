@@ -1,4 +1,4 @@
-import type { HeadersFunction, MetaFunction } from '@remix-run/cloudflare'
+import type { HeadersFunction, MetaFunction } from 'react-router'
 
 export const meta: MetaFunction = () => {
   return [

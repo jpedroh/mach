@@ -1,10 +1,10 @@
 import { makeDatabaseConnection } from '@mach/shared-database'
+import * as Sentry from '@sentry/remix'
 import {
   type HeadersFunction,
-  LoaderFunctionArgs,
+  type LoaderFunctionArgs,
   data,
-} from '@remix-run/cloudflare'
-import * as Sentry from '@sentry/remix'
+} from 'react-router'
 import { fetchFlightById } from '../services/fetch-flight-by-id'
 
 export const headers: HeadersFunction = () => ({
