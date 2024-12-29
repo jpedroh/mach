@@ -2,7 +2,7 @@ import { makeDatabaseConnection } from '@mach/shared-database'
 import {
   type HeadersFunction,
   LoaderFunctionArgs,
-  json,
+  data,
 } from '@remix-run/cloudflare'
 import * as Sentry from '@sentry/remix'
 import { fetchFlightById } from '../services/fetch-flight-by-id'
@@ -18,11 +18,11 @@ export async function loader({ params, context }: LoaderFunctionArgs) {
     const db = makeDatabaseConnection(context)
     const flight = await fetchFlightById(db, params.id ?? '')
     if (flight == null) {
-      return json({ message: 'Not found' }, { status: 404 })
+      return data({ message: 'Not found' }, { status: 404 })
     }
-    return json(flight)
+    return data(flight)
   } catch (error) {
     Sentry.captureException(error)
-    return json({ message: 'Internal server error' }, { status: 500 })
+    return data({ message: 'Internal server error' }, { status: 500 })
   }
 }

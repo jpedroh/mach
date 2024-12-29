@@ -2,7 +2,7 @@ import { makeDatabaseConnection } from '@mach/shared-database'
 import {
   type HeadersFunction,
   type LoaderFunctionArgs,
-  json,
+  data,
 } from '@remix-run/cloudflare'
 import * as Sentry from '@sentry/remix'
 import { fetchFlights, fetchFlightsSchema } from '../services/fetch-flights'
@@ -26,12 +26,12 @@ export async function loader({ request, context }: LoaderFunctionArgs) {
     })
 
     if (!query.success) {
-      return json({ message: 'Bad Request' }, { status: 400 })
+      return data({ message: 'Bad Request' }, { status: 400 })
     }
 
-    return json(await fetchFlights(db, query.data))
+    return data(await fetchFlights(db, query.data))
   } catch (error) {
     Sentry.captureException(error)
-    return json({ message: 'Internal server error' }, { status: 500 })
+    return data({ message: 'Internal server error' }, { status: 500 })
   }
 }

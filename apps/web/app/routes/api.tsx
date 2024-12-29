@@ -1,4 +1,4 @@
-import { LoaderFunctionArgs, json } from '@remix-run/cloudflare'
+import { data } from '@remix-run/cloudflare'
 
 const openApi = {
   openapi: '3.0.1',
@@ -392,7 +392,7 @@ const openApi = {
 }
 
 export async function loader() {
-  return json(openApi, {
+  return data(openApi, {
     headers: {
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
