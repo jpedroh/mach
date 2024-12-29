@@ -2,7 +2,7 @@ import { makeDatabaseConnection } from '@mach/shared-database'
 import {
   type HeadersFunction,
   type LoaderFunctionArgs,
-  json,
+  data,
 } from '@remix-run/cloudflare'
 import * as Sentry from '@sentry/remix'
 import {
@@ -33,13 +33,13 @@ export async function loader({ request, context }: LoaderFunctionArgs) {
     )
 
     if (!query.success || !paginate.success) {
-      return json({ message: 'Bad Request' }, { status: 400 })
+      return data({ message: 'Bad Request' }, { status: 400 })
     }
     const response = await fetchFlights(db, query.data, paginate.data)
 
-    return json(response)
+    return data(response)
   } catch (error) {
     Sentry.captureException(error)
-    return json({ message: 'Internal server error' }, { status: 500 })
+    return data({ message: 'Internal server error' }, { status: 500 })
   }
 }
