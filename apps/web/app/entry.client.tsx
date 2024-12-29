@@ -5,10 +5,10 @@ import * as Sentry from '@sentry/remix'
  * For more information, see https://remix.run/file-conventions/entry.client
  */
 
-import { useLocation, useMatches } from 'react-router'
-import { HydratedRouter } from 'react-router/dom'
 import { StrictMode, startTransition, useEffect } from 'react'
 import { hydrateRoot } from 'react-dom/client'
+import { useLocation, useMatches } from 'react-router'
+import { HydratedRouter } from 'react-router/dom'
 
 Sentry.init({
   dsn: import.meta.env.VITE_SENTRY_DSN,

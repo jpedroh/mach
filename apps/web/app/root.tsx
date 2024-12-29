@@ -1,6 +1,6 @@
+import { withSentry } from '@sentry/remix'
 import type { LinksFunction } from 'react-router'
 import { Links, Meta, Outlet, Scripts } from 'react-router'
-import { withSentry } from '@sentry/remix'
 import stylesheet from './tailwind.css?url'
 
 export const links: LinksFunction = () => [

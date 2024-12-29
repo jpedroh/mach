@@ -1,6 +1,6 @@
 import { createClient } from '@libsql/client'
-import type { AppLoadContext } from 'react-router'
 import { drizzle } from 'drizzle-orm/libsql'
+import type { AppLoadContext } from 'react-router'
 import * as schema from './schema'
 
 const client = createClient({

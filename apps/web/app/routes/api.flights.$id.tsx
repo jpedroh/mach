@@ -1,10 +1,10 @@
 import { makeDatabaseConnection } from '@mach/shared-database'
+import * as Sentry from '@sentry/remix'
 import {
   type HeadersFunction,
   type LoaderFunctionArgs,
   data,
 } from 'react-router'
-import * as Sentry from '@sentry/remix'
 import { fetchFlightById } from '../services/fetch-flight-by-id'
 
 export const headers: HeadersFunction = () => ({

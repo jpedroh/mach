@@ -6,10 +6,10 @@ import * as Sentry from '@sentry/remix'
  * For more information, see https://remix.run/file-conventions/entry.server
  */
 
-import type { AppLoadContext, EntryContext } from 'react-router'
-import { ServerRouter } from 'react-router'
 import { isbot } from 'isbot'
 import { renderToReadableStream } from 'react-dom/server'
+import type { AppLoadContext, EntryContext } from 'react-router'
+import { ServerRouter } from 'react-router'
 
 Sentry.init({
   dsn: import.meta.env.VITE_SENTRY_DSN,

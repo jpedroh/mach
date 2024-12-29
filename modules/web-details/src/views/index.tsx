@@ -6,9 +6,9 @@ import {
   ModalHeading,
   ModalRoot,
 } from '@mach/web-shared-ui/modal'
+import { ReactNode } from 'react'
 import { LoaderFunctionArgs } from 'react-router'
 import { useLoaderData, useNavigate } from 'react-router'
-import { ReactNode } from 'react'
 import { serverOnly$ } from 'vite-env-only/macros'
 import { fetchFlightById } from '../services/fetch-flight-by-id'
 import { formatEet } from '../utils/format-eet'

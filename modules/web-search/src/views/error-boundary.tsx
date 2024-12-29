@@ -1,8 +1,8 @@
 import { Layout } from '@mach/web-shared-ui/layout'
 import { Lead } from '@mach/web-shared-ui/lead'
 import { Link } from '@mach/web-shared-ui/link'
-import { useRouteError } from 'react-router'
 import { captureRemixErrorBoundaryError } from '@sentry/remix'
+import { useRouteError } from 'react-router'
 
 export function SearchErrorBoundary() {
   const error = useRouteError()
