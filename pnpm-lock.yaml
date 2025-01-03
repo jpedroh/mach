@@ -263,7 +263,7 @@ importers:
         version: 9.17.0
       '@nx/eslint-plugin':
         specifier: 20.3.0
-        version: 20.3.0(@types/node@22.10.3)(@typescript-eslint/parser@8.19.0)(eslint@9.17.0)(nx@20.3.0)(typescript@5.7.2)
+        version: 20.3.0(@types/node@22.10.4)(@typescript-eslint/parser@8.19.0)(eslint@9.17.0)(nx@20.3.0)(typescript@5.7.2)
       eslint:
         specifier: ^9.17.0
         version: 9.17.0
@@ -5106,7 +5106,7 @@ packages:
       yargs-parser: 21.1.1
     dev: true
 
-  /@nx/eslint-plugin@20.3.0(@types/node@22.10.3)(@typescript-eslint/parser@8.19.0)(eslint@9.17.0)(nx@20.3.0)(typescript@5.7.2):
+  /@nx/eslint-plugin@20.3.0(@types/node@22.10.4)(@typescript-eslint/parser@8.19.0)(eslint@9.17.0)(nx@20.3.0)(typescript@5.7.2):
     resolution: {integrity: sha512-U9DvbR7quyfnWk8ZCJlwKbIInZ5gd4be93X5gii966vM81n3lbWLc7y4avU4r3732X2pnpFGJqBgP8ov8JE/fw==}
     peerDependencies:
       '@typescript-eslint/parser': ^6.13.2 || ^7.0.0 || ^8.0.0
@@ -5116,7 +5116,7 @@ packages:
         optional: true
     dependencies:
       '@nx/devkit': 20.3.0(nx@20.3.0)
-      '@nx/js': 20.3.0(@types/node@22.10.3)(nx@20.3.0)(typescript@5.7.2)
+      '@nx/js': 20.3.0(@types/node@22.10.4)(nx@20.3.0)(typescript@5.7.2)
       '@typescript-eslint/parser': 8.19.0(eslint@9.17.0)(typescript@5.7.2)
       '@typescript-eslint/type-utils': 8.17.0(eslint@9.17.0)(typescript@5.7.2)
       '@typescript-eslint/utils': 8.17.0(eslint@9.17.0)(typescript@5.7.2)
@@ -5165,56 +5165,6 @@ packages:
       - nx
       - supports-color
       - verdaccio
-    dev: true
-
-  /@nx/js@20.3.0(@types/node@22.10.3)(nx@20.3.0)(typescript@5.7.2):
-    resolution: {integrity: sha512-hnO1jzJUvO7+bBsC2uaUElpX9gpMiSA3wdt34V8nnPcIBWtdMrjKX7yRFSwZKimeNauesiX0uorTJf+z28R2bg==}
-    peerDependencies:
-      verdaccio: ^5.0.4
-    peerDependenciesMeta:
-      verdaccio:
-        optional: true
-    dependencies:
-      '@babel/core': 7.26.0
-      '@babel/plugin-proposal-decorators': 7.25.9(@babel/core@7.26.0)
-      '@babel/plugin-transform-class-properties': 7.25.9(@babel/core@7.26.0)
-      '@babel/plugin-transform-runtime': 7.25.9(@babel/core@7.26.0)
-      '@babel/preset-env': 7.26.0(@babel/core@7.26.0)
-      '@babel/preset-typescript': 7.26.0(@babel/core@7.26.0)
-      '@babel/runtime': 7.26.0
-      '@nx/devkit': 20.3.0(nx@20.3.0)
-      '@nx/workspace': 20.3.0
-      '@zkochan/js-yaml': 0.0.7
-      babel-plugin-const-enum: 1.2.0(@babel/core@7.26.0)
-      babel-plugin-macros: 2.8.0
-      babel-plugin-transform-typescript-metadata: 0.3.2(@babel/core@7.26.0)
-      chalk: 4.1.2
-      columnify: 1.6.0
-      detect-port: 1.6.1
-      enquirer: 2.3.6
-      ignore: 5.3.2
-      js-tokens: 4.0.0
-      jsonc-parser: 3.2.0
-      minimatch: 9.0.3
-      npm-package-arg: 11.0.1
-      npm-run-path: 4.0.1
-      ora: 5.3.0
-      semver: 7.6.3
-      source-map-support: 0.5.19
-      tinyglobby: 0.2.10
-      ts-node: 10.9.1(@types/node@22.10.3)(typescript@5.7.2)
-      tsconfig-paths: 4.2.0
-      tslib: 2.8.1
-    transitivePeerDependencies:
-      - '@babel/traverse'
-      - '@swc-node/register'
-      - '@swc/core'
-      - '@swc/wasm'
-      - '@types/node'
-      - debug
-      - nx
-      - supports-color
-      - typescript
     dev: true
 
   /@nx/js@20.3.0(@types/node@22.10.4)(nx@20.3.0)(typescript@5.6.3):
@@ -19709,37 +19659,6 @@ packages:
       source-map: 0.7.4
       typescript: 5.7.2
       webpack: 5.96.1(esbuild@0.17.19)
-    dev: true
-
-  /ts-node@10.9.1(@types/node@22.10.3)(typescript@5.7.2):
-    resolution: {integrity: sha512-NtVysVPkxxrwFGUUxGYhfux8k78pQB3JqYBXlLRZgdGUqTO5wU/UyHop5p70iEbGhB7q5KmiZiU0Y3KlJrScEw==}
-    hasBin: true
-    peerDependencies:
-      '@swc/core': '>=1.2.50'
-      '@swc/wasm': '>=1.2.50'
-      '@types/node': '*'
-      typescript: '>=2.7'
-    peerDependenciesMeta:
-      '@swc/core':
-        optional: true
-      '@swc/wasm':
-        optional: true
-    dependencies:
-      '@cspotcode/source-map-support': 0.8.1
-      '@tsconfig/node10': 1.0.11
-      '@tsconfig/node12': 1.0.11
-      '@tsconfig/node14': 1.0.3
-      '@tsconfig/node16': 1.0.4
-      '@types/node': 22.10.3
-      acorn: 8.14.0
-      acorn-walk: 8.3.4
-      arg: 4.1.3
-      create-require: 1.1.1
-      diff: 4.0.2
-      make-error: 1.3.6
-      typescript: 5.7.2
-      v8-compile-cache-lib: 3.0.1
-      yn: 3.1.1
     dev: true
 
   /ts-node@10.9.1(@types/node@22.10.4)(typescript@5.6.3):
