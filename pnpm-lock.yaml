@@ -58,10 +58,10 @@ importers:
         version: 7.1.1(@react-router/dev@7.1.1)(typescript@5.7.2)
       '@semantic-release/exec':
         specifier: ^6.0.0
-        version: 6.0.3(semantic-release@24.2.0)
+        version: 6.0.3(semantic-release@24.2.1)
       '@semantic-release/git':
         specifier: ^10.0.1
-        version: 10.0.1(semantic-release@24.2.0)
+        version: 10.0.1(semantic-release@24.2.1)
       '@sentry/node':
         specifier: ^8.47.0
         version: 8.47.0
@@ -162,8 +162,8 @@ importers:
         specifier: ^1.4.2
         version: 1.4.2(@types/react@18.3.12)(react@18.3.1)
       semantic-release:
-        specifier: ^24.2.0
-        version: 24.2.0(typescript@5.7.2)
+        specifier: ^24.2.1
+        version: 24.2.1(typescript@5.7.2)
       sherif:
         specifier: ^1.1.1
         version: 1.1.1
@@ -263,7 +263,7 @@ importers:
         version: 9.17.0
       '@nx/eslint-plugin':
         specifier: 20.3.0
-        version: 20.3.0(@types/node@22.10.3)(@typescript-eslint/parser@8.19.0)(eslint@9.17.0)(nx@20.3.0)(typescript@5.7.2)
+        version: 20.3.0(@types/node@22.10.4)(@typescript-eslint/parser@8.19.0)(eslint@9.17.0)(nx@20.3.0)(typescript@5.7.2)
       eslint:
         specifier: ^9.17.0
         version: 9.17.0
@@ -5106,7 +5106,7 @@ packages:
       yargs-parser: 21.1.1
     dev: true
 
-  /@nx/eslint-plugin@20.3.0(@types/node@22.10.3)(@typescript-eslint/parser@8.19.0)(eslint@9.17.0)(nx@20.3.0)(typescript@5.7.2):
+  /@nx/eslint-plugin@20.3.0(@types/node@22.10.4)(@typescript-eslint/parser@8.19.0)(eslint@9.17.0)(nx@20.3.0)(typescript@5.7.2):
     resolution: {integrity: sha512-U9DvbR7quyfnWk8ZCJlwKbIInZ5gd4be93X5gii966vM81n3lbWLc7y4avU4r3732X2pnpFGJqBgP8ov8JE/fw==}
     peerDependencies:
       '@typescript-eslint/parser': ^6.13.2 || ^7.0.0 || ^8.0.0
@@ -5116,7 +5116,7 @@ packages:
         optional: true
     dependencies:
       '@nx/devkit': 20.3.0(nx@20.3.0)
-      '@nx/js': 20.3.0(@types/node@22.10.3)(nx@20.3.0)(typescript@5.7.2)
+      '@nx/js': 20.3.0(@types/node@22.10.4)(nx@20.3.0)(typescript@5.7.2)
       '@typescript-eslint/parser': 8.19.0(eslint@9.17.0)(typescript@5.7.2)
       '@typescript-eslint/type-utils': 8.17.0(eslint@9.17.0)(typescript@5.7.2)
       '@typescript-eslint/utils': 8.17.0(eslint@9.17.0)(typescript@5.7.2)
@@ -5165,56 +5165,6 @@ packages:
       - nx
       - supports-color
       - verdaccio
-    dev: true
-
-  /@nx/js@20.3.0(@types/node@22.10.3)(nx@20.3.0)(typescript@5.7.2):
-    resolution: {integrity: sha512-hnO1jzJUvO7+bBsC2uaUElpX9gpMiSA3wdt34V8nnPcIBWtdMrjKX7yRFSwZKimeNauesiX0uorTJf+z28R2bg==}
-    peerDependencies:
-      verdaccio: ^5.0.4
-    peerDependenciesMeta:
-      verdaccio:
-        optional: true
-    dependencies:
-      '@babel/core': 7.26.0
-      '@babel/plugin-proposal-decorators': 7.25.9(@babel/core@7.26.0)
-      '@babel/plugin-transform-class-properties': 7.25.9(@babel/core@7.26.0)
-      '@babel/plugin-transform-runtime': 7.25.9(@babel/core@7.26.0)
-      '@babel/preset-env': 7.26.0(@babel/core@7.26.0)
-      '@babel/preset-typescript': 7.26.0(@babel/core@7.26.0)
-      '@babel/runtime': 7.26.0
-      '@nx/devkit': 20.3.0(nx@20.3.0)
-      '@nx/workspace': 20.3.0
-      '@zkochan/js-yaml': 0.0.7
-      babel-plugin-const-enum: 1.2.0(@babel/core@7.26.0)
-      babel-plugin-macros: 2.8.0
-      babel-plugin-transform-typescript-metadata: 0.3.2(@babel/core@7.26.0)
-      chalk: 4.1.2
-      columnify: 1.6.0
-      detect-port: 1.6.1
-      enquirer: 2.3.6
-      ignore: 5.3.2
-      js-tokens: 4.0.0
-      jsonc-parser: 3.2.0
-      minimatch: 9.0.3
-      npm-package-arg: 11.0.1
-      npm-run-path: 4.0.1
-      ora: 5.3.0
-      semver: 7.6.3
-      source-map-support: 0.5.19
-      tinyglobby: 0.2.10
-      ts-node: 10.9.1(@types/node@22.10.3)(typescript@5.7.2)
-      tsconfig-paths: 4.2.0
-      tslib: 2.8.1
-    transitivePeerDependencies:
-      - '@babel/traverse'
-      - '@swc-node/register'
-      - '@swc/core'
-      - '@swc/wasm'
-      - '@types/node'
-      - debug
-      - nx
-      - supports-color
-      - typescript
     dev: true
 
   /@nx/js@20.3.0(@types/node@22.10.4)(nx@20.3.0)(typescript@5.6.3):
@@ -8357,7 +8307,7 @@ packages:
     resolution: {integrity: sha512-831qok9r2t8AlxLko40y2ebgSDhenenCatLVeW/uBtnHPyhHOvG0C7TvfgecV+wHzIm5KUICgzmVpWS+IMEAeg==}
     dev: true
 
-  /@semantic-release/commit-analyzer@13.0.0(semantic-release@24.2.0):
+  /@semantic-release/commit-analyzer@13.0.0(semantic-release@24.2.1):
     resolution: {integrity: sha512-KtXWczvTAB1ZFZ6B4O+w8HkfYm/OgQb1dUGNFZtDgQ0csggrmkq8sTxhd+lwGF8kMb59/RnG9o4Tn7M/I8dQ9Q==}
     engines: {node: '>=20.8.1'}
     peerDependencies:
@@ -8371,7 +8321,7 @@ packages:
       import-from-esm: 1.3.4
       lodash-es: 4.17.21
       micromatch: 4.0.8
-      semantic-release: 24.2.0(typescript@5.7.2)
+      semantic-release: 24.2.1(typescript@5.7.2)
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -8386,7 +8336,7 @@ packages:
     engines: {node: '>=18'}
     dev: true
 
-  /@semantic-release/exec@6.0.3(semantic-release@24.2.0):
+  /@semantic-release/exec@6.0.3(semantic-release@24.2.1):
     resolution: {integrity: sha512-bxAq8vLOw76aV89vxxICecEa8jfaWwYITw6X74zzlO0mc/Bgieqx9kBRz9z96pHectiTAtsCwsQcUyLYWnp3VQ==}
     engines: {node: '>=14.17'}
     peerDependencies:
@@ -8398,12 +8348,12 @@ packages:
       execa: 5.1.1
       lodash: 4.17.21
       parse-json: 5.2.0
-      semantic-release: 24.2.0(typescript@5.7.2)
+      semantic-release: 24.2.1(typescript@5.7.2)
     transitivePeerDependencies:
       - supports-color
     dev: true
 
-  /@semantic-release/git@10.0.1(semantic-release@24.2.0):
+  /@semantic-release/git@10.0.1(semantic-release@24.2.1):
     resolution: {integrity: sha512-eWrx5KguUcU2wUPaO6sfvZI0wPafUKAMNC18aXY4EnNcrZL86dEmpNVnC9uMpGZkmZJ9EfCVJBQx4pV4EMGT1w==}
     engines: {node: '>=14.17'}
     peerDependencies:
@@ -8417,12 +8367,12 @@ packages:
       lodash: 4.17.21
       micromatch: 4.0.5
       p-reduce: 2.1.0
-      semantic-release: 24.2.0(typescript@5.7.2)
+      semantic-release: 24.2.1(typescript@5.7.2)
     transitivePeerDependencies:
       - supports-color
     dev: true
 
-  /@semantic-release/github@11.0.0(semantic-release@24.2.0):
+  /@semantic-release/github@11.0.0(semantic-release@24.2.1):
     resolution: {integrity: sha512-Uon6G6gJD8U1JNvPm7X0j46yxNRJ8Ui6SgK4Zw5Ktu8RgjEft3BGn+l/RX1TTzhhO3/uUcKuqM+/9/ETFxWS/Q==}
     engines: {node: '>=20.8.1'}
     peerDependencies:
@@ -8443,13 +8393,13 @@ packages:
       lodash-es: 4.17.21
       mime: 4.0.4
       p-filter: 4.1.0
-      semantic-release: 24.2.0(typescript@5.7.2)
+      semantic-release: 24.2.1(typescript@5.7.2)
       url-join: 5.0.0
     transitivePeerDependencies:
       - supports-color
     dev: true
 
-  /@semantic-release/npm@12.0.0(semantic-release@24.2.0):
+  /@semantic-release/npm@12.0.0(semantic-release@24.2.1):
     resolution: {integrity: sha512-72TVYQCH9NvVsO/y13eF8vE4bNnfls518+4KcFwJUKi7AtA/ZXoNgSg9gTTfw5eMZMkiH0izUrpGXgZE/cSQhA==}
     engines: {node: '>=20.8.1'}
     peerDependencies:
@@ -8466,12 +8416,12 @@ packages:
       rc: 1.2.8
       read-pkg: 9.0.1
       registry-auth-token: 5.0.2
-      semantic-release: 24.2.0(typescript@5.7.2)
+      semantic-release: 24.2.1(typescript@5.7.2)
       semver: 7.6.3
       tempy: 3.1.0
     dev: true
 
-  /@semantic-release/release-notes-generator@14.0.1(semantic-release@24.2.0):
+  /@semantic-release/release-notes-generator@14.0.1(semantic-release@24.2.1):
     resolution: {integrity: sha512-K0w+5220TM4HZTthE5dDpIuFrnkN1NfTGPidJFm04ULT1DEZ9WG89VNXN7F0c+6nMEpWgqmPvb7vY7JkB2jyyA==}
     engines: {node: '>=20.8.1'}
     peerDependencies:
@@ -8487,7 +8437,7 @@ packages:
       into-stream: 7.0.0
       lodash-es: 4.17.21
       read-package-up: 11.0.0
-      semantic-release: 24.2.0(typescript@5.7.2)
+      semantic-release: 24.2.1(typescript@5.7.2)
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -14677,6 +14627,16 @@ packages:
       - supports-color
     dev: true
 
+  /import-from-esm@2.0.0:
+    resolution: {integrity: sha512-YVt14UZCgsX1vZQ3gKjkWVdBdHQ6eu3MPU1TBgL1H5orXe2+jWD006WCPPtOuwlQm10NuzOW5WawiF1Q9veW8g==}
+    engines: {node: '>=18.20'}
+    dependencies:
+      debug: 4.4.0
+      import-meta-resolve: 4.1.0
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
   /import-in-the-middle@1.11.2:
     resolution: {integrity: sha512-gK6Rr6EykBcc6cVWRSBR5TWf8nn6hZMYSRYqCcHa0l0d1fPK7JSYo6+Mlmck76jIX9aL/IZ71c06U2VpFwl1zA==}
     dependencies:
@@ -15891,7 +15851,7 @@ packages:
       marked: '>=1 <13'
     dependencies:
       ansi-escapes: 6.2.1
-      chalk: 5.3.0
+      chalk: 5.4.1
       cli-highlight: 2.1.11
       cli-table3: 0.6.4
       marked: 12.0.2
@@ -18467,19 +18427,19 @@ packages:
       node-forge: 1.3.1
     dev: true
 
-  /semantic-release@24.2.0(typescript@5.7.2):
-    resolution: {integrity: sha512-fQfn6e/aYToRtVJYKqneFM1Rg3KP2gh3wSWtpYsLlz6uaPKlISrTzvYAFn+mYWo07F0X1Cz5ucU89AVE8X1mbg==}
+  /semantic-release@24.2.1(typescript@5.7.2):
+    resolution: {integrity: sha512-z0/3cutKNkLQ4Oy0HTi3lubnjTsdjjgOqmxdPjeYWe6lhFqUPfwslZxRHv3HDZlN4MhnZitb9SLihDkZNxOXfQ==}
     engines: {node: '>=20.8.1'}
     hasBin: true
     dependencies:
-      '@semantic-release/commit-analyzer': 13.0.0(semantic-release@24.2.0)
+      '@semantic-release/commit-analyzer': 13.0.0(semantic-release@24.2.1)
       '@semantic-release/error': 4.0.0
-      '@semantic-release/github': 11.0.0(semantic-release@24.2.0)
-      '@semantic-release/npm': 12.0.0(semantic-release@24.2.0)
-      '@semantic-release/release-notes-generator': 14.0.1(semantic-release@24.2.0)
+      '@semantic-release/github': 11.0.0(semantic-release@24.2.1)
+      '@semantic-release/npm': 12.0.0(semantic-release@24.2.1)
+      '@semantic-release/release-notes-generator': 14.0.1(semantic-release@24.2.1)
       aggregate-error: 5.0.0
       cosmiconfig: 9.0.0(typescript@5.7.2)
-      debug: 4.3.7
+      debug: 4.4.0
       env-ci: 11.0.0
       execa: 9.0.2
       figures: 6.1.0
@@ -18488,7 +18448,7 @@ packages:
       git-log-parser: 1.2.0
       hook-std: 3.0.0
       hosted-git-info: 8.0.0
-      import-from-esm: 1.3.4
+      import-from-esm: 2.0.0
       lodash-es: 4.17.21
       marked: 12.0.2
       marked-terminal: 7.0.0(marked@12.0.2)
@@ -19709,37 +19669,6 @@ packages:
       source-map: 0.7.4
       typescript: 5.7.2
       webpack: 5.96.1(esbuild@0.17.19)
-    dev: true
-
-  /ts-node@10.9.1(@types/node@22.10.3)(typescript@5.7.2):
-    resolution: {integrity: sha512-NtVysVPkxxrwFGUUxGYhfux8k78pQB3JqYBXlLRZgdGUqTO5wU/UyHop5p70iEbGhB7q5KmiZiU0Y3KlJrScEw==}
-    hasBin: true
-    peerDependencies:
-      '@swc/core': '>=1.2.50'
-      '@swc/wasm': '>=1.2.50'
-      '@types/node': '*'
-      typescript: '>=2.7'
-    peerDependenciesMeta:
-      '@swc/core':
-        optional: true
-      '@swc/wasm':
-        optional: true
-    dependencies:
-      '@cspotcode/source-map-support': 0.8.1
-      '@tsconfig/node10': 1.0.11
-      '@tsconfig/node12': 1.0.11
-      '@tsconfig/node14': 1.0.3
-      '@tsconfig/node16': 1.0.4
-      '@types/node': 22.10.3
-      acorn: 8.14.0
-      acorn-walk: 8.3.4
-      arg: 4.1.3
-      create-require: 1.1.1
-      diff: 4.0.2
-      make-error: 1.3.6
-      typescript: 5.7.2
-      v8-compile-cache-lib: 3.0.1
-      yn: 3.1.1
     dev: true
 
   /ts-node@10.9.1(@types/node@22.10.4)(typescript@5.6.3):
