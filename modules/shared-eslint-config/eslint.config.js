@@ -6,6 +6,7 @@ import nxPlugin from '@nx/eslint-plugin'
 import reactPlugin from 'eslint-plugin-react'
 import tseslint from 'typescript-eslint'
 import testingLibrary from 'eslint-plugin-testing-library'
+import playwright from 'eslint-plugin-playwright'
 
 const compat = new FlatCompat()
 
@@ -51,5 +52,9 @@ export default tseslint.config(
   {
     files: ['**/*.test.tsx'],
     extends: [testingLibrary.configs['flat/react']],
+  },
+  {
+    files: ['**/*.spec.ts'],
+    extends: [playwright.configs['flat/recommended']],
   }
 )
