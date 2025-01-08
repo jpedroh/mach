@@ -1,33 +1,32 @@
 // @ts-check
 
+import { FlatCompat } from '@eslint/eslintrc'
 import eslint from '@eslint/js'
 import nxPlugin from '@nx/eslint-plugin'
+import playwright from 'eslint-plugin-playwright'
 import reactPlugin from 'eslint-plugin-react'
+import testingLibrary from 'eslint-plugin-testing-library'
 import tseslint from 'typescript-eslint'
 
+const compat = new FlatCompat()
+
 export default tseslint.config(
-  eslint.configs.recommended,
-  ...tseslint.configs.strict,
-  ...tseslint.configs.stylistic,
   {
+    files: ['**/*.ts', '**/*.tsx'],
+    extends: [
+      eslint.configs.recommended,
+      ...tseslint.configs.recommended,
+      ...tseslint.configs.stylistic,
+      ...compat.extends('plugin:react-hooks/recommended'),
+      reactPlugin.configs.flat.recommended,
+      reactPlugin.configs.flat['jsx-runtime'],
+    ],
+    plugins: { '@nx': nxPlugin },
+    settings: {
+      react: { version: '18.3.1' },
+    },
     rules: {
       '@typescript-eslint/consistent-type-definitions': ['error', 'type'],
-    },
-  },
-  reactPlugin.configs.flat.recommended,
-  {
-    settings: {
-      react: {
-        version: '18.3.1',
-      },
-    },
-  },
-  reactPlugin.configs.flat['jsx-runtime'],
-  { plugins: { '@nx': nxPlugin } },
-  {
-    files: ['*.ts', '*.tsx', '*.js', '*.jsx'],
-
-    rules: {
       '@nx/enforce-module-boundaries': [
         'error',
         {
@@ -50,5 +49,12 @@ export default tseslint.config(
       ],
     },
   },
-  { ignores: ['**/eslint.config.js', '**/dist'] }
+  {
+    files: ['**/*.test.tsx'],
+    extends: [testingLibrary.configs['flat/react']],
+  },
+  {
+    files: ['**/*.spec.ts'],
+    extends: [playwright.configs['flat/recommended']],
+  }
 )
