@@ -5,44 +5,51 @@ import eslint from '@eslint/js'
 import nxPlugin from '@nx/eslint-plugin'
 import reactPlugin from 'eslint-plugin-react'
 import tseslint from 'typescript-eslint'
+import testingLibrary from 'eslint-plugin-testing-library'
 
 const compat = new FlatCompat()
 
-export default tseslint.config({
-  files: ['**/*.ts', '**/*.tsx'],
-  extends: [
-    eslint.configs.recommended,
-    ...tseslint.configs.recommended,
-    ...tseslint.configs.stylistic,
-    ...compat.extends('plugin:react-hooks/recommended'),
-    reactPlugin.configs.flat.recommended,
-    reactPlugin.configs.flat['jsx-runtime'],
-  ],
-  plugins: { '@nx': nxPlugin },
-  settings: {
-    react: { version: '18.3.1' },
-  },
-  rules: {
-    '@typescript-eslint/consistent-type-definitions': ['error', 'type'],
-    '@nx/enforce-module-boundaries': [
-      'error',
-      {
-        allow: [],
-        depConstraints: [
-          {
-            sourceTag: '*',
-            onlyDependOnLibsWithTags: ['*'],
-          },
-          {
-            sourceTag: 'type:feature',
-            onlyDependOnLibsWithTags: ['type:shared'],
-          },
-          {
-            sourceTag: 'type:shared',
-            onlyDependOnLibsWithTags: ['type:shared'],
-          },
-        ],
-      },
+export default tseslint.config(
+  {
+    files: ['**/*.ts', '**/*.tsx'],
+    extends: [
+      eslint.configs.recommended,
+      ...tseslint.configs.recommended,
+      ...tseslint.configs.stylistic,
+      ...compat.extends('plugin:react-hooks/recommended'),
+      reactPlugin.configs.flat.recommended,
+      reactPlugin.configs.flat['jsx-runtime'],
     ],
+    plugins: { '@nx': nxPlugin },
+    settings: {
+      react: { version: '18.3.1' },
+    },
+    rules: {
+      '@typescript-eslint/consistent-type-definitions': ['error', 'type'],
+      '@nx/enforce-module-boundaries': [
+        'error',
+        {
+          allow: [],
+          depConstraints: [
+            {
+              sourceTag: '*',
+              onlyDependOnLibsWithTags: ['*'],
+            },
+            {
+              sourceTag: 'type:feature',
+              onlyDependOnLibsWithTags: ['type:shared'],
+            },
+            {
+              sourceTag: 'type:shared',
+              onlyDependOnLibsWithTags: ['type:shared'],
+            },
+          ],
+        },
+      ],
+    },
   },
-})
+  {
+    files: ['**/*.test.tsx'],
+    extends: [testingLibrary.configs['flat/react']],
+  }
+)
