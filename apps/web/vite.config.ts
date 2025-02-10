@@ -7,6 +7,7 @@ import { sentryVitePlugin } from '@sentry/vite-plugin'
 import { defineConfig } from 'vite'
 import { envOnlyMacros } from 'vite-env-only'
 import { viteStaticCopy } from 'vite-plugin-static-copy'
+import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
   root: __dirname,
@@ -42,6 +43,7 @@ export default defineConfig({
         },
       ],
     }),
+    tailwindcss(),
   ],
   build: {
     outDir: '../../dist/apps/web',

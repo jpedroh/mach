@@ -6,7 +6,7 @@ import {
 import { twc } from 'react-twc'
 
 const button = cva(
-  'text-center w-full text-white p-2 rounded-lg focus:ring-4 focus:ring-opacity-50 focus:outline-none disabled:opacity-75 ease-linear transition-all duration-150',
+  'text-center w-full text-white p-2 rounded-lg focus:ring-4 focus:outline-none disabled:opacity-75 ease-linear transition-all duration-150',
   {
     variants: {
       variant: {
