@@ -40,7 +40,7 @@ export function Select({ label, ...props }: Props) {
           <>
             <Label>{label}</Label>
             <div className="flex">
-              <Input className={'flex-grow'} placeholder="Select" />
+              <Input className={'grow'} placeholder="Select" />
               <OpenPopoverButton isOpen={isOpen}>
                 <span>▼</span>
               </OpenPopoverButton>

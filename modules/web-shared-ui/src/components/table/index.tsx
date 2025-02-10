@@ -7,7 +7,8 @@ export const Table = {
   Heading: twc.th<ComponentProps<'th'>>`font-semibold p-2`,
   Body: twc.tbody<
     ComponentProps<'tbody'>
-  >`bg-gray-300 bg-opacity-10 dark:text-white uppercase`,
+  >`bg-gray-300/10 dark:text-white uppercase`,
+
   Row: twc.tr<ComponentProps<'tr'>>``,
   Column: twc.td<ComponentProps<'td'>>`p-2 text-center`,
 }
