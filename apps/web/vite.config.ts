@@ -4,10 +4,10 @@ import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin'
 import { reactRouter } from '@react-router/dev/vite'
 import { cloudflareDevProxy } from '@react-router/dev/vite/cloudflare'
 import { sentryVitePlugin } from '@sentry/vite-plugin'
+import tailwindcss from '@tailwindcss/vite'
 import { defineConfig } from 'vite'
 import { envOnlyMacros } from 'vite-env-only'
 import { viteStaticCopy } from 'vite-plugin-static-copy'
-import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
   root: __dirname,
