@@ -37,7 +37,7 @@ importers:
         version: 20.4.2(@types/node@22.13.1)(nx@20.4.2)(typescript@5.7.3)
       '@nx/playwright':
         specifier: 20.4.2
-        version: 20.4.2(@playwright/test@1.49.1)(@rspack/core@1.2.2)(@types/node@22.13.1)(esbuild@0.17.19)(eslint@9.20.1)(nx@20.4.2)(typescript@5.7.3)(vite@5.4.12)(vitest@3.0.5)
+        version: 20.4.2(@playwright/test@1.50.1)(@rspack/core@1.2.2)(@types/node@22.13.1)(esbuild@0.17.19)(eslint@9.20.1)(nx@20.4.2)(typescript@5.7.3)(vite@5.4.12)(vitest@3.0.5)
       '@nx/react':
         specifier: 20.4.2
         version: 20.4.2(@types/node@22.13.1)(esbuild@0.17.19)(eslint@9.20.1)(nx@20.4.2)(react-dom@18.3.1)(react@18.3.1)(typescript@5.7.3)(webpack@5.97.1)
@@ -45,8 +45,8 @@ importers:
         specifier: 20.4.2
         version: 20.4.2(@types/node@22.13.1)(nx@20.4.2)(typescript@5.7.3)(vite@5.4.12)(vitest@3.0.5)
       '@playwright/test':
-        specifier: ^1.49.1
-        version: 1.49.1
+        specifier: ^1.50.1
+        version: 1.50.1
       '@react-router/cloudflare':
         specifier: ^7.1.5
         version: 7.1.5(@cloudflare/workers-types@4.20250204.0)(react-router@7.1.5)(tsup@8.3.6)(typescript@5.7.3)
@@ -5722,7 +5722,7 @@ packages:
     dev: true
     optional: true
 
-  /@nx/playwright@20.4.2(@playwright/test@1.49.1)(@rspack/core@1.2.2)(@types/node@22.13.1)(esbuild@0.17.19)(eslint@9.20.1)(nx@20.4.2)(typescript@5.7.3)(vite@5.4.12)(vitest@3.0.5):
+  /@nx/playwright@20.4.2(@playwright/test@1.50.1)(@rspack/core@1.2.2)(@types/node@22.13.1)(esbuild@0.17.19)(eslint@9.20.1)(nx@20.4.2)(typescript@5.7.3)(vite@5.4.12)(vitest@3.0.5):
     resolution: {integrity: sha512-AU5zSqwc96/veKYRabpFys7B7ltf+MYLAN2aWJ15cy2YBKeJfanUkLA+dD2FBKBzgvXX0ZN7bJnBrtF7jM3Osg==}
     peerDependencies:
       '@playwright/test': ^1.36.0
@@ -5736,7 +5736,7 @@ packages:
       '@nx/vite': 20.4.2(@types/node@22.13.1)(nx@20.4.2)(typescript@5.7.3)(vite@5.4.12)(vitest@3.0.5)
       '@nx/webpack': 20.4.2(@rspack/core@1.2.2)(@types/node@22.13.1)(esbuild@0.17.19)(nx@20.4.2)(typescript@5.7.3)
       '@phenomnomnominal/tsquery': 5.0.1(typescript@5.7.3)
-      '@playwright/test': 1.49.1
+      '@playwright/test': 1.50.1
       minimatch: 9.0.3
       tslib: 2.8.1
     transitivePeerDependencies:
@@ -6684,12 +6684,12 @@ packages:
     dev: true
     optional: true
 
-  /@playwright/test@1.49.1:
-    resolution: {integrity: sha512-Ky+BVzPz8pL6PQxHqNRW1k3mIyv933LML7HktS8uik0bUXNCdPhoS/kLihiO1tMf/egaJb4IutXd7UywvXEW+g==}
+  /@playwright/test@1.50.1:
+    resolution: {integrity: sha512-Jii3aBg+CEDpgnuDxEp/h7BimHcUTDlpEtce89xEumlJ5ef2hqepZ+PWp1DDpYC/VO9fmWVI1IlEaoI5fK9FXQ==}
     engines: {node: '>=18'}
     hasBin: true
     dependencies:
-      playwright: 1.49.1
+      playwright: 1.50.1
     dev: true
 
   /@pnpm/config.env-replace@1.1.0:
@@ -17942,18 +17942,18 @@ packages:
       pathe: 2.0.2
     dev: true
 
-  /playwright-core@1.49.1:
-    resolution: {integrity: sha512-BzmpVcs4kE2CH15rWfzpjzVGhWERJfmnXmniSyKeRZUs9Ws65m+RGIi7mjJK/euCegfn3i7jvqWeWyHe9y3Vgg==}
+  /playwright-core@1.50.1:
+    resolution: {integrity: sha512-ra9fsNWayuYumt+NiM069M6OkcRb1FZSK8bgi66AtpFoWkg2+y0bJSNmkFrWhMbEBbVKC/EruAHH3g0zmtwGmQ==}
     engines: {node: '>=18'}
     hasBin: true
     dev: true
 
-  /playwright@1.49.1:
-    resolution: {integrity: sha512-VYL8zLoNTBxVOrJBbDuRgDWa3i+mfQgDTrL8Ah9QXZ7ax4Dsj0MSq5bYgytRnDVVe+njoKnfsYkH3HzqVj5UZA==}
+  /playwright@1.50.1:
+    resolution: {integrity: sha512-G8rwsOQJ63XG6BbKj2w5rHeavFjy5zynBA9zsJMMtBoe/Uf757oG12NXz6e6OirF7RCrTVAKFXbLmn1RbL7Qaw==}
     engines: {node: '>=18'}
     hasBin: true
     dependencies:
-      playwright-core: 1.49.1
+      playwright-core: 1.50.1
     optionalDependencies:
       fsevents: 2.3.2
     dev: true
