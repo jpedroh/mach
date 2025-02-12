@@ -1,5 +1,6 @@
-import type { DatabaseConnection } from '@mach/shared-database'
+import type { Airport, DatabaseConnection } from '@mach/shared-database'
 
 export async function fetchAirports(db: DatabaseConnection) {
-  return db.query.airports.findMany()
+  // @ts-expect-error Broken typing from drizzle
+  return db.query.airports.findMany() as Promise<Airport[]>
 }

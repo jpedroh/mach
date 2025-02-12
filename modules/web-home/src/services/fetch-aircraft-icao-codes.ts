@@ -1,5 +1,5 @@
 import { type DatabaseConnection, flights } from '@mach/shared-database'
-import { eq } from 'drizzle-orm'
+import { eq } from '@mach/shared-database/drizzle'
 import { currentCycleSubquery } from '../utils/current-cycle-subquery'
 
 export async function fetchAircraftIcaoCodes(db: DatabaseConnection) {

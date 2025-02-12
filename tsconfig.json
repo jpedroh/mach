@@ -1,9 +1,36 @@
 {
-  "compilerOptions": {
-    "noImplicitAny": false,
-    "removeComments": true,
-    "noLib": false,
-    "esModuleInterop": true
-  },
-  "extends": "./tsconfig.base.json"
+  "extends": "./tsconfig.base.json",
+  "files": [],
+  "references": [
+    {
+      "path": "./apps/rpl-crawler-cli"
+    },
+    {
+      "path": "./apps/web"
+    },
+    {
+      "path": "./apps/web-e2e"
+    },
+    {
+      "path": "./modules/rpl-crawler"
+    },
+    {
+      "path": "./modules/shared-database"
+    },
+    {
+      "path": "./modules/shared-eslint-config"
+    },
+    {
+      "path": "./modules/web-details"
+    },
+    {
+      "path": "./modules/web-home"
+    },
+    {
+      "path": "./modules/web-search"
+    },
+    {
+      "path": "./modules/web-shared-ui"
+    }
+  ]
 }
