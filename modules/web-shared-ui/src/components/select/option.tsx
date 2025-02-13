@@ -1,9 +1,9 @@
 import {
   ListBoxItem as RACListBoxItem,
-  ListBoxItemProps as RACListBoxItemProps,
+  type ListBoxItemProps as RACListBoxItemProps,
 } from 'react-aria-components'
 import { twc } from 'react-twc'
-import { Option } from './types'
+import type { Option } from './types'
 
 export const SelectOption = twc(RACListBoxItem)<RACListBoxItemProps<Option>>`
   py-2 px-4 min-w-[10rem] bg-white dark:bg-gray-600 dark:text-gray-200

@@ -1,6 +1,6 @@
-import { ReactNode } from 'react'
+import type { ReactNode } from 'react'
 import {
-  CheckboxProps,
+  type CheckboxProps,
   Checkbox as ReactAriaCheckbox,
 } from 'react-aria-components'
 

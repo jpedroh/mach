@@ -1,4 +1,10 @@
-import { airports, companies, cycles, db, flights } from '@mach/shared-database'
+import { db } from '@mach/shared-database/connection'
+import {
+  airports,
+  companies,
+  cycles,
+  flights,
+} from '@mach/shared-database/schema'
 
 async function globalSetup() {
   await db

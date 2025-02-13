@@ -2,6 +2,12 @@
   "name": "@mach/shared-eslint-config",
   "type": "module",
   "main": "eslint.config.js",
+  "exports": {
+    ".": {
+      "import": "./eslint.config.js",
+      "default": "./eslint.config.js"
+    }
+  },
   "devDependencies": {
     "@eslint/js": "~9.20.0",
     "@nx/eslint-plugin": "20.4.2",

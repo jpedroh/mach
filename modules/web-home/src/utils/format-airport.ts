@@ -1,4 +1,4 @@
-import { Airport } from '@mach/shared-database'
+import type { Airport } from '@mach/shared-database/schema'
 
 export function formatAirport(airport: Airport) {
   if (airport.name === airport.city) {

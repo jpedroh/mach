@@ -1,7 +1,7 @@
-import { VariantProps, cva } from 'class-variance-authority'
+import { type VariantProps, cva } from 'class-variance-authority'
 import {
   Button as RACButton,
-  ButtonProps as RACButtonProps,
+  type ButtonProps as RACButtonProps,
 } from 'react-aria-components'
 import { twc } from 'react-twc'
 

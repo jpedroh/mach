@@ -3,12 +3,9 @@
   "compilerOptions": {
     "outDir": "./out-tsc/lib"
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx"],
-  "exclude": ["src/**/*.test.ts", "src/**/*.test.tsx"],
+  "include": ["src/**/*.ts"],
+  "exclude": ["src/**/*.test.ts"],
   "references": [
-    {
-      "path": "../web-shared-ui/tsconfig.lib.json"
-    },
     {
       "path": "../shared-database/tsconfig.lib.json"
     },

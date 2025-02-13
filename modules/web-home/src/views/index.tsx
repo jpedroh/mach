@@ -1,10 +1,10 @@
-import { makeDatabaseConnection } from '@mach/shared-database'
+import { makeDatabaseConnection } from '@mach/shared-database/connection'
 import { Button } from '@mach/web-shared-ui/button'
 import { Checkbox } from '@mach/web-shared-ui/checkbox'
 import { Layout } from '@mach/web-shared-ui/layout'
 import { Lead } from '@mach/web-shared-ui/lead'
 import { Select } from '@mach/web-shared-ui/select'
-import { Await, LoaderFunctionArgs } from 'react-router'
+import { Await, type LoaderFunctionArgs } from 'react-router'
 import { Form, useLoaderData } from 'react-router'
 
 import { Suspense, useState } from 'react'

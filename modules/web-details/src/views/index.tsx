@@ -1,4 +1,4 @@
-import { makeDatabaseConnection } from '@mach/shared-database'
+import { makeDatabaseConnection } from '@mach/shared-database/connection'
 import { Button } from '@mach/web-shared-ui/button'
 import {
   ModalContent,
@@ -6,8 +6,8 @@ import {
   ModalHeading,
   ModalRoot,
 } from '@mach/web-shared-ui/modal'
-import { ReactNode } from 'react'
-import { LoaderFunctionArgs } from 'react-router'
+import type { ReactNode } from 'react'
+import type { LoaderFunctionArgs } from 'react-router'
 import { useLoaderData, useNavigate } from 'react-router'
 import { serverOnly$ } from 'vite-env-only/macros'
 import { fetchFlightById } from '../services/fetch-flight-by-id'

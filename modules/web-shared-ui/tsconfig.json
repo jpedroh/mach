@@ -1,10 +1,10 @@
 {
   "extends": "../../tsconfig.base.json",
-  "compilerOptions": {
-    "outDir": "./out-tsc/spec"
-  },
-  "include": [],
+  "files": [],
   "references": [
+    {
+      "path": "../shared-eslint-config"
+    },
     {
       "path": "./tsconfig.lib.json"
     }

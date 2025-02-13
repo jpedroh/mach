@@ -1,6 +1,6 @@
 import {
   Link as RACLink,
-  LinkProps as RACLinkProps,
+  type LinkProps as RACLinkProps,
 } from 'react-aria-components'
 import { twc } from 'react-twc'
 

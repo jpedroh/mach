@@ -1,4 +1,4 @@
-import { makeDatabaseConnection } from '@mach/shared-database'
+import { makeDatabaseConnection } from '@mach/shared-database/connection'
 import * as Sentry from '@sentry/remix'
 import {
   type HeadersFunction,

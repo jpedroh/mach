@@ -19,5 +19,13 @@
     "incremental": true
   },
   "include": ["src/app", "e2e", ".next/types/**/*.ts"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules"],
+  "references": [
+    {
+      "path": "../../modules/shared-database"
+    },
+    {
+      "path": "../../modules/shared-eslint-config"
+    }
+  ]
 }

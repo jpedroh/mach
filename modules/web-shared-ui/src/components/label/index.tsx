@@ -1,8 +1,6 @@
-'use client'
-
 import {
   Label as RACLabel,
-  LabelProps as RACLabelProps,
+  type LabelProps as RACLabelProps,
 } from 'react-aria-components'
 import { twc } from 'react-twc'
 

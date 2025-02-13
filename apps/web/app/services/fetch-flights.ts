@@ -1,9 +1,5 @@
-import {
-  type DatabaseConnection,
-  Flight,
-  cycles,
-  flights,
-} from '@mach/shared-database'
+import { type DatabaseConnection } from '@mach/shared-database/connection'
+import { type Flight, cycles, flights } from '@mach/shared-database/schema'
 import { and, eq, sql } from 'drizzle-orm'
 import z from 'zod'
 

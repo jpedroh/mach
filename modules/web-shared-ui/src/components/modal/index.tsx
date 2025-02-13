@@ -1,11 +1,11 @@
-import { ComponentProps, ReactNode } from 'react'
+import { type ComponentProps, type ReactNode } from 'react'
 import {
   Dialog,
   Heading as RACHeading,
-  HeadingProps as RACHeadingProps,
+  type HeadingProps as RACHeadingProps,
   Modal as RACModal,
   ModalOverlay as RACModalOverlay,
-  ModalOverlayProps as RACModalOverlayProps,
+  type ModalOverlayProps as RACModalOverlayProps,
 } from 'react-aria-components'
 import { twc } from 'react-twc'
 
