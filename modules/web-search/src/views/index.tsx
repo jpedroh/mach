@@ -1,8 +1,8 @@
-import { makeDatabaseConnection } from '@mach/shared-database'
+import { makeDatabaseConnection } from '@mach/shared-database/connection'
 import { Layout } from '@mach/web-shared-ui/layout'
 import { Lead } from '@mach/web-shared-ui/lead'
 import { Link } from '@mach/web-shared-ui/link'
-import { LoaderFunctionArgs } from 'react-router'
+import type { LoaderFunctionArgs } from 'react-router'
 import { Outlet, useLoaderData } from 'react-router'
 import { serverOnly$ } from 'vite-env-only/macros'
 import {

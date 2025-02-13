@@ -1,4 +1,4 @@
-import { Flight } from '@mach/shared-database'
+import type { Flight } from '@mach/shared-database/schema'
 import { twc } from 'react-twc'
 import { formatEet } from '../../utils/format-eet'
 import { formatFlightRules } from '../../utils/format-flight-rules'

@@ -4,15 +4,25 @@
   "types": "./src/index.ts",
   "type": "module",
   "exports": {
-    ".": {
-      "types": "./src/index.ts",
-      "import": "./src/index.ts",
-      "default": "./src/index.ts"
+    "./connection": {
+      "types": "./src/connection.ts",
+      "import": "./src/connection.ts",
+      "default": "./src/connection.ts"
     },
     "./drizzle": {
       "types": "./src/drizzle.ts",
       "import": "./src/drizzle.ts",
       "default": "./src/drizzle.ts"
+    },
+    "./enum": {
+      "types": "./src/enum.ts",
+      "import": "./src/enum.ts",
+      "default": "./src/enum.ts"
+    },
+    "./schema": {
+      "types": "./src/schema.ts",
+      "import": "./src/schema.ts",
+      "default": "./src/schema.ts"
     }
   },
   "scripts": {

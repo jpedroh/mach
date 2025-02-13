@@ -1,12 +1,12 @@
+import { db } from '@mach/shared-database/connection'
 import {
-  Airport,
-  Flight,
+  type Airport,
+  type Flight,
   airports as airportsSchema,
   companies as companiesSchema,
   cycles as cyclesSchema,
-  db,
   flights as flightsSchema,
-} from '@mach/shared-database'
+} from '@mach/shared-database/schema'
 import { inArray } from 'drizzle-orm'
 import * as Logger from '../utils/logger'
 

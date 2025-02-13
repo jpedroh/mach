@@ -1,4 +1,4 @@
-import { FlightRules } from '@mach/shared-database'
+import type { FlightRules } from '@mach/shared-database/enum'
 
 export const formatFlightRules = (flightRule: FlightRules) => {
   const mappings = {

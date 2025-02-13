@@ -1,10 +1,10 @@
 'use client'
 
-import { ReactNode } from 'react'
+import type { ReactNode } from 'react'
 import {
   ListBox,
   ComboBox as RACComboBox,
-  ComboBoxProps as RACComboBoxProps,
+  type ComboBoxProps as RACComboBoxProps,
   Popover as RACPopover,
 } from 'react-aria-components'
 import { twc } from 'react-twc'
@@ -12,7 +12,7 @@ import { Button } from '../button'
 import { Input } from '../input'
 import { Label } from '../label'
 import { SelectOption } from './option'
-import { Option } from './types'
+import type { Option } from './types'
 
 type Props = { label: string } & Omit<
   RACComboBoxProps<Option>,

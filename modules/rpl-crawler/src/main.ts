@@ -1,4 +1,4 @@
-import { Airport, Flight } from '@mach/shared-database'
+import type { Airport, Flight } from '@mach/shared-database/schema'
 import { fetchAirportsData } from './fetch-airports-data'
 import * as Logger from './utils/logger'
 

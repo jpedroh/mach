@@ -1,4 +1,5 @@
-import { cycles, db } from '@mach/shared-database'
+import { db } from '@mach/shared-database/connection'
+import { cycles } from '@mach/shared-database/schema'
 import { sql } from 'drizzle-orm'
 
 export const currentCycleSubquery = db

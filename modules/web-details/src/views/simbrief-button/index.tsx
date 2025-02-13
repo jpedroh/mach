@@ -1,6 +1,4 @@
-'use client'
-
-import { Flight } from '@mach/shared-database'
+import type { Flight } from '@mach/shared-database/schema'
 import { Button } from '@mach/web-shared-ui/button'
 
 type Props = {

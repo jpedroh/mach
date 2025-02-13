@@ -1,4 +1,4 @@
-import { DatabaseConnection } from '@mach/shared-database'
+import type { DatabaseConnection } from '@mach/shared-database/connection'
 
 export async function fetchCompanies(db: DatabaseConnection) {
   const companies = await db.query.companies.findMany({

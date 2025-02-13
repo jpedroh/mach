@@ -1,5 +1,5 @@
-import { WakeTurbulence } from '@mach/shared-database'
-import { Flight } from '@mach/shared-database'
+import type { WakeTurbulence } from '@mach/shared-database/enum'
+import type { Flight } from '@mach/shared-database/schema'
 import {
   resolveEstimatedEnrouteMinutes,
   resolveFlightDate,
