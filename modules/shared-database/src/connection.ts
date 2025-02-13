@@ -13,6 +13,7 @@ export const db = drizzle(client, { schema })
 export type DatabaseConnection = typeof db
 
 declare module 'react-router' {
+  // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
   interface AppLoadContext {
     cloudflare: {
       env: {
