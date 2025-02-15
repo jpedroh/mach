@@ -8,6 +8,7 @@ import reactCompiler from 'eslint-plugin-react-compiler'
 import react from 'eslint-plugin-react'
 import testingLibrary from 'eslint-plugin-testing-library'
 import tseslint from 'typescript-eslint'
+import jsxA11y from 'eslint-plugin-jsx-a11y'
 
 const compat = new FlatCompat()
 
@@ -24,6 +25,7 @@ export default tseslint.config(
       react.configs.flat['jsx-runtime'],
       // @ts-expect-error - Broken types on react compiler for some reason
       reactCompiler.configs.recommended,
+      jsxA11y.flatConfigs.strict,
     ],
     plugins: { '@nx': nxPlugin },
     settings: {
