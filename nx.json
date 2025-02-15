@@ -21,12 +21,6 @@
     }
   },
   "extends": "nx/presets/npm.json",
-  "tasksRunnerOptions": {
-    "default": {
-      "runner": "@nx-aws-plugin/nx-aws-cache",
-      "options": {}
-    }
-  },
   "targetDefaults": {
     "pack": {
       "dependsOn": ["^pack"],
