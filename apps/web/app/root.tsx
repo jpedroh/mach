@@ -8,7 +8,7 @@ export const links: LinksFunction = () => [
 
 function App() {
   return (
-    <html>
+    <html lang="en">
       <head>
         <link rel="icon" href="data:image/x-icon;base64,AA" />
         <Meta />
