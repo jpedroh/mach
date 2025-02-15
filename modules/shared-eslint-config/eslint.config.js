@@ -4,7 +4,8 @@ import { FlatCompat } from '@eslint/eslintrc'
 import eslint from '@eslint/js'
 import nxPlugin from '@nx/eslint-plugin'
 import playwright from 'eslint-plugin-playwright'
-import reactPlugin from 'eslint-plugin-react'
+import reactCompiler from 'eslint-plugin-react-compiler'
+import react from 'eslint-plugin-react'
 import testingLibrary from 'eslint-plugin-testing-library'
 import tseslint from 'typescript-eslint'
 
@@ -13,13 +14,16 @@ const compat = new FlatCompat()
 export default tseslint.config(
   {
     files: ['**/*.ts', '**/*.tsx'],
+    ignores: ['out-tsc/**/*.ts'],
     extends: [
       eslint.configs.recommended,
-      ...tseslint.configs.recommended,
-      ...tseslint.configs.stylistic,
-      ...compat.extends('plugin:react-hooks/recommended'),
-      reactPlugin.configs.flat.recommended,
-      reactPlugin.configs.flat['jsx-runtime'],
+      tseslint.configs.recommended,
+      tseslint.configs.stylistic,
+      compat.extends('plugin:react-hooks/recommended'),
+      react.configs.flat.recommended,
+      react.configs.flat['jsx-runtime'],
+      // @ts-expect-error - Broken types on react compiler for some reason
+      reactCompiler.configs.recommended,
     ],
     plugins: { '@nx': nxPlugin },
     settings: {
@@ -51,10 +55,12 @@ export default tseslint.config(
   },
   {
     files: ['**/*.test.tsx'],
+    ignores: ['out-tsc/**/*.ts'],
     extends: [testingLibrary.configs['flat/react']],
   },
   {
     files: ['**/*.spec.ts'],
+    ignores: ['out-tsc/**/*.ts'],
     extends: [playwright.configs['flat/recommended']],
   }
 )
