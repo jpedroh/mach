@@ -33,10 +33,11 @@ jobs:
       - run: pnpm install
       - run: pnpm biome check
       - run: pnpm sherif
-      - run: npx nx affected --target=pack --parallel=3
-      - run: npx nx affected --target=test --parallel=3
-      - run: npx nx affected --target=lint --parallel=3
-      - run: npx nx affected --target=typecheck --parallel=3
-      - run: npx semantic-release
+      - run: pnpm nx sync:check
+      - run: pnpm nx affected --target=pack --parallel=3
+      - run: pnpm nx affected --target=test --parallel=3
+      - run: pnpm nx affected --target=lint --parallel=3
+      - run: pnpm nx affected --target=typecheck --parallel=3
+      - run: pnpm semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
