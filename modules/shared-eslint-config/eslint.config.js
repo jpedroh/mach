@@ -3,12 +3,12 @@
 import { FlatCompat } from '@eslint/eslintrc'
 import eslint from '@eslint/js'
 import nxPlugin from '@nx/eslint-plugin'
+import jsxA11y from 'eslint-plugin-jsx-a11y'
 import playwright from 'eslint-plugin-playwright'
-import reactCompiler from 'eslint-plugin-react-compiler'
 import react from 'eslint-plugin-react'
+import reactCompiler from 'eslint-plugin-react-compiler'
 import testingLibrary from 'eslint-plugin-testing-library'
 import tseslint from 'typescript-eslint'
-import jsxA11y from 'eslint-plugin-jsx-a11y'
 
 const compat = new FlatCompat()
 
