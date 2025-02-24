@@ -49,7 +49,7 @@ importers:
         version: 7.2.0(@cloudflare/workers-types@4.20250224.0)(react-router@7.2.0)(tsup@8.3.6)(typescript@5.7.3)
       '@react-router/dev':
         specifier: ^7.2.0
-        version: 7.2.0(@types/node@22.13.4)(react-router@7.2.0)(typescript@5.7.3)(vite@5.4.12)(wrangler@3.109.2)
+        version: 7.2.0(@types/node@22.13.4)(react-router@7.2.0)(typescript@5.7.3)(vite@5.4.12)(wrangler@3.109.3)
       '@react-router/fs-routes':
         specifier: ^7.2.0
         version: 7.2.0(@react-router/dev@7.2.0)(typescript@5.7.3)
@@ -189,8 +189,8 @@ importers:
         specifier: ^3.0.7
         version: 3.0.7(@types/node@22.13.4)(@vitest/ui@3.0.7)(jsdom@26.0.0)(msw@2.7.1)
       wrangler:
-        specifier: ^3.109.2
-        version: 3.109.2(@cloudflare/workers-types@4.20250224.0)
+        specifier: ^3.109.3
+        version: 3.109.3(@cloudflare/workers-types@4.20250224.0)
       zod:
         specifier: ^3.24.2
         version: 3.24.2
@@ -3813,7 +3813,7 @@ packages:
     resolution: {integrity: sha512-DtLWIH29onUYR00i0GlQ3UdcTRC6EP4u9w/h9LxpUZJWRMARk6dQwZ6Jkd+QdwVpuAOrdxt18v0K2uIYR3fwFg==}
     dependencies:
       '@types/ws': 8.5.14
-      ws: 8.18.0
+      ws: 8.18.1
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
@@ -6421,7 +6421,7 @@ packages:
       typescript: 5.7.3
     dev: true
 
-  /@react-router/dev@7.2.0(@types/node@22.13.4)(react-router@7.2.0)(typescript@5.7.3)(vite@5.4.12)(wrangler@3.109.2):
+  /@react-router/dev@7.2.0(@types/node@22.13.4)(react-router@7.2.0)(typescript@5.7.3)(vite@5.4.12)(wrangler@3.109.3):
     resolution: {integrity: sha512-GzSNGeWuhx6sMsnidCQAlCAephibUMC61xIAdsc6hBXWCJe/T9wUrvtnh2Xbcpr7BRZJtJN4UhI472ZURA6m9w==}
     engines: {node: '>=20.0.0'}
     hasBin: true
@@ -6471,7 +6471,7 @@ packages:
       valibot: 0.41.0(typescript@5.7.3)
       vite: 5.4.12(@types/node@22.13.4)
       vite-node: 3.0.0-beta.2(@types/node@22.13.4)
-      wrangler: 3.109.2(@cloudflare/workers-types@4.20250224.0)
+      wrangler: 3.109.3(@cloudflare/workers-types@4.20250224.0)
     transitivePeerDependencies:
       - '@types/node'
       - babel-plugin-macros
@@ -6496,7 +6496,7 @@ packages:
       typescript:
         optional: true
     dependencies:
-      '@react-router/dev': 7.2.0(@types/node@22.13.4)(react-router@7.2.0)(typescript@5.7.3)(vite@5.4.12)(wrangler@3.109.2)
+      '@react-router/dev': 7.2.0(@types/node@22.13.4)(react-router@7.2.0)(typescript@5.7.3)(vite@5.4.12)(wrangler@3.109.3)
       minimatch: 9.0.5
       typescript: 5.7.3
     dev: true
@@ -17961,8 +17961,8 @@ packages:
       '@cloudflare/workerd-windows-64': 1.20250214.0
     dev: true
 
-  /wrangler@3.109.2(@cloudflare/workers-types@4.20250224.0):
-    resolution: {integrity: sha512-CT8izugPBth5o1o4gLNcQrDkHKSX2Jthy6gkyhaWiy2pFrx+536NMn/atWilLA1t1uhIgddEI5BXDNudIkPPHA==}
+  /wrangler@3.109.3(@cloudflare/workers-types@4.20250224.0):
+    resolution: {integrity: sha512-T+SfFYEbkWDzf8WRR1JzaVKPH7wAzyciRIua8qszT+UqPqFNb6M5beCHHK/de7Zk5z6W5lvLly9SHToC11maDQ==}
     engines: {node: '>=16.17.0'}
     hasBin: true
     peerDependencies:
@@ -18031,6 +18031,19 @@ packages:
 
   /ws@8.18.0:
     resolution: {integrity: sha512-8VbfWfHLbbwu3+N6OKsOMpBdT4kXPDDB9cJk2bJ6mh9ucxdlnNvH1e+roYkKmN9Nxw2yjz7VzeO9oOz2zJ04Pw==}
+    engines: {node: '>=10.0.0'}
+    peerDependencies:
+      bufferutil: ^4.0.1
+      utf-8-validate: '>=5.0.2'
+    peerDependenciesMeta:
+      bufferutil:
+        optional: true
+      utf-8-validate:
+        optional: true
+    dev: true
+
+  /ws@8.18.1:
+    resolution: {integrity: sha512-RKW2aJZMXeMxVpnZ6bck+RswznaxmzdULiBr6KY7XkTnW8uvt0iT9H5DkHUChXrc+uurzwa0rVI16n/Xzjdz1w==}
     engines: {node: '>=10.0.0'}
     peerDependencies:
       bufferutil: ^4.0.1
