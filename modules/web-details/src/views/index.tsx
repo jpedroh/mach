@@ -1,4 +1,3 @@
-import { makeDatabaseConnection } from '@mach/shared-database/connection'
 import { Button } from '@mach/web-shared-ui/button'
 import {
   ModalContent,
@@ -7,9 +6,7 @@ import {
   ModalRoot,
 } from '@mach/web-shared-ui/modal'
 import type { ReactNode } from 'react'
-import type { LoaderFunctionArgs } from 'react-router'
-import { useLoaderData, useNavigate } from 'react-router'
-import { serverOnly$ } from 'vite-env-only/macros'
+import { useNavigate } from 'react-router'
 import { fetchFlightById } from '../services/fetch-flight-by-id'
 import { formatEet } from '../utils/format-eet'
 import { IcaoFpl } from './icao-fpl'
@@ -20,6 +17,7 @@ import { VatsimFplButton } from './vatsim-fpl-button'
 
 type Props = {
   id: string
+  flight: Awaited<ReturnType<typeof fetchFlightById>>
 }
 
 function FlightInfoGroup({ children }: { children: ReactNode }) {
@@ -49,13 +47,7 @@ function SectionTitle({ children }: { children: ReactNode }) {
   return <h4 className="mb-2 font-semibold mt-2">{children}</h4>
 }
 
-export const loader = serverOnly$(({ params, context }: LoaderFunctionArgs) => {
-  if (params.id == null) throw new Error('Missing id')
-  return fetchFlightById(makeDatabaseConnection(context), params.id)
-})
-
-export function FlightDetailsModal({ id }: Props) {
-  const flight = useLoaderData<typeof loader>()
+export function FlightDetailsModal({ id, flight }: Props) {
   const navigate = useNavigate()
 
   if (!flight) {

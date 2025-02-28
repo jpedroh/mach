@@ -1,36 +1,30 @@
-import { makeDatabaseConnection } from '@mach/shared-database/connection'
 import { Button } from '@mach/web-shared-ui/button'
 import { Checkbox } from '@mach/web-shared-ui/checkbox'
 import { Layout } from '@mach/web-shared-ui/layout'
 import { Lead } from '@mach/web-shared-ui/lead'
 import { Select } from '@mach/web-shared-ui/select'
-import { Await, type LoaderFunctionArgs } from 'react-router'
-import { Form, useLoaderData } from 'react-router'
-
 import { Suspense, useState } from 'react'
-import { serverOnly$ } from 'vite-env-only/macros'
-
-import { fetchAircraftIcaoCodes } from '../services/fetch-aircraft-icao-codes'
-import { fetchAirports } from '../services/fetch-airports'
-import { fetchCompanies } from '../services/fetch-companies'
-import { fetchCycles } from '../services/fetch-cycles'
+import { Await, Form } from 'react-router'
+import { fetchAircraftIcaoCodes } from '../services'
+import { fetchAirports } from '../services'
+import { fetchCompanies } from '../services'
+import { fetchCycles } from '../services'
 import { searchFlightsQuerySchema } from '../services/validate-search-filters'
 import { formatAirport } from '../utils/format-airport'
 
-export const loader = serverOnly$(({ context }: LoaderFunctionArgs) => {
-  const db = makeDatabaseConnection(context)
+type Props = {
+  cycles: ReturnType<typeof fetchCycles>
+  companies: ReturnType<typeof fetchCompanies>
+  airports: ReturnType<typeof fetchAirports>
+  aircraftIcaoCodes: ReturnType<typeof fetchAircraftIcaoCodes>
+}
 
-  return {
-    cycles: fetchCycles(db),
-    companies: fetchCompanies(db),
-    airports: fetchAirports(db),
-    aircraftIcaoCodes: fetchAircraftIcaoCodes(db),
-  }
-})
-
-export function HomePage() {
-  const { cycles, companies, airports, aircraftIcaoCodes } =
-    useLoaderData<typeof loader>()
+export function HomePage({
+  cycles: cyclesPromise,
+  companies: companiesPromise,
+  airports: airportsPromise,
+  aircraftIcaoCodes: aircraftIcaoCodesPromise,
+}: Props) {
   const [errorMessage, setErrorMessage] = useState('')
 
   function validateForm(evt: React.FormEvent<HTMLFormElement>) {
@@ -56,7 +50,7 @@ export function HomePage() {
           method="GET"
           onSubmit={validateForm}
         >
-          <Await resolve={cycles}>
+          <Await resolve={cyclesPromise}>
             {(cycles) => (
               <Select
                 label={'Cycle'}
@@ -70,7 +64,7 @@ export function HomePage() {
             )}
           </Await>
 
-          <Await resolve={airports}>
+          <Await resolve={airportsPromise}>
             {(airports) => (
               <>
                 <Select
@@ -94,7 +88,7 @@ export function HomePage() {
             )}
           </Await>
 
-          <Await resolve={companies}>
+          <Await resolve={companiesPromise}>
             {(companies) => (
               <Select
                 label={'Company'}
@@ -107,7 +101,7 @@ export function HomePage() {
             )}
           </Await>
 
-          <Await resolve={aircraftIcaoCodes}>
+          <Await resolve={aircraftIcaoCodesPromise}>
             {(aircraftIcaoCodes) => (
               <Select
                 label={'Aircraft'}

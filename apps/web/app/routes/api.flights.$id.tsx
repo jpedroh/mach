@@ -1,21 +1,18 @@
-import { makeDatabaseConnection } from '@mach/shared-database/connection'
 import * as Sentry from '@sentry/remix'
-import {
-  type HeadersFunction,
-  type LoaderFunctionArgs,
-  data,
-} from 'react-router'
+import { data } from 'react-router'
 import { fetchFlightById } from '../services/fetch-flight-by-id'
+import { makeDatabaseConnectionFromServerContext } from '../utils/database-connection'
+import type { Route } from './+types/api.flights.$id'
 
-export const headers: HeadersFunction = () => ({
+export const headers: Route.HeadersFunction = () => ({
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
   'Access-Control-Allow-Headers': 'Content-Type, Authorization',
 })
 
-export async function loader({ params, context }: LoaderFunctionArgs) {
+export async function loader({ params, context }: Route.LoaderArgs) {
   try {
-    const db = makeDatabaseConnection(context)
+    const db = makeDatabaseConnectionFromServerContext(context)
     const flight = await fetchFlightById(db, params.id ?? '')
     if (flight == null) {
       return data({ message: 'Not found' }, { status: 404 })

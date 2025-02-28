@@ -1,30 +1,14 @@
-import { makeDatabaseConnection } from '@mach/shared-database/connection'
 import { Layout } from '@mach/web-shared-ui/layout'
 import { Lead } from '@mach/web-shared-ui/lead'
 import { Link } from '@mach/web-shared-ui/link'
-import type { LoaderFunctionArgs } from 'react-router'
-import { Outlet, useLoaderData } from 'react-router'
-import { serverOnly$ } from 'vite-env-only/macros'
-import {
-  fetchFlights,
-  searchFlightsQuerySchema,
-} from '../services/fetch-flights'
+import { fetchFlights } from '../services/fetch-flights'
 import { FlightsTable } from './flights-table'
 
-export const loader = serverOnly$(
-  ({ request, context }: LoaderFunctionArgs) => {
-    const url = new URL(request.url)
-    const query = searchFlightsQuerySchema.parse(
-      Object.fromEntries(url.searchParams.entries())
-    )
-    const db = makeDatabaseConnection(context)
-    return fetchFlights(db, query)
-  }
-)
+type Props = {
+  flights: Awaited<ReturnType<typeof fetchFlights>>
+}
 
-export function SearchPage() {
-  const flights = useLoaderData<typeof loader>()
-
+export function SearchPage({ flights }: Props) {
   if (flights.length === 0) {
     return (
       <Layout>
@@ -50,7 +34,6 @@ export function SearchPage() {
       </Lead>
 
       <FlightsTable flights={flights} />
-      <Outlet />
     </Layout>
   )
 }
