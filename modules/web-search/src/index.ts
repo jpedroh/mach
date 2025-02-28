@@ -1,2 +1,6 @@
-export { SearchErrorBoundary } from './views/error-boundary'
-export { SearchPage, loader } from './views'
+export {
+  fetchFlights,
+  searchFlightsQuerySchema,
+} from './services/fetch-flights'
+export { SearchPage } from './views'
+export { ErrorBoundary } from './views/error-boundary'

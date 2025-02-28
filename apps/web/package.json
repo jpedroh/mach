@@ -4,7 +4,8 @@
   "scripts": {
     "serve": "react-router dev",
     "pack": "react-router build",
-    "lint": "eslint app/"
+    "lint": "eslint app/",
+    "react-router-generate-types": "react-router typegen"
   },
   "dependencies": {
     "@mach/shared-database": "workspace:*",
@@ -18,6 +19,11 @@
     "targets": {
       "pack": {
         "outputs": ["{projectRoot}/build"]
+      },
+      "typecheck": {
+        "dependsOn": ["react-router-generate-types"],
+        "inputs": ["{projectRoot}/app"],
+        "outputs": ["{projectRoot}/.react-router/types"]
       }
     }
   },

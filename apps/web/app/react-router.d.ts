@@ -1,6 +1,7 @@
-export {}
+import 'react-router'
 
 declare module 'react-router' {
+  // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
   interface AppLoadContext {
     cloudflare: {
       env: {
