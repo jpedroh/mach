@@ -1,11 +1,11 @@
 import { Button } from '@mach/web-shared-ui/button'
 import { Table } from '@mach/web-shared-ui/table'
-import { Link, useSearchParams } from 'react-router'
 import { fetchFlights } from '../../services/fetch-flights'
 import { formatAirport } from '../../utils/format-airport'
 
 type Props = {
   flights: Awaited<ReturnType<typeof fetchFlights>>
+  onViewDetails: (id: string) => void
 }
 
 function minutesToEet(totalMinutes: number) {
@@ -16,9 +16,7 @@ function minutesToEet(totalMinutes: number) {
     .padStart(2, '0')}`
 }
 
-export function FlightsTable({ flights }: Props) {
-  const [searchParams] = useSearchParams()
-
+export function FlightsTable({ flights, onViewDetails }: Props) {
   return (
     <Table.Root>
       <Table.Head>
@@ -52,10 +50,12 @@ export function FlightsTable({ flights }: Props) {
             </Table.Column>
             <Table.Column>{flight.aircraftIcaoCode}</Table.Column>
             <Table.Column className="grid">
-              <Button variant={'primary'} className={'normal-case'} asChild>
-                <Link to={`/search/${flight.id}?${searchParams.toString()}`}>
-                  View Details
-                </Link>
+              <Button
+                onPress={() => onViewDetails(flight.id)}
+                variant={'primary'}
+                className={'normal-case'}
+              >
+                View Details
               </Button>
             </Table.Column>
           </Table.Row>

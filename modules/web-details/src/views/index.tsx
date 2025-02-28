@@ -6,7 +6,6 @@ import {
   ModalRoot,
 } from '@mach/web-shared-ui/modal'
 import type { ReactNode } from 'react'
-import { useNavigate } from 'react-router'
 import { fetchFlightById } from '../services/fetch-flight-by-id'
 import { formatEet } from '../utils/format-eet'
 import { IcaoFpl } from './icao-fpl'
@@ -16,8 +15,8 @@ import { SkyVectorButton } from './sky-vector-button'
 import { VatsimFplButton } from './vatsim-fpl-button'
 
 type Props = {
-  id: string
   flight: Awaited<ReturnType<typeof fetchFlightById>>
+  onDismiss: () => void
 }
 
 function FlightInfoGroup({ children }: { children: ReactNode }) {
@@ -47,19 +46,9 @@ function SectionTitle({ children }: { children: ReactNode }) {
   return <h4 className="mb-2 font-semibold mt-2">{children}</h4>
 }
 
-export function FlightDetailsModal({ id, flight }: Props) {
-  const navigate = useNavigate()
-
-  if (!flight) {
-    throw new Error(`Flight with id ${id} not found`)
-  }
-
-  function dismiss() {
-    navigate(-1)
-  }
-
+export function FlightDetailsModal({ flight, onDismiss }: Props) {
   return (
-    <ModalRoot isOpen isDismissable onOpenChange={dismiss}>
+    <ModalRoot isOpen isDismissable onOpenChange={onDismiss}>
       <ModalHeading>
         Flight {flight.callsign} from {flight.departureIcao} to{' '}
         {flight.arrivalIcao}
@@ -90,7 +79,7 @@ export function FlightDetailsModal({ id, flight }: Props) {
         <VatsimFplButton flight={flight} />
         <SimBriefButton flight={flight} />
         <SkyVectorButton flight={flight} />
-        <Button variant="danger" onPress={dismiss}>
+        <Button variant="danger" onPress={onDismiss}>
           Close
         </Button>
       </ModalFooter>

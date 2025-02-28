@@ -6,9 +6,10 @@ import { FlightsTable } from './flights-table'
 
 type Props = {
   flights: Awaited<ReturnType<typeof fetchFlights>>
+  onViewDetails: (id: string) => void
 }
 
-export function SearchPage({ flights }: Props) {
+export function SearchPage({ flights, onViewDetails }: Props) {
   if (flights.length === 0) {
     return (
       <Layout>
@@ -33,7 +34,7 @@ export function SearchPage({ flights }: Props) {
         make a new search.
       </Lead>
 
-      <FlightsTable flights={flights} />
+      <FlightsTable flights={flights} onViewDetails={onViewDetails} />
     </Layout>
   )
 }

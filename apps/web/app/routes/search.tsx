@@ -5,7 +5,7 @@ import {
   searchFlightsQuerySchema,
 } from '@mach/web-search'
 import { captureRemixErrorBoundaryError } from '@sentry/remix'
-import { Outlet } from 'react-router'
+import { Outlet, href, useNavigate, useSearchParams } from 'react-router'
 import { makeDatabaseConnectionFromServerContext } from '../utils/database-connection'
 import type { Route } from './+types/search'
 
@@ -27,9 +27,16 @@ export async function loader({ request, context }: Route.LoaderArgs) {
 }
 
 export default function Component({ loaderData }: Route.ComponentProps) {
+  const navigate = useNavigate()
+  const [searchParams] = useSearchParams()
+
+  function onViewDetails(id: string) {
+    navigate(`${href('/search/:id', { id })}?${searchParams.toString()}`)
+  }
+
   return (
     <>
-      <SearchPage flights={loaderData.flights} />
+      <SearchPage flights={loaderData.flights} onViewDetails={onViewDetails} />
       <Outlet />
     </>
   )
