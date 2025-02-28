@@ -6,7 +6,6 @@ import {
 } from '@mach/web-search'
 import { captureRemixErrorBoundaryError } from '@sentry/remix'
 import { Outlet } from 'react-router'
-import { useRouteError } from 'react-router'
 import { makeDatabaseConnectionFromServerContext } from '../utils/database-connection'
 import type { Route } from './+types/search'
 
@@ -36,12 +35,9 @@ export default function Component({ loaderData }: Route.ComponentProps) {
   )
 }
 
-export function ErrorBoundary() {
-  const error = useRouteError()
+export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   const errorMessage =
     error instanceof Error ? error.message : 'Internal server error'
-
   captureRemixErrorBoundaryError(error)
-
   return <SearchErrorBoundary message={errorMessage}></SearchErrorBoundary>
 }
