@@ -3,11 +3,8 @@
   "name": "mach-workers",
   "compatibility_date": "2025-04-04",
   "main": "./workers/app.ts",
-  "vars": {
-    "TURSO_CONNECTION_URL": "http://libsql:8080",
-    "TURSO_AUTH_TOKEN": "secret"
-  },
   "observability": {
-    "enabled": true
+    "enabled": true,
+    "head_sampling_rate": 100
   }
 }
