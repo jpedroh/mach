@@ -35,14 +35,14 @@ export default defineConfig({
       org: 'jpedroh',
       project: 'mach-vq',
     }),
-    viteStaticCopy({
-      targets: [
-        {
-          src: '_headers',
-          dest: './',
-        },
-      ],
-    }),
+    // viteStaticCopy({
+    //   targets: [
+    //     {
+    //       src: '_headers',
+    //       dest: './',
+    //     },
+    //   ],
+    // }),
     tailwindcss(),
   ],
   build: {
