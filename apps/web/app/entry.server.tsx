@@ -9,12 +9,6 @@ import { renderToReadableStream } from 'react-dom/server'
 import type { AppLoadContext, EntryContext } from 'react-router'
 import { ServerRouter } from 'react-router'
 
-// Sentry.init({
-//   dsn: import.meta.env.VITE_SENTRY_DSN,
-//   environment: import.meta.env.VITE_SENTRY_ENVIRONMENT,
-//   tracesSampleRate: 1,
-// })
-
 export default async function handleRequest(
   request: Request,
   responseStatusCode: number,
