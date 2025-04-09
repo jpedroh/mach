@@ -1,4 +1,3 @@
-import * as Sentry from '@sentry/remix'
 import { data } from 'react-router'
 import {
   fetchFlights,
@@ -36,7 +35,6 @@ export async function loader({ request, context }: Route.LoaderArgs) {
 
     return data(response)
   } catch (error) {
-    Sentry.captureException(error)
     console.error(error)
     return data({ message: 'Internal server error' }, { status: 500 })
   }
