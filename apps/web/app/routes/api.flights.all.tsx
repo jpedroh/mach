@@ -27,6 +27,7 @@ export async function loader({ request, context }: Route.LoaderArgs) {
 
     return data(await fetchFlights(db, query.data))
   } catch (error) {
+    console.error(error)
     return data({ message: 'Internal server error' }, { status: 500 })
   }
 }

@@ -18,6 +18,7 @@ export async function loader({ params, context }: Route.LoaderArgs) {
     }
     return data(flight)
   } catch (error) {
+    console.error(error)
     return data({ message: 'Internal server error' }, { status: 500 })
   }
 }

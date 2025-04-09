@@ -13,8 +13,7 @@ export default async function handleRequest(
   request: Request,
   responseStatusCode: number,
   responseHeaders: Headers,
-  routerContext: EntryContext,
-  _loadContext: AppLoadContext
+  routerContext: EntryContext
 ) {
   let shellRendered = false
   const userAgent = request.headers.get('user-agent')
