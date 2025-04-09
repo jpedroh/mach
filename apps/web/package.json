@@ -5,7 +5,8 @@
     "serve": "react-router dev",
     "pack": "react-router build",
     "lint": "eslint app/",
-    "react-router-generate-types": "react-router typegen"
+    "react-router-generate-types": "react-router typegen",
+    "cf-typegen": "wrangler types"
   },
   "dependencies": {
     "@mach/shared-database": "workspace:*",
@@ -21,7 +22,7 @@
         "outputs": ["{projectRoot}/build"]
       },
       "typecheck": {
-        "dependsOn": ["react-router-generate-types"],
+        "dependsOn": ["react-router-generate-types", "cf-typegen"],
         "inputs": ["{projectRoot}/app"],
         "outputs": ["{projectRoot}/.react-router/types"]
       }

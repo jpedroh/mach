@@ -1,0 +1,10 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "mach",
+  "compatibility_date": "2025-04-04",
+  "main": "./workers/app.ts",
+  "vars": {
+    "TURSO_CONNECTION_URL": "http://libsql:8080",
+    "TURSO_AUTH_TOKEN": "secret"
+  }
+}
