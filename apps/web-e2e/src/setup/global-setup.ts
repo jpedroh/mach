@@ -1,4 +1,4 @@
-import { db, makeDatabaseConnection } from '@mach/shared-database/connection'
+import { makeDatabaseConnection } from '@mach/shared-database/connection'
 import {
   airports,
   companies,
