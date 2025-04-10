@@ -1,4 +1,4 @@
-import { db } from '@mach/shared-database/connection'
+import { db, makeDatabaseConnection } from '@mach/shared-database/connection'
 import {
   airports,
   companies,
@@ -7,6 +7,11 @@ import {
 } from '@mach/shared-database/schema'
 
 async function globalSetup() {
+  const db = makeDatabaseConnection({
+    url: process.env.TURSO_CONNECTION_URL!,
+    authToken: process.env.TURSO_AUTH_TOKEN!,
+  })
+
   await db
     .insert(flights)
     .values([
