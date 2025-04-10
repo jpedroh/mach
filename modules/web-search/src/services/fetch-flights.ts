@@ -1,6 +1,6 @@
 import type { DatabaseConnection } from '@mach/shared-database/connection'
 import { z } from 'zod'
-import { currentCycleSubquery } from '../utils/currentCycleSubquery'
+import { makeCurrentCycleSubquery } from '../utils/currentCycleSubquery'
 
 export const searchFlightsQuerySchema = z
   .object({
@@ -60,7 +60,7 @@ export async function fetchFlights(
       and(
         where.cycle
           ? eq(fields.cycle, where.cycle)
-          : eq(fields.cycle, currentCycleSubquery),
+          : eq(fields.cycle, makeCurrentCycleSubquery(db)),
         where.departureIcao
           ? eq(fields.departureIcao, where.departureIcao)
           : undefined,
