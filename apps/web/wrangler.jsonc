@@ -1,0 +1,11 @@
+{
+  "$schema": "../../node_modules/wrangler/config-schema.json",
+  "name": "mach",
+  "compatibility_date": "2025-04-04",
+  "main": "./workers/app.ts",
+  "keep_vars": true,
+  "observability": {
+    "enabled": true,
+    "head_sampling_rate": 1
+  }
+}

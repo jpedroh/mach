@@ -1,4 +1,3 @@
-import * as Sentry from '@sentry/remix'
 import { data } from 'react-router'
 import { fetchFlightById } from '../services/fetch-flight-by-id'
 import { makeDatabaseConnectionFromServerContext } from '../utils/database-connection'
@@ -19,7 +18,7 @@ export async function loader({ params, context }: Route.LoaderArgs) {
     }
     return data(flight)
   } catch (error) {
-    Sentry.captureException(error)
+    console.error(error)
     return data({ message: 'Internal server error' }, { status: 500 })
   }
 }

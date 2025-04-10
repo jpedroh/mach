@@ -1,5 +1,3 @@
-import * as Sentry from '@sentry/remix'
-
 /**
  * By default, Remix will handle generating the HTTP Response for you.
  * You are free to delete this file if you'd like to, but if you ever want it revealed again, you can run `npx remix reveal` ✨
@@ -8,37 +6,37 @@ import * as Sentry from '@sentry/remix'
 
 import { isbot } from 'isbot'
 import { renderToReadableStream } from 'react-dom/server'
-import type { AppLoadContext, EntryContext } from 'react-router'
+import type { EntryContext } from 'react-router'
 import { ServerRouter } from 'react-router'
-
-Sentry.init({
-  dsn: import.meta.env.VITE_SENTRY_DSN,
-  environment: import.meta.env.VITE_SENTRY_ENVIRONMENT,
-  tracesSampleRate: 1,
-})
 
 export default async function handleRequest(
   request: Request,
   responseStatusCode: number,
   responseHeaders: Headers,
-  remixContext: EntryContext,
-  // This is ignored so we can keep it in the template for visibility.  Feel
-  // free to delete this parameter in your app if you're not using it!
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  loadContext: AppLoadContext
+  routerContext: EntryContext
 ) {
+  let shellRendered = false
+  const userAgent = request.headers.get('user-agent')
+
   const body = await renderToReadableStream(
-    <ServerRouter context={remixContext} url={request.url} />,
+    <ServerRouter context={routerContext} url={request.url} />,
     {
-      signal: request.signal,
       onError(error: unknown) {
-        console.error(error)
         responseStatusCode = 500
+        // Log streaming rendering errors from inside the shell.  Don't log
+        // errors encountered during initial shell rendering since they'll
+        // reject and get logged in handleDocumentRequest.
+        if (shellRendered) {
+          console.error(error)
+        }
       },
     }
   )
+  shellRendered = true
 
-  if (isbot(request.headers.get('user-agent') || '')) {
+  // Ensure requests from bots and SPA Mode renders wait for all content to load before responding
+  // https://react.dev/reference/react-dom/server/renderToPipeableStream#waiting-for-all-content-to-load-for-crawlers-and-static-generation
+  if ((userAgent && isbot(userAgent)) || routerContext.isSpaMode) {
     await body.allReady
   }
 
@@ -49,4 +47,4 @@ export default async function handleRequest(
   })
 }
 
-export const handleError = Sentry.sentryHandleError
+// export const handleError = Sentry.sentryHandleError

@@ -7,7 +7,7 @@ export async function fetchAircraftIcaoCodes(db: DatabaseConnection) {
   const aircrafts = await db
     .selectDistinct({ aircraftIcaoCode: flights.aircraftIcaoCode })
     .from(flights)
-    .where(eq(flights.cycle, currentCycleSubquery))
+    .where(eq(flights.cycle, currentCycleSubquery(db)))
 
   return aircrafts.map((v) => v.aircraftIcaoCode) ?? []
 }

@@ -5,7 +5,9 @@
     "serve": "react-router dev",
     "pack": "react-router build",
     "lint": "eslint app/",
-    "react-router-generate-types": "react-router typegen"
+    "react-router-generate-types": "react-router typegen",
+    "cf-typegen": "wrangler types",
+    "deploy": "wrangler deploy"
   },
   "dependencies": {
     "@mach/shared-database": "workspace:*",
@@ -26,8 +28,5 @@
         "outputs": ["{projectRoot}/.react-router/types"]
       }
     }
-  },
-  "devDependencies": {
-    "vite-plugin-static-copy": "^2.3.0"
   }
 }

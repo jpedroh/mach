@@ -1,0 +1,50 @@
+{
+  "extends": "./tsconfig.json",
+  "include": [
+    ".react-router/types/**/*",
+    "app/**/*",
+    "app/**/.server/**/*",
+    "app/**/.client/**/*",
+    "workers/**/*",
+    "router-configuration.d.ts",
+    "worker-configuration.d.ts"
+  ],
+  "compilerOptions": {
+    "outDir": "./out-tsc/cloudflare",
+    "composite": true,
+    "strict": true,
+    "lib": ["DOM", "DOM.Iterable", "ES2022"],
+    "types": ["@cloudflare/workers-types", "vite/client"],
+    "target": "ES2022",
+    "module": "ES2022",
+    "moduleResolution": "bundler",
+    "jsx": "react-jsx",
+    "baseUrl": ".",
+    "rootDirs": [".", "./.react-router/types"],
+    "paths": {
+      "~/*": ["./app/*"]
+    },
+    "esModuleInterop": true,
+    "resolveJsonModule": true
+  },
+  "references": [
+    {
+      "path": "../../modules/web-shared-ui/tsconfig.lib.json"
+    },
+    {
+      "path": "../../modules/shared-eslint-config/tsconfig.lib.json"
+    },
+    {
+      "path": "../../modules/web-search/tsconfig.lib.json"
+    },
+    {
+      "path": "../../modules/web-details/tsconfig.lib.json"
+    },
+    {
+      "path": "../../modules/shared-database/tsconfig.lib.json"
+    },
+    {
+      "path": "../../modules/web-home/tsconfig.lib.json"
+    }
+  ]
+}

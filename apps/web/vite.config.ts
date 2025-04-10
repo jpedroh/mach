@@ -1,12 +1,12 @@
 /// <reference types='vitest' />
 
+import { cloudflare } from '@cloudflare/vite-plugin'
 import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin'
 import { reactRouter } from '@react-router/dev/vite'
 import { cloudflareDevProxy } from '@react-router/dev/vite/cloudflare'
 import { sentryVitePlugin } from '@sentry/vite-plugin'
 import tailwindcss from '@tailwindcss/vite'
 import { defineConfig } from 'vite'
-import { viteStaticCopy } from 'vite-plugin-static-copy'
 
 export default defineConfig({
   root: __dirname,
@@ -26,20 +26,13 @@ export default defineConfig({
     host: 'localhost',
   },
   plugins: [
+    cloudflare({ viteEnvironment: { name: 'ssr' } }),
     cloudflareDevProxy(),
     reactRouter(),
     nxViteTsPaths(),
     sentryVitePlugin({
       org: 'jpedroh',
       project: 'mach-vq',
-    }),
-    viteStaticCopy({
-      targets: [
-        {
-          src: '_headers',
-          dest: './',
-        },
-      ],
     }),
     tailwindcss(),
   ],
