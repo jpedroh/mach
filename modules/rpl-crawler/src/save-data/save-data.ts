@@ -1,4 +1,4 @@
-import { db } from '@mach/shared-database/connection'
+import { type DatabaseConnection } from '@mach/shared-database/connection'
 import {
   type Airport,
   type Flight,
@@ -27,7 +27,7 @@ function sliceArray<T>(items: T[]) {
   return response
 }
 
-const makeSaveData = () => {
+const makeSaveData = ({ db }: { db: DatabaseConnection }) => {
   return async ({
     cycle,
     flights,
