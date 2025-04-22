@@ -15,8 +15,8 @@ importers:
         specifier: ^1.0.8
         version: 1.0.8(vite@6.3.2)(wrangler@4.12.0)
       '@cloudflare/workers-types':
-        specifier: ^4.20250418.0
-        version: 4.20250418.0
+        specifier: ^4.20250422.0
+        version: 4.20250422.0
       '@commitlint/cli':
         specifier: ^19.8.0
         version: 19.8.0(@types/node@22.14.1)(typescript@5.8.3)
@@ -52,7 +52,7 @@ importers:
         version: 1.52.0
       '@react-router/cloudflare':
         specifier: ^7.5.1
-        version: 7.5.1(@cloudflare/workers-types@4.20250418.0)(react-router@7.5.1)(tsup@8.4.0)(typescript@5.8.3)
+        version: 7.5.1(@cloudflare/workers-types@4.20250422.0)(react-router@7.5.1)(tsup@8.4.0)(typescript@5.8.3)
       '@react-router/dev':
         specifier: ^7.5.1
         version: 7.5.1(@types/node@22.14.1)(react-router@7.5.1)(typescript@5.8.3)(vite@6.3.2)(wrangler@4.12.0)
@@ -121,7 +121,7 @@ importers:
         version: 0.31.0
       drizzle-orm:
         specifier: ^0.42.0
-        version: 0.42.0(@cloudflare/workers-types@4.20250418.0)(@libsql/client@0.15.4)(@opentelemetry/api@1.9.0)
+        version: 0.42.0(@cloudflare/workers-types@4.20250422.0)(@libsql/client@0.15.4)(@opentelemetry/api@1.9.0)
       fast-xml-parser:
         specifier: ^5.2.0
         version: 5.2.0
@@ -190,7 +190,7 @@ importers:
         version: 3.1.2(@types/node@22.14.1)(@vitest/ui@3.1.2)(jsdom@26.1.0)(msw@2.7.5)
       wrangler:
         specifier: ^4.12.0
-        version: 4.12.0(@cloudflare/workers-types@4.20250418.0)
+        version: 4.12.0(@cloudflare/workers-types@4.20250422.0)
       zod:
         specifier: ^3.24.3
         version: 3.24.3
@@ -1820,7 +1820,7 @@ packages:
       tinyglobby: 0.2.12
       unenv: 2.0.0-rc.15
       vite: 6.3.2(@types/node@22.14.1)
-      wrangler: 4.12.0(@cloudflare/workers-types@4.20250418.0)
+      wrangler: 4.12.0(@cloudflare/workers-types@4.20250422.0)
       ws: 8.18.0
     transitivePeerDependencies:
       - bufferutil
@@ -1874,8 +1874,8 @@ packages:
     dev: true
     optional: true
 
-  /@cloudflare/workers-types@4.20250418.0:
-    resolution: {integrity: sha512-cPnHbEAryOX1FwEjjMXXCLudkxXUlfy7Hf55lqTPpYRSUA76NGLFfkhUF7+KkRrFg2u6pNpXTj24Gv5pMEHlqg==}
+  /@cloudflare/workers-types@4.20250422.0:
+    resolution: {integrity: sha512-rCeGeyYkIfZXKUNt8x5BOqMYm7W3X8Xj5yBMENR/OzPa9RDWtgHg3B77chPVHVYafSNbVEWc52XdtZTst/DZbA==}
     dev: true
 
   /@colors/colors@1.5.0:
@@ -5859,7 +5859,7 @@ packages:
       react-dom: 18.3.1(react@18.3.1)
     dev: true
 
-  /@react-router/cloudflare@7.5.1(@cloudflare/workers-types@4.20250418.0)(react-router@7.5.1)(tsup@8.4.0)(typescript@5.8.3):
+  /@react-router/cloudflare@7.5.1(@cloudflare/workers-types@4.20250422.0)(react-router@7.5.1)(tsup@8.4.0)(typescript@5.8.3):
     resolution: {integrity: sha512-xolvcvqLLjEj/RFk3uua4vGpKKvRdbobx5IFt9kG6kzwKdeujJdws05oj+sZq91B1TEoSZtwiykmvMS15c5q6w==}
     engines: {node: '>=20.0.0'}
     peerDependencies:
@@ -5871,7 +5871,7 @@ packages:
       typescript:
         optional: true
     dependencies:
-      '@cloudflare/workers-types': 4.20250418.0
+      '@cloudflare/workers-types': 4.20250422.0
       react-router: 7.5.1(react-dom@18.3.1)(react@18.3.1)
       tsup: 8.4.0(typescript@5.8.3)
       typescript: 5.8.3
@@ -5925,7 +5925,7 @@ packages:
       valibot: 0.41.0(typescript@5.8.3)
       vite: 6.3.2(@types/node@22.14.1)
       vite-node: 3.0.0-beta.2(@types/node@22.14.1)
-      wrangler: 4.12.0(@cloudflare/workers-types@4.20250418.0)
+      wrangler: 4.12.0(@cloudflare/workers-types@4.20250422.0)
     transitivePeerDependencies:
       - '@types/node'
       - babel-plugin-macros
@@ -9966,7 +9966,7 @@ packages:
       - supports-color
     dev: true
 
-  /drizzle-orm@0.42.0(@cloudflare/workers-types@4.20250418.0)(@libsql/client@0.15.4)(@opentelemetry/api@1.9.0):
+  /drizzle-orm@0.42.0(@cloudflare/workers-types@4.20250422.0)(@libsql/client@0.15.4)(@opentelemetry/api@1.9.0):
     resolution: {integrity: sha512-pS8nNJm2kBNZwrOjTHJfdKkaU+KuUQmV/vk5D57NojDq4FG+0uAYGMulXtYT///HfgsMF0hnFFvu1ezI3OwOkg==}
     peerDependencies:
       '@aws-sdk/client-rds-data': '>=3'
@@ -10055,7 +10055,7 @@ packages:
       sqlite3:
         optional: true
     dependencies:
-      '@cloudflare/workers-types': 4.20250418.0
+      '@cloudflare/workers-types': 4.20250422.0
       '@libsql/client': 0.15.4
       '@opentelemetry/api': 1.9.0
     dev: true
@@ -14819,6 +14819,16 @@ packages:
       ajv-keywords: 5.1.0(ajv@8.17.1)
     dev: true
 
+  /schema-utils@4.3.2:
+    resolution: {integrity: sha512-Gn/JaSk/Mt9gYubxTtSn/QCV4em9mpAPiR1rqy/Ocu19u/G9J5WWdNoUT4SiV6mFC3y6cxyFcFwdzPM3FgxGAQ==}
+    engines: {node: '>= 10.13.0'}
+    dependencies:
+      '@types/json-schema': 7.0.15
+      ajv: 8.17.1
+      ajv-formats: 2.1.1(ajv@8.17.1)
+      ajv-keywords: 5.1.0(ajv@8.17.1)
+    dev: true
+
   /secure-compare@3.0.1:
     resolution: {integrity: sha512-AckIIV90rPDcBcglUwXPF3kg0P0qmPsPXAj6BBEENQE1p5yA1xfmDJzfi1Tappj37Pv2mVbKpL3Z1T+Nn7k1Qw==}
     dev: true
@@ -16559,7 +16569,7 @@ packages:
       loader-runner: 4.3.0
       mime-types: 2.1.35
       neo-async: 2.6.2
-      schema-utils: 4.3.0
+      schema-utils: 4.3.2
       tapable: 2.2.1
       terser-webpack-plugin: 5.3.14(esbuild@0.25.2)(webpack@5.99.6)
       watchpack: 2.4.2
@@ -16719,7 +16729,7 @@ packages:
       '@cloudflare/workerd-windows-64': 1.20250416.0
     dev: true
 
-  /wrangler@4.12.0(@cloudflare/workers-types@4.20250418.0):
+  /wrangler@4.12.0(@cloudflare/workers-types@4.20250422.0):
     resolution: {integrity: sha512-4rfAXOi5KqM3ECvOrZJ97k3zEqxVwtdt4bijd8jcRBZ6iJYvEtjgjVi4TsfkVa/eXGhpfHTUnKu2uk8UHa8M2w==}
     engines: {node: '>=18.0.0'}
     hasBin: true
@@ -16731,7 +16741,7 @@ packages:
     dependencies:
       '@cloudflare/kv-asset-handler': 0.4.0
       '@cloudflare/unenv-preset': 2.3.1(unenv@2.0.0-rc.15)(workerd@1.20250416.0)
-      '@cloudflare/workers-types': 4.20250418.0
+      '@cloudflare/workers-types': 4.20250422.0
       blake3-wasm: 2.1.5
       esbuild: 0.25.2
       miniflare: 4.20250416.0
