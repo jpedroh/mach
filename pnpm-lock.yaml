@@ -30,23 +30,23 @@ importers:
         specifier: workspace:*
         version: link:modules/shared-eslint-config
       '@nx/devkit':
-        specifier: 21.0.1
-        version: 21.0.1(nx@21.0.1)
+        specifier: 21.0.2
+        version: 21.0.2(nx@21.0.2)
       '@nx/eslint':
-        specifier: 21.0.1
-        version: 21.0.1(eslint@9.26.0)(nx@21.0.1)
+        specifier: 21.0.2
+        version: 21.0.2(eslint@9.26.0)(nx@21.0.2)
       '@nx/js':
-        specifier: 21.0.1
-        version: 21.0.1(nx@21.0.1)
+        specifier: 21.0.2
+        version: 21.0.2(nx@21.0.2)
       '@nx/playwright':
-        specifier: 21.0.1
-        version: 21.0.1(@playwright/test@1.52.0)(eslint@9.26.0)(nx@21.0.1)(typescript@5.8.3)
+        specifier: 21.0.2
+        version: 21.0.2(@playwright/test@1.52.0)(eslint@9.26.0)(nx@21.0.2)(typescript@5.8.3)
       '@nx/react':
-        specifier: 21.0.1
-        version: 21.0.1(esbuild@0.25.4)(eslint@9.26.0)(nx@21.0.1)(react-dom@18.3.1)(react@18.3.1)(typescript@5.8.3)(webpack@5.99.8)
+        specifier: 21.0.2
+        version: 21.0.2(esbuild@0.25.4)(eslint@9.26.0)(nx@21.0.2)(react-dom@18.3.1)(react@18.3.1)(typescript@5.8.3)(webpack@5.99.8)
       '@nx/vite':
-        specifier: 21.0.1
-        version: 21.0.1(nx@21.0.1)(typescript@5.8.3)(vite@6.3.5)(vitest@3.1.3)
+        specifier: 21.0.2
+        version: 21.0.2(nx@21.0.2)(typescript@5.8.3)(vite@6.3.5)(vitest@3.1.3)
       '@playwright/test':
         specifier: ^1.52.0
         version: 1.52.0
@@ -141,8 +141,8 @@ importers:
         specifier: ^2.7.6
         version: 2.7.6(@types/node@22.15.3)(typescript@5.8.3)
       nx:
-        specifier: 21.0.1
-        version: 21.0.1
+        specifier: 21.0.2
+        version: 21.0.2
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -249,8 +249,8 @@ importers:
         specifier: ~9.25.1
         version: 9.25.1
       '@nx/eslint-plugin':
-        specifier: 21.0.1
-        version: 21.0.1(@typescript-eslint/parser@8.32.0)(eslint@9.25.1)(nx@21.0.1)(typescript@5.7.3)
+        specifier: 21.0.2
+        version: 21.0.2(@typescript-eslint/parser@8.32.0)(eslint@9.25.1)(nx@21.0.2)(typescript@5.7.3)
       eslint:
         specifier: ^9.25.1
         version: 9.25.1
@@ -4451,24 +4451,24 @@ packages:
       which: 3.0.1
     dev: true
 
-  /@nx/devkit@21.0.1(nx@21.0.1):
-    resolution: {integrity: sha512-EMZKfaCI/jKba3JdA3+lfa1Rjt2Giw/DjY5FhykTFFWAz7emGJpxnLnqcAuMEoxzZpCIymX4hE96zqGjj52dGg==}
+  /@nx/devkit@21.0.2(nx@21.0.2):
+    resolution: {integrity: sha512-FF1+CYkqRmNUznAj9kWiRHZT91KrpZkLYmAoP5RlaXwSxgiiBTXL3FOIp0/LcHUlOUHur3079beBwreApfbvBA==}
     peerDependencies:
-      nx: 21.0.1
+      nx: 21.0.2
     dependencies:
       ejs: 3.1.10
       enquirer: 2.3.6
       ignore: 5.3.2
       minimatch: 9.0.3
-      nx: 21.0.1
+      nx: 21.0.2
       semver: 7.7.1
       tmp: 0.2.3
       tslib: 2.8.1
       yargs-parser: 21.1.1
     dev: true
 
-  /@nx/eslint-plugin@21.0.1(@typescript-eslint/parser@8.32.0)(eslint@9.25.1)(nx@21.0.1)(typescript@5.7.3):
-    resolution: {integrity: sha512-AAjDJ0otyRmRmF6IU3rID/DPKTb8PGj1WghNuj44AjNY/ZEsFzO8w+t4c/NErHILFNMpUd8HW/0uvye2v5Pg9w==}
+  /@nx/eslint-plugin@21.0.2(@typescript-eslint/parser@8.32.0)(eslint@9.25.1)(nx@21.0.2)(typescript@5.7.3):
+    resolution: {integrity: sha512-LbLq4WewxZ7nqw6rgg+ik0CXHCS+dkUN7Mew5z058IzBoB9XytkWdpv0I9r1Ry0qE/ZGEtGYfvT6PROUPQL8wA==}
     peerDependencies:
       '@typescript-eslint/parser': ^6.13.2 || ^7.0.0 || ^8.0.0
       eslint-config-prettier: ^10.0.0
@@ -4476,8 +4476,8 @@ packages:
       eslint-config-prettier:
         optional: true
     dependencies:
-      '@nx/devkit': 21.0.1(nx@21.0.1)
-      '@nx/js': 21.0.1(nx@21.0.1)
+      '@nx/devkit': 21.0.2(nx@21.0.2)
+      '@nx/js': 21.0.2(nx@21.0.2)
       '@typescript-eslint/parser': 8.32.0(eslint@9.25.1)(typescript@5.7.3)
       '@typescript-eslint/type-utils': 8.32.0(eslint@9.25.1)(typescript@5.7.3)
       '@typescript-eslint/utils': 8.32.0(eslint@9.25.1)(typescript@5.7.3)
@@ -4499,8 +4499,8 @@ packages:
       - verdaccio
     dev: true
 
-  /@nx/eslint@21.0.1(eslint@9.26.0)(nx@21.0.1):
-    resolution: {integrity: sha512-Er0g1rZ0ts8xXnFad46FsobxA9keU5tGNTuHSGT2EDjxaVjvuGYoJYLkZ6pSCe8F8sUGBNbgjbaUxBUTDGmHJQ==}
+  /@nx/eslint@21.0.2(eslint@9.26.0)(nx@21.0.2):
+    resolution: {integrity: sha512-uZwzaqiMWXFaF+A86HK3K4AQIIOuGA3UAgnS6PUk6c7vUuLkJw1FLdFbdCA5LdyHoVu8BHdsinshxbiVl5tn2Q==}
     peerDependencies:
       '@zkochan/js-yaml': 0.0.7
       eslint: ^8.0.0 || ^9.0.0
@@ -4508,8 +4508,8 @@ packages:
       '@zkochan/js-yaml':
         optional: true
     dependencies:
-      '@nx/devkit': 21.0.1(nx@21.0.1)
-      '@nx/js': 21.0.1(nx@21.0.1)
+      '@nx/devkit': 21.0.2(nx@21.0.2)
+      '@nx/js': 21.0.2(nx@21.0.2)
       eslint: 9.26.0
       semver: 7.7.1
       tslib: 2.8.1
@@ -4524,8 +4524,8 @@ packages:
       - verdaccio
     dev: true
 
-  /@nx/js@21.0.1(nx@21.0.1):
-    resolution: {integrity: sha512-nD7rWfDGd68hDDSpwdlvQyZlWeOJHlVWQfQrncsFpVMZzYVfIupd4ljBxqQp6/Bqg46poJjjjXOMXZ/m3PZJDw==}
+  /@nx/js@21.0.2(nx@21.0.2):
+    resolution: {integrity: sha512-AhqAUkqu2YDbMXqr0g/5Qhlm/ERV1FockmpK6ltYHRDaQu/yW/VKIPQtj0ndrSAKfZ74pjt8koyhFdGZjt9cMg==}
     peerDependencies:
       verdaccio: ^6.0.5
     peerDependenciesMeta:
@@ -4539,8 +4539,8 @@ packages:
       '@babel/preset-env': 7.27.2(@babel/core@7.27.1)
       '@babel/preset-typescript': 7.27.1(@babel/core@7.27.1)
       '@babel/runtime': 7.27.1
-      '@nx/devkit': 21.0.1(nx@21.0.1)
-      '@nx/workspace': 21.0.1
+      '@nx/devkit': 21.0.2(nx@21.0.2)
+      '@nx/workspace': 21.0.2
       '@zkochan/js-yaml': 0.0.7
       babel-plugin-const-enum: 1.2.0(@babel/core@7.27.1)
       babel-plugin-macros: 3.1.0
@@ -4570,15 +4570,15 @@ packages:
       - supports-color
     dev: true
 
-  /@nx/module-federation@21.0.1(esbuild@0.25.4)(nx@21.0.1)(react-dom@18.3.1)(react@18.3.1)(typescript@5.8.3):
-    resolution: {integrity: sha512-2g7ZJZs1iNFRHduLDlnSWqrqHeHu33RUL+OsE/D16m7zIUQX4Z8Okn74xtA7zr2ZBXsGivCCJ04rCLCgaDMnhg==}
+  /@nx/module-federation@21.0.2(esbuild@0.25.4)(nx@21.0.2)(react-dom@18.3.1)(react@18.3.1)(typescript@5.8.3):
+    resolution: {integrity: sha512-gYS8dWzBtn4w5LJDfI8V6/a5MXivyM/sRPETKG364Pzrskt+UjKUaoDn6tt9pc0jc/8znMVW+mOzvriSKxQP0w==}
     dependencies:
       '@module-federation/enhanced': 0.9.1(@rspack/core@1.3.9)(react-dom@18.3.1)(react@18.3.1)(typescript@5.8.3)(webpack@5.99.8)
       '@module-federation/node': 2.7.2(@rspack/core@1.3.9)(react-dom@18.3.1)(react@18.3.1)(typescript@5.8.3)(webpack@5.99.8)
       '@module-federation/sdk': 0.9.1
-      '@nx/devkit': 21.0.1(nx@21.0.1)
-      '@nx/js': 21.0.1(nx@21.0.1)
-      '@nx/web': 21.0.1(nx@21.0.1)
+      '@nx/devkit': 21.0.2(nx@21.0.2)
+      '@nx/js': 21.0.2(nx@21.0.2)
+      '@nx/web': 21.0.2(nx@21.0.2)
       '@rspack/core': 1.3.9
       express: 4.21.2
       http-proxy-middleware: 3.0.5
@@ -4606,97 +4606,97 @@ packages:
       - webpack-cli
     dev: true
 
-  /@nx/nx-darwin-arm64@21.0.1:
-    resolution: {integrity: sha512-HaEH46adcEYuzHz/uCtYMaH7xOMfbq9YSrcgNAXkPbVKTYDfIFRumVIecz+oUOUDyVluYWWF68nAGuLF5SAktA==}
+  /@nx/nx-darwin-arm64@21.0.2:
+    resolution: {integrity: sha512-C2A94y4TJpAsxbyAZufCzcWNDFKvHNcGCxSwdMxyaDBHXOxDasSYH6KsUTj95sZtjMiHvMn9J4xforTwF/tE7w==}
     cpu: [arm64]
     os: [darwin]
     requiresBuild: true
     dev: true
     optional: true
 
-  /@nx/nx-darwin-x64@21.0.1:
-    resolution: {integrity: sha512-/Eiu46DjiaIF8PmzVVzuvFv80tECYQu9YgldKKKnhTdcdxc4umyRTuq4/qclSxY69UW+s0kqFLnBxnVLdW3WLw==}
+  /@nx/nx-darwin-x64@21.0.2:
+    resolution: {integrity: sha512-eWHM0gmOZBuqFw0QrO6h/ku0+LxbjmTYaWFJerPjqfAyOHKI9CEY/nPWHuJRkq7algUQdlgX5Utf+oQ+6aJlTQ==}
     cpu: [x64]
     os: [darwin]
     requiresBuild: true
     dev: true
     optional: true
 
-  /@nx/nx-freebsd-x64@21.0.1:
-    resolution: {integrity: sha512-oVUG2OL4LNClXILcRqO49JiUVZAr/S1nBDm3ZlYGC7H9Hro6oDwisHyhv8l3xkk1yOdho8I1uutexbqADg73UA==}
+  /@nx/nx-freebsd-x64@21.0.2:
+    resolution: {integrity: sha512-k9bPYiHscJhinxlWC/iZTObpZo6SEBqEaObvgBH4csZpirQ5sQSy/tHB0H1pPKzDwLqkRtUHn3Z6hdWwjF1hdQ==}
     cpu: [x64]
     os: [freebsd]
     requiresBuild: true
     dev: true
     optional: true
 
-  /@nx/nx-linux-arm-gnueabihf@21.0.1:
-    resolution: {integrity: sha512-g5QkRZrZr39fJ1beexbT9i+P0ieGkgG7CZh4P2fq2z+xjemHxLYYw07yq1ssSRTgkzmxnbRJj32RAoBu7nsWvQ==}
+  /@nx/nx-linux-arm-gnueabihf@21.0.2:
+    resolution: {integrity: sha512-4u9TIfaeG+H9p8+LWXkBMJzqEVqfae0SMB06r7WB4RDRRe5elkU7sOtJK1LRs2MogBpTC6AErShFHXGEgQhSIQ==}
     cpu: [arm]
     os: [linux]
     requiresBuild: true
     dev: true
     optional: true
 
-  /@nx/nx-linux-arm64-gnu@21.0.1:
-    resolution: {integrity: sha512-7qtZ9dxiwBqsM/Q8rVq+MEP7dJQo5nODdop0fO8MMHHM66zpHKuZ5M3zWxCNOTXcNOMOHQIp+X84lvXVfeShiw==}
+  /@nx/nx-linux-arm64-gnu@21.0.2:
+    resolution: {integrity: sha512-415Rj9nXUUyqFB/YwkK1Ag41jgymn0BNAqTZ/9sv1NZR1K/B5hA938Cc8eqFmrk5tFbLzqIwr5EA3QGrGZKN9Q==}
     cpu: [arm64]
     os: [linux]
     requiresBuild: true
     dev: true
     optional: true
 
-  /@nx/nx-linux-arm64-musl@21.0.1:
-    resolution: {integrity: sha512-+HKRXr6xE09PbSv/My84aJTEvxXXfWg7ztSnTYDGuhGjYydx085LEDwh3aiDOfVXFULKctqPRzj0b4WNQjo0OA==}
+  /@nx/nx-linux-arm64-musl@21.0.2:
+    resolution: {integrity: sha512-gkA/TzOY4/sNHQF0k4EeLR6Pt79c1/PiVOmVN5tdjgljOzTkbrPzeeaBWlS/JH/e005+tkZZmceAZmXYEP9vGw==}
     cpu: [arm64]
     os: [linux]
     requiresBuild: true
     dev: true
     optional: true
 
-  /@nx/nx-linux-x64-gnu@21.0.1:
-    resolution: {integrity: sha512-D+ZS0Ug/Ty3ofJp92oVpBpxgRZLtzfJS8uMKvnvYu2BAymMwCL1IGBRdwGHGhFoS8G2/9JVBpRuVBegsbtkI2g==}
+  /@nx/nx-linux-x64-gnu@21.0.2:
+    resolution: {integrity: sha512-F7PT9gJCdtUmVXecVOjU6kRbN8vs3FPI4G0Kuuh9n5OQ+y8uqTMIrSD8//yyn0S4tfz4Esd/UjtWB9Inw1WMgQ==}
     cpu: [x64]
     os: [linux]
     requiresBuild: true
     dev: true
     optional: true
 
-  /@nx/nx-linux-x64-musl@21.0.1:
-    resolution: {integrity: sha512-SKzzprkw2+JgGpdi0+ia3VkLq77h6fEjwyFsXSzbZXz6s5zfgJlnMw8kK48AfXIravtQdwc1mhEHyRTo/c5x5Q==}
+  /@nx/nx-linux-x64-musl@21.0.2:
+    resolution: {integrity: sha512-a/qEWf7E7xjnh3XonnPKbzBbIhmCset7pJuDAWHyaoMRfjdYI3/uxs8mvRUZAMwThg7KMwmxx5QLAqEcMRgoyw==}
     cpu: [x64]
     os: [linux]
     requiresBuild: true
     dev: true
     optional: true
 
-  /@nx/nx-win32-arm64-msvc@21.0.1:
-    resolution: {integrity: sha512-GVxEjYcJiIJ3HCFQzS1H796bBglDUIjzoKFTpH0/AIXd/wGlHIQlReIWhhhVNAB+p02+e2ZmvUtH9QjZQLmPOg==}
+  /@nx/nx-win32-arm64-msvc@21.0.2:
+    resolution: {integrity: sha512-vZIv4/fS30WZ2yQA8tq2oQeyq3Pq9stx6NA7VW/Vtw2/Uv9QY0kXKysf7/pBY81h3pKNGi8FNaOOAgoT/+dz9w==}
     cpu: [arm64]
     os: [win32]
     requiresBuild: true
     dev: true
     optional: true
 
-  /@nx/nx-win32-x64-msvc@21.0.1:
-    resolution: {integrity: sha512-skPbkmww43+w8Chb4mXiBaWuJ0aQASCLEtZ1L8gSONDVkJjKnvCDonuiLjlofUwZ3jxls0UC7DiizzZ4YSrJBQ==}
+  /@nx/nx-win32-x64-msvc@21.0.2:
+    resolution: {integrity: sha512-GJFjODSuNhcEjSm1sBHJ8GZ4quE299nnuWADoZYpXkkAhjCElyZJME/nuOpbh8r2E7cCFRbv04qTbkA/73UcFw==}
     cpu: [x64]
     os: [win32]
     requiresBuild: true
     dev: true
     optional: true
 
-  /@nx/playwright@21.0.1(@playwright/test@1.52.0)(eslint@9.26.0)(nx@21.0.1)(typescript@5.8.3):
-    resolution: {integrity: sha512-isy2CSx6P2hjy63H2n3jzum7cNdZsabsgjUeV+zUJpNZtykLhne7pizx6bPwJ7fS7eGXgjHOu2l/2u9ao+Cjdw==}
+  /@nx/playwright@21.0.2(@playwright/test@1.52.0)(eslint@9.26.0)(nx@21.0.2)(typescript@5.8.3):
+    resolution: {integrity: sha512-49d1zK6d28e4lNJuwxVL6trOfKDJBMnp+2RNK4naTv3BtYZN8fEF6mI0VrqM+m8ALWOf65MrF0jXxWJHPCJipw==}
     peerDependencies:
       '@playwright/test': ^1.36.0
     peerDependenciesMeta:
       '@playwright/test':
         optional: true
     dependencies:
-      '@nx/devkit': 21.0.1(nx@21.0.1)
-      '@nx/eslint': 21.0.1(eslint@9.26.0)(nx@21.0.1)
-      '@nx/js': 21.0.1(nx@21.0.1)
+      '@nx/devkit': 21.0.2(nx@21.0.2)
+      '@nx/eslint': 21.0.2(eslint@9.26.0)(nx@21.0.2)
+      '@nx/js': 21.0.2(nx@21.0.2)
       '@phenomnomnominal/tsquery': 5.0.1(typescript@5.8.3)
       '@playwright/test': 1.52.0
       minimatch: 9.0.3
@@ -4714,14 +4714,14 @@ packages:
       - verdaccio
     dev: true
 
-  /@nx/react@21.0.1(esbuild@0.25.4)(eslint@9.26.0)(nx@21.0.1)(react-dom@18.3.1)(react@18.3.1)(typescript@5.8.3)(webpack@5.99.8):
-    resolution: {integrity: sha512-nXFUfFRwlb7JDf/i2AXJzezccsLRoYi8Scan4FIH5ywAH1KcMRZc+f1hJjYIhwk7K4TFcy88KLEyqO14DKfgww==}
+  /@nx/react@21.0.2(esbuild@0.25.4)(eslint@9.26.0)(nx@21.0.2)(react-dom@18.3.1)(react@18.3.1)(typescript@5.8.3)(webpack@5.99.8):
+    resolution: {integrity: sha512-1fP+Se7DUrtQFMp4h8AWiU/SHQG+zK4HiHM+NDV8MVefNwXlhRJlS1hbXT5zyr/xTwwMhrN6oR+rDpDFhApvSg==}
     dependencies:
-      '@nx/devkit': 21.0.1(nx@21.0.1)
-      '@nx/eslint': 21.0.1(eslint@9.26.0)(nx@21.0.1)
-      '@nx/js': 21.0.1(nx@21.0.1)
-      '@nx/module-federation': 21.0.1(esbuild@0.25.4)(nx@21.0.1)(react-dom@18.3.1)(react@18.3.1)(typescript@5.8.3)
-      '@nx/web': 21.0.1(nx@21.0.1)
+      '@nx/devkit': 21.0.2(nx@21.0.2)
+      '@nx/eslint': 21.0.2(eslint@9.26.0)(nx@21.0.2)
+      '@nx/js': 21.0.2(nx@21.0.2)
+      '@nx/module-federation': 21.0.2(esbuild@0.25.4)(nx@21.0.2)(react-dom@18.3.1)(react@18.3.1)(typescript@5.8.3)
+      '@nx/web': 21.0.2(nx@21.0.2)
       '@phenomnomnominal/tsquery': 5.0.1(typescript@5.8.3)
       '@svgr/webpack': 8.1.0(typescript@5.8.3)
       express: 4.21.2
@@ -4755,14 +4755,14 @@ packages:
       - webpack-cli
     dev: true
 
-  /@nx/vite@21.0.1(nx@21.0.1)(typescript@5.8.3)(vite@6.3.5)(vitest@3.1.3):
-    resolution: {integrity: sha512-V8GZiJ5H1jERqmMu7x82PzB6p7ARpfQS4qfkiAHlzZAtleXasnI5v+pvuUQ+3xqz5BcwSiUIl279Z6YpYmf5Zg==}
+  /@nx/vite@21.0.2(nx@21.0.2)(typescript@5.8.3)(vite@6.3.5)(vitest@3.1.3):
+    resolution: {integrity: sha512-Qw4lI4KP8Y+a47vWukVS3gZALxLI1GM2HFmmuNTta3/6V0vIreZnKd6xuMlmL2G2UY9zyZHNux76c68MKUaDUQ==}
     peerDependencies:
       vite: ^5.0.0 || ^6.0.0
       vitest: ^1.3.1 || ^2.0.0 || ^3.0.0
     dependencies:
-      '@nx/devkit': 21.0.1(nx@21.0.1)
-      '@nx/js': 21.0.1(nx@21.0.1)
+      '@nx/devkit': 21.0.2(nx@21.0.2)
+      '@nx/js': 21.0.2(nx@21.0.2)
       '@phenomnomnominal/tsquery': 5.0.1(typescript@5.8.3)
       '@swc/helpers': 0.5.17
       enquirer: 2.3.6
@@ -4782,11 +4782,11 @@ packages:
       - verdaccio
     dev: true
 
-  /@nx/web@21.0.1(nx@21.0.1):
-    resolution: {integrity: sha512-d5cWt9wqfSzPLVlf/ZXDs8DiibEpHtI9QfRcJfYjUFSUQKd8p5ZVF/6AXDQLC/F9Amnh//xwK6CmEo8Zy3el9w==}
+  /@nx/web@21.0.2(nx@21.0.2):
+    resolution: {integrity: sha512-gDtrkwyZOG8gJPBHQKCfZ/CISfEpzE1QBrKfEiwvSVs283u/a2+XtBNOE0Lx0RSjGqMvkWb8GszJNpOv7HtyXA==}
     dependencies:
-      '@nx/devkit': 21.0.1(nx@21.0.1)
-      '@nx/js': 21.0.1(nx@21.0.1)
+      '@nx/devkit': 21.0.2(nx@21.0.2)
+      '@nx/js': 21.0.2(nx@21.0.2)
       detect-port: 1.6.1
       http-server: 14.1.1
       picocolors: 1.1.1
@@ -4801,14 +4801,14 @@ packages:
       - verdaccio
     dev: true
 
-  /@nx/workspace@21.0.1:
-    resolution: {integrity: sha512-NruPpZtNAn0U/ObURsaYRcHPt66eihP07qLphYnj2Jsc97KZbnQzKJBTyF8EYIJZekG2WeT+kU/7N3jS0z6Lbg==}
+  /@nx/workspace@21.0.2:
+    resolution: {integrity: sha512-E1luDXSflU8Ix9z8xTsfCS9LHALCqn8kFkuPACexUPlQRB5P2eF2j+vIUHf7zw3a4xUvgjsik+ed3jfL8Q/GJg==}
     dependencies:
-      '@nx/devkit': 21.0.1(nx@21.0.1)
+      '@nx/devkit': 21.0.2(nx@21.0.2)
       '@zkochan/js-yaml': 0.0.7
       chalk: 4.1.2
       enquirer: 2.3.6
-      nx: 21.0.1
+      nx: 21.0.2
       picomatch: 4.0.2
       tslib: 2.8.1
       yargs-parser: 21.1.1
@@ -9378,7 +9378,7 @@ packages:
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001717
-      electron-to-chromium: 1.5.150
+      electron-to-chromium: 1.5.151
       node-releases: 2.0.19
       update-browserslist-db: 1.1.3(browserslist@4.24.5)
     dev: true
@@ -9603,11 +9603,6 @@ packages:
 
   /cli-spinners@2.6.1:
     resolution: {integrity: sha512-x/5fWmGMnbKQAaNwN+UZlV79qBLM9JFnJuJ03gIi5whrob0xV0ofNVHy9DhwGdsMJQc2OKv0oGmLzvaqvAVv+g==}
-    engines: {node: '>=6'}
-    dev: true
-
-  /cli-spinners@2.9.2:
-    resolution: {integrity: sha512-ywqV+5MmyL4E7ybXgKys4DugZbX0FC6LnwrhjuykIjnK9k8OQacQ7axGKnjDXWNhns0xot3bZI5h55H8yo9cJg==}
     engines: {node: '>=6'}
     dev: true
 
@@ -10501,8 +10496,8 @@ packages:
       jake: 10.9.2
     dev: true
 
-  /electron-to-chromium@1.5.150:
-    resolution: {integrity: sha512-rOOkP2ZUMx1yL4fCxXQKDHQ8ZXwisb2OycOQVKHgvB3ZI4CvehOd4y2tfnnLDieJ3Zs1RL1Dlp3cMkyIn7nnXA==}
+  /electron-to-chromium@1.5.151:
+    resolution: {integrity: sha512-Rl6uugut2l9sLojjS4H4SAr3A4IgACMLgpuEMPYCVcKydzfyPrn5absNRju38IhQOf/NwjJY8OGWjlteqYeBCA==}
     dev: true
 
   /emoji-regex@10.4.0:
@@ -14123,8 +14118,8 @@ packages:
     resolution: {integrity: sha512-/ieB+mDe4MrrKMT8z+mQL8klXydZWGR5Dowt4RAGKbJ3kIGEx3X4ljUo+6V73IXtUPWgfOlU5B9MlGxFO5T+cA==}
     dev: true
 
-  /nx@21.0.1:
-    resolution: {integrity: sha512-71TMlX7xcsSsWPe+b3i+jMPkLgeACDHruKKzLgC8IWTwcJKDlz+d8tuTrbssegOn0fBeB2ti6nZLxJ4AXTHMSw==}
+  /nx@21.0.2:
+    resolution: {integrity: sha512-Kkf7d4XgQH5KglwuWxtjY0scHClEf3G3I3wZpBWRdUd52t/a1kxUPL4lDcJ7hwkW+FWgSxFB+jmp/kMbroMXOg==}
     engines: {node: ^20.19.0 || ^22.12.0}
     hasBin: true
     requiresBuild: true
@@ -14173,16 +14168,16 @@ packages:
       yargs: 17.7.2
       yargs-parser: 21.1.1
     optionalDependencies:
-      '@nx/nx-darwin-arm64': 21.0.1
-      '@nx/nx-darwin-x64': 21.0.1
-      '@nx/nx-freebsd-x64': 21.0.1
-      '@nx/nx-linux-arm-gnueabihf': 21.0.1
-      '@nx/nx-linux-arm64-gnu': 21.0.1
-      '@nx/nx-linux-arm64-musl': 21.0.1
-      '@nx/nx-linux-x64-gnu': 21.0.1
-      '@nx/nx-linux-x64-musl': 21.0.1
-      '@nx/nx-win32-arm64-msvc': 21.0.1
-      '@nx/nx-win32-x64-msvc': 21.0.1
+      '@nx/nx-darwin-arm64': 21.0.2
+      '@nx/nx-darwin-x64': 21.0.2
+      '@nx/nx-freebsd-x64': 21.0.2
+      '@nx/nx-linux-arm-gnueabihf': 21.0.2
+      '@nx/nx-linux-arm64-gnu': 21.0.2
+      '@nx/nx-linux-arm64-musl': 21.0.2
+      '@nx/nx-linux-x64-gnu': 21.0.2
+      '@nx/nx-linux-x64-musl': 21.0.2
+      '@nx/nx-win32-arm64-msvc': 21.0.2
+      '@nx/nx-win32-x64-msvc': 21.0.2
     transitivePeerDependencies:
       - debug
     dev: true
@@ -14337,7 +14332,7 @@ packages:
       bl: 4.1.0
       chalk: 4.1.2
       cli-cursor: 3.1.0
-      cli-spinners: 2.9.2
+      cli-spinners: 2.6.1
       is-interactive: 1.0.0
       log-symbols: 4.1.0
       strip-ansi: 6.0.1
