@@ -12,8 +12,8 @@ importers:
         specifier: 1.9.4
         version: 1.9.4
       '@cloudflare/vite-plugin':
-        specifier: ^1.2.0
-        version: 1.2.0(vite@6.3.5)(wrangler@4.15.1)
+        specifier: ^1.2.1
+        version: 1.2.1(vite@6.3.5)(wrangler@4.15.1)
       '@cloudflare/workers-types':
         specifier: ^4.20250514.0
         version: 4.20250514.0
@@ -1917,8 +1917,8 @@ packages:
       workerd: 1.20250508.0
     dev: true
 
-  /@cloudflare/vite-plugin@1.2.0(vite@6.3.5)(wrangler@4.15.1):
-    resolution: {integrity: sha512-Qj7hlwTPJ3bSoVta3L7gpdpEsgdYocDihMueXyQ+Bnmg8gnxrzW13yRqC8qgHdwigf3qmAzm2ZhfPY825VZUnA==}
+  /@cloudflare/vite-plugin@1.2.1(vite@6.3.5)(wrangler@4.15.1):
+    resolution: {integrity: sha512-enOOCxVEAlhisCvpXE0RZA5Wk5JYIj/qv33yoOclLrp9A6DLr416Ku/J/60BxMbyv4JgjpFvN2fGNdcfT7ERVw==}
     peerDependencies:
       vite: ^6.1.0
       wrangler: ^3.101.0 || ^4.0.0
@@ -1927,7 +1927,7 @@ packages:
       '@mjackson/node-fetch-server': 0.6.1
       '@rollup/plugin-replace': 6.0.2
       get-port: 7.1.0
-      miniflare: 4.20250508.0
+      miniflare: 4.20250508.1
       picocolors: 1.1.1
       tinyglobby: 0.2.13
       unenv: 2.0.0-rc.15
@@ -13186,27 +13186,6 @@ packages:
   /min-indent@1.0.1:
     resolution: {integrity: sha512-I9jwMn07Sy/IwOj3zVkVik2JTvgpaykDZEigL6Rx6N9LbMywwUSMtxET+7lVoDLLd3O3IXwJwvuuns8UB/HeAg==}
     engines: {node: '>=4'}
-    dev: true
-
-  /miniflare@4.20250508.0:
-    resolution: {integrity: sha512-NvA1W8l7CRSOoaxKoRUpE4YfkNlalekShcV96o9KqGctWd9wydUXAhg4q0KqkDS04CjMNRSKG2kSI3B2BsOxXA==}
-    engines: {node: '>=18.0.0'}
-    hasBin: true
-    dependencies:
-      '@cspotcode/source-map-support': 0.8.1
-      acorn: 8.14.0
-      acorn-walk: 8.3.2
-      exit-hook: 2.2.1
-      glob-to-regexp: 0.4.1
-      stoppable: 1.1.0
-      undici: 5.29.0
-      workerd: 1.20250508.0
-      ws: 8.18.0
-      youch: 3.3.4
-      zod: 3.22.3
-    transitivePeerDependencies:
-      - bufferutil
-      - utf-8-validate
     dev: true
 
   /miniflare@4.20250508.1:
