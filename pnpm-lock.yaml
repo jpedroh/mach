@@ -66,8 +66,8 @@ importers:
         specifier: ^10.0.1
         version: 10.0.1(semantic-release@24.2.3)
       '@sentry/node':
-        specifier: ^9.19.0
-        version: 9.19.0
+        specifier: ^9.20.0
+        version: 9.20.0
       '@sentry/vite-plugin':
         specifier: ^3.4.0
         version: 3.4.0
@@ -3999,7 +3999,7 @@ packages:
       proc-log: 3.0.0
       promise-inflight: 1.0.1
       promise-retry: 2.0.1
-      semver: 7.7.2
+      semver: 7.7.1
       which: 3.0.1
     transitivePeerDependencies:
       - bluebird
@@ -4015,7 +4015,7 @@ packages:
       json-parse-even-better-errors: 3.0.2
       normalize-package-data: 5.0.0
       proc-log: 3.0.0
-      semver: 7.7.2
+      semver: 7.7.1
     transitivePeerDependencies:
       - bluebird
     dev: true
@@ -7099,7 +7099,7 @@ packages:
       conventional-changelog-writer: 8.0.1
       conventional-commits-filter: 5.0.0
       conventional-commits-parser: 6.1.0
-      debug: 4.4.1
+      debug: 4.4.0
       import-from-esm: 2.0.0
       lodash-es: 4.17.21
       micromatch: 4.0.8
@@ -7166,7 +7166,7 @@ packages:
       '@octokit/plugin-throttling': 9.4.0(@octokit/core@6.1.4)
       '@semantic-release/error': 4.0.0
       aggregate-error: 5.0.0
-      debug: 4.4.1
+      debug: 4.4.0
       dir-glob: 3.0.1
       globby: 14.1.0
       http-proxy-agent: 7.0.2
@@ -7199,7 +7199,7 @@ packages:
       read-pkg: 9.0.1
       registry-auth-token: 5.1.0
       semantic-release: 24.2.3(typescript@5.8.3)
-      semver: 7.7.2
+      semver: 7.7.1
       tempy: 3.1.0
     dev: true
 
@@ -7213,7 +7213,7 @@ packages:
       conventional-changelog-writer: 8.0.1
       conventional-commits-filter: 5.0.0
       conventional-commits-parser: 6.1.0
-      debug: 4.4.1
+      debug: 4.4.0
       get-stream: 7.0.1
       import-from-esm: 2.0.0
       into-stream: 7.0.0
@@ -7332,13 +7332,13 @@ packages:
       - supports-color
     dev: true
 
-  /@sentry/core@9.19.0:
-    resolution: {integrity: sha512-I41rKpMJHHZb0z0Nja+Lxto6IkEEmX3uWjnECypF8Z1HIjeJB0+PXl8p/7TeaKYqw2J2GYcRTg7jQZDmvKle1w==}
+  /@sentry/core@9.20.0:
+    resolution: {integrity: sha512-YPDGkcMc5w8JEPoqW1DqfcaxtSz8FyP6+Z2KqjoEfUtqnjPis7YGo06e+XBCFDE+yZwurHB0DeerVi0cE47pxg==}
     engines: {node: '>=18'}
     dev: true
 
-  /@sentry/node@9.19.0:
-    resolution: {integrity: sha512-WKVcUBy5Zc+LGvfV/CfGPBDfnmEOSxLCMYzXIhx0gUxf2+8WpMMc/8yW/25zbXMo3eC4oST4GBDSpTfNdMBz1w==}
+  /@sentry/node@9.20.0:
+    resolution: {integrity: sha512-mkPFqJhCIvKeLHFHo11wOQdaeFD1Fa5qkVelOjsojPEcLfuDYA6/plCgrXmgWCGn2T1GaO3cjmDdCpvMLjt5ow==}
     engines: {node: '>=18'}
     dependencies:
       '@fastify/otel': '@codeload.github.com/getsentry/fastify-otel/tar.gz/ae3088d65e286bdc94ac5d722573537d6a6671bb(@opentelemetry/api@1.9.0)'
@@ -7372,15 +7372,15 @@ packages:
       '@opentelemetry/sdk-trace-base': 1.30.1(@opentelemetry/api@1.9.0)
       '@opentelemetry/semantic-conventions': 1.33.0
       '@prisma/instrumentation': 6.7.0(@opentelemetry/api@1.9.0)
-      '@sentry/core': 9.19.0
-      '@sentry/opentelemetry': 9.19.0(@opentelemetry/api@1.9.0)(@opentelemetry/context-async-hooks@1.30.1)(@opentelemetry/core@1.30.1)(@opentelemetry/instrumentation@0.57.2)(@opentelemetry/sdk-trace-base@1.30.1)(@opentelemetry/semantic-conventions@1.33.0)
+      '@sentry/core': 9.20.0
+      '@sentry/opentelemetry': 9.20.0(@opentelemetry/api@1.9.0)(@opentelemetry/context-async-hooks@1.30.1)(@opentelemetry/core@1.30.1)(@opentelemetry/instrumentation@0.57.2)(@opentelemetry/sdk-trace-base@1.30.1)(@opentelemetry/semantic-conventions@1.33.0)
       import-in-the-middle: 1.13.2
     transitivePeerDependencies:
       - supports-color
     dev: true
 
-  /@sentry/opentelemetry@9.19.0(@opentelemetry/api@1.9.0)(@opentelemetry/context-async-hooks@1.30.1)(@opentelemetry/core@1.30.1)(@opentelemetry/instrumentation@0.57.2)(@opentelemetry/sdk-trace-base@1.30.1)(@opentelemetry/semantic-conventions@1.33.0):
-    resolution: {integrity: sha512-Js6153kW5mNjjukk6TVb04D/8DDhA9MO++WRzXWzNP+FiPi5zwtvm+Je2TvTeAjSH74f6o2JpfECdrfPYHWopA==}
+  /@sentry/opentelemetry@9.20.0(@opentelemetry/api@1.9.0)(@opentelemetry/context-async-hooks@1.30.1)(@opentelemetry/core@1.30.1)(@opentelemetry/instrumentation@0.57.2)(@opentelemetry/sdk-trace-base@1.30.1)(@opentelemetry/semantic-conventions@1.33.0):
+    resolution: {integrity: sha512-G758j6i1SdtcYOJElLW9jXzXviVK+4SeD+fIJFd919ZT+L/NgsioPr6536SrE+aK3luv6tluRJubh7lhqufLkA==}
     engines: {node: '>=18'}
     peerDependencies:
       '@opentelemetry/api': ^1.9.0
@@ -7396,7 +7396,7 @@ packages:
       '@opentelemetry/instrumentation': 0.57.2(@opentelemetry/api@1.9.0)
       '@opentelemetry/sdk-trace-base': 1.30.1(@opentelemetry/api@1.9.0)
       '@opentelemetry/semantic-conventions': 1.33.0
-      '@sentry/core': 9.19.0
+      '@sentry/core': 9.20.0
     dev: true
 
   /@sentry/vite-plugin@3.4.0:
@@ -9529,7 +9529,7 @@ packages:
       conventional-commits-filter: 5.0.0
       handlebars: 4.7.8
       meow: 13.2.0
-      semver: 7.7.2
+      semver: 7.7.1
     dev: true
 
   /conventional-commits-filter@5.0.0:
@@ -11901,7 +11901,7 @@ packages:
     resolution: {integrity: sha512-YVt14UZCgsX1vZQ3gKjkWVdBdHQ6eu3MPU1TBgL1H5orXe2+jWD006WCPPtOuwlQm10NuzOW5WawiF1Q9veW8g==}
     engines: {node: '>=18.20'}
     dependencies:
-      debug: 4.4.1
+      debug: 4.4.0
       import-meta-resolve: 4.1.0
     transitivePeerDependencies:
       - supports-color
@@ -12335,7 +12335,7 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       '@jridgewell/trace-mapping': 0.3.25
-      debug: 4.4.1
+      debug: 4.4.0
       istanbul-lib-coverage: 3.2.2
     transitivePeerDependencies:
       - supports-color
@@ -13471,7 +13471,7 @@ packages:
     dependencies:
       hosted-git-info: 6.1.3
       is-core-module: 2.16.1
-      semver: 7.7.2
+      semver: 7.7.1
       validate-npm-package-license: 3.0.4
     dev: true
 
@@ -13480,7 +13480,7 @@ packages:
     engines: {node: ^16.14.0 || >=18.0.0}
     dependencies:
       hosted-git-info: 7.0.2
-      semver: 7.7.2
+      semver: 7.7.1
       validate-npm-package-license: 3.0.4
     dev: true
 
@@ -13498,7 +13498,7 @@ packages:
     resolution: {integrity: sha512-W29RiK/xtpCGqn6f3ixfRYGk+zRyr+Ew9F2E20BfXxT5/euLdA/Nm7fO7OeTGuAmTs30cpgInyJ0cYe708YTZw==}
     engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
     dependencies:
-      semver: 7.7.2
+      semver: 7.7.1
     dev: true
 
   /npm-normalize-package-bin@3.0.1:
@@ -13512,7 +13512,7 @@ packages:
     dependencies:
       hosted-git-info: 6.1.3
       proc-log: 3.0.0
-      semver: 7.7.2
+      semver: 7.7.1
       validate-npm-package-name: 5.0.1
     dev: true
 
@@ -13522,7 +13522,7 @@ packages:
     dependencies:
       hosted-git-info: 7.0.2
       proc-log: 3.0.0
-      semver: 7.7.2
+      semver: 7.7.1
       validate-npm-package-name: 5.0.1
     dev: true
 
@@ -13533,7 +13533,7 @@ packages:
       npm-install-checks: 6.3.0
       npm-normalize-package-bin: 3.0.1
       npm-package-arg: 10.1.0
-      semver: 7.7.2
+      semver: 7.7.1
     dev: true
 
   /npm-run-path@4.0.1:
@@ -13682,7 +13682,7 @@ packages:
       open: 8.4.2
       ora: 5.3.0
       resolve.exports: 2.0.3
-      semver: 7.7.2
+      semver: 7.7.1
       string-width: 4.2.3
       tar-stream: 2.2.0
       tmp: 0.2.3
@@ -15053,7 +15053,7 @@ packages:
     resolution: {integrity: sha512-0Ju4+6A8iOnpL/Thra7dZsSlOHYAHIeMxfhWQRI1/VLcT3WDBZKKtQt/QkBOsiIN9ZpuvHE6cGZ0x4glCMmfiA==}
     engines: {node: '>=12'}
     dependencies:
-      semver: 7.7.2
+      semver: 7.7.1
     dev: true
 
   /semver-regex@4.0.5:
@@ -16471,7 +16471,7 @@ packages:
     hasBin: true
     dependencies:
       cac: 6.7.14
-      debug: 4.4.1
+      debug: 4.4.0
       es-module-lexer: 1.7.0
       pathe: 2.0.3
       vite: 6.3.5(@types/node@22.15.18)
