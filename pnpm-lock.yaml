@@ -66,8 +66,8 @@ importers:
         specifier: ^10.0.1
         version: 10.0.1(semantic-release@24.2.5)
       '@sentry/node':
-        specifier: ^9.28.1
-        version: 9.28.1
+        specifier: ^9.30.0
+        version: 9.30.0
       '@sentry/vite-plugin':
         specifier: ^3.5.0
         version: 3.5.0
@@ -5051,7 +5051,7 @@ packages:
       '@opentelemetry/api': 1.9.0
       '@opentelemetry/api-logs': 0.57.2
       '@types/shimmer': 1.2.0
-      import-in-the-middle: 1.14.0
+      import-in-the-middle: 1.14.2
       require-in-the-middle: 7.5.2
       semver: 7.7.2
       shimmer: 1.2.1
@@ -7541,13 +7541,13 @@ packages:
       - supports-color
     dev: true
 
-  /@sentry/core@9.28.1:
-    resolution: {integrity: sha512-6q59r/71MeE+4StkvwdKAAyhBBNpWcii0HeiWBZ3l1gaFYQlb6bChjZJRZmxSzF5dnvkdF4duQbAC3JmjeIbPA==}
+  /@sentry/core@9.30.0:
+    resolution: {integrity: sha512-JfEpeQ8a1qVJEb9DxpFTFy1J1gkNdlgKAPiqYGNnm4yQbnfl2Kb/iEo1if70FkiHc52H8fJwISEF90pzMm6lPg==}
     engines: {node: '>=18'}
     dev: true
 
-  /@sentry/node@9.28.1:
-    resolution: {integrity: sha512-1bC8ywFPs1EIKzRlUhLoreTR/fUU45O+ezVNvOu0I6JURMwjyC8uT23f0Xkiolx4WjKZXER+d0el3HojPaYkYw==}
+  /@sentry/node@9.30.0:
+    resolution: {integrity: sha512-jHuSSKro2DUaccGcYSBbB8Rj0sG+LRh1iSWrJ+4c4Pj7tJFN9MbeMybC1buMSzAp+rwHUMZ3+ws0kgNVtsRJJg==}
     engines: {node: '>=18'}
     dependencies:
       '@opentelemetry/api': 1.9.0
@@ -7580,16 +7580,16 @@ packages:
       '@opentelemetry/sdk-trace-base': 1.30.1(@opentelemetry/api@1.9.0)
       '@opentelemetry/semantic-conventions': 1.34.0
       '@prisma/instrumentation': 6.8.2(@opentelemetry/api@1.9.0)
-      '@sentry/core': 9.28.1
-      '@sentry/opentelemetry': 9.28.1(@opentelemetry/api@1.9.0)(@opentelemetry/context-async-hooks@1.30.1)(@opentelemetry/core@1.30.1)(@opentelemetry/instrumentation@0.57.2)(@opentelemetry/sdk-trace-base@1.30.1)(@opentelemetry/semantic-conventions@1.34.0)
-      import-in-the-middle: 1.14.0
+      '@sentry/core': 9.30.0
+      '@sentry/opentelemetry': 9.30.0(@opentelemetry/api@1.9.0)(@opentelemetry/context-async-hooks@1.30.1)(@opentelemetry/core@1.30.1)(@opentelemetry/instrumentation@0.57.2)(@opentelemetry/sdk-trace-base@1.30.1)(@opentelemetry/semantic-conventions@1.34.0)
+      import-in-the-middle: 1.14.2
       minimatch: 9.0.5
     transitivePeerDependencies:
       - supports-color
     dev: true
 
-  /@sentry/opentelemetry@9.28.1(@opentelemetry/api@1.9.0)(@opentelemetry/context-async-hooks@1.30.1)(@opentelemetry/core@1.30.1)(@opentelemetry/instrumentation@0.57.2)(@opentelemetry/sdk-trace-base@1.30.1)(@opentelemetry/semantic-conventions@1.34.0):
-    resolution: {integrity: sha512-1xxriB2diNSlNpkMosdgIKzPOPwAiyFg7XgEWKpLtDYWj7WVbLNyLkUWriFr4JgU40uZp3LW+sGgnshA48/zQQ==}
+  /@sentry/opentelemetry@9.30.0(@opentelemetry/api@1.9.0)(@opentelemetry/context-async-hooks@1.30.1)(@opentelemetry/core@1.30.1)(@opentelemetry/instrumentation@0.57.2)(@opentelemetry/sdk-trace-base@1.30.1)(@opentelemetry/semantic-conventions@1.34.0):
+    resolution: {integrity: sha512-LhTmyGGLAP/LAxs/oXuPs0LC5Z80QSLL1oUoBRB5/+MitK7Huug6n8ZFjPTP3/6bT67XOVqILCdj8BwMlBeXhA==}
     engines: {node: '>=18'}
     peerDependencies:
       '@opentelemetry/api': ^1.9.0
@@ -7605,7 +7605,7 @@ packages:
       '@opentelemetry/instrumentation': 0.57.2(@opentelemetry/api@1.9.0)
       '@opentelemetry/sdk-trace-base': 1.30.1(@opentelemetry/api@1.9.0)
       '@opentelemetry/semantic-conventions': 1.34.0
-      '@sentry/core': 9.28.1
+      '@sentry/core': 9.30.0
     dev: true
 
   /@sentry/vite-plugin@3.5.0:
@@ -12395,8 +12395,8 @@ packages:
       - supports-color
     dev: true
 
-  /import-in-the-middle@1.14.0:
-    resolution: {integrity: sha512-g5zLT0HaztRJWysayWYiUq/7E5H825QIiecMD2pI5QO7Wzr847l6GDvPvmZaDIdrDtS2w7qRczywxiK6SL5vRw==}
+  /import-in-the-middle@1.14.2:
+    resolution: {integrity: sha512-5tCuY9BV8ujfOpwtAGgsTx9CGUapcFMEEyByLv1B+v2+6DhAcw+Zr0nhQT7uwaZ7DiourxFEscghOR8e1aPLQw==}
     dependencies:
       acorn: 8.15.0
       acorn-import-attributes: 1.9.5(acorn@8.15.0)
