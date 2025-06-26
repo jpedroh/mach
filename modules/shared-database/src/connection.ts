@@ -5,7 +5,10 @@ import * as schema from './schema'
 export function makeDatabaseConnection({
   url,
   authToken,
-}: { url: string; authToken: string }) {
+}: {
+  url: string
+  authToken: string
+}) {
   return drizzle(createClient({ url, authToken }), { schema })
 }
 

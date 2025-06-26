@@ -1,6 +1,6 @@
 import { readFileSync } from 'fs'
-import { join } from 'path'
 import { http } from 'msw'
+import { join } from 'path'
 
 export const handlers = [
   http.get(

@@ -1,4 +1,4 @@
-import { type Page, expect, test } from '@playwright/test'
+import { expect, type Page, test } from '@playwright/test'
 
 test('if I click search flights without selecting a filter it shows an error message', async ({
   page,

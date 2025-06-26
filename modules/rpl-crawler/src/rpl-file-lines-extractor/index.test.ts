@@ -1,5 +1,5 @@
-import { join } from 'path'
 import { readFile } from 'fs/promises'
+import { join } from 'path'
 import { expect, test } from 'vitest'
 import rplFileLinesExtractor from '.'
 

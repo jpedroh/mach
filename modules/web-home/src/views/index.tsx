@@ -5,10 +5,12 @@ import { Lead } from '@mach/web-shared-ui/lead'
 import { Select } from '@mach/web-shared-ui/select'
 import { Suspense, useState } from 'react'
 import { Await, Form } from 'react-router'
-import { fetchAircraftIcaoCodes } from '../services'
-import { fetchAirports } from '../services'
-import { fetchCompanies } from '../services'
-import { fetchCycles } from '../services'
+import {
+  fetchAircraftIcaoCodes,
+  fetchAirports,
+  fetchCompanies,
+  fetchCycles,
+} from '../services'
 import { searchFlightsQuerySchema } from '../services/validate-search-filters'
 import { formatAirport } from '../utils/format-airport'
 
