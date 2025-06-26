@@ -1,6 +1,5 @@
-import { makeRunRplCrawler } from './main'
-
 import flightDecoder from './flight-decoder'
+import { makeRunRplCrawler } from './main'
 import rplFileDownloader from './rpl-file-downloader'
 import rplFileLinesExtractor from './rpl-file-lines-extractor'
 import saveData from './save-data'

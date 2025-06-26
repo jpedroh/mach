@@ -1,10 +1,10 @@
 import { type DatabaseConnection } from '@mach/shared-database/connection'
 import {
   type Airport,
-  type Flight,
   airports as airportsSchema,
   companies as companiesSchema,
   cycles as cyclesSchema,
+  type Flight,
   flights as flightsSchema,
 } from '@mach/shared-database/schema'
 import { inArray } from 'drizzle-orm'

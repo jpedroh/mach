@@ -17,15 +17,25 @@
     "@mach/web-shared-ui": "workspace:*"
   },
   "nx": {
-    "tags": ["type:application"],
+    "tags": [
+      "type:application"
+    ],
     "targets": {
       "pack": {
-        "outputs": ["{projectRoot}/build"]
+        "outputs": [
+          "{projectRoot}/build"
+        ]
       },
       "typecheck": {
-        "dependsOn": ["react-router-generate-types"],
-        "inputs": ["{projectRoot}/app"],
-        "outputs": ["{projectRoot}/.react-router/types"]
+        "dependsOn": [
+          "react-router-generate-types"
+        ],
+        "inputs": [
+          "{projectRoot}/app"
+        ],
+        "outputs": [
+          "{projectRoot}/.react-router/types"
+        ]
       }
     }
   }

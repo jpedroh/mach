@@ -1,5 +1,5 @@
-import { randomUUID } from 'crypto'
 import { render, screen } from '@testing-library/react'
+import { randomUUID } from 'crypto'
 import { describe, expect, test } from 'vitest'
 import { SimBriefButton } from '.'
 

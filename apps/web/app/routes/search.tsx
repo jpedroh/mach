@@ -1,10 +1,10 @@
 import {
+  fetchFlights,
   ErrorBoundary as SearchErrorBoundary,
   SearchPage,
-  fetchFlights,
   searchFlightsQuerySchema,
 } from '@mach/web-search'
-import { Outlet, href, useNavigate, useSearchParams } from 'react-router'
+import { href, Outlet, useNavigate, useSearchParams } from 'react-router'
 import { makeDatabaseConnectionFromServerContext } from '../utils/database-connection'
 import type { Route } from './+types/search'
 
