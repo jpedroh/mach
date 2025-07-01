@@ -159,8 +159,8 @@ importers:
         specifier: ^7.6.3
         version: 7.6.3(react-dom@19.1.0)(react@19.1.0)
       react-twc:
-        specifier: ^1.4.2
-        version: 1.4.2(@types/react@19.1.8)(react@19.1.0)
+        specifier: ^1.5.0
+        version: 1.5.0(@types/react@19.1.8)(react@19.1.0)
       semantic-release:
         specifier: ^24.2.6
         version: 24.2.6(typescript@5.8.3)
@@ -6231,31 +6231,29 @@ packages:
       - supports-color
     dev: true
 
-  /@radix-ui/react-compose-refs@1.0.1(@types/react@19.1.8)(react@19.1.0):
-    resolution: {integrity: sha512-fDSBgd44FKHa1FRMU59qBMPFcl2PZE+2nmqunj+BWFyYYjnhIDWL2ItDs3rrbJDQOtzt5nIebLCQc4QRfz6LJw==}
+  /@radix-ui/react-compose-refs@1.1.2(@types/react@19.1.8)(react@19.1.0):
+    resolution: {integrity: sha512-z4eqJvfiNnFMHIIvXP3CY57y2WJs5g2v3X0zm9mEJkrkNv4rDxu+sg9Jh8EkXyeqBkB7SOcboo9dMVqhyrACIg==}
     peerDependencies:
       '@types/react': '*'
-      react: ^16.8 || ^17.0 || ^18.0
+      react: ^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc
     peerDependenciesMeta:
       '@types/react':
         optional: true
     dependencies:
-      '@babel/runtime': 7.27.0
       '@types/react': 19.1.8
       react: 19.1.0
     dev: true
 
-  /@radix-ui/react-slot@1.0.2(@types/react@19.1.8)(react@19.1.0):
-    resolution: {integrity: sha512-YeTpuq4deV+6DusvVUW4ivBgnkHwECUu0BiN43L5UCDFgdhsRUWAghhTF5MbvNTPzmiFOx90asDSUjWuCNapwg==}
+  /@radix-ui/react-slot@1.2.3(@types/react@19.1.8)(react@19.1.0):
+    resolution: {integrity: sha512-aeNmHnBxbi2St0au6VBVC7JXFlhLlOnvIIlePNniyUNAClzmtAUEY8/pBiK3iHjufOlwA+c20/8jngo7xcrg8A==}
     peerDependencies:
       '@types/react': '*'
-      react: ^16.8 || ^17.0 || ^18.0
+      react: ^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc
     peerDependenciesMeta:
       '@types/react':
         optional: true
     dependencies:
-      '@babel/runtime': 7.27.0
-      '@radix-ui/react-compose-refs': 1.0.1(@types/react@19.1.8)(react@19.1.0)
+      '@radix-ui/react-compose-refs': 1.1.2(@types/react@19.1.8)(react@19.1.0)
       '@types/react': 19.1.8
       react: 19.1.0
     dev: true
@@ -15809,10 +15807,10 @@ packages:
       react: 19.1.0
     dev: true
 
-  /react-twc@1.4.2(@types/react@19.1.8)(react@19.1.0):
-    resolution: {integrity: sha512-ix8Z1dNacL29Vri3rWsQqRYMQXWCNzbI1qhz0yyvcbO057HZwz3rXZDQ7TcOE1hQ7EHornX3ka2reO27RmXiYA==}
+  /react-twc@1.5.0(@types/react@19.1.8)(react@19.1.0):
+    resolution: {integrity: sha512-9swU4CSxwGGUQ17faIxaK25ByeWqKBqXuOydZ2mScatZo6AjcO8BTPQfXAhZFZU7F55glpfwpOsB9pYgL/3HTg==}
     dependencies:
-      '@radix-ui/react-slot': 1.0.2(@types/react@19.1.8)(react@19.1.0)
+      '@radix-ui/react-slot': 1.2.3(@types/react@19.1.8)(react@19.1.0)
       clsx: 2.1.1
     transitivePeerDependencies:
       - '@types/react'
