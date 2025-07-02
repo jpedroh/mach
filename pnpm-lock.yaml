@@ -34,16 +34,16 @@ importers:
         version: 21.2.1(nx@21.2.1)
       '@nx/eslint':
         specifier: 21.2.1
-        version: 21.2.1(eslint@9.30.0)(nx@21.2.1)
+        version: 21.2.1(eslint@9.30.1)(nx@21.2.1)
       '@nx/js':
         specifier: 21.2.1
         version: 21.2.1(nx@21.2.1)
       '@nx/playwright':
         specifier: 21.2.1
-        version: 21.2.1(@playwright/test@1.53.1)(eslint@9.30.0)(nx@21.2.1)(typescript@5.8.3)
+        version: 21.2.1(@playwright/test@1.53.1)(eslint@9.30.1)(nx@21.2.1)(typescript@5.8.3)
       '@nx/react':
         specifier: 21.2.1
-        version: 21.2.1(esbuild@0.25.5)(eslint@9.30.0)(nx@21.2.1)(react-dom@19.1.0)(react@19.1.0)(typescript@5.8.3)(webpack@5.99.9)
+        version: 21.2.1(esbuild@0.25.5)(eslint@9.30.1)(nx@21.2.1)(react-dom@19.1.0)(react@19.1.0)(typescript@5.8.3)(webpack@5.99.9)
       '@nx/vite':
         specifier: 21.2.1
         version: 21.2.1(nx@21.2.1)(typescript@5.8.3)(vite@6.3.5)(vitest@3.2.4)
@@ -66,8 +66,8 @@ importers:
         specifier: ^10.0.1
         version: 10.0.1(semantic-release@24.2.6)
       '@sentry/node':
-        specifier: ^9.33.0
-        version: 9.33.0
+        specifier: ^9.34.0
+        version: 9.34.0
       '@sentry/vite-plugin':
         specifier: ^3.5.0
         version: 3.5.0
@@ -4082,6 +4082,16 @@ packages:
       eslint-visitor-keys: 3.4.3
     dev: true
 
+  /@eslint-community/eslint-utils@4.7.0(eslint@9.30.1):
+    resolution: {integrity: sha512-dyybb3AcajC7uha6CvhdVRJqaKyn7w2YKqKyAN37NKYgZT36w+iRb0Dymmc5qEJ549c/S31cMMSFd75bteCpCw==}
+    engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
+    peerDependencies:
+      eslint: ^6.0.0 || ^7.0.0 || >=8.0.0
+    dependencies:
+      eslint: 9.30.1
+      eslint-visitor-keys: 3.4.3
+    dev: true
+
   /@eslint-community/regexpp@4.12.1:
     resolution: {integrity: sha512-CCZCDJuduB9OUkFkY2IgppNZMi2lBQgD2qzwXkEia16cge2pijY/aXi96CJMquDMn3nJdlPV1A5KrJEXwfLNzQ==}
     engines: {node: ^12.0.0 || ^14.0.0 || >=16.0.0}
@@ -4141,6 +4151,11 @@ packages:
 
   /@eslint/js@9.30.0:
     resolution: {integrity: sha512-Wzw3wQwPvc9sHM+NjakWTcPx11mbZyiYHuwWa/QfZ7cIRX7WK54PSk7bdyXDaoaopUcMatv1zaQvOAAO8hCdww==}
+    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+    dev: true
+
+  /@eslint/js@9.30.1:
+    resolution: {integrity: sha512-zXhuECFlyep42KZUhWjfvsmXGX39W8K8LFb8AWXM9gSV9dQB+MrJGLKvW6Zw0Ggnbpw0VHTtrhFXYe3Gym18jg==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
     dev: true
 
@@ -5343,7 +5358,7 @@ packages:
       - verdaccio
     dev: true
 
-  /@nx/eslint@21.2.1(eslint@9.30.0)(nx@21.2.1):
+  /@nx/eslint@21.2.1(eslint@9.30.1)(nx@21.2.1):
     resolution: {integrity: sha512-70natRH26IAsMrHDM3/LIJn5IE/+Z4EZ6qlkzCBHvWNG88QE/F/94Xw+bTtLxXqEsADhRcBSfpzM6FNcRRwOvg==}
     peerDependencies:
       '@zkochan/js-yaml': 0.0.7
@@ -5354,7 +5369,7 @@ packages:
     dependencies:
       '@nx/devkit': 21.2.1(nx@21.2.1)
       '@nx/js': 21.2.1(nx@21.2.1)
-      eslint: 9.30.0
+      eslint: 9.30.1
       semver: 7.7.1
       tslib: 2.8.1
       typescript: 5.8.3
@@ -5530,7 +5545,7 @@ packages:
     dev: true
     optional: true
 
-  /@nx/playwright@21.2.1(@playwright/test@1.53.1)(eslint@9.30.0)(nx@21.2.1)(typescript@5.8.3):
+  /@nx/playwright@21.2.1(@playwright/test@1.53.1)(eslint@9.30.1)(nx@21.2.1)(typescript@5.8.3):
     resolution: {integrity: sha512-3wSIzqjw2MM0PLA0JLXhLaBYOzgrX4gT5xXOiHIRCWKElKZmnyOR/PPg4RWQIRuo/gkMNsucAH7ZTWHg9oFlnQ==}
     peerDependencies:
       '@playwright/test': ^1.36.0
@@ -5539,7 +5554,7 @@ packages:
         optional: true
     dependencies:
       '@nx/devkit': 21.2.1(nx@21.2.1)
-      '@nx/eslint': 21.2.1(eslint@9.30.0)(nx@21.2.1)
+      '@nx/eslint': 21.2.1(eslint@9.30.1)(nx@21.2.1)
       '@nx/js': 21.2.1(nx@21.2.1)
       '@phenomnomnominal/tsquery': 5.0.1(typescript@5.8.3)
       '@playwright/test': 1.53.1
@@ -5558,11 +5573,11 @@ packages:
       - verdaccio
     dev: true
 
-  /@nx/react@21.2.1(esbuild@0.25.5)(eslint@9.30.0)(nx@21.2.1)(react-dom@19.1.0)(react@19.1.0)(typescript@5.8.3)(webpack@5.99.9):
+  /@nx/react@21.2.1(esbuild@0.25.5)(eslint@9.30.1)(nx@21.2.1)(react-dom@19.1.0)(react@19.1.0)(typescript@5.8.3)(webpack@5.99.9):
     resolution: {integrity: sha512-ytnlfCeiSh3+E4b16YFRC5kK+yYfxBSV53Xf8tXs4WJC33y1RadUCo0X8FzKPGl3c2Lm9QeoT3ssIFrehSRF6g==}
     dependencies:
       '@nx/devkit': 21.2.1(nx@21.2.1)
-      '@nx/eslint': 21.2.1(eslint@9.30.0)(nx@21.2.1)
+      '@nx/eslint': 21.2.1(eslint@9.30.1)(nx@21.2.1)
       '@nx/js': 21.2.1(nx@21.2.1)
       '@nx/module-federation': 21.2.1(esbuild@0.25.5)(nx@21.2.1)(react-dom@19.1.0)(react@19.1.0)(typescript@5.8.3)
       '@nx/web': 21.2.1(nx@21.2.1)
@@ -8439,13 +8454,13 @@ packages:
       - supports-color
     dev: true
 
-  /@sentry/core@9.33.0:
-    resolution: {integrity: sha512-0mtJAU+x10+q5aV/txyeuPjJ0TmObcD701R0tY0s71yJJOltqqMrmgNpqyuMI/VOASuzTZesiMYdbG6xb3zeSw==}
+  /@sentry/core@9.34.0:
+    resolution: {integrity: sha512-M/zikVaE3KLkhCFDyrHB35sF7pVkB2RPy07BcRsdFsSsdpjoG+Zq2Sxth2tMTbjd0x9Vtb/X6LVjyCj9GSEvVg==}
     engines: {node: '>=18'}
     dev: true
 
-  /@sentry/node@9.33.0:
-    resolution: {integrity: sha512-LkofyN1Ig+z8jXtm7eGpXga7sVMY/R42I+aJhwYtOgVkfQorDj3653ZF+IlemBZgb15vo2z3oJpeAjtqbm2rDg==}
+  /@sentry/node@9.34.0:
+    resolution: {integrity: sha512-UCXcYTXVftuKV4k3mYKVq+XOvdF0jFeHopGNQojs6BtbiMdRiuo0hzFsVKojij0E3r42EcC/TNzycGbNiuHgaQ==}
     engines: {node: '>=18'}
     dependencies:
       '@opentelemetry/api': 1.9.0
@@ -8478,16 +8493,16 @@ packages:
       '@opentelemetry/sdk-trace-base': 1.30.1(@opentelemetry/api@1.9.0)
       '@opentelemetry/semantic-conventions': 1.34.0
       '@prisma/instrumentation': 6.10.1(@opentelemetry/api@1.9.0)
-      '@sentry/core': 9.33.0
-      '@sentry/opentelemetry': 9.33.0(@opentelemetry/api@1.9.0)(@opentelemetry/context-async-hooks@1.30.1)(@opentelemetry/core@1.30.1)(@opentelemetry/instrumentation@0.57.2)(@opentelemetry/sdk-trace-base@1.30.1)(@opentelemetry/semantic-conventions@1.34.0)
+      '@sentry/core': 9.34.0
+      '@sentry/opentelemetry': 9.34.0(@opentelemetry/api@1.9.0)(@opentelemetry/context-async-hooks@1.30.1)(@opentelemetry/core@1.30.1)(@opentelemetry/instrumentation@0.57.2)(@opentelemetry/sdk-trace-base@1.30.1)(@opentelemetry/semantic-conventions@1.34.0)
       import-in-the-middle: 1.14.2
       minimatch: 9.0.5
     transitivePeerDependencies:
       - supports-color
     dev: true
 
-  /@sentry/opentelemetry@9.33.0(@opentelemetry/api@1.9.0)(@opentelemetry/context-async-hooks@1.30.1)(@opentelemetry/core@1.30.1)(@opentelemetry/instrumentation@0.57.2)(@opentelemetry/sdk-trace-base@1.30.1)(@opentelemetry/semantic-conventions@1.34.0):
-    resolution: {integrity: sha512-AYOYEvZd0XBIh+0kROq3ka7nE06pax0wezB6kXsyHlrP48N1x3+jO3rTLmbXfmU97CkVnHHfqi4MY4dBwWxW5g==}
+  /@sentry/opentelemetry@9.34.0(@opentelemetry/api@1.9.0)(@opentelemetry/context-async-hooks@1.30.1)(@opentelemetry/core@1.30.1)(@opentelemetry/instrumentation@0.57.2)(@opentelemetry/sdk-trace-base@1.30.1)(@opentelemetry/semantic-conventions@1.34.0):
+    resolution: {integrity: sha512-f1Ro8EJIN8thHO7RtdIh0dCZVU57qRdOOb6UX5VPwWcnesfY7HLtoxTpVYDG3A1vE0X2EggMenVHDfezq17/RA==}
     engines: {node: '>=18'}
     peerDependencies:
       '@opentelemetry/api': ^1.9.0
@@ -8503,7 +8518,7 @@ packages:
       '@opentelemetry/instrumentation': 0.57.2(@opentelemetry/api@1.9.0)
       '@opentelemetry/sdk-trace-base': 1.30.1(@opentelemetry/api@1.9.0)
       '@opentelemetry/semantic-conventions': 1.34.0
-      '@sentry/core': 9.33.0
+      '@sentry/core': 9.34.0
     dev: true
 
   /@sentry/vite-plugin@3.5.0:
@@ -9317,7 +9332,7 @@ packages:
       fast-glob: 3.3.3
       is-glob: 4.0.3
       minimatch: 9.0.5
-      semver: 7.7.2
+      semver: 7.7.1
       ts-api-utils: 2.1.0(typescript@5.8.3)
       typescript: 5.8.3
     transitivePeerDependencies:
@@ -9690,12 +9705,6 @@ packages:
 
   /acorn@8.14.0:
     resolution: {integrity: sha512-cl669nCJTZBsL97OF4kUQm5g5hC2uihk0NxY3WENAC0TYdILVkAyHymAntgxGkl7K+t0cXIrH5siy5S4XkFycA==}
-    engines: {node: '>=0.4.0'}
-    hasBin: true
-    dev: true
-
-  /acorn@8.14.1:
-    resolution: {integrity: sha512-OvQ/2pUDKmgfCg++xsTX1wGxfTaszcHVcTctW4UJB4hibJx2HXxxO5UmVgyjMa+ZDsiaf5wWLXYpRWMmBI0QHg==}
     engines: {node: '>=0.4.0'}
     hasBin: true
     dev: true
@@ -12071,6 +12080,55 @@ packages:
       - supports-color
     dev: true
 
+  /eslint@9.30.1:
+    resolution: {integrity: sha512-zmxXPNMOXmwm9E0yQLi5uqXHs7uq2UIiqEKo3Gq+3fwo1XrJ+hijAZImyF7hclW3E6oHz43Yk3RP8at6OTKflQ==}
+    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+    hasBin: true
+    peerDependencies:
+      jiti: '*'
+    peerDependenciesMeta:
+      jiti:
+        optional: true
+    dependencies:
+      '@eslint-community/eslint-utils': 4.7.0(eslint@9.30.1)
+      '@eslint-community/regexpp': 4.12.1
+      '@eslint/config-array': 0.21.0
+      '@eslint/config-helpers': 0.3.0
+      '@eslint/core': 0.14.0
+      '@eslint/eslintrc': 3.3.1
+      '@eslint/js': 9.30.1
+      '@eslint/plugin-kit': 0.3.3
+      '@humanfs/node': 0.16.6
+      '@humanwhocodes/module-importer': 1.0.1
+      '@humanwhocodes/retry': 0.4.3
+      '@types/estree': 1.0.8
+      '@types/json-schema': 7.0.15
+      ajv: 6.12.6
+      chalk: 4.1.2
+      cross-spawn: 7.0.6
+      debug: 4.4.1
+      escape-string-regexp: 4.0.0
+      eslint-scope: 8.4.0
+      eslint-visitor-keys: 4.2.1
+      espree: 10.4.0
+      esquery: 1.6.0
+      esutils: 2.0.3
+      fast-deep-equal: 3.1.3
+      file-entry-cache: 8.0.0
+      find-up: 5.0.0
+      glob-parent: 6.0.2
+      ignore: 5.3.2
+      imurmurhash: 0.1.4
+      is-glob: 4.0.3
+      json-stable-stringify-without-jsonify: 1.0.1
+      lodash.merge: 4.6.2
+      minimatch: 3.1.2
+      natural-compare: 1.4.0
+      optionator: 0.9.4
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
   /espree@10.4.0:
     resolution: {integrity: sha512-j6PAQ2uUr79PZhBjP5C5fhl8e39FmRnOjsD5lGnWrFU8i2G776tBK7+nP8KuQUTTyAZUwfQqXAgrVH5MbH9CYQ==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
@@ -13804,7 +13862,7 @@ packages:
     resolution: {integrity: sha512-WYDyuc/uFcGp6YtM2H0uKmUwieOuzeE/5YocFJLnLfclZ4inf3mRn8ZVy1s7Hxji7Jxm6Ss8gqpexD/GlKoGgg==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dependencies:
-      acorn: 8.14.1
+      acorn: 8.15.0
       eslint-visitor-keys: 3.4.3
       espree: 9.6.1
       semver: 7.7.1
@@ -14778,7 +14836,7 @@ packages:
     dependencies:
       hosted-git-info: 7.0.2
       proc-log: 3.0.0
-      semver: 7.7.2
+      semver: 7.7.1
       validate-npm-package-name: 5.0.1
     dev: true
 
