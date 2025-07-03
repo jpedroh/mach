@@ -12,8 +12,8 @@ importers:
         specifier: 2.0.6
         version: 2.0.6
       '@cloudflare/vite-plugin':
-        specifier: ^1.8.0
-        version: 1.8.0(vite@6.3.5)(wrangler@4.22.0)
+        specifier: ^1.9.0
+        version: 1.9.0(vite@6.3.5)(wrangler@4.22.0)
       '@cloudflare/workers-types':
         specifier: ^4.20250702.0
         version: 4.20250702.0
@@ -2020,8 +2020,8 @@ packages:
       workerd: 1.20250617.0
     dev: true
 
-  /@cloudflare/vite-plugin@1.8.0(vite@6.3.5)(wrangler@4.22.0):
-    resolution: {integrity: sha512-h42dgdZMneBkxBGJof9XJr//jODpNxyC7FNl686+UQzaXNWXGs2pnJy7Zp/FHMXLJsvAjkj08Ie49MHyQ/56Bw==}
+  /@cloudflare/vite-plugin@1.9.0(vite@6.3.5)(wrangler@4.22.0):
+    resolution: {integrity: sha512-YYmWZklDPF7Ay97JX51bZzKGNP7Z6Sme0+Pje1g5Jr7M6oU6L3NmmvIi8VKFLM48FRlSpXRmTF1tULJng6d6vg==}
     peerDependencies:
       vite: ^6.1.0 || ^7.0.0
       wrangler: ^3.101.0 || ^4.0.0
@@ -2030,7 +2030,7 @@ packages:
       '@mjackson/node-fetch-server': 0.6.1
       '@rollup/plugin-replace': 6.0.2
       get-port: 7.1.0
-      miniflare: 4.20250617.4
+      miniflare: 4.20250617.5
       picocolors: 1.1.1
       tinyglobby: 0.2.14
       unenv: 2.0.0-rc.17
@@ -13498,6 +13498,28 @@ packages:
 
   /miniflare@4.20250617.4:
     resolution: {integrity: sha512-IAoApFKxOJlaaFkym5ETstVX3qWzVt3xyqCDj6vSSTgEH3zxZJ5417jZGg8iQfMHosKCcQH1doPPqqnOZm/yrw==}
+    engines: {node: '>=18.0.0'}
+    hasBin: true
+    dependencies:
+      '@cspotcode/source-map-support': 0.8.1
+      acorn: 8.14.0
+      acorn-walk: 8.3.2
+      exit-hook: 2.2.1
+      glob-to-regexp: 0.4.1
+      sharp: 0.33.5
+      stoppable: 1.1.0
+      undici: 5.29.0
+      workerd: 1.20250617.0
+      ws: 8.18.0
+      youch: 3.3.4
+      zod: 3.22.3
+    transitivePeerDependencies:
+      - bufferutil
+      - utf-8-validate
+    dev: true
+
+  /miniflare@4.20250617.5:
+    resolution: {integrity: sha512-Qqn30jR6dCjXaKVizT6vH4KOb+GyLccoxLNOJEfu63yBPn8eoXa7PrdiSGTmjs2RY8/tr7eTO8Wu/Yr14k0xVA==}
     engines: {node: '>=18.0.0'}
     hasBin: true
     dependencies:
