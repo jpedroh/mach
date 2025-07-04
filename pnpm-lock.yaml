@@ -13,7 +13,7 @@ importers:
         version: 2.0.6
       '@cloudflare/vite-plugin':
         specifier: ^1.9.0
-        version: 1.9.0(vite@6.3.5)(wrangler@4.22.0)
+        version: 1.9.0(vite@6.3.5)(wrangler@4.23.0)
       '@cloudflare/workers-types':
         specifier: ^4.20250703.0
         version: 4.20250703.0
@@ -55,7 +55,7 @@ importers:
         version: 7.6.3(@cloudflare/workers-types@4.20250703.0)(react-router@7.6.3)(typescript@5.8.3)
       '@react-router/dev':
         specifier: ^7.6.3
-        version: 7.6.3(@types/node@24.0.10)(react-router@7.6.3)(typescript@5.8.3)(vite@6.3.5)(wrangler@4.22.0)
+        version: 7.6.3(@types/node@24.0.10)(react-router@7.6.3)(typescript@5.8.3)(vite@6.3.5)(wrangler@4.23.0)
       '@react-router/fs-routes':
         specifier: ^7.6.3
         version: 7.6.3(@react-router/dev@7.6.3)(typescript@5.8.3)
@@ -189,8 +189,8 @@ importers:
         specifier: ^3.2.4
         version: 3.2.4(@types/node@24.0.10)(@vitest/ui@3.2.4)(jsdom@26.1.0)(msw@2.10.3)
       wrangler:
-        specifier: ^4.20.1
-        version: 4.22.0(@cloudflare/workers-types@4.20250703.0)
+        specifier: ^4.23.0
+        version: 4.23.0(@cloudflare/workers-types@4.20250703.0)
       zod:
         specifier: ^3.25.74
         version: 3.25.74
@@ -2020,7 +2020,7 @@ packages:
       workerd: 1.20250617.0
     dev: true
 
-  /@cloudflare/vite-plugin@1.9.0(vite@6.3.5)(wrangler@4.22.0):
+  /@cloudflare/vite-plugin@1.9.0(vite@6.3.5)(wrangler@4.23.0):
     resolution: {integrity: sha512-YYmWZklDPF7Ay97JX51bZzKGNP7Z6Sme0+Pje1g5Jr7M6oU6L3NmmvIi8VKFLM48FRlSpXRmTF1tULJng6d6vg==}
     peerDependencies:
       vite: ^6.1.0 || ^7.0.0
@@ -2035,7 +2035,7 @@ packages:
       tinyglobby: 0.2.14
       unenv: 2.0.0-rc.17
       vite: 6.3.5(@types/node@24.0.10)
-      wrangler: 4.22.0(@cloudflare/workers-types@4.20250703.0)
+      wrangler: 4.23.0(@cloudflare/workers-types@4.20250703.0)
       ws: 8.18.0
     transitivePeerDependencies:
       - bufferutil
@@ -6253,7 +6253,7 @@ packages:
       typescript: 5.8.3
     dev: true
 
-  /@react-router/dev@7.6.3(@types/node@24.0.10)(react-router@7.6.3)(typescript@5.8.3)(vite@6.3.5)(wrangler@4.22.0):
+  /@react-router/dev@7.6.3(@types/node@24.0.10)(react-router@7.6.3)(typescript@5.8.3)(vite@6.3.5)(wrangler@4.23.0):
     resolution: {integrity: sha512-nnJQMVeE+LDViFTQDxeQV5FcfJ48a6aCScrFHwPHWgViQmiJxUBtDU1Pl7XZKEoTus5KDg/W3Vz2spiY6wXg3Q==}
     engines: {node: '>=20.0.0'}
     hasBin: true
@@ -6301,7 +6301,7 @@ packages:
       valibot: 0.41.0(typescript@5.8.3)
       vite: 6.3.5(@types/node@24.0.10)
       vite-node: 3.2.4(@types/node@24.0.10)
-      wrangler: 4.22.0(@cloudflare/workers-types@4.20250703.0)
+      wrangler: 4.23.0(@cloudflare/workers-types@4.20250703.0)
     transitivePeerDependencies:
       - '@types/node'
       - babel-plugin-macros
@@ -6329,7 +6329,7 @@ packages:
       typescript:
         optional: true
     dependencies:
-      '@react-router/dev': 7.6.3(@types/node@24.0.10)(react-router@7.6.3)(typescript@5.8.3)(vite@6.3.5)(wrangler@4.22.0)
+      '@react-router/dev': 7.6.3(@types/node@24.0.10)(react-router@7.6.3)(typescript@5.8.3)(vite@6.3.5)(wrangler@4.23.0)
       minimatch: 9.0.5
       typescript: 5.8.3
     dev: true
@@ -13497,28 +13497,6 @@ packages:
     engines: {node: '>=4'}
     dev: true
 
-  /miniflare@4.20250617.4:
-    resolution: {integrity: sha512-IAoApFKxOJlaaFkym5ETstVX3qWzVt3xyqCDj6vSSTgEH3zxZJ5417jZGg8iQfMHosKCcQH1doPPqqnOZm/yrw==}
-    engines: {node: '>=18.0.0'}
-    hasBin: true
-    dependencies:
-      '@cspotcode/source-map-support': 0.8.1
-      acorn: 8.14.0
-      acorn-walk: 8.3.2
-      exit-hook: 2.2.1
-      glob-to-regexp: 0.4.1
-      sharp: 0.33.5
-      stoppable: 1.1.0
-      undici: 5.29.0
-      workerd: 1.20250617.0
-      ws: 8.18.0
-      youch: 3.3.4
-      zod: 3.22.3
-    transitivePeerDependencies:
-      - bufferutil
-      - utf-8-validate
-    dev: true
-
   /miniflare@4.20250617.5:
     resolution: {integrity: sha512-Qqn30jR6dCjXaKVizT6vH4KOb+GyLccoxLNOJEfu63yBPn8eoXa7PrdiSGTmjs2RY8/tr7eTO8Wu/Yr14k0xVA==}
     engines: {node: '>=18.0.0'}
@@ -16956,8 +16934,8 @@ packages:
       '@cloudflare/workerd-windows-64': 1.20250617.0
     dev: true
 
-  /wrangler@4.22.0(@cloudflare/workers-types@4.20250703.0):
-    resolution: {integrity: sha512-m8qVO3YxhUTII+4U889G/f5UuLSvMkUkCNatupV2f/SJ+iqaWtP1QbuQII8bs2J/O4rqxsz46Wu2S50u7tKB5Q==}
+  /wrangler@4.23.0(@cloudflare/workers-types@4.20250703.0):
+    resolution: {integrity: sha512-JSeDt3IwA4TEmg/V3tRblImPjdxynBt9PUVO/acQJ83XGlMMSwswDKL1FuwvbFzgX6+JXc3GMHeu7r8AQIxw9w==}
     engines: {node: '>=18.0.0'}
     hasBin: true
     peerDependencies:
@@ -16971,7 +16949,7 @@ packages:
       '@cloudflare/workers-types': 4.20250703.0
       blake3-wasm: 2.1.5
       esbuild: 0.25.4
-      miniflare: 4.20250617.4
+      miniflare: 4.20250617.5
       path-to-regexp: 6.3.0
       unenv: 2.0.0-rc.17
       workerd: 1.20250617.0
