@@ -36,7 +36,7 @@ export function HomePage({
       Object.fromEntries(data.entries())
     )
     if (validation.error) {
-      setErrorMessage(validation.error.errors[0].message)
+      setErrorMessage(validation.error.issues.at(0)?.message)
       evt.preventDefault()
     }
   }
