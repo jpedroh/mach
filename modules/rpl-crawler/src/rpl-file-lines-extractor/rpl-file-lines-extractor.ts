@@ -9,9 +9,7 @@ const makeRplFileLinesExtractor = ({ zip }: { zip: ZipPort }) => {
   return (buffer: Buffer) => {
     const zipFile = zip.fileFromBuffer(buffer)
 
-    const flightsFileName = zipFile
-      .listZipFileNames()
-      .find((fileName) => fileName.startsWith('RPL'))
+    const flightsFileName = zipFile.listZipFileNames().at(0) // Only a single file is present
 
     return zipFile
       .readFileLines(flightsFileName)
