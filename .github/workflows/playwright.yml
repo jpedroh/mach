@@ -31,7 +31,7 @@ jobs:
       NXCACHE_AWS_BUCKET: ${{secrets.nxcache_aws_bucket}}
       NXCACHE_AWS_FORCE_PATH_STYLE: ${{secrets.nxcache_aws_force_path_style}}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           fetch-depth: 0
       - uses: pnpm/action-setup@v4.1.0
