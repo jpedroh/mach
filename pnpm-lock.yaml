@@ -43,7 +43,7 @@ importers:
         version: 21.3.11(@playwright/test@1.54.2)(eslint@9.33.0)(nx@21.3.11)(typescript@5.9.2)
       '@nx/react':
         specifier: 21.3.11
-        version: 21.3.11(esbuild@0.25.5)(eslint@9.33.0)(nx@21.3.11)(react-dom@19.1.1)(react@19.1.1)(typescript@5.9.2)(webpack@5.101.1)
+        version: 21.3.11(esbuild@0.25.5)(eslint@9.33.0)(nx@21.3.11)(react-dom@19.1.1)(react@19.1.1)(typescript@5.9.2)(webpack@5.101.2)
       '@nx/vite':
         specifier: 21.3.11
         version: 21.3.11(nx@21.3.11)(typescript@5.9.2)(vite@6.3.5)(vitest@3.2.4)
@@ -168,14 +168,14 @@ importers:
         specifier: ^1.6.1
         version: 1.6.1
       tailwindcss:
-        specifier: ^4.1.10
-        version: 4.1.11
+        specifier: ^4.1.12
+        version: 4.1.12
       tailwindcss-animate:
         specifier: ^1.0.7
-        version: 1.0.7(tailwindcss@4.1.11)
+        version: 1.0.7(tailwindcss@4.1.12)
       tailwindcss-react-aria-components:
         specifier: ^2.0.0
-        version: 2.0.0(tailwindcss@4.1.11)
+        version: 2.0.0(tailwindcss@4.1.12)
       tslib:
         specifier: ^2.8.1
         version: 2.8.1
@@ -4060,7 +4060,7 @@ packages:
       - verdaccio
     dev: true
 
-  /@nx/react@21.3.11(esbuild@0.25.5)(eslint@9.33.0)(nx@21.3.11)(react-dom@19.1.1)(react@19.1.1)(typescript@5.9.2)(webpack@5.101.1):
+  /@nx/react@21.3.11(esbuild@0.25.5)(eslint@9.33.0)(nx@21.3.11)(react-dom@19.1.1)(react@19.1.1)(typescript@5.9.2)(webpack@5.101.2):
     resolution: {integrity: sha512-KDPXBSggQVnfWPIbm8Nto7gDks0GQa7Qx7LQbcI3Ar77n+Z11HkVltSUQAwDPx5nw0PC85G4RK/fEOO6TgRMSw==}
     dependencies:
       '@nx/devkit': 21.3.11(nx@21.3.11)
@@ -4071,7 +4071,7 @@ packages:
       '@phenomnomnominal/tsquery': 5.0.1(typescript@5.9.2)
       '@svgr/webpack': 8.1.0(typescript@5.9.2)
       express: 4.21.2
-      file-loader: 6.2.0(webpack@5.101.1)
+      file-loader: 6.2.0(webpack@5.101.2)
       http-proxy-middleware: 3.0.5
       minimatch: 9.0.3
       picocolors: 1.1.1
@@ -11025,7 +11025,7 @@ packages:
       flat-cache: 4.0.1
     dev: true
 
-  /file-loader@6.2.0(webpack@5.101.1):
+  /file-loader@6.2.0(webpack@5.101.2):
     resolution: {integrity: sha512-qo3glqyTa61Ytg4u73GultjHGjdRyig3tG6lPtyX/jOEJvHif9uB0/OCI2Kif6ctF3caQTW2G5gym21oAsI4pw==}
     engines: {node: '>= 10.13.0'}
     peerDependencies:
@@ -11033,7 +11033,7 @@ packages:
     dependencies:
       loader-utils: 2.0.4
       schema-utils: 3.3.0
-      webpack: 5.101.1(esbuild@0.25.5)
+      webpack: 5.101.2(esbuild@0.25.5)
     dev: true
 
   /filelist@1.0.4:
@@ -15556,24 +15556,28 @@ packages:
     resolution: {integrity: sha512-9QNk5KwDF+Bvz+PyObkmSYjI5ksVUYtjW7AU22r2NKcfLJcXp96hkDWU3+XndOsUb+AQ9QhfzfCT2O+CNWT5Tw==}
     dev: true
 
-  /tailwindcss-animate@1.0.7(tailwindcss@4.1.11):
+  /tailwindcss-animate@1.0.7(tailwindcss@4.1.12):
     resolution: {integrity: sha512-bl6mpH3T7I3UFxuvDEXLxy/VuFxBk5bbzplh7tXI68mwMokNYd1t9qPBHlnyTwfa4JGC4zP516I1hYYtQ/vspA==}
     peerDependencies:
       tailwindcss: '>=3.0.0 || insiders'
     dependencies:
-      tailwindcss: 4.1.11
+      tailwindcss: 4.1.12
     dev: true
 
-  /tailwindcss-react-aria-components@2.0.0(tailwindcss@4.1.11):
+  /tailwindcss-react-aria-components@2.0.0(tailwindcss@4.1.12):
     resolution: {integrity: sha512-l8YdpXX//qx0Mz2bW3YKLjboTQxR3zLrFhlHniAIn+mTwVM1yvT0Jp7Pn3eFrqi+qtOMmcJzXaF2rsKezSr0SQ==}
     peerDependencies:
       tailwindcss: ^4.0.0
     dependencies:
-      tailwindcss: 4.1.11
+      tailwindcss: 4.1.12
     dev: true
 
   /tailwindcss@4.1.11:
     resolution: {integrity: sha512-2E9TBm6MDD/xKYe+dvJZAmg3yxIEDNRc0jwlNyDg/4Fil2QcSLjFKGVff0lAf1jjeaArlG/M75Ey/EYr/OJtBA==}
+    dev: true
+
+  /tailwindcss@4.1.12:
+    resolution: {integrity: sha512-DzFtxOi+7NsFf7DBtI3BJsynR+0Yp6etH+nRPTbpWnS2pZBaSksv/JGctNwSWzbFjp0vxSqknaUylseZqMDGrA==}
     dev: true
 
   /tapable@2.2.2:
@@ -15644,7 +15648,7 @@ packages:
       webpack: 5.101.0(esbuild@0.25.5)
     dev: true
 
-  /terser-webpack-plugin@5.3.14(esbuild@0.25.5)(webpack@5.101.1):
+  /terser-webpack-plugin@5.3.14(esbuild@0.25.5)(webpack@5.101.2):
     resolution: {integrity: sha512-vkZjpUjb6OMS7dhV+tILUW6BhpDR7P2L/aQSAv+Uwk+m8KATX9EccViHTJR2qDtACKPIYndLGCyl3FMo+r2LMw==}
     engines: {node: '>= 10.13.0'}
     peerDependencies:
@@ -15666,7 +15670,7 @@ packages:
       schema-utils: 4.3.2
       serialize-javascript: 6.0.2
       terser: 5.43.1
-      webpack: 5.101.1(esbuild@0.25.5)
+      webpack: 5.101.2(esbuild@0.25.5)
     dev: true
 
   /terser@5.43.1:
@@ -16449,8 +16453,8 @@ packages:
       - uglify-js
     dev: true
 
-  /webpack@5.101.1(esbuild@0.25.5):
-    resolution: {integrity: sha512-rHY3vHXRbkSfhG6fH8zYQdth/BtDgXXuR2pHF++1f/EBkI8zkgM5XWfsC3BvOoW9pr1CvZ1qQCxhCEsbNgT50g==}
+  /webpack@5.101.2(esbuild@0.25.5):
+    resolution: {integrity: sha512-4JLXU0tD6OZNVqlwzm3HGEhAHufSiyv+skb7q0d2367VDMzrU1Q/ZeepvkcHH0rZie6uqEtTQQe0OEOOluH3Mg==}
     engines: {node: '>=10.13.0'}
     hasBin: true
     peerDependencies:
@@ -16481,7 +16485,7 @@ packages:
       neo-async: 2.6.2
       schema-utils: 4.3.2
       tapable: 2.2.2
-      terser-webpack-plugin: 5.3.14(esbuild@0.25.5)(webpack@5.101.1)
+      terser-webpack-plugin: 5.3.14(esbuild@0.25.5)(webpack@5.101.2)
       watchpack: 2.4.4
       webpack-sources: 3.3.3
     transitivePeerDependencies:
