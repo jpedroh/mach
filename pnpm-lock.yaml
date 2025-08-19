@@ -24,8 +24,8 @@ importers:
         specifier: ^19.8.1
         version: 19.8.1
       '@libsql/client':
-        specifier: ^0.15.11
-        version: 0.15.11
+        specifier: ^0.15.12
+        version: 0.15.12
       '@mach/shared-eslint-config':
         specifier: workspace:*
         version: link:modules/shared-eslint-config
@@ -121,7 +121,7 @@ importers:
         version: 0.31.4
       drizzle-orm:
         specifier: ^0.44.4
-        version: 0.44.4(@cloudflare/workers-types@4.20250816.0)(@libsql/client@0.15.11)(@opentelemetry/api@1.9.0)
+        version: 0.44.4(@cloudflare/workers-types@4.20250816.0)(@libsql/client@0.15.12)(@opentelemetry/api@1.9.0)
       fast-xml-parser:
         specifier: ^5.2.5
         version: 5.2.5
@@ -3466,10 +3466,10 @@ packages:
       '@jridgewell/sourcemap-codec': 1.5.5
     dev: true
 
-  /@libsql/client@0.15.11:
-    resolution: {integrity: sha512-JB8RWRs+cAbHX35/dQ9wD3m4W5EVGevq1fFqiHKTT4Pa5HR7WrcGRVT+8NL2M7gtTlOvyPh9zzms2DPLBCswig==}
+  /@libsql/client@0.15.12:
+    resolution: {integrity: sha512-JIqB0XsNrqYqBQZuhcgZdTcQoNOoQ5AMF+1yxc7vcZrLtm42QJwRazmTuBfyDwtWASEmVgjxeaLF4NT1iyVX8g==}
     dependencies:
-      '@libsql/core': 0.15.11
+      '@libsql/core': 0.15.12
       '@libsql/hrana-client': 0.7.0
       js-base64: 3.7.8
       libsql: 0.5.17
@@ -3479,8 +3479,8 @@ packages:
       - utf-8-validate
     dev: true
 
-  /@libsql/core@0.15.11:
-    resolution: {integrity: sha512-DQDYnEhCSYOsx30ASlOGuOqcQhvwELhOS2qM4dnIP+ZhKki2epZU1j5VZSNeQlrQXHkByMcWBy+wt7tBNx/9uA==}
+  /@libsql/core@0.15.12:
+    resolution: {integrity: sha512-S3tF6885ZizVjfym7f8SevL2VId/+DzxiKmP5zFbrhA8oMLh2XH8bYXChmhab7o9qUSHx+XjK4jCFpUwR5g+Ig==}
     dependencies:
       js-base64: 3.7.8
     dev: true
@@ -10532,7 +10532,7 @@ packages:
       - supports-color
     dev: true
 
-  /drizzle-orm@0.44.4(@cloudflare/workers-types@4.20250816.0)(@libsql/client@0.15.11)(@opentelemetry/api@1.9.0):
+  /drizzle-orm@0.44.4(@cloudflare/workers-types@4.20250816.0)(@libsql/client@0.15.12)(@opentelemetry/api@1.9.0):
     resolution: {integrity: sha512-ZyzKFpTC/Ut3fIqc2c0dPZ6nhchQXriTsqTNs4ayRgl6sZcFlMs9QZKPSHXK4bdOf41GHGWf+FrpcDDYwW+W6Q==}
     peerDependencies:
       '@aws-sdk/client-rds-data': '>=3'
@@ -10625,7 +10625,7 @@ packages:
         optional: true
     dependencies:
       '@cloudflare/workers-types': 4.20250816.0
-      '@libsql/client': 0.15.11
+      '@libsql/client': 0.15.12
       '@opentelemetry/api': 1.9.0
     dev: true
 
