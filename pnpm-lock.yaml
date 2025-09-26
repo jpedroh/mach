@@ -43,7 +43,7 @@ importers:
         version: 21.5.3(@playwright/test@1.55.1)(eslint@9.36.0)(nx@21.5.3)(typescript@5.9.2)
       '@nx/react':
         specifier: 21.5.3
-        version: 21.5.3(@babel/core@7.28.4)(esbuild@0.25.5)(eslint@9.36.0)(nx@21.5.3)(react-dom@19.1.1)(react@19.1.1)(typescript@5.9.2)(vite@7.1.7)(vitest@3.2.4)(webpack@5.101.3)
+        version: 21.5.3(@babel/core@7.28.4)(esbuild@0.25.10)(eslint@9.36.0)(nx@21.5.3)(react-dom@19.1.1)(react@19.1.1)(typescript@5.9.2)(vite@7.1.7)(vitest@3.2.4)(webpack@5.101.3)
       '@nx/vite':
         specifier: 21.5.3
         version: 21.5.3(nx@21.5.3)(typescript@5.9.2)(vite@7.1.7)(vitest@3.2.4)
@@ -117,8 +117,8 @@ importers:
         specifier: ^17.2.2
         version: 17.2.2
       drizzle-kit:
-        specifier: ^0.31.4
-        version: 0.31.4
+        specifier: ^0.31.5
+        version: 0.31.5
       drizzle-orm:
         specifier: ^0.44.5
         version: 0.44.5(@cloudflare/workers-types@4.20250924.0)(@libsql/client@0.15.15)(@opentelemetry/api@1.9.0)
@@ -3856,7 +3856,7 @@ packages:
       schema-utils: 4.3.2
       typescript: 5.9.2
       upath: 2.0.1
-      webpack: 5.101.3(esbuild@0.25.5)
+      webpack: 5.101.3(esbuild@0.25.10)
     transitivePeerDependencies:
       - '@rspack/core'
       - bufferutil
@@ -3897,7 +3897,7 @@ packages:
       schema-utils: 4.3.2
       typescript: 5.9.2
       upath: 2.0.1
-      webpack: 5.101.3(esbuild@0.25.5)
+      webpack: 5.101.3(esbuild@0.25.10)
     transitivePeerDependencies:
       - '@rspack/core'
       - bufferutil
@@ -4009,7 +4009,7 @@ packages:
       node-fetch: 2.7.0(encoding@0.1.13)
       react: 19.1.1
       react-dom: 19.1.1(react@19.1.1)
-      webpack: 5.101.3(esbuild@0.25.5)
+      webpack: 5.101.3(esbuild@0.25.10)
     transitivePeerDependencies:
       - '@rspack/core'
       - bufferutil
@@ -4406,7 +4406,7 @@ packages:
       - supports-color
     dev: true
 
-  /@nx/module-federation@21.5.3(esbuild@0.25.5)(nx@21.5.3)(react-dom@19.1.1)(react@19.1.1)(typescript@5.9.2):
+  /@nx/module-federation@21.5.3(esbuild@0.25.10)(nx@21.5.3)(react-dom@19.1.1)(react@19.1.1)(typescript@5.9.2):
     resolution: {integrity: sha512-AwBugD5N5uyWu1YOctz07VjZd+vUwRLoT+eBHGP6LaAsk2cl90ctE688UMqe4u97u9GTblCtxR4r/xdpPmF8OA==}
     dependencies:
       '@module-federation/enhanced': 0.18.4(@rspack/core@1.5.7)(react-dom@19.1.1)(react@19.1.1)(typescript@5.9.2)(webpack@5.101.3)
@@ -4420,7 +4420,7 @@ packages:
       http-proxy-middleware: 3.0.5
       picocolors: 1.1.1
       tslib: 2.8.1
-      webpack: 5.101.3(esbuild@0.25.5)
+      webpack: 5.101.3(esbuild@0.25.10)
     transitivePeerDependencies:
       - '@babel/traverse'
       - '@swc-node/register'
@@ -4550,13 +4550,13 @@ packages:
       - verdaccio
     dev: true
 
-  /@nx/react@21.5.3(@babel/core@7.28.4)(esbuild@0.25.5)(eslint@9.36.0)(nx@21.5.3)(react-dom@19.1.1)(react@19.1.1)(typescript@5.9.2)(vite@7.1.7)(vitest@3.2.4)(webpack@5.101.3):
+  /@nx/react@21.5.3(@babel/core@7.28.4)(esbuild@0.25.10)(eslint@9.36.0)(nx@21.5.3)(react-dom@19.1.1)(react@19.1.1)(typescript@5.9.2)(vite@7.1.7)(vitest@3.2.4)(webpack@5.101.3):
     resolution: {integrity: sha512-tvYbxMztz6updryL2ikgwiAhgNRVWdCl0Dg9nP/eX41wXw32Lc40e8Mv2KnXc5nbxetgiaWasiV6hAyTGlzjbA==}
     dependencies:
       '@nx/devkit': 21.5.3(nx@21.5.3)
       '@nx/eslint': 21.5.3(eslint@9.36.0)(nx@21.5.3)
       '@nx/js': 21.5.3(nx@21.5.3)
-      '@nx/module-federation': 21.5.3(esbuild@0.25.5)(nx@21.5.3)(react-dom@19.1.1)(react@19.1.1)(typescript@5.9.2)
+      '@nx/module-federation': 21.5.3(esbuild@0.25.10)(nx@21.5.3)(react-dom@19.1.1)(react@19.1.1)(typescript@5.9.2)
       '@nx/rollup': 21.5.3(@babel/core@7.28.4)(nx@21.5.3)(typescript@5.9.2)
       '@nx/vite': 21.5.3(nx@21.5.3)(typescript@5.9.2)(vite@7.1.7)(vitest@3.2.4)
       '@nx/web': 21.5.3(nx@21.5.3)
@@ -7414,7 +7414,7 @@ packages:
       conventional-changelog-writer: 8.2.0
       conventional-commits-filter: 5.0.0
       conventional-commits-parser: 6.2.0
-      debug: 4.4.3
+      debug: 4.4.1
       import-from-esm: 2.0.0
       lodash-es: 4.17.21
       micromatch: 4.0.8
@@ -7481,7 +7481,7 @@ packages:
       '@octokit/plugin-throttling': 11.0.1(@octokit/core@7.0.3)
       '@semantic-release/error': 4.0.0
       aggregate-error: 5.0.0
-      debug: 4.4.3
+      debug: 4.4.1
       dir-glob: 3.0.1
       http-proxy-agent: 7.0.2
       https-proxy-agent: 7.0.6
@@ -7528,7 +7528,7 @@ packages:
       conventional-changelog-writer: 8.2.0
       conventional-commits-filter: 5.0.0
       conventional-commits-parser: 6.2.0
-      debug: 4.4.3
+      debug: 4.4.1
       get-stream: 7.0.1
       import-from-esm: 2.0.0
       into-stream: 7.0.0
@@ -10571,14 +10571,14 @@ packages:
     engines: {node: '>=12'}
     dev: true
 
-  /drizzle-kit@0.31.4:
-    resolution: {integrity: sha512-tCPWVZWZqWVx2XUsVpJRnH9Mx0ClVOf5YUHerZ5so1OKSlqww4zy1R5ksEdGRcO3tM3zj0PYN6V48TbQCL1RfA==}
+  /drizzle-kit@0.31.5:
+    resolution: {integrity: sha512-+CHgPFzuoTQTt7cOYCV6MOw2w8vqEn/ap1yv4bpZOWL03u7rlVRQhUY0WYT3rHsgVTXwYQDZaSUJSQrMBUKuWg==}
     hasBin: true
     dependencies:
       '@drizzle-team/brocli': 0.10.2
       '@esbuild-kit/esm-loader': 2.6.5
-      esbuild: 0.25.5
-      esbuild-register: 3.6.0(esbuild@0.25.5)
+      esbuild: 0.25.10
+      esbuild-register: 3.6.0(esbuild@0.25.10)
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -10991,13 +10991,13 @@ packages:
       is-symbol: 1.1.1
     dev: true
 
-  /esbuild-register@3.6.0(esbuild@0.25.5):
+  /esbuild-register@3.6.0(esbuild@0.25.10):
     resolution: {integrity: sha512-H2/S7Pm8a9CL1uhp9OvjwrBh5Pvx0H8qVOxNu8Wed9Y7qv56MPtq+GGM8RJpq6glYJn9Wspr8uw7l55uyinNeg==}
     peerDependencies:
       esbuild: '>=0.12 <1'
     dependencies:
       debug: 4.4.3
-      esbuild: 0.25.5
+      esbuild: 0.25.10
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -11723,7 +11723,7 @@ packages:
     dependencies:
       loader-utils: 2.0.4
       schema-utils: 3.3.0
-      webpack: 5.101.3(esbuild@0.25.5)
+      webpack: 5.101.3(esbuild@0.25.10)
     dev: true
 
   /filelist@1.0.4:
@@ -12583,7 +12583,7 @@ packages:
     resolution: {integrity: sha512-YVt14UZCgsX1vZQ3gKjkWVdBdHQ6eu3MPU1TBgL1H5orXe2+jWD006WCPPtOuwlQm10NuzOW5WawiF1Q9veW8g==}
     engines: {node: '>=18.20'}
     dependencies:
-      debug: 4.4.3
+      debug: 4.4.1
       import-meta-resolve: 4.2.0
     transitivePeerDependencies:
       - supports-color
@@ -13039,7 +13039,7 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       '@jridgewell/trace-mapping': 0.3.31
-      debug: 4.4.3
+      debug: 4.4.1
       istanbul-lib-coverage: 3.2.2
     transitivePeerDependencies:
       - supports-color
@@ -16971,7 +16971,7 @@ packages:
       unique-string: 3.0.0
     dev: true
 
-  /terser-webpack-plugin@5.3.14(esbuild@0.25.5)(webpack@5.101.3):
+  /terser-webpack-plugin@5.3.14(esbuild@0.25.10)(webpack@5.101.3):
     resolution: {integrity: sha512-vkZjpUjb6OMS7dhV+tILUW6BhpDR7P2L/aQSAv+Uwk+m8KATX9EccViHTJR2qDtACKPIYndLGCyl3FMo+r2LMw==}
     engines: {node: '>= 10.13.0'}
     peerDependencies:
@@ -16988,12 +16988,12 @@ packages:
         optional: true
     dependencies:
       '@jridgewell/trace-mapping': 0.3.31
-      esbuild: 0.25.5
+      esbuild: 0.25.10
       jest-worker: 27.5.1
       schema-utils: 4.3.2
       serialize-javascript: 6.0.2
       terser: 5.44.0
-      webpack: 5.101.3(esbuild@0.25.5)
+      webpack: 5.101.3(esbuild@0.25.10)
     dev: true
 
   /terser@5.44.0:
@@ -17719,7 +17719,7 @@ packages:
     resolution: {integrity: sha512-kyDivFZ7ZM0BVOUteVbDFhlRt7Ah/CSPwJdi8hBpkK7QLumUqdLtVfm/PX/hkcnrvr0i77fO5+TjZ94Pe+C9iw==}
     dev: true
 
-  /webpack@5.101.3(esbuild@0.25.5):
+  /webpack@5.101.3(esbuild@0.25.10):
     resolution: {integrity: sha512-7b0dTKR3Ed//AD/6kkx/o7duS8H3f1a4w3BYpIriX4BzIhjkn4teo05cptsxvLesHFKK5KObnadmCHBwGc+51A==}
     engines: {node: '>=10.13.0'}
     hasBin: true
@@ -17751,7 +17751,7 @@ packages:
       neo-async: 2.6.2
       schema-utils: 4.3.2
       tapable: 2.2.3
-      terser-webpack-plugin: 5.3.14(esbuild@0.25.5)(webpack@5.101.3)
+      terser-webpack-plugin: 5.3.14(esbuild@0.25.10)(webpack@5.101.3)
       watchpack: 2.4.4
       webpack-sources: 3.3.3
     transitivePeerDependencies:
