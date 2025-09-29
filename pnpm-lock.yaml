@@ -43,7 +43,7 @@ importers:
         version: 21.5.3(@playwright/test@1.55.1)(eslint@9.36.0)(nx@21.5.3)(typescript@5.9.2)
       '@nx/react':
         specifier: 21.5.3
-        version: 21.5.3(@babel/core@7.28.4)(esbuild@0.25.10)(eslint@9.36.0)(nx@21.5.3)(react-dom@19.1.1)(react@19.1.1)(typescript@5.9.2)(vite@7.1.7)(vitest@3.2.4)(webpack@5.101.3)
+        version: 21.5.3(@babel/core@7.28.4)(esbuild@0.25.10)(eslint@9.36.0)(nx@21.5.3)(react-dom@19.1.1)(react@19.1.1)(typescript@5.9.2)(vite@7.1.7)(vitest@3.2.4)(webpack@5.102.0)
       '@nx/vite':
         specifier: 21.5.3
         version: 21.5.3(nx@21.5.3)(typescript@5.9.2)(vite@7.1.7)(vitest@3.2.4)
@@ -192,8 +192,8 @@ importers:
         specifier: ^4.24.0
         version: 4.24.0(@cloudflare/workers-types@4.20250924.0)
       zod:
-        specifier: ^4.1.8
-        version: 4.1.8
+        specifier: ^4.1.11
+        version: 4.1.11
 
   apps/rpl-crawler-cli:
     dependencies:
@@ -4550,7 +4550,7 @@ packages:
       - verdaccio
     dev: true
 
-  /@nx/react@21.5.3(@babel/core@7.28.4)(esbuild@0.25.10)(eslint@9.36.0)(nx@21.5.3)(react-dom@19.1.1)(react@19.1.1)(typescript@5.9.2)(vite@7.1.7)(vitest@3.2.4)(webpack@5.101.3):
+  /@nx/react@21.5.3(@babel/core@7.28.4)(esbuild@0.25.10)(eslint@9.36.0)(nx@21.5.3)(react-dom@19.1.1)(react@19.1.1)(typescript@5.9.2)(vite@7.1.7)(vitest@3.2.4)(webpack@5.102.0):
     resolution: {integrity: sha512-tvYbxMztz6updryL2ikgwiAhgNRVWdCl0Dg9nP/eX41wXw32Lc40e8Mv2KnXc5nbxetgiaWasiV6hAyTGlzjbA==}
     dependencies:
       '@nx/devkit': 21.5.3(nx@21.5.3)
@@ -4563,7 +4563,7 @@ packages:
       '@phenomnomnominal/tsquery': 5.0.1(typescript@5.9.2)
       '@svgr/webpack': 8.1.0(typescript@5.9.2)
       express: 4.21.2
-      file-loader: 6.2.0(webpack@5.101.3)
+      file-loader: 6.2.0(webpack@5.102.0)
       http-proxy-middleware: 3.0.5
       minimatch: 9.0.3
       picocolors: 1.1.1
@@ -11787,7 +11787,7 @@ packages:
       flat-cache: 4.0.1
     dev: true
 
-  /file-loader@6.2.0(webpack@5.101.3):
+  /file-loader@6.2.0(webpack@5.102.0):
     resolution: {integrity: sha512-qo3glqyTa61Ytg4u73GultjHGjdRyig3tG6lPtyX/jOEJvHif9uB0/OCI2Kif6ctF3caQTW2G5gym21oAsI4pw==}
     engines: {node: '>= 10.13.0'}
     peerDependencies:
@@ -11795,7 +11795,7 @@ packages:
     dependencies:
       loader-utils: 2.0.4
       schema-utils: 3.3.0
-      webpack: 5.101.3(esbuild@0.25.10)
+      webpack: 5.102.0(esbuild@0.25.10)
     dev: true
 
   /filelist@1.0.4:
@@ -17068,6 +17068,31 @@ packages:
       webpack: 5.101.3(esbuild@0.25.10)
     dev: true
 
+  /terser-webpack-plugin@5.3.14(esbuild@0.25.10)(webpack@5.102.0):
+    resolution: {integrity: sha512-vkZjpUjb6OMS7dhV+tILUW6BhpDR7P2L/aQSAv+Uwk+m8KATX9EccViHTJR2qDtACKPIYndLGCyl3FMo+r2LMw==}
+    engines: {node: '>= 10.13.0'}
+    peerDependencies:
+      '@swc/core': '*'
+      esbuild: '*'
+      uglify-js: '*'
+      webpack: ^5.1.0
+    peerDependenciesMeta:
+      '@swc/core':
+        optional: true
+      esbuild:
+        optional: true
+      uglify-js:
+        optional: true
+    dependencies:
+      '@jridgewell/trace-mapping': 0.3.31
+      esbuild: 0.25.10
+      jest-worker: 27.5.1
+      schema-utils: 4.3.2
+      serialize-javascript: 6.0.2
+      terser: 5.44.0
+      webpack: 5.102.0(esbuild@0.25.10)
+    dev: true
+
   /terser@5.44.0:
     resolution: {integrity: sha512-nIVck8DK+GM/0Frwd+nIhZ84pR/BX7rmXMfYwyg+Sri5oGVE99/E3KvXqpC2xHFxyqXyGHTKBSioxxplrO4I4w==}
     engines: {node: '>=10'}
@@ -17832,6 +17857,47 @@ packages:
       - uglify-js
     dev: true
 
+  /webpack@5.102.0(esbuild@0.25.10):
+    resolution: {integrity: sha512-hUtqAR3ZLVEYDEABdBioQCIqSoguHbFn1K7WlPPWSuXmx0031BD73PSE35jKyftdSh4YLDoQNgK4pqBt5Q82MA==}
+    engines: {node: '>=10.13.0'}
+    hasBin: true
+    peerDependencies:
+      webpack-cli: '*'
+    peerDependenciesMeta:
+      webpack-cli:
+        optional: true
+    dependencies:
+      '@types/eslint-scope': 3.7.7
+      '@types/estree': 1.0.8
+      '@types/json-schema': 7.0.15
+      '@webassemblyjs/ast': 1.14.1
+      '@webassemblyjs/wasm-edit': 1.14.1
+      '@webassemblyjs/wasm-parser': 1.14.1
+      acorn: 8.15.0
+      acorn-import-phases: 1.0.4(acorn@8.15.0)
+      browserslist: 4.26.2
+      chrome-trace-event: 1.0.4
+      enhanced-resolve: 5.18.3
+      es-module-lexer: 1.7.0
+      eslint-scope: 5.1.1
+      events: 3.3.0
+      glob-to-regexp: 0.4.1
+      graceful-fs: 4.2.11
+      json-parse-even-better-errors: 2.3.1
+      loader-runner: 4.3.0
+      mime-types: 2.1.35
+      neo-async: 2.6.2
+      schema-utils: 4.3.2
+      tapable: 2.2.3
+      terser-webpack-plugin: 5.3.14(esbuild@0.25.10)(webpack@5.102.0)
+      watchpack: 2.4.4
+      webpack-sources: 3.3.3
+    transitivePeerDependencies:
+      - '@swc/core'
+      - esbuild
+      - uglify-js
+    dev: true
+
   /whatwg-encoding@2.0.0:
     resolution: {integrity: sha512-p41ogyeMUrw3jWclHWTQg1k05DSVXPLcVxRTYsXUk+ZooOCZLcoYgPZ/HL/D/N+uQPOtcp1me1WhBEaX02mhWg==}
     engines: {node: '>=12'}
@@ -18198,6 +18264,6 @@ packages:
     resolution: {integrity: sha512-idA2YXwpCdqUSKRCACDE6ItZD9TZzy3OZMtpfLoh6oPR47lipysRrJfjzMqFxQ3uJuUPyUeWe1r9vLH33xO/Qw==}
     dev: true
 
-  /zod@4.1.8:
-    resolution: {integrity: sha512-5R1P+WwQqmmMIEACyzSvo4JXHY5WiAFHRMg+zBZKgKS+Q1viRa0C1hmUKtHltoIFKtIdki3pRxkmpP74jnNYHQ==}
+  /zod@4.1.11:
+    resolution: {integrity: sha512-WPsqwxITS2tzx1bzhIKsEs19ABD5vmCVa4xBo2tq/SrV4RNZtfws1EnCWQXM6yh8bD08a1idvkB5MZSBiZsjwg==}
     dev: true
