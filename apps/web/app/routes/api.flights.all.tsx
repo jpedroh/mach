@@ -25,7 +25,10 @@ export async function loader({ request, context }: Route.LoaderArgs) {
       return data({ message: 'Bad Request' }, { status: 400 })
     }
 
-    return data(await fetchFlights(db, query.data))
+    const headers = new Headers()
+    headers.append('Cache-Control', 'public, max-age=300')
+
+    return data(await fetchFlights(db, query.data), { headers })
   } catch (error) {
     console.error(error)
     return data({ message: 'Internal server error' }, { status: 500 })
