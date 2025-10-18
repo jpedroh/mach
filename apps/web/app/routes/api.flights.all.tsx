@@ -26,7 +26,7 @@ export async function loader({ request, context }: Route.LoaderArgs) {
     }
 
     const headers = new Headers()
-    headers.append('Cache-Control', 'public, max-age=300')
+    headers.append('Cache-Control', 'public, max-age=300, s-maxage=300')
 
     return data(await fetchFlights(db, query.data), { headers })
   } catch (error) {
