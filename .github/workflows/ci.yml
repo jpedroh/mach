@@ -38,6 +38,3 @@ jobs:
       - run: pnpm nx affected --target=test
       - run: pnpm nx affected --target=lint
       - run: pnpm nx affected --target=typecheck
-      - run: pnpm semantic-release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
