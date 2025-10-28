@@ -63,8 +63,8 @@ importers:
         specifier: ^10.22.0
         version: 10.22.0
       '@sentry/vite-plugin':
-        specifier: ^4.5.0
-        version: 4.5.0
+        specifier: ^4.6.0
+        version: 4.6.0
       '@tailwindcss/vite':
         specifier: ^4.1.16
         version: 4.1.16(vite@7.1.12)
@@ -7253,7 +7253,7 @@ packages:
       estree-walker: 2.0.2
       glob: 8.1.0
       is-reference: 1.2.1
-      magic-string: 0.30.19
+      magic-string: 0.30.21
       rollup: 4.52.5
     dev: true
 
@@ -7311,7 +7311,7 @@ packages:
         optional: true
     dependencies:
       '@rollup/pluginutils': 5.2.0(rollup@4.52.5)
-      magic-string: 0.30.19
+      magic-string: 0.30.21
       rollup: 4.52.5
     dev: true
 
@@ -7369,7 +7369,7 @@ packages:
     dependencies:
       '@types/estree': 1.0.8
       estree-walker: 2.0.2
-      picomatch: 4.0.3
+      picomatch: 4.0.2
       rollup: 4.52.5
     dev: true
 
@@ -7668,18 +7668,18 @@ packages:
     resolution: {integrity: sha512-zt6OdqaDoOnJ1ZYsCYGt9YmWzDXl4vQdKTyJev62gFhRGKdx7mcT54V9KIjg+d2wi9EXsPvAPKe7i7WjfVWB8g==}
     dev: true
 
-  /@sentry/babel-plugin-component-annotate@4.5.0:
-    resolution: {integrity: sha512-9sn9tJFtNnhSitPXW8hTuteefGMBbnPFyDER8dz+2sgdvcdq7T99lEwprMf8gUv5JCiDKIvtLe20Sf/4KPAahA==}
+  /@sentry/babel-plugin-component-annotate@4.6.0:
+    resolution: {integrity: sha512-3soTX50JPQQ51FSbb4qvNBf4z/yP7jTdn43vMTp9E4IxvJ9HKJR7OEuKkCMszrZmWsVABXl02msqO7QisePdiQ==}
     engines: {node: '>= 14'}
     dev: true
 
-  /@sentry/bundler-plugin-core@4.5.0:
-    resolution: {integrity: sha512-LTgYe7qGgAP0BpsyCTpjk756l6wZUv3MtCE+G0qzlpsQ2AljYe2bN4qjDy0bQrsPo0QzNQm+S6d0zogcJj/tqw==}
+  /@sentry/bundler-plugin-core@4.6.0:
+    resolution: {integrity: sha512-Fub2XQqrS258jjS8qAxLLU1k1h5UCNJ76i8m4qZJJdogWWaF8t00KnnTyp9TEDJzrVD64tRXS8+HHENxmeUo3g==}
     engines: {node: '>= 14'}
     dependencies:
       '@babel/core': 7.28.5
-      '@sentry/babel-plugin-component-annotate': 4.5.0
-      '@sentry/cli': 2.56.1
+      '@sentry/babel-plugin-component-annotate': 4.6.0
+      '@sentry/cli': 2.57.0
       dotenv: 16.6.1
       find-up: 5.0.0
       glob: 9.3.5
@@ -7690,16 +7690,16 @@ packages:
       - supports-color
     dev: true
 
-  /@sentry/cli-darwin@2.56.1:
-    resolution: {integrity: sha512-zfhT8MrvB5x/xRdIVGwg+sG0Cx3i0G6RH2zCrdQ/moWn8TfkwsM0O1k/AxpwbpcRfAHCkVb04CU/yKciKwg2KA==}
+  /@sentry/cli-darwin@2.57.0:
+    resolution: {integrity: sha512-v1wYQU3BcCO+Z3OVxxO+EnaW4oQhuOza6CXeYZ0z5ftza9r0QQBLz3bcZKTVta86xraNm0z8GDlREwinyddOxQ==}
     engines: {node: '>=10'}
     os: [darwin]
     requiresBuild: true
     dev: true
     optional: true
 
-  /@sentry/cli-linux-arm64@2.56.1:
-    resolution: {integrity: sha512-AypXIwZvOMJb9RgjI/98hTAd06FcOjqjIm6G9IR0OI4pJCOcaAXz9NKXdJqxpZd7phSMJnD+Bx/8iYOUPeY73A==}
+  /@sentry/cli-linux-arm64@2.57.0:
+    resolution: {integrity: sha512-Kh1jTsMV5Fy/RvB381N/woXe1qclRMqsG6kM3Gq6m6afEF/+k3PyQdNW3HXAola6d63EptokLtxPG2xjWQ+w9Q==}
     engines: {node: '>=10'}
     cpu: [arm64]
     os: [linux, freebsd, android]
@@ -7707,8 +7707,8 @@ packages:
     dev: true
     optional: true
 
-  /@sentry/cli-linux-arm@2.56.1:
-    resolution: {integrity: sha512-fNB/Ng11HrkGOSEIDg+fc3zfTCV7q6kJddp6ndK3QlYFsCffRSnclaX1SMp+mqxdWkHqe1kkp85OY8G/x5uAWw==}
+  /@sentry/cli-linux-arm@2.57.0:
+    resolution: {integrity: sha512-uNHB8xyygqfMd1/6tFzl9NUkuVefg7jdZtM/vVCQVaF/rJLWZ++Wms+LLhYyKXKN8yd7J9wy7kTEl4Qu4jWbGQ==}
     engines: {node: '>=10'}
     cpu: [arm]
     os: [linux, freebsd, android]
@@ -7716,8 +7716,8 @@ packages:
     dev: true
     optional: true
 
-  /@sentry/cli-linux-i686@2.56.1:
-    resolution: {integrity: sha512-vnH+WJEsUq7Lf7xc9udzE/M4hoDXXsniFFYr/7BvdnXtCQlNNaWFMXHbEDYAql3baIlHkWoG8cEHWuB/YKyniw==}
+  /@sentry/cli-linux-i686@2.57.0:
+    resolution: {integrity: sha512-EYXghoK/tKd0zqz+KD/ewXXE3u1HLCwG89krweveytBy/qw7M5z58eFvw+iGb1Vnbl1f/fRD0G4E0AbEsPfmpg==}
     engines: {node: '>=10'}
     cpu: [x86, ia32]
     os: [linux, freebsd, android]
@@ -7725,8 +7725,8 @@ packages:
     dev: true
     optional: true
 
-  /@sentry/cli-linux-x64@2.56.1:
-    resolution: {integrity: sha512-3/BlKe5Vdnia36MeovghHJD8lbcum5TFIxLp+PSfH2sVb09+5Jo0L95oRTI2JkD8Fs+QNssvTqTxJj5eIo/n+A==}
+  /@sentry/cli-linux-x64@2.57.0:
+    resolution: {integrity: sha512-CyZrP/ssHmAPLSzfd4ydy7icDnwmDD6o3QjhkWwVFmCd+9slSBMQxpIqpamZmrWE6X4R+xBRbSUjmdoJoZ5yMw==}
     engines: {node: '>=10'}
     cpu: [x64]
     os: [linux, freebsd, android]
@@ -7734,8 +7734,8 @@ packages:
     dev: true
     optional: true
 
-  /@sentry/cli-win32-arm64@2.56.1:
-    resolution: {integrity: sha512-Gg8RV7CV7Tz4fiR1EN1Af5AVhJsnEXiZvfvfQXI4lp51MKAhcxZIMtEfg9HaWsn3Dm/wgwYBinyeywfWbTXYDg==}
+  /@sentry/cli-win32-arm64@2.57.0:
+    resolution: {integrity: sha512-wji/GGE4Lh5I/dNCsuVbg6fRvttvZRG6db1yPW1BSvQRh8DdnVy1CVp+HMqSq0SRy/S4z60j2u+m4yXMoCL+5g==}
     engines: {node: '>=10'}
     cpu: [arm64]
     os: [win32]
@@ -7743,8 +7743,8 @@ packages:
     dev: true
     optional: true
 
-  /@sentry/cli-win32-i686@2.56.1:
-    resolution: {integrity: sha512-6u6a060yC3i76Ze1apqgWr5luQSyhuD5ND84eWfh/UbddsEa42UHjoVHOiBwmpZqf/hvNZAtzLnE4NCvU4zOMg==}
+  /@sentry/cli-win32-i686@2.57.0:
+    resolution: {integrity: sha512-hWvzyD7bTPh3b55qvJ1Okg3Wbl0Km8xcL6KvS7gfBl6uss+I6RldmQTP0gJKdHSdf/QlJN1FK0b7bLnCB3wHsg==}
     engines: {node: '>=10'}
     cpu: [x86, ia32]
     os: [win32]
@@ -7752,8 +7752,8 @@ packages:
     dev: true
     optional: true
 
-  /@sentry/cli-win32-x64@2.56.1:
-    resolution: {integrity: sha512-11cdflajBrDWlRZqI9MOu7ok2vnPzFjKmbU3YvBYWQapNE+HHAsWdsRL/u/P1RmU62vj7Y42iSUcj6x1SNrdPw==}
+  /@sentry/cli-win32-x64@2.57.0:
+    resolution: {integrity: sha512-QWYV/Y0sbpDSTyA4XQBOTaid4a6H2Iwa1Z8UI+qNxFlk0ADSEgIqo2NrRHDU8iRnghTkecQNX1NTt/7mXN3f/A==}
     engines: {node: '>=10'}
     cpu: [x64]
     os: [win32]
@@ -7761,8 +7761,8 @@ packages:
     dev: true
     optional: true
 
-  /@sentry/cli@2.56.1:
-    resolution: {integrity: sha512-VDAIg+gmjNtJS5VUZQMDSK9RaKC9hYQi3PoXpNa+owNfQNk60bCi8z8jkbWRcKbNGn3V51WqvrQAqLoNAdPc9w==}
+  /@sentry/cli@2.57.0:
+    resolution: {integrity: sha512-oC4HPrVIX06GvUTgK0i+WbNgIA9Zl5YEcwf9N4eWFJJmjonr2j4SML9Hn2yNENbUWDgwepy4MLod3P8rM4bk/w==}
     engines: {node: '>= 10'}
     hasBin: true
     requiresBuild: true
@@ -7773,14 +7773,14 @@ packages:
       proxy-from-env: 1.1.0
       which: 2.0.2
     optionalDependencies:
-      '@sentry/cli-darwin': 2.56.1
-      '@sentry/cli-linux-arm': 2.56.1
-      '@sentry/cli-linux-arm64': 2.56.1
-      '@sentry/cli-linux-i686': 2.56.1
-      '@sentry/cli-linux-x64': 2.56.1
-      '@sentry/cli-win32-arm64': 2.56.1
-      '@sentry/cli-win32-i686': 2.56.1
-      '@sentry/cli-win32-x64': 2.56.1
+      '@sentry/cli-darwin': 2.57.0
+      '@sentry/cli-linux-arm': 2.57.0
+      '@sentry/cli-linux-arm64': 2.57.0
+      '@sentry/cli-linux-i686': 2.57.0
+      '@sentry/cli-linux-x64': 2.57.0
+      '@sentry/cli-win32-arm64': 2.57.0
+      '@sentry/cli-win32-i686': 2.57.0
+      '@sentry/cli-win32-x64': 2.57.0
     transitivePeerDependencies:
       - encoding
       - supports-color
@@ -7879,11 +7879,11 @@ packages:
       '@sentry/core': 10.22.0
     dev: true
 
-  /@sentry/vite-plugin@4.5.0:
-    resolution: {integrity: sha512-8AcTuAmu2NFCkSgVroCeu/ExZeMDVGdgrXq9MzgE5LT2bcomKsHiAifhitq64QwFEfL6CFt3TYEsw0rm0AoRhQ==}
+  /@sentry/vite-plugin@4.6.0:
+    resolution: {integrity: sha512-fMR2d+EHwbzBa0S1fp45SNUTProxmyFBp+DeBWWQOSP9IU6AH6ea2rqrpMAnp/skkcdW4z4LSRrOEpMZ5rWXLw==}
     engines: {node: '>= 14'}
     dependencies:
-      '@sentry/bundler-plugin-core': 4.5.0
+      '@sentry/bundler-plugin-core': 4.6.0
       unplugin: 1.0.1
     transitivePeerDependencies:
       - encoding
@@ -8064,7 +8064,7 @@ packages:
       enhanced-resolve: 5.18.3
       jiti: 2.6.1
       lightningcss: 1.30.2
-      magic-string: 0.30.19
+      magic-string: 0.30.21
       source-map-js: 1.2.1
       tailwindcss: 4.1.16
     dev: true
@@ -8834,7 +8834,7 @@ packages:
     dependencies:
       '@vitest/spy': 3.2.4
       estree-walker: 3.0.3
-      magic-string: 0.30.19
+      magic-string: 0.30.17
       msw: 2.11.6(@types/node@24.9.1)(typescript@5.9.3)
       vite: 7.1.12(@types/node@24.9.1)
     dev: true
@@ -8857,7 +8857,7 @@ packages:
     resolution: {integrity: sha512-dEYtS7qQP2CjU27QBC5oUOxLE/v5eLkGqPE0ZKEIDGMs4vKWe7IjgLOeauHsR0D5YuuycGRO5oSRXnwnmA78fQ==}
     dependencies:
       '@vitest/pretty-format': 3.2.4
-      magic-string: 0.30.19
+      magic-string: 0.30.17
       pathe: 2.0.3
     dev: true
 
@@ -9433,7 +9433,7 @@ packages:
   /babel-dead-code-elimination@1.0.10:
     resolution: {integrity: sha512-DV5bdJZTzZ0zn0DC24v3jD7Mnidh6xhKa4GfKCbq3sfW8kaWhDdZjP3i81geA8T33tdYqWKw4D3fVv0CwEgKVA==}
     dependencies:
-      '@babel/core': 7.28.5
+      '@babel/core': 7.28.4
       '@babel/parser': 7.28.5
       '@babel/traverse': 7.28.5
       '@babel/types': 7.28.5
@@ -9610,7 +9610,7 @@ packages:
     dependencies:
       baseline-browser-mapping: 2.8.20
       caniuse-lite: 1.0.30001751
-      electron-to-chromium: 1.5.240
+      electron-to-chromium: 1.5.241
       node-releases: 2.0.26
       update-browserslist-db: 1.1.4(browserslist@4.27.0)
     dev: true
@@ -10691,8 +10691,8 @@ packages:
       jake: 10.9.4
     dev: true
 
-  /electron-to-chromium@1.5.240:
-    resolution: {integrity: sha512-OBwbZjWgrCOH+g6uJsA2/7Twpas2OlepS9uvByJjR2datRDuKGYeD+nP8lBBks2qnB7bGJNHDUx7c/YLaT3QMQ==}
+  /electron-to-chromium@1.5.241:
+    resolution: {integrity: sha512-ILMvKX/ZV5WIJzzdtuHg8xquk2y0BOGlFOxBVwTpbiXqWIH0hamG45ddU4R3PQ0gYu+xgo0vdHXHli9sHIGb4w==}
     dev: true
 
   /emoji-regex@10.6.0:
@@ -12762,7 +12762,7 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       '@jridgewell/trace-mapping': 0.3.31
-      debug: 4.4.3
+      debug: 4.4.1
       istanbul-lib-coverage: 3.2.2
     transitivePeerDependencies:
       - supports-color
@@ -13409,8 +13409,8 @@ packages:
       '@jridgewell/sourcemap-codec': 1.5.5
     dev: true
 
-  /magic-string@0.30.19:
-    resolution: {integrity: sha512-2N21sPY9Ws53PZvsEpVtNuSW+ScYbQdp4b9qUaL+9QkHUrGFKo56Lg9Emg5s9V/qrtNBmiR01sYhUOwu3H+VOw==}
+  /magic-string@0.30.21:
+    resolution: {integrity: sha512-vd2F4YUyEXKGcLHoq+TEyCjxueSeHnFxyyjNp80yg0XV4vUhnDer/lvvlqM/arB5bXQN5K2/3oinyCRyx8T2CQ==}
     dependencies:
       '@jridgewell/sourcemap-codec': 1.5.5
     dev: true
