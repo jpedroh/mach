@@ -76,7 +76,7 @@ importers:
         version: 6.9.1
       '@testing-library/react':
         specifier: 16.3.0
-        version: 16.3.0(@testing-library/dom@10.4.1)(@types/react-dom@19.2.3)(@types/react@19.2.5)(react-dom@19.2.0)(react@19.2.0)
+        version: 16.3.0(@testing-library/dom@10.4.1)(@types/react-dom@19.2.3)(@types/react@19.2.6)(react-dom@19.2.0)(react@19.2.0)
       '@testing-library/user-event':
         specifier: ^14.6.1
         version: 14.6.1(@testing-library/dom@10.4.1)
@@ -87,11 +87,11 @@ importers:
         specifier: ^24.10.1
         version: 24.10.1
       '@types/react':
-        specifier: ^19.2.5
-        version: 19.2.5
+        specifier: ^19.2.6
+        version: 19.2.6
       '@types/react-dom':
         specifier: ^19.2.3
-        version: 19.2.3(@types/react@19.2.5)
+        version: 19.2.3(@types/react@19.2.6)
       '@vitejs/plugin-react':
         specifier: ^5.1.1
         version: 5.1.1(vite@7.2.2)
@@ -151,7 +151,7 @@ importers:
         version: 7.9.6(react-dom@19.2.0)(react@19.2.0)
       react-twc:
         specifier: ^1.5.1
-        version: 1.5.1(@types/react@19.2.5)(react@19.2.0)
+        version: 1.5.1(@types/react@19.2.6)(react@19.2.0)
       sherif:
         specifier: ^1.8.0
         version: 1.8.0
@@ -4881,7 +4881,7 @@ packages:
       - supports-color
     dev: true
 
-  /@radix-ui/react-compose-refs@1.1.2(@types/react@19.2.5)(react@19.2.0):
+  /@radix-ui/react-compose-refs@1.1.2(@types/react@19.2.6)(react@19.2.0):
     resolution: {integrity: sha512-z4eqJvfiNnFMHIIvXP3CY57y2WJs5g2v3X0zm9mEJkrkNv4rDxu+sg9Jh8EkXyeqBkB7SOcboo9dMVqhyrACIg==}
     peerDependencies:
       '@types/react': '*'
@@ -4890,11 +4890,11 @@ packages:
       '@types/react':
         optional: true
     dependencies:
-      '@types/react': 19.2.5
+      '@types/react': 19.2.6
       react: 19.2.0
     dev: true
 
-  /@radix-ui/react-slot@1.2.3(@types/react@19.2.5)(react@19.2.0):
+  /@radix-ui/react-slot@1.2.3(@types/react@19.2.6)(react@19.2.0):
     resolution: {integrity: sha512-aeNmHnBxbi2St0au6VBVC7JXFlhLlOnvIIlePNniyUNAClzmtAUEY8/pBiK3iHjufOlwA+c20/8jngo7xcrg8A==}
     peerDependencies:
       '@types/react': '*'
@@ -4903,8 +4903,8 @@ packages:
       '@types/react':
         optional: true
     dependencies:
-      '@radix-ui/react-compose-refs': 1.1.2(@types/react@19.2.5)(react@19.2.0)
-      '@types/react': 19.2.5
+      '@radix-ui/react-compose-refs': 1.1.2(@types/react@19.2.6)(react@19.2.0)
+      '@types/react': 19.2.6
       react: 19.2.0
     dev: true
 
@@ -7570,7 +7570,7 @@ packages:
       redent: 3.0.0
     dev: true
 
-  /@testing-library/react@16.3.0(@testing-library/dom@10.4.1)(@types/react-dom@19.2.3)(@types/react@19.2.5)(react-dom@19.2.0)(react@19.2.0):
+  /@testing-library/react@16.3.0(@testing-library/dom@10.4.1)(@types/react-dom@19.2.3)(@types/react@19.2.6)(react-dom@19.2.0)(react@19.2.0):
     resolution: {integrity: sha512-kFSyxiEDwv1WLl2fgsq6pPBbw5aWKrsY2/noi1Id0TK0UParSF62oFQFGHXIyaG4pp2tEub/Zlel+fjjZILDsw==}
     engines: {node: '>=18'}
     peerDependencies:
@@ -7587,8 +7587,8 @@ packages:
     dependencies:
       '@babel/runtime': 7.27.0
       '@testing-library/dom': 10.4.1
-      '@types/react': 19.2.5
-      '@types/react-dom': 19.2.3(@types/react@19.2.5)
+      '@types/react': 19.2.6
+      '@types/react-dom': 19.2.3(@types/react@19.2.6)
       react: 19.2.0
       react-dom: 19.2.0(react@19.2.0)
     dev: true
@@ -7818,16 +7818,16 @@ packages:
     resolution: {integrity: sha512-hKormJbkJqzQGhziax5PItDUTMAM9uE2XXQmM37dyd4hVM+5aVl7oVxMVUiVQn2oCQFN/LKCZdvSM0pFRqbSmQ==}
     dev: true
 
-  /@types/react-dom@19.2.3(@types/react@19.2.5):
+  /@types/react-dom@19.2.3(@types/react@19.2.6):
     resolution: {integrity: sha512-jp2L/eY6fn+KgVVQAOqYItbF0VY/YApe5Mz2F0aykSO8gx31bYCZyvSeYxCHKvzHG5eZjc+zyaS5BrBWya2+kQ==}
     peerDependencies:
       '@types/react': ^19.2.0
     dependencies:
-      '@types/react': 19.2.5
+      '@types/react': 19.2.6
     dev: true
 
-  /@types/react@19.2.5:
-    resolution: {integrity: sha512-keKxkZMqnDicuvFoJbzrhbtdLSPhj/rZThDlKWCDbgXmUg0rEUFtRssDXKYmtXluZlIqiC5VqkCgRwzuyLHKHw==}
+  /@types/react@19.2.6:
+    resolution: {integrity: sha512-p/jUvulfgU7oKtj6Xpk8cA2Y1xKTtICGpJYeJXz2YVO2UcvjQgeRMLDGfDeqeRW2Ta+0QNFwcc8X3GH8SxZz6w==}
     dependencies:
       csstype: 3.2.3
     dev: true
@@ -14360,10 +14360,10 @@ packages:
       react: 19.2.0
     dev: true
 
-  /react-twc@1.5.1(@types/react@19.2.5)(react@19.2.0):
+  /react-twc@1.5.1(@types/react@19.2.6)(react@19.2.0):
     resolution: {integrity: sha512-PuyxdfBjE4TkxU5OcMakrPhOpqrdruqn6ePa4j4e41+9nMqIHh1NnclpiGYsk6mITLYkZgj//8bAnNNT0L8J+g==}
     dependencies:
-      '@radix-ui/react-slot': 1.2.3(@types/react@19.2.5)(react@19.2.0)
+      '@radix-ui/react-slot': 1.2.3(@types/react@19.2.6)(react@19.2.0)
       clsx: 2.1.1
     transitivePeerDependencies:
       - '@types/react'
