@@ -2,9 +2,11 @@ import type { Flight } from '@mach/shared-database/schema'
 
 type Data = Omit<Flight, 'cycle'>
 
-export type ParseFlightResult =
-  | { valid: true; flight: Data }
-  | { valid: false; errors: FlightParsingError[] }
+export type ParseResult<T, E> =
+  | { valid: true; data: T }
+  | { valid: false; error: E }
+
+export type ParseFlightResult = ParseResult<Data, FlightParsingError>
 
 export type FlightParsingError = {
   field: keyof Data

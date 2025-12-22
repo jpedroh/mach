@@ -46,7 +46,7 @@ export function makeRunRplCrawler({
         ([valid, invalid], line) => {
           const result = flightParser(line)
           if (result.valid) {
-            valid.push(result.flight)
+            valid.push(result.data)
           } else {
             invalid.push(result)
           }

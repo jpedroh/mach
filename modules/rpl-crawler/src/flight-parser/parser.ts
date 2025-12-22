@@ -1,17 +1,15 @@
 import type { WakeTurbulence } from '@mach/shared-database/enum'
+import type { ParseFlightResult } from './types'
 import {
-  resolveEstimatedEnrouteMinutes,
+  parseEstimatedEnrouteMinutes,
   resolveFlightDate,
   resolveFlightRules,
   resolveWeekDays,
 } from './utils'
-import type { FlightParsingError, ParseFlightResult } from './types'
 
 const makeFlightParser = ({ uuid }: { uuid: (line: string) => string }) => {
   return (line: string): ParseFlightResult => {
     line = line.trim()
-
-    const parsingErrors = new Array<FlightParsingError>()
 
     const callsign = line.substring(22, 29).trim()
     const beginDate = resolveFlightDate(line.substring(0, 6))
@@ -31,15 +29,19 @@ const makeFlightParser = ({ uuid }: { uuid: (line: string) => string }) => {
       .trim()
     const rightPadStart = line.lastIndexOf('  ') + 2
     const arrivalIcao = line.substring(rightPadStart, rightPadStart + 4).trim()
-    const estimatedEnrouteMinutes = resolveEstimatedEnrouteMinutes(
+
+    const estimatedEnrouteMinutes = parseEstimatedEnrouteMinutes(
       line.substring(rightPadStart + 4, rightPadStart + 8).trim()
     )
-    if (isNaN(estimatedEnrouteMinutes)) {
-      parsingErrors.push({
-        field: 'estimatedEnrouteMinutes',
-        input: line.substring(rightPadStart + 4, rightPadStart + 8).trim(),
-        message: `Invalid value provided for estimatedEnrouteMinutes`,
-      })
+    if (estimatedEnrouteMinutes.valid === false) {
+      return {
+        valid: false,
+        error: {
+          field: 'estimatedEnrouteMinutes',
+          input: line.substring(rightPadStart + 4, rightPadStart + 8).trim(),
+          message: estimatedEnrouteMinutes.error,
+        },
+      }
     }
 
     const remarks = line.substring(rightPadStart + 9)
@@ -53,7 +55,7 @@ const makeFlightParser = ({ uuid }: { uuid: (line: string) => string }) => {
       cruisingLevel,
       route,
       arrivalIcao,
-      estimatedEnrouteMinutes,
+      estimatedEnrouteMinutes: estimatedEnrouteMinutes.data,
       remarks,
       departureIcao,
       aircraftIcaoCode: line.match(/[A-Z0-9]+(?=(\/(M|L|H|J)))/)[0],
@@ -68,10 +70,7 @@ const makeFlightParser = ({ uuid }: { uuid: (line: string) => string }) => {
       endDate,
     }
 
-    if (parsingErrors.length) {
-      return { valid: false, errors: parsingErrors }
-    }
-    return { valid: true, flight: parsedFlight }
+    return { valid: true, data: parsedFlight }
   }
 }
 

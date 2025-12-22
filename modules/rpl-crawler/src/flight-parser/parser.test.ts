@@ -9,7 +9,7 @@ describe('parser', () => {
   const parseFlight = (line: string) => {
     const result = parser(line)
     assert(result.valid)
-    return result.flight
+    return result.data
   }
 
   test('Given flight with begin and end date', () => {
@@ -105,7 +105,7 @@ describe('parser', () => {
     const result = parser(line)
     expect(result.valid).toBeFalsy()
     assert(!result.valid)
-    expect(result.errors[0]).toEqual({
+    expect(result.error).toEqual({
       field: 'estimatedEnrouteMinutes',
       input: 'null',
       message: `Invalid value provided for estimatedEnrouteMinutes`,
