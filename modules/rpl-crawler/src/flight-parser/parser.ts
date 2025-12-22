@@ -5,11 +5,13 @@ import {
   resolveFlightRules,
   resolveWeekDays,
 } from './utils'
-import type { ParseFlightResult } from './types'
+import type { FlightParsingError, ParseFlightResult } from './types'
 
-const makeFlightDecoder = ({ uuid }: { uuid: (line: string) => string }) => {
+const makeFlightParser = ({ uuid }: { uuid: (line: string) => string }) => {
   return (line: string): ParseFlightResult => {
     line = line.trim()
+
+    const parsingErrors = new Array<FlightParsingError>()
 
     const callsign = line.substring(22, 29).trim()
     const beginDate = resolveFlightDate(line.substring(0, 6))
@@ -32,6 +34,14 @@ const makeFlightDecoder = ({ uuid }: { uuid: (line: string) => string }) => {
     const estimatedEnrouteMinutes = resolveEstimatedEnrouteMinutes(
       line.substring(rightPadStart + 4, rightPadStart + 8).trim()
     )
+    if (isNaN(estimatedEnrouteMinutes)) {
+      parsingErrors.push({
+        field: 'estimatedEnrouteMinutes',
+        input: line.substring(rightPadStart + 4, rightPadStart + 8).trim(),
+        message: `Invalid value provided for estimatedEnrouteMinutes`,
+      })
+    }
+
     const remarks = line.substring(rightPadStart + 9)
 
     const parsedFlight = {
@@ -58,8 +68,11 @@ const makeFlightDecoder = ({ uuid }: { uuid: (line: string) => string }) => {
       endDate,
     }
 
+    if (parsingErrors.length) {
+      return { valid: false, errors: parsingErrors }
+    }
     return { valid: true, flight: parsedFlight }
   }
 }
 
-export default makeFlightDecoder
+export default makeFlightParser

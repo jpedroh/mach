@@ -1,6 +1,6 @@
 import { randomUUID } from 'crypto'
-import makeFlightDecoder from './parser'
+import makeFlightParser from './parser'
 
 export { type ParseFlightResult } from './types'
 
-export default makeFlightDecoder({ uuid: () => randomUUID() })
+export default makeFlightParser({ uuid: () => randomUUID() })

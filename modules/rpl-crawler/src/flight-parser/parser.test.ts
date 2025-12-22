@@ -1,14 +1,14 @@
 import { randomUUID } from 'crypto'
 import { describe, expect, test } from 'vitest'
-import makeFlightDecoder from './parser'
+import makeFlightParser from './parser'
+import assert from 'node:assert'
 
 describe('parser', () => {
+  const parser = makeFlightParser({ uuid: () => randomUUID() })
+
   const parseFlight = (line: string) => {
-    const parser = makeFlightDecoder({ uuid: () => randomUUID() })
     const result = parser(line)
-    if (!result.valid) {
-      throw new Error('Unreachable')
-    }
+    assert(result.valid)
     return result.flight
   }
 
@@ -98,5 +98,17 @@ describe('parser', () => {
     const line = `   070924 100924 0200060 ACN5135 C208/L SN6L1330 N0155 085 DCT                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              SWBE0015 EQPT/SDFGR/S PBN/B2C2D2O2S1 OPR/AZUL CONECTA LTDA PER/A RMK/JAH VOADO VMC`
     const flight = parseFlight(line)
     expect(flight.route).toEqual('DCT')
+  })
+
+  test('Route with null -- why not?? -- should yield parsing error', () => {
+    const line = `   091225 091225 0200000 ACN5190 C208/L SIMK1900 N0150 045 DCT 2035S04734W/N0155F060 IFR DCT 2034S04831W/N0155F045 VFR DCT                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  SNBAnull EQPT/SDFGR/S PBN/B2C2D2O2S1 OPR/AZUL CONECTA LTDA PER/A RALT/F080 DCT SBRP`
+    const result = parser(line)
+    expect(result.valid).toBeFalsy()
+    assert(!result.valid)
+    expect(result.errors[0]).toEqual({
+      field: 'estimatedEnrouteMinutes',
+      input: 'null',
+      message: `Invalid value provided for estimatedEnrouteMinutes`,
+    })
   })
 })
