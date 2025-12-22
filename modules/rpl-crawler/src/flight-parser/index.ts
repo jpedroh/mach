@@ -1,5 +1,5 @@
 import { randomUUID } from 'crypto'
-import makeFlightDecoder from './flight-decoder'
+import makeFlightDecoder from './parser'
 
 export { type ParseFlightResult } from './types'
 

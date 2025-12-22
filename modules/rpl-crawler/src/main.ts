@@ -1,13 +1,13 @@
 import type { Airport, Flight } from '@mach/shared-database/schema'
 import { fetchAirportsData } from './fetch-airports-data'
+import type { ParseFlightResult } from './flight-parser'
 import * as Logger from './utils/logger'
-import type { ParseFlightResult } from './flight-decoder'
 
 type MainDependencies = {
   updateChecker: (date: string) => Promise<boolean>
   rplFileDownloader: (date: string) => Promise<Buffer>
   rplFileLinesExtractor: (file: Buffer) => string[]
-  flightDecoder: (line: string) => ParseFlightResult
+  flightParser: (line: string) => ParseFlightResult
   saveData: (data: {
     cycle: string
     flights: Flight[]
@@ -19,7 +19,7 @@ export function makeRunRplCrawler({
   updateChecker,
   rplFileDownloader,
   rplFileLinesExtractor,
-  flightDecoder,
+  flightParser,
   saveData,
 }: MainDependencies) {
   return async (date: string) => {
@@ -44,7 +44,7 @@ export function makeRunRplCrawler({
     const [parsedFlights, erroredFlights] = Array.from(filesLines)
       .reduce(
         ([valid, invalid], line) => {
-          const result = flightDecoder(line)
+          const result = flightParser(line)
           if (result.valid) {
             valid.push(result.flight)
           } else {

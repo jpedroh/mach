@@ -1,15 +1,14 @@
 import { randomUUID } from 'crypto'
 import { describe, expect, test } from 'vitest'
-import makeFlightDecoder from './flight-decoder'
+import makeFlightDecoder from './parser'
 
-describe('flight-decoder', () => {
+describe('parser', () => {
   const parseFlight = (line: string) => {
     const parser = makeFlightDecoder({ uuid: () => randomUUID() })
     const result = parser(line)
     if (!result.valid) {
       throw new Error('Unreachable')
     }
-
     return result.flight
   }
 

@@ -4,7 +4,7 @@ import {
   resolveFlightDate,
   resolveFlightRules,
   resolveWeekDays,
-} from './flight-decoder-utils'
+} from './utils'
 import type { ParseFlightResult } from './types'
 
 const makeFlightDecoder = ({ uuid }: { uuid: (line: string) => string }) => {
