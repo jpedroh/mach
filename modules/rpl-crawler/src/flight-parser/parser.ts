@@ -1,11 +1,16 @@
 import type { WakeTurbulence } from '@mach/shared-database/enum'
-import type { ParseFlightResult } from './types'
+import type {
+  FlightParsingError,
+  ParseFlightResult,
+  ParseResult,
+} from './types'
 import {
   parseEstimatedEnrouteMinutes,
   resolveFlightDate,
   resolveFlightRules,
   resolveWeekDays,
 } from './utils'
+import type { Flight } from '@mach/shared-database/schema'
 
 const makeFlightParser = ({ uuid }: { uuid: (line: string) => string }) => {
   return (line: string): ParseFlightResult => {
@@ -30,18 +35,13 @@ const makeFlightParser = ({ uuid }: { uuid: (line: string) => string }) => {
     const rightPadStart = line.lastIndexOf('  ') + 2
     const arrivalIcao = line.substring(rightPadStart, rightPadStart + 4).trim()
 
-    const estimatedEnrouteMinutes = parseEstimatedEnrouteMinutes(
-      line.substring(rightPadStart + 4, rightPadStart + 8).trim()
-    )
+    const estimatedEnrouteMinutes = parseFlightField({
+      field: 'estimatedEnrouteMinutes',
+      input: line.substring(rightPadStart + 4, rightPadStart + 8).trim(),
+      parser: parseEstimatedEnrouteMinutes,
+    })
     if (estimatedEnrouteMinutes.valid === false) {
-      return {
-        valid: false,
-        error: {
-          field: 'estimatedEnrouteMinutes',
-          input: line.substring(rightPadStart + 4, rightPadStart + 8).trim(),
-          message: estimatedEnrouteMinutes.error,
-        },
-      }
+      return estimatedEnrouteMinutes
     }
 
     const remarks = line.substring(rightPadStart + 9)
@@ -71,6 +71,25 @@ const makeFlightParser = ({ uuid }: { uuid: (line: string) => string }) => {
     }
 
     return { valid: true, data: parsedFlight }
+  }
+}
+
+function parseFlightField<T>({
+  field,
+  input,
+  parser,
+}: {
+  field: keyof Omit<Flight, 'cycle'>
+  input: string
+  parser: (input: string) => ParseResult<T, string>
+}): ParseResult<T, FlightParsingError> {
+  const result = parser(input)
+  if (result.valid === true) {
+    return result
+  }
+  return {
+    valid: false,
+    error: { field, input, message: result.error },
   }
 }
 
