@@ -1,14 +1,14 @@
 import type { WakeTurbulence } from '@mach/shared-database/enum'
-import type { Flight } from '@mach/shared-database/schema'
 import {
   resolveEstimatedEnrouteMinutes,
   resolveFlightDate,
   resolveFlightRules,
   resolveWeekDays,
 } from './flight-decoder-utils'
+import type { ParseFlightResult } from './types'
 
 const makeFlightDecoder = ({ uuid }: { uuid: (line: string) => string }) => {
-  return (line: string): Omit<Flight, 'cycle'> => {
+  return (line: string): ParseFlightResult => {
     line = line.trim()
 
     const callsign = line.substring(22, 29).trim()
@@ -34,7 +34,7 @@ const makeFlightDecoder = ({ uuid }: { uuid: (line: string) => string }) => {
     )
     const remarks = line.substring(rightPadStart + 9)
 
-    return {
+    const parsedFlight = {
       id: uuid(line),
       callsign,
       company,
@@ -57,6 +57,8 @@ const makeFlightDecoder = ({ uuid }: { uuid: (line: string) => string }) => {
       beginDate,
       endDate,
     }
+
+    return { valid: true, flight: parsedFlight }
   }
 }
 

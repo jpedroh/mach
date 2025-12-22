@@ -9,8 +9,12 @@ Sentry.init({
   environment: process.env.RPL_CRAWLER_SENTRY_ENVIRONMENT,
 })
 
-runRplCrawler(date).catch((error) => {
-  Sentry.captureException(error)
-  console.error(error)
-  process.exit(1)
-})
+runRplCrawler(date)
+  .then((returnCode) => {
+    process.exit(returnCode)
+  })
+  .catch((error) => {
+    Sentry.captureException(error)
+    console.error(error)
+    process.exit(1)
+  })
