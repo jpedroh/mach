@@ -1,7 +1,7 @@
+import assert from 'node:assert'
 import { randomUUID } from 'crypto'
 import { describe, expect, test } from 'vitest'
 import makeFlightParser from './parser'
-import assert from 'node:assert'
 
 describe('parser', () => {
   const parser = makeFlightParser({ uuid: () => randomUUID() })

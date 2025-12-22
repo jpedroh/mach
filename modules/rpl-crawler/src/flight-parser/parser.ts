@@ -1,4 +1,5 @@
 import type { WakeTurbulence } from '@mach/shared-database/enum'
+import type { Flight } from '@mach/shared-database/schema'
 import type {
   FlightParsingError,
   ParseFlightResult,
@@ -10,7 +11,6 @@ import {
   resolveFlightRules,
   resolveWeekDays,
 } from './utils'
-import type { Flight } from '@mach/shared-database/schema'
 
 const makeFlightParser = ({ uuid }: { uuid: (line: string) => string }) => {
   return (line: string): ParseFlightResult => {
