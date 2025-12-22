@@ -41,20 +41,18 @@ export function makeRunRplCrawler({
     Logger.info(`COMPLETED LINES EXTRACTION FROM RPL FILE`)
 
     Logger.info(`STARTING DECODING OF RPL FILES DATA`)
-    const [parsedFlights, erroredFlights] = Array.from(filesLines)
-      .reduce(
-        ([valid, invalid], line) => {
-          const result = flightParser(line)
-          if (result.valid === true) {
-            valid.push(result.data)
-          } else {
-            invalid.push({ line, error: result.error })
-          }
-          return [valid, invalid]
-        },
-        [[], []]
-      )
-      .map((flight) => ({ ...flight, cycle: date }))
+    const [parsedFlights, erroredFlights] = Array.from(filesLines).reduce(
+      ([valid, invalid], line) => {
+        const result = flightParser(line)
+        if (result.valid === true) {
+          valid.push({ ...result.data, cycle: date })
+        } else {
+          invalid.push({ line, error: result.error })
+        }
+        return [valid, invalid]
+      },
+      [[], []]
+    )
     Logger.info(`COMPLETED DECODING OF RPL FILES DATA`)
 
     if (erroredFlights.length > 0) {
