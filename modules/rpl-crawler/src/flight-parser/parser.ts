@@ -1,14 +1,19 @@
 import type { WakeTurbulence } from '@mach/shared-database/enum'
 import type { Flight } from '@mach/shared-database/schema'
+import type {
+  FlightParsingError,
+  ParseFlightResult,
+  ParseResult,
+} from './types'
 import {
-  resolveEstimatedEnrouteMinutes,
+  parseEstimatedEnrouteMinutes,
   resolveFlightDate,
   resolveFlightRules,
   resolveWeekDays,
-} from './flight-decoder-utils'
+} from './utils'
 
-const makeFlightDecoder = ({ uuid }: { uuid: (line: string) => string }) => {
-  return (line: string): Omit<Flight, 'cycle'> => {
+const makeFlightParser = ({ uuid }: { uuid: (line: string) => string }) => {
+  return (line: string): ParseFlightResult => {
     line = line.trim()
 
     const callsign = line.substring(22, 29).trim()
@@ -29,12 +34,19 @@ const makeFlightDecoder = ({ uuid }: { uuid: (line: string) => string }) => {
       .trim()
     const rightPadStart = line.lastIndexOf('  ') + 2
     const arrivalIcao = line.substring(rightPadStart, rightPadStart + 4).trim()
-    const estimatedEnrouteMinutes = resolveEstimatedEnrouteMinutes(
-      line.substring(rightPadStart + 4, rightPadStart + 8).trim()
-    )
+
+    const estimatedEnrouteMinutes = parseFlightField({
+      field: 'estimatedEnrouteMinutes',
+      input: line.substring(rightPadStart + 4, rightPadStart + 8).trim(),
+      parser: parseEstimatedEnrouteMinutes,
+    })
+    if (estimatedEnrouteMinutes.valid === false) {
+      return estimatedEnrouteMinutes
+    }
+
     const remarks = line.substring(rightPadStart + 9)
 
-    return {
+    const parsedFlight = {
       id: uuid(line),
       callsign,
       company,
@@ -43,7 +55,7 @@ const makeFlightDecoder = ({ uuid }: { uuid: (line: string) => string }) => {
       cruisingLevel,
       route,
       arrivalIcao,
-      estimatedEnrouteMinutes,
+      estimatedEnrouteMinutes: estimatedEnrouteMinutes.data,
       remarks,
       departureIcao,
       aircraftIcaoCode: line.match(/[A-Z0-9]+(?=(\/(M|L|H|J)))/)[0],
@@ -57,7 +69,28 @@ const makeFlightDecoder = ({ uuid }: { uuid: (line: string) => string }) => {
       beginDate,
       endDate,
     }
+
+    return { valid: true, data: parsedFlight }
   }
 }
 
-export default makeFlightDecoder
+function parseFlightField<T>({
+  field,
+  input,
+  parser,
+}: {
+  field: keyof Omit<Flight, 'cycle'>
+  input: string
+  parser: (input: string) => ParseResult<T, string>
+}): ParseResult<T, FlightParsingError> {
+  const result = parser(input)
+  if (result.valid === true) {
+    return result
+  }
+  return {
+    valid: false,
+    error: { field, input, message: result.error },
+  }
+}
+
+export default makeFlightParser

@@ -1,4 +1,4 @@
-import flightDecoder from './flight-decoder'
+import flightParser from './flight-parser'
 import { makeRunRplCrawler } from './main'
 import rplFileDownloader from './rpl-file-downloader'
 import rplFileLinesExtractor from './rpl-file-lines-extractor'
@@ -9,6 +9,6 @@ export const runRplCrawler = makeRunRplCrawler({
   updateChecker,
   rplFileDownloader,
   rplFileLinesExtractor,
-  flightDecoder,
+  flightParser,
   saveData,
 })

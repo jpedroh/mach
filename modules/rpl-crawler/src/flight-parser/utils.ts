@@ -1,4 +1,5 @@
 import type { FlightRules, Weekdays } from '@mach/shared-database/enum'
+import type { ParseResult } from './types'
 
 export const resolveFlightRules = (route: string): FlightRules => {
   if (route.includes(' IFR ')) {
@@ -30,11 +31,21 @@ export const resolveWeekDays = (weekdays: string): Weekdays[] => {
     .filter((day) => day !== undefined)
 }
 
-export const resolveEstimatedEnrouteMinutes = (eet: string): number => {
+export const parseEstimatedEnrouteMinutes = (
+  eet: string
+): ParseResult<number, string> => {
   const MINUTES_IN_AN_HOUR = 60
 
   const hours = parseInt(eet.substr(0, 2))
   const minutes = parseInt(eet.substr(2))
+  const estimatedEnrouteMinutes = hours * MINUTES_IN_AN_HOUR + minutes
 
-  return hours * MINUTES_IN_AN_HOUR + minutes
+  if (isNaN(estimatedEnrouteMinutes)) {
+    return {
+      valid: false,
+      error: `Invalid value provided for estimatedEnrouteMinutes`,
+    }
+  }
+
+  return { valid: true, data: estimatedEnrouteMinutes }
 }

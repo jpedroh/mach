@@ -1,12 +1,13 @@
 import type { Airport, Flight } from '@mach/shared-database/schema'
 import { fetchAirportsData } from './fetch-airports-data'
+import type { ParseFlightResult } from './flight-parser'
 import * as Logger from './utils/logger'
 
 type MainDependencies = {
   updateChecker: (date: string) => Promise<boolean>
   rplFileDownloader: (date: string) => Promise<Buffer>
   rplFileLinesExtractor: (file: Buffer) => string[]
-  flightDecoder: (line: string) => Omit<Flight, 'cycle'>
+  flightParser: (line: string) => ParseFlightResult
   saveData: (data: {
     cycle: string
     flights: Flight[]
@@ -18,7 +19,7 @@ export function makeRunRplCrawler({
   updateChecker,
   rplFileDownloader,
   rplFileLinesExtractor,
-  flightDecoder,
+  flightParser,
   saveData,
 }: MainDependencies) {
   return async (date: string) => {
@@ -40,26 +41,44 @@ export function makeRunRplCrawler({
     Logger.info(`COMPLETED LINES EXTRACTION FROM RPL FILE`)
 
     Logger.info(`STARTING DECODING OF RPL FILES DATA`)
-    const flights = Array.from(filesLines)
-      .map(flightDecoder)
+    const [parsedFlights, erroredFlights] = Array.from(filesLines)
+      .reduce(
+        ([valid, invalid], line) => {
+          const result = flightParser(line)
+          if (result.valid === true) {
+            valid.push(result.data)
+          } else {
+            invalid.push({ line, error: result.error })
+          }
+          return [valid, invalid]
+        },
+        [[], []]
+      )
       .map((flight) => ({ ...flight, cycle: date }))
     Logger.info(`COMPLETED DECODING OF RPL FILES DATA`)
+
+    if (erroredFlights.length > 0) {
+      Logger.info(`THERE WERE INVALID FLIGHTS DURING PARSING`)
+      erroredFlights.forEach((result) => console.log(result))
+    }
 
     Logger.info(`STARTING FETCHING OF AIRPORTS DATA`)
     const airports = await fetchAirportsData(
       new Set([
-        ...flights.map((v) => v.departureIcao),
-        ...flights.map((v) => v.arrivalIcao),
+        ...parsedFlights.map((v) => v.departureIcao),
+        ...parsedFlights.map((v) => v.arrivalIcao),
       ])
     )
     Logger.info(`COMPLETED FETCHING OF AIRPORTS DATA`)
 
     Logger.info(`STARTING SAVING DECODED DATA TO DATABASE`)
-    await saveData({ cycle: date, flights, airports })
+    await saveData({ cycle: date, flights: parsedFlights, airports })
     Logger.info(`COMPLETED SAVING DECODED DATA TO DATABASE`)
 
     Logger.info(`COMPLETED RPL UPDATE FOR ${date}`)
 
-    Logger.info(`${flights.length} FLIGHTS INSERTED`)
+    Logger.info(`${parsedFlights.length} FLIGHTS INSERTED`)
+
+    return erroredFlights.length
   }
 }
