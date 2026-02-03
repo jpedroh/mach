@@ -63,8 +63,8 @@ importers:
         specifier: ^10.38.0
         version: 10.38.0
       '@sentry/vite-plugin':
-        specifier: ^4.8.0
-        version: 4.8.0
+        specifier: ^4.9.0
+        version: 4.9.0
       '@tailwindcss/vite':
         specifier: ^4.1.18
         version: 4.1.18(vite@7.3.1)
@@ -7113,7 +7113,7 @@ packages:
     dependencies:
       '@types/estree': 1.0.8
       estree-walker: 2.0.2
-      picomatch: 4.0.3
+      picomatch: 4.0.2
       rollup: 4.57.1
     dev: true
 
@@ -7635,17 +7635,17 @@ packages:
     resolution: {integrity: sha512-zt6OdqaDoOnJ1ZYsCYGt9YmWzDXl4vQdKTyJev62gFhRGKdx7mcT54V9KIjg+d2wi9EXsPvAPKe7i7WjfVWB8g==}
     dev: true
 
-  /@sentry/babel-plugin-component-annotate@4.8.0:
-    resolution: {integrity: sha512-cy/9Eipkv23MsEJ4IuB4dNlVwS9UqOzI3Eu+QPake5BVFgPYCX0uP0Tr3Z43Ime6Rb+BiDnWC51AJK9i9afHYw==}
+  /@sentry/babel-plugin-component-annotate@4.9.0:
+    resolution: {integrity: sha512-TJ7sVoa2Bf36lpJjBAzpNDC5Hg+evjsQnqUPeDx9Nz/YFw0u9rK1cwvi95gVWpx7PJSDCkljIv3aw0m4RatHpQ==}
     engines: {node: '>= 14'}
     dev: true
 
-  /@sentry/bundler-plugin-core@4.8.0:
-    resolution: {integrity: sha512-QaXd/NzaZ2vmiA2FNu2nBkgQU+17N3fE+zVOTzG0YK54QDSJMd4n3AeJIEyPhSzkOob+GqtO22nbYf6AATFMAw==}
+  /@sentry/bundler-plugin-core@4.9.0:
+    resolution: {integrity: sha512-gOVgHG5BrxCFmZow1XovlDr1FH/gO/LfD8OKci1rryeqHVBLr3+S4yS4ACl+E5lfQPym8Ve1BKh793d1rZ0dyA==}
     engines: {node: '>= 14'}
     dependencies:
       '@babel/core': 7.29.0
-      '@sentry/babel-plugin-component-annotate': 4.8.0
+      '@sentry/babel-plugin-component-annotate': 4.9.0
       '@sentry/cli': 2.58.4
       dotenv: 16.6.1
       find-up: 5.0.0
@@ -7846,11 +7846,11 @@ packages:
       '@sentry/core': 10.38.0
     dev: true
 
-  /@sentry/vite-plugin@4.8.0:
-    resolution: {integrity: sha512-/YZJitGsx/o72FFQYy3tucUfs4w3COvSI1d2NYyAhIzay4tjLLRjpM5PdwFnoBT7Uj/7jSbuHkg87PAliLiu2g==}
+  /@sentry/vite-plugin@4.9.0:
+    resolution: {integrity: sha512-1olEMpZnwZS4UdboB25w5sZYJSlwbxJaieoL0c7FDNMyyns5GhXSl6mK8Lpx9w3rIc88gw9JOdsehdd6YrlLOA==}
     engines: {node: '>= 14'}
     dependencies:
-      '@sentry/bundler-plugin-core': 4.8.0
+      '@sentry/bundler-plugin-core': 4.9.0
       unplugin: 1.0.1
     transitivePeerDependencies:
       - encoding
@@ -9348,7 +9348,7 @@ packages:
   /babel-dead-code-elimination@1.0.12:
     resolution: {integrity: sha512-GERT7L2TiYcYDtYk1IpD+ASAYXjKbLTDPhBtYj7X1NuRMDTMtAx9kyBenub1Ev41lo91OHCKdmP+egTDmfQ7Ig==}
     dependencies:
-      '@babel/core': 7.29.0
+      '@babel/core': 7.28.6
       '@babel/parser': 7.29.0
       '@babel/traverse': 7.29.0
       '@babel/types': 7.29.0
