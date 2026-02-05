@@ -24,8 +24,8 @@ importers:
         specifier: ^20.4.1
         version: 20.4.1
       '@libsql/client':
-        specifier: ^0.15.15
-        version: 0.15.15
+        specifier: ^0.17.0
+        version: 0.17.0
       '@mach/shared-eslint-config':
         specifier: workspace:*
         version: link:modules/shared-eslint-config
@@ -112,7 +112,7 @@ importers:
         version: 0.31.8
       drizzle-orm:
         specifier: ^0.45.1
-        version: 0.45.1(@cloudflare/workers-types@4.20260203.0)(@libsql/client@0.15.15)(@opentelemetry/api@1.9.0)
+        version: 0.45.1(@cloudflare/workers-types@4.20260203.0)(@libsql/client@0.17.0)(@opentelemetry/api@1.9.0)
       fast-xml-parser:
         specifier: ^5.3.4
         version: 5.3.4
@@ -3754,21 +3754,22 @@ packages:
       '@jridgewell/sourcemap-codec': 1.5.5
     dev: true
 
-  /@libsql/client@0.15.15:
-    resolution: {integrity: sha512-twC0hQxPNHPKfeOv3sNT6u2pturQjLcI+CnpTM0SjRpocEGgfiZ7DWKXLNnsothjyJmDqEsBQJ5ztq9Wlu470w==}
+  /@libsql/client@0.17.0:
+    resolution: {integrity: sha512-TLjSU9Otdpq0SpKHl1tD1Nc9MKhrsZbCFGot3EbCxRa8m1E5R1mMwoOjKMMM31IyF7fr+hPNHLpYfwbMKNusmg==}
     dependencies:
-      '@libsql/core': 0.15.15
-      '@libsql/hrana-client': 0.7.0
+      '@libsql/core': 0.17.0
+      '@libsql/hrana-client': 0.9.0
       js-base64: 3.7.8
       libsql: 0.5.22
       promise-limit: 2.7.0
     transitivePeerDependencies:
       - bufferutil
+      - encoding
       - utf-8-validate
     dev: true
 
-  /@libsql/core@0.15.15:
-    resolution: {integrity: sha512-C88Z6UKl+OyuKKPwz224riz02ih/zHYI3Ho/LAcVOgjsunIRZoBw7fjRfaH9oPMmSNeQfhGklSG2il1URoOIsA==}
+  /@libsql/core@0.17.0:
+    resolution: {integrity: sha512-hnZRnJHiS+nrhHKLGYPoJbc78FE903MSDrFJTbftxo+e52X+E0Y0fHOCVYsKWcg6XgB7BbJYUrz/xEkVTSaipw==}
     dependencies:
       js-base64: 3.7.8
     dev: true
@@ -3789,21 +3790,17 @@ packages:
     dev: true
     optional: true
 
-  /@libsql/hrana-client@0.7.0:
-    resolution: {integrity: sha512-OF8fFQSkbL7vJY9rfuegK1R7sPgQ6kFMkDamiEccNUvieQ+3urzfDFI616oPl8V7T9zRmnTkSjMOImYCAVRVuw==}
+  /@libsql/hrana-client@0.9.0:
+    resolution: {integrity: sha512-pxQ1986AuWfPX4oXzBvLwBnfgKDE5OMhAdR/5cZmRaB4Ygz5MecQybvwZupnRz341r2CtFmbk/BhSu7k2Lm+Jw==}
     dependencies:
-      '@libsql/isomorphic-fetch': 0.3.1
       '@libsql/isomorphic-ws': 0.1.5
+      cross-fetch: 4.1.0
       js-base64: 3.7.8
       node-fetch: 3.3.2
     transitivePeerDependencies:
       - bufferutil
+      - encoding
       - utf-8-validate
-    dev: true
-
-  /@libsql/isomorphic-fetch@0.3.1:
-    resolution: {integrity: sha512-6kK3SUK5Uu56zPq/Las620n5aS9xJq+jMBcNSOmjhNf/MUvdyji4vrMTqD7ptY7/4/CAVEAYDeotUz60LNQHtw==}
-    engines: {node: '>=18.0.0'}
     dev: true
 
   /@libsql/isomorphic-ws@0.1.5:
@@ -9943,6 +9940,14 @@ packages:
       luxon: 3.7.2
     dev: true
 
+  /cross-fetch@4.1.0:
+    resolution: {integrity: sha512-uKm5PU+MHTootlWEY+mZ4vvXoCn4fLQxT9dSc1sXVMSFkINTJVN8cAQROpwcKm8bJ/c7rgZVIBWzH5T78sNZZw==}
+    dependencies:
+      node-fetch: 2.7.0(encoding@0.1.13)
+    transitivePeerDependencies:
+      - encoding
+    dev: true
+
   /cross-spawn@7.0.6:
     resolution: {integrity: sha512-uV2QOWP2nWzsy2aMp8aRibhi9dlzF5Hgh5SHaB9OiTGEyDTiJJyx0uy51QXdyWbtAHNua4XJzUKca3OzKUd3vA==}
     engines: {node: '>= 8'}
@@ -10313,7 +10318,7 @@ packages:
       - supports-color
     dev: true
 
-  /drizzle-orm@0.45.1(@cloudflare/workers-types@4.20260203.0)(@libsql/client@0.15.15)(@opentelemetry/api@1.9.0):
+  /drizzle-orm@0.45.1(@cloudflare/workers-types@4.20260203.0)(@libsql/client@0.17.0)(@opentelemetry/api@1.9.0):
     resolution: {integrity: sha512-Te0FOdKIistGNPMq2jscdqngBRfBpC8uMFVwqjf6gtTVJHIQ/dosgV/CLBU2N4ZJBsXL5savCba9b0YJskKdcA==}
     peerDependencies:
       '@aws-sdk/client-rds-data': '>=3'
@@ -10406,7 +10411,7 @@ packages:
         optional: true
     dependencies:
       '@cloudflare/workers-types': 4.20260203.0
-      '@libsql/client': 0.15.15
+      '@libsql/client': 0.17.0
       '@opentelemetry/api': 1.9.0
     dev: true
 
