@@ -40,7 +40,7 @@ importers:
         version: 22.5.0(nx@22.5.0)
       '@nx/playwright':
         specifier: 22.5.0
-        version: 22.5.0(@playwright/test@1.58.1)(eslint@9.39.2)(nx@22.5.0)
+        version: 22.5.0(@playwright/test@1.58.2)(eslint@9.39.2)(nx@22.5.0)
       '@nx/react':
         specifier: 22.5.0
         version: 22.5.0(@babel/core@7.29.0)(esbuild@0.25.12)(eslint@9.39.2)(nx@22.5.0)(react-dom@19.2.4)(react@19.2.4)(typescript@5.9.3)(vite@7.3.1)(vitest@4.0.18)
@@ -48,8 +48,8 @@ importers:
         specifier: 22.5.0
         version: 22.5.0(nx@22.5.0)(typescript@5.9.3)(vite@7.3.1)(vitest@4.0.18)
       '@playwright/test':
-        specifier: ^1.58.1
-        version: 1.58.1
+        specifier: ^1.58.2
+        version: 1.58.2
       '@react-router/cloudflare':
         specifier: ^7.13.0
         version: 7.13.0(@cloudflare/workers-types@4.20260212.0)(react-router@7.13.0)(typescript@5.9.3)
@@ -4631,7 +4631,7 @@ packages:
     dev: true
     optional: true
 
-  /@nx/playwright@22.5.0(@playwright/test@1.58.1)(eslint@9.39.2)(nx@22.5.0):
+  /@nx/playwright@22.5.0(@playwright/test@1.58.2)(eslint@9.39.2)(nx@22.5.0):
     resolution: {integrity: sha512-55UWg9+kJtXOOy3TVyLkJLxduzQNSLUdyWcGMaMjM10FOCjRWzpBccGO0jC2hB5KIVR7esTDj5BfS2nQfbf9BQ==}
     peerDependencies:
       '@playwright/test': ^1.36.0
@@ -4642,7 +4642,7 @@ packages:
       '@nx/devkit': 22.5.0(nx@22.5.0)
       '@nx/eslint': 22.5.0(eslint@9.39.2)(nx@22.5.0)
       '@nx/js': 22.5.0(nx@22.5.0)
-      '@playwright/test': 1.58.1
+      '@playwright/test': 1.58.2
       minimatch: 10.1.1
       tslib: 2.8.1
     transitivePeerDependencies:
@@ -5274,12 +5274,12 @@ packages:
     dev: true
     optional: true
 
-  /@playwright/test@1.58.1:
-    resolution: {integrity: sha512-6LdVIUERWxQMmUSSQi0I53GgCBYgM2RpGngCPY7hSeju+VrKjq3lvs7HpJoPbDiY5QM5EYRtRX5fvrinnMAz3w==}
+  /@playwright/test@1.58.2:
+    resolution: {integrity: sha512-akea+6bHYBBfA9uQqSYmlJXn61cTa+jbO87xVLCWbTqbWadRVmhxlXATaOjOgcBaWU4ePo0wB41KMFv3o35IXA==}
     engines: {node: '>=18'}
     hasBin: true
     dependencies:
-      playwright: 1.58.1
+      playwright: 1.58.2
     dev: true
 
   /@polka/url@1.0.0-next.29:
@@ -13701,18 +13701,18 @@ packages:
       pathe: 2.0.3
     dev: true
 
-  /playwright-core@1.58.1:
-    resolution: {integrity: sha512-bcWzOaTxcW+VOOGBCQgnaKToLJ65d6AqfLVKEWvexyS3AS6rbXl+xdpYRMGSRBClPvyj44njOWoxjNdL/H9UNg==}
+  /playwright-core@1.58.2:
+    resolution: {integrity: sha512-yZkEtftgwS8CsfYo7nm0KE8jsvm6i/PTgVtB8DL726wNf6H2IMsDuxCpJj59KDaxCtSnrWan2AeDqM7JBaultg==}
     engines: {node: '>=18'}
     hasBin: true
     dev: true
 
-  /playwright@1.58.1:
-    resolution: {integrity: sha512-+2uTZHxSCcxjvGc5C891LrS1/NlxglGxzrC4seZiVjcYVQfUa87wBL6rTDqzGjuoWNjnBzRqKmF6zRYGMvQUaQ==}
+  /playwright@1.58.2:
+    resolution: {integrity: sha512-vA30H8Nvkq/cPBnNw4Q8TWz1EJyqgpuinBcHET0YVJVFldr8JDNiU9LaWAE1KqSkRYazuaBhTpB5ZzShOezQ6A==}
     engines: {node: '>=18'}
     hasBin: true
     dependencies:
-      playwright-core: 1.58.1
+      playwright-core: 1.58.2
     optionalDependencies:
       fsevents: 2.3.2
     dev: true
