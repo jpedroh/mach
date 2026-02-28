@@ -1,8 +1,8 @@
 // @ts-check
 
-import { defineConfig } from 'eslint/config'
 import eslint from '@eslint/js'
 import nxPlugin from '@nx/eslint-plugin'
+import { defineConfig } from 'eslint/config'
 import jsxA11y from 'eslint-plugin-jsx-a11y'
 import playwright from 'eslint-plugin-playwright'
 import react from 'eslint-plugin-react'
