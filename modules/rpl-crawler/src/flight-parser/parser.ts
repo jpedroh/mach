@@ -13,7 +13,7 @@ import {
 } from './utils'
 
 const makeFlightParser = ({ uuid }: { uuid: (line: string) => string }) => {
-  return (line: string): ParseFlightResult<any> => {
+  return (line: string): ParseFlightResult => {
     line = line.trim()
 
     const callsign = line.substring(22, 29).trim()

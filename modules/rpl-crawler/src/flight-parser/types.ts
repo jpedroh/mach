@@ -6,12 +6,12 @@ export type ParseResult<T, E = string> =
   | { valid: true; data: T }
   | { valid: false; error: E }
 
-export type ParseFlightResult<R = string> = ParseResult<
+export type ParseFlightResult<R = unknown> = ParseResult<
   Data,
   FlightParsingError<R>
 >
 
-export type FlightParsingError<R = string> = {
+export type FlightParsingError<R = unknown> = {
   field: keyof Data
   input: R
   message: string

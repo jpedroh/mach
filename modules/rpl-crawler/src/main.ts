@@ -8,7 +8,7 @@ type MainDependencies = {
   updateChecker: (date: string) => Promise<boolean>
   rplFileDownloader: (date: string) => Promise<Buffer>
   rplFileLinesExtractor: (file: Buffer) => string[]
-  flightParser: (line: string) => ParseFlightResult
+  flightParser: (line: string) => ParseFlightResult<unknown>
   saveData: (data: {
     cycle: string
     flights: Flight[]
