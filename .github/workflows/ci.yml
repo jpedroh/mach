@@ -31,7 +31,7 @@ jobs:
         with:
           main-branch-name: 'main'
       - run: pnpm install
-      - run: pnpm biome check
+      - run: pnpm fmt:check
       - run: pnpm sherif
       - run: pnpm nx sync:check
       - run: pnpm nx affected --target=pack
