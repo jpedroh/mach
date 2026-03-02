@@ -14,3 +14,7 @@ export type FlightRules = (typeof flightRules)[number]
 
 export const wakeTurbulence = ['L', 'M', 'H'] as const
 export type WakeTurbulence = (typeof wakeTurbulence)[number]
+
+export function isWakeTurbulence(x: string): x is WakeTurbulence {
+  return wakeTurbulence.find((v) => v === x) !== null
+}
