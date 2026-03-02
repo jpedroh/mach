@@ -70,6 +70,8 @@
     "pack": "nx affected --target=pack",
     "pack:web": "nx pack @mach/web",
     "deploy:web": "nx deploy @mach/web",
+    "fmt": "biome format --no-errors-on-unmatched --write",
+    "fmt:check": "biome check",
     "lint": "nx affected --target=lint",
     "test": "nx affected --target=test",
     "e2e": "nx e2e @mach/web-e2e",
