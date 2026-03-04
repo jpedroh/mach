@@ -1,9 +1,15 @@
 {
   "extends": "@total-typescript/tsconfig/bundler/no-dom/library",
   "compilerOptions": {
+    "composite": true,
+    "noEmit": false,
     "outDir": "./out-tsc/lib"
   },
   "include": ["src/**/*.ts"],
   "exclude": ["src/**/*.test.ts"],
-  "references": []
+  "references": [
+    {
+      "path": "../shared-eslint-config/tsconfig.lib.json"
+    }
+  ]
 }

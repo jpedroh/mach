@@ -1,6 +1,9 @@
 {
-  "extends": "@total-typescript/tsconfig/bundler/dom/library",
+  "extends": "@total-typescript/tsconfig/bundler/dom/library-monorepo",
   "compilerOptions": {
+    "composite": true,
+    "noEmit": false,
+    "jsx": "react-jsx",
     "outDir": "./out-tsc/spec"
   },
   "include": ["vite.config.ts", "src/**/*.test.tsx"],
