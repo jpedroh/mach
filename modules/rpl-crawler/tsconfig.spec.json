@@ -1,6 +1,7 @@
 {
-  "extends": "../../tsconfig.base.json",
+  "extends": "@total-typescript/tsconfig/bundler/no-dom/library",
   "compilerOptions": {
+    "composite": true,
     "outDir": "./out-tsc/spec"
   },
   "include": [],

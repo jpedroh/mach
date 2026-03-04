@@ -1,13 +1,9 @@
 {
-  "extends": "../../tsconfig.base.json",
+  "extends": "@total-typescript/tsconfig/bundler/dom/library",
   "compilerOptions": {
     "outDir": "./out-tsc/lib"
   },
   "include": ["src/**/*.ts", "src/**/*.tsx"],
   "exclude": ["src/**/*.test.ts"],
-  "references": [
-    {
-      "path": "../shared-eslint-config/tsconfig.lib.json"
-    }
-  ]
+  "references": []
 }

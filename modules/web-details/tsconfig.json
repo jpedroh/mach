@@ -1,5 +1,10 @@
 {
-  "extends": "../../tsconfig.base.json",
+  "extends": "@total-typescript/tsconfig/bundler/dom/library-monorepo",
+  "compilerOptions": {
+    "composite": true,
+    "noEmit": false,
+    "outDir": "./out-tsc"
+  },
   "files": [],
   "references": [
     {
