@@ -20,21 +20,12 @@ importers:
       '@biomejs/biome':
         specifier: 2.4.4
         version: 2.4.4
-      '@cloudflare/vite-plugin':
-        specifier: ^1.9.1
-        version: 1.26.0(vite@7.3.1(@types/node@25.3.3)(jiti@2.6.1)(lightningcss@1.31.1)(terser@5.46.0)(yaml@2.8.2))(workerd@1.20260301.1)(wrangler@4.70.0(@cloudflare/workers-types@4.20260305.0))
-      '@cloudflare/workers-types':
-        specifier: ^4.20260305.0
-        version: 4.20260305.0
       '@commitlint/cli':
         specifier: ^20.4.3
         version: 20.4.3(@types/node@25.3.3)(typescript@5.9.3)
       '@commitlint/config-conventional':
         specifier: ^20.4.3
         version: 20.4.3
-      '@libsql/client':
-        specifier: ^0.15.15
-        version: 0.15.15
       '@mach/shared-eslint-config':
         specifier: workspace:*
         version: link:modules/shared-eslint-config
@@ -59,15 +50,6 @@ importers:
       '@playwright/test':
         specifier: ^1.58.2
         version: 1.58.2
-      '@react-router/cloudflare':
-        specifier: ^7.13.1
-        version: 7.13.1(@cloudflare/workers-types@4.20260305.0)(react-router@7.13.1(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(typescript@5.9.3)
-      '@react-router/dev':
-        specifier: ^7.13.1
-        version: 7.13.1(@types/node@25.3.3)(babel-plugin-macros@3.1.0)(jiti@2.6.1)(lightningcss@1.31.1)(react-router@7.13.1(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(terser@5.46.0)(typescript@5.9.3)(vite@7.3.1(@types/node@25.3.3)(jiti@2.6.1)(lightningcss@1.31.1)(terser@5.46.0)(yaml@2.8.2))(wrangler@4.70.0(@cloudflare/workers-types@4.20260305.0))(yaml@2.8.2)
-      '@react-router/fs-routes':
-        specifier: ^7.13.1
-        version: 7.13.1(@react-router/dev@7.13.1(@types/node@25.3.3)(babel-plugin-macros@3.1.0)(jiti@2.6.1)(lightningcss@1.31.1)(react-router@7.13.1(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(terser@5.46.0)(typescript@5.9.3)(vite@7.3.1(@types/node@25.3.3)(jiti@2.6.1)(lightningcss@1.31.1)(terser@5.46.0)(yaml@2.8.2))(wrangler@4.70.0(@cloudflare/workers-types@4.20260305.0))(yaml@2.8.2))(typescript@5.9.3)
       '@sentry/node':
         specifier: ^10.42.0
         version: 10.42.0
@@ -215,12 +197,28 @@ importers:
       '@mach/web-shared-ui':
         specifier: workspace:*
         version: link:../../modules/web-shared-ui
+      '@react-router/cloudflare':
+        specifier: ^7.13.1
+        version: 7.13.1(@cloudflare/workers-types@4.20260305.0)(react-router@7.13.1(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(typescript@5.9.3)
+      '@react-router/dev':
+        specifier: ^7.13.1
+        version: 7.13.1(@types/node@25.3.3)(babel-plugin-macros@3.1.0)(jiti@2.6.1)(lightningcss@1.31.1)(react-router@7.13.1(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(terser@5.46.0)(typescript@5.9.3)(vite@7.3.1(@types/node@25.3.3)(jiti@2.6.1)(lightningcss@1.31.1)(terser@5.46.0)(yaml@2.8.2))(wrangler@4.70.0(@cloudflare/workers-types@4.20260305.0))(yaml@2.8.2)
+      '@react-router/fs-routes':
+        specifier: ^7.13.1
+        version: 7.13.1(@react-router/dev@7.13.1(@types/node@25.3.3)(babel-plugin-macros@3.1.0)(jiti@2.6.1)(lightningcss@1.31.1)(react-router@7.13.1(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(terser@5.46.0)(typescript@5.9.3)(vite@7.3.1(@types/node@25.3.3)(jiti@2.6.1)(lightningcss@1.31.1)(terser@5.46.0)(yaml@2.8.2))(wrangler@4.70.0(@cloudflare/workers-types@4.20260305.0))(yaml@2.8.2))(typescript@5.9.3)
       react:
         specifier: 'catalog:'
         version: 19.2.4
       react-dom:
         specifier: 'catalog:'
         version: 19.2.4(react@19.2.4)
+    devDependencies:
+      '@cloudflare/vite-plugin':
+        specifier: ^1.9.1
+        version: 1.26.0(vite@7.3.1(@types/node@25.3.3)(jiti@2.6.1)(lightningcss@1.31.1)(terser@5.46.0)(yaml@2.8.2))(workerd@1.20260301.1)(wrangler@4.70.0(@cloudflare/workers-types@4.20260305.0))
+      '@cloudflare/workers-types':
+        specifier: ^4.20260305.0
+        version: 4.20260305.0
 
   apps/web-e2e:
     dependencies:
@@ -244,7 +242,11 @@ importers:
         specifier: ^0.5.7
         version: 0.5.7
 
-  modules/shared-database: {}
+  modules/shared-database:
+    dependencies:
+      '@libsql/client':
+        specifier: ^0.15.15
+        version: 0.15.15
 
   modules/shared-eslint-config:
     devDependencies:
