@@ -49,10 +49,11 @@ export async function fetchFlights(
     return await db.select().from(flights).where(criteria)
   }
 
-  const [{ count }] = await db
+  const queryResponse = await db
     .select({ count: sql<number>`count(${flights.id})` })
     .from(flights)
     .where(criteria)
+  const count = queryResponse[0]?.count ?? 0
 
   const items = await db
     .select()

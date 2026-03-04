@@ -1,6 +1,9 @@
 {
   "extends": "@total-typescript/tsconfig/bundler/dom/app",
   "compilerOptions": {
+    "composite": true,
+    "noEmit": false,
+    "jsx": "react-jsx",
     "types": ["vite/client", "vitest"]
   },
   "files": [],

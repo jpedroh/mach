@@ -1,6 +1,8 @@
 {
   "extends": "@total-typescript/tsconfig/bundler/dom/app",
   "compilerOptions": {
+    "composite": true,
+    "noEmit": false,
     "outDir": "./out-tsc"
   },
   "include": ["src/app", "e2e", ".next/types/**/*.ts"],
