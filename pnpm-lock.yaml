@@ -12,6 +12,9 @@ catalogs:
     react-dom:
       specifier: ^19.2.4
       version: 19.2.4
+    zod:
+      specifier: ^4.3.6
+      version: 4.3.6
 
 importers:
 
@@ -173,9 +176,6 @@ importers:
       wrangler:
         specifier: ^4.24.0
         version: 4.71.0(@cloudflare/workers-types@4.20260307.1)
-      zod:
-        specifier: ^4.3.6
-        version: 4.3.6
 
   apps/rpl-crawler-cli:
     dependencies:
@@ -215,6 +215,9 @@ importers:
       react-dom:
         specifier: 'catalog:'
         version: 19.2.4(react@19.2.4)
+      zod:
+        specifier: 'catalog:'
+        version: 4.3.6
     devDependencies:
       '@cloudflare/vite-plugin':
         specifier: ^1.9.1
@@ -240,6 +243,9 @@ importers:
       axios:
         specifier: ^1.13.6
         version: 1.13.6
+      zod:
+        specifier: 'catalog:'
+        version: 4.3.6
     devDependencies:
       '@types/adm-zip':
         specifier: ^0.5.7
@@ -307,6 +313,9 @@ importers:
       react:
         specifier: 'catalog:'
         version: 19.2.4
+      zod:
+        specifier: 'catalog:'
+        version: 4.3.6
 
   modules/web-search:
     dependencies:
@@ -319,6 +328,9 @@ importers:
       react:
         specifier: 'catalog:'
         version: 19.2.4
+      zod:
+        specifier: 'catalog:'
+        version: 4.3.6
 
   modules/web-shared-ui:
     dependencies:
