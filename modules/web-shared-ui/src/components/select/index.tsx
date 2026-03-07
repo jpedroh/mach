@@ -28,7 +28,7 @@ const OpenPopoverButton = twc(Button)(
 `
 )
 
-const ComboBox = twc(RACComboBox)`grid gap-2`
+const ComboBox = twc(RACComboBox)<RACComboBoxProps<Option>>`grid gap-2`
 
 export function Select({ label, ...props }: Props) {
   return (
