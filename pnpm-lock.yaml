@@ -173,9 +173,6 @@ importers:
       vitest:
         specifier: ^4.0.18
         version: 4.0.18(@opentelemetry/api@1.9.0)(@types/node@25.3.5)(@vitest/ui@4.0.18)(jiti@2.6.1)(jsdom@28.1.0)(lightningcss@1.31.1)(msw@2.12.10(@types/node@25.3.5)(typescript@5.9.3))(terser@5.46.0)(yaml@2.8.2)
-      wrangler:
-        specifier: ^4.24.0
-        version: 4.71.0(@cloudflare/workers-types@4.20260307.1)
 
   apps/rpl-crawler-cli:
     dependencies:
@@ -225,6 +222,9 @@ importers:
       '@cloudflare/workers-types':
         specifier: ^4.20260305.0
         version: 4.20260305.0
+      wrangler:
+        specifier: ^4.24.0
+        version: 4.71.0(@cloudflare/workers-types@4.20260305.0)
 
   apps/web-e2e:
     dependencies:
@@ -16390,23 +16390,6 @@ snapshots:
       workerd: 1.20260301.1
     optionalDependencies:
       '@cloudflare/workers-types': 4.20260305.0
-      fsevents: 2.3.3
-    transitivePeerDependencies:
-      - bufferutil
-      - utf-8-validate
-
-  wrangler@4.71.0(@cloudflare/workers-types@4.20260307.1):
-    dependencies:
-      '@cloudflare/kv-asset-handler': 0.4.2
-      '@cloudflare/unenv-preset': 2.15.0(unenv@2.0.0-rc.24)(workerd@1.20260301.1)
-      blake3-wasm: 2.1.5
-      esbuild: 0.27.3
-      miniflare: 4.20260301.1
-      path-to-regexp: 6.3.0
-      unenv: 2.0.0-rc.24
-      workerd: 1.20260301.1
-    optionalDependencies:
-      '@cloudflare/workers-types': 4.20260307.1
       fsevents: 2.3.3
     transitivePeerDependencies:
       - bufferutil
