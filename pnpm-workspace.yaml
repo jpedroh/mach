@@ -1,3 +1,11 @@
 packages:
-  - 'apps/*'
-  - 'modules/*'
+  - apps/*
+  - modules/*
+
+onlyBuiltDependencies:
+  - '@sentry/cli'
+  - esbuild
+  - msw
+  - nx
+  - sharp
+  - workerd
