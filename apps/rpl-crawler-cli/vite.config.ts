@@ -8,7 +8,7 @@ export default defineConfig({
     ssr: './src/index.ts',
     sourcemap: true,
     rollupOptions: {
-      external: [/^@libsql\//],
+      external: [/^@libsql\/linux-/, /^@libsql\/darwin-/, /^@libsql\/win32-/],
     },
   },
   plugins: [nxViteTsPaths()],
