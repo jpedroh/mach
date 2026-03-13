@@ -7,6 +7,9 @@ export default defineConfig({
   build: {
     ssr: './src/index.ts',
     sourcemap: true,
+    rollupOptions: {
+      external: [/^@libsql\//],
+    },
   },
   plugins: [nxViteTsPaths()],
   test: {
