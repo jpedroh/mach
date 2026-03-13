@@ -2,7 +2,7 @@
   "name": "@mach/rpl-crawler-cli",
   "type": "module",
   "scripts": {
-    "pack": "vite build",
+    "pack": "tsup",
     "test": "vitest ."
   },
   "dependencies": {
@@ -19,5 +19,8 @@
         ]
       }
     }
+  },
+  "devDependencies": {
+    "tsup": "^8.5.1"
   }
 }
