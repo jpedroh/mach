@@ -1,5 +1,5 @@
-import { environment } from '../utils/environment'
-import { makeFetchAirportsData } from './fetch-airports-data'
+import { environment } from '../utils/environment.ts'
+import { makeFetchAirportsData } from './fetch-airports-data.ts'
 
 export const fetchAirportsData = makeFetchAirportsData({
   apiKey: environment.AISWEB_API_KEY,

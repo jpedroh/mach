@@ -8,7 +8,7 @@ import {
   flights as flightsSchema,
 } from '@mach/shared-database/schema'
 import { inArray } from 'drizzle-orm'
-import * as Logger from '../utils/logger'
+import * as Logger from '../utils/logger.ts'
 
 function sliceArray<T>(items: T[]) {
   const response: T[][] = []

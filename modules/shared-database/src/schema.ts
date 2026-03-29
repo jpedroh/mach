@@ -1,6 +1,6 @@
 import { relations } from 'drizzle-orm'
 import { index, int, sqliteTable, text } from 'drizzle-orm/sqlite-core'
-import { flightRules, type Weekdays, wakeTurbulence } from './enum'
+import { flightRules, type Weekdays, wakeTurbulence } from './enum.ts'
 
 export const flights = sqliteTable(
   'flights',

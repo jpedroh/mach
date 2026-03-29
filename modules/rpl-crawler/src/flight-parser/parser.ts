@@ -4,13 +4,13 @@ import type {
   FlightParsingError,
   ParseFlightResult,
   ParseResult,
-} from './types'
+} from './types.ts'
 import {
   parseEstimatedEnrouteMinutes,
   resolveFlightDate,
   resolveFlightRules,
   resolveWeekDays,
-} from './utils'
+} from './utils.ts'
 
 const makeFlightParser = ({ uuid }: { uuid: (line: string) => string }) => {
   return (line: string): ParseFlightResult => {
