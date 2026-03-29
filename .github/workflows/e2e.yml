@@ -13,7 +13,6 @@ jobs:
         image: ghcr.io/tursodatabase/libsql-server:ef44612
         ports:
           - 8080:8080
-    name: Playwright tests
     timeout-minutes: 20
     runs-on: ubuntu-latest
     container:
@@ -24,12 +23,6 @@ jobs:
       TURSO_AUTH_TOKEN: 'secret'
       AISWEB_API_KEY: ${{ secrets.aisweb_api_key }}
       AISWEB_API_PASSWORD: ${{ secrets.aisweb_api_password }}
-      NXCACHE_AWS_ACCESS_KEY_ID: ${{secrets.nxcache_aws_access_key_id}}
-      NXCACHE_AWS_SECRET_ACCESS_KEY: ${{secrets.nxcache_aws_secret_access_key}}
-      NXCACHE_AWS_ENDPOINT: ${{secrets.nxcache_aws_endpoint}}
-      NXCACHE_AWS_REGION: ${{secrets.nxcache_aws_region}}
-      NXCACHE_AWS_BUCKET: ${{secrets.nxcache_aws_bucket}}
-      NXCACHE_AWS_FORCE_PATH_STYLE: ${{secrets.nxcache_aws_force_path_style}}
     steps:
       - uses: actions/checkout@v6
         with:
@@ -55,9 +48,10 @@ jobs:
         image: ghcr.io/tursodatabase/libsql-server:ef44612
         ports:
           - 8080:8080
-    name: RPL Crawler Dry Run
     timeout-minutes: 20
     runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.52.0-jammy
     env:
       TURSO_CONNECTION_URL: 'http://libsql:8080'
       TURSO_AUTH_TOKEN: 'secret'
