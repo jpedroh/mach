@@ -42,7 +42,7 @@ jobs:
           name: playwright-report
           path: apps/web-e2e/test-output
           retention-days: 30
-  rpl-crawler:
+  rpl-crawler-dry-run:
     services:
       libsql:
         image: ghcr.io/tursodatabase/libsql-server:ef44612
