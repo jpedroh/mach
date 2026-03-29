@@ -1,5 +1,5 @@
 import { Button } from '@mach/web-shared-ui/button'
-import { Table } from '@mach/web-shared-ui/table'
+import * as Table from '@mach/web-shared-ui/table'
 import { fetchFlights } from '../../services/fetch-flights'
 import { formatAirport } from '../../utils/format-airport'
 
