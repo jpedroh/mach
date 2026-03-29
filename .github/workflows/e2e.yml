@@ -16,7 +16,7 @@ jobs:
     timeout-minutes: 20
     runs-on: ubuntu-latest
     container:
-      image: ubuntu:jammy
+      image: mcr.microsoft.com/playwright:v1.52.0-jammy
     env:
       PLAYWRIGHT_TEST_BASE_URL: 'http://localhost:3000'
       TURSO_CONNECTION_URL: 'http://libsql:8080'
@@ -51,7 +51,7 @@ jobs:
     timeout-minutes: 20
     runs-on: ubuntu-latest
     container:
-      image: mcr.microsoft.com/playwright:v1.52.0-jammy
+      image: ubuntu:jammy
     env:
       TURSO_CONNECTION_URL: 'http://libsql:8080'
       TURSO_AUTH_TOKEN: 'secret'
