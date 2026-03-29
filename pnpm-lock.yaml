@@ -125,9 +125,6 @@ importers:
       nx:
         specifier: 22.5.4
         version: 22.5.4
-      react-aria-components:
-        specifier: ^1.15.1
-        version: 1.16.0(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       react-router:
         specifier: ^7.13.1
         version: 7.13.1(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
@@ -146,9 +143,6 @@ importers:
       tailwindcss-animate:
         specifier: ^1.0.7
         version: 1.0.7(tailwindcss@4.2.1)
-      tailwindcss-react-aria-components:
-        specifier: ^2.0.1
-        version: 2.0.1(tailwindcss@4.2.1)
       tslib:
         specifier: ^2.8.1
         version: 2.8.1
@@ -338,6 +332,9 @@ importers:
       react:
         specifier: 'catalog:'
         version: 19.2.4
+      react-aria-components:
+        specifier: ^1.15.1
+        version: 1.16.0(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
 
 packages:
 
@@ -7300,11 +7297,6 @@ packages:
     resolution: {integrity: sha512-bl6mpH3T7I3UFxuvDEXLxy/VuFxBk5bbzplh7tXI68mwMokNYd1t9qPBHlnyTwfa4JGC4zP516I1hYYtQ/vspA==}
     peerDependencies:
       tailwindcss: '>=3.0.0 || insiders'
-
-  tailwindcss-react-aria-components@2.0.1:
-    resolution: {integrity: sha512-yTAfYv9BE/gKczS+b8UiFMqxnrEYKKNE6Y4vAWzGadkHGb4Yuawp0SHbZKkZJQgFvK0KjO3JpCq/0kzR5jJ9tw==}
-    peerDependencies:
-      tailwindcss: ^4.0.0
 
   tailwindcss@4.2.1:
     resolution: {integrity: sha512-/tBrSQ36vCleJkAOsy9kbNTgaxvGbyOamC30PRePTQe/o1MFwEKHQk4Cn7BNGaPtjp+PuUrByJehM1hgxfq4sw==}
@@ -16039,10 +16031,6 @@ snapshots:
   tagged-tag@1.0.0: {}
 
   tailwindcss-animate@1.0.7(tailwindcss@4.2.1):
-    dependencies:
-      tailwindcss: 4.2.1
-
-  tailwindcss-react-aria-components@2.0.1(tailwindcss@4.2.1):
     dependencies:
       tailwindcss: 4.2.1
 
