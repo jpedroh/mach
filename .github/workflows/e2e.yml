@@ -1,4 +1,4 @@
-name: Playwright Tests
+name: E2E Tests
 on:
   push:
     branches:
@@ -7,13 +7,12 @@ on:
     branches:
       - main
 jobs:
-  test_e2e:
+  playwright:
     services:
       libsql:
         image: ghcr.io/tursodatabase/libsql-server:ef44612
         ports:
           - 8080:8080
-    name: Playwright tests
     timeout-minutes: 20
     runs-on: ubuntu-latest
     container:
@@ -24,12 +23,6 @@ jobs:
       TURSO_AUTH_TOKEN: 'secret'
       AISWEB_API_KEY: ${{ secrets.aisweb_api_key }}
       AISWEB_API_PASSWORD: ${{ secrets.aisweb_api_password }}
-      NXCACHE_AWS_ACCESS_KEY_ID: ${{secrets.nxcache_aws_access_key_id}}
-      NXCACHE_AWS_SECRET_ACCESS_KEY: ${{secrets.nxcache_aws_secret_access_key}}
-      NXCACHE_AWS_ENDPOINT: ${{secrets.nxcache_aws_endpoint}}
-      NXCACHE_AWS_REGION: ${{secrets.nxcache_aws_region}}
-      NXCACHE_AWS_BUCKET: ${{secrets.nxcache_aws_bucket}}
-      NXCACHE_AWS_FORCE_PATH_STYLE: ${{secrets.nxcache_aws_force_path_style}}
     steps:
       - uses: actions/checkout@v6
         with:
@@ -49,3 +42,32 @@ jobs:
           name: playwright-report
           path: apps/web-e2e/test-output
           retention-days: 30
+  rpl-crawler-dry-run:
+    services:
+      libsql:
+        image: ghcr.io/tursodatabase/libsql-server:ef44612
+        ports:
+          - 8080:8080
+    timeout-minutes: 20
+    runs-on: ubuntu-latest
+    container:
+      image: ubuntu:jammy
+    env:
+      TURSO_CONNECTION_URL: 'http://libsql:8080'
+      TURSO_AUTH_TOKEN: 'secret'
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - uses: pnpm/action-setup@v5.0.0
+      - uses: actions/setup-node@v6
+        with:
+          node-version-file: .nvmrc
+          cache: 'pnpm'
+      - run: pnpm install
+      - run: pnpm drizzle-kit push
+      - run: node apps/rpl-crawler-cli/src/index.ts ${RPL_CRAWLER_DRY_RUN_DATE}
+        env:
+          AISWEB_API_KEY: ${{ secrets.aisweb_api_key }}
+          AISWEB_API_PASSWORD: ${{ secrets.aisweb_api_password }}
+          RPL_CRAWLER_DRY_RUN_DATE: ${{ vars.rpl_crawler_dry_run_date }}
