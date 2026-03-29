@@ -72,7 +72,7 @@ jobs:
           cache: 'pnpm'
       - run: pnpm install
       - run: pnpm drizzle-kit push
-      - run: node apps/rpl-crawler-cli/src/index.ts ${RPL_DATE:-$(date +"%Y-%m-%d")}
+      - run: node apps/rpl-crawler-cli/src/index.ts ${RPL_CRAWLER_DRY_RUN_DATE}
         env:
           AISWEB_API_KEY: ${{ secrets.aisweb_api_key }}
           AISWEB_API_PASSWORD: ${{ secrets.aisweb_api_password }}
