@@ -12,12 +12,6 @@ jobs:
       TURSO_AUTH_TOKEN: ${{ secrets.turso_auth_token }}
       AISWEB_API_KEY: ${{ secrets.aisweb_api_key }}
       AISWEB_API_PASSWORD: ${{ secrets.aisweb_api_password }}
-      NXCACHE_AWS_ACCESS_KEY_ID: ${{secrets.nxcache_aws_access_key_id}}
-      NXCACHE_AWS_SECRET_ACCESS_KEY: ${{secrets.nxcache_aws_secret_access_key}}
-      NXCACHE_AWS_ENDPOINT: ${{secrets.nxcache_aws_endpoint}}
-      NXCACHE_AWS_REGION: ${{secrets.nxcache_aws_region}}
-      NXCACHE_AWS_BUCKET: ${{secrets.nxcache_aws_bucket}}
-      NXCACHE_AWS_FORCE_PATH_STYLE: ${{secrets.nxcache_aws_force_path_style}}
     steps:
       - uses: actions/checkout@v6
         with:
