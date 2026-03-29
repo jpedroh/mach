@@ -1,5 +1,5 @@
 import { makeDatabaseConnection } from '@mach/shared-database/connection'
-import makeSaveData from './save-data'
+import makeSaveData from './save-data.ts'
 
 const TURSO_CONNECTION_URL = process.env.TURSO_CONNECTION_URL
 if (!TURSO_CONNECTION_URL) {

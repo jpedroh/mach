@@ -3,19 +3,13 @@ function formatMessage(level: LoggingLevel, message: string): string {
 }
 
 export function info(message: string): void {
-  console.info(formatMessage(LoggingLevel.INFO, message))
+  console.info(formatMessage('INFO', message))
 }
 
 export function error(error: Error): void {
   console.error(
-    `${formatMessage(
-      LoggingLevel.ERROR,
-      error.message
-    )} - ${JSON.stringify(error)}`
+    `${formatMessage('ERROR', error.message)} - ${JSON.stringify(error)}`
   )
 }
 
-enum LoggingLevel {
-  INFO = 'INFO',
-  ERROR = 'ERROR',
-}
+type LoggingLevel = 'INFO' | 'ERROR'

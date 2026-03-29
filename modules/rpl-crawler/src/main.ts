@@ -1,8 +1,8 @@
 import type { Airport, Flight } from '@mach/shared-database/schema'
-import { fetchAirportsData } from './fetch-airports-data'
-import type { ParseFlightResult } from './flight-parser'
-import type { FlightParsingError } from './flight-parser/types'
-import * as Logger from './utils/logger'
+import { fetchAirportsData } from './fetch-airports-data/index.ts'
+import type { ParseFlightResult } from './flight-parser/index.ts'
+import type { FlightParsingError } from './flight-parser/types.ts'
+import * as Logger from './utils/logger.ts'
 
 type MainDependencies = {
   updateChecker: (date: string) => Promise<boolean>
