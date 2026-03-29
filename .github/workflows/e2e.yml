@@ -8,7 +8,6 @@ on:
       - main
 jobs:
   playwright:
-    name: Playwright tests
     services:
       libsql:
         image: ghcr.io/tursodatabase/libsql-server:ef44612
