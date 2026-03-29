@@ -1,4 +1,4 @@
-name: Playwright Tests
+name: E2E Tests
 on:
   push:
     branches:
@@ -7,7 +7,7 @@ on:
     branches:
       - main
 jobs:
-  test_e2e:
+  playwright:
     services:
       libsql:
         image: ghcr.io/tursodatabase/libsql-server:ef44612
@@ -49,3 +49,30 @@ jobs:
           name: playwright-report
           path: apps/web-e2e/test-output
           retention-days: 30
+  rpl-crawler:
+    services:
+      libsql:
+        image: ghcr.io/tursodatabase/libsql-server:ef44612
+        ports:
+          - 8080:8080
+    name: RPL Crawler Dry Run
+    timeout-minutes: 20
+    runs-on: ubuntu-latest
+    env:
+      TURSO_CONNECTION_URL: 'http://libsql:8080'
+      TURSO_AUTH_TOKEN: 'secret'
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - uses: pnpm/action-setup@v5.0.0
+      - uses: actions/setup-node@v6
+        with:
+          node-version-file: .nvmrc
+          cache: 'pnpm'
+      - run: pnpm install
+      - run: pnpm drizzle-kit push
+      - run: node apps/rpl-crawler-cli/src/index.ts ${RPL_DATE:-$(date +"%Y-%m-%d")}
+        env:
+          AISWEB_API_KEY: ${{ secrets.aisweb_api_key }}
+          AISWEB_API_PASSWORD: ${{ secrets.aisweb_api_password }}
