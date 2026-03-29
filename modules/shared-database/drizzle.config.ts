@@ -13,7 +13,7 @@ if (!TURSO_AUTH_TOKEN) {
 }
 
 export default defineConfig({
-  schema: './modules/shared-database/src/schema.ts',
+  schema: './src/schema.ts',
   dialect: 'turso',
   dbCredentials: {
     url: TURSO_CONNECTION_URL,

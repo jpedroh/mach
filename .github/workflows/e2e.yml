@@ -33,7 +33,7 @@ jobs:
           node-version-file: .nvmrc
           cache: 'pnpm'
       - run: pnpm install
-      - run: pnpm drizzle-kit push --config=modules/shared-database/drizzle.config.ts
+      - run: pnpm db:push
       - run: echo "TURSO_CONNECTION_URL=http://libsql:8080\nTURSO_AUTH_TOKEN=secret" > apps/web/.dev.vars
       - run: HOME=/root pnpm e2e
       - uses: actions/upload-artifact@v7
@@ -65,7 +65,7 @@ jobs:
           node-version-file: .nvmrc
           cache: 'pnpm'
       - run: pnpm install
-      - run: pnpm drizzle-kit push --config=modules/shared-database/drizzle.config.ts
+      - run: pnpm db:push
       - run: node apps/rpl-crawler-cli/src/index.ts ${RPL_CRAWLER_DRY_RUN_DATE}
         env:
           AISWEB_API_KEY: ${{ secrets.aisweb_api_key }}
