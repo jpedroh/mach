@@ -1,6 +1,6 @@
 import { type DatabaseConnection } from '@mach/shared-database/connection'
+import { and, eq, sql } from '@mach/shared-database/drizzle'
 import { cycles, type Flight, flights } from '@mach/shared-database/schema'
-import { and, eq, sql } from 'drizzle-orm'
 import z from 'zod'
 
 const QUERYABLE_FIELDS = [

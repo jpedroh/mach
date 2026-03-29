@@ -1,4 +1,5 @@
 import { type DatabaseConnection } from '@mach/shared-database/connection'
+import { inArray } from '@mach/shared-database/drizzle'
 import {
   type Airport,
   airports as airportsSchema,
@@ -7,7 +8,6 @@ import {
   type Flight,
   flights as flightsSchema,
 } from '@mach/shared-database/schema'
-import { inArray } from 'drizzle-orm'
 import * as Logger from '../utils/logger.ts'
 
 function sliceArray<T>(items: T[]) {

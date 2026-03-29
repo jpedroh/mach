@@ -1,4 +1,4 @@
-import { relations } from 'drizzle-orm'
+import { relations } from '@mach/shared-database/drizzle'
 import { index, int, sqliteTable, text } from 'drizzle-orm/sqlite-core'
 import { flightRules, type Weekdays, wakeTurbulence } from './enum.ts'
 

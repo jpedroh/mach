@@ -26,7 +26,14 @@
     }
   },
   "dependencies": {
-    "@libsql/client": "^0.15.15"
+    "@libsql/client": "^0.15.15",
+    "drizzle-orm": "^0.45.1"
+  },
+  "devDependencies": {
+    "drizzle-kit": "^0.31.9"
+  },
+  "scripts": {
+    "db:push": "drizzle-kit push"
   },
   "nx": {
     "tags": [
