@@ -2,30 +2,14 @@
   "name": "@mach/rpl-crawler-cli",
   "type": "module",
   "scripts": {
-    "pack": "tsup",
     "test": "vitest ."
   },
   "dependencies": {
-    "@mach/rpl-crawler": "workspace:*",
-    "@libsql/client": "^0.14.0",
-    "adm-zip": "^0.5.16",
-    "axios": "^1.7.9",
-    "form-data": "^4.0.5",
-    "combined-stream": "^1.0.8"
+    "@mach/rpl-crawler": "workspace:*"
   },
   "nx": {
     "tags": [
       "type:application"
-    ],
-    "targets": {
-      "pack": {
-        "outputs": [
-          "{projectRoot}/dist"
-        ]
-      }
-    }
-  },
-  "devDependencies": {
-    "tsup": "^8.5.1"
+    ]
   }
 }
