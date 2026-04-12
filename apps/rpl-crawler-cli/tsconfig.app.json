@@ -1,0 +1,19 @@
+{
+  "extends": "@total-typescript/tsconfig/bundler/no-dom/app",
+  "compilerOptions": {
+    "composite": true,
+    "noEmit": false,
+    "outDir": "./out-tsc/app",
+    "types": ["node"]
+  },
+  "include": ["src/**/*.ts", "src/**/*.tsx"],
+  "exclude": ["src/**/*.test.ts"],
+  "references": [
+    {
+      "path": "../../modules/rpl-crawler/tsconfig.lib.json"
+    },
+    {
+      "path": "../../modules/shared-eslint-config/tsconfig.lib.json"
+    }
+  ]
+}
