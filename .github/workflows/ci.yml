@@ -13,7 +13,7 @@ jobs:
       AISWEB_API_KEY: ${{ secrets.aisweb_api_key }}
       AISWEB_API_PASSWORD: ${{ secrets.aisweb_api_password }}
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0
       - uses: pnpm/action-setup@v5.0.0
