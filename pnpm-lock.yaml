@@ -43,16 +43,16 @@ importers:
         version: 23.0.0(@babel/traverse@7.29.7)(nx@23.0.0)
       '@nx/playwright':
         specifier: 23.0.0
-        version: 23.0.0(@babel/traverse@7.29.7)(@playwright/test@1.60.0)(@zkochan/js-yaml@0.0.7)(eslint@10.3.0(jiti@2.7.0))(nx@23.0.0)
+        version: 23.0.0(@babel/traverse@7.29.7)(@playwright/test@1.61.0)(@zkochan/js-yaml@0.0.7)(eslint@10.3.0(jiti@2.7.0))(nx@23.0.0)
       '@nx/react':
         specifier: 23.0.0
-        version: 23.0.0(@babel/core@7.29.7)(@babel/traverse@7.29.7)(@module-federation/enhanced@2.4.0(@rspack/core@1.6.8(@swc/helpers@0.5.21))(node-fetch@2.7.0(encoding@0.1.13))(typescript@5.9.3)(webpack@5.105.2(esbuild@0.27.7)(postcss@8.5.15)))(@module-federation/node@2.7.42(@rspack/core@1.6.8(@swc/helpers@0.5.21))(typescript@5.9.3)(webpack@5.105.2(esbuild@0.27.7)(postcss@8.5.15)))(@nx/playwright@23.0.0(@babel/traverse@7.29.7)(@playwright/test@1.60.0)(@zkochan/js-yaml@0.0.7)(eslint@10.3.0(jiti@2.7.0))(nx@23.0.0))(@swc/helpers@0.5.21)(@types/babel__core@7.20.5)(@zkochan/js-yaml@0.0.7)(esbuild@0.27.7)(eslint@10.3.0(jiti@2.7.0))(nx@23.0.0)(postcss@8.5.15)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(rollup@4.60.3)(typescript@5.9.3)(vite@8.0.16(@types/node@25.6.0)(esbuild@0.27.7)(jiti@2.7.0)(terser@5.48.0)(tsx@4.21.0)(yaml@2.9.0))(vitest@4.1.5)
+        version: 23.0.0(@babel/core@7.29.7)(@babel/traverse@7.29.7)(@module-federation/enhanced@2.4.0(@rspack/core@1.6.8(@swc/helpers@0.5.21))(node-fetch@2.7.0(encoding@0.1.13))(typescript@5.9.3)(webpack@5.105.2(esbuild@0.27.7)(postcss@8.5.15)))(@module-federation/node@2.7.42(@rspack/core@1.6.8(@swc/helpers@0.5.21))(typescript@5.9.3)(webpack@5.105.2(esbuild@0.27.7)(postcss@8.5.15)))(@nx/playwright@23.0.0(@babel/traverse@7.29.7)(@playwright/test@1.61.0)(@zkochan/js-yaml@0.0.7)(eslint@10.3.0(jiti@2.7.0))(nx@23.0.0))(@swc/helpers@0.5.21)(@types/babel__core@7.20.5)(@zkochan/js-yaml@0.0.7)(esbuild@0.27.7)(eslint@10.3.0(jiti@2.7.0))(nx@23.0.0)(postcss@8.5.15)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(rollup@4.60.3)(typescript@5.9.3)(vite@8.0.16(@types/node@25.6.0)(esbuild@0.27.7)(jiti@2.7.0)(terser@5.48.0)(tsx@4.21.0)(yaml@2.9.0))(vitest@4.1.5)
       '@nx/vite':
         specifier: 23.0.0
         version: 23.0.0(@babel/traverse@7.29.7)(@nx/eslint@23.0.0(@babel/traverse@7.29.7)(@zkochan/js-yaml@0.0.7)(eslint@10.3.0(jiti@2.7.0))(nx@23.0.0))(nx@23.0.0)(typescript@5.9.3)(vite@8.0.16(@types/node@25.6.0)(esbuild@0.27.7)(jiti@2.7.0)(terser@5.48.0)(tsx@4.21.0)(yaml@2.9.0))(vitest@4.1.5)
       '@playwright/test':
-        specifier: ^1.60.0
-        version: 1.60.0
+        specifier: ^1.61.0
+        version: 1.61.0
       '@sentry/node':
         specifier: ^10.58.0
         version: 10.58.0
@@ -2599,8 +2599,8 @@ packages:
     peerDependencies:
       typescript: '>3.0.0'
 
-  '@playwright/test@1.60.0':
-    resolution: {integrity: sha512-O71yZIbAh/PxDMNGns37GHBIfrVkEVyn+AXyIa5dOTfb4/xNvRWV+Vv/NMbNCtODB/pO7vLlF2OTmMVLhmr7Ag==}
+  '@playwright/test@1.61.0':
+    resolution: {integrity: sha512-cKA5B6lpFEMyMGjxF54QihfYpB4FkEGH+qZhtArDEG+wezQAJY8Pq6C7T1SjWz+FFzt3TbyoXBQYk/0292TdJA==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -6114,13 +6114,13 @@ packages:
   pkg-types@2.3.1:
     resolution: {integrity: sha512-y+ichcgc2LrADuhLNAx8DFjVfgz91pRxfZdI3UDhxHvcVEZsenLO+7XaU5vOp0u/7V/wZ+plyuQxtrDlZJ+yeg==}
 
-  playwright-core@1.60.0:
-    resolution: {integrity: sha512-9bW6zvX/m0lEbgTKJ6YppOKx8H3VOPBMOCFh2irXFOT4BbHgrx5hPjwJYLT40Lu+4qtD36qKc/Hn56StUW57IA==}
+  playwright-core@1.61.0:
+    resolution: {integrity: sha512-caX7TrY3Ml6egyDX0WUcTHDxodl/b51y5wJOdCEA36QviK/s2g081hvmGs8eaE3DWb6NYZQ6BjO/QkNRPenoPA==}
     engines: {node: '>=18'}
     hasBin: true
 
-  playwright@1.60.0:
-    resolution: {integrity: sha512-hheHdokM8cdqCb0lcE3s+zT4t4W+vvjpGxsZlDnikarzx8tSzMebh3UiFtgqwFwnTnjYQcsyMF8ei2mCO/tpeA==}
+  playwright@1.61.0:
+    resolution: {integrity: sha512-Z+7BeeqQPRRzklHsVFP4KTGIyMxKUmfeRA4WisM6G3/XW6nwGeX6fX9qYaDa+CiUqpOkb2f6X3nar05R3kSuJQ==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -9491,11 +9491,11 @@ snapshots:
       - nx
       - supports-color
 
-  '@nx/module-federation@23.0.0(@babel/traverse@7.29.7)(@module-federation/enhanced@2.4.0(@rspack/core@1.6.8(@swc/helpers@0.5.21))(node-fetch@2.7.0(encoding@0.1.13))(typescript@5.9.3)(webpack@5.105.2(esbuild@0.27.7)(postcss@8.5.15)))(@module-federation/node@2.7.42(@rspack/core@1.6.8(@swc/helpers@0.5.21))(typescript@5.9.3)(webpack@5.105.2(esbuild@0.27.7)(postcss@8.5.15)))(@nx/eslint@23.0.0(@babel/traverse@7.29.7)(@zkochan/js-yaml@0.0.7)(eslint@10.3.0(jiti@2.7.0))(nx@23.0.0))(@nx/playwright@23.0.0(@babel/traverse@7.29.7)(@playwright/test@1.60.0)(@zkochan/js-yaml@0.0.7)(eslint@10.3.0(jiti@2.7.0))(nx@23.0.0))(@nx/vite@23.0.0(@babel/traverse@7.29.7)(@nx/eslint@23.0.0(@babel/traverse@7.29.7)(@zkochan/js-yaml@0.0.7)(eslint@10.3.0(jiti@2.7.0))(nx@23.0.0))(nx@23.0.0)(typescript@5.9.3)(vite@8.0.16(@types/node@25.6.0)(esbuild@0.27.7)(jiti@2.7.0)(terser@5.48.0)(tsx@4.21.0)(yaml@2.9.0))(vitest@4.1.5))(@swc/helpers@0.5.21)(esbuild@0.27.7)(nx@23.0.0)(postcss@8.5.15)':
+  '@nx/module-federation@23.0.0(@babel/traverse@7.29.7)(@module-federation/enhanced@2.4.0(@rspack/core@1.6.8(@swc/helpers@0.5.21))(node-fetch@2.7.0(encoding@0.1.13))(typescript@5.9.3)(webpack@5.105.2(esbuild@0.27.7)(postcss@8.5.15)))(@module-federation/node@2.7.42(@rspack/core@1.6.8(@swc/helpers@0.5.21))(typescript@5.9.3)(webpack@5.105.2(esbuild@0.27.7)(postcss@8.5.15)))(@nx/eslint@23.0.0(@babel/traverse@7.29.7)(@zkochan/js-yaml@0.0.7)(eslint@10.3.0(jiti@2.7.0))(nx@23.0.0))(@nx/playwright@23.0.0(@babel/traverse@7.29.7)(@playwright/test@1.61.0)(@zkochan/js-yaml@0.0.7)(eslint@10.3.0(jiti@2.7.0))(nx@23.0.0))(@nx/vite@23.0.0(@babel/traverse@7.29.7)(@nx/eslint@23.0.0(@babel/traverse@7.29.7)(@zkochan/js-yaml@0.0.7)(eslint@10.3.0(jiti@2.7.0))(nx@23.0.0))(nx@23.0.0)(typescript@5.9.3)(vite@8.0.16(@types/node@25.6.0)(esbuild@0.27.7)(jiti@2.7.0)(terser@5.48.0)(tsx@4.21.0)(yaml@2.9.0))(vitest@4.1.5))(@swc/helpers@0.5.21)(esbuild@0.27.7)(nx@23.0.0)(postcss@8.5.15)':
     dependencies:
       '@nx/devkit': 23.0.0(nx@23.0.0)
       '@nx/js': 23.0.0(@babel/traverse@7.29.7)(nx@23.0.0)
-      '@nx/web': 23.0.0(@babel/traverse@7.29.7)(@nx/eslint@23.0.0(@babel/traverse@7.29.7)(@zkochan/js-yaml@0.0.7)(eslint@10.3.0(jiti@2.7.0))(nx@23.0.0))(@nx/playwright@23.0.0(@babel/traverse@7.29.7)(@playwright/test@1.60.0)(@zkochan/js-yaml@0.0.7)(eslint@10.3.0(jiti@2.7.0))(nx@23.0.0))(@nx/vite@23.0.0(@babel/traverse@7.29.7)(@nx/eslint@23.0.0(@babel/traverse@7.29.7)(@zkochan/js-yaml@0.0.7)(eslint@10.3.0(jiti@2.7.0))(nx@23.0.0))(nx@23.0.0)(typescript@5.9.3)(vite@8.0.16(@types/node@25.6.0)(esbuild@0.27.7)(jiti@2.7.0)(terser@5.48.0)(tsx@4.21.0)(yaml@2.9.0))(vitest@4.1.5))(nx@23.0.0)
+      '@nx/web': 23.0.0(@babel/traverse@7.29.7)(@nx/eslint@23.0.0(@babel/traverse@7.29.7)(@zkochan/js-yaml@0.0.7)(eslint@10.3.0(jiti@2.7.0))(nx@23.0.0))(@nx/playwright@23.0.0(@babel/traverse@7.29.7)(@playwright/test@1.61.0)(@zkochan/js-yaml@0.0.7)(eslint@10.3.0(jiti@2.7.0))(nx@23.0.0))(@nx/vite@23.0.0(@babel/traverse@7.29.7)(@nx/eslint@23.0.0(@babel/traverse@7.29.7)(@zkochan/js-yaml@0.0.7)(eslint@10.3.0(jiti@2.7.0))(nx@23.0.0))(nx@23.0.0)(typescript@5.9.3)(vite@8.0.16(@types/node@25.6.0)(esbuild@0.27.7)(jiti@2.7.0)(terser@5.48.0)(tsx@4.21.0)(yaml@2.9.0))(vitest@4.1.5))(nx@23.0.0)
       '@rspack/core': 1.6.8(@swc/helpers@0.5.21)
       express: 4.22.2
       http-proxy-middleware: 3.0.7
@@ -9564,7 +9564,7 @@ snapshots:
   '@nx/nx-win32-x64-msvc@23.0.0':
     optional: true
 
-  '@nx/playwright@23.0.0(@babel/traverse@7.29.7)(@playwright/test@1.60.0)(@zkochan/js-yaml@0.0.7)(eslint@10.3.0(jiti@2.7.0))(nx@23.0.0)':
+  '@nx/playwright@23.0.0(@babel/traverse@7.29.7)(@playwright/test@1.61.0)(@zkochan/js-yaml@0.0.7)(eslint@10.3.0(jiti@2.7.0))(nx@23.0.0)':
     dependencies:
       '@nx/devkit': 23.0.0(nx@23.0.0)
       '@nx/eslint': 23.0.0(@babel/traverse@7.29.7)(@zkochan/js-yaml@0.0.7)(eslint@10.3.0(jiti@2.7.0))(nx@23.0.0)
@@ -9573,7 +9573,7 @@ snapshots:
       semver: 7.8.4
       tslib: 2.8.1
     optionalDependencies:
-      '@playwright/test': 1.60.0
+      '@playwright/test': 1.61.0
     transitivePeerDependencies:
       - '@babel/traverse'
       - '@nx/jest'
@@ -9587,14 +9587,14 @@ snapshots:
       - supports-color
       - verdaccio
 
-  '@nx/react@23.0.0(@babel/core@7.29.7)(@babel/traverse@7.29.7)(@module-federation/enhanced@2.4.0(@rspack/core@1.6.8(@swc/helpers@0.5.21))(node-fetch@2.7.0(encoding@0.1.13))(typescript@5.9.3)(webpack@5.105.2(esbuild@0.27.7)(postcss@8.5.15)))(@module-federation/node@2.7.42(@rspack/core@1.6.8(@swc/helpers@0.5.21))(typescript@5.9.3)(webpack@5.105.2(esbuild@0.27.7)(postcss@8.5.15)))(@nx/playwright@23.0.0(@babel/traverse@7.29.7)(@playwright/test@1.60.0)(@zkochan/js-yaml@0.0.7)(eslint@10.3.0(jiti@2.7.0))(nx@23.0.0))(@swc/helpers@0.5.21)(@types/babel__core@7.20.5)(@zkochan/js-yaml@0.0.7)(esbuild@0.27.7)(eslint@10.3.0(jiti@2.7.0))(nx@23.0.0)(postcss@8.5.15)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(rollup@4.60.3)(typescript@5.9.3)(vite@8.0.16(@types/node@25.6.0)(esbuild@0.27.7)(jiti@2.7.0)(terser@5.48.0)(tsx@4.21.0)(yaml@2.9.0))(vitest@4.1.5)':
+  '@nx/react@23.0.0(@babel/core@7.29.7)(@babel/traverse@7.29.7)(@module-federation/enhanced@2.4.0(@rspack/core@1.6.8(@swc/helpers@0.5.21))(node-fetch@2.7.0(encoding@0.1.13))(typescript@5.9.3)(webpack@5.105.2(esbuild@0.27.7)(postcss@8.5.15)))(@module-federation/node@2.7.42(@rspack/core@1.6.8(@swc/helpers@0.5.21))(typescript@5.9.3)(webpack@5.105.2(esbuild@0.27.7)(postcss@8.5.15)))(@nx/playwright@23.0.0(@babel/traverse@7.29.7)(@playwright/test@1.61.0)(@zkochan/js-yaml@0.0.7)(eslint@10.3.0(jiti@2.7.0))(nx@23.0.0))(@swc/helpers@0.5.21)(@types/babel__core@7.20.5)(@zkochan/js-yaml@0.0.7)(esbuild@0.27.7)(eslint@10.3.0(jiti@2.7.0))(nx@23.0.0)(postcss@8.5.15)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(rollup@4.60.3)(typescript@5.9.3)(vite@8.0.16(@types/node@25.6.0)(esbuild@0.27.7)(jiti@2.7.0)(terser@5.48.0)(tsx@4.21.0)(yaml@2.9.0))(vitest@4.1.5)':
     dependencies:
       '@nx/devkit': 23.0.0(nx@23.0.0)
       '@nx/eslint': 23.0.0(@babel/traverse@7.29.7)(@zkochan/js-yaml@0.0.7)(eslint@10.3.0(jiti@2.7.0))(nx@23.0.0)
       '@nx/js': 23.0.0(@babel/traverse@7.29.7)(nx@23.0.0)
-      '@nx/module-federation': 23.0.0(@babel/traverse@7.29.7)(@module-federation/enhanced@2.4.0(@rspack/core@1.6.8(@swc/helpers@0.5.21))(node-fetch@2.7.0(encoding@0.1.13))(typescript@5.9.3)(webpack@5.105.2(esbuild@0.27.7)(postcss@8.5.15)))(@module-federation/node@2.7.42(@rspack/core@1.6.8(@swc/helpers@0.5.21))(typescript@5.9.3)(webpack@5.105.2(esbuild@0.27.7)(postcss@8.5.15)))(@nx/eslint@23.0.0(@babel/traverse@7.29.7)(@zkochan/js-yaml@0.0.7)(eslint@10.3.0(jiti@2.7.0))(nx@23.0.0))(@nx/playwright@23.0.0(@babel/traverse@7.29.7)(@playwright/test@1.60.0)(@zkochan/js-yaml@0.0.7)(eslint@10.3.0(jiti@2.7.0))(nx@23.0.0))(@nx/vite@23.0.0(@babel/traverse@7.29.7)(@nx/eslint@23.0.0(@babel/traverse@7.29.7)(@zkochan/js-yaml@0.0.7)(eslint@10.3.0(jiti@2.7.0))(nx@23.0.0))(nx@23.0.0)(typescript@5.9.3)(vite@8.0.16(@types/node@25.6.0)(esbuild@0.27.7)(jiti@2.7.0)(terser@5.48.0)(tsx@4.21.0)(yaml@2.9.0))(vitest@4.1.5))(@swc/helpers@0.5.21)(esbuild@0.27.7)(nx@23.0.0)(postcss@8.5.15)
+      '@nx/module-federation': 23.0.0(@babel/traverse@7.29.7)(@module-federation/enhanced@2.4.0(@rspack/core@1.6.8(@swc/helpers@0.5.21))(node-fetch@2.7.0(encoding@0.1.13))(typescript@5.9.3)(webpack@5.105.2(esbuild@0.27.7)(postcss@8.5.15)))(@module-federation/node@2.7.42(@rspack/core@1.6.8(@swc/helpers@0.5.21))(typescript@5.9.3)(webpack@5.105.2(esbuild@0.27.7)(postcss@8.5.15)))(@nx/eslint@23.0.0(@babel/traverse@7.29.7)(@zkochan/js-yaml@0.0.7)(eslint@10.3.0(jiti@2.7.0))(nx@23.0.0))(@nx/playwright@23.0.0(@babel/traverse@7.29.7)(@playwright/test@1.61.0)(@zkochan/js-yaml@0.0.7)(eslint@10.3.0(jiti@2.7.0))(nx@23.0.0))(@nx/vite@23.0.0(@babel/traverse@7.29.7)(@nx/eslint@23.0.0(@babel/traverse@7.29.7)(@zkochan/js-yaml@0.0.7)(eslint@10.3.0(jiti@2.7.0))(nx@23.0.0))(nx@23.0.0)(typescript@5.9.3)(vite@8.0.16(@types/node@25.6.0)(esbuild@0.27.7)(jiti@2.7.0)(terser@5.48.0)(tsx@4.21.0)(yaml@2.9.0))(vitest@4.1.5))(@swc/helpers@0.5.21)(esbuild@0.27.7)(nx@23.0.0)(postcss@8.5.15)
       '@nx/rollup': 23.0.0(@babel/core@7.29.7)(@babel/traverse@7.29.7)(@types/babel__core@7.20.5)(nx@23.0.0)(rollup@4.60.3)(typescript@5.9.3)
-      '@nx/web': 23.0.0(@babel/traverse@7.29.7)(@nx/eslint@23.0.0(@babel/traverse@7.29.7)(@zkochan/js-yaml@0.0.7)(eslint@10.3.0(jiti@2.7.0))(nx@23.0.0))(@nx/playwright@23.0.0(@babel/traverse@7.29.7)(@playwright/test@1.60.0)(@zkochan/js-yaml@0.0.7)(eslint@10.3.0(jiti@2.7.0))(nx@23.0.0))(@nx/vite@23.0.0(@babel/traverse@7.29.7)(@nx/eslint@23.0.0(@babel/traverse@7.29.7)(@zkochan/js-yaml@0.0.7)(eslint@10.3.0(jiti@2.7.0))(nx@23.0.0))(nx@23.0.0)(typescript@5.9.3)(vite@8.0.16(@types/node@25.6.0)(esbuild@0.27.7)(jiti@2.7.0)(terser@5.48.0)(tsx@4.21.0)(yaml@2.9.0))(vitest@4.1.5))(nx@23.0.0)
+      '@nx/web': 23.0.0(@babel/traverse@7.29.7)(@nx/eslint@23.0.0(@babel/traverse@7.29.7)(@zkochan/js-yaml@0.0.7)(eslint@10.3.0(jiti@2.7.0))(nx@23.0.0))(@nx/playwright@23.0.0(@babel/traverse@7.29.7)(@playwright/test@1.61.0)(@zkochan/js-yaml@0.0.7)(eslint@10.3.0(jiti@2.7.0))(nx@23.0.0))(@nx/vite@23.0.0(@babel/traverse@7.29.7)(@nx/eslint@23.0.0(@babel/traverse@7.29.7)(@zkochan/js-yaml@0.0.7)(eslint@10.3.0(jiti@2.7.0))(nx@23.0.0))(nx@23.0.0)(typescript@5.9.3)(vite@8.0.16(@types/node@25.6.0)(esbuild@0.27.7)(jiti@2.7.0)(terser@5.48.0)(tsx@4.21.0)(yaml@2.9.0))(vitest@4.1.5))(nx@23.0.0)
       '@phenomnomnominal/tsquery': 6.2.0(typescript@5.9.3)
       '@svgr/webpack': 8.1.0(typescript@5.9.3)
       express: 4.22.2
@@ -9724,7 +9724,7 @@ snapshots:
       - typescript
       - verdaccio
 
-  '@nx/web@23.0.0(@babel/traverse@7.29.7)(@nx/eslint@23.0.0(@babel/traverse@7.29.7)(@zkochan/js-yaml@0.0.7)(eslint@10.3.0(jiti@2.7.0))(nx@23.0.0))(@nx/playwright@23.0.0(@babel/traverse@7.29.7)(@playwright/test@1.60.0)(@zkochan/js-yaml@0.0.7)(eslint@10.3.0(jiti@2.7.0))(nx@23.0.0))(@nx/vite@23.0.0(@babel/traverse@7.29.7)(@nx/eslint@23.0.0(@babel/traverse@7.29.7)(@zkochan/js-yaml@0.0.7)(eslint@10.3.0(jiti@2.7.0))(nx@23.0.0))(nx@23.0.0)(typescript@5.9.3)(vite@8.0.16(@types/node@25.6.0)(esbuild@0.27.7)(jiti@2.7.0)(terser@5.48.0)(tsx@4.21.0)(yaml@2.9.0))(vitest@4.1.5))(nx@23.0.0)':
+  '@nx/web@23.0.0(@babel/traverse@7.29.7)(@nx/eslint@23.0.0(@babel/traverse@7.29.7)(@zkochan/js-yaml@0.0.7)(eslint@10.3.0(jiti@2.7.0))(nx@23.0.0))(@nx/playwright@23.0.0(@babel/traverse@7.29.7)(@playwright/test@1.61.0)(@zkochan/js-yaml@0.0.7)(eslint@10.3.0(jiti@2.7.0))(nx@23.0.0))(@nx/vite@23.0.0(@babel/traverse@7.29.7)(@nx/eslint@23.0.0(@babel/traverse@7.29.7)(@zkochan/js-yaml@0.0.7)(eslint@10.3.0(jiti@2.7.0))(nx@23.0.0))(nx@23.0.0)(typescript@5.9.3)(vite@8.0.16(@types/node@25.6.0)(esbuild@0.27.7)(jiti@2.7.0)(terser@5.48.0)(tsx@4.21.0)(yaml@2.9.0))(vitest@4.1.5))(nx@23.0.0)':
     dependencies:
       '@nx/devkit': 23.0.0(nx@23.0.0)
       '@nx/js': 23.0.0(@babel/traverse@7.29.7)(nx@23.0.0)
@@ -9734,7 +9734,7 @@ snapshots:
       tslib: 2.8.1
     optionalDependencies:
       '@nx/eslint': 23.0.0(@babel/traverse@7.29.7)(@zkochan/js-yaml@0.0.7)(eslint@10.3.0(jiti@2.7.0))(nx@23.0.0)
-      '@nx/playwright': 23.0.0(@babel/traverse@7.29.7)(@playwright/test@1.60.0)(@zkochan/js-yaml@0.0.7)(eslint@10.3.0(jiti@2.7.0))(nx@23.0.0)
+      '@nx/playwright': 23.0.0(@babel/traverse@7.29.7)(@playwright/test@1.61.0)(@zkochan/js-yaml@0.0.7)(eslint@10.3.0(jiti@2.7.0))(nx@23.0.0)
       '@nx/vite': 23.0.0(@babel/traverse@7.29.7)(@nx/eslint@23.0.0(@babel/traverse@7.29.7)(@zkochan/js-yaml@0.0.7)(eslint@10.3.0(jiti@2.7.0))(nx@23.0.0))(nx@23.0.0)(typescript@5.9.3)(vite@8.0.16(@types/node@25.6.0)(esbuild@0.27.7)(jiti@2.7.0)(terser@5.48.0)(tsx@4.21.0)(yaml@2.9.0))(vitest@4.1.5)
     transitivePeerDependencies:
       - '@babel/traverse'
@@ -9816,9 +9816,9 @@ snapshots:
       esquery: 1.7.0
       typescript: 5.9.3
 
-  '@playwright/test@1.60.0':
+  '@playwright/test@1.61.0':
     dependencies:
-      playwright: 1.60.0
+      playwright: 1.61.0
 
   '@polka/url@1.0.0-next.29': {}
 
@@ -13624,11 +13624,11 @@ snapshots:
       exsolve: 1.0.8
       pathe: 2.0.3
 
-  playwright-core@1.60.0: {}
+  playwright-core@1.61.0: {}
 
-  playwright@1.60.0:
+  playwright@1.61.0:
     dependencies:
-      playwright-core: 1.60.0
+      playwright-core: 1.61.0
     optionalDependencies:
       fsevents: 2.3.2
 
