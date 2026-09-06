@@ -3,18 +3,20 @@ import { defineConfig } from 'vitest/config'
 
 export default defineConfig({
   root: import.meta.dirname,
-  cacheDir: '../../node_modules/.vite/modules/web/home',
+  cacheDir: '../../node_modules/.vite/modules/web-home',
   plugins: [react()],
   test: {
+    name: '@mach/web-home',
+    watch: false,
     globals: true,
-    cache: { dir: '../../node_modules/.vitest' },
     environment: 'jsdom',
-    include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
+    include: ['{src,tests}/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
     reporters: ['default'],
     coverage: {
-      reportsDirectory: '../../coverage/modules/web/home',
-      provider: 'v8',
+      reportsDirectory: '../../coverage/modules/web-home',
+      provider: 'v8' as const,
     },
     passWithNoTests: true,
+    setupFiles: ['./vitest-setup.ts'],
   },
 })

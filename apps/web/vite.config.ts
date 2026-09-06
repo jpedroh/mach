@@ -41,16 +41,15 @@ export default defineConfig({
     sourcemap: true,
   },
   test: {
+    name: '@mach/web',
+    watch: false,
     globals: true,
-    cache: {
-      dir: '../../node_modules/.vitest',
-    },
     environment: 'jsdom',
-    include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
+    include: ['{src,tests}/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
     reporters: ['default'],
     coverage: {
       reportsDirectory: '../../coverage/apps/web',
-      provider: 'v8',
+      provider: 'v8' as const,
     },
   },
 })
