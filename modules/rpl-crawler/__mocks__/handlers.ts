@@ -22,4 +22,16 @@ export const handlers = [
       },
     })
   }),
+  http.get(
+    'http://portal.cgna.decea.mil.br/files/abas/:date/painel_rpl/bdr/RPL_NAVBRASIL.zip',
+    () => {
+      const file = readFileSync(join(__dirname, './RPL_NAVBRASIL.zip'))
+
+      return new Response(file, {
+        headers: {
+          'Content-Type': 'application/zip',
+        },
+      })
+    }
+  ),
 ]

@@ -3,9 +3,10 @@
   "compilerOptions": {
     "composite": true,
     "noEmit": false,
-    "outDir": "./out-tsc/spec"
+    "outDir": "./out-tsc/spec",
+    "types": ["node"]
   },
-  "include": [],
+  "include": ["src/**/*.test.ts", "__mocks__/", "./setup-test.ts"],
   "references": [
     {
       "path": "./tsconfig.lib.json"
