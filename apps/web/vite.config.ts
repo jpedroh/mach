@@ -1,5 +1,4 @@
 import { cloudflare } from '@cloudflare/vite-plugin'
-import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin'
 import { reactRouter } from '@react-router/dev/vite'
 import { cloudflareDevProxy } from '@react-router/dev/vite/cloudflare'
 import { sentryVitePlugin } from '@sentry/vite-plugin'
@@ -27,7 +26,6 @@ export default defineConfig({
     cloudflare({ viteEnvironment: { name: 'ssr' } }),
     cloudflareDevProxy(),
     reactRouter(),
-    nxViteTsPaths(),
     sentryVitePlugin({
       org: 'jpedroh',
       project: 'mach-vq',

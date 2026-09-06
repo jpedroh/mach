@@ -1,4 +1,3 @@
-import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin'
 import { defineConfig } from 'vitest/config'
 
 export default defineConfig({
@@ -11,7 +10,6 @@ export default defineConfig({
       external: [/^@libsql\/linux-/, /^@libsql\/darwin-/, /^@libsql\/win32-/],
     },
   },
-  plugins: [nxViteTsPaths()],
   test: {
     globals: true,
     cache: { dir: '../../node_modules/.vitest' },

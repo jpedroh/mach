@@ -1,11 +1,10 @@
-import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin'
 import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vitest/config'
 
 export default defineConfig({
   root: __dirname,
   cacheDir: '../../node_modules/.vite/modules/web/search',
-  plugins: [react(), nxViteTsPaths()],
+  plugins: [react()],
   test: {
     globals: true,
     cache: { dir: '../../node_modules/.vitest' },
