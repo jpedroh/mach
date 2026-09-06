@@ -11,16 +11,16 @@ export default defineConfig({
     },
   },
   test: {
+    name: '@mach/rpl-crawler-cli',
+    watch: false,
     globals: true,
-    cache: { dir: '../../node_modules/.vitest' },
-    environment: 'jsdom',
-    include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
+    environment: 'node',
+    include: ['{src,tests}/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
     reporters: ['default'],
     coverage: {
       reportsDirectory: '../../coverage/apps/rpl-crawler-cli',
-      provider: 'v8',
+      provider: 'v8' as const,
     },
     passWithNoTests: true,
-    setupFiles: './setup-test.ts',
   },
 })
