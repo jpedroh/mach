@@ -2,15 +2,15 @@ packages:
   - apps/*
   - modules/*
 
+allowBuilds:
+  '@sentry/cli': true
+  esbuild: true
+  msw: true
+  nx: true
+  sharp: true
+  workerd: true
+
 catalog:
   react: ^19.2.6
   react-dom: ^19.2.6
   zod: ^4.5.1
-
-onlyBuiltDependencies:
-  - '@sentry/cli'
-  - esbuild
-  - msw
-  - nx
-  - sharp
-  - workerd
