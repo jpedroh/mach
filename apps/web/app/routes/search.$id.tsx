@@ -1,5 +1,6 @@
 import { FlightDetailsModal, fetchFlightById } from '@mach/web-details'
 import { useNavigate } from 'react-router'
+
 import { makeDatabaseConnectionFromServerContext } from '../utils/database-connection'
 import type { Route } from './+types/search.$id'
 

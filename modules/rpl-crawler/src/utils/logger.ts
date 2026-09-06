@@ -7,9 +7,7 @@ export function info(message: string): void {
 }
 
 export function error(error: Error): void {
-  console.error(
-    `${formatMessage('ERROR', error.message)} - ${JSON.stringify(error)}`
-  )
+  console.error(`${formatMessage('ERROR', error.message)} - ${JSON.stringify(error)}`)
 }
 
 type LoggingLevel = 'INFO' | 'ERROR'

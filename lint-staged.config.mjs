@@ -1,3 +1,3 @@
 export default {
-  '*': ['pnpm biome format --no-errors-on-unmatched --write'],
+  '*': ['pnpm oxfmt --no-error-on-unmatched-pattern'],
 }

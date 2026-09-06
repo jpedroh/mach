@@ -1,5 +1,6 @@
 import type { Flight } from '@mach/shared-database/schema'
 import { twc } from 'react-twc'
+
 import { formatEet } from '../../utils/format-eet'
 import { formatFlightRules } from '../../utils/format-flight-rules'
 
@@ -12,9 +13,7 @@ const getIcaoFpl = (flight: Flight) => {
     `(FPL-${flight.callsign}-${formatFlightRules(flight.flightRules)}S`,
     `-1/${flight.aircraftIcaoCode}/${flight.aircraftWakeTurbulence}-${flight.aircraftEquipment}/L1B1`,
     `-${flight.departureIcao}${flight.estimatedOffBlockTime}`,
-    `-${flight.cruisingSpeed}F${flight.cruisingLevel
-      .toString()
-      .padStart(3, '0')} ${flight.route}`,
+    `-${flight.cruisingSpeed}F${flight.cruisingLevel.toString().padStart(3, '0')} ${flight.route}`,
     `-${flight.arrivalIcao}${formatEet(flight.estimatedEnrouteMinutes)}`,
     `-${flight.remarks})`,
   ]

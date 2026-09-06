@@ -1,4 +1,5 @@
 import { data } from 'react-router'
+
 import { fetchFlightById } from '../services/fetch-flight-by-id'
 import { makeDatabaseConnectionFromServerContext } from '../utils/database-connection'
 import type { Route } from './+types/api.flights.$id'

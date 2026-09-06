@@ -38,8 +38,8 @@ export function IvaoFplButton({ flight }: Props) {
   url.searchParams.set('flightPlan', btoa(JSON.stringify(flightPlan)))
 
   return (
-    <Button asChild variant="primary">
-      <a href={url.toString()} target="_blank" rel="noreferrer">
+    <Button asChild variant='primary'>
+      <a href={url.toString()} target='_blank' rel='noreferrer'>
         IVAO FP
       </a>
     </Button>

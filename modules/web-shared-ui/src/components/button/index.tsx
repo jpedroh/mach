@@ -1,8 +1,5 @@
 import { cva, type VariantProps } from 'class-variance-authority'
-import {
-  Button as RACButton,
-  type ButtonProps as RACButtonProps,
-} from 'react-aria-components'
+import { Button as RACButton, type ButtonProps as RACButtonProps } from 'react-aria-components'
 import { twc } from 'react-twc'
 
 const button = cva(
@@ -17,12 +14,9 @@ const button = cva(
     defaultVariants: {
       variant: 'primary',
     },
-  }
+  },
 )
 
-type Props = RACButtonProps &
-  VariantProps<typeof button> & { asChild?: boolean }
+type Props = RACButtonProps & VariantProps<typeof button> & { asChild?: boolean }
 
-export const Button = twc(RACButton)(({ variant }: Props) =>
-  button({ variant })
-)
+export const Button = twc(RACButton)(({ variant }: Props) => button({ variant }))

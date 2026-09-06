@@ -1,5 +1,6 @@
 import { relations } from '@mach/shared-database/drizzle'
 import { index, int, sqliteTable, text } from 'drizzle-orm/sqlite-core'
+
 import { flightRules, type Weekdays, wakeTurbulence } from './enum.ts'
 
 export const flights = sqliteTable(
@@ -34,16 +35,16 @@ export const flights = sqliteTable(
     return {
       cycleIdx: index('cycle_idx').on(table.cycle),
       cycleDepartureArrivalCompanyAircraftIdx: index(
-        'cycle_departure_arrival_company_aircraft_idx'
+        'cycle_departure_arrival_company_aircraft_idx',
       ).on(
         table.cycle,
         table.departureIcao,
         table.arrivalIcao,
         table.company,
-        table.aircraftIcaoCode
+        table.aircraftIcaoCode,
       ),
     }
-  }
+  },
 )
 
 export const flightsRelations = relations(flights, ({ one }) => ({

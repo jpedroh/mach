@@ -1,6 +1,7 @@
 import { Layout } from '@mach/web-shared-ui/layout'
 import { Lead } from '@mach/web-shared-ui/lead'
 import { Link } from '@mach/web-shared-ui/link'
+
 import { fetchFlights } from '../services/fetch-flights'
 import { FlightsTable } from './flights-table'
 
@@ -14,8 +15,8 @@ export function SearchPage({ flights, onViewDetails }: Props) {
     return (
       <Layout>
         <Lead>
-          There are no results for your search. <Link href="/">Click here</Link>{' '}
-          to make a new search.
+          There are no results for your search. <Link href='/'>Click here</Link> to make a new
+          search.
         </Lead>
       </Layout>
     )
@@ -30,8 +31,7 @@ export function SearchPage({ flights, onViewDetails }: Props) {
   return (
     <Layout>
       <Lead>
-        {getLeadMessage(flights.length)} <Link href="/">Click here</Link> to
-        make a new search.
+        {getLeadMessage(flights.length)} <Link href='/'>Click here</Link> to make a new search.
       </Lead>
 
       <FlightsTable flights={flights} onViewDetails={onViewDetails} />

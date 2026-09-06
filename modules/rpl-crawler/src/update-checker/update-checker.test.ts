@@ -1,5 +1,6 @@
 import { http } from 'msw'
 import { expect, test } from 'vitest'
+
 import { server } from '../../__mocks__/node'
 import updateChecker from './index'
 
@@ -21,11 +22,11 @@ test('The update checker throws for unexpected responses', async () => {
         return new Response(null, {
           status: 500,
         })
-      }
-    )
+      },
+    ),
   )
 
   await expect(updateChecker('2022-08-24')).rejects.toThrow(
-    'Unexpected response status while checking'
+    'Unexpected response status while checking',
   )
 })

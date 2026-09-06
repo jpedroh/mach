@@ -1,11 +1,7 @@
 import { Button } from '@mach/web-shared-ui/button'
-import {
-  ModalContent,
-  ModalFooter,
-  ModalHeading,
-  ModalRoot,
-} from '@mach/web-shared-ui/modal'
+import { ModalContent, ModalFooter, ModalHeading, ModalRoot } from '@mach/web-shared-ui/modal'
 import type { ReactNode } from 'react'
+
 import { fetchFlightById } from '../services/fetch-flight-by-id'
 import { formatEet } from '../utils/format-eet'
 import { IcaoFpl } from './icao-fpl'
@@ -20,51 +16,36 @@ type Props = {
 }
 
 function FlightInfoGroup({ children }: { children: ReactNode }) {
-  return (
-    <div className="flex justify-between gap-2 md:gap-4 flex-wrap">
-      {children}
-    </div>
-  )
+  return <div className='flex justify-between gap-2 md:gap-4 flex-wrap'>{children}</div>
 }
 
-function FlightInfo({
-  label,
-  children,
-}: {
-  label: string
-  children: ReactNode
-}) {
+function FlightInfo({ label, children }: { label: string; children: ReactNode }) {
   return (
-    <div className="flex items-center gap-2">
-      <span className="font-semibold">{label}</span>
+    <div className='flex items-center gap-2'>
+      <span className='font-semibold'>{label}</span>
       <span>{children}</span>
     </div>
   )
 }
 
 function SectionTitle({ children }: { children: ReactNode }) {
-  return <h4 className="mb-2 font-semibold mt-2">{children}</h4>
+  return <h4 className='mb-2 font-semibold mt-2'>{children}</h4>
 }
 
 export function FlightDetailsModal({ flight, onDismiss }: Props) {
   return (
     <ModalRoot isOpen isDismissable onOpenChange={onDismiss}>
       <ModalHeading>
-        Flight {flight.callsign} from {flight.departureIcao} to{' '}
-        {flight.arrivalIcao}
+        Flight {flight.callsign} from {flight.departureIcao} to {flight.arrivalIcao}
       </ModalHeading>
       <ModalContent>
         <SectionTitle>GENERAL INFORMATION</SectionTitle>
         <FlightInfoGroup>
-          <FlightInfo label="EOBT">{flight.estimatedOffBlockTime}Z</FlightInfo>
-          <FlightInfo label="EET">
-            {formatEet(flight.estimatedEnrouteMinutes)}
-          </FlightInfo>
-          <FlightInfo label="AIRCRAFT">{flight.aircraftIcaoCode}</FlightInfo>
-          <FlightInfo label="SPEED">{flight.cruisingSpeed}</FlightInfo>
-          <FlightInfo label="FL">
-            {flight.cruisingLevel.toString().padStart(3, '0')}
-          </FlightInfo>
+          <FlightInfo label='EOBT'>{flight.estimatedOffBlockTime}Z</FlightInfo>
+          <FlightInfo label='EET'>{formatEet(flight.estimatedEnrouteMinutes)}</FlightInfo>
+          <FlightInfo label='AIRCRAFT'>{flight.aircraftIcaoCode}</FlightInfo>
+          <FlightInfo label='SPEED'>{flight.cruisingSpeed}</FlightInfo>
+          <FlightInfo label='FL'>{flight.cruisingLevel.toString().padStart(3, '0')}</FlightInfo>
         </FlightInfoGroup>
 
         <FlightInfo label={'ROUTE'}>{flight.route}</FlightInfo>
@@ -79,7 +60,7 @@ export function FlightDetailsModal({ flight, onDismiss }: Props) {
         <VatsimFplButton flight={flight} />
         <SimBriefButton flight={flight} />
         <SkyVectorButton flight={flight} />
-        <Button variant="danger" onPress={onDismiss}>
+        <Button variant='danger' onPress={onDismiss}>
           Close
         </Button>
       </ModalFooter>

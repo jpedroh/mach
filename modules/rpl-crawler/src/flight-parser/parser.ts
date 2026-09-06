@@ -1,10 +1,7 @@
 import { isWakeTurbulence } from '@mach/shared-database/enum'
 import type { Flight } from '@mach/shared-database/schema'
-import type {
-  FlightParsingError,
-  ParseFlightResult,
-  ParseResult,
-} from './types.ts'
+
+import type { FlightParsingError, ParseFlightResult, ParseResult } from './types.ts'
 import {
   parseEstimatedEnrouteMinutes,
   resolveFlightDate,
@@ -19,9 +16,7 @@ const makeFlightParser = ({ uuid }: { uuid: (line: string) => string }) => {
     const callsign = line.substring(22, 29).trim()
     const beginDate = resolveFlightDate(line.substring(0, 6))
     const endDate =
-      line.substring(7, 13).trim() === 'UFN'
-        ? null
-        : resolveFlightDate(line.substring(7, 13))
+      line.substring(7, 13).trim() === 'UFN' ? null : resolveFlightDate(line.substring(7, 13))
 
     const company = parseFlightField({
       field: 'company',

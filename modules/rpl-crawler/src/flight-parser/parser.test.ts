@@ -1,6 +1,8 @@
-import assert from 'node:assert'
 import { randomUUID } from 'crypto'
+import assert from 'node:assert'
+
 import { describe, expect, test } from 'vitest'
+
 import makeFlightParser from './parser'
 
 describe('parser', () => {
@@ -59,7 +61,7 @@ describe('parser', () => {
     expect(flight.arrivalIcao).toEqual('SBBV')
     expect(flight.estimatedEnrouteMinutes).toEqual(200)
     expect(flight.remarks).toEqual(
-      'EQPT/SDE2FGHIM1RWXYZ/C PBN/A1B1C1D1L1O2S2 DAT/SV EET/SBAZ0055 RMK/TCAS'
+      'EQPT/SDE2FGHIM1RWXYZ/C PBN/A1B1C1D1L1O2S2 DAT/SV EET/SBAZ0055 RMK/TCAS',
     )
     expect(flight.flightRules).toEqual('IFR')
   })
@@ -78,18 +80,12 @@ describe('parser', () => {
     expect(flight.estimatedOffBlockTime).toEqual('0720')
     expect(flight.cruisingSpeed).toEqual('N0440')
     expect(flight.cruisingLevel).toEqual(330)
-    expect(flight.weekdays).toEqual([
-      'TUESDAY',
-      'WEDNESDAY',
-      'THURSDAY',
-      'FRIDAY',
-      'SATURDAY',
-    ])
+    expect(flight.weekdays).toEqual(['TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY'])
     expect(flight.route).toEqual('TISVA UL206 TODET')
     expect(flight.arrivalIcao).toEqual('SBVT')
     expect(flight.estimatedEnrouteMinutes).toEqual(45)
     expect(flight.remarks).toEqual(
-      'EQPT/SDFGHIRW/SB1 PBN/B2D2O2S1 NAV/GNSS PER/C EET/SBRE0032 OPR/TOTAL LINHAS AEREAS SA'
+      'EQPT/SDFGHIRW/SB1 PBN/B2D2O2S1 NAV/GNSS PER/C EET/SBRE0032 OPR/TOTAL LINHAS AEREAS SA',
     )
     expect(flight.flightRules).toEqual('IFR')
   })

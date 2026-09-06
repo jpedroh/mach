@@ -3,6 +3,7 @@ import {
   type ListBoxItemProps as RACListBoxItemProps,
 } from 'react-aria-components'
 import { twc } from 'react-twc'
+
 import type { Option } from './types'
 
 export const SelectOption = twc(RACListBoxItem)<RACListBoxItemProps<Option>>`

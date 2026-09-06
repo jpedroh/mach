@@ -303,15 +303,7 @@ const openApi = {
             type: 'array',
             items: {
               type: 'string',
-              enum: [
-                'MONDAY',
-                'TUESDAY',
-                'WEDNESDAY',
-                'THURSDAY',
-                'FRIDAY',
-                'SATURDAY',
-                'SUNDAY',
-              ],
+              enum: ['MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY', 'SUNDAY'],
             },
           },
           cruisingLevel: {

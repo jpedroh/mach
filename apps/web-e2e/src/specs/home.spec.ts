@@ -5,9 +5,7 @@ test('if I click search flights without selecting a filter it shows an error mes
 }) => {
   await page.goto('/')
   await page.getByRole('button', { name: /search flights/i }).click()
-  await expect(
-    page.getByText(/at least one filter must be provided/i)
-  ).toBeVisible()
+  await expect(page.getByText(/at least one filter must be provided/i)).toBeVisible()
 })
 
 test.fixme('if I select options and click search flights it redirects me to search results', async ({
@@ -22,7 +20,7 @@ test.fixme('if I select options and click search flights it redirects me to sear
   await page.getByRole('button', { name: /search flights/i }).click()
 
   await expect(page).toHaveURL(
-    'http://localhost:4200/search?cycle=2023-12-21&departureIcao=SBSP&arrivalIcao=SBRJ&company=GLO&aircraftIcaoCode=B738'
+    'http://localhost:4200/search?cycle=2023-12-21&departureIcao=SBSP&arrivalIcao=SBRJ&company=GLO&aircraftIcaoCode=B738',
   )
 })
 

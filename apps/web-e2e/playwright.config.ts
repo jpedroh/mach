@@ -12,9 +12,7 @@ export default defineConfig({
   ...nxE2EPreset(import.meta.url.substring('file://'.length), {
     testDir: './src/specs',
   }),
-  globalSetup: import.meta
-    .resolve('./src/setup/global-setup.ts')
-    .substring('file://'.length),
+  globalSetup: import.meta.resolve('./src/setup/global-setup.ts').substring('file://'.length),
   use: {
     baseURL,
     trace: 'on-first-retry',

@@ -1,5 +1,6 @@
 import type { DatabaseConnection } from '@mach/shared-database/connection'
 import { z } from 'zod'
+
 import { makeCurrentCycleSubquery } from '../utils/currentCycleSubquery'
 
 export const searchFlightsQuerySchema = z
@@ -33,15 +34,12 @@ export const searchFlightsQuerySchema = z
     {
       message:
         'At least one filter (either departureIcao, arrivalIcao, company or aircraftIcaoCode) must be provided',
-    }
+    },
   )
 
 export type SearchFlightsQuery = z.infer<typeof searchFlightsQuerySchema>
 
-export async function fetchFlights(
-  db: DatabaseConnection,
-  where: SearchFlightsQuery
-) {
+export async function fetchFlights(db: DatabaseConnection, where: SearchFlightsQuery) {
   const today = new Date().toISOString().substring(0, 10)
 
   return db.query.flights.findMany({
@@ -61,12 +59,8 @@ export async function fetchFlights(
         where.cycle
           ? eq(fields.cycle, where.cycle)
           : eq(fields.cycle, makeCurrentCycleSubquery(db)),
-        where.departureIcao
-          ? eq(fields.departureIcao, where.departureIcao)
-          : undefined,
-        where.arrivalIcao
-          ? eq(fields.arrivalIcao, where.arrivalIcao)
-          : undefined,
+        where.departureIcao ? eq(fields.departureIcao, where.departureIcao) : undefined,
+        where.arrivalIcao ? eq(fields.arrivalIcao, where.arrivalIcao) : undefined,
         where.company ? eq(fields.company, where.company) : undefined,
         where.aircraftIcaoCode
           ? sql`${fields.aircraftIcaoCode} = ${where.aircraftIcaoCode}`
@@ -74,12 +68,9 @@ export async function fetchFlights(
         where.onlyCurrent
           ? and(
               sql`${fields.beginDate} <= ${today}`,
-              or(
-                sql`${fields.endDate} IS NULL`,
-                sql`${fields.endDate} >= ${today}`
-              )
+              or(sql`${fields.endDate} IS NULL`, sql`${fields.endDate} >= ${today}`),
             )
-          : undefined
+          : undefined,
       ),
   })
 }

@@ -4,9 +4,7 @@ const rplFileDownloader = async (date: string) => {
   const response = await fetch(fileLink)
 
   if (!response.ok) {
-    throw new Error(
-      `Unexpected response status while downloading ${fileLink}: ${response.status}`
-    )
+    throw new Error(`Unexpected response status while downloading ${fileLink}: ${response.status}`)
   }
 
   return Buffer.from(await response.arrayBuffer())

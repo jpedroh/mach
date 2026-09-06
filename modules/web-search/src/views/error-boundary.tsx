@@ -7,7 +7,7 @@ export function ErrorBoundary({ message }: { message: string }) {
     <Layout>
       <Lead>
         <p>{message}</p>
-        <Link href="/">Click here</Link> to make a new search.
+        <Link href='/'>Click here</Link> to make a new search.
       </Lead>
     </Layout>
   )

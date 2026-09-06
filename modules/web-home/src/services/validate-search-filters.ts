@@ -15,5 +15,5 @@ export const searchFlightsQuerySchema = z
     },
     {
       message: 'At least one filter must be provided',
-    }
+    },
   )

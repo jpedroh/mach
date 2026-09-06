@@ -1,5 +1,6 @@
 import { Button } from '@mach/web-shared-ui/button'
 import * as Table from '@mach/web-shared-ui/table'
+
 import { fetchFlights } from '../../services/fetch-flights'
 import { formatAirport } from '../../utils/format-airport'
 
@@ -11,9 +12,7 @@ type Props = {
 function minutesToEet(totalMinutes: number) {
   const hours = Math.floor(totalMinutes / 60)
   const minutes = totalMinutes % 60
-  return `${hours.toString().padStart(2, '0')}${minutes
-    .toString()
-    .padStart(2, '0')}`
+  return `${hours.toString().padStart(2, '0')}${minutes.toString().padStart(2, '0')}`
 }
 
 export function FlightsTable({ flights, onViewDetails }: Props) {
@@ -35,21 +34,15 @@ export function FlightsTable({ flights, onViewDetails }: Props) {
           <Table.Row key={key}>
             <Table.Column>{flight.callsign}</Table.Column>
             <Table.Column>
-              <abbr title={formatAirport(flight.departure)}>
-                {flight.departure.id}
-              </abbr>
+              <abbr title={formatAirport(flight.departure)}>{flight.departure.id}</abbr>
             </Table.Column>
             <Table.Column>
-              <abbr title={formatAirport(flight.arrival)}>
-                {flight.arrival.id}
-              </abbr>
+              <abbr title={formatAirport(flight.arrival)}>{flight.arrival.id}</abbr>
             </Table.Column>
             <Table.Column>{flight.estimatedOffBlockTime}</Table.Column>
-            <Table.Column>
-              {minutesToEet(flight.estimatedEnrouteMinutes)}
-            </Table.Column>
+            <Table.Column>{minutesToEet(flight.estimatedEnrouteMinutes)}</Table.Column>
             <Table.Column>{flight.aircraftIcaoCode}</Table.Column>
-            <Table.Column className="grid">
+            <Table.Column className='grid'>
               <Button
                 onPress={() => onViewDetails(flight.id)}
                 variant={'primary'}

@@ -16,7 +16,7 @@ export const fetchFlightsSchema = z.record(
   z
     .preprocess((x) => (Array.isArray(x) ? x : [x]), z.array(z.string()))
     .transform((values) => values.map((value) => value.toUpperCase()))
-    .transform((v) => (v.length == 0 ? undefined : v))
+    .transform((v) => (v.length == 0 ? undefined : v)),
 )
 
 export const paginateSchema = z.object({
@@ -27,22 +27,16 @@ export const paginateSchema = z.object({
 export async function fetchFlights(
   db: DatabaseConnection,
   query: z.infer<typeof fetchFlightsSchema>,
-  paginate?: z.infer<typeof paginateSchema>
+  paginate?: z.infer<typeof paginateSchema>,
 ) {
-  const currentCycleSubquery = db
-    .select({ cycle: sql<string>`MAX(${cycles.cycle})` })
-    .from(cycles)
+  const currentCycleSubquery = db.select({ cycle: sql<string>`MAX(${cycles.cycle})` }).from(cycles)
 
   const criteria = and(
-    query.cycle
-      ? sql`${flights.cycle} IN ${query.cycle}`
-      : eq(flights.cycle, currentCycleSubquery),
-    query.departureIcao &&
-      sql`${flights.departureIcao} IN ${query.departureIcao}`,
+    query.cycle ? sql`${flights.cycle} IN ${query.cycle}` : eq(flights.cycle, currentCycleSubquery),
+    query.departureIcao && sql`${flights.departureIcao} IN ${query.departureIcao}`,
     query.arrivalIcao && sql`${flights.arrivalIcao} IN ${query.arrivalIcao}`,
     query.company && sql`${flights.company} IN ${query.company}`,
-    query.aircraftIcaoCode &&
-      sql`${flights.aircraftIcaoCode} IN ${query.aircraftIcaoCode}`
+    query.aircraftIcaoCode && sql`${flights.aircraftIcaoCode} IN ${query.aircraftIcaoCode}`,
   )
 
   if (paginate == null) {

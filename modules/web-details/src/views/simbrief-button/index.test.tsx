@@ -1,6 +1,8 @@
-import { render, screen } from '@testing-library/react'
 import { randomUUID } from 'crypto'
+
+import { render, screen } from '@testing-library/react'
 import { describe, expect, test } from 'vitest'
+
 import { SimBriefButton } from '.'
 
 describe('SimBriefButton', () => {
@@ -26,7 +28,7 @@ describe('SimBriefButton', () => {
 
     expect(button).toHaveAttribute(
       'href',
-      `http://www.simbrief.com/system/dispatch.php?airline=GLO&fltnum=1827&type=B38M&orig=SBRF&dest=SBGR&route=DCT&steh=2&stem=5&fl=38000&manualrmk=MACH`
+      `http://www.simbrief.com/system/dispatch.php?airline=GLO&fltnum=1827&type=B38M&orig=SBRF&dest=SBGR&route=DCT&steh=2&stem=5&fl=38000&manualrmk=MACH`,
     )
   })
 })
