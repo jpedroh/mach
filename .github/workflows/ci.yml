@@ -19,7 +19,6 @@ jobs:
       - uses: pnpm/setup@v2
         with:
           cache: true
-          require-lockfile: true
       - uses: nrwl/nx-set-shas@v5
         with:
           main-branch-name: 'main'

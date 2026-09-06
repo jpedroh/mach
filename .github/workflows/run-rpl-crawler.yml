@@ -17,7 +17,6 @@ jobs:
       - uses: pnpm/setup@v2
         with:
           cache: true
-          require-lockfile: true
       - run: node apps/rpl-crawler-cli/src/index.ts ${RPL_DATE:-$(date +"%Y-%m-%d")}
         env:
           TURSO_CONNECTION_URL: ${{ secrets.turso_connection_url_production }}
