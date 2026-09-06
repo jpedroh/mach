@@ -1,4 +1,5 @@
 import { type FlightRules, type Weekdays } from '@mach/shared-database/enum'
+
 import type { ParseResult } from './types'
 
 export const resolveFlightRules = (route: string): FlightRules => {
@@ -24,9 +25,7 @@ const WEEKDAYS_MAP = {
   '7': 'SUNDAY',
 } as const
 
-function isValidWeekday(
-  candidate: string
-): candidate is keyof typeof WEEKDAYS_MAP {
+function isValidWeekday(candidate: string): candidate is keyof typeof WEEKDAYS_MAP {
   return candidate in WEEKDAYS_MAP
 }
 
@@ -37,9 +36,7 @@ export const resolveWeekDays = (weekdays: string): Weekdays[] => {
     .map((weekday) => WEEKDAYS_MAP[weekday])
 }
 
-export const parseEstimatedEnrouteMinutes = (
-  eet: string
-): ParseResult<number, string> => {
+export const parseEstimatedEnrouteMinutes = (eet: string): ParseResult<number, string> => {
   const MINUTES_IN_AN_HOUR = 60
 
   const hours = parseInt(eet.substr(0, 2))

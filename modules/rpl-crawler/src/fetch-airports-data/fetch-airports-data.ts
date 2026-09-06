@@ -17,10 +17,7 @@ const xmlSchema = z.object({
   }),
 })
 
-export function makeFetchAirportsData(props: {
-  apiKey: string
-  apiPassword: string
-}) {
+export function makeFetchAirportsData(props: { apiKey: string; apiPassword: string }) {
   return async function (icaoCodes: Set<string>) {
     const endpoint = new URL('https://aisweb.decea.mil.br/api')
     endpoint.searchParams.set('apiKey', props.apiKey)
@@ -34,14 +31,12 @@ export function makeFetchAirportsData(props: {
 
     const response = await fetch(endpoint).then((r) => r.text())
 
-    return xmlSchema
-      .parse(parser.parse(response))
-      .aisweb.rotaer.item.map((item) => {
-        return {
-          id: item.AeroCode,
-          city: item.city,
-          name: item.name,
-        }
-      })
+    return xmlSchema.parse(parser.parse(response)).aisweb.rotaer.item.map((item) => {
+      return {
+        id: item.AeroCode,
+        city: item.city,
+        name: item.name,
+      }
+    })
   }
 }

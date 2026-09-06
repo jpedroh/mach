@@ -1,9 +1,6 @@
 import { data } from 'react-router'
-import {
-  fetchFlights,
-  fetchFlightsSchema,
-  paginateSchema,
-} from '../services/fetch-flights'
+
+import { fetchFlights, fetchFlightsSchema, paginateSchema } from '../services/fetch-flights'
 import { makeDatabaseConnectionFromServerContext } from '../utils/database-connection'
 import type { Route } from './+types/api.flights'
 
@@ -24,9 +21,7 @@ export async function loader({ request, context }: Route.LoaderArgs) {
       aircraftIcaoCode: searchParams.getAll('aircraftIcaoCode'),
       cycle: searchParams.getAll('cycle'),
     })
-    const paginate = paginateSchema.safeParse(
-      Object.fromEntries(searchParams.entries())
-    )
+    const paginate = paginateSchema.safeParse(Object.fromEntries(searchParams.entries()))
 
     if (!query.success || !paginate.success) {
       return data({ message: 'Bad Request' }, { status: 400 })

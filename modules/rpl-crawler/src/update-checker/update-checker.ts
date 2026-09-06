@@ -4,9 +4,7 @@ const updateChecker = async (date: string) => {
   const response = await fetch(checkUrl)
 
   if (response.status !== 200 && response.status !== 404) {
-    throw new Error(
-      `Unexpected response status while checking ${checkUrl}: ${response.status}`
-    )
+    throw new Error(`Unexpected response status while checking ${checkUrl}: ${response.status}`)
   }
 
   return response.status === 200

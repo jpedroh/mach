@@ -1,6 +1,7 @@
 import { readFileSync } from 'fs'
-import { http } from 'msw'
 import { join } from 'path'
+
+import { http } from 'msw'
 
 export const handlers = [
   http.get(
@@ -9,12 +10,12 @@ export const handlers = [
       return new Response(null, {
         status: params.date === '2022-08-22' ? 200 : 404,
       })
-    }
+    },
   ),
   http.get(`https://aisweb.decea.mil.br/api`, () => {
-    const airportsContent = readFileSync(
-      join(__dirname, './airports_response.xml')
-    ).toString('utf-8')
+    const airportsContent = readFileSync(join(__dirname, './airports_response.xml')).toString(
+      'utf-8',
+    )
 
     return new Response(airportsContent, {
       headers: {
@@ -32,6 +33,6 @@ export const handlers = [
           'Content-Type': 'application/zip',
         },
       })
-    }
+    },
   ),
 ]

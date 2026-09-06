@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import { describe, expect, test } from 'vitest'
+
 import { Input } from '.'
 
 describe('Input', () => {
@@ -18,7 +19,7 @@ describe('Input', () => {
       'dark:text-gray-200',
       'focus:outline-none',
       'focus:ring-2',
-      'focus:ring-blue-400/50'
+      'focus:ring-blue-400/50',
     )
   })
 })

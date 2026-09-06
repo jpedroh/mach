@@ -1,4 +1,5 @@
 import type { Airport, Flight } from '@mach/shared-database/schema'
+
 import { fetchAirportsData } from './fetch-airports-data/index.ts'
 import type { ParseFlightResult } from './flight-parser/index.ts'
 import type { FlightParsingError } from './flight-parser/types.ts'
@@ -9,11 +10,7 @@ type MainDependencies = {
   rplFileDownloader: (date: string) => Promise<Buffer>
   rplFileLinesExtractor: (file: Buffer) => string[]
   flightParser: (line: string) => ParseFlightResult<unknown>
-  saveData: (data: {
-    cycle: string
-    flights: Flight[]
-    airports: Airport[]
-  }) => Promise<void>
+  saveData: (data: { cycle: string; flights: Flight[]; airports: Airport[] }) => Promise<void>
 }
 
 export function makeRunRplCrawler({
@@ -67,7 +64,7 @@ export function makeRunRplCrawler({
       new Set([
         ...parsedFlights.map((v) => v.departureIcao),
         ...parsedFlights.map((v) => v.arrivalIcao),
-      ])
+      ]),
     )
     Logger.info(`COMPLETED FETCHING OF AIRPORTS DATA`)
 

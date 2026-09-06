@@ -15,12 +15,7 @@ export async function fetchFlightById(db: DatabaseConnection, id: string) {
     return null
   }
 
-  const {
-    aircraftIcaoCode,
-    aircraftEquipment,
-    aircraftWakeTurbulence,
-    ...rest
-  } = flight
+  const { aircraftIcaoCode, aircraftEquipment, aircraftWakeTurbulence, ...rest } = flight
 
   return {
     ...rest,

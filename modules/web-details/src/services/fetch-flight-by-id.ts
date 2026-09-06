@@ -1,9 +1,6 @@
 import type { DatabaseConnection } from '@mach/shared-database/connection'
 
-export async function fetchFlightById(
-  dbClient: DatabaseConnection,
-  id: string
-) {
+export async function fetchFlightById(dbClient: DatabaseConnection, id: string) {
   const flight = await dbClient.query.flights.findFirst({
     where: (fields, { eq }) => eq(fields.id, id),
   })

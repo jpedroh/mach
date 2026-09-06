@@ -5,12 +5,8 @@ import { Lead } from '@mach/web-shared-ui/lead'
 import { Select } from '@mach/web-shared-ui/select'
 import { Suspense, useState } from 'react'
 import { Await, Form } from 'react-router'
-import {
-  fetchAircraftIcaoCodes,
-  fetchAirports,
-  fetchCompanies,
-  fetchCycles,
-} from '../services'
+
+import { fetchAircraftIcaoCodes, fetchAirports, fetchCompanies, fetchCycles } from '../services'
 import { searchFlightsQuerySchema } from '../services/validate-search-filters'
 import { formatAirport } from '../utils/format-airport'
 
@@ -32,9 +28,7 @@ export function HomePage({
   function validateForm(evt: React.FormEvent<HTMLFormElement>) {
     setErrorMessage('')
     const data = new FormData(evt.currentTarget)
-    const validation = searchFlightsQuerySchema.safeParse(
-      Object.fromEntries(data.entries())
-    )
+    const validation = searchFlightsQuerySchema.safeParse(Object.fromEntries(data.entries()))
     if (validation.error) {
       setErrorMessage(() => validation.error.issues.at(0)?.message ?? '')
       evt.preventDefault()
@@ -47,16 +41,16 @@ export function HomePage({
         <Lead>To begin, fill at least one of the following fields.</Lead>
 
         <Form
-          className="flex flex-col gap-4 w-full max-w-sm"
-          action="/search"
-          method="GET"
+          className='flex flex-col gap-4 w-full max-w-sm'
+          action='/search'
+          method='GET'
           onSubmit={validateForm}
         >
           <Await resolve={cyclesPromise}>
             {(cycles) => (
               <Select
                 label={'Cycle'}
-                name="cycle"
+                name='cycle'
                 defaultItems={cycles.map((cycle) => ({
                   id: cycle,
                   name: cycle,
@@ -71,7 +65,7 @@ export function HomePage({
               <>
                 <Select
                   label={'Departure ICAO'}
-                  name="departureIcao"
+                  name='departureIcao'
                   defaultItems={airports.map((airport) => ({
                     id: airport.id,
                     name: formatAirport(airport),
@@ -80,7 +74,7 @@ export function HomePage({
 
                 <Select
                   label={'Arrival ICAO'}
-                  name="arrivalIcao"
+                  name='arrivalIcao'
                   defaultItems={airports.map((airport) => ({
                     id: airport.id,
                     name: formatAirport(airport),
@@ -94,7 +88,7 @@ export function HomePage({
             {(companies) => (
               <Select
                 label={'Company'}
-                name="company"
+                name='company'
                 defaultItems={companies.map((company) => ({
                   id: company,
                   name: company,
@@ -107,7 +101,7 @@ export function HomePage({
             {(aircraftIcaoCodes) => (
               <Select
                 label={'Aircraft'}
-                name="aircraftIcaoCode"
+                name='aircraftIcaoCode'
                 defaultItems={aircraftIcaoCodes.map((aircraftIcaoCode) => ({
                   id: aircraftIcaoCode,
                   name: aircraftIcaoCode,
@@ -116,15 +110,15 @@ export function HomePage({
             )}
           </Await>
 
-          <Checkbox name="onlyCurrent" label="Show only current flights." />
+          <Checkbox name='onlyCurrent' label='Show only current flights.' />
 
           {errorMessage && (
-            <p role="alert" className="bg-red-600 text-white p-4">
+            <p role='alert' className='bg-red-600 text-white p-4'>
               {errorMessage}
             </p>
           )}
 
-          <Button type="submit">Search flights</Button>
+          <Button type='submit'>Search flights</Button>
         </Form>
       </Suspense>
     </Layout>

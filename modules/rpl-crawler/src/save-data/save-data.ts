@@ -8,6 +8,7 @@ import {
   type Flight,
   flights as flightsSchema,
 } from '@mach/shared-database/schema'
+
 import * as Logger from '../utils/logger.ts'
 
 function sliceArray<T>(items: T[]) {
@@ -61,8 +62,8 @@ const makeSaveData = ({ db }: { db: DatabaseConnection }) => {
       await tx.delete(airportsSchema).where(
         inArray(
           airportsSchema.id,
-          airports.map((v) => v.id)
-        )
+          airports.map((v) => v.id),
+        ),
       )
       Logger.info('Started inserting updated airports')
       await tx.insert(airportsSchema).values(airports)
@@ -71,13 +72,9 @@ const makeSaveData = ({ db }: { db: DatabaseConnection }) => {
       Logger.info('Started inserting flights')
       const flightsSlices = sliceArray(flights)
       for (const [index, flightsSlice] of flightsSlices.entries()) {
-        Logger.info(
-          `Started inserting slice ${index} of ${flightsSlices.length}`
-        )
+        Logger.info(`Started inserting slice ${index} of ${flightsSlices.length}`)
         await tx.insert(flightsSchema).values(flightsSlice)
-        Logger.info(
-          `Finished inserting slice ${index} of ${flightsSlices.length}`
-        )
+        Logger.info(`Finished inserting slice ${index} of ${flightsSlices.length}`)
       }
       Logger.info('Finished inserting flights')
     })

@@ -32,12 +32,12 @@ export function SimBriefButton({ flight }: Props) {
   }
 
   const simBriefLink = `http://www.simbrief.com/system/dispatch.php?${new URLSearchParams(
-    query
+    query,
   ).toString()}`
 
   return (
     <Button asChild>
-      <a href={simBriefLink} target="_blank" rel="noreferrer">
+      <a href={simBriefLink} target='_blank' rel='noreferrer'>
         SimBrief
       </a>
     </Button>

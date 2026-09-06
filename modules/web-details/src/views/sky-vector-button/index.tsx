@@ -14,7 +14,7 @@ export function SkyVectorButton({ flight }: Props) {
 
   return (
     <Button asChild>
-      <a href={skyVectorLink} target="_blank" rel="noreferrer">
+      <a href={skyVectorLink} target='_blank' rel='noreferrer'>
         SkyVector
       </a>
     </Button>

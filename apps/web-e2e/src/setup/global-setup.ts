@@ -1,10 +1,5 @@
 import { makeDatabaseConnection } from '@mach/shared-database/connection'
-import {
-  airports,
-  companies,
-  cycles,
-  flights,
-} from '@mach/shared-database/schema'
+import { airports, companies, cycles, flights } from '@mach/shared-database/schema'
 
 async function globalSetup() {
   const db = makeDatabaseConnection({
@@ -40,10 +35,7 @@ async function globalSetup() {
     ])
     .onConflictDoNothing()
 
-  await db
-    .insert(cycles)
-    .values({ cycle: '2023-12-21', totalFlights: 1 })
-    .onConflictDoNothing()
+  await db.insert(cycles).values({ cycle: '2023-12-21', totalFlights: 1 }).onConflictDoNothing()
 
   await db.insert(companies).values({ company: 'GLO' }).onConflictDoNothing()
 
