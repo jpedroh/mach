@@ -1,13 +1,18 @@
 import { makeDatabaseConnection } from '@mach/shared-database/connection'
-import type { AppLoadContext } from 'react-router'
+import type { RouterContextProvider } from 'react-router'
 
-export function makeDatabaseConnectionFromServerContext(serverContext: AppLoadContext) {
-  const url = serverContext.cloudflare.env.TURSO_CONNECTION_URL
+import { cloudflareContext } from './cloudflare-context'
+
+export function makeDatabaseConnectionFromServerContext(
+  serverContext: Readonly<RouterContextProvider>,
+) {
+  const { cloudflare } = serverContext.get(cloudflareContext)
+  const url = cloudflare.env.TURSO_CONNECTION_URL
   if (url == null) {
     throw new Error('TURSO_CONNECTION_URL is not defined')
   }
 
-  const authToken = serverContext.cloudflare.env.TURSO_AUTH_TOKEN
+  const authToken = cloudflare.env.TURSO_AUTH_TOKEN
   if (authToken == null) {
     throw new Error('TURSO_AUTH_TOKEN is not defined')
   }
