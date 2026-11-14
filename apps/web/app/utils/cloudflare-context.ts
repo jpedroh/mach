@@ -1,6 +1,6 @@
 import { createContext } from 'react-router'
 
-export interface CloudflareContextValue {
+export type CloudflareContextValue = {
   cloudflare: {
     env: Env
     ctx: ExecutionContext
