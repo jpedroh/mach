@@ -2,8 +2,10 @@ import { createContext } from 'react-router'
 
 export type CloudflareContextValue = {
   cloudflare: {
-    env: Env
-    ctx: ExecutionContext
+    env: {
+      TURSO_CONNECTION_URL?: string
+      TURSO_AUTH_TOKEN?: string
+    }
   }
 }
 

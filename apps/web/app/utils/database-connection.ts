@@ -3,7 +3,9 @@ import type { RouterContextProvider } from 'react-router'
 
 import { cloudflareContext } from './cloudflare-context'
 
-export function makeDatabaseConnectionFromServerContext(serverContext: RouterContextProvider) {
+export function makeDatabaseConnectionFromServerContext(
+  serverContext: Readonly<RouterContextProvider>,
+) {
   const { cloudflare } = serverContext.get(cloudflareContext)
   const url = cloudflare.env.TURSO_CONNECTION_URL
   if (url == null) {
